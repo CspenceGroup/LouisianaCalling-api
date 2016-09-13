@@ -1,0 +1,58 @@
+.search-bar {
+  height: rem(135);
+  color: $search-text;
+  padding-top: rem(50);
+  @include background-image('bg-search-careers.jpg');
+  @extend %background-repeat-x;
+  @extend %acumin-pro-cond;
+  @extend %font-weight-bold;
+  @extend %font-style-italic;
+  @extend %text-left;
+}
+
+.search-group {
+  width: rem(650);
+  font-size: rem(11);
+  @extend %margin-auto;
+
+  .form-control {
+    @include boxSize(rem(228), rem(38));
+    font-size: rem(11);
+    border: solid rem(1) $search-border;
+    @extend %no-border-radius;
+  }
+
+  .btn-region,
+  .btn-career {
+    @extend %text-left;
+    @extend %no-border-left;
+  }
+
+  .btn-submit {
+    width: rem(128);
+    font-size: rem(12);
+    background-color: $search-btn-bg;
+    @extend %i-owan-old-style;
+    @extend %cl-white;
+    @extend %vertical-top;
+    @extend %no-border-radius;
+    @extend %no-border;
+  }
+}
+
+.btn-search {
+  border: solid rem(1) $search-border;
+  background-color: $white;
+  text-indent: rem(5);
+  @include boxSize(rem(138), rem(38));
+  @extend %no-border-radius;
+  @extend %relative;
+}
+
+.btn-region .caret {
+  margin-left: rem(69);
+}
+
+.btn-career .caret {
+  margin-left: rem(42);
+}

@@ -1,0 +1,33 @@
+<div>
+    = render 'navigation/index'
+    <div class="main-content">
+      <section class="hero-slider"></section>
+      <section class="search-bar">
+        <form name="search">
+          <div class="input-group search-group">
+            <input class="form-control" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
+            <button type="button" class="btn-search btn-region dropdown-toggle" data-toggle="dropdown-menu">Region <span class="caret"></span>
+            </button>
+            <button type="button" class="btn-search btn-career dropdown-toggle" data-toggle="dropdown">Find Careers <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu" role="menu">
+            </ul>
+            <button type="submit" class="btn-search btn-submit">Search</button>
+          </div>
+        </form>
+      </section>
+      <section class="guided-journey row">
+        <section class="col-md-6 guided-journey__box find-your-path">
+          <h2 class="main-title find-your-path__title">Not sure what to do?</h2>
+          <a href="javascript:void(0);" class="journey-link find-your-path__link"></a>
+        </section>
+        <section class="col-md-6 guided-journey__box want-to-talk">
+          <h2 class="main-title want-to-talk__title">Want to talk?</h2>
+          <a href="javascript:void(0);" class="journey-link want-to-talk__link"></a>
+        </section>
+      </section>
+      <seciton class="map"></seciton>
+    </div>
+
+    = render 'footer/index'
+</div>

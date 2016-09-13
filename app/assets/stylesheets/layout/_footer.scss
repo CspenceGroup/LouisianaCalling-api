@@ -1,0 +1,42 @@
+.site-footer {
+  height: rem(270);
+  padding-top: rem(112);
+  @include background-image('bg-footer.jpg');
+  @extend %background-repeat-x;
+  @extend %brandon-grotesque-bold;
+  @extend %cl-white;
+
+  @include e('nav') {
+    font-size: rem(16.7);
+    margin-bottom: rem(65);
+    width: rem(425);
+    @extend %margin-auto;
+    @extend %text-uppercase;
+
+    li {
+      @extend %float-left;
+      border-right: solid rem(2) $white;
+      padding: 0 rem(8);
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        @include linkState () {
+          @extend %cl-white;
+        }
+      }
+    }
+  }
+
+  @include e('copyright') {
+    @extend %clear-both;
+    font-size: rem(12.5);
+
+    p {
+      width: rem(240);
+      @extend %margin-auto;
+    }
+  }
+}

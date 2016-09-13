@@ -1,0 +1,69 @@
+/*Style navigations*/
+.nav-bar {
+  margin-right: rem(60);
+  @extend %vertical-top;
+  @extend %float-right;
+  @extend %brandon-grotesque-bold;
+
+  @include e('list') {
+    @extend %overflow-hidden;
+    @extend %float-left;
+    padding: rem(16) 0;
+
+    > li {
+      @extend %float-left;
+      padding: 0 rem(27);
+    }
+
+    a {
+      @extend %text-uppercase;
+      font-size: rem(10);
+      color: $white;
+
+      @include linkState() {
+        @extend %no-text-decoration;
+      }
+    }
+  }
+
+  @include e('contact') {
+    @extend %float-right;
+    font-size: rem(15);
+    padding: rem(12) 0 0 rem(27);
+
+    a {
+      @extend %brandon-grotesque-bold;
+      @extend %block;
+      color: $white;
+
+      &:first-child {
+        padding-bottom: rem(5);
+      }
+    }
+  }
+
+  @include e('icon') {
+    font-size: rem(16.67);
+  }
+
+  @include e('list-icon') {
+    @extend %overflow-hidden;
+
+    > li {
+      @extend %float-left;
+      padding-right: rem(26);
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.button-find-path {
+  @include background-image('path-button.png');
+  background-repeat: no-repeat;
+  background-size: rem(134), rem(37);
+  @include boxSize(rem(134), rem(37));
+}
+
