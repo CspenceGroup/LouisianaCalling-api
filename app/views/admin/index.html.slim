@@ -1,0 +1,25 @@
+<div>
+
+  <br/>
+  <br/>
+  <br/>
+  = form_tag("/upload", method: "post") do
+    section
+      .container style=("color: #000;")
+        .row
+          input checked="checked" name="csv" type="radio" value="home" /
+          |  Home Page
+        .row
+          input name="csv" type="radio" value="profile" /
+          |  Profile Stories
+    section
+      .container
+        .row
+          label for="attachment"  Choose file
+          .input-group
+            input.form-control name="attachment" type="file" /
+          br/
+          .input-group
+            input type="submit" value="Upload" /
+
+<div>

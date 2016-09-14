@@ -1,0 +1,29 @@
+/*Style banner profile*/
+.banner-profile {
+  @extend %color-white;
+  @extend %text-center;
+  @extend %clear-both;
+  padding-top: rem(50);
+
+  @include e('introduce') {
+    padidng-top: rem(4);
+  }
+
+  @include e('title') {
+    font-size: rem(38);
+    @extend %i-owan-old-style;
+  }
+
+  @include e('text') {
+    font-size: rem(12);
+    margin-top: rem(10);
+  }
+
+  @include e('container') {
+    @include background-image('profile/banner-profile.jpg');
+    height: rem(400);
+    background-position: center center;
+    background-size: cover;
+    padding-top: rem(125);
+  }
+}

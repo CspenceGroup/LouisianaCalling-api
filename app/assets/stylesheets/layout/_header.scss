@@ -1,0 +1,22 @@
+/*Style header page*/
+.site-header {
+  @include background-image('header-bg.png');
+  height: rem(72);
+  @extend %absolute;
+  @extend %left-0;
+  @extend %right-0;
+
+  @include e('logo') {
+    @extend %float-left;
+    margin: rem(13) 0 0 rem(60);
+    @include boxSize(rem(216), rem(28));
+  }
+
+  @include e('image') {
+    @include background-image('logo.png');
+    background-repeat: no-repeat;
+    background-size: rem(216), rem(28);
+    @include boxSize(rem(216), rem(28));
+    @extend %block;
+  }
+}

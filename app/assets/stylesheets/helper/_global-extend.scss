@@ -1,0 +1,321 @@
+/* Global extend definitions */
+
+/* Class extend colors */
+%color-black{
+  color: $black
+}
+
+%color-white {
+  color: $white;
+}
+
+/* Class extend for text style */
+%text-no-transform {
+  text-transform: none;
+}
+
+%text-uppercase {
+  text-transform: uppercase;
+}
+
+%text-capitalize {
+  text-transform: capitalize;
+}
+
+%text-center {
+  text-align: center;
+}
+
+%text-left {
+  text-align: left;
+}
+
+%text-right {
+  text-align: right;
+}
+
+%no-text-decoration {
+  &,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+%no-list-style {
+  list-style: none;
+}
+
+%text-underline {
+  text-decoration: underline;
+}
+
+%no-text-shadow {
+  text-shadow: none;
+}
+
+%truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%no-pointer-events {
+  pointer-events: none;
+}
+
+/* Class extend for vertical align */
+%vertical-middle {
+  vertical-align: middle;
+}
+
+%vertical-bottom {
+  vertical-align: bottom;
+}
+
+%vertical-top {
+  vertical-align: top;
+}
+
+/* Class extend for position */
+%relative {
+  position: relative;
+}
+
+%absolute {
+  position: absolute;
+}
+
+%fixed {
+  position: fixed;
+}
+
+%left-0 {
+  left: 0;
+}
+
+%right-0 {
+  right: 0;
+}
+
+%top-0 {
+  top: 0;
+}
+
+%bottom-0 {
+  bottom: 0;
+}
+
+%left-top-0 {
+  left: 0;
+  top: 0;
+}
+
+/* Class extend for display */
+%inline-block {
+  display: inline-block;
+}
+
+%inline {
+  display: inline;
+}
+
+%table {
+  display: table;
+}
+
+%table-row {
+  display: table-row;
+}
+
+%table-cell {
+  display: table-cell;
+}
+
+%hide {
+  display: none;
+}
+
+%block {
+  display: block;
+}
+
+%overflow-hidden {
+  overflow: hidden;
+}
+
+%clear-both {
+  clear: both;
+}
+
+%visibility-hidden {
+  visibility: hidden;
+}
+
+/* Class extend for margin/padding */
+%no-margin {
+  margin: 0;
+}
+
+%margin-auto {
+  margin: 0 auto;
+}
+
+%no-margin-bottom {
+  margin-bottom: 0;
+}
+
+%no-margin-top {
+  margin-top: 0;
+}
+
+%no-margin-right {
+  margin-right: 0;
+}
+
+%no-margin-left {
+  margin-left: 0;
+}
+
+%no-padding {
+  padding: 0;
+}
+
+%no-padding-left {
+  padding-left: 0;
+}
+
+%no-padding-right {
+  padding-right: 0;
+}
+
+%no-padding-top {
+  padding-top: 0;
+}
+
+%no-padding-bottom {
+  padding-bottom: 0;
+}
+
+/* Class extend for border */
+%border-collapse {
+  border-collapse: separate;
+}
+
+%no-border {
+  border: 0;
+}
+
+%no-border-bottom{
+  border-bottom: 0;
+}
+
+%no-border-top {
+  border-top: 0;
+}
+
+%no-border-left {
+  border-left: 0;
+}
+
+%no-border-right {
+  border-right: 0;
+}
+
+%no-border-radius {
+  border-radius: 0;
+}
+
+/* Class extend for background */
+%background-transparent {
+  background-color: transparent;
+}
+
+%background-white {
+  background-color: $white;
+}
+
+%background-repeat-x {
+  background-repeat: repeat-x;
+}
+
+%background-no-repeat {
+  background-repeat: no-repeat;
+}
+
+%background-repeat {
+  background-repeat: repeat;
+}
+
+%background-cover {
+  background-size: cover;
+}
+
+%background-position-center {
+  background-position: center center;
+}
+/* Class extend for font */
+%font-weight-bold {
+  font-weight: bold;
+}
+
+%font-weight-normal {
+  font-weight: normal;
+}
+
+%font-style-italic {
+  font-style: italic;
+}
+
+/* Class extend for float */
+%float-left {
+  float: left;
+}
+
+%float-right {
+  float: right;
+}
+
+%no-outline {
+  &:focus,
+  &:hover,
+  &:active:focus {
+    outline: none;
+  }
+}
+
+/* Class extend for box */
+%no-box-shadow {
+  box-shadow: none;
+}
+
+/* Cursor */
+%cursor-pointer {
+  cursor: pointer;
+}
+
+%cursor-default {
+  cursor: default;
+}
+
+/* Colors */
+%cl-white {
+  color: $white;
+}
+
+/* Font Family */
+%brandon-grotesque-bold {
+  font-family: 'BrandonGrotesque-Bold';
+}
+
+%brandon-grotesque {
+  font-family: 'BrandonGrotesque';
+}
+
+%i-owan-old-style {
+  font-family: 'IowanOldStyle';
+}
+
+%acumin-pro-cond {
+  font-family: 'AcuminProCond';
+}

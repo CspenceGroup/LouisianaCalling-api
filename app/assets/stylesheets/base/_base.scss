@@ -1,0 +1,44 @@
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  @extend %cl-white;
+}
+
+img {
+  @include boxSize(100%, auto);
+  color: transparent;
+  @extend %no-border;
+}
+
+ul {
+  @extend %no-list-style;
+}
+
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+ul {
+  @extend %no-padding;
+  @extend %no-margin;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+a {
+  @extend %cl-white;
+  @extend %no-outline;
+  @extend %no-text-decoration;
+}
