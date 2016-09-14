@@ -11,26 +11,20 @@
 }
 
 .search-group {
-  width: rem(650);
-  font-size: rem(11);
+  width: rem(1040);
+  font-size: rem(18.9);
   @extend %margin-auto;
 
   .form-control {
-    @include boxSize(rem(228), rem(38));
-    font-size: rem(11);
+    @include boxSize(rem(379), rem(53));
+    font-size: rem(18.9);
     border: solid rem(1) $search-border;
     @extend %no-border-radius;
   }
 
-  .btn-region,
-  .btn-career {
-    @extend %text-left;
-    @extend %no-border-left;
-  }
-
   .btn-submit {
-    width: rem(128);
-    font-size: rem(12);
+    width: rem(232);
+    font-size: rem(18.9);
     background-color: $default;
     @extend %i-owan-old-style;
     @extend %cl-white;
@@ -38,21 +32,32 @@
     @extend %no-border-radius;
     @extend %no-border;
   }
+
+  .btn-region,
+  .btn-career {
+    color: $search-text;
+    @extend %text-left;
+    @extend %no-border-left;
+  }
+
+  .fa {
+    color: $default;
+  }
 }
 
 .btn-search {
   border: solid rem(1) $search-border;
   background-color: $white;
   text-indent: rem(5);
-  @include boxSize(rem(138), rem(38));
+  @include boxSize(rem(211), rem(53));
   @extend %no-border-radius;
   @extend %relative;
 }
 
-.btn-region .caret {
-  margin-left: rem(69);
+.btn-region .fa-caret-down {
+  margin-left: rem(110);
 }
 
-.btn-career .caret {
-  margin-left: rem(42);
+.btn-career .fa-caret-down {
+  margin-left: rem(61);
 }
