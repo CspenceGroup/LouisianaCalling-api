@@ -1,0 +1,64 @@
+.profile-common {
+  @include e('info') {
+    height: rem(400);
+  }
+
+  @include e('desc') {
+    @include background-image('profile/profile-decs-bg.png');
+    background-repeat: repeat;
+    color: $profile-header;
+    @extend %acumin-pro-cond;
+    padding: rem(75) rem(100) 0 rem(60);
+
+    h3 {
+      font-size: rem(15);
+      padding-bottom: rem(28);
+    }
+
+    p {
+      font-size: rem(13);
+    }
+  }
+
+  @include e('photo') {
+    height: rem(400);
+    @extend %no-padding;
+
+    img {
+      height: 100%;
+    }
+  }
+}
+
+
+.profile-heading {
+  @include background-image('profile/profile-heading-bg.png');
+  @extend %background-no-repeat;
+  color: $profile-header;
+  height: rem(160);
+  @extend %background-position-center;
+  @extend %background-cover;
+  @extend %text-center;
+  padding-top: rem(33);
+
+  p {
+    font-size: rem(15);
+    @extend %acumin-pro-cond;
+  }
+}
+
+.profile-name {
+  color: $default;
+}
+
+.profile-title {
+  font-size: rem(22.5);
+  @extend %i-owan-old-style;
+  padding-bottom: rem(17);
+}
+
+.btn-full-story {
+  margin-top: rem(18);
+  @include boxSize(rem(140), rem(56));
+}
+

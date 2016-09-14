@@ -3,10 +3,10 @@
   @extend %color-white;
   @extend %text-center;
   @extend %clear-both;
-  padding-top: rem(50);
+  padding-top: rem(70);
 
   @include e('introduce') {
-    padidng-top: rem(4);
+    padding-top: rem(20);
   }
 
   @include e('title') {
@@ -22,8 +22,8 @@
   @include e('container') {
     @include background-image('profile/banner-profile.jpg');
     height: rem(400);
-    background-position: center center;
-    background-size: cover;
-    padding-top: rem(125);
+    @extend %background-position-center;
+    @extend %background-cover;
+    padding-top: rem(100);
   }
 }

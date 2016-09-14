@@ -17,45 +17,65 @@
         <p>Watch their stories and see how each found theire calling.</p>
       </div>
       <div class="profile-common__detail">
-        <article class="profile-common__info row">
-          <div class="profile-common__photo col-md-6 pull-md-left">
-            <img src=""/>
+        <article class="row profile-common__info">
+          <div class="col-md-6 pull-md-left profile-common__photo">
+            = image_tag "profile/clifton-smith.jpg"
           </div>
-          <div class="profile-common__desc col-md-6 pull-md-right">
+          <div class="col-md-6 pull-md-right profile-common__desc">
             <h2 class="profile-title profile-name">Clifton Smith</h2>
             <h3>Subhead. Lorem ipsum dolor sit amet</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut emin ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptata velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <p class="btn-full-story"><a href="javascript:void(0)" class="btn-full-story--link"></a></p>
+            <div class="btn-full-story">
+              <a href="javascript:void(0)" class="btn-full-story--link">
+                = image_tag "profile/btn-full-story.png"
+              </a>
+            </div>
           </div>
         </article>
-        <article class="profile-common__info row">
-          <div class="profile-common__photo col-md-6 pull-md-right">
-            <img src=""/>
+        <article class="row profile-common__info">
+          <div class="col-md-6 pull-md-right profile-common__photo">
+            = image_tag "profile/alen-nguyen.jpg"
           </div>
-          <div class="profile-common__desc col-md-6 pull-md-left">
+          <div class="col-md-6 pull-md-left profile-common__desc">
             <h2 class="profile-title profile-name">Allen Nguyen</h2>
             <h3>Subhead. Lorem ipsum dolor sit amet</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut emin ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptata velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <p class="btn-full-story"><a href="javascript:void(0)" class="btn-full-story--link"></a></p>
+            <div class="btn-full-story">
+              <a href="javascript:void(0)">
+                = image_tag "profile/btn-full-story.png"
+              </a>
+            </div>
           </div>
         </article>
       </div>
     </section>
     <section class="more-stories">
       <div class="profile-heading">
-        <h2 class="profile-title">More Stories</h2>
+        <h2 class="profile-title more-stories__title">More Stories</h2>
       </div>
-      <div>
-        <div>
-          <img src=""/>
+      <div class="row more-stories__list">
+        <div class="more-stories__content">
+          <div class="col-md-4 more-stories__details">
+            <a href="javascript:void(0)">
+              = image_tag "profile/image-stories-first.jpg"
+            </a>
+          </div>
+          <div class="col-md-4 more-stories__details">
+            <a href="javascript:void(0)">
+              = image_tag "profile/image-stories-second.jpg"
+            </a>
+          </div>
+          <div class="col-md-4 more-stories__details">
+            <a href="javascript:void(0)">
+              = image_tag "profile/image-stories-third.jpg"
+            </a>
+          </div>
         </div>
-        <div>
-          <img src=""/>
+        <div class="more-stories__btn">
+          <a href="javascript:void(0)">
+            = image_tag "profile/btn-see-more.png"
+          </a>
         </div>
-        <div>
-          <img src=""/>
-        </div>
-        <a class="btn-see-more">See More</a>
       </div>
     </section>
 
