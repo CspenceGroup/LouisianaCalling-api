@@ -1,5 +1,5 @@
 .guided-journey {
-  height: rem(348);
+  height: rem(400);
 
   @include e('box') {
     height: 100%;
@@ -9,36 +9,36 @@
   }
 
   h2 {
-    font-size: rem(22.38);
+    font-size: rem(29);
+    line-height: rem(40);
     @extend %i-owan-old-style;
   }
 }
 
 .find-your-path {
-  padding-top: rem(135);
+  padding-top: rem(120);
   @include background-image('photo-to-do.jpg');
 
   @include e('title') {
-    width: rem(132);
+    width: rem(155);
     @extend %margin-auto;
     @extend %text-left;
   }
 
   @include e('link') {
-    margin-right: rem(35);
+    margin-left: rem(68);
     @include background-image('find-your-path.png');
-    @include boxSize(rem(150), rem(68.4));
+    @include boxSize(rem(225), rem(110));
   }
 }
 
 .want-to-talk {
-  padding-top: rem(151.8);
+  padding-top: rem(155);
   @include background-image('photo-talk.jpg');
 
   @include e('link') {
-    margin-right: rem(18);
     @include background-image('call-number.png');
-    @include boxSize(rem(156), rem(58.8));
+    @include boxSize(rem(220), rem(90));
   }
 }
 
@@ -47,3 +47,7 @@
   @extend %background-no-repeat;
 }
 
+.journey-bg {
+  position: relative;
+  z-index: -99;
+}

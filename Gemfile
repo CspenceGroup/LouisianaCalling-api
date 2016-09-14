@@ -35,8 +35,8 @@ gem 'pg'
 # import bootstrap
 gem 'bootstrap', '4.0.0.alpha4'
 
-# import font-awesome
-gem 'font-awesome-rails'
+#import font-awesome
+gem "font-awesome-rails"
 
 # slim template
 gem "slim-rails"
