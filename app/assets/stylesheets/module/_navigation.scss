@@ -1,6 +1,5 @@
 /*Style navigations*/
 .nav-bar {
-  margin-right: rem(60);
   @extend %vertical-top;
   @extend %float-right;
   @extend %brandon-grotesque-bold;
@@ -8,16 +7,16 @@
   @include e('list') {
     @extend %overflow-hidden;
     @extend %float-left;
-    padding: rem(16) 0;
+    padding: rem(27) 0;
 
     > li {
       @extend %float-left;
-      padding: 0 rem(27);
+      padding: 0 rem(24);
     }
 
     a {
       @extend %text-uppercase;
-      font-size: rem(10);
+      font-size: rem(13);
       color: $white;
 
       @include linkState() {
@@ -28,8 +27,7 @@
 
   @include e('contact') {
     @extend %float-right;
-    font-size: rem(15);
-    padding: rem(12) 0 0 rem(27);
+    padding: rem(19) 0 0 rem(24);
 
     a {
       @extend %brandon-grotesque-bold;
@@ -37,13 +35,17 @@
       color: $white;
 
       &:first-child {
-        padding-bottom: rem(5);
+        padding-bottom: rem(12);
       }
+    }
+
+    span {
+      font-size: rem(20);
     }
   }
 
   @include e('icon') {
-    font-size: rem(16.67);
+    font-size: rem(20);
   }
 
   @include e('list-icon') {
@@ -54,16 +56,8 @@
       padding-right: rem(26);
 
       &:last-child {
-        padding-right: 0;
+        @extend %no-padding-right;
       }
     }
   }
 }
-
-.button-find-path {
-  @include background-image('path-button.png');
-  background-repeat: no-repeat;
-  background-size: rem(134), rem(37);
-  @include boxSize(rem(134), rem(37));
-}
-

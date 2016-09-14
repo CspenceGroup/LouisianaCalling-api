@@ -42,3 +42,7 @@ a {
   @extend %no-outline;
   @extend %no-text-decoration;
 }
+
+.row {
+  margin: 0;
+}
