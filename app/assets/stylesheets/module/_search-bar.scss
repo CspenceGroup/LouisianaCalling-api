@@ -31,7 +31,7 @@
   .btn-submit {
     width: rem(128);
     font-size: rem(12);
-    background-color: $search-btn-bg;
+    background-color: $default;
     @extend %i-owan-old-style;
     @extend %cl-white;
     @extend %vertical-top;

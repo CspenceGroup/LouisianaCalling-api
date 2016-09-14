@@ -5,6 +5,11 @@
 }
 
 @font-face {
+  font-family: 'BrandonGrotesque';
+  src: url($font-path + 'BrandonGrotesque' + '.otf');
+}
+
+@font-face {
   font-family: 'IowanOldStyle';
   src: url($font-path + 'IowanOldStyle' + '.ttf');
 }

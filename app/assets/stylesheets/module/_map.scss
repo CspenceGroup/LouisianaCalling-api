@@ -1,0 +1,85 @@
+.top-jobs {
+  color: $default;
+  font-size: rem(10);
+  line-height: 1.5;
+  padding: rem(42) 0 rem(60);
+  @extend %acumin-pro-cond;
+  @extend %font-weight-bold;
+  @include background-image('map-bg.png');
+  @extend %background-repeat;
+
+  @include e('details') {
+    margin-right: rem(42);
+    @include boxSize(rem(210), rem(215));
+    @include background-image('top-jobs-border.png');
+    @extend %background-no-repeat;
+    @extend %relative;
+    @extend %float-right;
+  }
+
+  @include e('title') {
+    margin: 0 rem(115) rem(15);
+    @include boxSize(rem(265), auto);
+    @extend %float-right;
+    @extend %overflow-hidden;
+  }
+
+  @include e('map') {
+    top: rem(15);
+    left: rem(20);
+    @include boxSize(rem(335), rem(331));
+    @include background-image('map.png');
+    @extend %background-no-repeat;
+    @extend %absolute;
+  }
+}
+
+.jobs-container {
+  width: rem(615);
+  @extend %margin-auto;
+  @extend %relative;
+  background: #ccc;
+}
+
+.job-heading {
+  @extend %float-right;
+
+  @include m('pull-left') {
+    margin-right: rem(35);
+  }
+
+  @include m('pull-right') {
+    margin-right: rem(20);
+  }
+}
+
+.career-desc {
+  font-size: rem(12.5);
+  @extend %font-style-italic;
+  @extend %float-right;
+}
+
+.region-name {
+  font-size: rem(22.5);
+  line-height: 1.667;
+  color: $region-name;
+  right: rem(10);
+  top: 0;
+  @extend %text-uppercase;
+  @extend %brandon-grotesque;
+  @extend %absolute;
+}
+
+.job-list {
+  top: rem(35);
+  left: 0;
+  @extend %absolute;
+
+  a {
+    @include linkState () {
+      color: $default;
+    }
+  }
+}
+
+

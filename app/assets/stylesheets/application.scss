@@ -12,6 +12,7 @@
  *
  */
 @import "bootstrap";
+/* Import all styles of app */
 @import
   'helper/all',
   'base/all',
@@ -19,4 +20,5 @@
   'layout/all',
   'state/all',
   'theme/all';
+
 

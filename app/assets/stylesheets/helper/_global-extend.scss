@@ -234,15 +234,23 @@
 %background-white {
   background-color: $white;
 }
+
 %background-repeat-x {
   background-repeat: repeat-x;
 }
+
 %background-no-repeat {
   background-repeat: no-repeat;
 }
+
+%background-repeat {
+  background-repeat: repeat;
+}
+
 %background-cover {
   background-size: cover;
 }
+
 %background-position-center {
   background-position: center center;
 }
@@ -298,6 +306,10 @@
 /* Font Family */
 %brandon-grotesque-bold {
   font-family: 'BrandonGrotesque-Bold';
+}
+
+%brandon-grotesque {
+  font-family: 'BrandonGrotesque';
 }
 
 %i-owan-old-style {

@@ -2,6 +2,9 @@
 .site-header {
   @include background-image('header-bg.png');
   height: rem(72);
+  @extend %absolute;
+  @extend %left-0;
+  @extend %right-0;
 
   @include e('logo') {
     @extend %float-left;
