@@ -35,6 +35,8 @@ gem 'pg'
 # import bootstrap
 gem 'bootstrap', '4.0.0.alpha4'
 
+gem "rails-assets-tether"
+
 #import font-awesome
 gem "font-awesome-rails"
 

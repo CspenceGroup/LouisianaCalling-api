@@ -5,6 +5,7 @@
   @extend %absolute;
   @extend %left-0;
   @extend %right-0;
+  z-index: 10;
 
   @include e('logo') {
     @extend %float-left;

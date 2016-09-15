@@ -1,0 +1,86 @@
+.hero-slider {
+  @extend %clear-both;
+  height: rem(410);
+}
+
+.carousel-control--beside.left {
+  background: 0;
+  width: rem(42);
+}
+
+.carousel-control--beside.right {
+  background: 0;
+  width: rem(42);
+}
+
+.carousel-title {
+  position: absolute;
+  top: rem(58);
+
+  h1 {
+    font-size: rem(63);
+    @extend %i-owan-old-style;
+    line-height: 1.2;
+  }
+
+}
+
+.carousel-text {
+  padding-top: rem(30);
+  h2 {
+    font-size: rem(19);
+    @extend %acumin-pro-cond;
+  }
+}
+
+.carousel-indicators {
+  margin-bottom: rem(-4);
+
+  .carousel-dots {
+    @include boxSize(rem(14), rem(13));
+    background-color: $white;
+    margin: 0 rem(8);
+  }
+
+  .carousel-dots.active {
+    background-color: rgb( 140, 55, 50 );
+    border-color: #893731;
+  }
+}
+
+.carousel-content {
+  height: rem(410);
+}
+
+.carousel-control .icon-prev {
+  @include background-image('arrow-left.png');
+  @include boxSize(rem(20), rem(45.5));
+  position: absolute;
+  z-index: 10;
+}
+
+.carousel-control .icon-prev::before {
+  content: '';
+}
+
+.carousel-control .icon-next::before {
+  content: '';
+}
+
+.carousel-control .icon-next {
+  @include background-image('arrow-right.png');
+  @include boxSize(rem(20), rem(45.5));
+  position: absolute;
+  z-index: 10;
+}
+
+
+.btn-play-video {
+  @include background-image('play-button.png');
+  background-repeat: no-repeat;
+  background-size: rem(50), rem(50);
+  @include boxSize(rem(50), rem(50));
+  border: none;
+  background-color: initial;
+  margin-top: rem(32)
+}
