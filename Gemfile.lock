@@ -171,7 +171,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails (= 6.4.1)
   bootstrap (= 4.0.0.alpha4)
   byebug
   coffee-rails (~> 4.2)
