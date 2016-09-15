@@ -17,36 +17,39 @@
         <p>Watch their stories and see how each found theire calling.</p>
       </div>
       <div class="profile-common__detail">
-        <article class="row profile-common__info">
-          <div class="col-md-6 pull-md-left profile-common__photo">
-            = image_tag "profile/clifton-smith.jpg"
-          </div>
-          <div class="col-md-6 pull-md-right profile-common__desc">
-            <h2 class="profile-title profile-name">Clifton Smith</h2>
-            <h3>Subhead. Lorem ipsum dolor sit amet</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut emin ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptata velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <div class="btn-full-story">
-              <a href="javascript:void(0)" class="btn-full-story--link">
-                = image_tag "profile/btn-full-story.png"
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="row profile-common__info">
-          <div class="col-md-6 pull-md-right profile-common__photo">
-            = image_tag "profile/alen-nguyen.jpg"
-          </div>
-          <div class="col-md-6 pull-md-left profile-common__desc">
-            <h2 class="profile-title profile-name">Allen Nguyen</h2>
-            <h3>Subhead. Lorem ipsum dolor sit amet</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut emin ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptata velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <div class="btn-full-story">
-              <a href="javascript:void(0)">
-                = image_tag "profile/btn-full-story.png"
-              </a>
-            </div>
-          </div>
-        </article>
+        - if @profiles.count == 5
+            - if @profiles[0]
+              <article class="row profile-common__info">
+                <div class="col-md-6 pull-md-left profile-common__photo">
+                  = image_tag @profiles[0].image
+                </div>
+                <div class="col-md-6 pull-md-right profile-common__desc">
+                  <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
+                  <h3>#{@profiles[0].job_title}</h3>
+                  <p>#{@profiles[0].description}</p>
+                  <div class="btn-full-story">
+                    <a href="javascript:void(0)" class="btn-full-story--link">
+                      = image_tag "profile/btn-full-story.png"
+                    </a>
+                  </div>
+                </div>
+              </article>
+            - if @profiles[1]
+                <article class="row profile-common__info">
+                  <div class="col-md-6 pull-md-right profile-common__photo">
+                    = image_tag @profiles[1].image
+                  </div>
+                  <div class="col-md-6 pull-md-left profile-common__desc">
+                    <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
+                    <h3>#{@profiles[0].job_title}</h3>
+                    <p>#{@profiles[0].description}</p>
+                    <div class="btn-full-story">
+                      <a href="javascript:void(0)">
+                        = image_tag "profile/btn-full-story.png"
+                      </a>
+                    </div>
+                  </div>
+                </article>
       </div>
     </section>
     <section class="more-stories">
@@ -54,28 +57,15 @@
         <h2 class="profile-title more-stories__title">More Stories</h2>
       </div>
       <div class="row more-stories__list">
-        <div class="more-stories__content">
-          <div class="col-md-4 more-stories__details">
-            <a href="javascript:void(0)">
-              = image_tag "profile/image-stories-first.jpg"
-            </a>
-          </div>
-          <div class="col-md-4 more-stories__details">
-            <a href="javascript:void(0)">
-              = image_tag "profile/image-stories-second.jpg"
-            </a>
-          </div>
-          <div class="col-md-4 more-stories__details">
-            <a href="javascript:void(0)">
-              = image_tag "profile/image-stories-third.jpg"
-            </a>
-          </div>
+        <div id="moreStories">
+          = render partial: "profile/partial/profile", locals: { profiles: @profiles.last(3) }
         </div>
         <div class="more-stories__btn">
-          <a href="javascript:void(0)">
+          <div id="profileSeeMore">
             = image_tag "profile/btn-see-more.png"
-          </a>
+          </div>
         </div>
+        <div id="loading-gif"></div>
       </div>
     </section>
 
