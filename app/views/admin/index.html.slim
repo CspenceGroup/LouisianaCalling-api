@@ -1,17 +1,31 @@
 <div>
+  <br/>
+  <br/>
+  <br/>
+  - if flash[:notice]
+    = content_tag :div, flash[:notice], class: "alert alert-info"
 
-  <br/>
-  <br/>
-  <br/>
-  = form_tag("/upload", method: "post") do
+  = form_tag('/upload', multipart: true)
     section
       .container style=("color: #000;")
         .row
-          input checked="checked" name="csv" type="radio" value="home" /
-          |  Home Page
+          input checked="checked" name="name" type="radio" value="homePageTopJobs" /
+          |  Home Page - Top Jobs
         .row
-          input name="csv" type="radio" value="profile" /
-          |  Profile Stories
+          input name="name" type="radio" value="homePageVideo" /
+          |  Home Page - Video
+        .row
+          input name="name" type="radio" value="interests" /
+          |  List of Interests
+        .row
+          input name="name" type="radio" value="skills" /
+          |  List of Skills
+        .row
+          input name="name" type="radio" value="clusters" /
+          |  List of Clusters
+        .row
+          input name="name" type="radio" value="profiles" /
+          |  Profiles
     section
       .container
         .row
@@ -21,5 +35,7 @@
           br/
           .input-group
             input type="submit" value="Upload" /
+
+
 
 <div>

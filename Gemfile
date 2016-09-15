@@ -43,9 +43,6 @@ gem "font-awesome-rails"
 # slim template
 gem "slim-rails"
 
-gem "autoprefixer-rails", '6.4.1'
-
-gem 'web-console'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
