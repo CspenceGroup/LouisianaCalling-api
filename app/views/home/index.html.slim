@@ -2,15 +2,16 @@
     = render 'navigation/index'
     <div class="main-content">
       <section class="hero-slider">
-        <!-- <div class="container"> -->
         <div id="carousel-banner" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
+          <ol class="carousel-indicators carousel-dots-list">
             <li data-target="#carousel-banner" data-slide-to="0" class="active carousel-dots"></li>
             <li data-target="#carousel-banner" data-slide-to="1" class="carousel-dots"></li>
           </ol>
           <div class="carousel-inner carousel-content" role="listbox">
             <div class="carousel-item active">
-              = image_tag "https://a2.muscache.com/airbnb/static/homepages/belong-vid-b5b9b5ff3b53a7a4229d4acde53fb161.jpg"
+              <video controls loop autoplay muted class="video-playing video-player">
+                <source src="https://a0.muscache.com/airbnb/static/Belong_p1_v2.mp4" type="video/mp4">
+              </video>
               <div class="carousel-caption carousel-title">
                 <h1>Your Life's Calling</h1>
                 <div class="carousel-text">
@@ -18,18 +19,20 @@
                   <h2>Right now. All you need is good information and the right resources.</h2>
                   <h2>We've got that for you right here.</h2>
                 </div>
-                <button type="button" class="btn-play-video" data-toggle="modal" data-target="#myModal"></button>
+                <button type="button" class="btn-play-video" data-source="https://a0.muscache.com/airbnb/static/Belong_p1_v2.mp4" data-toggle="modal" data-target="#videoModal"></button>
               </div>
             </div>
             <div class="carousel-item">
-              = image_tag "https://a2.muscache.com/airbnb/static/homepages/belong-vid-b5b9b5ff3b53a7a4229d4acde53fb161.jpg"
+              <video controls loop autoplay muted class="video-playing video-player">
+                <source src="https://a0.muscache.com/airbnb/static/US_60_ANTHEM.mp4" type="video/mp4">
+              </video>
               <div class="carousel-caption carousel-title">
                 <h1>Your Life's Calling</h1>
                 <div class="carousel-text">
                   <h2>The future you know you want starts right now. Not tomorrow</h2>
                   <h2>Right now. All you need is good information and the right resources.</h2>
                   <h2>We've got that for you right here.</h2>
-                  <button type="button" class="btn-play-video" data-toggle="modal" data-target="#myModal"></button>
+                  <button type="button" class="btn-play-video" data-source="https://a0.muscache.com/airbnb/static/US_60_ANTHEM.mp4" data-toggle="modal" data-target="#videoModal"></button>
                 </div>
               </div>
             </div>
@@ -45,27 +48,23 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                abckjansfklanfk
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal fade modal-video" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-video__content" role="document">
+            <div class="modal-video__details">
+              <div class="modal-video__desc">
+                <div class="modal-video__text">
+                  <h2>Cliftton Smith</h2>
+                  <p>Lorem ipsum dolor sit amet, vis et unum euripidis. Eripuit detracto definitiones vis ex, ut qui dicant ornatus, mea fabellas,suavitate ne. Vel cu emin facilis comprehensam.</p>
+                </div>
+                <div class="btn-tell-more">
+                  <a href="javascript:void(0)">
+                    = image_tag "tell-me-more.png"
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-
       </section>
       <section class="search-bar row">
         <form name="search">

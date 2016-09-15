@@ -1,20 +1,17 @@
+// Style for carousel homepage
 .hero-slider {
   @extend %clear-both;
   height: rem(410);
 }
 
-.carousel-control--beside.left {
-  background: 0;
-  width: rem(42);
-}
-
+.carousel-control--beside.left,
 .carousel-control--beside.right {
-  background: 0;
+  background: none;
   width: rem(42);
 }
 
 .carousel-title {
-  position: absolute;
+  @extend %absolute;
   top: rem(58);
 
   h1 {
@@ -33,7 +30,7 @@
   }
 }
 
-.carousel-indicators {
+.carousel-dots-list {
   margin-bottom: rem(-4);
 
   .carousel-dots {
@@ -41,39 +38,42 @@
     background-color: $white;
     margin: 0 rem(8);
   }
+}
 
-  .carousel-dots.active {
-    background-color: rgb( 140, 55, 50 );
-    border-color: #893731;
-  }
+.carousel-dots.active {
+  background-color: $dot-active-bg;
+  border-color: $dot-active-bg;
+}
+
+.btn-play-video:focus {
+  outline: none;
 }
 
 .carousel-content {
   height: rem(410);
 }
 
-.carousel-control .icon-prev {
+.carousel-control--beside .icon-prev {
   @include background-image('arrow-left.png');
   @include boxSize(rem(20), rem(45.5));
-  position: absolute;
+  @extend %absolute;
   z-index: 10;
+
+  &:before {
+    content: '';
+  }
 }
 
-.carousel-control .icon-prev::before {
-  content: '';
-}
-
-.carousel-control .icon-next::before {
-  content: '';
-}
-
-.carousel-control .icon-next {
+.carousel-control--beside .icon-next {
   @include background-image('arrow-right.png');
   @include boxSize(rem(20), rem(45.5));
-  position: absolute;
+  @extend %absolute;
   z-index: 10;
-}
 
+  &:before {
+    content: '';
+  }
+}
 
 .btn-play-video {
   @include background-image('play-button.png');
@@ -83,4 +83,79 @@
   border: none;
   background-color: initial;
   margin-top: rem(32)
+}
+
+
+// Style modal video
+.modal-open {
+  padding-right: 0 !important;
+}
+
+.modal-video {
+  background-color: $modal-video-bg;
+
+  @include e('content') {
+    margin-top: rem(85);
+    max-width: 100%;
+  }
+
+  @include e('details') {
+    background-color: none;
+    border: none;
+  }
+
+  @include e('desc') {
+    width: rem(895);
+    margin: rem(60) auto 0 auto;
+    @extend %overflow-hidden;
+  }
+
+  @include e('text') {
+    width: rem(705);
+    @extend %float-left;
+    h2 {
+      @extend %i-owan-old-style;
+      font-size: rem(33);
+    }
+
+    p {
+      font-size: rem(18);
+      @extend %acumin-pro-cond;
+      padding-top: rem(27);
+    }
+  }
+}
+
+.btn-tell-more {
+  @include boxSize(rem(158), rem(37));
+  margin-top: rem(75);
+  @extend %float-right;
+}
+
+// Style button play/pause video
+.video-player {
+  width: 100%;
+  height: auto;
+}
+
+.icon-pause {
+  @include background-image('play-button.png');
+  background-repeat: no-repeat;
+  background-size: rem(50), rem(50);
+  @include boxSize(rem(50), rem(50));
+  @extend %absolute;
+  left: 50%;
+  margin: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-pause {
+  @extend %inline-block;
+  @extend %absolute;
+  @extend %bottom-0;
+  @extend %left-0;
+  @extend %right-0;
+  @extend %top-0;
+  pointer-events: none;
 }
