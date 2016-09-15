@@ -14,10 +14,11 @@
   @extend %margin-auto;
 
   .form-control {
-    @include boxSize(rem(379), rem(53));
     font-size: rem(18.9);
+    text-indent: rem(5);
     border: solid rem(1) $search-border;
     @extend %no-border-radius;
+    @include boxSize(rem(379), rem(53));
   }
 
   .btn-submit {
@@ -46,16 +47,16 @@
 .btn-search {
   border: solid rem(1) $search-border;
   background-color: $white;
-  text-indent: rem(5);
+  text-indent: rem(10);
   @include boxSize(rem(211), rem(53));
   @extend %no-border-radius;
   @extend %relative;
 }
 
 .btn-region .fa-caret-down {
-  margin-left: rem(110);
+  margin-left: rem(113);
 }
 
 .btn-career .fa-caret-down {
-  margin-left: rem(61);
+  margin-left: rem(75);
 }
