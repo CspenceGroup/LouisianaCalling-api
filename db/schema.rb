@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160914075348) do
     t.string   "salary"
     t.string   "education"
     t.string   "video"
+    t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

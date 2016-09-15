@@ -147,8 +147,9 @@ class AdminController < ApplicationController
               profile[:salary] = row[12]
               profile[:education] = row[13]
               profile[:video] = row[14]
+              profile[:image] = row[15]
 
-              if row[15]
+              if row[16]
                 raise "error"
               end
 
