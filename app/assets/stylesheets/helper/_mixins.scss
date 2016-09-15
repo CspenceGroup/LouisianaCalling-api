@@ -87,3 +87,10 @@ $image-path: '';
   width: $width;
   height: $height;
 }
+
+/* Box shadow */
+@mixin shadow ($x, $y, $z, $color) {
+  -webkit-text-shadow: $x $y $z $color;
+     -moz-text-shadow: $x $y $z $color;
+          text-shadow: $x $y $z $color;
+}

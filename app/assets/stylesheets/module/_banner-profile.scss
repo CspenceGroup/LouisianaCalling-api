@@ -6,17 +6,19 @@
   padding-top: rem(70);
 
   @include e('introduce') {
-    padding-top: rem(20);
+    padding-top: rem(15);
   }
 
   @include e('title') {
-    font-size: rem(38);
+    font-size: rem(62.5);
+    line-height: rem(71);
     @extend %i-owan-old-style;
   }
 
   @include e('text') {
-    font-size: rem(12);
+    font-size: rem(18.8);
     margin-top: rem(10);
+    @extend %acumin-pro-cond-bi;
   }
 
   @include e('container') {
@@ -24,6 +26,6 @@
     height: rem(400);
     @extend %background-position-center;
     @extend %background-cover;
-    padding-top: rem(100);
+    padding-top: rem(75);
   }
 }

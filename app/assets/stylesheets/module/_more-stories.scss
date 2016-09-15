@@ -1,4 +1,4 @@
-.more-stories {
+    .more-stories {
   @include background-image('profile/more-stories-bg.png');
   @extend %background-no-repeat;
   @extend %background-position-center;
@@ -9,11 +9,11 @@
   }
 
   @include e('list') {
-    padding: rem(70) 0 rem(100) 0;
+    padding: rem(70) 0 rem(50) 0;
   }
 
   @include e('details') {
-    @include boxSize(rem(336), rem(336));
+    @include boxSize(rem(333), rem(333));
     padding: 0 rem(8);
   }
 
