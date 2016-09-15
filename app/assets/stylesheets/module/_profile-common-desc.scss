@@ -8,15 +8,17 @@
     background-repeat: repeat;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    padding: rem(75) rem(100) 0 rem(60);
+    padding: rem(73) rem(100) 0 rem(60);
 
     h3 {
       font-size: rem(15);
-      padding-bottom: rem(28);
+      padding-bottom: rem(23);
     }
 
     p {
-      font-size: rem(13);
+      font-size: rem(16.7);
+      line-height: rem(20);
+      width: rem(470);
     }
   }
 
@@ -39,26 +41,28 @@
   @extend %background-position-center;
   @extend %background-cover;
   @extend %text-center;
-  padding-top: rem(33);
+  padding-top: rem(28);
 
   p {
-    font-size: rem(15);
+    font-size: rem(16.7);
+    line-height: rem(20);
     @extend %acumin-pro-cond;
   }
 }
 
 .profile-name {
   color: $default;
+  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
 }
 
 .profile-title {
-  font-size: rem(22.5);
-  @extend %i-owan-old-style;
+  font-size: rem(33.2);
   padding-bottom: rem(17);
+  @extend %i-owan-old-style;
 }
 
 .btn-full-story {
-  margin-top: rem(18);
+  margin-top: rem(15);
   @include boxSize(rem(140), rem(56));
 }
 
