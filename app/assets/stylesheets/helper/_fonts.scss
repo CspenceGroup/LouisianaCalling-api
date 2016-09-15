@@ -15,6 +15,11 @@
 }
 
 @font-face {
-  font-family: 'AcuminProCond';
-  // src: url($font-path + 'AcuminProCond' + '.ttf');
+  font-family: 'AcuminProCond-Bold';
+  src: url($font-path + 'AcuminProCond-Bold' + '.otf');
+}
+
+@font-face {
+  font-family: 'AcuminProCond-BoldItalic';
+  src: url($font-path + 'AcuminProCond-BoldItalic' + '.otf');
 }

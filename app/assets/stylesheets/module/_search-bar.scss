@@ -1,12 +1,10 @@
 .search-bar {
-  height: rem(135);
+  height: rem(161);
   color: $search-text;
-  padding-top: rem(50);
+  padding-top: rem(55);
   @include background-image('bg-search-careers.jpg');
   @extend %background-repeat-x;
-  @extend %acumin-pro-cond;
-  @extend %font-weight-bold;
-  @extend %font-style-italic;
+  @extend %acumin-pro-cond-bi;
   @extend %text-left;
 }
 
