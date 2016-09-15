@@ -144,6 +144,10 @@
   overflow: hidden;
 }
 
+%overflow-y-scroll {
+  overflow-y: auto;
+}
+
 %clear-both {
   clear: both;
 }
@@ -317,7 +321,11 @@
 }
 
 %acumin-pro-cond {
-  font-family: 'AcuminProCond';
+  font-family: 'AcuminProCond-Bold';
+}
+
+%acumin-pro-cond-bi {
+  font-family: 'AcuminProCond-BoldItalic';
 }
 
 /*Display flex*/

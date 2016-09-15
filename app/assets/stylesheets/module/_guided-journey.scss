@@ -37,6 +37,7 @@
   @include background-image('photo-talk.jpg');
 
   @include e('link') {
+    margin-top: rem(-10);
     @include background-image('call-number.png');
     @include boxSize(rem(220), rem(90));
   }

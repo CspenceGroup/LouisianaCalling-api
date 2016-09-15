@@ -16,6 +16,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :salary
       t.string :education
       t.string :video
+      t.string :image
 
       t.timestamps
     end
