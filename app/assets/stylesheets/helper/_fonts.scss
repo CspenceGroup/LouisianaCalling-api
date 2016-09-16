@@ -15,6 +15,11 @@
 }
 
 @font-face {
+  font-family: 'IowanOldStyle-BoldItalic';
+  src: url($font-path + 'IowanOldStyle-BoldItalic' + '.ttf');
+}
+
+@font-face {
   font-family: 'AcuminProCond-Bold';
   src: url($font-path + 'AcuminProCond-Bold' + '.otf');
 }
