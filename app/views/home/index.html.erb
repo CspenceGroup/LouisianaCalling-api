@@ -10,29 +10,39 @@
           <div class="carousel-inner carousel-content" role="listbox">
             <div class="carousel-item active">
               <video controls loop autoplay muted class="video-playing video-player">
-                <source src="https://a0.muscache.com/airbnb/static/Belong_p1_v2.mp4" type="video/mp4">
+                <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
               </video>
               <div class="carousel-caption carousel-title">
-                <h1>Your Life's Calling</h1>
+                <h1><%= @videos[0].main_title if @videos[0]%></h1>
                 <div class="carousel-text">
-                  <h2>The future you know you want starts right now. Not tomorrow</h2>
-                  <h2>Right now. All you need is good information and the right resources.</h2>
-                  <h2>We've got that for you right here.</h2>
+                  <% if @videos[0]
+                      @videos[0].descriptions.each do |description|
+                  %>
+                      <h2><%= description%>.</h2>
+                  <%
+                      end
+                    end
+                  %>
                 </div>
-                <button type="button" class="btn-play-video" data-source="https://a0.muscache.com/airbnb/static/Belong_p1_v2.mp4" data-toggle="modal" data-target="#videoModal"></button>
+                <button type="button" class="btn-play-video" data-source="<%= @videos[0].url if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
               </div>
             </div>
             <div class="carousel-item">
               <video controls loop autoplay muted class="video-playing video-player">
-                <source src="https://a0.muscache.com/airbnb/static/US_60_ANTHEM.mp4" type="video/mp4">
+                <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
               </video>
               <div class="carousel-caption carousel-title">
-                <h1>Your Life's Calling</h1>
+                <h1><%= @videos[1].main_title if @videos[1]%></h1>
                 <div class="carousel-text">
-                  <h2>The future you know you want starts right now. Not tomorrow</h2>
-                  <h2>Right now. All you need is good information and the right resources.</h2>
-                  <h2>We've got that for you right here.</h2>
-                  <button type="button" class="btn-play-video" data-source="https://a0.muscache.com/airbnb/static/US_60_ANTHEM.mp4" data-toggle="modal" data-target="#videoModal"></button>
+                  <% if @videos[1]
+                      @videos[1].descriptions.each do |description|
+                  %>
+                      <h2><%= description%>.</h2>
+                  <%
+                      end
+                    end
+                  %>
+                  <button type="button" class="btn-play-video" data-source="<%= @videos[1].url if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
                 </div>
               </div>
             </div>
@@ -70,12 +80,18 @@
       <form name="search">
         <div class="input-group search-group">
           <input class="form-control" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
-          <button type="button" class="btn-search btn-region" data-toggle="dropdown-menu">Region <span class="fa fa-caret-down"></span>
-          </button>
-          <button type="button" class="btn-search btn-career" data-toggle="dropdown">Find Careers <span class="fa fa-caret-down"></span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu" role="menu">
-          </ul>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-search btn-region" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Region <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-search btn-career" data-toggle="dropdown">Find Careers <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
           <button type="submit" class="btn-search btn-submit">Search</button>
         </div>
       </form>
@@ -107,7 +123,7 @@
               </i:pgfRef>
             </foreignObject>
             <g i:extraneous="self">
-              <path class="st1" id="lake-charles" d="M183.8,329.3c-0.1,0-0.1-0.2-0.1-0.4c0-0.2-0.3-0.4-0.3-0.4l0.3-17.6l0-2.2l0-0.2l-6.6-0.2l-0.1,0.5l-5.6-0.2
+              <path class="st1" id="Lake Charles" d="M183.8,329.3c-0.1,0-0.1-0.2-0.1-0.4c0-0.2-0.3-0.4-0.3-0.4l0.3-17.6l0-2.2l0-0.2l-6.6-0.2l-0.1,0.5l-5.6-0.2
                 v0l-0.1,0.9l-2.9,0l-5.4-0.2l0,0l-3.1-0.2l-5.5,0v-0.4l-7.4-0.2l-8.7-0.2c0,0-0.5,0-0.9,0.5c-0.1,0.2-0.6,0.2-0.8,0.3
                 c-0.2,0.1-0.3,0.1-0.6,0.3c-0.1,0.1-0.5,0.2-0.7,0.2c-0.4-0.1-1.8-0.5-1.8-0.5c-0.2-0.2-0.1-0.5-1.4-0.8c-0.1,0-0.2,0-0.3,0
                 c-0.1,0-0.5,0.2-0.6,0.2c0,0,0,0.3-0.3,0.6c0,0.1,0.1,0.2,0,0.4c-0.1,0.6-0.2,0.6-0.4,0.7c-0.1,0.2,0,0.3,0.2,0.5
@@ -147,7 +163,7 @@
                 c0,0,0,0,0-0.1c0-0.2,0-0.3,0.1-0.4c0.1-0.2,0.3-0.2,0.3-0.2s0-0.2,0-0.3c0.6-0.2,0.3-0.9,0.3-1c0-0.1-0.2-0.2-0.4-0.4
                 c0-0.3,1-0.8,1.1-0.8c0,0,0.2-0.4,0.3-0.6c0.1-0.2,0.1-0.2,0.2-0.3c0.1,0,0.1,0,0.1-0.2c0-0.1,0.1-0.5,0.1-0.5c0-0.1,0.3,0,0.3,0
                 s0-0.1,0.1-0.5C184.1,329.3,183.9,329.3,183.8,329.3z"/>
-              <path class="st1 active" id="alexandria" d="M250.9,254.9c-0.4-0.1-0.9,0-1,0c-0.1,0-0.2-0.1-0.2-0.2c-0.1-0.1,0-0.2,0-0.2l-1.8,0l-6.1-0.2
+              <path class="st1 active" id="Alexandria" d="M250.9,254.9c-0.4-0.1-0.9,0-1,0c-0.1,0-0.2-0.1-0.2-0.2c-0.1-0.1,0-0.2,0-0.2l-1.8,0l-6.1-0.2
                 c-0.1-0.2-0.2-0.3-0.4-0.5c-0.3-0.3-1-1.7-1.2-2c-0.2-0.4-0.2-0.6-0.2-0.6l0.5-1.5l-0.1-1.6c0,0,0-0.3,0-0.6
                 c0-0.3-0.4-0.2-0.4-0.2l-0.2-0.5l0.3-0.2c0,0,0-0.2-0.1-0.3c0,0,0-0.1,0.1-0.1H239v-5.7h-2.7c0,0-0.1,0.4-0.1,0.5
                 c0.1,0.1,0.1,0.2,0,0.2c0,0.1-0.6,0.7-0.5,1.1c-0.2,0.3-0.4,0.6-0.6,0.7c0,0.2,0.1,0.3,0.1,0.4c-0.3,0-0.8-0.1-1.5,0.7
@@ -202,7 +218,7 @@
                 c0.7,0.1,2.4-0.4,3.7-1.4c1.3-1,1.5-1.6,1.3-2c-0.2-0.5-1.3-0.8-2.3-0.4c-1,0.4-2,0.7-2.5,0.1c-0.5-0.6-1.2-1.8-1.2-1.8
                 s0.3-1.2,0.6-1.4c0.3-0.2,0.5-0.5,1-0.1c0.4,0.4,3,2.6,4,1.7c0.7-0.5,1.1-1,1.1-1.5c0-0.5,0.2-1.2,0.2-1.2l-0.2-3.6L250.9,254.9
                 L250.9,254.9z M230.2,301.3c0.1-0.2,0.2-0.5,0.3-0.6C230.5,300.8,230.4,301.1,230.2,301.3z"/>
-              <path class="st1" id="shreveport" d="M195.5,195.1L190,195l0.1-3.3l-0.2,0c0,0-0.2,0.2-0.2,0.2c0,0-0.3-0.1-0.4-0.1c-0.1,0-0.3,0.2-0.4,0.2
+              <path class="st1" id="Shreveport" d="M195.5,195.1L190,195l0.1-3.3l-0.2,0c0,0-0.2,0.2-0.2,0.2c0,0-0.3-0.1-0.4-0.1c-0.1,0-0.3,0.2-0.4,0.2
                 c-0.1,0-0.3-0.1-0.3-0.1c0,0-0.7-1.2-0.9-1.4c-0.1-0.2-0.1-0.3-0.4-0.5c-0.4,0.1-0.7,0-0.8-0.1c-0.1-0.1-0.2-0.2-0.4-0.3
                 c-0.1-0.1-0.6,0-0.8,0c-0.1,0-0.2,0.1-0.3,0.2c-0.1-0.2-0.4-0.3-0.6-0.3c-0.1,0-0.2-0.1-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.1
                 c-0.1,0-3.4,0-4.8-0.1l0.1-2.9l-0.5,0.1v-1h0.5v-3.8l0.1-2.9l0.1-1.4l0.1-4.7l-27.5-0.8l-15-0.5l-15.5-0.5l-12.4-0.4l-1.6,52.9
@@ -239,7 +255,7 @@
                 l6.5,0.1c0-0.9,0.2-1.1,0.3-1.2c0.1-0.1,0.3-0.3,0.5-0.4c0.2-0.2,0.4-0.8,0.5-1.1c-0.1-0.1-0.1-0.3-0.1-0.8
                 c-0.1-0.5,0.6-0.8,0.7-0.9c0.1-0.1,0.2-0.3,0.3-0.5c0.1-0.2,0.5-0.7,0.5-0.7l-0.1-0.4l0.1-1.4l0-12.1l0,0l8.2,0.1
                 c0,0,0.1-1.2,0.1-1.3c0-0.1,0-1.4,0-1.4l11.1,0.3v0l0.2-5.8l0,0L195.5,195.1z"/>
-              <path class="st1" id="monroe" d="M277.3,215.1c-0.4,0.8-1,2.1-2,1.8c-1.1-0.3-4-0.8-4-0.8s-0.8-0.6-0.1-1.8c0.7-1.2,1-2,1.8-2.3
+              <path class="st1" id="Monroe" d="M277.3,215.1c-0.4,0.8-1,2.1-2,1.8c-1.1-0.3-4-0.8-4-0.8s-0.8-0.6-0.1-1.8c0.7-1.2,1-2,1.8-2.3
                 c-0.1-0.4,0.2-1.3-0.4-1.6c-0.5-0.3-0.4-0.5-1.3-0.2c-0.9,0.3-1.4,0.9-2.4,0.6c-1.9-0.1-5.4-3.3-3-6.9c0.2-0.1,0.6-0.1,0.8,0
                 c0.1,0.1,0.3,0,0.7,1c0.4,1,1.7,3.2,3.9,2.9c1.3-0.3,0.4-1.4,0.2-1.6c-0.2-0.2-3.4-1.6-3.4-1.6l-0.9-1.6l0.2-0.1l2-1.2l1.5-1.7
                 c0,0,0.3-0.8,0-1.5c-0.3-0.7-1.1-1.5-1.5-0.4c-0.5,1-1,2-1.3,2.1c-0.3,0.1-3.7,1.5-4.1,0.6c-0.4-0.9-1.3-2.5-0.7-3.1
@@ -271,7 +287,7 @@
                 l1.4,0.6l0.7-1.4l1.7,0.7c0,0,0.3,1.5,0.6,1.6c0.3,0.1,0.6,0.4,0.8,0.1c0.2-0.2,0.5-0.3,0.5-0.7c0-0.5-0.1-1.7,0-1.9
                 c0.1-0.2,0.3-0.6,0.3-1c0-0.3-0.4-2,0.2-2.4c0.3-0.1,0.6-0.3,0.9,0.3c0.3,0.6,0.3,0.5,0.9,0.1c0.6-0.4,1.6-1.4,2-2.1
                 c0.4-0.8,1.3-2.6,1.3-2.8C277.9,215.1,277.7,214.3,277.3,215.1z"/>
-              <path class="st1" id="baton-rough" d="M340.9,304.5c-0.3-0.4-0.6-0.5-0.3-1c0.2-0.5,0.2-0.5,0.1-0.8c-0.1-0.3-0.3-0.7-0.6-0.4
+              <path class="st1" id="Baton Rouge" d="M340.9,304.5c-0.3-0.4-0.6-0.5-0.3-1c0.2-0.5,0.2-0.5,0.1-0.8c-0.1-0.3-0.3-0.7-0.6-0.4
                 c-0.3,0.3-0.7,0.3-0.8,0.1c-0.1-0.1-0.4-0.1-1-0.1c-0.3,0-16.2,0.1-31.4,0.3c-4.1,0-8.2,0.1-11.9,0.1c-6.3,0.1-11.5,0.1-14.2,0.1
                 c-1.3,0-2,0-2,0l-17.2-0.1l-25.1-0.2c-0.2,0.1-0.3,0.2-0.4,0.3c-0.2,0.4-0.7,0.6-0.7,0.6l-0.2,1c0,0-0.1,0-0.2,0.1
                 c-0.1-0.8,0-1,0-1.1c0.1-0.1,0.1-0.2,0.1-0.4c0,0,0,0,0,0c-0.1-0.5-0.5-0.9-0.7-1.1c-0.3-0.2-1-0.6-1.3-0.6
@@ -301,7 +317,7 @@
                 c0.1,0,0,0,0-0.4c0-0.4,0.3-0.6,0.4-0.6c0.2,0,0.2-0.5,0.2-0.6c0-0.2,0.9-0.6,0.5-0.9c-0.4-0.3,0.2-0.5-0.1-0.9
                 C339.3,306.1,339.6,305,340.9,304.5z"/>
               <g>
-                <path class="st1 lafayette" id="lafayette" d="M265.7,389.5c-0.2,0-0.4-0.1-0.4-0.2c0.5-1.2,0.4-3,0.4-3s0.2-0.2,0.2-0.3c0,0-0.1-0.1-0.3-0.2
+                <path class="st1 lafayette" id="Lafayette" d="M265.7,389.5c-0.2,0-0.4-0.1-0.4-0.2c0.5-1.2,0.4-3,0.4-3s0.2-0.2,0.2-0.3c0,0-0.1-0.1-0.3-0.2
                   c0-0.3-0.2-1.2-0.2-1.2s-0.1-0.6-0.1-1c0-0.3,0.3-0.3,0.5-0.5c0.3-0.2,0.4-1,0.4-1l-0.6-1l0.2-0.4c0,0,0,0-0.2-0.2
                   c-0.2-0.2,0.4-1.2,0.4-1.2s-0.1-0.1-0.2-0.2c0-0.3-0.2-0.6-0.3-0.7c-0.1-0.1-0.1-0.1-0.3,0c0.1-0.4-0.3-0.7-0.3-0.7
                   s-0.5-0.1-0.5-0.1c0,0-0.7-0.6-0.7-0.6l-1,0.1l-0.4-0.3l-1.5-0.4c0,0-0.4-0.4-0.8-0.9c0-0.5-0.4-1.6-0.4-1.6s0-0.4,0-0.6
@@ -379,7 +395,7 @@
                   c0.2,0.1,1.2,0.2,1.4,0.4c0.1,0.1,1.2,1,1.2,1c0,0,1.2,0,1.2,0l0.7,1.3l0.8,0.1l0.6,0.5l1-0.8l1,0.2l1.3-0.4l-0.4-0.8
                   c0,0,0-1.4,1-2c0.4-0.2,1.5-0.4,2.5-1.6c0.2-0.4,0.3-1,0.3-1l-1.8,0.5L230.6,393.1z"/>
               </g>
-              <path class="st1" id="houma" d="M324.6,405.8c-1,0-0.8-2.2-1.4-4.2c-0.6-2-1.7-0.4-2.6-0.1s-3.4-4.3-3.8-5.2c-0.4-0.8-2.3,0.5-2-0.9
+              <path class="st1" id="Houma" d="M324.6,405.8c-1,0-0.8-2.2-1.4-4.2c-0.6-2-1.7-0.4-2.6-0.1s-3.4-4.3-3.8-5.2c-0.4-0.8-2.3,0.5-2-0.9
                 c0.3-1.4,2.4-2.2,2.4-2.2v-7.9h-10.7c0,0,0.9-3.5-1.5-4.6c-2.4-1.1-4.2-0.7-5.5-4s-1.2-1.1-2.4-2.6c0,0,0-1.9-3.2-1.8
                 s-10.2-0.7-11.5-1.7v1.5h-5.8v-2.3h-2v-3.1H273v-5.8c0,0,0.1-0.1,0.3-0.3l-17.1,1.9l0.1,0c0,0,0.1,0.3,0.3,0.4
                 c0.1,0.1,0.3,0.3,0.3,0.4c0,0.1,0.5,1,0.9,1.1c0.1,0,0.2-0.1,0.3-0.2c0.1-0.1,0.4-0.7,0.6-0.6c0.2,0.1,0.3,0.1,0.3,0.3
@@ -405,7 +421,7 @@
                 c0.6,0.9-1.1,2.7,0.3,2.7s0.5-1.3,1.6-2.6c1.2-1.3,4.6,2.2,5.6,2.7c1,0.5,0.5,2.2,0,4.2c-0.5,2,0.3,2.2,1.3,3.4
                 c1,1.2-0.1,2.6,0.7,3.4c0.8,0.7,3.3-1.2,5.8-2.9c2.5-1.7,2.9-2.8,3.8-4.4c0.8-1.6,0.2-0.8-1-0.5c-1.1,0.3-3.1-5.6-3.1-6.5
                 s1,0.5,1.6-0.3c0.5-0.8-1-1.7-0.3-1.9c0.7-0.2,2.5,2.6,3.5,3.2c1,0.6,1.1-0.5,0.2-1.6C323.8,408.7,325.5,405.8,324.6,405.8z"/>
-              <path class="st1" id="new-orleans" d="M348.9,365.7c0,0,6.2-4.4,7.1-2.1c0.8,2.3,1.7,11.4,4.6,12.3c2.9,0.8,1.2,7.5-1.7,4.4
+              <path class="st1" id="New Orleans" d="M348.9,365.7c0,0,6.2-4.4,7.1-2.1c0.8,2.3,1.7,11.4,4.6,12.3c2.9,0.8,1.2,7.5-1.7,4.4
                 c-2.9-3.1-5.4-6.4-6.2-5.4c-0.8,1,1,1.7,0.6,3.1c-0.4,1.5-2.1,5.6-3.7,4.2c-1.7-1.5-3.1-5-3.7-1.9c-0.6,3.1,8.9,6.9,8.9,8.5
                 c0,1.7-1.7-0.6-6-1.9c-4.4-1.2-8.1-3.1-5.3-1.2s0.5,2.9,2.4,2.8c1.9-0.1,2.5,2.9,0.1,2.1c-2.4-0.8-3-3.2-4.4-2.1s-3.5,0.3-0.5,1.5
                 c3,1.3-0.3,1.3,1.2,2.3c1.5,1.1,2.5,2.9,1.8,3.2c-0.7,0.3,2.4,2.5,3.4,2.5c1,0,1.7-0.3,2.5,1.1c0.9,1.5-0.1,2.6,1.1,2.6
@@ -435,6 +451,7 @@
           <h3 class="region-name" id="region-name"></h3>
           <ol class="job-list" id="top-region-jobs"> </ol>
         </div>
+        <div class="data-map-hidden" id="mapData"><%= @jobs.to_json%></div>
       </div>
     </section>
   </div>
