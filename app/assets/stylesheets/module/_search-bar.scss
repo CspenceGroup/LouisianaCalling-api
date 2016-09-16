@@ -9,12 +9,21 @@
 }
 
 .search-group {
-  width: rem(1040);
+  width: rem(1045);
   @extend %margin-auto;
+
+  .search-input {
+    font-size: rem(18.9);
+    text-indent: rem(5);
+    border: solid rem(1) $search-border;
+    @extend %no-border-radius;
+    @include boxSize(rem(379), rem(53));
+  }
 
   .btn-submit {
     width: rem(212);
     font-size: rem(18.9);
+    margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
     @extend %cl-white;
@@ -25,13 +34,14 @@
 
   .btn-region,
   .btn-career {
-    font-size: rem(18.9);
-    color: $search-text;
+    padding-left: rem(10);
     @extend %text-left;
+    @extend %no-border-left;
   }
 
   .fa {
     color: $default;
+    top: rem(18);
     right: rem(12);
     @extend %absolute;
   }
@@ -41,8 +51,26 @@
   border: solid rem(1) $search-border;
   background-color: $white;
   height: rem(53);
+  @extend %float-left;
   @extend %no-border-radius;
   @extend %relative;
+
+  .form-control {
+    font-size: rem(18.9);
+    color: $search-text;
+    @extend %no-outline;
+    @extend %appearance-none;
+    @extend %no-padding-left;
+    @extend %acumin-pro-cond-bi;
+    @include boxSize(100%, 100%);
+    @extend %no-border;
+    @extend %background-none;
+  }
+
+  /* for IE10 */
+  select::-ms-expand {
+    @extend %hide;
+  }
 }
 
 .btn-region {
