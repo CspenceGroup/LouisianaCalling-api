@@ -19,7 +19,7 @@
   }
 
   @include e('title') {
-    padding-right: rem(35);
+    padding-right: rem(12);
     margin: rem(57) rem(145) rem(20);
     @extend %text-right;
     @extend %overflow-hidden;
@@ -42,11 +42,11 @@
 .job-heading {
 
   @include m('pull-left') {
-    margin-right: rem(100);
+    margin-right: rem(125);
   }
 
   @include m('pull-right') {
-    margin: 0 rem(70) rem(12);
+    margin: 0 rem(92) rem(12);
   }
 }
 

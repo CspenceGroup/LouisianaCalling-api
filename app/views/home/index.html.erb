@@ -80,12 +80,18 @@
       <form name="search">
         <div class="input-group search-group">
           <input class="form-control" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
-          <button type="button" class="btn-search btn-region" data-toggle="dropdown-menu">Region <span class="fa fa-caret-down"></span>
-          </button>
-          <button type="button" class="btn-search btn-career" data-toggle="dropdown">Find Careers <span class="fa fa-caret-down"></span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu" role="menu">
-          </ul>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-search btn-region" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Region <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-search btn-career" data-toggle="dropdown">Find Careers <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
           <button type="submit" class="btn-search btn-submit">Search</button>
         </div>
       </form>
