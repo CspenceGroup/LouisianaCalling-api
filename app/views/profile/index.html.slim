@@ -1,73 +1,75 @@
 <div>
     = render 'navigation/index'
-    <section class="banner-profile">
-      <div class="banner-profile__container">
-        <h1 class="banner-profile__title">Real People. Real Stories.</h1>
-        <h1 class="banner-profile__title">Really Unscripted.</h1>
-        <div class="banner-profile__introduce">
-          <h2 class="banner-profile__text">These folks found their calling. And you can too.</h2>
-          <h2 class="banner-profile__text">See for yourself.</h2>
+    <div class="main-content">
+      <section class="banner-profile">
+        <div class="banner-profile__container">
+          <h1 class="banner-profile__title">Real People. Real Stories.</h1>
+          <h1 class="banner-profile__title">Really Unscripted.</h1>
+          <div class="banner-profile__introduce">
+            <h2 class="banner-profile__text">These folks found their calling. And you can too.</h2>
+            <h2 class="banner-profile__text">See for yourself.</h2>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="profile-common">
-      <div class="profile-heading">
-        <h2 class="profile-title">It's Not Just About Jobs, It's About Life.</h2>
-        <p>We talk to real Louisianans who had no idea what their future healp.</p>
-        <p>Watch their stories and see how each found theire calling.</p>
-      </div>
-      <div class="profile-common__detail">
-        - if @profiles.count == 5
-            - if @profiles[0]
-              <article class="row profile-common__info">
-                <div class="col-md-6 pull-md-left profile-common__photo">
-                  = image_tag @profiles[0].image
-                </div>
-                <div class="col-md-6 pull-md-right profile-common__desc">
-                  <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
-                  <h3>#{@profiles[0].job_title}</h3>
-                  <p>#{@profiles[0].description}</p>
-                  <div class="btn-full-story">
-                    <a href="javascript:void(0)" class="btn-full-story--link">
-                      = image_tag "profile/btn-full-story.png"
-                    </a>
-                  </div>
-                </div>
-              </article>
-            - if @profiles[1]
+      </section>
+      <section class="profile-common">
+        <div class="profile-heading">
+          <h2 class="profile-title">It's Not Just About Jobs, It's About Life.</h2>
+          <p>We talk to real Louisianans who had no idea what their future healp.</p>
+          <p>Watch their stories and see how each found theire calling.</p>
+        </div>
+        <div class="profile-common__detail">
+          - if @profiles.count == 5
+              - if @profiles[0]
                 <article class="row profile-common__info">
-                  <div class="col-md-6 pull-md-right profile-common__photo">
-                    = image_tag @profiles[1].image
+                  <div class="col-md-6 pull-md-left profile-common__photo">
+                    = image_tag @profiles[0].image
                   </div>
                   <div class="col-md-6 pull-md-left profile-common__desc">
                     <h2 class="profile-title profile-name">#{@profiles[1].first_name + ' ' + @profiles[1].last_name}</h2>
                     <h3>#{@profiles[1].job_title}</h3>
                     <p>#{@profiles[1].description}</p>
                     <div class="btn-full-story">
-                      <a href="javascript:void(0)">
+                      <a href="javascript:void(0)" class="btn-full-story--link">
                         = image_tag "profile/btn-full-story.png"
                       </a>
                     </div>
                   </div>
                 </article>
-      </div>
-    </section>
-    <section class="more-stories">
-      <div class="profile-heading">
-        <h2 class="profile-title more-stories__title">More Stories</h2>
-      </div>
-      <div class="row more-stories__list">
-        <div id="moreStories">
-          = render partial: "profile/partial/profile", locals: { profiles: @profiles.last(3) }
+              - if @profiles[1]
+                  <article class="row profile-common__info">
+                    <div class="col-md-6 pull-md-right profile-common__photo">
+                      = image_tag @profiles[1].image
+                    </div>
+                    <div class="col-md-6 pull-md-left profile-common__desc">
+                      <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
+                      <h3>#{@profiles[0].job_title}</h3>
+                      <p>#{@profiles[0].description}</p>
+                      <div class="btn-full-story">
+                        <a href="javascript:void(0)">
+                          = image_tag "profile/btn-full-story.png"
+                        </a>
+                      </div>
+                    </div>
+                  </article>
         </div>
-        <div class="more-stories__btn">
-          <div id="profileSeeMore">
-            = image_tag "profile/btn-see-more.png"
+      </section>
+      <section class="more-stories">
+        <div class="profile-heading">
+          <h2 class="profile-title more-stories__title">More Stories</h2>
+        </div>
+        <div class="row more-stories__list">
+          <div id="moreStories">
+            = render partial: "profile/partial/profile", locals: { profiles: @profiles.last(3) }
           </div>
+          <div class="more-stories__btn">
+            <div id="profileSeeMore">
+              = image_tag "profile/btn-see-more.png"
+            </div>
+          </div>
+          <div id="loading-gif"></div>
         </div>
-        <div id="loading-gif"></div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     = render 'footer/index'
 </div>

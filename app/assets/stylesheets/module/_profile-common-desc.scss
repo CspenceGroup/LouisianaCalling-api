@@ -11,7 +11,8 @@
     padding: rem(73) rem(100) 0 rem(60);
 
     h3 {
-      font-size: rem(15);
+      font-size: rem(21);
+      @extend %acumin-pro-cond-bi;
       padding-bottom: rem(23);
     }
 
@@ -19,15 +20,17 @@
       font-size: rem(16.7);
       line-height: rem(20);
       width: rem(470);
+      @extend %acumin-pro-cond;
     }
   }
 
   @include e('photo') {
     height: rem(400);
     @extend %no-padding;
+    @extend %overflow-hidden;
 
     img {
-      height: 100%;
+      height: auto;
     }
   }
 }
@@ -65,4 +68,3 @@
   margin-top: rem(15);
   @include boxSize(rem(140), rem(56));
 }
-

@@ -3,16 +3,16 @@
   @extend %color-white;
   @extend %text-center;
   @extend %clear-both;
-  padding-top: rem(70);
 
   @include e('introduce') {
-    padding-top: rem(15);
+    padding-top: rem(16);
   }
 
   @include e('title') {
     font-size: rem(62.5);
     line-height: rem(71);
     @extend %i-owan-old-style;
+    @include shadow(0, 0, rem(49), $black);
   }
 
   @include e('text') {
@@ -26,6 +26,6 @@
     height: rem(400);
     @extend %background-position-center;
     @extend %background-cover;
-    padding-top: rem(75);
+    padding-top: rem(80);
   }
 }
