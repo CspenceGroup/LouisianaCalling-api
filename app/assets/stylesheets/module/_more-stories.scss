@@ -1,4 +1,4 @@
-    .more-stories {
+.more-stories {
   @include background-image('profile/more-stories-bg.png');
   @extend %background-no-repeat;
   @extend %background-position-center;
@@ -26,6 +26,7 @@
   @include e('btn') {
     @include boxSize(rem(110), rem(32));
     margin: rem(48) auto 0 auto;
+    cursor: pointer;
   }
 }
 
