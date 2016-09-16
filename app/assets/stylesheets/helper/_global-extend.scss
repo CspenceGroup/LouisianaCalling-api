@@ -258,6 +258,10 @@
 %background-position-center {
   background-position: center center;
 }
+
+%background-none {
+  background: none;
+}
 /* Class extend for font */
 %font-weight-bold {
   font-weight: bold;
@@ -360,4 +364,11 @@
 /*Opacity*/
 %no-opacity {
   opacity: 0;
+}
+
+%appearance-none {
+  /*for firefox*/
+  -moz-appearance: none;
+  /*for chrome*/
+  -webkit-appearance: none;
 }
