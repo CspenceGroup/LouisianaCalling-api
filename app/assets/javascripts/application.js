@@ -159,7 +159,12 @@ $(document).on('turbolinks:load', function(){
         this.pause();
         buttonPause.show();
       }
-    })
+    });
+
+    // Close modal when end video
+    videoModal.find('video').on('ended', function () {
+      $('#videoModal').modal('hide');
+    });
   });
 
   //Remove video when modal hide
