@@ -20,7 +20,7 @@
 
   @include e('title') {
     padding-right: rem(35);
-    margin: rem(57) rem(79) rem(20);
+    margin: rem(57) rem(54) rem(20);
     @extend %text-right;
     @extend %overflow-hidden;
     @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
@@ -53,6 +53,7 @@
 
 .career-desc {
   font-size: rem(18.8);
+  margin-right: rem(65);
   @extend %acumin-pro-cond-bi;
 }
 

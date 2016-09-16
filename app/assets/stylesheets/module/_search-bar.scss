@@ -13,10 +13,10 @@
   @extend %margin-auto;
 
   .btn-submit {
-    width: rem(232);
+    width: rem(212);
     font-size: rem(18.9);
     background-color: $default;
-    @extend %i-owan-old-style;
+    @extend %i-owan-old-style-bi;
     @extend %cl-white;
     @extend %float-left;
     @extend %no-border-radius;
@@ -40,7 +40,15 @@
 .btn-search {
   border: solid rem(1) $search-border;
   background-color: $white;
-  @include boxSize(rem(211), rem(53));
+  height: rem(53);
   @extend %no-border-radius;
   @extend %relative;
+}
+
+.btn-region {
+  width: rem(231);
+}
+
+.btn-career {
+  width: rem(211);
 }
