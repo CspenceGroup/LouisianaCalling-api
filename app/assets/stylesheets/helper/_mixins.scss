@@ -45,9 +45,9 @@ $image-path: '';
 
 /* Background sprite */
 @mixin backgroundSprite ($width, $height, $value1, $value2) {
-  width: em($base-font-size, $width);
-  height: em($base-font-size, $height);
-  background-position: em($base-font-size, $value1) em($base-font-size, $value2);
+  width: rem($width);
+  height: rem($height);
+  background-position: rem($value1) rem($value2);
 }
 
 /* Block Element

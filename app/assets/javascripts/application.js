@@ -105,8 +105,10 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showTopJobs (regionId) {
-    var activeRegionData = regions[regionId];
-
+    if (regions) {
+      var activeRegionData = regions[regionId];
+    }
+    
     if (activeRegionData && activeRegionData.length) {
       for (var i = 0, length = activeRegionData.length; i < length; i++) {
         var tpl = '<li><a href="'
@@ -124,7 +126,7 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showRegionJobs () {
-    var regionId = getRegionId($('.top-jobs__map path.active'));
+    var regionId = getRegionId($('#top-jobs__map path.active'));
 
     addRegionName(regionId);
     showTopJobs(regionId);
@@ -205,4 +207,11 @@ $(document).on('turbolinks:load', function(){
       }
     });
   });
+
+  // Get height of career div parent
+  if ($('#career-desc')[0]) {
+    var parentHeight = $('#career-desc')[0].clientHeight;
+    $('#feature-news').css('height', parentHeight);
+  }
+
 });
