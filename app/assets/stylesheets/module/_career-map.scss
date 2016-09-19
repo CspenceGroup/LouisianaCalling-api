@@ -1,0 +1,43 @@
+.career-map {
+  height: rem(520);
+
+  @include e('details') {
+    @extend %relative;
+    @include boxSize(rem(346), rem(234));
+    @include background-image('career-options-border.png');
+  }
+
+  @include e('title') {
+    margin-top: rem(52);
+    @extend %text-left;
+  }
+}
+
+.career-options {
+  top: rem(85);
+  left: rem(58);
+  font-size: rem(20.8);
+
+  li {
+    margin-bottom: rem(20);
+    @extend %relative;
+  }
+
+  @include e('text') {
+    width: rem(165);
+    margin-left: rem(60);
+    @extend %inline-block;
+  }
+}
+
+.career-title {
+  line-height: rem(42);
+
+  @include m('pull-left') {
+    margin-left: rem(282);
+  }
+
+  @include m('pull-right') {
+    margin-left: rem(352);
+  }
+}

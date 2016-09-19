@@ -1,0 +1,41 @@
+.icon {
+  @extend %inline-block;
+  @extend %vertical-middle;
+  @extend %background-no-repeat;
+}
+
+.i-social {
+  @include background-image('social-sharing.png');
+}
+
+.i-envelope {
+  @include backgroundSprite(28, 21, -83, -1);
+}
+
+.i-print {
+  @include backgroundSprite(25, 22, -136, 0);
+}
+
+.i-facebook {
+  @include backgroundSprite(9, 22, 0, 0);
+}
+
+.i-twitter {
+  @include backgroundSprite(24, 20, -37, -1);
+}
+
+.i-options { 
+  @extend %vertical-top;
+  @extend %absolute;
+  @extend %left-top-0;
+  @include background-image('career-options.png');
+}
+
+.i-salary {
+  @include backgroundSprite(38, 27, 0, 0);
+}
+
+.i-certificate {
+  margin-left: rem(7);
+  @include backgroundSprite(23, 28, -8, -48);
+}

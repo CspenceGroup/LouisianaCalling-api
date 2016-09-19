@@ -10,20 +10,13 @@
   @extend %overflow-hidden;
 
   @include e('details') {
-    margin-right: rem(55);
     @include boxSize(rem(326), rem(332));
     @include background-image('top-jobs-border.png');
-    @extend %background-no-repeat;
-    @extend %relative;
-    @extend %float-right;
   }
 
   @include e('title') {
     padding-right: rem(35);
-    margin: rem(57) rem(54) rem(20);
     @extend %text-right;
-    @extend %overflow-hidden;
-    @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
   }
 
   @include e('map') {
@@ -32,6 +25,13 @@
     @include boxSize(rem(585), rem(615));
     @extend %absolute;
   }
+}
+
+.map-details {
+  margin-right: rem(55);
+  @extend %background-no-repeat;
+  @extend %relative;
+  @extend %float-right;
 }
 
 .jobs-container {
@@ -81,6 +81,12 @@
     }
     @extend %text-capitalize;
   }
+}
+
+.map-title {
+  margin: rem(57) rem(54) rem(20);
+  @extend %overflow-hidden;
+  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
 }
 
 .st1 {
