@@ -8,5 +8,11 @@ Rails.application.routes.draw do
 
   get 'profile' => 'profile#index', :as => :profile
   get 'profile/get-more' => 'profile#getMore'
+
+
+  # career page
+  get 'careers' => 'career#index', :as => :career
+  get 'careers/:slug' => 'career#detail', :as => :career_detail
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
