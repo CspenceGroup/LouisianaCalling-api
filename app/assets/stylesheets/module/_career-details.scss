@@ -1,0 +1,109 @@
+.career-banner {
+  height: rem(372);
+  @extend %relative;
+  @extend %overflow-hidden;
+  @extend %text-center;
+
+  @include e('title') {
+    margin-top: rem(167);
+  }
+
+  @include e('bg') {
+    z-index: -99;
+    @extend %absolute;
+    @extend %left-top-0;
+    @include boxSize(100%, 100%);
+  }
+}
+
+.career-desc {
+  color: $default;
+  @include background-image('map-bg.png');
+  @extend %background-repeat-x;
+
+  p {
+    font-size: rem(16.7);
+    margin-bottom: rem(20);
+    line-height: rem(22);
+    @extend %acumin-pro-cond;
+  }
+
+  .main-title {
+    margin-bottom: rem(30);
+    @extend %text-capitalize;
+    @include shadow(rem(5), rem(5), rem(5), $profile-name-shadow);
+  }
+
+  @include e('main-container') {
+    padding: rem(75) rem(67) rem(15) rem(84);
+  }
+
+  @include e('news-container') {
+    height: 100%;
+    padding: rem(130) rem(98) 0 rem(60);
+    background: $feature-news-bg;
+  }
+
+  @include e('what-to-do') {
+    padding-top: rem(32);
+  }
+
+  @include e('feature-news') {
+
+    h2 {
+      font-size: rem(20.8);
+      line-height: 1.8;
+      margin-bottom: rem(25);
+      @extend %brandon-grotesque;
+      @extend %text-uppercase;
+    }
+  }
+
+  @include e('social-networks') {
+    font-size: rem(23);
+    padding-top: rem(20);
+
+    i {
+      margin-right: rem(25);
+      @extend %inline-block;
+    }
+
+    a {
+      color: $default;
+    }
+  }
+}
+
+.i-social {
+  @extend %vertical-middle;
+  @extend %background-no-repeat;  
+  @include background-image('social-sharing.png');
+}
+
+.i-envelope {
+  @include backgroundSprite(28, 21, -83, -1);
+}
+
+.i-print {
+  @include backgroundSprite(25, 22, -136, 0);
+}
+
+.i-facebook {
+  @include backgroundSprite(9, 22, 0, 0);
+}
+
+.i-twitter {
+  @include backgroundSprite(24, 20, -37, -1);
+}
+
+.btn-feature-more {
+  margin-top: rem(6);
+  @extend %inline-block;
+  @include boxSize(rem(113), rem(26));
+  @include background-image('btn-read-more.png');
+}
+
+.career-detail-search {
+  @include background-image('career-search-bg.jpg');
+}
+
