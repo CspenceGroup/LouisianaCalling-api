@@ -13,22 +13,10 @@
 .carousel-title {
   @extend %absolute;
   top: rem(58);
-
-  h1 {
-    font-size: rem(50);
-    @extend %i-owan-old-style;
-    line-height: 1.2;
-  }
-
 }
 
 .carousel-text {
   padding-top: rem(23);
-  h2 {
-    font-size: rem(19);
-    @extend %acumin-pro-cond;
-    @include shadow(0, 0, rem(50), $black);
-  }
 }
 
 .carousel-dots-list {
