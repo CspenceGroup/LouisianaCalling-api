@@ -39,7 +39,7 @@
     @extend %float-left;
     padding-top: rem(25);
   }
-   
+
   @include e('title') {
     font-size: rem(21);
     @extend %brandon-grotesque;
@@ -154,4 +154,9 @@
   img {
     height: rem(27);
   }
+}
+
+.great-jobs-careers-details {
+  padding-top: rem(26);
+  height: rem(262);
 }
