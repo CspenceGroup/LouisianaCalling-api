@@ -1,6 +1,7 @@
 .find-programs {
   padding-top: rem(50);
   height: rem(225);
+  @extend %background-repeat;
   @include background-image('career-search-bg.jpg');
 
   .search-group {
