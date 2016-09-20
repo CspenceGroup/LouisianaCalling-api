@@ -79,3 +79,35 @@
   @include boxSize(rem(113), rem(26));
   @include background-image('btn-read-more.png');
 }
+
+.story-owner {
+  height: rem(387);
+  @extend %overflow-hidden;
+  @extend %relative;
+
+  @include e('photo') {
+    z-index: -99;
+    @extend %absolute;
+    @extend %left-top-0;
+    @include boxSize(100%, 100%);
+  }
+
+  @include e('title') {
+    font-size: rem(33.2);
+    @extend %cl-white;
+    @extend %text-capitalize;
+  }
+
+  @include e('link') {
+    margin-top: rem(4);
+    @extend %inline-block;
+    @extend %background-no-repeat;
+    @include boxSize(rem(139), rem(56));
+    @include background-image('btn-full-story.png');
+  }
+
+  @include e('content') {
+    padding: rem(150) 0 0 rem(62);
+  }
+}
+
