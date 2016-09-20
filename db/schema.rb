@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914075348) do
+ActiveRecord::Schema.define(version: 20160920042431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,19 +19,34 @@ ActiveRecord::Schema.define(version: 20160914075348) do
     t.string   "slug"
     t.string   "title"
     t.string   "region"
-    t.string   "salary"
     t.string   "education"
     t.text     "about_job"
     t.text     "what_will_do"
     t.string   "related_career_by_skill"
     t.string   "related_career_by_interest"
     t.string   "profile_name"
-    t.text     "job_growth"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "photo_large"
+    t.string   "photo_medium"
+    t.string   "photo_small"
+    t.text     "industries"
+    t.text     "interests"
+    t.text     "skills"
+    t.float    "salary_min"
+    t.float    "salary_max"
+    t.float    "demand"
+    t.text     "regions_high_demand"
+    t.string   "icon"
   end
 
   create_table "clusters", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "educations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

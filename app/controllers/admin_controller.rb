@@ -50,6 +50,17 @@ class AdminController < ApplicationController
               topJobs.save!
             end
           end
+
+          Region.transaction do
+            Region.delete_all
+            csv.each do |row|
+              if !Region.exists?(name: row[0])
+                region = Region.new
+                region[:name] = row[0]
+                region.save!
+              end
+            end
+          end
         when name="homePageVideo"
           Video.transaction do
             Video.delete_all
@@ -135,11 +146,11 @@ class AdminController < ApplicationController
               profile[:description] = row[7]
 
               if row[8]
-                profile[:interests] = row[8].split(',')
+                profile[:interests] = row[8].split(',').map{ |s| s.strip }
               end
 
               if row[9]
-                profile[:skills] = row[9].split(',')
+                profile[:skills] = row[9].split(',').map{ |s| s.strip }
               end
 
               profile[:demand] = row[10]
@@ -157,11 +168,69 @@ class AdminController < ApplicationController
             end
           end
 
+          when name="careers"
+            Career.transaction do
+              Career.delete_all
+
+              csv.each do |row|
+                career = Career.new
+                career[:title] = row[0]
+                career[:slug] = row[0].parameterize
+                career[:region] = row[1]
+                career[:industries] = []
+
+                for i in 2..5
+                  if (row[i] != "" && row[i] != nil) then
+                    career[:industries] << row[i]
+                  end
+                end
+
+                career[:skills] = row[6].split(',').map{ |s| s.strip }
+                career[:interests] = row[7].split(',').map{ |s| s.strip }
+                career[:salary_min] = row[8]
+                career[:salary_max] = row[9]
+                career[:education] = row[10]
+                career[:about_job] = row[11]
+                career[:what_will_do] = row[12]
+                career[:related_career_by_skill] = row[13].split(',').map{ |s| s.strip }
+                career[:related_career_by_interest] = row[14].split(',').map{ |s| s.strip }
+                career[:demand] = row[15]
+                career[:photo_large] = row[16]
+                career[:photo_medium] = row[17]
+                career[:photo_small] = row[18]
+                career[:regions_high_demand] = row[19].split(',').map{ |s| s.strip }
+                career[:icon] = row[20]
+                career[:profile_name] = row[21]
+
+                if row[22]
+                  raise "error"
+                end
+
+                career.save!
+              end
+            end
+
+            when name="educations"
+              Education.transaction do
+                Education.delete_all
+
+                csv.each do |row|
+                  education = Education.new
+                  education[:name] = row[0]
+
+                  if row[1]
+                    raise "error"
+                  end
+
+                  education.save!
+                end
+              end
       end
 
       flash[:notice] = "Document was successfully uploaded."
 
     rescue => ex
+      logger.debug ex
       flash[:notice] = "Error"
     end
     redirect_to action: "index"
