@@ -32,9 +32,30 @@ $(document).on('turbolinks:load', function(){
   }
 
   /**
+   * Data Mock
+   */
+  var careers = {
+    "alexandria": {
+        "job": "Boilmakers",
+        "salary": "$40,000 - $50,000",
+        "certificate": "High school diploma 2-year training"
+      },
+    "lake-charles": {
+        "job": "Boilmakers",
+        "salary": "$55,000 - $65,000",
+        "certificate": "High school diploma 4-year training"
+      }
+  };
+
+  /**
    * Init Map and Region Top Jobs
    */
   showRegionJobs();
+
+  /**
+   * Init Region Career Options Map
+   */
+  showRegionCareerOptions();
 
   /**
    * This function handle the action when user click on region map
@@ -44,6 +65,8 @@ $(document).on('turbolinks:load', function(){
 
     // Reset top job list
     $('#top-region-jobs').empty();
+    $('#career-salary').empty();
+    $('#career-certificate').empty();
 
     /**
      * Active clicked region & show top jobs in view
@@ -55,10 +78,12 @@ $(document).on('turbolinks:load', function(){
 
       $('.lafayette').addClass('active');
       showRegionJobs();
+      showRegionCareerOptions();
     } else {
 
       $(this).addClass('active');
       showRegionJobs();
+      showRegionCareerOptions();
     }
   });
 
@@ -130,6 +155,36 @@ $(document).on('turbolinks:load', function(){
 
     addRegionName(regionId);
     showTopJobs(regionId);
+  }
+
+  /**
+   * Show Career salary and requrements by regions
+   * @param  {string} id Id of selected region
+   * @return {void}
+   */
+  function showCareerRequired (id) {
+    if (careers && id) {
+      
+      var regionId = id.toLowerCase().split(' ').join('-'),
+          activeRegionData = careers[regionId];
+    }
+    
+    if (activeRegionData) {
+
+      $('#career-salary').text(activeRegionData.salary);
+      $('#career-certificate').text(activeRegionData.certificate);
+    }
+  }
+
+  /**
+   * Show Region name and career info by region
+   * @return {void} 
+   */
+  function showRegionCareerOptions () {
+    var regionId = getRegionId($('#career-map path.active'));
+
+    addRegionName(regionId);
+    showCareerRequired(regionId);
   }
 
   //Show video banner homepage

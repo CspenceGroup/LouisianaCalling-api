@@ -65,7 +65,6 @@
 
     i {
       margin-right: rem(25);
-      @extend %inline-block;
     }
 
     a {
@@ -74,36 +73,9 @@
   }
 }
 
-.i-social {
-  @extend %vertical-middle;
-  @extend %background-no-repeat;  
-  @include background-image('social-sharing.png');
-}
-
-.i-envelope {
-  @include backgroundSprite(28, 21, -83, -1);
-}
-
-.i-print {
-  @include backgroundSprite(25, 22, -136, 0);
-}
-
-.i-facebook {
-  @include backgroundSprite(9, 22, 0, 0);
-}
-
-.i-twitter {
-  @include backgroundSprite(24, 20, -37, -1);
-}
-
 .btn-feature-more {
   margin-top: rem(6);
   @extend %inline-block;
   @include boxSize(rem(113), rem(26));
   @include background-image('btn-read-more.png');
 }
-
-.career-detail-search {
-  @include background-image('career-search-bg.jpg');
-}
-
