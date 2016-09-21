@@ -25,6 +25,7 @@
 
   @include e('items') {
     margin-right: rem(10);
+    color: $default;
   }
 
   @include e('content') {
