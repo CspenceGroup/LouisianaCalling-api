@@ -2,7 +2,6 @@
   height: rem(535);
   color: $default;
   margin-bottom: rem(-20);
-  z-index: -99;
   @extend %relative;
   @include background-image('map-bg.png');
   

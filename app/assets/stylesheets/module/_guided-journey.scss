@@ -55,6 +55,7 @@
 
 .career-guided-journey {
   padding-top: rem(221);
+  z-index: -99;
   @extend %float-right;
   @include boxSize(26%, 100%);
 
