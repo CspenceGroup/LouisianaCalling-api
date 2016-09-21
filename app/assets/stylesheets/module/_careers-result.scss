@@ -117,46 +117,38 @@
     @extend %float-left;
   }
 
-  @include e('gird') {
+  @include e('grid') {
     @include boxSize(rem(35), rem(35));
     @extend %float-right;
     margin-left: rem(22);
   }
 }
 
-// Style slider range
-.sliders_filter-salary {
-  margin-top: rem(25);
+.grid-view-container {
+  margin-top: rem(92);
 }
 
-.range-salary-text {
-  @extend %no-border;
-  @extend %background-none;
-  font-size: rem(15);
-  @extend %acumin-pro-cond;
-  color: $filter-careers-details;
+.careers-grid-details {
+  @extend %no-margin-right;
+  @include boxSize(rem(802), rem(255));
+  margin-bottom: rem(20);
+
+  @include e('item') {
+    @extend %no-padding;
+    @include boxSize(rem(254), rem(254));
+    border: 1px solid $default;
+    margin-right: rem(20);
+
+    &:last-child {
+      @extend %no-margin-right;
+    }
+  }
 }
 
-.ui-slider-horizontal {
-  @include boxSize(rem(192), rem(7));
-}
+.careers-grid-item {
+  height: rem(254);
 
-.ui-slider {
-  background-color: $range-bg;
-}
-
-.ui-corner-all {
-  @extend %no-border-radius;
-}
-
-.ui-slider-handle {
-  @include boxSize(rem(12), rem(27));
-  outline: none;
-}
-
-.ui-state-default:active {
-  background-color: $range-bg;
-  outline: none;
-  border: rem(1) solid $range-border;
-  @include boxSize(rem(12), rem(27));
+  i {
+    margin-left: rem(5);
+  }
 }

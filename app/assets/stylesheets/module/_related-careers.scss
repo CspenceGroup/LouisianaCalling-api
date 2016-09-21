@@ -1,0 +1,106 @@
+.related-careers {
+  height: rem(535);
+  color: $default;
+  margin-bottom: rem(-20);
+  @extend %relative;
+  @include background-image('map-bg.png');
+  
+  .col-md-6,
+  .col-md-4,
+  .col-md-9 {
+    @extend %no-padding;
+  }
+
+  .want-to-talk {
+    @extend %cl-white;
+  }
+
+  @include e('header') {
+    padding: rem(53) 0 rem(33) rem(5);
+  }
+
+  @include e('title') {
+    margin-bottom: rem(30);
+  }
+
+  @include e('items') {
+    margin-right: rem(10);
+    color: $default;
+  }
+
+  @include e('content') {
+    width: 74%;
+    @extend %float-left;
+  }
+}
+
+.related-careers-container {
+  width: rem(810);
+  @extend %margin-auto;
+}
+
+.sort-item {
+  margin-right: rem(25);
+  @extend %acumin-pro-cond;
+  @extend %float-left;
+
+  &:last-child {
+    @extend %no-margin-right;
+  }
+
+  @include e('title') {
+    font-size: rem(16.7);
+    margin: rem(15) rem(15) 0 0;
+    @extend %text-capitalize;
+    @extend %float-left;
+  }
+
+  @include e('icon') {
+    @extend %float-left;
+    @include boxSize(rem(46), rem(46));
+  }
+}
+
+.sort-by {
+  font-size: rem(16.7);
+  margin: rem(5) rem(22) 0 0;
+  @extend %float-left;
+  @extend %acumin-pro-cond-bi;
+}
+
+.related-item {
+  border: solid rem(1) $default;
+  background-color: $white;
+  @extend %margin-auto;
+  @extend %relative;
+  @include boxSize(rem(250), rem(250));
+
+  @include e('photo') {
+    @include boxSize(100%, rem(197));
+  }
+
+  @include e('info') {
+    padding: rem(14) rem(10) 0;
+  }
+
+  @include e('name') {
+    font-size: rem(18.2);
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    @extend %float-left;
+  }
+
+  @include e('salary') {
+    font-size: rem(15.6);
+    margin-top: rem(3);
+    @extend %acumin-pro-cond;
+    @extend %float-right;
+  }
+}
+
+.interest-votes {
+  right: rem(15);
+  top: rem(7);
+  @extend %float-right;
+  @extend %absolute;
+}

@@ -98,3 +98,40 @@
     background-position: rem(-73);
   }
 }
+
+// Style slider range
+.sliders_filter-salary {
+  margin-top: rem(25);
+}
+
+.range-salary-text {
+  @extend %no-border;
+  @extend %background-none;
+  font-size: rem(15);
+  @extend %acumin-pro-cond;
+  color: $filter-careers-details;
+}
+
+.ui-slider-horizontal {
+  @include boxSize(rem(192), rem(7));
+}
+
+.ui-slider {
+  background-color: $range-bg;
+}
+
+.ui-corner-all {
+  @extend %no-border-radius;
+}
+
+.ui-slider-handle {
+  @include boxSize(rem(12), rem(27));
+  outline: none;
+}
+
+.ui-state-default:active {
+  background-color: $range-bg;
+  outline: none;
+  border: rem(1) solid $range-border;
+  @include boxSize(rem(12), rem(27));
+}

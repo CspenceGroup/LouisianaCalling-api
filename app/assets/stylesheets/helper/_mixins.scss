@@ -34,7 +34,6 @@ $image-path: '';
 }
 
 @mixin linkState () {
-  &,
   &:hover,
   &:focus,
   &:active,

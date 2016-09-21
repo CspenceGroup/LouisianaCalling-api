@@ -39,3 +39,9 @@
   margin-left: rem(7);
   @include backgroundSprite(23, 28, -8, -48);
 }
+
+.i-vote {
+  // @extend %absolute;
+  @include boxSize(rem(16), rem(19));
+  @include background-image('careers/fire-icon.png');
+}

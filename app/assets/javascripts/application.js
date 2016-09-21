@@ -263,11 +263,38 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
-  // Get height of career div parent
-  if ($('#career-desc')[0]) {
-    var parentHeight = $('#career-desc')[0].clientHeight;
-    $('#feature-news').css('height', parentHeight);
-  }
+  /**
+   * Related Careers sorting tabs
+   */
+  $('#sortInterests').on('click', function() {
+
+    // Active Careers sorted by interests
+    $('#interest-icons').css('display', 'block');
+    $('#careers-by-interests').css('display', 'block');
+
+    // Hide Careers sorted by skills
+    $('#skill-icons').css('display', 'none');
+    $('#careers-by-skills').css('display', 'none');
+
+    // Active button
+    $('#sortSkills').removeClass('btn-sort-active');
+    $('#sortInterests').addClass('btn-sort-active');
+  });
+
+  $('#sortSkills').on('click', function() {
+
+    // // Hide Careers sorted by interests
+    $('#interest-icons').css('display', 'none');
+    $('#careers-by-interests').css('display', 'none');
+
+    // Active Careers sorted by skills
+    $('#skill-icons').css('display', 'block');
+    $('#careers-by-skills').css('display', 'block');
+
+    // Active button
+    $('#sortInterests').removeClass('btn-sort-active');
+    $('#sortSkills').addClass('btn-sort-active');
+  });
 
   /**
     * Careers view by tab
@@ -276,14 +303,14 @@ $(document).on('turbolinks:load', function(){
  
     // Active list view
     $('#list-view').css('display', 'block');
-    $('#gird-view').css('display', 'none');
+    $('#grid-view').css('display', 'none');
   });
 
-  $('#gird-view-icon').on('click', function() {
+  $('#grid-view-icon').on('click', function() {
  
-    // Active gird view
+    // Active grid view
     $('#list-view').css('display', 'none');
-    $('#gird-view').css('display', 'block');
+    $('#grid-view').css('display', 'block');
   });
 
 

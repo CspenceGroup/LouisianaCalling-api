@@ -1,0 +1,16 @@
+.find-programs {
+  padding-top: rem(50);
+  height: rem(225);
+  @extend %background-repeat;
+  @include background-image('career-search-bg.jpg');
+
+  .search-group {
+    width: rem(835);
+  }
+
+  @include e('title') {
+    color: $profile-header;
+    margin: 0 rem(95) rem(28) 0;
+    @extend %text-center;
+  }
+}

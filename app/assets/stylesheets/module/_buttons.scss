@@ -1,0 +1,19 @@
+.btn-sort {
+  color: $profile-header;
+  background-color: $profile-name-shadow;
+  @extend %float-left;
+  @extend %no-border;
+  @extend %i-owan-old-style-italic;
+  @include boxSize(rem(141), rem(35));
+
+  @include linkState () {
+    @extend %no-outline;
+  }
+}
+
+.related-careers__header {
+  .btn-sort-active {
+    @extend %cl-white;
+    background-color: $red-bg;
+  }
+}

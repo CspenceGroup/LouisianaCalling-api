@@ -54,6 +54,7 @@
 .job-desc {
   font-size: rem(18.8);
   margin-right: rem(65);
+  @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
 }
 
@@ -76,6 +77,8 @@
   @include boxSize(rem(270), rem(230));
 
   a {
+    color: $default;
+    
     @include linkState () {
       color: $default;
     }
@@ -86,7 +89,6 @@
 .map-title {
   margin: rem(57) rem(54) rem(20);
   @extend %overflow-hidden;
-  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
 }
 
 .st1 {

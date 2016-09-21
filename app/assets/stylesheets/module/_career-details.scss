@@ -1,5 +1,5 @@
 .career-banner {
-  height: rem(372);
+  height: rem(380);
   @extend %relative;
   @extend %overflow-hidden;
   @extend %text-center;
@@ -20,6 +20,8 @@
   color: $default;
   @include background-image('map-bg.png');
   @extend %background-repeat-x;
+  @extend %overflow-hidden;
+  @extend %relative;
 
   p {
     font-size: rem(16.7);
@@ -35,13 +37,18 @@
   }
 
   @include e('main-container') {
-    padding: rem(75) rem(67) rem(15) rem(84);
+    width: 64.75%;
+    padding: rem(75) rem(67) rem(57) rem(84);
+    @extend %float-left;
   }
 
   @include e('news-container') {
+    width: 35.25%;
     height: 100%;
     padding: rem(130) rem(98) 0 rem(60);
     background: $feature-news-bg;
+    @extend %right-top-0;
+    @extend %absolute;
   }
 
   @include e('what-to-do') {
@@ -78,4 +85,40 @@
   @extend %inline-block;
   @include boxSize(rem(113), rem(26));
   @include background-image('btn-read-more.png');
+}
+
+.story-owner {
+  height: rem(387);
+  @extend %overflow-hidden;
+  @extend %relative;
+
+  @include e('photo') {
+    z-index: -99;
+    @extend %absolute;
+    @extend %left-top-0;
+    @include boxSize(100%, 100%);
+  }
+
+  @include e('title') {
+    font-size: rem(33.2);
+    @extend %cl-white;
+    @extend %text-capitalize;
+  }
+
+  @include e('link') {
+    margin-top: rem(4);
+    @extend %inline-block;
+    @extend %background-no-repeat;
+    @include boxSize(rem(139), rem(56));
+    @include background-image('btn-full-story.png');
+  }
+
+  @include e('content') {
+    padding: rem(150) 0 0 rem(62);
+  }
+}
+
+#careers-by-skills,
+#skill-icons {
+  display: none;
 }

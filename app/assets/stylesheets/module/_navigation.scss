@@ -20,6 +20,7 @@
       color: $white;
 
       @include linkState() {
+        color: $red-bg;
         @extend %no-text-decoration;
       }
     }
@@ -36,6 +37,10 @@
 
       &:first-child {
         padding-bottom: rem(7);
+
+        @include linkState() {
+          color: $red-bg;
+        }
       }
     }
 
