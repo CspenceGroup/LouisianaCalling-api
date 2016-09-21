@@ -6,6 +6,7 @@
   @extend %acumin-pro-cond;
   @extend %cl-white;
   @extend %text-center;
+  @extend %clear-both;
 
   @include e('nav') {
     font-size: rem(16.7);

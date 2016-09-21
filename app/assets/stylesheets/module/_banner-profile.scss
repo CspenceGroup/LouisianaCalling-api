@@ -5,7 +5,7 @@
   @extend %clear-both;
 
   @include e('introduce') {
-    padding-top: rem(16);
+    padding-top: rem(7);
   }
 
   @include e('title') {

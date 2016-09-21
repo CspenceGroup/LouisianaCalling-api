@@ -269,4 +269,35 @@ $(document).on('turbolinks:load', function(){
     $('#feature-news').css('height', parentHeight);
   }
 
+  /**
+    * Careers view by tab
+  */
+  $('#list-view-icon').on('click', function() {
+ 
+    // Active list view
+    $('#list-view').css('display', 'block');
+    $('#gird-view').css('display', 'none');
+  });
+
+  $('#gird-view-icon').on('click', function() {
+ 
+    // Active gird view
+    $('#list-view').css('display', 'none');
+    $('#gird-view').css('display', 'block');
+  });
+
+
+  $("#slider-range").slider({
+    range: true,
+    min: 0,
+    max: 90000,
+    values: [50000, 72000],
+    slide: function( event, ui ) {
+      $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+    }
+  });
+
+  $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
 });

@@ -1,0 +1,162 @@
+.careers-result {
+  margin-left: rem(324);
+  @extend %acumin-pro-cond-bi;
+
+  .btn-sort-by {
+    padding-left: rem(10);
+    @extend %text-left;
+    @extend %no-border-left;
+    width: rem(211);
+  }
+
+  @include e('container') {
+    width: rem(802);
+    @extend %margin-auto;
+    margin-top: rem(51);
+  }
+
+  @include e('head-search') {
+    @extend %overflow-hidden;
+  }
+}
+
+.careers-list-view {
+  margin-top: rem(86);
+  display: none;
+
+  @include e('item') {
+    border: rem(2) solid $filter-careers-heading;
+    background-color: $white;
+    height: rem(160);
+    color: $filter-careers-heading;
+    padding: 0 rem(13);
+    margin-bottom: rem(21);
+  }
+
+  @include e('heading') {
+    height: rem(79);
+    border-color: $filter-careers-heading;
+  }
+
+  @include e('icon-salary') {
+    @extend %float-left;
+    @include background-image('career-options.png');
+    @extend %background-no-repeat;
+    background-position: 0 rem(1);
+    @include boxSize(rem(39), rem(28));
+  }
+
+  @include e('salary') {
+    margin-left: rem(59);
+    font-size: rem(21);
+    @extend %acumin-pro-cond ;
+  }
+
+  @include e('head-salary') {
+    @extend %float-right;
+    margin-top: rem(30);
+  }
+
+  @include e('icon-education') {
+    @include background-image('career-options.png');
+    @extend %background-no-repeat;
+    background-position: rem(-7) rem(-48);
+    @include boxSize(rem(24), rem(28));
+    @extend %float-left;
+  }
+
+  @include e('footer') {
+    margin-top: rem(28);
+  }
+
+  @include e('footer-details') {
+    width: auto;
+
+    p {
+      margin-left: rem(45);
+    }
+  }
+
+  @include e('icon-map') {
+    @include boxSize(rem(28), rem(25));
+    @extend %float-left;
+    @include background-image('careers/icon-map-popup.png');
+    @extend %background-no-repeat;
+  }
+}
+
+.careers-details-education {
+  @extend %float-left;
+}
+
+.careers-details-map {
+  @extend %float-right;
+}
+
+.see-more-careers {
+  @include boxSize(rem(137), rem(40));
+  margin-top: rem(55);
+}
+
+// Style careers view by
+.careers-filter-search {
+  @extend %float-left;
+  width: rem(598);
+}
+
+.careers-filter-search-group {
+  width: rem(598);
+}
+
+.careers-view-by {
+  @extend %float-right;
+  margin-top: rem(10);
+
+  @include e('list') {
+    @include boxSize(rem(35), rem(35));
+    @extend %float-left;
+  }
+
+  @include e('gird') {
+    @include boxSize(rem(35), rem(35));
+    @extend %float-right;
+    margin-left: rem(22);
+  }
+}
+
+// Style slider range
+.sliders_filter-salary {
+  margin-top: rem(25);
+}
+
+.range-salary-text {
+  @extend %no-border;
+  @extend %background-none;
+  font-size: rem(15);
+  @extend %acumin-pro-cond;
+  color: $filter-careers-details;
+}
+
+.ui-slider-horizontal {
+  @include boxSize(rem(192), rem(7));
+}
+
+.ui-slider {
+  background-color: $range-bg;
+}
+
+.ui-corner-all {
+  @extend %no-border-radius;
+}
+
+.ui-slider-handle {
+  @include boxSize(rem(12), rem(27));
+  outline: none;
+}
+
+.ui-state-default:active {
+  background-color: $range-bg;
+  outline: none;
+  border: rem(1) solid $range-border;
+  @include boxSize(rem(12), rem(27));
+}
