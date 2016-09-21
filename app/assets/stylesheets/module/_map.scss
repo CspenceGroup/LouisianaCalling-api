@@ -5,9 +5,9 @@
   height: rem(580);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
-  @include background-image('map-bg.png');
   @extend %background-repeat;
   @extend %overflow-hidden;
+  @include background-image('map-bg.png');
 
   @include e('details') {
     @include boxSize(rem(326), rem(332));
@@ -71,9 +71,10 @@
 
 .job-list {
   top: rem(62);
-  left: rem(40);
+  left: rem(20);
   @extend %absolute;
   @extend %overflow-y-scroll;
+  @extend %acumin-pro-cond-regular;
   @include boxSize(rem(270), rem(230));
 
   a {
