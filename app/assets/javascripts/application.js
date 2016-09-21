@@ -34,18 +34,10 @@ $(document).on('turbolinks:load', function(){
   /**
    * Data Mock
    */
-  var careers = {
-    "alexandria": {
-        "job": "Boilmakers",
-        "salary": "$40,000 - $50,000",
-        "certificate": "High school diploma 2-year training"
-      },
-    "lake-charles": {
-        "job": "Boilmakers",
-        "salary": "$55,000 - $65,000",
-        "certificate": "High school diploma 4-year training"
-      }
-  };
+  var careers = {};
+  if ($('#careerMapData').html()) {
+    careers = JSON.parse($('#careerMapData').html());
+  }
 
   /**
    * Init Map and Region Top Jobs
@@ -133,7 +125,7 @@ $(document).on('turbolinks:load', function(){
     if (regions) {
       var activeRegionData = regions[regionId];
     }
-    
+
     if (activeRegionData && activeRegionData.length) {
       for (var i = 0, length = activeRegionData.length; i < length; i++) {
         var tpl = '<li><a href="'
@@ -164,21 +156,24 @@ $(document).on('turbolinks:load', function(){
    */
   function showCareerRequired (id) {
     if (careers && id) {
-      
-      var regionId = id.toLowerCase().split(' ').join('-'),
-          activeRegionData = careers[regionId];
-    }
-    
-    if (activeRegionData) {
 
-      $('#career-salary').text(activeRegionData.salary);
-      $('#career-certificate').text(activeRegionData.certificate);
+      var activeRegionData = careers[id];
     }
+
+    if (activeRegionData) {
+      $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
+      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text">' + activeRegionData.education +'</span>');
+    }
+  }
+
+  // Format number with comma
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   /**
    * Show Region name and career info by region
-   * @return {void} 
+   * @return {void}
    */
   function showRegionCareerOptions () {
     var regionId = getRegionId($('#career-map path.active'));

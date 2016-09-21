@@ -3,6 +3,43 @@ class CareerController < ApplicationController
   end
 
   def detail
+
+    @careers = Career.where(:slug => params[:slug])
+    @career = @careers.first
+
+    if @career
+      interests = Interest.all
+      @list_of_interests = Hash.new
+      interests.each do |interest|
+        @list_of_interests[interest[:name]] = interest[:url]
+      end
+
+      skills = Skill.all
+      @list_of_skills = Hash.new
+      skills.each do |skill|
+        @list_of_skills[skill[:name]] = skill[:url]
+      end
+
+      @regions = Hash.new
+      @careers.map do |career|
+        @regions[career.region] = {
+          :salary_min => career.salary_min,
+          :salary_max => career.salary_max,
+          :education => career.education
+        }
+      end
+
+      @related_by_skills = Career.where(title: @career.related_career_by_skill)
+      @related_by_interests = Career.where(title: @career.related_career_by_interest)
+
+      profileName = @career.profile_name
+      @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
+
+      logger.debug @profile
+      logger.debug @related_by_interests.count
+    else
+    end
+
   end
 
   def filter

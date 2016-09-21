@@ -2,7 +2,7 @@
   <%= render "navigation/index" %>
   <div class="main-content">
     <section class="career-banner">
-      <h2 class="career-banner__title banner-profile__title">Boilmakers</h2>
+      <h2 class="career-banner__title banner-profile__title"><%= @career.title%></h2>
       <div class="career-banner__bg">
         <%= image_tag 'career-detail-banner.jpg' %>
       </div>
@@ -11,13 +11,11 @@
       <div class="career-desc__main-container">
         <section class="career-desc__about">
           <h2 class="main-title">About the job</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores aliquam rem beatae voluptas molestias quia ex numquam, veritatis error provident animi, dolore obcaecati illo inventore suscipit sapiente ab, iure autem!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse in illum est. Sequi quam deserunt ipsum similique ullam libero nostrum consequuntur, dolorem quae sapiente, nam repudiandae velit, modi earum officiis.</p>
+          <p><%= @career.about_job.html_safe %></p>
         </section>
         <section class="career-desc__what-to-do">
           <h2 class="main-title">What you'll do</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est obcaecati incidunt quia recusandae dolorum optio sint. Nobis praesentium totam ad dolorum, quidem sint incidunt quis, adipisci, consectetur inventore dolorem architecto.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit dignissimos fugit, sequi eveniet, pariatur reprehenderit doloremque officiis ducimus cupiditate nisi, odit! Qui saepe sint, nulla fugit sed reprehenderit accusamus labore.</p>
+          <p><%= @career.what_will_do.html_safe %></p>
         </section>
         <section class="career-desc__social-networks">
           <i class="icon i-social i-facebook" aria-hidden="true"></i>
@@ -39,13 +37,13 @@
         <div class="great-jobs__content">
           <div class="jobs-head">
             <div class="jobs-head__name">
-              <p class="jobs-head__title">Boilmakers</p>
+              <p class="jobs-head__title"><%= @career.title%></p>
               <div class="jobs-head__icon">
-                <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
-                <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
-                <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
-                <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
-                <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
+                <% @career.demand.to_i.times do |i| %>
+                    <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
+                <%
+                  end
+                %>
               </div>
             </div>
             <div class="jobs-head__content">
@@ -53,17 +51,21 @@
                 <li>
                   <p class="jobs-head__desc-text">Interests</p>
                   <div class="jobs-head__desc-icon">
-                    <%= image_tag("careers/icon-arts.png", :alt => "icon arts") %>
-                    <%= image_tag("careers/icon-languages.png", :alt => "icon languages") %>
-                    <%= image_tag("careers/icon-business.png", :alt => "icon business") %>
+                    <% @career.interests.each do |interest| %>
+                        <%= image_tag(@list_of_interests[interest], :alt => "fire icon") %>
+                    <%
+                      end
+                    %>
                   </div>
                 </li>
                 <li>
                   <p class="jobs-head__desc-text">Skills</p>
                   <div class="jobs-head__desc-icon">
-                    <%= image_tag("careers/icon-computer.png", :alt => "icon computer") %>
-                    <%= image_tag("careers/icon-problem.png", :alt => "icon problem") %>
-                    <%= image_tag("careers/icon-technical.png", :alt => "icon technical") %>
+                    <% @career.skills.each do |skill| %>
+                        <%= image_tag(@list_of_skills[skill], :alt => "icon computer") %>
+                    <%
+                      end
+                    %>
                   </div>
                 </li>
               </ul>
@@ -73,22 +75,27 @@
             <ul class="row">
               <li class="col-md-3 list-icon__details">
                 <%= image_tag("careers/icon-industry.png", :alt => "icon industry", :class => "icon-industry") %>
-                <p>Fuel &amp; Energy</p>
-                <p>Building &amp; Construcion</p>
+                <% @career.industries.each do |industry| %>
+                    <p><%= industry %></p>
+                <%
+                  end
+                %>
               </li>
               <li class="col-md-3 list-icon__details">
                 <%= image_tag("careers/icon-salary.png", :alt => "icon salary", :class => "icon-salary") %>
-                <p>$42,000-$55,000</p>
+                <p>$<%= number_with_delimiter(@career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(@career.salary_max, :delimiter => ',')%></p>
               </li>
               <li class="col-md-3 list-icon__details">
                 <%= image_tag("careers/icon-training.png", :alt => "icon training", :class => "icon-training") %>
-                <p>High school diploma 2-year training</p>
+                <p><%= @career.education%></p>
               </li>
               <li class="col-md-3 list-icon__details">
                 <%= image_tag("careers/icon-map.png", :alt => "icon map", :class => "icon-map") %>
-                <p>Lafayette </p>
-                <p>Alexandria</p>
-                <p>New Orleans</p>
+                <% @regions.keys.each do |region| %>
+                    <p><%= region %></p>
+                <%
+                  end
+                %>
               </li>
             </ul>
           </div>
@@ -96,6 +103,7 @@
       </div>
     </section>
     <section class="career-map top-jobs row">
+      <div class="data-map-hidden" id="careerMapData"><%= @regions.to_json%></div>
       <div class="jobs-container">
         <div class="career-map__title map-title shadow-main-title">
           <h2 class="main-title career-title career-title--pull-left" id="career-name">Boilmaker</h2>
@@ -437,9 +445,9 @@
         </div>
         <div class="career-map__details map-details">
           <h3 class="region-name" id="region-name"></h3>
-          <ul class="job-list career-options" id="region-career-options"> 
-            <li><i class="icon i-options i-salary"></i><span class="career-options__text" id="career-salary"></span></li>
-            <li><i class="icon i-options i-certificate"></i><span class="career-options__text" id="career-certificate"></span></li>
+          <ul class="job-list career-options" id="region-career-options">
+            <li id="career-salary"></li>
+            <li id="career-certificate"></li>
           </ul>
         </div>
         <!-- <div class="data-map-hidden" id="mapData"><%= @jobs.to_json%></div> -->
@@ -459,15 +467,17 @@
         </div>
       </form>
     </section>
-    <section class="story-owner row">
-      <div class="col-md-6 pull-right story-owner__content">
-        <h2 class="story-owner__title main-title">Maria gonzalez</h2>
-        <a href="javascript:void(0);" class="story-owner__link"></a>
-      </div>
-      <div class="story-owner__photo">
-        <%= image_tag 'story-owner-img.jpg' %>
-      </div>
-    </section>
+    <% if @profile %>
+      <section class="story-owner row">
+        <div class="col-md-6 pull-right story-owner__content">
+          <h2 class="story-owner__title main-title"><%= @profile.first_name + ' ' + @profile.last_name %></h2>
+          <a href="javascript:void(0);" class="story-owner__link"></a>
+        </div>
+        <div class="story-owner__photo">
+          <%= image_tag @profile.image %>
+        </div>
+      </section>
+    <% end %>
     <section class="related-careers">
       <section class="related-careers__content">
         <div class="related-careers-container">
@@ -481,156 +491,71 @@
               </div>
               <div class="col-md-6">
                 <div id="interest-icons">
-                  <div class="sort-item">
-                    <span class="sort-item__title">Arts</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-arts.png' %>
+                  <% @career.interests.each do |interest| %>
+                    <div class="sort-item">
+                      <span class="sort-item__title"><%= interest%></span>
+                      <div class="sort-item__icon">
+                        <%= image_tag(@list_of_interests[interest], :alt => "interest icon")%>
+                      </div>
                     </div>
-                  </div>
-                  <div class="sort-item">
-                    <span class="sort-item__title">Languages</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-languages.png' %>
-                    </div>
-                  </div>
-                  <div class="sort-item">
-                    <span class="sort-item__title">Business</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-business.png' %>
-                    </div>
-                  </div>
+                  <%
+                    end
+                  %>
                 </div>
                 <div id="skill-icons">
-                  <div class="sort-item">
-                    <span class="sort-item__title">Skills</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-arts.png' %>
+                  <% @career.skills.each do |skill| %>
+                    <div class="sort-item">
+                      <span class="sort-item__title"><%= skill%></span>
+                      <div class="sort-item__icon">
+                        <%= image_tag(@list_of_skills[skill], :alt => "interest icon")%>
+                      </div>
                     </div>
-                  </div>
-                  <div class="sort-item">
-                    <span class="sort-item__title">Skills</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-languages.png' %>
-                    </div>
-                  </div>
-                  <div class="sort-item">
-                    <span class="sort-item__title">Skills</span>
-                    <div class="sort-item__icon">
-                      <%= image_tag 'careers/icon-business.png' %>
-                    </div>
-                  </div>
+                  <%
+                    end
+                  %>
                 </div>
               </div>
             </div>
           </div>
           <div class="related-careers__items row" id="careers-by-interests">
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">electrician</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">welder</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
+            <% @related_by_skills.each do |career|%>
+              <div class="col-md-4">
+                <div class="related-item">
+                  <div class="interest-votes">
+                    <% career.demand.to_i.times do %>
+                      <i class="icon i-vote"></i>
+                    <% end %>
+                  </div>
+                  <div class="related-item__photo">
+                    <%= image_tag career.photo_large %>
+                  </div>
+                  <div class="related-item__info">
+                    <span class="related-item__name"><%= career.title %></span>
+                    <span class="related-item__salary">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">developer</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
           <div class="related-careers__items row" id="careers-by-skills">
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">electrician</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">welder</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
+            <% @related_by_interests.each do |career|%>
+              <div class="col-md-4">
+                <div class="related-item">
+                  <div class="interest-votes">
+                    <% career.demand.to_i.times do %>
+                      <i class="icon i-vote"></i>
+                    <% end %>
+                  </div>
+                  <div class="related-item__photo">
+                    <%= image_tag career.photo_large %>
+                  </div>
+                  <div class="related-item__info">
+                    <span class="related-item__name"><%= career.title %></span>
+                    <span class="related-item__salary">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-item">
-                <div class="interest-votes">
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                  <i class="icon i-vote"></i>
-                </div>
-                <div class="related-item__photo">
-                  <%= image_tag 'career-details/boilmaker-item.jpg' %>
-                </div>
-                <div class="related-item__info">
-                  <span class="related-item__name">technician</span>
-                  <span class="related-item__salary">$29,000 - $69,000</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            <% end %>
         </div>
       </section>
       <section class="want-to-talk guided-journey__box career-guided-journey">
