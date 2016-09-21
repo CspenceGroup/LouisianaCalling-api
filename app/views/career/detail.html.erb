@@ -91,7 +91,7 @@
               </li>
               <li class="col-md-3 list-icon__details">
                 <%= image_tag("careers/icon-map.png", :alt => "icon map", :class => "icon-map") %>
-                <% @regions.keys.each do |region| %>
+                <% @career.regions_high_demand.each do |region| %>
                     <p><%= region %></p>
                 <%
                   end

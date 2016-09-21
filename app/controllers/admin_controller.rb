@@ -199,10 +199,9 @@ class AdminController < ApplicationController
                 career[:photo_medium] = row[17]
                 career[:photo_small] = row[18]
                 career[:regions_high_demand] = row[19].split(',').map{ |s| s.strip }
-                career[:icon] = row[20]
-                career[:profile_name] = row[21]
+                career[:profile_name] = row[20]
 
-                if row[22]
+                if row[21]
                   raise "error"
                 end
 
