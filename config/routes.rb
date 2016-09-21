@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'profile' => 'profile#index', :as => :profile
+  get 'stories' => 'profile#index', :as => :stories
   get 'profile/get-more' => 'profile#getMore'
 
 
