@@ -5,7 +5,6 @@
   @include background-image('career-search-bg.jpg');
   @extend %background-cover;
   @extend %background-position-center;
-  @extend %acumin-pro-cond-bi;
   @extend %text-left;
   @extend %relative;
   @extend %overflow-hidden;
@@ -21,16 +20,18 @@ form {
   @extend %margin-auto;
 
   .search-input {
-    font-size: rem(18.9);
+    font-size: rem(15);
     text-indent: rem(5);
     border: solid rem(1) $search-border;
     @extend %no-border-radius;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
     @include boxSize(rem(379), rem(53));
   }
 
   .btn-submit {
     width: rem(212);
-    font-size: rem(18.9);
+    font-size: rem(15);
     margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
@@ -64,12 +65,13 @@ form {
   @extend %relative;
 
   .form-control {
-    font-size: rem(18.9);
+    font-size: rem(15);
     color: $search-text;
     @extend %no-outline;
     @extend %appearance-none;
     @extend %no-padding-left;
-    @extend %acumin-pro-cond-bi;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
     @include boxSize(100%, 100%);
     @extend %no-border;
     @extend %background-none;
