@@ -1,5 +1,5 @@
 .career-banner {
-  height: rem(372);
+  height: rem(380);
   @extend %relative;
   @extend %overflow-hidden;
   @extend %text-center;
@@ -20,6 +20,8 @@
   color: $default;
   @include background-image('map-bg.png');
   @extend %background-repeat-x;
+  @extend %overflow-hidden;
+  @extend %relative;
 
   p {
     font-size: rem(16.7);
@@ -35,13 +37,18 @@
   }
 
   @include e('main-container') {
+    width: 64.75%;
     padding: rem(75) rem(67) rem(57) rem(84);
+    @extend %float-left;
   }
 
   @include e('news-container') {
+    width: 35.25%;
     height: 100%;
     padding: rem(130) rem(98) 0 rem(60);
     background: $feature-news-bg;
+    @extend %right-top-0;
+    @extend %absolute;
   }
 
   @include e('what-to-do') {
@@ -111,3 +118,7 @@
   }
 }
 
+#careers-by-skills,
+#skill-icons {
+  display: none;
+}

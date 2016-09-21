@@ -263,10 +263,31 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
-  // Get height of career div parent
-  if ($('#career-desc')[0]) {
-    var parentHeight = $('#career-desc')[0].clientHeight;
-    $('#feature-news').css('height', parentHeight);
+  /**
+   * Related Careers sorting tabs
+   */
+  function profileDetail() {
+    $('#sortInterests').on('click', function() {
+      debugger;
+      $('#interest-icons').css('display', 'block');
+      $('#careers-by-interests').css('display', 'block');
+      $('#skill-icons').css('display', 'none');
+      $('#careers-by-skills').css('display', 'none');
+    });
+
+    $('#sortSkills').on('click', function() {
+      debugger;
+      $('#interest-icons').css('display', 'none');
+      $('#careers-by-interests').css('display', 'none');
+      $('#skill-icons').css('display', 'block');
+      $('#careers-by-skills').css('display', 'block');
+    });
+    console.log('profile');
   }
+
+  profileDetail();
+
+
+
 
 });

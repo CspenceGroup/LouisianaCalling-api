@@ -1,7 +1,7 @@
 .site-footer {
-  height: rem(215);
-  padding-top: rem(95);
-  @include background-image('bg-footer.jpg');
+  height: rem(183);
+  padding-top: rem(69);
+  @include background-image('bg-footer.png');
   @extend %background-repeat-x;
   @extend %acumin-pro-cond;
   @extend %cl-white;
