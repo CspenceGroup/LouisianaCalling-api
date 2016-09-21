@@ -1,703 +1,448 @@
-<div>
-    = render 'navigation/index'
-    <div class="main-content">
-      <section class="hero-banner">
-        <div class="hero-banner__container careers-banner__container">
-          <h1 class="hero-banner__title">Find Your Calling.</h1>
-          <h1 class="hero-banner__title">Create Your Legacy.</h1>
-          <div class="hero-banner__introduce">
-            <h2 class="hero-banner__text">Good news: There are tons of careers to choose from.</h2>
-            <h2 class="hero-banner__text">Bad news: there are tons of careers to choose from. Let's find the right one for you.</h2>
-          </div>
-        </div>
-      </section>
-      <section class="great-jobs">
-        <div class="great-jobs__lable">
-          <p>Great Jobs. Right Now.</p>
-        </div>
-        <div id="carousel-great-jobs" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators carousel-dots-list carousel-dots-great-jobs">
-            <li data-target="#carousel-great-jobs" data-slide-to="0" class="active carousel-dots"></li>
-            <li data-target="#carousel-great-jobs" data-slide-to="1" class="carousel-dots"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <div class="great-jobs__container">
-                <div class="great-jobs__content">
-                  <div class="great-jobs__content-head">
-                    <div class="jobs-head">
-                      <div class="jobs-head__name">
-                        <p class="jobs-head__title">Computer technician</p>
-                        <div class="jobs-head__icon">
-                          = image_tag("careers/fire-icon.png", alt: "fire icon")
-                          = image_tag("careers/fire-icon.png", alt: "fire icon")
-                          = image_tag("careers/fire-icon.png", alt: "fire icon")
-                          = image_tag("careers/fire-icon.png", alt: "fire icon")
-                          = image_tag("careers/fire-icon.png", alt: "fire icon")
-                        </div>
-                      </div>
-                      <div class="jobs-head__content">
-                        <ul class="jobs-head__desc">
-                          <li>
-                            <p class="jobs-head__desc-text">Interests</p>
-                            <div class="jobs-head__desc-icon">
-                              = image_tag("careers/icon-arts.png", alt: "icon arts")
-                              = image_tag("careers/icon-languages.png", alt: "icon languages")
-                              = image_tag("careers/icon-business.png", alt: "icon business")
-                            </div>
-                          </li>
-                          <li>
-                            <p class="jobs-head__desc-text">Skills</p>
-                            <div class="jobs-head__desc-icon">
-                              = image_tag("careers/icon-computer.png", alt: "icon computer")
-                              = image_tag("careers/icon-problem.png", alt: "icon problem")
-                              = image_tag("careers/icon-technical.png", alt: "icon technical")
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="great-jobs__list-icon">
-                    <ul class="row">
-                      <li class="col-md-3 list-icon__details">
+div
+  = render 'navigation/index'
+  .main-content
+    section.hero-banner
+      .hero-banner__container.careers-banner__container
+        h1.hero-banner__title Find Your Calling.
+        h1.hero-banner__title Create Your Legacy.
+        .hero-banner__introduce
+          h2.hero-banner__text Good news: There are tons of careers to choose from.
+          h2.hero-banner__text Bad news: there are tons of careers to choose from. Let's find the right one for you.
+    section.great-jobs
+      .great-jobs__lable
+        p Great Jobs. Right Now.
+      #carousel-great-jobs.carousel.slide data-ride="carousel"
+        ol.carousel-indicators.carousel-dots-list.carousel-dots-great-jobs
+          - @careers_slider.each_with_index do |career, index|
+            li class=(index == 0 ? 'carousel-dots active' : 'carousel-dots') data-slide-to="0" data-target="#carousel-great-jobs"
+        .carousel-inner role="listbox"
+          - @careers_slider.each_with_index do |career, index|
+            div class=(index == 0 ? 'carousel-item active' : 'carousel-item')
+              .great-jobs__container
+                .great-jobs__content
+                  .great-jobs__content-head
+                    .jobs-head
+                      .jobs-head__name
+                        p.jobs-head__title
+                          = career.title
+                        .jobs-head__icon
+                          - career.demand.to_i.times
+                            = image_tag("careers/fire-icon.png", alt: "fire icon")
+                      .jobs-head__content
+                        ul.jobs-head__desc
+                          li
+                            p.jobs-head__desc-text Interests
+                            .jobs-head__desc-icon
+                              - career.interests.each do |interest|
+                                - if @list_of_interests[interest]
+                                  = image_tag(@list_of_interests[interest], :alt => "fire icon")
+                                - else
+                                  = image_tag("", :alt => "fire icon")
+                          li
+                            p.jobs-head__desc-text Skills
+                            .jobs-head__desc-icon
+                              - career.skills.each do |skill|
+                                - if @list_of_skills[skill]
+                                  = image_tag(@list_of_skills[skill], :alt => "fire icon")
+                                - else
+                                  = image_tag("", :alt => "fire icon")
+                  .great-jobs__list-icon
+                    ul.row
+                      li.col-md-3.list-icon__details
                         = image_tag("careers/icon-industry.png", alt: "icon industry", class:"icon-industry")
-                        <p>Fuel &amp; Energy</p>
-                        <p>Building &amp; Construcion</p>
-                      </li>
-                      <li class="col-md-3 list-icon__details">
+                        - career.industries.each do |industry|
+                          p
+                            = industry
+                      li.col-md-3.list-icon__details
                         = image_tag("careers/icon-salary.png", alt: "icon salary", class:"icon-salary")
-                        <p>$42,000-$55,000</p>
-                      </li>
-                      <li class="col-md-3 list-icon__details">
+                        p
+                          | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
+                      li.col-md-3.list-icon__details
                         = image_tag("careers/icon-training.png", alt: "icon training", class:"icon-training")
-                        <p>High school diploma 2-year training</p>
-                      </li>
-                      <li class="col-md-3 list-icon__details">
+                        p
+                          = career.education
+                      li.col-md-3.list-icon__details
                         = image_tag("careers/icon-map.png", alt: "icon map", class:"icon-map")
-                        <p>Lafayette </p>
-                        <p>Alexandria</p>
-                        <p>New Orleans</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="btn-tell-me-jobs">
-                <a href="javascript:void(0)" class="btn-tell-me-jobs__link">
+                        - career.regions_high_demand.each do |region|
+                          p
+                            = region
+              .btn-tell-me-jobs
+                a.btn-tell-me-jobs__link href="javascript:void(0)"
                   = image_tag("tell-me-more.png", alt: "tell me more")
-                </a>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="great-jobs__container">
-                <div class="great-jobs__content">
-                  <div class="great-jobs__content-head">
-                  <div class="jobs-head">
-                    <div class="jobs-head__name">
-                      <p class="jobs-head__title">Computer technician</p>
-                      <div class="jobs-head__icon">
-                        = image_tag("careers/fire-icon.png", alt: "fire icon")
-                        = image_tag("careers/fire-icon.png", alt: "fire icon")
-                        = image_tag("careers/fire-icon.png", alt: "fire icon")
-                        = image_tag("careers/fire-icon.png", alt: "fire icon")
-                        = image_tag("careers/fire-icon.png", alt: "fire icon")
-                      </div>
-                    </div>
-                    <div class="jobs-head__content">
-                      <ul class="jobs-head__desc">
-                        <li>
-                          <p class="jobs-head__desc-text">Interests</p>
-                          <div class="jobs-head__desc-icon">
-                            = image_tag("careers/icon-arts.png", alt: "icon arts")
-                            = image_tag("careers/icon-languages.png", alt: "icon languages")
-                            = image_tag("careers/icon-business.png", alt: "icon business")
-                          </div>
-                        </li>
-                        <li>
-                          <p class="jobs-head__desc-text">Skills</p>
-                          <div class="jobs-head__desc-icon">
-                            = image_tag("careers/icon-computer.png", alt: "icon computer")
-                            = image_tag("careers/icon-problem.png", alt: "icon problem")
-                            = image_tag("careers/icon-technical.png", alt: "icon technical")
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="great-jobs__list-icon">
-                  <ul class="row">
-                    <li class="col-md-3 list-icon__details">
-                      = image_tag("careers/icon-industry.png", alt: "icon industry", class:"icon-industry")
-                      <p>Fuel &amp; Energy</p>
-                      <p>Building &amp; Construcion</p>
-                    </li>
-                    <li class="col-md-3 list-icon__details">
-                      = image_tag("careers/icon-salary.png", alt: "icon salary", class:"icon-salary")
-                      <p>$42,000-$55,000</p>
-                    </li>
-                    <li class="col-md-3 list-icon__details">
-                      = image_tag("careers/icon-training.png", alt: "icon training", class:"icon-training")
-                      <p>High school diploma 2-year training</p>
-                    </li>
-                    <li class="col-md-3 list-icon__details">
-                      = image_tag("careers/icon-map.png", alt: "icon map", class:"icon-map")
-                      <p>Lafayette </p>
-                      <p>Alexandria</p>
-                      <p>New Orleans</p>
-                    </li>
-                  </ul>
-                </div>
-                </div>
-              </div>
-              <div class="btn-tell-me-jobs">
-                <a href="javascript:void(0)" class="btn-tell-me-jobs__link">
-                  = image_tag("tell-me-more.png", alt: "tell me more")
-                </a>
-              </div>
-            </div>
-          </div>
-          <a class="left carousel-control carousel-control--beside" href="#carousel-great-jobs" role="button" data-slide="prev">
-            <span class="icon-prev" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control carousel-control--beside" href="#carousel-great-jobs" role="button" data-slide="next">
-            <span class="icon-next" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </section>
-      <section class="careers-lists">
-        <div class="careers-filter">
-          <h2 class="careers-filter__heading">Filter</h2>
-          <ul class="careers-filter__details">
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Region</h3>
-              <ul class="careers-filter-details">
-                <li>
-                  <input type="checkbox" name="regition" value="alexandria" id="regition-1" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Alexandria</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="baton rouge" id="regition-2" class="square-checkbox"/><span class="careers-filter-details__name">Baton Rouge</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="houma" id="regition-3" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Houma</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="lafayette" id="regition-4" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Lafayette</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="Lake Charles" id="regition-5" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Lake Charles</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="Monroe" id="regition-6" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Monroe</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="New Orleans" id="regition-7" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">New Orleans</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="regition" value="Shreveport" id="regition-8" class="square-checkbox"/><span class="careers-filter-details__name">Shreveport</span>
-                </li>
-              </ul>
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Industry</h3>
-              <ul class="careers-filter-details">
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-1" class="square-checkbox"/>
-                  <p class="careers-filter-details__name">Agriculture, Food and Natural Resource Agriculture, Food and Natural Resource</p>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-2" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-3" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-4" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-5" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-6" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-7" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-8" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-9" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-10" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-11" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-12" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="industry" value="Agriculture, Food and Natural Resource" id="industry-13" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Agriculture, Food and Natural Resource</span>
-                </li>
-              </ul> 
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Skills</h3>
-              <ul class="careers-filter-details">
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-1" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-2" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-3" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-4" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-5" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-6" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-7" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="skills" value="Agriculture, Food and Natural Resource" id="skills-8" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Communication &amp; Socical Skills</span>
-                </li>
-              </ul>
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Interests</h3>
-              <ul class="careers-filter-details">
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-1" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-2" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-3" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-4" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-5" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-6" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-7" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-8" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-9" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-10" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-11" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-12" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-13" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-14" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-15" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="interests" value="Agriculture, Food and Natural Resource" id="interests-16" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">Science &amp; Mathematics</span>
-                </li>
-              </ul>
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Average salary</h3>
-              <div id="salary-range" class="careers-salary">
-                <input type="text" id="salary" readonly class="range-salary-text">
-                <div class="sliders_filter-salary">
-                  <div id="slider-range"></div>
-                </div>
-              </div>
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Education requirement</h3>
-              <ul class="careers-filter-details">
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-1" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-2" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-3" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-4" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-5" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="None" id="education-6" class="square-checkbox"/>
-                  <span class="careers-filter-details__name">None</span>
-                </li>
-              </ul>
-            </li>
-            <li class="careers-filter__desc">
-              <h3 class="careers-filter__title">Hottest jobs</h3>
-              <ul class="careers-filter-details careers-filter-details--hottest-jobs">
-                <li>
-                  <input type="checkbox" name="education" value="5" id="hottest-jobs-1" class="square-checkbox"/>
-                  <p class="careers-filter-details__name icon-hottest-jobs"></p>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="4" id="hottest-jobs-2" class="square-checkbox"/>
-                  <p class="careers-filter-details__name icon-hottest-jobs icon-hottest-jobs--four"></p>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="3" id="hottest-jobs-2" class="square-checkbox"/>
-                  <p class="careers-filter-details__name icon-hottest-jobs icon-hottest-jobs--three"></p>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="2" id="hottest-jobs-3" class="square-checkbox"/>
-                  <p class="careers-filter-details__name icon-hottest-jobs icon-hottest-jobs--two"></p>
-                </li>
-                <li>
-                  <input type="checkbox" name="education" value="1" id="hottest-jobs-4" class="square-checkbox"/>
-                  <p class="careers-filter-details__name icon-hottest-jobs icon-hottest-jobs--one"></p>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="careers-result">
-          <div class="careers-result__container">
-            <div class="careers-result__head-search">
-              <form name="search" class="careers-filter-search">
-                <div class="input-group search-group careers-filter-search-group">
-                  <input class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
-                  <button type="submit" class="btn-search btn-submit">Search</button>
-                </div>
-              </form>
-              <div class="careers-view-by">
-                <div class="careers-view-by__list" id="list-view-icon">
-                  <a href="javascript:void(0)">
-                    = image_tag 'careers/list-view.png'
-                  </a>
-                </div>
-                <div class="careers-view-by__grid" id="grid-view-icon">
-                  <a href="javascript:void(0)">
-                    = image_tag 'careers/grid-view.png'
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div id="grid-view" class="grid-view-container">
-              <div class="related-careers__items careers-grid-details row">
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="related-careers__items careers-grid-details row">
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 careers-grid-details__item">
-                  <div class="careers-grid-item">
-                    <div class="interest-votes">
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                      <i class="icon i-vote"></i>
-                    </div>
-                    <div class="related-item__photo ">
-                      = image_tag 'career-details/boilmaker-item.jpg'
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name">Boilmaker</span>
-                      <span class="related-item__salary">$29,000 - $69,000</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- popup careers -->
-            <div class="careers-list-view" id="list-view" >
-              <div class="careers-list-view__item">
-                <div class="jobs-head careers-list-view__heading">
-                  <div class="jobs-head__name">
-                    <p class="jobs-head__title">BoildMarkers</p>
-                    <div class="jobs-head__icon">
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    </div>
-                  </div>
-                  <div class="careers-list-view__head-salary">
-                    <div class="careers-list-view__icon-salary">
-                    </div>
-                    <p class="careers-list-view__salary">$42,000-$55,000</p>
-                  </div>
-                </div>
-                <div class="great-jobs__list-icon careers-list-view__footer">
-                  <div class="careers-list-view__footer-details careers-details-education">
-                    <div class="careers-list-view__icon-education">
-                    </div>
-                    <p>High school diploma, 2-year training</p>
-                  </div>
-                  <div class="careers-list-view__footer-details careers-details-map">
-                    <div class="careers-list-view__icon-map"></div>
-                    <p>Lafayette, Alexandria, New Orleans</p>
-                  </div>
-                </div>  
-              </div>
-              <div class="careers-list-view__item">
-                <div class="jobs-head careers-list-view__heading">
-                  <div class="jobs-head__name">
-                    <p class="jobs-head__title">BoildMarkers</p>
-                    <div class="jobs-head__icon">
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    </div>
-                  </div>
-                  <div class="careers-list-view__head-salary">
-                    <div class="careers-list-view__icon-salary">
-                    </div>
-                    <p class="careers-list-view__salary">$42,000-$55,000</p>
-                  </div>
-                </div>
-                <div class="great-jobs__list-icon careers-list-view__footer">
-                  <div class="careers-list-view__footer-details careers-details-education">
-                    <div class="careers-list-view__icon-education">
-                    </div>
-                    <p>High school diploma, 2-year training</p>
-                  </div>
-                  <div class="careers-list-view__footer-details careers-details-map">
-                    <div class="careers-list-view__icon-map"></div>
-                    <p>Lafayette, Alexandria, New Orleans</p>
-                  </div>
-                </div>  
-              </div>
-              <div class="careers-list-view__item">
-                <div class="jobs-head careers-list-view__heading">
-                  <div class="jobs-head__name">
-                    <p class="jobs-head__title">BoildMarkers</p>
-                    <div class="jobs-head__icon">
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    </div>
-                  </div>
-                  <div class="careers-list-view__head-salary">
-                    <div class="careers-list-view__icon-salary">
-                    </div>
-                    <p class="careers-list-view__salary">$42,000-$55,000</p>
-                  </div>
-                </div>
-                <div class="great-jobs__list-icon careers-list-view__footer">
-                  <div class="careers-list-view__footer-details careers-details-education">
-                    <div class="careers-list-view__icon-education">
-                    </div>
-                    <p>High school diploma, 2-year training</p>
-                  </div>
-                  <div class="careers-list-view__footer-details careers-details-map">
-                    <div class="careers-list-view__icon-map"></div>
-                    <p>Lafayette, Alexandria, New Orleans</p>
-                  </div>
-                </div>  
-              </div>
-              <div class="careers-list-view__item">
-                <div class="jobs-head careers-list-view__heading">
-                  <div class="jobs-head__name">
-                    <p class="jobs-head__title">BoildMarkers</p>
-                    <div class="jobs-head__icon">
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                      = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    </div>
-                  </div>
-                  <div class="careers-list-view__head-salary">
-                    <div class="careers-list-view__icon-salary">
-                    </div>
-                    <p class="careers-list-view__salary">$42,000-$55,000</p>
-                  </div>
-                </div>
-                <div class="great-jobs__list-icon careers-list-view__footer">
-                  <div class="careers-list-view__footer-details careers-details-education">
-                    <div class="careers-list-view__icon-education">
-                    </div>
-                    <p>High school diploma, 2-year training</p>
-                  </div>
-                  <div class="careers-list-view__footer-details careers-details-map">
-                    <div class="careers-list-view__icon-map"></div>
-                    <p>Lafayette, Alexandria, New Orleans</p>
-                  </div>
-                </div>  
-              </div>
-              <div class="more-stories__btn see-more-careers">
-                <div>
-                  = image_tag "profile/btn-see-more.png"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </section>
-    </div>
-    = render 'footer/index'
-</div>
+        a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
+          span.icon-prev aria-hidden="true"
+          span.sr-only Previous
+        a.right.carousel-control.carousel-control--beside data-slide="next" href="#carousel-great-jobs" role="button"
+          span.icon-next aria-hidden="true"
+          span.sr-only Next
+    section.careers-lists
+      .careers-filter
+        h2.careers-filter__heading Filter
+        ul.careers-filter__details
+          li.careers-filter__desc
+            h3.careers-filter__title Region
+            ul.careers-filter-details
+              li
+                input#regition-1.square-checkbox name="regition" type="checkbox" value="alexandria" /
+                span.careers-filter-details__name Alexandria
+              li
+                input#regition-2.square-checkbox name="regition" type="checkbox" value=("baton rouge") /
+                span.careers-filter-details__name Baton Rouge
+              li
+                input#regition-3.square-checkbox name="regition" type="checkbox" value="houma" /
+                span.careers-filter-details__name Houma
+              li
+                input#regition-4.square-checkbox name="regition" type="checkbox" value="lafayette" /
+                span.careers-filter-details__name Lafayette
+              li
+                input#regition-5.square-checkbox name="regition" type="checkbox" value=("Lake Charles") /
+                span.careers-filter-details__name Lake Charles
+              li
+                input#regition-6.square-checkbox name="regition" type="checkbox" value="Monroe" /
+                span.careers-filter-details__name Monroe
+              li
+                input#regition-7.square-checkbox name="regition" type="checkbox" value=("New Orleans") /
+                span.careers-filter-details__name New Orleans
+              li
+                input#regition-8.square-checkbox name="regition" type="checkbox" value="Shreveport" /
+                span.careers-filter-details__name Shreveport
+          li.careers-filter__desc
+            h3.careers-filter__title Industry
+            ul.careers-filter-details
+              li
+                input#industry-1.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                p.careers-filter-details__name Agriculture, Food and Natural Resource Agriculture, Food and Natural Resource
+              li
+                input#industry-2.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-3.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-4.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-5.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-6.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-7.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-8.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-9.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-10.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-11.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-12.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              li
+                input#industry-13.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Agriculture, Food and Natural Resource
+          li.careers-filter__desc
+            h3.careers-filter__title Skills
+            ul.careers-filter-details
+              li
+                input#skills-1.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-2.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-3.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-4.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-5.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-6.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-7.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+              li
+                input#skills-8.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Communication &amp; Socical Skills
+          li.careers-filter__desc
+            h3.careers-filter__title Interests
+            ul.careers-filter-details
+              li
+                input#interests-1.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-2.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-3.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-4.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-5.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-6.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-7.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-8.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-9.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-10.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-11.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-12.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-13.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-14.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-15.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+              li
+                input#interests-16.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
+                span.careers-filter-details__name Science &amp; Mathematics
+          li.careers-filter__desc
+            h3.careers-filter__title Average salary
+            #salary-range.careers-salary
+              input#salary.range-salary-text readonly="readonly" type="text" /
+              .sliders_filter-salary
+                #slider-range
+          li.careers-filter__desc
+            h3.careers-filter__title Education requirement
+            ul.careers-filter-details
+              li
+                input#education-1.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+              li
+                input#education-2.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+              li
+                input#education-3.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+              li
+                input#education-4.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+              li
+                input#education-5.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+              li
+                input#education-6.square-checkbox name="education" type="checkbox" value="None" /
+                span.careers-filter-details__name None
+          li.careers-filter__desc
+            h3.careers-filter__title Hottest jobs
+            ul.careers-filter-details.careers-filter-details--hottest-jobs
+              li
+                input#hottest-jobs-1.square-checkbox name="education" type="checkbox" value="5" /
+                p.careers-filter-details__name.icon-hottest-jobs
+              li
+                input#hottest-jobs-2.square-checkbox name="education" type="checkbox" value="4" /
+                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--four
+              li
+                input#hottest-jobs-2.square-checkbox name="education" type="checkbox" value="3" /
+                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--three
+              li
+                input#hottest-jobs-3.square-checkbox name="education" type="checkbox" value="2" /
+                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--two
+              li
+                input#hottest-jobs-4.square-checkbox name="education" type="checkbox" value="1" /
+                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
+      .careers-result
+        .careers-result__container
+          .careers-result__head-search
+            form.careers-filter-search name="search"
+              .input-group.search-group.careers-filter-search-group
+                input.form-control.search-input name="search-input" placeholder="(Search for careers), like 'welding'." type="text" /
+                button.btn-search.btn-submit type="submit"  Search
+            .careers-view-by
+              #list-view-icon.careers-view-by__list
+                a href="javascript:void(0)"
+                  = image_tag 'careers/list-view.png'
+              #grid-view-icon.careers-view-by__grid
+                a href="javascript:void(0)"
+                  = image_tag 'careers/grid-view.png'
+          #grid-view.grid-view-container
+            .related-careers__items.careers-grid-details.row
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+            .related-careers__items.careers-grid-details.row
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+              .col-md-4.careers-grid-details__item
+                .careers-grid-item
+                  .interest-votes
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                    i.icon.i-vote
+                  .related-item__photo
+                    = image_tag 'career-details/boilmaker-item.jpg'
+                  .related-item__info
+                    span.related-item__name Boilmaker
+                    span.related-item__salary $29,000 - $69,000
+          /! popup careers
+          #list-view.careers-list-view
+            .careers-list-view__item
+              .jobs-head.careers-list-view__heading
+                .jobs-head__name
+                  p.jobs-head__title BoildMarkers
+                  .jobs-head__icon
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                .careers-list-view__head-salary
+                  .careers-list-view__icon-salary
+                  p.careers-list-view__salary $42,000-$55,000
+              .great-jobs__list-icon.careers-list-view__footer
+                .careers-list-view__footer-details.careers-details-education
+                  .careers-list-view__icon-education
+                  p High school diploma, 2-year training
+                .careers-list-view__footer-details.careers-details-map
+                  .careers-list-view__icon-map
+                  p Lafayette, Alexandria, New Orleans
+            .careers-list-view__item
+              .jobs-head.careers-list-view__heading
+                .jobs-head__name
+                  p.jobs-head__title BoildMarkers
+                  .jobs-head__icon
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                .careers-list-view__head-salary
+                  .careers-list-view__icon-salary
+                  p.careers-list-view__salary $42,000-$55,000
+              .great-jobs__list-icon.careers-list-view__footer
+                .careers-list-view__footer-details.careers-details-education
+                  .careers-list-view__icon-education
+                  p High school diploma, 2-year training
+                .careers-list-view__footer-details.careers-details-map
+                  .careers-list-view__icon-map
+                  p Lafayette, Alexandria, New Orleans
+            .careers-list-view__item
+              .jobs-head.careers-list-view__heading
+                .jobs-head__name
+                  p.jobs-head__title BoildMarkers
+                  .jobs-head__icon
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                .careers-list-view__head-salary
+                  .careers-list-view__icon-salary
+                  p.careers-list-view__salary $42,000-$55,000
+              .great-jobs__list-icon.careers-list-view__footer
+                .careers-list-view__footer-details.careers-details-education
+                  .careers-list-view__icon-education
+                  p High school diploma, 2-year training
+                .careers-list-view__footer-details.careers-details-map
+                  .careers-list-view__icon-map
+                  p Lafayette, Alexandria, New Orleans
+            .careers-list-view__item
+              .jobs-head.careers-list-view__heading
+                .jobs-head__name
+                  p.jobs-head__title BoildMarkers
+                  .jobs-head__icon
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+                .careers-list-view__head-salary
+                  .careers-list-view__icon-salary
+                  p.careers-list-view__salary $42,000-$55,000
+              .great-jobs__list-icon.careers-list-view__footer
+                .careers-list-view__footer-details.careers-details-education
+                  .careers-list-view__icon-education
+                  p High school diploma, 2-year training
+                .careers-list-view__footer-details.careers-details-map
+                  .careers-list-view__icon-map
+                  p Lafayette, Alexandria, New Orleans
+            .more-stories__btn.see-more-careers
+              div
+                = image_tag "profile/btn-see-more.png"
+  = render 'footer/index'
