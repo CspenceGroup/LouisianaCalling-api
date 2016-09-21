@@ -1,11 +1,13 @@
 .site-footer {
-  height: rem(215);
-  padding-top: rem(95);
-  @include background-image('bg-footer.jpg');
+  height: rem(183);
+  padding-top: rem(69);
+  z-index: 1000;
+  @include background-image('bg-footer.png');
   @extend %background-repeat-x;
   @extend %acumin-pro-cond;
   @extend %cl-white;
   @extend %text-center;
+  @extend %relative;
 
   @include e('nav') {
     font-size: rem(16.7);
