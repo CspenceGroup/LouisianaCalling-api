@@ -2,10 +2,17 @@
   height: rem(161);
   color: $search-text;
   padding-top: rem(55);
-  @include background-image('bg-search-careers.jpg');
-  @extend %background-repeat-x;
+  @include background-image('career-search-bg.jpg');
+  @extend %background-cover;
+  @extend %background-position-center;
   @extend %acumin-pro-cond-bi;
   @extend %text-left;
+  @extend %relative;
+}
+
+form {
+  z-index: 1000;
+  @extend %relative;
 }
 
 .search-group {
@@ -79,4 +86,12 @@
 
 .btn-career {
   width: rem(211);
+}
+
+.search-bg {
+  z-index: 10;
+  left: rem(-27);
+  top: rem(10);
+  @extend %absolute;
+  @include boxSize(auto, rem(161));
 }
