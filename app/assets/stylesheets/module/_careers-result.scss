@@ -67,6 +67,7 @@
 
   @include e('footer') {
     margin-top: rem(28);
+    @extend %overflow-hidden;
   }
 
   @include e('footer-details') {
