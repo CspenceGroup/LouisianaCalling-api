@@ -28,7 +28,7 @@
 
       a {
         @include linkState () {
-          @extend %cl-white;
+          color: $red-bg;
         }
       }
     }

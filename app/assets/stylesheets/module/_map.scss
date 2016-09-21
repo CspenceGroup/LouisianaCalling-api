@@ -76,6 +76,8 @@
   @include boxSize(rem(270), rem(230));
 
   a {
+    color: $default;
+    
     @include linkState () {
       color: $default;
     }
