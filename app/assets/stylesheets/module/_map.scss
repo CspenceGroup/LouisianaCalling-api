@@ -54,6 +54,7 @@
 .job-desc {
   font-size: rem(18.8);
   margin-right: rem(65);
+  @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
 }
 
