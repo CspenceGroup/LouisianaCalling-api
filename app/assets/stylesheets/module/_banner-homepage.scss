@@ -1,6 +1,7 @@
 // Style for carousel homepage
 .hero-slider {
   @extend %clear-both;
+  @extend %relative;
   height: rem(410);
 }
 
@@ -16,7 +17,7 @@
 }
 
 .carousel-text {
-  padding-top: rem(23);
+  padding-top: rem(20);
 }
 
 .carousel-dots-list {
@@ -67,13 +68,13 @@
 }
 
 .btn-play-video {
-  @include background-image('play-button.png');
-  @extend %background-no-repeat;
-  background-size: rem(50), rem(50);
-  @include boxSize(rem(50), rem(50));
-  border: none;
+  margin-top: rem(160);
   background-color: initial;
-  margin-top: rem(35)
+  background-size: rem(50), rem(50);
+  @extend %no-border;
+  @extend %background-no-repeat;
+  @include boxSize(rem(50), rem(50));
+  @include background-image('play-button.png');
 }
 
 
@@ -149,4 +150,28 @@
   @extend %right-0;
   @extend %top-0;
   pointer-events: none;
+}
+
+.hero-banner {
+  width: 100%;
+  top: rem(65);
+  @extend %left-0;
+  @extend %absolute;
+  @extend %text-center;
+
+  @include e('title') {
+    font-size: rem(50);
+    line-height: 1.2;
+    @extend %i-owan-old-style;
+    @extend %font-style-italic;
+    @extend %text-capitalize;
+
+  }
+
+  @include e('text') {
+    font-size: rem(19);
+    line-height: rem(22);
+    @extend %acumin-pro-cond;
+    @include shadow(0, 0, rem(50), $black);
+  }
 }
