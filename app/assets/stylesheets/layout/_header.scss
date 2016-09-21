@@ -1,12 +1,12 @@
 /*Style header page*/
 .site-header {
-  @include background-image('header-bg.png');
-  height: rem(104);
+  height: rem(75);
   @extend %absolute;
   @extend %left-0;
   @extend %right-0;
   z-index: 10;
   padding: 0 rem(30);
+  background-color: $profile-header;
 
   @include e('logo') {
     @extend %float-left;
