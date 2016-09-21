@@ -152,7 +152,7 @@
   pointer-events: none;
 }
 
-.hero-banner {
+.hero-banner-home {
   width: 100%;
   top: rem(65);
   @extend %left-0;
@@ -163,15 +163,14 @@
     font-size: rem(50);
     line-height: 1.2;
     @extend %i-owan-old-style;
-    @extend %font-style-italic;
     @extend %text-capitalize;
-
   }
 
   @include e('text') {
     font-size: rem(19);
     line-height: rem(22);
     @extend %acumin-pro-cond;
+    @extend %font-style-italic;
     @include shadow(0, 0, rem(50), $black);
   }
 }
