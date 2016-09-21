@@ -6,6 +6,7 @@
   @extend %left-0;
   @extend %right-0;
   z-index: 10;
+  padding: 0 rem(30);
 
   @include e('logo') {
     @extend %float-left;

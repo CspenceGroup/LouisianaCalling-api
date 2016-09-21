@@ -47,6 +47,7 @@
   @include boxSize(rem(20), rem(45.5));
   @extend %absolute;
   z-index: 10;
+  left: rem(45);
 
   &:before {
     content: '';
@@ -58,6 +59,7 @@
   @include boxSize(rem(20), rem(45.5));
   @extend %absolute;
   z-index: 10;
+  right: rem(45);
 
   &:before {
     content: '';
