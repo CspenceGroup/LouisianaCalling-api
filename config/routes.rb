@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   # career page
   get 'careers' => 'career#index', :as => :career
+  get 'career/filter/' => 'career#filter', :as => :career_filter
   get 'careers/:slug' => 'career#detail', :as => :career_detail
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
