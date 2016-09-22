@@ -95,8 +95,12 @@
 }
 
 .see-more-careers {
-  @include boxSize(rem(137), rem(40));
+  @include boxSize(rem(835), rem(40));
   margin-top: rem(55);
+  @extend %float-left;
+  @extend %display-flex;
+  @extend %align-items-center;
+  @extend %justify-content-center;
 }
 
 // Style careers view by
