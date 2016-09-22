@@ -4,17 +4,16 @@
   z-index: 1000;
   @include background-image('bg-footer.png');
   @extend %background-repeat-x;
-  @extend %acumin-pro-cond;
+  @extend %acumin-pro-cond-regular;
   @extend %cl-white;
   @extend %text-center;
-  @extend %clear-both;
   @extend %relative;
 
   @include e('nav') {
     font-size: rem(16.7);
     line-height: rem(18);
     margin-bottom: rem(37);
-    width: rem(312);
+    width: rem(290);
     @extend %margin-auto;
     @extend %text-uppercase;
 

@@ -2,10 +2,17 @@
   height: rem(161);
   color: $search-text;
   padding-top: rem(55);
-  @include background-image('bg-search-careers.jpg');
-  @extend %background-repeat-x;
-  @extend %acumin-pro-cond-bi;
+  @include background-image('career-search-bg.jpg');
+  @extend %background-cover;
+  @extend %background-position-center;
   @extend %text-left;
+  @extend %relative;
+  @extend %overflow-hidden;
+}
+
+form {
+  z-index: 1000;
+  @extend %relative;
 }
 
 .search-group {
@@ -13,16 +20,18 @@
   @extend %margin-auto;
 
   .search-input {
-    font-size: rem(18.9);
+    font-size: rem(14.7);
     text-indent: rem(5);
     border: solid rem(1) $search-border;
     @extend %no-border-radius;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
     @include boxSize(rem(379), rem(53));
   }
 
   .btn-submit {
     width: rem(212);
-    font-size: rem(18.9);
+    font-size: rem(14.7);
     margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
@@ -56,12 +65,13 @@
   @extend %relative;
 
   .form-control {
-    font-size: rem(18.9);
+    font-size: rem(14.7);
     color: $search-text;
     @extend %no-outline;
     @extend %appearance-none;
     @extend %no-padding-left;
-    @extend %acumin-pro-cond-bi;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
     @include boxSize(100%, 100%);
     @extend %no-border;
     @extend %background-none;
@@ -79,4 +89,12 @@
 
 .btn-career {
   width: rem(211);
+}
+
+.search-bg {
+  z-index: 10;
+  left: rem(-27);
+  top: rem(10);
+  @extend %absolute;
+  @include boxSize(auto, rem(161));
 }

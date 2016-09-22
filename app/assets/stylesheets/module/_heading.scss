@@ -4,18 +4,6 @@
   @extend %i-owan-old-style;
 }
 
-.hero-banner__title {
-  font-size: rem(50);
-  @extend %i-owan-old-style;
-  line-height: 1.2;
-}
-
-.hero-banner__text {
-  font-size: rem(19);
-  @extend %acumin-pro-cond;
-  @include shadow(0, 0, rem(50), $black);
-}
-
 .shadow-main-title {
   color: $default;
   @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);

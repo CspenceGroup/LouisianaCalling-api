@@ -33,3 +33,13 @@
   font-family: 'AcuminProCond-BoldItalic';
   src: url($font-path + 'AcuminProCond-BoldItalic' + '.otf');
 }
+
+@font-face {
+  font-family: 'AcuminProCond-Regular';
+  src: url($font-path + 'AcuminProCond-Regular' + '.otf');
+}
+
+@font-face {
+  font-family: 'AcuminProCond-Italic';
+  src: url($font-path + 'AcuminProCond-Italic' + '.otf');
+}

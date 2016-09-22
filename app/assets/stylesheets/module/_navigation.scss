@@ -2,7 +2,7 @@
 .nav-bar {
   @extend %vertical-top;
   @extend %float-right;
-  @extend %brandon-grotesque-bold;
+  @extend %brandon-grotesque;
 
   @include e('list') {
     @extend %overflow-hidden;
@@ -11,12 +11,12 @@
 
     > li {
       @extend %float-left;
-      padding: 0 rem(24);
+      padding: 0 rem(25);
     }
 
     a {
       @extend %text-uppercase;
-      font-size: rem(13);
+      font-size: rem(12.6);
       color: $white;
 
       @include linkState() {
@@ -31,7 +31,7 @@
     padding: rem(19) 0 0 rem(24);
 
     a {
-      @extend %brandon-grotesque-bold;
+      @extend %brandon-grotesque;
       @extend %block;
       color: $white;
 
@@ -45,12 +45,12 @@
     }
 
     span {
-      font-size: rem(20);
+      font-size: rem(18.9);
     }
   }
 
   @include e('icon') {
-    font-size: rem(20);
+    font-size: rem(18.9);
   }
 
   @include e('list-icon') {
@@ -58,7 +58,7 @@
 
     > li {
       @extend %float-left;
-      padding-right: rem(26);
+      padding-right: rem(22);
 
       &:last-child {
         @extend %no-padding-right;

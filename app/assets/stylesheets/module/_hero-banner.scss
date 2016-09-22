@@ -9,7 +9,7 @@
 
   @include e('title') {
     font-size: rem(50);
-    line-height: rem(71);
+    line-height: rem(65);
     @extend %i-owan-old-style;
     @include shadow(0, 0, rem(49), $black);
   }

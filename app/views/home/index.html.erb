@@ -2,60 +2,46 @@
   <%= render "navigation/index" %>
   <div class="main-content">
     <section class="hero-slider">
-        <div id="carousel-banner" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators carousel-dots-list">
-            <li data-target="#carousel-banner" data-slide-to="0" class="active carousel-dots"></li>
-            <li data-target="#carousel-banner" data-slide-to="1" class="carousel-dots"></li>
-          </ol>
-          <div class="carousel-inner carousel-content" role="listbox">
-            <div class="carousel-item active">
-              <video controls loop autoplay muted class="video-playing video-player">
-                <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
-              </video>
-              <div class="carousel-caption carousel-title">
-                <h1 class="hero-banner__title"><%= @videos[0].main_title if @videos[0]%></h1>
-                <div class="carousel-text">
-                  <% if @videos[0]
-                      @videos[0].descriptions.each do |description|
-                  %>
-                      <h2 class="hero-banner__text"><%= description%>.</h2>
-                  <%
-                      end
-                    end
-                  %>
-                </div>
-                <button type="button" class="btn-play-video" data-source="<%= @videos[0].url if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <video controls loop autoplay muted class="video-playing video-player">
-                <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
-              </video>
-              <div class="carousel-caption carousel-title">
-                <h1 class="hero-banner__title"><%= @videos[1].main_title if @videos[1]%></h1>
-                <div class="carousel-text">
-                  <% if @videos[1]
-                      @videos[1].descriptions.each do |description|
-                  %>
-                      <h2 class="hero-banner__text"><%= description%>.</h2>
-                  <%
-                      end
-                    end
-                  %>
-                  <button type="button" class="btn-play-video" data-source="<%= @videos[1].url if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
-                </div>
-              </div>
+      <div id="carousel-banner" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators carousel-dots-list">
+          <li data-target="#carousel-banner" data-slide-to="0" class="active carousel-dots"></li>
+          <li data-target="#carousel-banner" data-slide-to="1" class="carousel-dots"></li>
+        </ol>
+        <div class="carousel-inner carousel-content" role="listbox">
+          <div class="carousel-item active">
+            <video controls loop autoplay muted class="video-playing video-player">
+              <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
+            </video>
+            <div class="carousel-caption carousel-title">
+              <button type="button" class="btn-play-video" data-source="<%= @videos[0].url if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
             </div>
           </div>
-          <a class="left carousel-control carousel-control--beside" href="#carousel-banner" role="button" data-slide="prev">
-            <span class="icon-prev" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control carousel-control--beside" href="#carousel-banner" role="button" data-slide="next">
-            <span class="icon-next" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          <div class="carousel-item">
+            <video controls loop autoplay muted class="video-playing video-player">
+              <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
+            </video>
+            <div class="carousel-caption carousel-title">
+              <button type="button" class="btn-play-video" data-source="<%= @videos[1].url if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
+            </div>
+          </div>
         </div>
+        <a class="left carousel-control carousel-control--beside" href="#carousel-banner" role="button" data-slide="prev">
+          <span class="icon-prev" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control carousel-control--beside" href="#carousel-banner" role="button" data-slide="next">
+          <span class="icon-next" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="hero-banner-home">
+        <h1 class="hero-banner-home__title">Your life's calling</h1>
+        <div class="carousel-text">
+          <h2 class="hero-banner-home__text">The future you know you want starts right now. Not tomorrow. Right. Now.</h2>
+          <h2 class="hero-banner-home__text">All you need is a little help and the right resources. We’ve got them all right here.</h2>
+          <h2 class="hero-banner-home__text">So stop waiting — today’s a great time to start changing your life.</h2>
+        </div>
+      </div>
 
         <!-- Modal -->
         <div class="modal fade modal-video" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
@@ -95,6 +81,9 @@
           <button type="submit" class="btn-search btn-submit">Search</button>
         </div>
       </form>
+      <div class="search-bg">
+        <%= image_tag("bg-search-careers.jpg", alt: "Search background") %>
+      </div>
     </section>
     <section class="guided-journey row">
       <section class="col-md-6 guided-journey__box find-your-path">
