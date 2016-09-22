@@ -2,17 +2,23 @@ class CareerController < ApplicationController
   def index
     @careers_slider = Career.first(5)
 
-    interests = Interest.all
+    @interests = Interest.all
     @list_of_interests = Hash.new
-    interests.each do |interest|
+    @interests.each do |interest|
       @list_of_interests[interest[:name]] = interest[:url]
     end
 
-    skills = Skill.all
+    @skills = Skill.all
     @list_of_skills = Hash.new
-    skills.each do |skill|
+    @skills.each do |skill|
       @list_of_skills[skill[:name]] = skill[:url]
     end
+
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
+
+    @careers = Career.first(10)
   end
 
   def detail

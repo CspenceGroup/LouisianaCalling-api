@@ -52,7 +52,11 @@
                   <p class="jobs-head__desc-text">Interests</p>
                   <div class="jobs-head__desc-icon">
                     <% @career.interests.each do |interest| %>
+                      <% if @list_of_interests[interest] %>
                         <%= image_tag(@list_of_interests[interest], :alt => "fire icon") %>
+                      <% else %>
+                        <%= image_tag("", :alt => "fire icon") %>
+                      <% end %>
                     <%
                       end
                     %>
@@ -495,7 +499,11 @@
                     <div class="sort-item">
                       <span class="sort-item__title"><%= interest%></span>
                       <div class="sort-item__icon">
-                        <%= image_tag(@list_of_interests[interest], :alt => "interest icon")%>
+                        <% if @list_of_interests[interest] %>
+                          <%= image_tag(@list_of_interests[interest], :alt => "interest icon") %>
+                        <% else %>
+                          <%= image_tag("", :alt => "interest icon") %>
+                        <% end %>
                       </div>
                     </div>
                   <%

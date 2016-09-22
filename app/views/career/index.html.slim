@@ -67,7 +67,7 @@ div
                           p
                             = region
               .btn-tell-me-jobs
-                a.btn-tell-me-jobs__link href="javascript:void(0)"
+                = link_to career_detail_path(career.slug), :id => "news", :class => "btn-tell-me-jobs__link"
                   = image_tag("tell-me-more.png", alt: "tell me more")
         a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
           span.icon-prev aria-hidden="true"
@@ -82,150 +82,35 @@ div
           li.careers-filter__desc
             h3.careers-filter__title Region
             ul.careers-filter-details
-              li
-                input#regition-1.square-checkbox name="regition" type="checkbox" value="alexandria" /
-                span.careers-filter-details__name Alexandria
-              li
-                input#regition-2.square-checkbox name="regition" type="checkbox" value=("baton rouge") /
-                span.careers-filter-details__name Baton Rouge
-              li
-                input#regition-3.square-checkbox name="regition" type="checkbox" value="houma" /
-                span.careers-filter-details__name Houma
-              li
-                input#regition-4.square-checkbox name="regition" type="checkbox" value="lafayette" /
-                span.careers-filter-details__name Lafayette
-              li
-                input#regition-5.square-checkbox name="regition" type="checkbox" value=("Lake Charles") /
-                span.careers-filter-details__name Lake Charles
-              li
-                input#regition-6.square-checkbox name="regition" type="checkbox" value="Monroe" /
-                span.careers-filter-details__name Monroe
-              li
-                input#regition-7.square-checkbox name="regition" type="checkbox" value=("New Orleans") /
-                span.careers-filter-details__name New Orleans
-              li
-                input#regition-8.square-checkbox name="regition" type="checkbox" value="Shreveport" /
-                span.careers-filter-details__name Shreveport
+              - @list_of_regions.each do |region|
+                li
+                  input#regition-1.square-checkbox name="regition" type="checkbox" value=(region.id)
+                  span.careers-filter-details__name
+                    = region.name
           li.careers-filter__desc
             h3.careers-filter__title Industry
             ul.careers-filter-details
-              li
-                input#industry-1.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                p.careers-filter-details__name Agriculture, Food and Natural Resource Agriculture, Food and Natural Resource
-              li
-                input#industry-2.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-3.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-4.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-5.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-6.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-7.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-8.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-9.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-10.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-11.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-12.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
-              li
-                input#industry-13.square-checkbox name="industry" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Agriculture, Food and Natural Resource
+              - @list_of_industries.each do |industry|
+                li
+                  input#industry-1.square-checkbox name="industry" type="checkbox" value=industry.id /
+                  p.careers-filter-details__name
+                    = industry.name
           li.careers-filter__desc
             h3.careers-filter__title Skills
             ul.careers-filter-details
-              li
-                input#skills-1.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-2.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-3.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-4.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-5.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-6.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-7.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
-              li
-                input#skills-8.square-checkbox name="skills" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Communication &amp; Socical Skills
+              - @skills.each do |skill|
+                li
+                  input#skills-1.square-checkbox name="skills" type="checkbox" value=skill.id /
+                  span.careers-filter-details__name
+                    = skill.name
           li.careers-filter__desc
             h3.careers-filter__title Interests
             ul.careers-filter-details
-              li
-                input#interests-1.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-2.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-3.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-4.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-5.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-6.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-7.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-8.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-9.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-10.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-11.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-12.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-13.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-14.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-15.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
-              li
-                input#interests-16.square-checkbox name="interests" type="checkbox" value="Agriculture, Food and Natural Resource" /
-                span.careers-filter-details__name Science &amp; Mathematics
+              - @interests.each do |interest|
+                li
+                  input#interests-1.square-checkbox name="interests" type="checkbox" value=interest.id /
+                  span.careers-filter-details__name
+                    = interest.name
           li.careers-filter__desc
             h3.careers-filter__title Average salary
             #salary-range.careers-salary
@@ -235,24 +120,11 @@ div
           li.careers-filter__desc
             h3.careers-filter__title Education requirement
             ul.careers-filter-details
-              li
-                input#education-1.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
-              li
-                input#education-2.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
-              li
-                input#education-3.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
-              li
-                input#education-4.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
-              li
-                input#education-5.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
-              li
-                input#education-6.square-checkbox name="education" type="checkbox" value="None" /
-                span.careers-filter-details__name None
+              - @list_of_educations.each do |education|
+                li
+                  input#education-1.square-checkbox name="education" type="checkbox" value=education.id /
+                  span.careers-filter-details__name
+                    = education.name
           li.careers-filter__desc
             h3.careers-filter__title Hottest jobs
             ul.careers-filter-details.careers-filter-details--hottest-jobs
@@ -324,30 +196,6 @@ div
                     span.related-item__name Boilmaker
                     span.related-item__salary $29,000 - $69,000
             .related-careers__items.careers-grid-details.row
-              .col-md-4.careers-grid-details__item
-                .careers-grid-item
-                  .interest-votes
-                    i.icon.i-vote
-                    i.icon.i-vote
-                    i.icon.i-vote
-                    i.icon.i-vote
-                  .related-item__photo
-                    = image_tag 'career-details/boilmaker-item.jpg'
-                  .related-item__info
-                    span.related-item__name Boilmaker
-                    span.related-item__salary $29,000 - $69,000
-              .col-md-4.careers-grid-details__item
-                .careers-grid-item
-                  .interest-votes
-                    i.icon.i-vote
-                    i.icon.i-vote
-                    i.icon.i-vote
-                    i.icon.i-vote
-                  .related-item__photo
-                    = image_tag 'career-details/boilmaker-item.jpg'
-                  .related-item__info
-                    span.related-item__name Boilmaker
-                    span.related-item__salary $29,000 - $69,000
               .col-md-4.careers-grid-details__item
                 .careers-grid-item
                   .interest-votes

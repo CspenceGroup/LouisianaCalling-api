@@ -304,14 +304,14 @@ $(document).on('turbolinks:load', function(){
     * Careers view by tab
   */
   $('#list-view-icon').on('click', function() {
- 
+
     // Active list view
     $('#list-view').css('display', 'block');
     $('#grid-view').css('display', 'none');
   });
 
   $('#grid-view-icon').on('click', function() {
- 
+
     // Active grid view
     $('#list-view').css('display', 'none');
     $('#grid-view').css('display', 'block');
@@ -322,7 +322,7 @@ $(document).on('turbolinks:load', function(){
     range: true,
     min: 0,
     max: 90000,
-    values: [50000, 72000],
+    values: [0, 90000],
     slide: function( event, ui ) {
       $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
     }
