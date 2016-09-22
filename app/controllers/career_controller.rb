@@ -19,13 +19,29 @@ class CareerController < ApplicationController
     @list_of_educations = Education.all
     @list_of_careers = Career.select(:title).map(&:title).uniq
 
-    @careers = Career.first(6)
-    @isSeeMore = false
+    logger.debug params["title"]
+    logger.debug params["region"]
 
-    if Career.count > 6
-      @isSeeMore = true
+    if !params["title"] && !params["region"]
+      @careers = Career.first(6)
+      @isSeeMore = false
+
+      @careers = Career.first(6)
+      @isSeeMore = false
+
+      if Career.count > 6
+        @isSeeMore = true
+      end
+    else
+      @title = params["title"]
+      @region = params["region"]
+      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").first(6)
+      @isSeeMore = false
+
+      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").count > 6
+        @isSeeMore = true
+      end
     end
-
   end
 
   def detail

@@ -346,7 +346,7 @@ $(document).on('turbolinks:load', function(){
           skills: [],
           interests: [],
           educations: [],
-          hot_jobs: [],
+          demands: [],
           salary_max: [],
           salary_min: [],
           last_id: [],
@@ -392,10 +392,10 @@ $(document).on('turbolinks:load', function(){
         data.educations = data.educations.join(',')
       }
 
-      if(!data.hot_jobs.length) {
-        delete data.hot_jobs;
+      if(!data.demands.length) {
+        delete data.demands;
       } else {
-        data.hot_jobs = data.hot_jobs.join(',')
+        data.demands = data.demands.join(',')
       }
 
       if(data.title == "") {

@@ -84,7 +84,7 @@ div
             ul.careers-filter-details
               - @list_of_regions.each do |region|
                 li
-                  input.square-checkbox name="regions" type="checkbox" value=(region.id)
+                  input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.name == @region ? 'checked' : false)
                   span.careers-filter-details__name
                     = region.name
           li.careers-filter__desc
@@ -129,26 +129,26 @@ div
             h3.careers-filter__title Hottest jobs
             ul.careers-filter-details.careers-filter-details--hottest-jobs
               li
-                input.square-checkbox name="hot_jobs" type="checkbox" value="5" /
+                input.square-checkbox name="demands" type="checkbox" value="5" /
                 p.careers-filter-details__name.icon-hottest-jobs
               li
-                input.square-checkbox name="hot_jobs" type="checkbox" value="4" /
+                input.square-checkbox name="demands" type="checkbox" value="4" /
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--four
               li
-                input.square-checkbox name="hot_jobs" type="checkbox" value="3" /
+                input.square-checkbox name="demands" type="checkbox" value="3" /
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--three
               li
-                input.square-checkbox name="hot_jobs" type="checkbox" value="2" /
+                input.square-checkbox name="demands" type="checkbox" value="2" /
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--two
               li
-                input.square-checkbox name="hot_jobs" type="checkbox" value="1" /
+                input.square-checkbox name="demands" type="checkbox" value="1" /
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
       .careers-result
         .careers-result__container
           .careers-result__head-search
             .careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
-                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="(Search for careers), like 'welding'." type="text" /
+                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="(Search for careers), like 'welding'." type="text" value=@title /
                 button#careerSearch.btn-search.btn-submit Search
               #availableCareers.auto-fill-data
                 = @list_of_careers.to_json
