@@ -82,15 +82,6 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
-  
-  /**
-   * Replace space in string with %20
-   * @param  {string} value 
-   * @return {string}    
-   */
-  function convertToUrl (value) {
-    return value.split(' ').join('%20');
-  }
 
   /**
    * Convert ID get from map path into Region Name
@@ -304,14 +295,14 @@ $(document).on('turbolinks:load', function(){
     * Careers view by tab
   */
   $('#list-view-icon').on('click', function() {
- 
+
     // Active list view
     $('#list-view').css('display', 'block');
     $('#grid-view').css('display', 'none');
   });
 
   $('#grid-view-icon').on('click', function() {
- 
+
     // Active grid view
     $('#list-view').css('display', 'none');
     $('#grid-view').css('display', 'block');
@@ -321,8 +312,8 @@ $(document).on('turbolinks:load', function(){
   $("#slider-range").slider({
     range: true,
     min: 0,
-    max: 90000,
-    values: [50000, 72000],
+    max: 900000,
+    values: [0, 900000],
     slide: function( event, ui ) {
       $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
     }
@@ -331,7 +322,151 @@ $(document).on('turbolinks:load', function(){
   $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
+  /*
+    Get value checkbox when checked
+  */
+  $('.square-checkbox').click(function() {
+    getValueCheck(0);
+  });
+
+  $("#slider-range").on("slidechange", function() {
+    getValueCheck(0);
+  });
+
+  //Requets url when filter follow condition careers
+  var timeout;
+  function getValueCheck(id) {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      var salary_min = $("#slider-range").slider("values")[0],
+        salary_max = $("#slider-range").slider("values")[1],
+        data = {
+          regions: [],
+          industrys: [],
+          skills: [],
+          interests: [],
+          educations: [],
+          demands: [],
+          salary_max: [],
+          salary_min: [],
+          last_id: [],
+          title: ""
+        }
+
+      $('.square-checkbox:checked').each(function() {
+        data[$(this).attr('name')].push($(this).val());
+      });
+
+      data.salary_max.push(salary_max);
+      data.salary_min.push(salary_min);
+      data.last_id.push(id);
+      data.title = $('#careerAutocomplete').val();
+
+      if(!data.regions.length) {
+        delete data.regions;
+      } else {
+        data.regions = data.regions.join(',')
+      }
+
+      if(!data.industrys.length) {
+        delete data.industrys;
+      } else {
+        data.industrys = data.industrys.join(',')
+      }
+
+      if(!data.skills.length) {
+        delete data.skills;
+      } else {
+        data.skills = data.skills.join(',')
+      }
+
+      if(!data.interests.length) {
+        delete data.interests;
+      } else {
+        data.interests = data.interests.join(',')
+      }
+
+      if(!data.educations.length) {
+        delete data.educations;
+      } else {
+        data.educations = data.educations.join(',')
+      }
+
+      if(!data.demands.length) {
+        delete data.demands;
+      } else {
+        data.demands = data.demands.join(',')
+      }
+
+      if(data.title == "") {
+        delete data.title;
+      }
+
+      $.ajax({
+        url : '/career/filter',
+        type : "get",
+        dateType:"text",
+        traditional: true,
+        data : data,
+        success: function(response) {
+          if (id > 0) {
+            $('#careersGrid').append(response.careers);
+            $('#careersList').append(response.list);
+          } else {
+            $('#careersGrid').html(response.careers);
+            $('#careersList').html(response.list);
+          }
+
+          if (response.isSeeMore) {
+            $('#careers-see-more,#careers-see-more-list').show();
+          } else {
+            $('#careers-see-more,#careers-see-more-list').hide();
+          }
+        }
+
+      });
+    }, 800);
+
+  }
+
+  // Click button Search
+  $('#careerSearch').click(function () {
+    var searchTitle = $('#careerAutocomplete').val();
+
+    if (searchTitle && searchTitle != "") {
+      getValueCheck(0);
+    }
+  });
+
+  //Click button see more
+  $('#careers-see-more, #careers-see-more-list').click(function() {
+    var last_id = parseInt($('.careers-grid-details__item').last().attr('id'));
+    getValueCheck(last_id);
+  });
+
+  // autocomplete for career page.
+  var availableCareers = {};
+  if ($('#availableCareers').html()) {
+    availableCareers = JSON.parse($('#availableCareers').html());
+  }
+
+  $("#careerAutocomplete").autocomplete({
+    source: availableCareers
+  });
+
   /**
+   * Replace space in string with %20
+   * @param  {string} value
+   * @return {string}
+   */
+  function convertToUrl (value) {
+    return value.split(' ').join('%20');
+  }
+
+  /**
+
+
+    /**
    *
    * Handle for Homepage Searchbar
    *
@@ -360,5 +495,4 @@ $(document).on('turbolinks:load', function(){
       // Redirect to programs landing page
     }
   });
-
 });

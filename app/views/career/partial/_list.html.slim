@@ -1,0 +1,18 @@
+- careers.each do |career|
+  .careers-list-view__item id=career.id
+    .jobs-head.careers-list-view__heading
+      .jobs-head__name
+        p.jobs-head__title
+          = career.title
+        .jobs-head__icon
+          - career.demand.to_i.times do
+            = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+      .careers-list-view__head-salary
+        .careers-list-view__icon-salary
+        p.careers-list-view__salary
+          = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+    .great-jobs__list-icon.careers-list-view__footer
+      .careers-list-view__footer-details.careers-details-education
+        .careers-list-view__icon-education
+        p
+          = career.education

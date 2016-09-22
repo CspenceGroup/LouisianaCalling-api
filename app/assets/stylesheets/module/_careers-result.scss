@@ -95,8 +95,8 @@
 }
 
 .see-more-careers {
-  @include boxSize(rem(137), rem(40));
-  margin-top: rem(55);
+  margin: rem(55) 0 0 rem(363);
+  @extend %float-left;
 }
 
 // Style careers view by
@@ -126,30 +126,35 @@
 }
 
 .grid-view-container {
-  margin-top: rem(92);
+  margin-top: rem(8);
+  @extend %overflow-hidden;
 }
 
 .careers-grid-details {
   @extend %no-margin-right;
-  @include boxSize(rem(802), rem(255));
+  width: rem(835);
+  @extend %overflow-hidden;
   margin-bottom: rem(20);
+  color: $default;
 
   @include e('item') {
     @extend %no-padding;
+    @extend %float-left;
+    @extend %relative;
     @include boxSize(rem(254), rem(254));
     border: 1px solid $default;
-    margin-right: rem(20);
+    margin: rem(20) rem(20) 0 0;
 
     &:last-child {
       @extend %no-margin-right;
     }
+
+    i {
+      margin-left: rem(5);
+    }
   }
 }
 
-.careers-grid-item {
-  height: rem(254);
-
-  i {
-    margin-left: rem(5);
-  }
+.auto-fill-data {
+  display: none;
 }

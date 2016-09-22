@@ -1,5 +1,47 @@
 class CareerController < ApplicationController
   def index
+    @careers_slider = Career.first(5)
+
+    @interests = Interest.all
+    @list_of_interests = Hash.new
+    @interests.each do |interest|
+      @list_of_interests[interest[:name]] = interest[:url]
+    end
+
+    @skills = Skill.all
+    @list_of_skills = Hash.new
+    @skills.each do |skill|
+      @list_of_skills[skill[:name]] = skill[:url]
+    end
+
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
+    @list_of_careers = Career.select(:title).map(&:title).uniq
+
+    logger.debug params["title"]
+    logger.debug params["region"]
+
+    if !params["title"] && !params["region"]
+      @careers = Career.first(6)
+      @isSeeMore = false
+
+      @careers = Career.first(6)
+      @isSeeMore = false
+
+      if Career.count > 6
+        @isSeeMore = true
+      end
+    else
+      @title = params["title"]
+      @region = params["region"]
+      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").first(6)
+      @isSeeMore = false
+
+      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").count > 6
+        @isSeeMore = true
+      end
+    end
   end
 
   def detail
@@ -80,6 +122,7 @@ class CareerController < ApplicationController
     end
 
     # define query
+    query = ""
     regions_query = ""
     industries_query = ""
     skills_query = ""
@@ -100,8 +143,10 @@ class CareerController < ApplicationController
         query_temp << "'#{list_of_regions[id.to_i]}'"
       end
 
-      regions_query = " region IN (#{query_temp.join(',')}) "
+      query = " region IN (#{query_temp.join(',')}) "
     end
+    logger.debug "aaaaaa"
+    logger.debug query
 
     ## filter by industry
     industry_ids = params[:industries]
@@ -124,7 +169,7 @@ class CareerController < ApplicationController
       end
       industries_query += ")"
 
-      if regions_query == ""
+      if query == ""
         query = industries_query
       else
         query = regions_query + " AND " + industries_query
@@ -133,9 +178,9 @@ class CareerController < ApplicationController
 
     ## filter by industry
     skill_ids = params[:skills]
+
     if skill_ids && skill_ids != ""
       skill_ids = skill_ids.split(',')
-      logger.debug skill_ids
 
       skills_query = "("
 
@@ -152,7 +197,7 @@ class CareerController < ApplicationController
       end
       skills_query += ")"
 
-      if regions_query == "" && industries_query == ""
+      if query == "" && industries_query == ""
         query = skills_query
       else
         query = query + " AND " + skills_query
@@ -180,7 +225,7 @@ class CareerController < ApplicationController
       end
       educations_query += ")"
 
-      if regions_query == "" && industries_query == "" && skills_query == ""
+      if query == "" && industries_query == "" && skills_query == ""
         query = educations_query
       else
         query = query + " AND " + educations_query
@@ -208,7 +253,7 @@ class CareerController < ApplicationController
       end
       interests_query += ")"
 
-      if regions_query == "" && industries_query == "" && skills_query == "" && educations_query == ""
+      if query == "" && industries_query == "" && skills_query == "" && educations_query == ""
         query = interests_query
       else
         query = query + " AND " + interests_query
@@ -237,7 +282,7 @@ class CareerController < ApplicationController
       end
       demands_query += ")"
 
-      if regions_query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == ""
+      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == ""
         query = demands_query
       else
         query = query + " AND " + demands_query
@@ -254,11 +299,11 @@ class CareerController < ApplicationController
 
       salary_query = "("
 
-      salary_query += " salary_max >= #{salary_max} AND salary_min <= #{salary_min} "
+      salary_query += " salary_max <= #{salary_max} AND salary_min >= #{salary_min} "
 
       salary_query += ")"
 
-      if regions_query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == ""
+      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == ""
         query = salary_query
       else
         query = query + " AND " + salary_query
@@ -279,7 +324,7 @@ class CareerController < ApplicationController
 
       title_query += ")"
 
-      if regions_query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == "" && salary_query == ""
+      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == "" && salary_query == ""
         query = title_query
       else
         query = query + " AND " + title_query
@@ -299,10 +344,19 @@ class CareerController < ApplicationController
       sort_by = params[:sort]
     end
 
-    logger.debug query
+    isSeeMore = false
+    careers = Career.where(query).order(sort_by)
 
-    carees = Career.where(query).order(sort_by).limit(10)
+    if careers.length > 6
+      isSeeMore = true
+    end
 
-    render :json => carees
+    render :json => {
+      :careers => render_to_string('career/partial/_career', :layout => false, :locals => { careers: careers.first(6) }),
+      :list => render_to_string('career/partial/_list', :layout => false, :locals => { careers: careers.first(6) }),
+      :isSeeMore => isSeeMore
+    }
+    # render :partial => "career/partial/career", :locals => { careers: careers}
+    # render :json => careers
   end
 end
