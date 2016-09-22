@@ -17,8 +17,10 @@ class CareerController < ApplicationController
     @list_of_regions = Region.all
     @list_of_industries = Cluster.all
     @list_of_educations = Education.all
+    @list_of_careers = Career.select(:title).map(&:title).uniq
 
     @careers = Career.first(10)
+
   end
 
   def detail

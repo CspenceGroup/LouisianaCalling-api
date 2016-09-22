@@ -82,11 +82,11 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
-  
+
   /**
    * Replace space in string with %20
-   * @param  {string} value 
-   * @return {string}    
+   * @param  {string} value
+   * @return {string}
    */
   function convertToUrl (value) {
     return value.split(' ').join('%20');
@@ -359,6 +359,16 @@ $(document).on('turbolinks:load', function(){
 
       // Redirect to programs landing page
     }
+  });
+
+  // autocomplete for career page.
+  var availableCareers = {};
+  if ($('#availableCareers').html()) {
+    availableCareers = JSON.parse($('#availableCareers').html());
+  }
+
+  $("#careerAutocomplete").autocomplete({
+    source: availableCareers
   });
 
 });

@@ -148,8 +148,10 @@ div
           .careers-result__head-search
             form.careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
-                input.form-control.search-input name="search-input" placeholder="(Search for careers), like 'welding'." type="text" /
+                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="(Search for careers), like 'welding'." type="text" /
                 button.btn-search.btn-submit type="submit"  Search
+              #availableCareers
+                = @list_of_careers.to_json
             .careers-view-by
               #list-view-icon.careers-view-by__list
                 a href="javascript:void(0)"
