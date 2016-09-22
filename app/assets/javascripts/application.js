@@ -461,14 +461,7 @@ $(document).on('turbolinks:load', function(){
     var last_id = parseInt($('.careers-grid-details__item').last().attr('id'));
     getValueCheck(last_id);
   });
-
-
-  //Show button see more when careers have value
-  var btn_see_more = $('.careers-grid-details__item').length;
-  if(btn_see_more > 6) {
-    $('#careers-see-more').show();
-  }
-
+  
   // autocomplete for career page.
   var availableCareers = {};
   if ($('#availableCareers').html()) {
