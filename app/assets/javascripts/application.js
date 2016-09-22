@@ -383,77 +383,100 @@ $(document).on('turbolinks:load', function(){
     getValueCheck();
   });
 
-  getValueCheck();
+  //Requets url when filter follow condition careers
+  var timeout;
+  function getValueCheck(id) {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      var salary_min = $("#slider-range").slider("values")[0],
+        salary_max = $("#slider-range").slider("values")[1],
+        data = {
+          regions: [],
+          industrys: [],
+          skills: [],
+          interests: [],
+          educations: [],
+          hot_jobs: [],
+          salary_max: [],
+          salary_min: [],
+          last_id: [],
+          title: ""
+        }
 
+      $('.square-checkbox:checked').each(function() {
+        data[$(this).attr('name')].push($(this).val());
+      });
 
-  //
-  function getValueCheck() {
-    var salary_min = $("#slider-range").slider("values")[0],
-       salary_max = $("#slider-range").slider("values")[1];
+      data.salary_max.push(salary_max);
+      data.salary_min.push(salary_min);
+      data.last_id.push(id);
+      data.title = $('#careerAutocomplete').val();
 
-    var data = {
-      regions: [],
-      industrys: [],
-      skills: [],
-      interests: [],
-      educations: [],
-      hot_jobs: [],
-      salary_max: [],
-      salary_min: []
-    }
+      if(!data.regions.length) {
+        delete data.regions;
+      } else {
+        data.regions = data.regions.join(',')
+      }
 
-    $('.square-checkbox:checked').each(function() {
-      data[$(this).attr('name')].push($(this).val());
-    });
+      if(!data.industrys.length) {
+        delete data.industrys;
+      } else {
+        data.industrys = data.industrys.join(',')
+      }
 
-    data.salary_max.push(salary_max);
-    data.salary_min.push(salary_min);
+      if(!data.skills.length) {
+        delete data.skills;
+      } else {
+        data.skills = data.skills.join(',')
+      }
 
-    if(!data.regions.length) {
-      delete data.regions;
-    } else {
-      data.regions = data.regions.join(',')
-    }
+      if(!data.interests.length) {
+        delete data.interests;
+      } else {
+        data.interests = data.interests.join(',')
+      }
 
-    if(!data.industrys.length) {
-      delete data.industrys;
-    } else {
-      data.regions = data.industrys.join(',')
-    }
+      if(!data.educations.length) {
+        delete data.educations;
+      } else {
+        data.educations = data.educations.join(',')
+      }
 
-    if(!data.skills.length) {
-      delete data.skills;
-    } else {
-      data.regions = data.skills.join(',')
-    }
+      if(!data.hot_jobs.length) {
+        delete data.hot_jobs;
+      } else {
+        data.hot_jobs = data.hot_jobs.join(',')
+      }
 
-    if(!data.interests.length) {
-      delete data.interests;
-    } else {
-      data.regions = data.interests.join(',')
-    }
+      if(data.title == "") {
+        delete data.title;
+      }
 
-    if(!data.educations.length) {
-      delete data.educations;
-    } else {
-      data.regions = data.educations.join(',')
-    }
+      $.ajax({
+        url : '/career/filter',
+        type : "get",
+        dateType:"text",
+        traditional: true,
+        data : data,
+        success: function(response) {
+          if (id > 0) {
+            $('#careersGrid').append(response.careers);
+            $('#careersList').append(response.list);
+          } else {
+            $('#careersGrid').html(response.careers);
+            $('#careersList').html(response.list);
+          }
 
-    if(!data.hot_jobs.length) {
-      delete data.hot_jobs;
-    } else {
-      data.regions = data.hot_jobs.join(',')
-    }
+          if (response.isSeeMore) {
+            $('#careers-see-more,#careers-see-more-list').show();
+          } else {
+            $('#careers-see-more,#careers-see-more-list').hide();
+          }
+        }
 
-    console.log(data);
+      });
+    }, 800);
 
-    $.ajax({
-      url : '/career/filter&'
-      type : "get",
-      dateType:"text",
-      traditional: true,
-      data : data
-    });
   }
 
   //Click button see more
@@ -461,7 +484,7 @@ $(document).on('turbolinks:load', function(){
     var last_id = parseInt($('.careers-grid-details__item').last().attr('id'));
     getValueCheck(last_id);
   });
-  
+
   // autocomplete for career page.
   var availableCareers = {};
   if ($('#availableCareers').html()) {
