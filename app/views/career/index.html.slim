@@ -288,159 +288,16 @@ div
                 a href="javascript:void(0)"
                   = image_tag 'careers/grid-view.png'
           #grid-view.grid-view-container
-            .careers-grid-details
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-              .careers-grid-details__item
-                .interest-votes
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                  i.icon.i-vote
-                .related-item__photo
-                  = image_tag 'career-details/boilmaker-item.jpg'
-                .related-item__info
-                  span.related-item__name Boilmaker
-                  span.related-item__salary $29,000 - $69,000
-            #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
-              div
-                = image_tag "profile/btn-see-more.png"
+            #careersList.careers-grid-details
+              = render partial: "career/partial/career", locals: { careers: @careers }
+              - if @isSeeMore
+                  #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
+                    div
+                      = image_tag "profile/btn-see-more.png"
           /! careers list view
           #list-view.careers-list-view
-            .careers-list-view__item
-              .jobs-head.careers-list-view__heading
-                .jobs-head__name
-                  p.jobs-head__title BoildMarkers
-                  .jobs-head__icon
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                .careers-list-view__head-salary
-                  .careers-list-view__icon-salary
-                  p.careers-list-view__salary $42,000-$55,000
-              .great-jobs__list-icon.careers-list-view__footer
-                .careers-list-view__footer-details.careers-details-education
-                  .careers-list-view__icon-education
-                  p High school diploma, 2-year training
-                .careers-list-view__footer-details.careers-details-map
-                  .careers-list-view__icon-map
-                  p Lafayette, Alexandria, New Orleans
-            .careers-list-view__item
-              .jobs-head.careers-list-view__heading
-                .jobs-head__name
-                  p.jobs-head__title BoildMarkers
-                  .jobs-head__icon
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                .careers-list-view__head-salary
-                  .careers-list-view__icon-salary
-                  p.careers-list-view__salary $42,000-$55,000
-              .great-jobs__list-icon.careers-list-view__footer
-                .careers-list-view__footer-details.careers-details-education
-                  .careers-list-view__icon-education
-                  p High school diploma, 2-year training
-                .careers-list-view__footer-details.careers-details-map
-                  .careers-list-view__icon-map
-                  p Lafayette, Alexandria, New Orleans
-            .careers-list-view__item
-              .jobs-head.careers-list-view__heading
-                .jobs-head__name
-                  p.jobs-head__title BoildMarkers
-                  .jobs-head__icon
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                .careers-list-view__head-salary
-                  .careers-list-view__icon-salary
-                  p.careers-list-view__salary $42,000-$55,000
-              .great-jobs__list-icon.careers-list-view__footer
-                .careers-list-view__footer-details.careers-details-education
-                  .careers-list-view__icon-education
-                  p High school diploma, 2-year training
-                .careers-list-view__footer-details.careers-details-map
-                  .careers-list-view__icon-map
-                  p Lafayette, Alexandria, New Orleans
-            .careers-list-view__item
-              .jobs-head.careers-list-view__heading
-                .jobs-head__name
-                  p.jobs-head__title BoildMarkers
-                  .jobs-head__icon
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                    = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
-                .careers-list-view__head-salary
-                  .careers-list-view__icon-salary
-                  p.careers-list-view__salary $42,000-$55,000
-              .great-jobs__list-icon.careers-list-view__footer
-                .careers-list-view__footer-details.careers-details-education
-                  .careers-list-view__icon-education
-                  p High school diploma, 2-year training
-                .careers-list-view__footer-details.careers-details-map
-                  .careers-list-view__icon-map
-                  p Lafayette, Alexandria, New Orleans
-            .more-stories__btn.see-more-careers
+            = render partial: "career/partial/list", locals: { careers: @careers }
+            #careers-see-more-list.more-stories__btn.see-more-careers
               div
                 = image_tag "profile/btn-see-more.png"
   = render 'footer/index'
