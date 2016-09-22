@@ -142,7 +142,6 @@
     @include boxSize(rem(254), rem(254));
     border: 1px solid $default;
     margin: rem(20) rem(20) 0 0;
-    height: rem(254);
 
     &:last-child {
       @extend %no-margin-right;
