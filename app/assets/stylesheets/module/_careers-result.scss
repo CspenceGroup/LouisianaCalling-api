@@ -126,30 +126,30 @@
 }
 
 .grid-view-container {
-  margin-top: rem(92);
+  margin-top: rem(8);
 }
 
 .careers-grid-details {
   @extend %no-margin-right;
-  @include boxSize(rem(802), rem(255));
+  @include boxSize(rem(835), rem(255));
   margin-bottom: rem(20);
+  color: $default;
 
   @include e('item') {
     @extend %no-padding;
+    @extend %float-left;
+    @extend %relative;
     @include boxSize(rem(254), rem(254));
     border: 1px solid $default;
-    margin-right: rem(20);
+    margin: rem(20) rem(20) 0 0;
+    height: rem(254);
 
     &:last-child {
       @extend %no-margin-right;
     }
-  }
-}
 
-.careers-grid-item {
-  height: rem(254);
-
-  i {
-    margin-left: rem(5);
+    i {
+      margin-left: rem(5);
+    }
   }
 }
