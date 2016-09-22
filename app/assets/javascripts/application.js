@@ -82,6 +82,15 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
+  
+  /**
+   * Replace space in string with %20
+   * @param  {string} value 
+   * @return {string}    
+   */
+  function convertToUrl (value) {
+    return value.split(' ').join('%20');
+  }
 
   /**
    * Convert ID get from map path into Region Name
@@ -321,5 +330,35 @@ $(document).on('turbolinks:load', function(){
 
   $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+  /**
+   *
+   * Handle for Homepage Searchbar
+   *
+   */
+  $('#searchHomepage').submit(function(e) {
+    e.preventDefault();
+
+    var target = e.target,
+        careerName = convertToUrl(target[0].value),
+        region = convertToUrl(target[1].value),
+        type = target[2].value,
+        url = '?title=' + careerName;
+
+    if (region) {
+
+      url = url + '&region=' + region;
+    }
+
+    if (type && type === 'careers') {
+
+      // Redirect to careers landing page
+      var urlCareers = '/careers' + url;
+      window.location = urlCareers;
+    } else if (type && type === 'programs') {
+
+      // Redirect to programs landing page
+    }
+  });
 
 });
