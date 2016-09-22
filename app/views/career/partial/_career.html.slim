@@ -1,0 +1,12 @@
+- careers.each do |career|
+  .careers-grid-details__item id=career.id
+    .interest-votes
+      - career.demand.to_i.times do
+          i.icon.i-vote
+    .related-item__photo
+      = image_tag career.photo_large
+    .related-item__info
+      span.related-item__name
+        = career.title
+      span.related-item__salary
+        = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"

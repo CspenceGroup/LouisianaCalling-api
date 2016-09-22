@@ -84,15 +84,6 @@ $(document).on('turbolinks:load', function(){
    */
 
   /**
-   * Replace space in string with %20
-   * @param  {string} value
-   * @return {string}
-   */
-  function convertToUrl (value) {
-    return value.split(' ').join('%20');
-  }
-
-  /**
    * Convert ID get from map path into Region Name
    * @param  {string} name ID of map's path
    * @return {string} Region Name after convert
@@ -321,8 +312,8 @@ $(document).on('turbolinks:load', function(){
   $("#slider-range").slider({
     range: true,
     min: 0,
-    max: 90000,
-    values: [0, 90000],
+    max: 900000,
+    values: [0, 900000],
     slide: function( event, ui ) {
       $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
     }
@@ -331,56 +322,15 @@ $(document).on('turbolinks:load', function(){
   $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
-  /**
-   *
-   * Handle for Homepage Searchbar
-   *
-   */
-  $('#searchHomepage').submit(function(e) {
-    e.preventDefault();
-
-    var target = e.target,
-        careerName = convertToUrl(target[0].value),
-        region = convertToUrl(target[1].value),
-        type = target[2].value,
-        url = '?title=' + careerName;
-
-    if (region) {
-
-      url = url + '&region=' + region;
-    }
-
-    if (type && type === 'careers') {
-
-      // Redirect to careers landing page
-      var urlCareers = '/careers' + url;
-      window.location = urlCareers;
-    } else if (type && type === 'programs') {
-
-      // Redirect to programs landing page
-    }
-  });
-
-  // autocomplete for career page.
-  var availableCareers = {};
-  if ($('#availableCareers').html()) {
-    availableCareers = JSON.parse($('#availableCareers').html());
-  }
-
-  $("#careerAutocomplete").autocomplete({
-    source: availableCareers
-  });
-
-
   /*
     Get value checkbox when checked
   */
   $('.square-checkbox').click(function() {
-    getValueCheck();
+    getValueCheck(0);
   });
 
   $("#slider-range").on("slidechange", function() {
-    getValueCheck();
+    getValueCheck(0);
   });
 
   //Requets url when filter follow condition careers
@@ -479,8 +429,17 @@ $(document).on('turbolinks:load', function(){
 
   }
 
+  // Click button Search
+  $('#careerSearch').click(function () {
+    var searchTitle = $('#careerAutocomplete').val();
+
+    if (searchTitle && searchTitle != "") {
+      getValueCheck(0);
+    }
+  });
+
   //Click button see more
-  $('#careers-see-more').click(function() {
+  $('#careers-see-more, #careers-see-more-list').click(function() {
     var last_id = parseInt($('.careers-grid-details__item').last().attr('id'));
     getValueCheck(last_id);
   });
@@ -493,5 +452,47 @@ $(document).on('turbolinks:load', function(){
 
   $("#careerAutocomplete").autocomplete({
     source: availableCareers
+  });
+
+  /**
+   * Replace space in string with %20
+   * @param  {string} value
+   * @return {string}
+   */
+  function convertToUrl (value) {
+    return value.split(' ').join('%20');
+  }
+
+  /**
+
+
+    /**
+   *
+   * Handle for Homepage Searchbar
+   *
+   */
+  $('#searchHomepage').submit(function(e) {
+    e.preventDefault();
+
+    var target = e.target,
+        careerName = convertToUrl(target[0].value),
+        region = convertToUrl(target[1].value),
+        type = target[2].value,
+        url = '?title=' + careerName;
+
+    if (region) {
+
+      url = url + '&region=' + region;
+    }
+
+    if (type && type === 'careers') {
+
+      // Redirect to careers landing page
+      var urlCareers = '/careers' + url;
+      window.location = urlCareers;
+    } else if (type && type === 'programs') {
+
+      // Redirect to programs landing page
+    }
   });
 });

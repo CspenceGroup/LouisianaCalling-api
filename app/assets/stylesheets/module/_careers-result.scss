@@ -127,11 +127,13 @@
 
 .grid-view-container {
   margin-top: rem(8);
+  @extend %overflow-hidden;
 }
 
 .careers-grid-details {
   @extend %no-margin-right;
-  @include boxSize(rem(835), rem(255));
+  width: rem(835);
+  @extend %overflow-hidden;
   margin-bottom: rem(20);
   color: $default;
 
