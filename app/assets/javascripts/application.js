@@ -371,4 +371,88 @@ $(document).on('turbolinks:load', function(){
     source: availableCareers
   });
 
+
+  /*
+    Get value checkbox when checked
+  */
+  $('.square-checkbox').click(function() {
+    getValueCheck();
+  });
+
+  $("#slider-range").on("slidechange", function() {
+    getValueCheck();
+  });
+
+  getValueCheck();
+
+
+  //
+  function getValueCheck() {
+    var salary_min = $("#slider-range").slider("values")[0],
+       salary_max = $("#slider-range").slider("values")[1];
+
+    var data = {
+      regions: [],
+      industrys: [],
+      skills: [],
+      interests: [],
+      educations: [],
+      hot_jobs: [],
+      salary_max: [],
+      salary_min: []
+    }
+
+    $('.square-checkbox:checked').each(function() {
+      data[$(this).attr('name')].push($(this).val());
+    });
+
+    data.salary_max.push(salary_max);
+    data.salary_min.push(salary_min);
+
+    if(!data.regions.length) {
+      delete data.regions;
+    } else {
+      data.regions = data.regions.join(',')
+    }
+
+    if(!data.industrys.length) {
+      delete data.industrys;
+    } else {
+      data.regions = data.industrys.join(',')
+    }
+
+    if(!data.skills.length) {
+      delete data.skills;
+    } else {
+      data.regions = data.skills.join(',')
+    }
+
+    if(!data.interests.length) {
+      delete data.interests;
+    } else {
+      data.regions = data.interests.join(',')
+    }
+
+    if(!data.educations.length) {
+      delete data.educations;
+    } else {
+      data.regions = data.educations.join(',')
+    }
+
+    if(!data.hot_jobs.length) {
+      delete data.hot_jobs;
+    } else {
+      data.regions = data.hot_jobs.join(',')
+    }
+
+    console.log(data);
+
+    $.ajax({
+      url : '/career/filter&'
+      type : "get",
+      dateType:"text",
+      traditional: true,
+      data : data
+    });
+  }
 });
