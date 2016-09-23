@@ -14,6 +14,8 @@ class Profile < ApplicationRecord
   validates :salary, presence: true
   validates :education, presence: true
   validates :video, presence: true
-  validates :image, presence: true
+  validates :image_large, presence: true
+  validates :image_medium, presence: true
+  validates :image_small, presence: true
 
 end

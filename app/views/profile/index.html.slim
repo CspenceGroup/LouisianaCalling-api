@@ -18,11 +18,11 @@
           <p>Watch their stories and see how each found theire calling.</p>
         </div>
         <div class="profile-common__detail">
-          - if @profiles.count == 5
+          - if @count >= 2
               - if @profiles[0]
                 <article class="row profile-common__info">
                   <div class="col-md-6 pull-md-left profile-common__photo">
-                    = image_tag @profiles[0].image
+                    = image_tag @profiles[0].image_medium
                   </div>
                   <div class="col-md-6 pull-md-left profile-common__desc">
                     <h2 class="profile-title profile-name">#{@profiles[1].first_name + ' ' + @profiles[1].last_name}</h2>
@@ -38,7 +38,7 @@
               - if @profiles[1]
                   <article class="row profile-common__info">
                     <div class="col-md-6 pull-md-right profile-common__photo">
-                      = image_tag @profiles[1].image
+                      = image_tag @profiles[1].image_medium
                     </div>
                     <div class="col-md-6 pull-md-left profile-common__desc">
                       <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
@@ -53,24 +53,25 @@
                   </article>
         </div>
       </section>
-      <section class="more-stories">
-        <div class="profile-heading">
-          <h2 class="profile-title more-stories__title">More Stories</h2>
-        </div>
-        <div class="row more-stories__list">
-          <div id="moreStories">
-            = render partial: "profile/partial/profile", locals: { profiles: @profiles.last(3) }
+      - if @count > 2
+        <section class="more-stories">
+          <div class="profile-heading">
+            <h2 class="profile-title more-stories__title">More Stories</h2>
           </div>
-          <div class="more-stories__btn">
-            <div id="profileSeeMore">
-              = image_tag "profile/btn-see-more.png"
+          <div class="row more-stories__list">
+            <div id="moreStories">
+              = render partial: "profile/partial/profile", locals: { profiles: @profiles.drop(2)}
             </div>
+            - if @count > 5
+              <div class="more-stories__btn">
+                <div id="profileSeeMore">
+                  = image_tag "profile/btn-see-more.png"
+                </div>
+              </div>
+              <div id="loading-gif" class="indicator-loading indicator-loading--stories">
+                = image_tag "loading.gif"
           </div>
-          <div id="loading-gif" class="indicator-loading indicator-loading--stories">
-            = image_tag "loading.gif"
-          </div>
-        </div>
-      </section>
+        </section>
     </div>
 
     = render 'footer/index'

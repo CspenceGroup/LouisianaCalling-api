@@ -139,26 +139,26 @@ class AdminController < ApplicationController
               profile[:first_name] = row[0]
               profile[:last_name] = row[1]
               profile[:job_title] = row[2]
-              profile[:region] = row[3]
-              profile[:facebook] = row[4]
-              profile[:twitter] = row[5]
-              profile[:email] = row[6]
-              profile[:description] = row[7]
+              # profile[:education] = row[3]
+              profile[:region] = row[4]
+              profile[:description] = row[5]
 
-              if row[8]
-                profile[:interests] = row[8].split(',').map{ |s| s.strip }
+              if row[6]
+                profile[:interests] = row[6].split(',').map{ |s| s.strip }
               end
 
-              if row[9]
-                profile[:skills] = row[9].split(',').map{ |s| s.strip }
+              if row[7]
+                profile[:skills] = row[7].split(',').map{ |s| s.strip }
               end
 
-              profile[:demand] = row[10]
-              profile[:cluster] = row[11]
-              profile[:salary] = row[12]
-              profile[:education] = row[13]
-              profile[:video] = row[14]
-              profile[:image] = row[15]
+              profile[:demand] = row[8]
+              profile[:cluster] = row[9]
+              profile[:salary] = row[10]
+              profile[:education] = row[11]
+              profile[:video] = row[12]
+              profile[:image_medium] = row[13]
+              profile[:image_small] = row[14]
+              profile[:image_large] = row[15]
 
               if row[16]
                 raise "error"
