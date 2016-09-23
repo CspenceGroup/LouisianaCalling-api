@@ -535,7 +535,7 @@
           </div>
           <div class="related-careers__items row" id="careers-by-interests">
             <% @related_by_skills.each do |career|%>
-              <div class="col-md-4">
+              <div class="col-md-4 related-careers__details">
                 <a href="/careers/<%=career.slug%>">
                   <div class="related-item">
                     <div class="interest-votes">
@@ -547,17 +547,17 @@
                       <%= image_tag career.photo_medium %>
                     </div>
                     <div class="related-item__info">
-                        <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
+                      <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
                       <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
                     </div>
-                  </a>
-                </div>
+                  </div>
+                </a>
               </div>
             <% end %>
           </div>
           <div class="related-careers__items row" id="careers-by-skills">
             <% @related_by_interests.each do |career|%>
-              <div class="col-md-4">
+              <div class="col-md-4 related-careers__details">
                 <div class="related-item">
                   <div class="interest-votes">
                     <% career.demand.to_i.times do %>
