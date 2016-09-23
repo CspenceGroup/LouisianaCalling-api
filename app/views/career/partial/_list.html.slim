@@ -2,8 +2,9 @@
   .careers-list-view__item id=career.id
     .jobs-head.careers-list-view__heading
       .jobs-head__name
-        p.jobs-head__title
-          = career.title
+        a href="/careers/#{career.slug}"
+          p.jobs-head__title
+            = career.title
         .jobs-head__icon
           - career.demand.to_i.times do
             = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
