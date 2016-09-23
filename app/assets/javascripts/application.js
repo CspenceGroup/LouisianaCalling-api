@@ -326,16 +326,26 @@ $(document).on('turbolinks:load', function(){
     Get value checkbox when checked
   */
   $('.square-checkbox').click(function() {
+    $('.careers-grid-details').hide();
+    $('.see-more-careers').hide();
     getValueCheck(0);
   });
 
   $("#slider-range").on("slidechange", function() {
+    $('.careers-grid-details').hide();
+    $('.see-more-careers').hide();
     getValueCheck(0);
   });
 
   //Requets url when filter follow condition careers
   var timeout;
   function getValueCheck(id) {
+    if(id > 0) {
+      $('.indicator-loading-see-more').show();
+      $('.see-more-careers').hide();
+    } else {
+      $('.indicator-loading').show();
+    }
     clearTimeout(timeout);
     timeout = setTimeout(function() {
       var salary_min = $("#slider-range").slider("values")[0],
@@ -410,9 +420,12 @@ $(document).on('turbolinks:load', function(){
         data : data,
         success: function(response) {
           if (id > 0) {
+            $('.indicator-loading-see-more').hide();
             $('#careersGrid').append(response.careers);
             $('#careersList').append(response.list);
           } else {
+            $('.indicator-loading').hide();
+            $('.careers-grid-details').show();
             $('#careersGrid').html(response.careers);
             $('#careersList').html(response.list);
           }
@@ -420,8 +433,12 @@ $(document).on('turbolinks:load', function(){
           if (response.isSeeMore) {
             $('#careers-see-more,#careers-see-more-list').show();
           } else {
-            $('#careers-see-more,#careers-see-more-list').hide();
+            $('#careers-see-more,#careers-see-more-list').hide();;
           }
+        },
+        error: function() {
+          $('.indicator-loading-see-more').hide();
+          $('.indicator-loading').hide();
         }
 
       });
