@@ -69,7 +69,7 @@
                       <% if @list_of_skills[skill] %>
                         <%= image_tag(@list_of_skills[skill], :alt => "icon computer") %>
                       <% else %>
-                        <div><%=skill%></div>
+                        <%= image_tag("", :alt => "fire icon") %>
                       <% end %>
                     <%
                       end
@@ -81,7 +81,7 @@
           </div>
           <div class="great-jobs__list-icon">
             <ul class="row">
-              <li class="col-md-3 list-icon__details list-icon__details--more" title=<% @career.industries.join(', ')%>>
+              <li class="col-md-3 list-icon__details list-icon__details--more" title="<%= @career.industries.join(', ')%>">
                 <%= image_tag("careers/icon-industry.png", :alt => "icon industry", :class => "icon-industry") %>
                 <% @career.industries.each do |industry| %>
                     <p><%= industry %></p>
@@ -97,7 +97,7 @@
                 <%= image_tag("careers/icon-training.png", :alt => "icon training", :class => "icon-training") %>
                 <p><%= @career.education%></p>
               </li>
-              <li class="col-md-3 list-icon__details list-icon__details--more" title=<% @career.regions_high_demand.join(', ')%>>
+              <li class="col-md-3 list-icon__details list-icon__details--more" title="<%= @career.regions_high_demand.join(', ')%>">
                 <%= image_tag("careers/icon-map.png", :alt => "icon map", :class => "icon-map") %>
                 <% @career.regions_high_demand.each do |region| %>
                     <p><%= region %></p>
@@ -114,7 +114,7 @@
       <div class="data-map-hidden" id="careerMapData"><%= @regions.to_json%></div>
       <div class="jobs-container">
         <div class="career-map__title map-title shadow-main-title">
-          <h2 class="main-title career-title career-title--pull-left" id="career-name">Boilmaker</h2>
+          <h2 class="main-title career-title career-title--pull-left" id="career-name"><%= @career.title%></h2>
           <h2 class="main-title career-title career-title--pull-right">Statistics By Region</h2>
         </div>
         <div class="top-jobs__map" id="career-map">
