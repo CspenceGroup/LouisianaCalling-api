@@ -69,10 +69,8 @@ class AdminController < ApplicationController
               video = Video.new
               video[:title] = row[0].strip
               video[:url] = row[1].strip
-              video[:main_title] = row[2].strip
-              video[:description] = row[3].strip
 
-              if row[4]
+              if row[3]
                 raise "error"
               end
 
