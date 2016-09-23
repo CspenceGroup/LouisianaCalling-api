@@ -37,7 +37,7 @@
         <div class="great-jobs__content">
           <div class="jobs-head">
             <div class="jobs-head__name">
-              <p class="jobs-head__title"><%= @career.title%></p>
+              <p class="jobs-head__title jobs-head__title-great-jobs" title="<%= @career.title%>" ><%= @career.title%></p>
               <div class="jobs-head__icon">
                 <% @career.demand.to_i.times do |i| %>
                     <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>

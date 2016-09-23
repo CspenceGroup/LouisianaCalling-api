@@ -98,3 +98,8 @@ form {
   @extend %absolute;
   @include boxSize(auto, rem(161));
 }
+
+.no-result-found {
+  font-size: rem(40);
+  margin-top: rem(50);
+}
