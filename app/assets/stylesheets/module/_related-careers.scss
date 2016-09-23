@@ -31,9 +31,11 @@
   @include e('content') {
     width: 74%;
     @extend %float-left;
+    margin-bottom: rem(45);
   }
 
   @include e('details') {
+    margin-bottom: rem(20);
     a {
       @include boxSize(100%, 100%);
       color: $default;
