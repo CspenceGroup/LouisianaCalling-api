@@ -77,7 +77,7 @@
           </div>
           <div class="great-jobs__list-icon">
             <ul class="row">
-              <li class="col-md-3 list-icon__details">
+              <li class="col-md-3 list-icon__details list-icon__details--more" title=<% @career.industries.join(', ')%>>
                 <%= image_tag("careers/icon-industry.png", :alt => "icon industry", :class => "icon-industry") %>
                 <% @career.industries.each do |industry| %>
                     <p><%= industry %></p>
@@ -93,7 +93,7 @@
                 <%= image_tag("careers/icon-training.png", :alt => "icon training", :class => "icon-training") %>
                 <p><%= @career.education%></p>
               </li>
-              <li class="col-md-3 list-icon__details">
+              <li class="col-md-3 list-icon__details list-icon__details--more" title=<% @career.regions_high_demand.join(', ')%>>
                 <%= image_tag("careers/icon-map.png", :alt => "icon map", :class => "icon-map") %>
                 <% @career.regions_high_demand.each do |region| %>
                     <p><%= region %></p>

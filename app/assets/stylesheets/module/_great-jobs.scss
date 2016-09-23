@@ -104,9 +104,9 @@
 }
 
 .list-icon__details {
-  margin: rem(40) rem(100) 0 0;
+  margin: rem(40) rem(47) 0 0;
   @extend %no-padding;
-  width: rem(179);
+  width: rem(230);
   @extend %overflow-hidden;
 
   // &:first-child {
@@ -149,6 +149,27 @@
 
   .icon-map {
     @include boxSize(rem(25), rem(22));
+  }
+
+  @include m('more') {
+    @extend %relative;
+    max-height: rem(55);
+
+    &:before {
+      content: '...';
+      @extend %absolute;
+      @extend %right-0;
+      top: rem(33);
+    }
+    
+    &:after {
+      content: '';
+      @extend %absolute;
+      @extend %right-0;
+      @include boxSize(rem(22), rem(22));
+      margin-top: rem(-15);
+      @include background-image('careers/great-job-bg.jpg');
+    }
   }
 }
 

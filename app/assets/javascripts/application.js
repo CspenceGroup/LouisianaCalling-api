@@ -308,19 +308,17 @@ $(document).on('turbolinks:load', function(){
     $('#grid-view').css('display', 'block');
   });
 
-
   $("#slider-range").slider({
     range: true,
-    min: 0,
-    max: 900000,
-    values: [0, 900000],
+    min: 15000,
+    max: 187000,
+    values: [30000, 80000],
     slide: function( event, ui ) {
-      $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      $("#salary").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
   });
 
-  $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  $("#salary").val( "$" + $("#slider-range").slider("values", 0).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + $("#slider-range").slider("values", 1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
 
   /*
     Get value checkbox when checked
@@ -442,7 +440,7 @@ $(document).on('turbolinks:load', function(){
         }
 
       });
-    }, 800);
+    }, 500);
 
   }
 
