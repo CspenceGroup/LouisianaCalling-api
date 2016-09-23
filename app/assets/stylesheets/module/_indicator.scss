@@ -1,0 +1,16 @@
+// Style indicator loading
+.indicator-loading {
+  @include boxSize(rem(50), rem(50));
+  display: none;
+  margin: rem(100) auto 0 auto;
+
+  @include m('stories') {
+    @extend %no-margin-top;
+  }
+}
+
+.indicator-loading-see-more {
+  @include boxSize(rem(50), rem(50));
+  display: none;
+  margin: rem(105) auto rem(100) auto;
+}
