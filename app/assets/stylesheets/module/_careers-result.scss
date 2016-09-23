@@ -111,17 +111,26 @@
 
 .careers-view-by {
   @extend %float-right;
-  margin-top: rem(10);
 
   @include e('list') {
-    @include boxSize(rem(35), rem(35));
+    @include boxSize(rem(50), rem(50));
     @extend %float-left;
   }
 
   @include e('grid') {
-    @include boxSize(rem(35), rem(35));
+    @include boxSize(rem(50), rem(50));
     @extend %float-right;
     margin-left: rem(22);
+  }
+
+  @include e('list-icon') {
+    @include boxSize(rem(35), rem(35));
+    margin: 8px auto 0 auto;
+  }
+
+  @include e('grid-icon') {
+    @include boxSize(rem(35), rem(35));
+    margin: 8px auto 0 auto;
   }
 }
 
@@ -180,3 +189,6 @@
   display: none;
 }
 
+.active-tab {
+  background-color: $range-bg;
+}

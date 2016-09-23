@@ -101,5 +101,15 @@ form {
 
 .no-result-found {
   font-size: rem(40);
-  margin-top: rem(50);
+  margin-top: rem(78);
+}
+
+.no-result-list {
+  margin-top: rem(0) !important;
+}
+
+// Style drop down auto complete
+.ui-autocomplete {
+  @include boxSize(rem(588), rem(250));
+  @extend %overflow-y-scroll;
 }

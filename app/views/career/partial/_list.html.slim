@@ -4,7 +4,7 @@
       .jobs-head.careers-list-view__heading
         .jobs-head__name
           a href="/careers/#{career.slug}"
-            p.jobs-head__title
+            p.jobs-head__title title=career.title
               = career.title
           .jobs-head__icon
             - career.demand.to_i.times do
@@ -19,4 +19,4 @@
           p
             = career.education
 - else
-  p.no-result-found No results found.
+  p.no-result-found.no-result-list No results found.
