@@ -219,6 +219,11 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
+  // set home page carousel move
+  $('#carousel-banner, #carousel-great-jobs').carousel({
+      interval: 5000
+    });
+
   //Remove video when modal hide
   $('#videoModal').on('hide.bs.modal', function (event) {
     videoModal = $(event.target);

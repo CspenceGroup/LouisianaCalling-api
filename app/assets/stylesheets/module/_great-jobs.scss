@@ -35,6 +35,11 @@
   @extend %overflow-hidden;
   height: rem(71);
 
+  a {
+    @include boxSize(100%, 100%);
+    color: $default;
+  }
+
   @include e('name') {
     @extend %float-left;
     padding-top: rem(25);

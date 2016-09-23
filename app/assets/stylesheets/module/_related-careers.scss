@@ -31,6 +31,15 @@
   @include e('content') {
     width: 74%;
     @extend %float-left;
+    margin-bottom: rem(45);
+  }
+
+  @include e('details') {
+    margin-bottom: rem(20);
+    a {
+      @include boxSize(100%, 100%);
+      color: $default;
+    }
   }
 }
 
@@ -40,7 +49,7 @@
 }
 
 .sort-item {
-  margin-right: rem(25);
+  margin-right: rem(10);
   @extend %acumin-pro-cond;
   @extend %float-left;
 
@@ -51,7 +60,7 @@
   @include e('title') {
     font-size: rem(16.7);
     width: rem(70);
-    margin: rem(15) rem(15) 0 0;
+    margin-top: rem(15);
     @extend %text-capitalize;
     @extend %float-left;
     @extend %truncate;

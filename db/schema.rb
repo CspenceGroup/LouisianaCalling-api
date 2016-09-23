@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923040717) do
+ActiveRecord::Schema.define(version: 20160923093328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20160923040717) do
     t.text     "industries"
     t.text     "interests"
     t.text     "skills"
-    t.float    "salary_min"
-    t.float    "salary_max"
+    t.integer  "salary_min"
+    t.integer  "salary_max"
     t.float    "demand"
     t.text     "regions_high_demand"
   end
