@@ -20,7 +20,27 @@
       font-size: rem(16.7);
       line-height: rem(20);
       width: rem(470);
+      max-height: rem(100); 
+      margin-right: rem(-16);
+      padding-right: rem(16);
       @extend %acumin-pro-cond;
+      @extend %overflow-hidden;
+      @extend %relative;
+
+      &:before {
+        content: '...';
+        margin-right: rem(14);
+        @extend %absolute;
+        @extend %right-bottom-0;
+      }
+      &:after {
+        content: '';
+        background: $white;
+        margin: rem(0.2) rem(14) 0 0;
+        @extend %right-0;
+        @extend %absolute;
+        @include boxSize(rem(12), rem(110));
+      }
     }
   }
 

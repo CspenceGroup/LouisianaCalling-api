@@ -109,6 +109,17 @@
   width: rem(179);
   @extend %overflow-hidden;
 
+  // &:first-child {
+  //   max-height: rem(37);
+  //   overflow: hidden;
+    
+  //   p:nth-child(2) {
+  //     &:before {
+  //       content: '...';
+  //     }
+  //   }
+  // }
+
   &:last-child {
     @extend %no-margin-right;
     width: rem(155);

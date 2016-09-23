@@ -152,9 +152,25 @@
     i {
       margin-left: rem(5);
     }
+
+    .related-item__info {
+      padding-top: rem(8);
+    }
+
+    .related-item__name {
+      width: rem(225);
+      line-height: rem(20);
+    }
+
+    .related-item__salary {
+      width: auto;
+      float: none;
+      @extend %no-margin-top;
+    }
   }
 }
 
 .auto-fill-data {
   display: none;
 }
+
