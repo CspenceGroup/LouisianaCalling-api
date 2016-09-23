@@ -1,13 +1,16 @@
-- careers.each do |career|
-  .careers-grid-details__item id=career.id
-    a href="/careers/#{career.slug}"
-      .interest-votes
-        - career.demand.to_i.times do
-            i.icon.i-vote
-      .related-item__photo
-        = image_tag career.photo_medium
-      .related-item__info
-        span.related-item__name title=career.title
-          = career.title
-        span.related-item__salary
-          = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+- if careers.length > 0
+  - careers.each do |career|
+    .careers-grid-details__item id=career.id
+      a href="/careers/#{career.slug}"
+        .interest-votes
+          - career.demand.to_i.times do
+              i.icon.i-vote
+        .related-item__photo
+          = image_tag career.photo_medium
+        .related-item__info
+          span.related-item__name title=career.title
+            = career.title
+          span.related-item__salary
+            = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+- else
+  p.no-result-found No result found.
