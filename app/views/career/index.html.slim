@@ -154,11 +154,13 @@ div
                 = @list_of_careers.to_json
             .careers-view-by
               #list-view-icon.careers-view-by__list
-                a href="javascript:void(0)"
-                  = image_tag 'careers/list-view.png'
-              #grid-view-icon.careers-view-by__grid
-                a href="javascript:void(0)"
-                  = image_tag 'careers/grid-view.png'
+                .careers-view-by__list-icon
+                  a href="javascript:void(0)"
+                    = image_tag 'careers/list-view.png'
+              #grid-view-icon.careers-view-by__grid.active-tab
+                .careers-view-by__grid-icon
+                  a href="javascript:void(0)"
+                    = image_tag 'careers/grid-view.png'
           #grid-view.grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: @careers }

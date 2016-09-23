@@ -23,23 +23,23 @@ class CareerController < ApplicationController
     salary_max = 80000;
 
     if !params["title"] && !params["region"]
-      @careers = Career.first(6)
+      @careers = Career.first(9)
       @isSeeMore = false
 
-      @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(6)
+      @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(9)
       @isSeeMore = false
 
-      if Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").count > 6
+      if Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").count > 9
         @isSeeMore = true
       end
     else
       @title = params["title"]
       @region = params["region"]
 
-      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(6)
+      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
       @isSeeMore = false
 
-      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 6
+      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
         @isSeeMore = true
       end
     end
@@ -352,13 +352,13 @@ class CareerController < ApplicationController
     isSeeMore = false
     careers = Career.where(query).order(sort_by)
 
-    if careers.length > 6
+    if careers.length > 9
       isSeeMore = true
     end
 
     render :json => {
-      :careers => render_to_string('career/partial/_career', :layout => false, :locals => { careers: careers.first(6) }),
-      :list => render_to_string('career/partial/_list', :layout => false, :locals => { careers: careers.first(6) }),
+      :careers => render_to_string('career/partial/_career', :layout => false, :locals => { careers: careers.first(9) }),
+      :list => render_to_string('career/partial/_list', :layout => false, :locals => { careers: careers.first(9) }),
       :isSeeMore => isSeeMore
     }
     # render :partial => "career/partial/career", :locals => { careers: careers}

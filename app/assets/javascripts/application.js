@@ -303,6 +303,8 @@ $(document).on('turbolinks:load', function(){
 
     // Active list view
     $('#list-view').css('display', 'block');
+    $('.careers-view-by__list').addClass('active-tab');
+    $('.careers-view-by__grid').removeClass('active-tab');
     $('#grid-view').css('display', 'none');
   });
 
@@ -311,6 +313,8 @@ $(document).on('turbolinks:load', function(){
     // Active grid view
     $('#list-view').css('display', 'none');
     $('#grid-view').css('display', 'block');
+    $('.careers-view-by__grid').addClass('active-tab');
+    $('.careers-view-by__list').removeClass('active-tab');
   });
 
   $("#slider-range").slider({

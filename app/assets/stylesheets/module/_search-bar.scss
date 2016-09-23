@@ -103,3 +103,9 @@ form {
   font-size: rem(40);
   margin-top: rem(50);
 }
+
+// Style drop down auto complete
+.ui-autocomplete {
+  @include boxSize(rem(588), rem(250));
+  @extend %overflow-y-scroll;
+}
