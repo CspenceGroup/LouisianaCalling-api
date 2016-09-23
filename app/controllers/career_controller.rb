@@ -19,26 +19,27 @@ class CareerController < ApplicationController
     @list_of_educations = Education.all
     @list_of_careers = Career.select(:title).map(&:title).uniq
 
-    logger.debug params["title"]
-    logger.debug params["region"]
+    salary_min = 30000;
+    salary_max = 80000;
 
     if !params["title"] && !params["region"]
       @careers = Career.first(6)
       @isSeeMore = false
 
-      @careers = Career.first(6)
+      @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(6)
       @isSeeMore = false
 
-      if Career.count > 6
+      if Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").count > 6
         @isSeeMore = true
       end
     else
       @title = params["title"]
       @region = params["region"]
-      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").first(6)
+
+      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(6)
       @isSeeMore = false
 
-      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%'").count > 6
+      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 6
         @isSeeMore = true
       end
     end
@@ -61,6 +62,10 @@ class CareerController < ApplicationController
       skills.each do |skill|
         @list_of_skills[skill[:name]] = skill[:url]
       end
+
+
+      logger.debug '@list_of_skills'
+      logger.debug @list_of_skills
 
       @regions = Hash.new
       @careers.map do |career|

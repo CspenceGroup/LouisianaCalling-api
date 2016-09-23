@@ -149,6 +149,12 @@
       @extend %no-margin-right;
     }
 
+    a {
+      @include boxSize(100%, 100%);
+      @extend %block;
+      color: $default;
+    }
+
     i {
       margin-left: rem(5);
     }
