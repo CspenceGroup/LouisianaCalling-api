@@ -2,7 +2,7 @@
   .careers-list-view__item id=career.id
     .jobs-head.careers-list-view__heading
       .jobs-head__name
-        p.jobs-head__title
+        p.jobs-head__title title=career.title
           = career.title
         .jobs-head__icon
           - career.demand.to_i.times do

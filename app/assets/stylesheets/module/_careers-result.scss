@@ -27,7 +27,7 @@
   @include e('item') {
     border: rem(2) solid $filter-careers-heading;
     background-color: $white;
-    height: rem(160);
+    @include boxSize(rem(802), rem(160));
     color: $filter-careers-heading;
     padding: 0 rem(13);
     margin-bottom: rem(21);

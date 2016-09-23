@@ -45,7 +45,35 @@
     @extend %brandon-grotesque;
     @extend %text-uppercase;
     @extend %float-left;
-    padding-right: rem(11);
+    padding-right: rem(16);
+
+    @extend %relative;
+    max-width: rem(440);
+    height: rem(23);
+    @extend %overflow-hidden;
+
+    &:before {
+      content: '...';
+      @extend %absolute;
+      right: rem(-3);
+      @extend %top-0;
+      width: rem(18);
+    }
+    
+    &:after {
+      content: '';
+      @extend %absolute;
+      @extend %right-0;
+      @include boxSize(rem(18), rem(18));
+      margin: rem(17) rem(-2) 0 0;
+      background-color: $white;
+    }
+  }
+  @include e('title-great-jobs') {
+    max-width: rem(320);
+    &:after {
+      @include background-image('careers/great-job-bg.jpg');
+    }
   }
 
   @include e('icon') {
