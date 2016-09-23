@@ -220,7 +220,7 @@ $(document).on('turbolinks:load', function(){
   });
 
   // set home page carousel move
-  $('#carousel-banner').carousel({
+  $('#carousel-banner, #carousel-great-jobs').carousel({
       interval: 5000
     });
 
