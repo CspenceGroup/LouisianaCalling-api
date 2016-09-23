@@ -50,9 +50,11 @@
 
   @include e('title') {
     font-size: rem(16.7);
+    width: rem(70);
     margin: rem(15) rem(15) 0 0;
     @extend %text-capitalize;
     @extend %float-left;
+    @extend %truncate;
   }
 
   @include e('icon') {
@@ -76,6 +78,7 @@
   @include boxSize(rem(250), rem(250));
 
   @include e('photo') {
+    @extend %overflow-hidden;
     @include boxSize(100%, rem(197));
   }
 
@@ -85,6 +88,8 @@
 
   @include e('name') {
     font-size: rem(18.2);
+    width: rem(115);
+    @extend %truncate;
     @extend %brandon-grotesque;
     @extend %text-uppercase;
     @extend %float-left;
@@ -93,6 +98,8 @@
   @include e('salary') {
     font-size: rem(15.6);
     margin-top: rem(3);
+    width: rem(97);
+    @extend %truncate;
     @extend %acumin-pro-cond;
     @extend %float-right;
   }

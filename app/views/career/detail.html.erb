@@ -497,7 +497,7 @@
                 <div id="interest-icons">
                   <% @career.interests.each do |interest| %>
                     <div class="sort-item">
-                      <span class="sort-item__title"><%= interest%></span>
+                      <span class="sort-item__title" title="<%= interest %>"><%= interest%></span>
                       <div class="sort-item__icon">
                         <% if @list_of_interests[interest] %>
                           <%= image_tag(@list_of_interests[interest], :alt => "interest icon") %>
@@ -513,7 +513,7 @@
                 <div id="skill-icons">
                   <% @career.skills.each do |skill| %>
                     <div class="sort-item">
-                      <span class="sort-item__title"><%= skill%></span>
+                      <span class="sort-item__title" title="<%= skill %>"><%= skill%></span>
                       <div class="sort-item__icon">
                         <%= image_tag(@list_of_skills[skill], :alt => "interest icon")%>
                       </div>
@@ -538,8 +538,8 @@
                     <%= image_tag career.photo_large %>
                   </div>
                   <div class="related-item__info">
-                    <span class="related-item__name"><%= career.title %></span>
-                    <span class="related-item__salary">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
+                    <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
+                    <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
                   </div>
                 </div>
               </div>
@@ -558,8 +558,8 @@
                     <%= image_tag career.photo_large %>
                   </div>
                   <div class="related-item__info">
-                    <span class="related-item__name"><%= career.title %></span>
-                    <span class="related-item__salary">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
+                    <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
+                    <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
                   </div>
                 </div>
               </div>
