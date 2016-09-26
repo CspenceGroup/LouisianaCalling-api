@@ -2,3 +2,56 @@
   height: rem(390);
   @extend %overflow-hidden;
 }
+
+.edu-detail-desc {
+  width: 64.75%;
+}
+
+.edu-address-container {
+  width: 35.25%;
+  font-size: rem(16.67);
+  padding: rem(67) 0 0 0;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include background-image('education-details/edu-map-bg.jpg');
+}
+
+.edu-aside-center {
+  width: rem(346);
+  @extend %margin-auto;
+}
+
+.institution-detail {
+  width: rem(346);
+  @extend %overflow-hidden;
+
+  span {
+    width: rem(135);
+    @extend %float-left;
+  }
+
+  p {
+    width: rem(200);
+    margin-bottom: rem(5);
+    color: $profile-header;
+    @extend %float-left;
+  }
+
+  &:first-child {
+    margin-top: rem(30);
+  }
+}
+
+.aside-map {
+  border: solid rem(1) $default;
+  height: rem(295);
+}
+
+.edu-address {
+  .call-us {
+    font-size: rem(20.7);
+    margin-top: rem(27);
+    @extend %clear-both;
+    @extend %i-owan-old-style;
+  }
+}
