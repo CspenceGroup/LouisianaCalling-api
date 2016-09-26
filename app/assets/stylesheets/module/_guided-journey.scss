@@ -67,3 +67,17 @@
     margin-right: rem(32);
   }
 }
+
+.edu-guided-journey {
+  margin-bottom: rem(-29);
+  padding-top: rem(138);
+  @include boxSize(auto, rem(380));
+  @extend %text-center;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include background-image('education-details/want-to-talk-large-bg.jpg');
+}
+
+.edu-guided-link {
+  margin-right: rem(60);
+}
