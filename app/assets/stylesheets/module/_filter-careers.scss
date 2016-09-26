@@ -1,6 +1,5 @@
 .careers-lists {
-  @include background-image('careers/careers-bg.png');
-  @extend %background-cover;
+  @include background-image('filter-bg.png');
   @extend %overflow-hidden;
 }
 
