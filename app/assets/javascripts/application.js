@@ -22,6 +22,12 @@
 
 $(document).on('turbolinks:load', function(){
 
+  
+
+  /****************************************
+   *             HOMEPAGE                 *
+   ****************************************/
+
   /**
   * Handle Data
   */
@@ -82,6 +88,15 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
+  
+  /**
+   * Replace space in string with %20
+   * @param  {string} value
+   * @return {string}
+   */
+  function convertToUrl (value) {
+    return value.split(' ').join('%20');
+  }
 
   /**
    * Convert ID get from map path into Region Name
@@ -232,6 +247,41 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  /**
+   *
+   * Handle for Homepage Searchbar
+   *
+   */
+  $('#searchHomepage').submit(function(e) {
+    e.preventDefault();
+
+    var target = e.target,
+        careerName = convertToUrl(target[0].value),
+        region = convertToUrl(target[1].value),
+        type = target[2].value,
+        url = '?title=' + careerName;
+
+    if (region) {
+
+      url = url + '&region=' + region;
+    }
+
+    if (type && type === 'careers') {
+
+      // Redirect to careers landing page
+      var urlCareers = '/careers' + url;
+      window.location = urlCareers;
+    } else if (type && type === 'programs') {
+
+      // Redirect to programs landing page
+    }
+  });
+
+
+
+  /****************************************
+   *             PROFILE                  *
+   ****************************************/
 
   // # Profile page
   // Click to seemore button
@@ -262,6 +312,11 @@ $(document).on('turbolinks:load', function(){
       }
     });
   });
+
+
+  /****************************************
+   *            CAREER DETAILS            *
+   ****************************************/
 
   /**
    * Related Careers sorting tabs
@@ -295,6 +350,12 @@ $(document).on('turbolinks:load', function(){
     $('#sortInterests').removeClass('btn-sort-active');
     $('#sortSkills').addClass('btn-sort-active');
   });
+
+
+
+  /****************************************
+   *            CAREER LANDING            *
+   ****************************************/
 
   /**
     * Careers view by tab
@@ -478,45 +539,5 @@ $(document).on('turbolinks:load', function(){
     source: availableCareers
   });
 
-  /**
-   * Replace space in string with %20
-   * @param  {string} value
-   * @return {string}
-   */
-  function convertToUrl (value) {
-    return value.split(' ').join('%20');
-  }
-
-  /**
-
-
-    /**
-   *
-   * Handle for Homepage Searchbar
-   *
-   */
-  $('#searchHomepage').submit(function(e) {
-    e.preventDefault();
-
-    var target = e.target,
-        careerName = convertToUrl(target[0].value),
-        region = convertToUrl(target[1].value),
-        type = target[2].value,
-        url = '?title=' + careerName;
-
-    if (region) {
-
-      url = url + '&region=' + region;
-    }
-
-    if (type && type === 'careers') {
-
-      // Redirect to careers landing page
-      var urlCareers = '/careers' + url;
-      window.location = urlCareers;
-    } else if (type && type === 'programs') {
-
-      // Redirect to programs landing page
-    }
-  });
+  
 });
