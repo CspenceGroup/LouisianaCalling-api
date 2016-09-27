@@ -24,15 +24,17 @@
                   <div class="col-md-6 pull-md-left profile-common__photo">
                     = image_tag @profiles[0].image_medium
                   </div>
-                  <div class="col-md-6 pull-md-left profile-common__desc">
-                    <h2 class="profile-title profile-name">#{@profiles[1].first_name + ' ' + @profiles[1].last_name}</h2>
-                    <h3>#{@profiles[1].job_title}</h3>
-                    <p>#{@profiles[1].description}</p>
-                    <!-- <div class="btn-full-story">
-                      <a href="javascript:void(0)" class="btn-full-story--link">
-                        = image_tag "profile/btn-full-story.png"
-                      </a>
-                    </div> -->
+                  <div class="col-md-6 profile-common__desc">
+                    <div class="profile-content">
+                      <h2 class="profile-title profile-name">#{@profiles[1].first_name + ' ' + @profiles[1].last_name}</h2>
+                      <h3>#{@profiles[1].job_title}</h3>
+                      <p>#{@profiles[1].description}</p>
+                      <!-- <div class="btn-full-story">
+                        <a href="javascript:void(0)" class="btn-full-story--link">
+                          = image_tag "profile/btn-full-story.png"
+                        </a>
+                      </div> -->
+                    </div>
                   </div>
                 </article>
               - if @profiles[1]
@@ -40,15 +42,17 @@
                     <div class="col-md-6 pull-md-right profile-common__photo">
                       = image_tag @profiles[1].image_medium
                     </div>
-                    <div class="col-md-6 pull-md-left profile-common__desc">
-                      <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
-                      <h3>#{@profiles[0].job_title}</h3>
-                      <p>#{@profiles[0].description}</p>
-                      <!-- <div class="btn-full-story">
-                        <a href="javascript:void(0)">
-                          = image_tag "profile/btn-full-story.png"
-                        </a>
-                      </div> -->
+                    <div class="col-md-6 profile-common__desc">
+                      <div class="profile-content">
+                        <h2 class="profile-title profile-name">#{@profiles[0].first_name + ' ' + @profiles[0].last_name}</h2>
+                        <h3>#{@profiles[0].job_title}</h3>
+                        <p>#{@profiles[0].description}</p>
+                        <!-- <div class="btn-full-story">
+                          <a href="javascript:void(0)">
+                            = image_tag "profile/btn-full-story.png"
+                          </a>
+                        </div> -->
+                      </div>
                     </div>
                   </article>
         </div>
