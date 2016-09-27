@@ -22,7 +22,7 @@
   }
 
   @include e('container') {
-    height: rem(400);
+    height: rem(450);
     @extend %background-position-center;
     @extend %background-cover;
     padding-top: rem(82);

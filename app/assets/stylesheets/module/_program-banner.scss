@@ -2,7 +2,7 @@
   @include e('container') {
     @include background-image('program-landing/program-landing-banner.jpg');
     padding-top: rem(98);
-    height: rem(400);
+    height: rem(450);
   }
 
   @include e('introduce') {

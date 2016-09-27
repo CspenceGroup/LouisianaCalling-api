@@ -2,7 +2,7 @@
 .hero-slider {
   @extend %clear-both;
   @extend %relative;
-  height: rem(410);
+  height: rem(460);
 }
 
 .carousel-control--beside.left,
@@ -40,7 +40,7 @@
 }
 
 .carousel-content {
-  height: rem(410);
+  height: rem(460);
 }
 
 .carousel-control--beside .icon-prev {
@@ -84,6 +84,7 @@
 }
 
 .modal-video {
+  z-index: 10050;
   background-color: $modal-video-bg;
 
   @include e('content') {
