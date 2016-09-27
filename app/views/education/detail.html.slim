@@ -1,1 +1,107 @@
-<div>detail</div>
+<div class="container-fluid">
+  = render "navigation/index"
+  <div class="main-content">
+    <section class="career-banner edu-detail-banner">
+      <h2 class="career-banner__title hero-banner__title">Auto CAD for Electrical</h2>
+      <div class="career-banner__bg">
+        = image_tag 'education-details/education-detail-banner.jpg'
+      </div>
+    </section>
+    <section class="great-jobs great-jobs-careers-details edu-program-info">
+      <div class="great-jobs__container">
+        <div class="great-jobs__content">
+          <div class="jobs-head">
+            <div class="jobs-head__name">
+              <p class="jobs-head__title jobs-head__title-great-jobs" title="Autocad for Electrical" >autocad for electrical</p>
+            </div>
+            <div class="jobs-head__content">
+              <div class="edu-scholarship">
+                = image_tag "education-details/scholarship-available.jpg"
+              </div>
+              <div class="edu-cost">
+                <div class="icon i-edu-salary">
+                  = image_tag "education-details/dollar-sign.png"
+                </div>
+                <span class="edu-salary-range">$7,000 - $20,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="great-jobs__list-icon">
+            <ul class="row edu-detail-row">
+              <li class="col-md-5 edu-detail-item list-icon__details--more" title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication">
+                <div class="icon i-industry">
+                  = image_tag "careers/icon-industry.png"
+                </div>
+                <div class="edu-industry">
+                  <p>Agricultura, Food, and Natural Resources</p>
+                  <p>Audio/Video Technology and Communication</p>
+                </div>
+              </li>
+              <li class="col-md-2 edu-detail-item">
+                <div class="icon i-calendar">
+                  = image_tag "education-details/icon-calendar.png"
+                </div>
+                <p>6 Months</p>
+              </li>
+              <li class="col-md-2 edu-detail-item">
+                <div class="icon i-clock">
+                  = image_tag "education-details/icon-clock.png"
+                </div>
+                <p>21 - 30 Hours</p>
+              </li>
+              <li class="col-md-3 edu-detail-item" title="">
+                <div class="icon i-day">
+                  = image_tag "education-details/icon-day-night.png"
+                </div>
+                <p>Night Time Only</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="career-desc">
+      <div class="career-desc__main-container edu-detail-desc">
+        <section class="career-desc__about">
+          <h2 class="main-title">Training details</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est voluptate quasi fuga nisi, beatae facilis odio deserunt accusamus quidem nemo, autem iste praesentium optio dolor quis ex ducimus provident pariatur.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita excepturi quis laboriosam distinctio adipisci pariatur dolore qui voluptas nobis, ex. Eum necessitatibus maiores, culpa iste! Nihil consectetur, distinctio id cupiditate!</p>
+        </section>
+        <section class="career-desc__what-to-do">
+          <h2 class="main-title">Lorem Ipsum</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis vitae modi minima quaerat neque perferendis, itaque at dolorum consectetur. Delectus, esse voluptate ipsam ut dignissimos assumenda sapiente placeat quis provident?</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis vitae modi minima quaerat neque perferendis, itaque at dolorum consectetur. Delectus, esse voluptate ipsam ut dignissimos assumenda sapiente placeat quis provident?</p>
+        </section>
+        <!-- <section class="career-desc__social-networks">
+          <i class="icon i-social i-facebook" aria-hidden="true"></i>
+          <i class="icon i-social i-twitter" aria-hidden="true"></i>
+          <a href="mailto:"><i class="icon i-social i-envelope"></i></a>
+          <a href="javascript:void(0);"><i class="icon i-social i-print"></i></a>
+        </section> -->
+      </div>
+      <div class="career-desc__news-container edu-address-container">
+        <section class="career-desc__feature-news">
+          <div class="aside-map edu-aside-center">
+            = image_tag "education-details/aside-map.jpg"
+          </div>
+          <div class="edu-address edu-aside-center">
+            <div class="institution-detail">
+              <span>Institution name</span>
+              <p>Baton Rough Community Collect</p>
+            </div>
+            <div class="institution-detail">
+              <span>Address</span>
+              <p>1234 Hillcrest Ave, Baton Rough, 10000</p>
+            </div>
+            <p class="call-us">Call us at 1.888.888.8888</p>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="want-to-talk edu-guided-journey">
+      <h2 class="main-title want-to-talk__title">Want to talk?</h2>
+      <span class="journey-link want-to-talk__link edu-guided-link"></span>
+    </section>
+
+  = render "footer/index"
+</div>

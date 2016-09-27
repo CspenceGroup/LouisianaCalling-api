@@ -1,0 +1,150 @@
+.edu-detail-banner {
+  height: rem(377);
+  @extend %overflow-hidden;
+}
+
+.edu-detail-desc {
+  width: 64.75%;
+}
+
+.edu-address-container {
+  width: 35.25%;
+  font-size: rem(16.67);
+  padding: rem(67) 0 0 0;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include background-image('education-details/edu-map-bg.jpg');
+}
+
+.edu-aside-center {
+  width: rem(346);
+  @extend %margin-auto;
+}
+
+.institution-detail {
+  width: rem(346);
+  @extend %overflow-hidden;
+
+  span {
+    width: rem(135);
+    @extend %float-left;
+  }
+
+  p {
+    width: rem(200);
+    margin-bottom: rem(5);
+    color: $profile-header;
+    @extend %float-left;
+  }
+
+  &:first-child {
+    margin-top: rem(30);
+  }
+}
+
+.aside-map {
+  border: solid rem(1) $default;
+  height: rem(295);
+}
+
+.edu-address {
+  .call-us {
+    font-size: rem(20.7);
+    margin-top: rem(27);
+    @extend %clear-both;
+    @extend %i-owan-old-style;
+  }
+}
+
+.edu-scholarship {
+  @extend %float-right;
+  @include boxSize(rem(102), rem(15));
+}
+
+.edu-program-info {
+  .icon {
+    margin-right: rem(14);
+    @extend %float-left;
+  }
+
+  .jobs-head__content {
+    margin-top: rem(10);
+  }
+
+  .jobs-head__title {
+    max-width: rem(670);
+  }
+}
+
+.edu-detail-row {
+  padding-top: rem(28);
+}
+
+.edu-detail-item {
+  @extend %overflow-hidden; 
+  @extend %no-padding-right;
+
+  p {
+    margin-top: rem(3);
+    @extend %float-left;
+  }
+
+  &:first-child {
+    height: rem(50);
+    @extend %no-margin-top;
+    @extend %no-padding;
+
+    &:before {
+      @extend %no-content;
+    }
+
+    &:after {
+      @extend %no-content;
+    }
+  }
+
+  &:nth-child(2) {
+    padding-left: rem(22);
+  }
+
+  &:nth-child(3) {
+    padding-left: rem(53);
+  }
+
+  &:last-child {
+    padding-left: rem(100);
+  }
+}
+
+.edu-industry {
+  width: rem(295);
+  @extend %overflow-hidden;
+  @extend %relative;
+
+  &:before {
+    content: '...';
+    width: rem(15);
+    top: rem(31);
+    right: rem(5);
+    @extend %absolute;
+  }
+
+  &:after {
+    content: '';
+    width: rem(15);
+    height: rem(40);
+    bottom: rem(3);
+    right: rem(5);
+    @extend %absolute;
+    @include background-image('careers/great-job-bg.jpg');
+  }
+}
+
+.edu-salary-range {
+  margin-top: rem(8);
+  @extend %inline-block;
+}
+
+.edu-cost {
+  @extend %clear-both;
+}
