@@ -45,3 +45,20 @@
   @include boxSize(rem(16), rem(19));
   @include background-image('careers/fire-icon.png');
 }
+
+.i-edu-salary {
+  margin-top: rem(6);
+  @include boxSize(rem(22), rem(23));
+}
+
+.i-industry {
+  @include boxSize(rem(27), rem(27));
+}
+
+.i-calendar {
+  @include boxSize(rem(22), rem(22));
+}
+
+.i-clock {
+  @include boxSize(rem(23), rem(23));
+}
