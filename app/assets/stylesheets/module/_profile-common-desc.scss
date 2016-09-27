@@ -18,7 +18,7 @@
     background-repeat: repeat;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    padding: rem(73) rem(100) 0 rem(60);
+    padding-top: rem(73);
 
     h3 {
       font-size: rem(21);
@@ -95,4 +95,9 @@
 .btn-full-story {
   margin-top: rem(15);
   @include boxSize(rem(140), rem(56));
+}
+
+.profile-content {
+  width: rem(445);
+  @extend %margin-auto;
 }
