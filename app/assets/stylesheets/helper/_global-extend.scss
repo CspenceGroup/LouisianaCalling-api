@@ -294,6 +294,10 @@
   float: right;
 }
 
+%no-float {
+  float: none;
+}
+
 %no-outline {
   &:focus,
   &:hover,
