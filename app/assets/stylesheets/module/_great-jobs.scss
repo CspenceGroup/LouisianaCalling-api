@@ -210,3 +210,10 @@
   left: 52%;
   width: 49%;
 }
+
+.carousel-control--beside {
+  .i-career-next,
+  .i-career-prev {
+    top: rem(100);
+  }
+}
