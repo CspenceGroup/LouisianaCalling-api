@@ -394,15 +394,29 @@ $(document).on('turbolinks:load', function(){
     Get value checkbox when checked
   */
   $('.square-checkbox').click(function() {
-    $('.careers-grid-details').hide();
-    $('.see-more-careers').hide();
-    getValueCheck(0);
+
+    if($(this).closest('.careers-filter').length) {
+      $('.careers-grid-details').hide();
+      $('.see-more-careers').hide();
+      getValueCheck(0);
+    }
+
+    if($(this).closest('.program-filter').length) {
+      filterProgram(0);
+    }
+    
   });
 
   $("#slider-range").on("slidechange", function() {
-    $('.careers-grid-details').hide();
-    $('.see-more-careers').hide();
-    getValueCheck(0);
+    if($(this).closest('.careers-filter').length) {
+      $('.careers-grid-details').hide();
+      $('.see-more-careers').hide();
+      getValueCheck(0);
+    }
+
+    if($(this).closest('.program-filter').length) {
+      filterProgram(0);
+    }
   });
 
   //Requets url when filter follow condition careers
@@ -564,4 +578,76 @@ $(document).on('turbolinks:load', function(){
     $('#program-list-view').css('display', 'none');
     $('#program-map-view').css('display', 'block');
   });
+
+  // Filter programs
+  function filterProgram(id) {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      var cost_min = $("#slider-range").slider("values")[0],
+        cost_max = $("#slider-range").slider("values")[1],
+        data = {
+          industries: [],
+          cost_max: [],
+          cost_min: [],
+          financials: [],
+          programs: [],
+          hours: [],
+          times: [],
+          educations: [],
+          last_id: []
+        }
+
+      $('.square-checkbox:checked').each(function() {
+        data[$(this).attr('name')].push($(this).val());
+      });
+
+      data.cost_max.push(cost_max);
+      data.cost_min.push(cost_min);
+      data.last_id.push(id);
+
+      if(!data.industries.length) {
+        delete data.industries;
+      } else {
+        data.industries = data.industries.join(',')
+      }
+
+      if(!data.financials.length) {
+        delete data.financials;
+      } else {
+        data.financials = data.financials.join(',')
+      }
+
+      if(!data.programs.length) {
+        delete data.programs;
+      } else {
+        data.programs = data.programs.join(',')
+      }
+
+      if(!data.hours.length) {
+        delete data.hours;
+      } else {
+        data.hours = data.hours.join(',')
+      }
+
+      if(!data.times.length) {
+        delete data.times;
+      } else {
+        data.times = data.times.join(',')
+      }
+
+      if(!data.educations.length) {
+        delete data.educations;
+      } else {
+        data.educations = data.educations.join(',')
+      }
+
+      $.ajax({
+        url : '/education/filter',
+        type : "get",
+        dateType:"text",
+        traditional: true,
+        data : data
+      });
+    }, 500);
+  }
 });

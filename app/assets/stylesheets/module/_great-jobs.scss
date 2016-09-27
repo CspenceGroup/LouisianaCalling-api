@@ -22,7 +22,7 @@
   }
 
   @include e('content') {
-    width: rem(992);
+    @include boxSize(rem(992), 100%);
     @extend %margin-auto;
   }
 }
