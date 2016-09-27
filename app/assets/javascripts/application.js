@@ -539,5 +539,18 @@ $(document).on('turbolinks:load', function(){
     source: availableCareers
   });
 
-  
+  /****************************************
+   *             PROGRAM LANDING                 *
+   ****************************************/
+
+  /*Show and hide filter*/
+  $('.program-filter-show').click(function() {
+    $(this).hide();
+    $('.program-filter-hide').show();
+  });
+
+  $('.program-filter-hide').click(function() {
+    $(this).hide();
+    $('.program-filter-show').show();
+  });
 });

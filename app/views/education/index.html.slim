@@ -1,1 +1,158 @@
-<div>landing</div>
+div.container-fluid
+  = render 'navigation/index'
+  .main-content
+    section.hero-banner
+      .hero-banner__container.program-banner__container
+        h1.hero-banner__title Sky's the limit.
+        h1.hero-banner__title Time to build your rocket.
+        .hero-banner__introduce.program-banner__introduce
+          h2.hero-banner__text.program-banner__text From private training programs to college classes, you'll find everything you need here to give you the life you've almost dared not dream about.
+    section.program-list
+      .program-list__head
+        .row.program-list__search
+          form name="search-homepage"
+            .input-group.search-group.search-group--program
+              input.form-control.search-input required="required" type="text" name="search-input" placeholder="Search programs"/
+              .form-group.btn.btn-search.btn-region
+                select.form-control
+                  option value="" disabled="disabled" selected="selected" Location
+                  option value="Lake Charles" Lake Charles
+                  option value="Alexandria" Alexandria
+                  option value="Shreveport" Shreveport
+                  option value="Monroe" Monroe
+                  option value="Baton Rouge" Baton Rouge
+                  option value="Lafayette" Lafayette
+                  option value="Houma" Houma
+                  option value="New Orleans" New Orleans
+                span.fa.fa-caret-down
+              button.btn-search.btn-submit type="submit" Search
+        .action-filter
+          p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
+          p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
+        .program-view-by
+          .program-view-by__list
+            .program-view-by__list-icon
+              a href="javascript:void(0)"
+                = image_tag 'list-view.png'
+          .program-view-by__map
+            .program-view-by__list-icon-map
+              a href="javascript:void(0)"
+                = image_tag 'map-view.png'
+      #action-filter.collapse.program-filter
+        .program-filter__container.row
+          .program-filter__details.col-md-3
+            .program-filter__details-desc
+              h3.careers-filter__title Industry
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="1"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="2"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="3"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="4"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="5"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="6"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="7"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="8"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="9"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                li
+                  input.square-checkbox name="industry" type="checkbox" value="10"
+                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+          .col-md-3.program-filter__details
+            .program-filter__details-desc
+              h3.careers-filter__title Tuition cost
+              #salary-range.careers-salary
+                input#salary.range-salary-text readonly="readonly" type="text" /
+                .sliders_filter-salary
+                  #slider-range
+            .program-filter__details-desc.program-filter__details-item
+              h3.careers-filter__title Financial help
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="financial" type="checkbox" value="1"
+                  span.careers-filter-details__name Scholarship
+                li
+                  input.square-checkbox name="financial" type="checkbox" value="2"
+                  span.careers-filter-details__name Scholarship
+          .col-md-3.program-filter__details
+            .program-filter__details-desc
+              h3.careers-filter__title Program duration
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="1"
+                  span.careers-filter-details__name 8 Weeks
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="2"
+                  span.careers-filter-details__name 3 Months
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="3"
+                  span.careers-filter-details__name 6 Months
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="4"
+                  span.careers-filter-details__name 1 Year
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="5"
+                  span.careers-filter-details__name 2 Years
+                li
+                  input.square-checkbox name="program duration" type="checkbox" value="6"
+                  span.careers-filter-details__name 4 Years
+            .program-filter__details-desc.program-filter__details-item
+              h3.careers-filter__title Hours per week
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="hours" type="checkbox" value="6"
+                  span.careers-filter-details__name 3 - 10 Hours
+                li
+                  input.square-checkbox name="hours" type="checkbox" value="6"
+                  span.careers-filter-details__name 11 - 20 Hours
+                li
+                  input.square-checkbox name="hours" type="checkbox" value="6"
+                  span.careers-filter-details__name 21 - 30 Hours
+                li
+                  input.square-checkbox name="hours" type="checkbox" value="6"
+                  span.careers-filter-details__name 31 - 40 Hours
+          .col-md-3.program-filter__details
+            .program-filter__details-desc
+              h3.careers-filter__title Day/night Offering
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="time" type="checkbox" value="1"
+                  span.careers-filter-details__name Day time only
+                li
+                  input.square-checkbox name="time" type="checkbox" value="1"
+                  span.careers-filter-details__name Night time only
+                li
+                  input.square-checkbox name="time" type="checkbox" value="1"
+                  span.careers-filter-details__name Full day
+            .program-filter__details-desc.program-filter__details-item
+              h3.careers-filter__title Education
+              ul.careers-filter-details
+                li
+                  input.square-checkbox name="education" type="checkbox" value="1"
+                  span.careers-filter-details__name Hight School Diploma/GED
+                li
+                  input.square-checkbox name="education" type="checkbox" value="1"
+                  span.careers-filter-details__name JumpStart
+                li
+                  input.square-checkbox name="education" type="checkbox" value="1"
+                  span.careers-filter-details__name Training
+                li
+                  input.square-checkbox name="education" type="checkbox" value="1"
+                  span.careers-filter-details__name College
+  = render 'footer/index'
