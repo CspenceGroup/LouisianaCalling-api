@@ -230,6 +230,7 @@ class AdminController < ApplicationController
                 csv.each do |row|
                   program = Program.new
                   program[:title] = row[0].strip
+                  program[:slug] = row[0].parameterize
                   program[:region] = row[1].strip
                   program[:traning_detail] = row[2].strip
                   program[:description] = row[3].strip
