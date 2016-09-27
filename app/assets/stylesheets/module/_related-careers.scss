@@ -96,7 +96,7 @@
   }
 
   @include e('name') {
-    font-size: rem(18.2);
+    font-size: rem(17);
     width: rem(115);
     @extend %truncate;
     @extend %brandon-grotesque;
@@ -105,7 +105,7 @@
   }
 
   @include e('salary') {
-    font-size: rem(15.6);
+    font-size: rem(14.8);
     margin-top: rem(3);
     width: rem(97);
     @extend %truncate;
