@@ -1,5 +1,20 @@
 class EducationController < ApplicationController
   def index
+
+    tuition_min = 30000;
+    tuition_max = 80000;
+    offset = 3
+
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+
+    @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+    @isSeeMore = false
+
+    if Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      @isSeeMore = true
+    end
+
   end
 
   def detail
@@ -74,8 +89,8 @@ class EducationController < ApplicationController
     end
 
     ## filter by tuition
-    tuition_min = params[:tuition_min]
-    tuition_max = params[:tuition_max]
+    tuition_min = params[:cost_min]
+    tuition_max = params[:cost_max]
     if tuition_max && tuition_max != "" && tuition_min && tuition_min != ""
 
       logger.debug tuition_max
@@ -95,7 +110,7 @@ class EducationController < ApplicationController
     end
 
     # filter by financial help
-    finalcial_ids = params[:finalcial]
+    finalcial_ids = params[:financials]
     if finalcial_ids && finalcial_ids != ""
 
       finalcial_ids = finalcial_ids.split(',')
@@ -121,7 +136,7 @@ class EducationController < ApplicationController
     end
 
     # filter by program duration
-    program_duration_ids = params[:program_duration]
+    program_duration_ids = params[:programs]
     if program_duration_ids && program_duration_ids != ""
 
       program_duration_ids = program_duration_ids.split(',')
@@ -147,7 +162,7 @@ class EducationController < ApplicationController
     end
 
     # filter by hour per week
-    hour_per_week_ids = params[:hours_per_week]
+    hour_per_week_ids = params[:hours]
     if hour_per_week_ids && hour_per_week_ids != ""
 
       hour_per_week_ids = hour_per_week_ids.split(',')
@@ -172,8 +187,8 @@ class EducationController < ApplicationController
       end
     end
 
-    # filter by hour per week
-    time_of_day_ids = params[:time_of_day]
+    # filter by time of day
+    time_of_day_ids = params[:times]
     if time_of_day_ids && time_of_day_ids != ""
 
       time_of_day_ids = time_of_day_ids.split(',')
@@ -198,8 +213,8 @@ class EducationController < ApplicationController
       end
     end
 
-    # filter by hour per week
-    education_ids = params[:education]
+    # filter by education
+    education_ids = params[:educations]
     if education_ids && education_ids != ""
 
       education_ids = education_ids.split(',')
@@ -224,7 +239,7 @@ class EducationController < ApplicationController
       end
     end
 
-    ## seach by career title
+    ## seach by program title
     program_title = params[:title]
     if program_title && program_title != ""
 
@@ -260,12 +275,17 @@ class EducationController < ApplicationController
 
     logger.debug query
 
+    isSeeMore = false
     programs = Program.where(query).order(sort_by)
 
-    if programs.length > 9
+    if programs.length > 3
       isSeeMore = true
     end
 
-    render :json => programs
+    render :json => {
+      :list => render_to_string('education/partial/_list', :layout => false, :locals => { programs: programs.first(3) }),
+      :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3) }),
+      :isSeeMore => isSeeMore
+    }
   end
 end
