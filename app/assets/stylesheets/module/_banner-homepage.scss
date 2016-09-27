@@ -172,6 +172,5 @@
     line-height: rem(22);
     @extend %acumin-pro-cond;
     @extend %font-style-italic;
-    @include shadow(0, 0, rem(50), $black);
   }
 }
