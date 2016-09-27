@@ -84,6 +84,7 @@
 }
 
 .modal-video {
+  z-index: 10050;
   background-color: $modal-video-bg;
 
   @include e('content') {
