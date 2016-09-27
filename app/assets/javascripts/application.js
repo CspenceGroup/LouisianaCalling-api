@@ -553,4 +553,15 @@ $(document).on('turbolinks:load', function(){
     $(this).hide();
     $('.program-filter-show').show();
   });
+
+  /*Show program by list view or map view*/
+  $('.program-view-by__list').click(function() {
+    $('#program-list-view').css('display', 'block');
+    $('#program-map-view').css('display', 'none');
+  });
+
+  $('.program-view-by__map').click(function() {
+    $('#program-list-view').css('display', 'none');
+    $('#program-map-view').css('display', 'block');
+  });
 });

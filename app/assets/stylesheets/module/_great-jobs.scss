@@ -2,8 +2,6 @@
 .great-jobs {
   height: rem(304);
   @include background-image('careers/great-job-bg.jpg');
-  @extend %background-position-center;
-  @extend %background-cover;
 
   @include e('lable') {
     @include boxSize(rem(301), rem(46));

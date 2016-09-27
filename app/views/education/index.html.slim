@@ -89,7 +89,7 @@ div.container-fluid
                   span.careers-filter-details__name Scholarship
                 li
                   input.square-checkbox name="financial" type="checkbox" value="2"
-                  span.careers-filter-details__name Scholarship
+                  span.careers-filter-details__name Financial Aid/Grant
           .col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Program duration
@@ -155,4 +155,9 @@ div.container-fluid
                 li
                   input.square-checkbox name="education" type="checkbox" value="1"
                   span.careers-filter-details__name College
+    .program-list__result
+      #program-list-view
+        p Program list view
+      #program-map-view.program-map-view
+        = image_tag "program-landing/map.jpg"
   = render 'footer/index'
