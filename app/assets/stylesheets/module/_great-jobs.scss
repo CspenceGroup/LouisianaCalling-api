@@ -116,7 +116,7 @@
 }
 
 .list-icon__details {
-  margin: rem(40) rem(47) 0 0;
+  margin: rem(26) rem(47) 0 0;
   @extend %no-padding;
   width: rem(230);
   @extend %overflow-hidden;
@@ -209,4 +209,11 @@
   margin-bottom: rem(-18);
   left: 52%;
   width: 49%;
+}
+
+.carousel-control--beside {
+  .i-career-next,
+  .i-career-prev {
+    top: rem(100);
+  }
 }
