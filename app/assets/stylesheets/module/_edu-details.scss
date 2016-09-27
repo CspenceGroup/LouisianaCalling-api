@@ -59,6 +59,7 @@
 .edu-scholarship {
   @extend %float-right;
   background-color: $red-bg;
+  margin-top: rem(8);
 
   p {
     font-size: rem(12.5);
