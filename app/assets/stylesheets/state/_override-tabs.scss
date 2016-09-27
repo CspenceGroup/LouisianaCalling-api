@@ -1,0 +1,9 @@
+.nav-tabs {
+  .nav-item + .nav-item {
+    @extend %no-margin-left;
+  }
+
+  .nav-item {
+    @extend %no-margin-bottom;
+  }
+}

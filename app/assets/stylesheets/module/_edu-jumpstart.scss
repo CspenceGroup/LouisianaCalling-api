@@ -1,0 +1,65 @@
+.edu-jumpstart {
+  margin-bottom: rem(-30);
+  @include boxSize(auto, rem(530));
+  
+  @include e('tabs') {
+    @include boxSize(100%, rem(135));
+
+    li {
+      height: 100%;
+      border-left: solid rem(1) $map-bg;
+      @extend %no-padding;
+      @extend %no-margin-left;
+      @include background-image('education-details/edu-map-bg.jpg');
+
+      &:first-child {
+        @extend %no-border-left;
+      }
+    }
+
+    a {
+      color: $profile-header;
+      @extend %block;
+      @extend %text-center;
+      @include boxSize(100%, 100%);
+
+      span {
+        font-size: rem(20.8);
+        padding-top: rem(55);
+        @extend %block;
+        @extend %text-uppercase;
+        @extend %brandon-grotesque;
+      }
+    }
+
+    .active {
+      height: rem(144);
+      z-index: 1000;
+      @extend %cl-white;
+      @extend %relative;
+      @extend %background-position-center;
+      @include background-image('tab-active.png');
+    }
+  }
+
+  @include e('tab-content') {
+    @include boxSize(100%, rem(395));
+  }
+}
+
+.btn-edu-more {
+  margin-top: rem(26);
+  @extend %no-float;
+  @extend %inline-block;
+  @include boxSize(rem(141), rem(30));
+}
+
+.tab-pane {
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include background-image('program-landing/jumpstart-banner.jpg');
+}
+
+// #eduJumpstart {
+//   @include background-image('program-landing/jumpstart-banner.jpg');
+// }
