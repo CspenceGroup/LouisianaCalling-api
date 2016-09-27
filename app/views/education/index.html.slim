@@ -16,14 +16,9 @@ div.container-fluid
               .form-group.btn.btn-search.btn-region
                 select.form-control
                   option value="" disabled="disabled" selected="selected" Location
-                  option value="Lake Charles" Lake Charles
-                  option value="Alexandria" Alexandria
-                  option value="Shreveport" Shreveport
-                  option value="Monroe" Monroe
-                  option value="Baton Rouge" Baton Rouge
-                  option value="Lafayette" Lafayette
-                  option value="Houma" Houma
-                  option value="New Orleans" New Orleans
+                  - @list_of_regions.each do |region|
+                      option value="#{region.id}"
+                        = region.name
                 span.fa.fa-caret-down
               button.btn-search.btn-submit type="submit" Search
         .action-filter
@@ -44,36 +39,11 @@ div.container-fluid
             .program-filter__details-desc
               h3.careers-filter__title Industry
               ul.careers-filter-details
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="1"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="2"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="3"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="4"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="5"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="6"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="7"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="8"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="9"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
-                li
-                  input.square-checkbox name="industries" type="checkbox" value="10"
-                  span.careers-filter-details__name Agriculture, Food and Natural Resource
+                - @list_of_industries.each do |industry|
+                    li
+                      input.square-checkbox name="industries" type="checkbox" value="#{industry.id}"
+                      span.careers-filter-details__name
+                        = industry.name
           .col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Tuition cost
@@ -85,251 +55,100 @@ div.container-fluid
               h3.careers-filter__title Financial help
               ul.careers-filter-details
                 li
-                  input.square-checkbox name="financials" type="checkbox" value="1"
+                  input.square-checkbox name="financials" type="checkbox" value="0"
                   span.careers-filter-details__name Scholarship
                 li
-                  input.square-checkbox name="financials" type="checkbox" value="2"
+                  input.square-checkbox name="financials" type="checkbox" value="1"
                   span.careers-filter-details__name Financial Aid/Grant
           .col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Program duration
               ul.careers-filter-details
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="1"
+                  input.square-checkbox name="programs" type="checkbox" value="0"
                   span.careers-filter-details__name 8 Weeks
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="2"
+                  input.square-checkbox name="programs" type="checkbox" value="1"
                   span.careers-filter-details__name 3 Months
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="3"
+                  input.square-checkbox name="programs" type="checkbox" value="2"
                   span.careers-filter-details__name 6 Months
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="4"
+                  input.square-checkbox name="programs" type="checkbox" value="3"
                   span.careers-filter-details__name 1 Year
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="5"
+                  input.square-checkbox name="programs" type="checkbox" value="4"
                   span.careers-filter-details__name 2 Years
                 li
-                  input.square-checkbox name="programs" type="checkbox" value="6"
+                  input.square-checkbox name="programs" type="checkbox" value="5"
                   span.careers-filter-details__name 4 Years
             .program-filter__details-desc.program-filter__details-item
               h3.careers-filter__title Hours per week
               ul.careers-filter-details
                 li
-                  input.square-checkbox name="hours" type="checkbox" value="1"
+                  input.square-checkbox name="hours" type="checkbox" value="0"
                   span.careers-filter-details__name 3 - 10 Hours
                 li
-                  input.square-checkbox name="hours" type="checkbox" value="2"
+                  input.square-checkbox name="hours" type="checkbox" value="1"
                   span.careers-filter-details__name 11 - 20 Hours
                 li
-                  input.square-checkbox name="hours" type="checkbox" value="3"
+                  input.square-checkbox name="hours" type="checkbox" value="2"
                   span.careers-filter-details__name 21 - 30 Hours
                 li
-                  input.square-checkbox name="hours" type="checkbox" value="4"
+                  input.square-checkbox name="hours" type="checkbox" value="3"
                   span.careers-filter-details__name 31 - 40 Hours
           .col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Day/night Offering
               ul.careers-filter-details
                 li
-                  input.square-checkbox name="times" type="checkbox" value="1"
+                  input.square-checkbox name="times" type="checkbox" value="0"
                   span.careers-filter-details__name Day time only
                 li
-                  input.square-checkbox name="times" type="checkbox" value="2"
+                  input.square-checkbox name="times" type="checkbox" value="1"
                   span.careers-filter-details__name Night time only
                 li
-                  input.square-checkbox name="times" type="checkbox" value="3"
+                  input.square-checkbox name="times" type="checkbox" value="2"
                   span.careers-filter-details__name Full day
             .program-filter__details-desc.program-filter__details-item
               h3.careers-filter__title Education
               ul.careers-filter-details
                 li
-                  input.square-checkbox name="educations" type="checkbox" value="1"
+                  input.square-checkbox name="educations" type="checkbox" value="0"
                   span.careers-filter-details__name Hight School Diploma/GED
                 li
-                  input.square-checkbox name="educations" type="checkbox" value="2"
+                  input.square-checkbox name="educations" type="checkbox" value="1"
                   span.careers-filter-details__name JumpStart
                 li
-                  input.square-checkbox name="educations" type="checkbox" value="3"
+                  input.square-checkbox name="educations" type="checkbox" value="2"
                   span.careers-filter-details__name Training
                 li
-                  input.square-checkbox name="educations" type="checkbox" value="4"
+                  input.square-checkbox name="educations" type="checkbox" value="3"
                   span.careers-filter-details__name College
       .program-list__result
         #program-list-view.program-list-view
-          .edu-program-info.edu-program-info--item
-            .program-list__item
-              .great-jobs__content.program-list__item-content
-                .jobs-head.program-list__item-header
-                  .jobs-head__name
-                    .jobs-head__title.jobs-head__title-great-jobs title="Autocad for Electrical" Autocad for electrical
-                  .jobs-head__content
-                    .edu-scholarship
-                      p Scholarship Available
-                    .edu-cost
-                      .icon.i-edu-salary
-                        = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
-                      .edu-salary-range $7,000 - $25,000
-                .great-jobs__list-icon
-                  ul.row.edu-detail-row
-                    li.col-md-5.edu-detail-item--landing title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication"
-                      .icon.i-career
-                        = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
-                      .career-industry
-                        p Agricultura, Food, and Natural Resources
-                        p Audio/Video Technology and Communication
-                    li.col-md-2.edu-detail-item--landing
-                      .icon.i-calendar
-                        = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
-                      p 6 Months
-                    li.col-md-2.edu-detail-item--landing
-                      .icon.i-clock
-                        = image_tag "program-landing/clock.png", :alt => 'icon clock'
-                      p 21 - 30 Hours
-                    li.col-md-3.edu-detail-item--landing
-                      .icon.i-day
-                        = image_tag "program-landing/day_night.png", :alt => 'icon day night'
-                      p Night Time Only
-          .edu-program-info.edu-program-info--item
-            .program-list__item
-              .great-jobs__content.program-list__item-content
-                .jobs-head.program-list__item-header
-                  .jobs-head__name
-                    .jobs-head__title.jobs-head__title-great-jobs title="Autocad for Electrical" Autocad for electrical
-                  .jobs-head__content
-                    .edu-scholarship
-                      p Financial Ald/Grant Available
-                    .edu-cost
-                      .icon.i-edu-salary
-                        = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
-                      .edu-salary-range $7,000 - $25,000
-                .great-jobs__list-icon
-                  ul.row.edu-detail-row
-                    li.col-md-5.edu-detail-item--landing title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication"
-                      .icon.i-career
-                        = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
-                      .career-industry
-                        p Agricultura, Food, and Natural Resources
-                        p Audio/Video Technology and Communication
-                    li.col-md-2.edu-detail-item--landing
-                      .icon.i-calendar
-                        = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
-                      p 6 Months
-                    li.col-md-2.edu-detail-item--landing
-                      .icon.i-clock
-                        = image_tag "program-landing/clock.png", :alt => 'icon clock'
-                      p 21 - 30 Hours
-                    li.col-md-3.edu-detail-item--landing
-                      .icon.i-day
-                        = image_tag "program-landing/day_night.png", :alt => 'icon day night'
-                      p Night Time Only
-          .more-stories__btn.see-more-careers-grid-view
-            .icon-see-more
-              = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
-        #program-map-view.program-map-view
-          .program-map-view__list
-            .edu-program-info.edu-program-info__map-item
-              .program-list__item.program-item-map
-                .program-item-map__container
-                  .program-list__item-header.program-item-map__header
-                    .jobs-head__name
-                      p.jobs-head__title.jobs-head__title-great-jobs title="Autocad for Electrical" 1. Autocad for electrical
-                    .jobs-head__content
-                      .edu-scholarship.edu-scholarship--view-map
-                        p Scholarship Available
-                      .edu-salary
-                        .icon.i-edu-salary
-                          = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
-                        .edu-salary-range $7,000 - $25,000
-                  .great-jobs__list-icon.program-item-map__footer
-                    ul.row.edu-detail-row
-                      li.col-md-12.program-item-map__footer-item title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication"
-                        .icon.i-career
-                          = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
-                        .career-industry
-                          p Agricultura, Food, and Natural Resources
-                          p Audio/Video Technology and Communication
-                      li.col-md-3.program-item-map__footer-item
-                        .icon.i-calendar
-                          = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
-                        p 6 Months
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-clock
-                          = image_tag "program-landing/clock.png", :alt => 'icon clock'
-                        p 21 - 30 Hours
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-day
-                          = image_tag "program-landing/day_night.png", :alt => 'icon day night'
-                        p Night Time Only
-            .edu-program-info.edu-program-info__map-item
-              .program-list__item.program-item-map
-                .program-item-map__container
-                  .program-list__item-header.program-item-map__header
-                    .jobs-head__name
-                      p.jobs-head__title.jobs-head__title-great-jobs title="Autocad for Electrical" 2. Autocad for electrical
-                    .jobs-head__content
-                      .edu-scholarship.edu-scholarship--view-map
-                        p Scholarship Available
-                      .edu-salary
-                        .icon.i-edu-salary
-                          = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
-                        .edu-salary-range $7,000 - $25,000
-                  .great-jobs__list-icon.program-item-map__footer
-                    ul.row.edu-detail-row
-                      li.col-md-12.program-item-map__footer-item title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication"
-                        .icon.i-career
-                          = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
-                        .career-industry
-                          p Agricultura, Food, and Natural Resources
-                          p Audio/Video Technology and Communication
-                      li.col-md-3.program-item-map__footer-item
-                        .icon.i-calendar
-                          = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
-                        p 6 Months
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-clock
-                          = image_tag "program-landing/clock.png", :alt => 'icon clock'
-                        p 21 - 30 Hours
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-day
-                          = image_tag "program-landing/day_night.png", :alt => 'icon day night'
-                        p Night Time Only
-            .edu-program-info.edu-program-info__map-item
-              .program-list__item.program-item-map
-                .program-item-map__container
-                  .program-list__item-header.program-item-map__header
-                    .jobs-head__name
-                      p.jobs-head__title.jobs-head__title-great-jobs title="Autocad for Electrical" 3. Autocad for electrical
-                    .jobs-head__content
-                      .edu-scholarship.edu-scholarship--view-map
-                        p Scholarship Available
-                      .edu-salary
-                        .icon.i-edu-salary
-                          = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
-                        .edu-salary-range $7,000 - $25,000
-                  .great-jobs__list-icon.program-item-map__footer
-                    ul.row.edu-detail-row
-                      li.col-md-12.program-item-map__footer-item title="Agricultura, Food, and Natural Resources Arts, Audio/Video Technology and Communication"
-                        .icon.i-career
-                          = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
-                        .career-industry
-                          p Agricultura, Food, and Natural Resources
-                          p Audio/Video Technology and Communication
-                      li.col-md-3.program-item-map__footer-item
-                        .icon.i-calendar
-                          = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
-                        p 6 Months
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-clock
-                          = image_tag "program-landing/clock.png", :alt => 'icon clock'
-                        p 21 - 30 Hours
-                      li.col-md-4.program-item-map__footer-item
-                        .icon.i-day
-                          = image_tag "program-landing/day_night.png", :alt => 'icon day night'
-                        p Night Time Only
-            .more-stories__btn.see-more-careers-grid-view
+          #program-container-list
+            = render partial: "education/partial/list", locals: { programs: @programs }
+          - if @isSeeMore
+            #education-see-more.more-stories__btn.see-more-careers-grid-view
               .icon-see-more
                 = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+          - else
+            #education-see-more.more-stories__btn.see-more-careers-grid-view style="display:none;"
+              .icon-see-more
+                = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+        #program-map-view.program-map-view
+          .program-map-view__list
+            #program-container-map
+              = render partial: "education/partial/map", locals: { programs: @programs }
+            - if @isSeeMore
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view
+                .icon-see-more
+                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+            - else
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view style="display:none;"
+                .icon-see-more
+                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
           .program-map-view__address
             = image_tag "program-landing/map.jpg"
     section.edu-jumpstart

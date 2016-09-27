@@ -23,9 +23,6 @@ class CareerController < ApplicationController
     salary_max = 80000;
 
     if !params["title"] && !params["region"]
-      @careers = Career.first(9)
-      @isSeeMore = false
-
       @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(9)
       @isSeeMore = false
 

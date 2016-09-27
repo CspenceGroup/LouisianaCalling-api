@@ -22,7 +22,7 @@
 
 $(document).on('turbolinks:load', function(){
 
-  
+
 
   /****************************************
    *             HOMEPAGE                 *
@@ -88,7 +88,7 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
-  
+
   /**
    * Replace space in string with %20
    * @param  {string} value
@@ -404,7 +404,7 @@ $(document).on('turbolinks:load', function(){
     if($(this).closest('.program-filter').length) {
       filterProgram(0);
     }
-    
+
   });
 
   $("#slider-range").on("slidechange", function() {
@@ -579,6 +579,12 @@ $(document).on('turbolinks:load', function(){
     $('#program-map-view').css('display', 'block');
   });
 
+  //Click button see more
+  $('#education-see-more-map, #education-see-more').click(function() {
+    var last_id = parseInt($('.edu-program-info--item').last().attr('id'));
+    filterProgram(last_id);
+  });
+
   // Filter programs
   function filterProgram(id) {
     clearTimeout(timeout);
@@ -646,7 +652,22 @@ $(document).on('turbolinks:load', function(){
         type : "get",
         dateType:"text",
         traditional: true,
-        data : data
+        data : data,
+        success: function(response) {
+          if (id > 0) {
+            $('#program-container-map').append(response.map);
+            $('#program-container-list').append(response.list);
+          } else {
+            $('#program-container-map').html(response.map);
+            $('#program-container-list').html(response.list);
+          }
+
+          if (response.isSeeMore) {
+            $('#education-see-more-map, #education-see-more').show();
+          } else {
+            $('#education-see-more-map, #education-see-more').hide();;
+          }
+        }
       });
     }, 500);
   }
