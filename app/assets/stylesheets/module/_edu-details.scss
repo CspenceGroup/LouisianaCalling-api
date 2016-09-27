@@ -58,8 +58,23 @@
 
 .edu-scholarship {
   @extend %float-right;
-  @include boxSize(rem(102), rem(15));
+  background-color: $red-bg;
+  margin-top: rem(8);
+
+  p {
+    font-size: rem(12.5);
+    color: $white;
+    @extend %text-center;
+    @extend %acumin-pro-cond-regular;
+    padding: rem(3) rem(6) 0 rem(6);
+    line-height: rem(13);
+  }
+
+  @include m('view-map') {
+    margin-top: rem(10);
+  }
 }
+
 
 .edu-program-info {
   .icon {
@@ -68,11 +83,20 @@
   }
 
   .jobs-head__content {
-    margin-top: rem(10);
+    margin-top: rem(5);
   }
 
   .jobs-head__title {
     max-width: rem(670);
+  }
+
+  @include m('item') {
+    @include boxSize(rem(805), rem(170));
+    margin: rem(20) auto 0 auto;
+  }
+
+  @include e('map-item') {
+    margin-bottom: rem(17);
   }
 }
 
@@ -113,6 +137,21 @@
 
   &:last-child {
     padding-left: rem(100);
+  }
+
+  @include m('landing') {
+    @extend %no-padding;
+    margin-left: rem(20);
+    height: rem(48);
+    @extend %overflow-hidden;
+
+    &:last-child {
+      width: rem(133);
+    }
+
+    &:first-child {
+      @extend %no-margin-left;
+    }
   }
 }
 

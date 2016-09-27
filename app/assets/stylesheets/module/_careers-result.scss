@@ -125,12 +125,12 @@
 
   @include e('list-icon') {
     @include boxSize(rem(35), rem(35));
-    margin: 8px auto 0 auto;
+    margin: rem(8) auto 0 auto;
   }
 
   @include e('grid-icon') {
     @include boxSize(rem(35), rem(35));
-    margin: 8px auto 0 auto;
+    margin: rem(8) auto 0 auto;
   }
 }
 

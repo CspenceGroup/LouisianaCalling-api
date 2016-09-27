@@ -55,11 +55,23 @@
   color: $profile-header;
   @extend %acumin-pro-cond;
   background-color: $filter-careers-bg;
+  @extend %relative;
+
+  &:before {
+    content: "";
+    @extend %absolute;
+    top: rem(-22);
+    left: 71%;
+    margin-left: rem(-11);
+    border-width: rem(11);
+    border-style: solid;
+    border-color: transparent transparent $filter-careers-bg transparent;
+  }
 
   @include e('container') {
     width: rem(1050);
     @extend %margin-auto;
-    padding-top: rem(43);
+    padding: rem(45) 0;
   }
 
   @include e('details') {

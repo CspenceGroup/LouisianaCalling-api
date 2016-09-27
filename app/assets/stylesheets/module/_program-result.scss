@@ -1,0 +1,103 @@
+.program-list {
+  @include e('item') {
+    border: rem(2) solid $default;
+    background-color: $white;
+    color: $default;
+  }
+
+  @include e('item-header') {
+    border-bottom: rem(2) solid $default;
+    height: rem(80);
+  }
+
+  @include e('item-content') {
+    width: rem(774);
+  }
+}
+
+.program-list-view {
+  @extend %overflow-hidden;
+  margin-bottom: rem(170);
+}
+
+.i-career {
+  @include boxSize(rem(22), rem(27));
+}
+
+.career-industry {
+  @extend %overflow-hidden;
+  @extend %relative;
+
+  &:before {
+    content: '...';
+    width: rem(15);
+    top: rem(24);
+    right: rem(2);
+    @extend %absolute;
+  }
+
+  &:after {
+    content: '';
+    width: rem(20);
+    height: rem(30);
+    bottom: rem(2);
+    right: rem(2);
+    @extend %absolute;
+    background-color:$white;
+  }
+}
+
+// Style program view map
+
+.program-map-view {
+  width: rem(1155);
+  margin: rem(25) auto rem(45) auto;
+  display: none;
+  @extend %overflow-hidden;
+
+  @include e('list') {
+    width: rem(385);
+    @extend %float-left;
+  }
+
+  @include e('address') {
+    @include boxSize(rem(753), rem(640));
+    @extend %float-right;
+  }
+  
+}
+
+.program-item-map {
+  height: rem(270);
+
+  @include e('container') {
+    @include boxSize(rem(353), 100%);
+    @extend %margin-auto;
+  }
+
+  @include e('header') {
+    height: rem(116);
+
+    .jobs-head__content {
+      @extend %float-left;
+      width: 100%;
+    }
+  }
+
+  @include e('footer') {
+    font-size: rem(14.5);
+    @extend %acumin-pro-cond-regular;
+  }
+
+  @include e('footer-item') {
+    @extend %no-padding;
+    margin-right: rem(9);
+    padding-top: rem(20);
+
+    &:first-child {
+      @extend %no-padding-top;
+      height: rem(44);
+      @extend %overflow-hidden;
+    }
+  }
+}
