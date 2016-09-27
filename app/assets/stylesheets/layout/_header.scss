@@ -1,10 +1,10 @@
 /*Style header page*/
 .site-header {
   height: rem(75);
-  @extend %absolute;
+  @extend %fixed;
   @extend %left-0;
   @extend %right-0;
-  z-index: 10;
+  z-index: 10000;
   padding: 0 rem(30);
   background-color: $profile-header;
 
