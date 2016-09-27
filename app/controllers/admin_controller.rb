@@ -44,7 +44,7 @@ class AdminController < ApplicationController
               topJobs[:job_title] = row[1].strip
 
               if row[2]
-                raise "error"
+                raise "Wrong file"
               end
 
               topJobs.save!
@@ -71,7 +71,7 @@ class AdminController < ApplicationController
               video[:url] = row[1].strip
 
               if row[3]
-                raise "error"
+                raise "Wrong file"
               end
 
               video.save!
@@ -88,7 +88,7 @@ class AdminController < ApplicationController
               interest[:url] = row[1].strip
 
               if row[2]
-                raise "error"
+                raise "Wrong file"
               end
 
               interest.save!
@@ -105,7 +105,7 @@ class AdminController < ApplicationController
               skill[:url] = row[1].strip
 
               if row[2]
-                raise "error"
+                raise "Wrong file"
               end
 
               skill.save!
@@ -121,7 +121,7 @@ class AdminController < ApplicationController
               cluster[:name] = row[0].strip
 
               if row[1]
-                raise "error"
+                raise "Wrong file"
               end
 
               cluster.save!
@@ -159,7 +159,7 @@ class AdminController < ApplicationController
               profile[:image_large] = row[15].strip
 
               if row[16]
-                raise "error"
+                raise "Wrong file"
               end
 
               profile.save!
@@ -200,7 +200,7 @@ class AdminController < ApplicationController
                 career[:profile_name] = row[20].strip
 
                 if row[21]
-                  raise "error"
+                  raise "Wrong file"
                 end
 
                 career.save!
@@ -216,10 +216,51 @@ class AdminController < ApplicationController
                   education[:name] = row[0].strip
 
                   if row[1]
-                    raise "error"
+                    raise "Wrong file"
                   end
 
                   education.save!
+                end
+              end
+
+            when name="programs"
+              Program.transaction do
+                Program.delete_all
+
+                csv.each do |row|
+                  program = Program.new
+                  program[:title] = row[0].strip
+                  program[:region] = row[1].strip
+                  program[:traning_detail] = row[2].strip
+                  program[:description] = row[3].strip
+                  program[:duration] = row[4].strip
+                  program[:time_of_day] = row[5].strip
+                  program[:hours_per_weeks] = row[6].strip
+                  program[:tuition_min] = row[7].strip
+                  program[:tuition_max] = row[8].strip
+                  program[:financial_help] = row[9].strip
+                  program[:education] = row[10].strip
+                  program[:institution_name] = row[11].strip
+                  program[:phone] = row[12].strip
+                  program[:address] = row[13].strip
+
+                  location = row[14].split(',').map{ |s| s.strip }
+                  program[:lat] = location[0]
+                  program[:lng] = location[1]
+
+                  program[:industries] = []
+
+                  for i in 15..18
+                    if (row[i] != "" && row[i] != nil) then
+                      program[:industries] << row[i].strip
+                    end
+                  end
+
+                  if row[19]
+                    raise "Wrong file"
+                  end
+
+                  program.save!
                 end
               end
       end
@@ -227,8 +268,7 @@ class AdminController < ApplicationController
       flash[:notice] = "Document was successfully uploaded."
 
     rescue => ex
-      logger.debug ex
-      flash[:notice] = "Error"
+      flash[:notice] = ex
     end
     redirect_to action: "index"
   end
