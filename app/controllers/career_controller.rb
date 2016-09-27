@@ -337,7 +337,7 @@ class CareerController < ApplicationController
     end
 
     last_id = 0
-    if params[:last_id] && params[:sort] != ""
+    if params[:last_id] && params[:last_id] != ""
       last_id = params[:last_id]
 
       query = query + " AND id > #{last_id} "

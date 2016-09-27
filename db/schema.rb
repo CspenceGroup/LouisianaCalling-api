@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160927032501) do
 
   create_table "programs", force: :cascade do |t|
     t.string   "title"
+    t.string   "region"
     t.text     "traning_detail"
     t.text     "description"
     t.string   "duration"

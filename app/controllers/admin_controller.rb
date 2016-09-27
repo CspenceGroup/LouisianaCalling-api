@@ -230,32 +230,33 @@ class AdminController < ApplicationController
                 csv.each do |row|
                   program = Program.new
                   program[:title] = row[0].strip
-                  program[:traning_detail] = row[1].strip
-                  program[:description] = row[2].strip
-                  program[:duration] = row[3].strip
-                  program[:time_of_day] = row[4].strip
-                  program[:hours_per_weeks] = row[5].strip
-                  program[:tuition_min] = row[6].strip
-                  program[:tuition_max] = row[7].strip
-                  program[:financial_help] = row[8].strip
-                  program[:education] = row[9].strip
-                  program[:institution_name] = row[10].strip
-                  program[:phone] = row[11].strip
-                  program[:address] = row[12].strip
+                  program[:region] = row[1].strip
+                  program[:traning_detail] = row[2].strip
+                  program[:description] = row[3].strip
+                  program[:duration] = row[4].strip
+                  program[:time_of_day] = row[5].strip
+                  program[:hours_per_weeks] = row[6].strip
+                  program[:tuition_min] = row[7].strip
+                  program[:tuition_max] = row[8].strip
+                  program[:financial_help] = row[9].strip
+                  program[:education] = row[10].strip
+                  program[:institution_name] = row[11].strip
+                  program[:phone] = row[12].strip
+                  program[:address] = row[13].strip
 
-                  location = row[13].split(',').map{ |s| s.strip }
+                  location = row[14].split(',').map{ |s| s.strip }
                   program[:lat] = location[0]
                   program[:lng] = location[1]
 
                   program[:industries] = []
 
-                  for i in 14..17
+                  for i in 15..18
                     if (row[i] != "" && row[i] != nil) then
                       program[:industries] << row[i].strip
                     end
                   end
 
-                  if row[18]
+                  if row[19]
                     raise "Wrong file"
                   end
 

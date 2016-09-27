@@ -25,6 +25,7 @@ class EducationController < ApplicationController
 
     # define query
     query = ""
+    regions_query = ""
     industries_query = ""
     tuition_query = ""
     financial_query = ""
@@ -32,6 +33,20 @@ class EducationController < ApplicationController
     hours_per_week_query = ""
     time_of_day_query = ""
     education_query = ""
+
+    ## filter by region
+    region_ids = params[:regions]
+    if region_ids != "" && region_ids
+      region_ids = region_ids.split(',')
+      logger.debug region_ids
+
+      query_temp = []
+      region_ids.each do |id|
+        query_temp << "'#{list_of_regions[id.to_i]}'"
+      end
+
+      query = " region IN (#{query_temp.join(',')}) "
+    end
 
     ## filter by industry
     industry_ids = params[:industries]
@@ -51,7 +66,11 @@ class EducationController < ApplicationController
       end
       industries_query += ")"
 
-      query = industries_query
+      if query == ""
+        query = industries_query
+      else
+        query = regions_query + " AND " + industries_query
+      end
     end
 
     ## filter by tuition
@@ -205,16 +224,43 @@ class EducationController < ApplicationController
       end
     end
 
+    ## seach by career title
+    program_title = params[:title]
+    if program_title && program_title != ""
+
+      program_title = program_title.downcase
+
+      logger.debug program_title
+
+      title_query = "("
+
+      title_query += " LOWER(title) like '%#{program_title}%' "
+
+      title_query += ")"
+
+      if query == "" && tuition_query == "" && financial_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == "" && education_query == ""
+        query = title_query
+      else
+        query = query + " AND " + title_query
+      end
+    end
+
     last_id = 0
-    if params[:last_id]
+    if params[:last_id] && params[:last_id] != ""
       last_id = params[:last_id]
 
       query = query + " AND id > #{last_id} "
     end
 
+    ## sort by
+    sort_by = "id"
+    if params[:sort] && params[:sort] != ""
+      sort_by = params[:sort]
+    end
+
     logger.debug query
 
-    programs = Program.where(query).order("id")
+    programs = Program.where(query).order(sort_by)
 
     if programs.length > 9
       isSeeMore = true
