@@ -8,13 +8,25 @@ class EducationController < ApplicationController
     @list_of_regions = Region.all
     @list_of_industries = Cluster.all
 
-    @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
-    @isSeeMore = false
+    if !params["title"] && !params["region"]
+      @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @isSeeMore = false
 
-    if Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
-      @isSeeMore = true
+      if Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+        @isSeeMore = true
+      end
+    else
+
+      @title = params["title"].downcase if params["title"]
+      @region = params["region"]
+
+      @programs = Program.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @isSeeMore = false
+
+      if Program.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+        @isSeeMore = true
+      end
     end
-
   end
 
   def detail
