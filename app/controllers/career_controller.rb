@@ -60,10 +60,6 @@ class CareerController < ApplicationController
         @list_of_skills[skill[:name]] = skill[:url]
       end
 
-
-      logger.debug '@list_of_skills'
-      logger.debug @list_of_skills
-
       @regions = Hash.new
       @careers.map do |career|
         @regions[career.region] = {
@@ -79,8 +75,6 @@ class CareerController < ApplicationController
       profileName = @career.profile_name
       @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
 
-      logger.debug @profile
-      logger.debug @related_by_interests.count
     else
     end
 
@@ -103,7 +97,6 @@ class CareerController < ApplicationController
 
     ## get list of skills
     skills = Skill.all
-    logger.debug skills
     list_of_skills = []
     skills.each do |skill|
       list_of_skills[skill[:id]] = skill[:name]
@@ -138,7 +131,6 @@ class CareerController < ApplicationController
     region_ids = params[:regions]
     if region_ids != "" && region_ids
       region_ids = region_ids.split(',')
-      logger.debug region_ids
 
       query_temp = []
       region_ids.each do |id|
@@ -147,21 +139,15 @@ class CareerController < ApplicationController
 
       query = " region IN (#{query_temp.join(',')}) "
     end
-    logger.debug "aaaaaa"
-    logger.debug query
 
     ## filter by industry
     industry_ids = params[:industries]
     if industry_ids && industry_ids != ""
       industry_ids = industry_ids.split(',')
-      logger.debug industry_ids
 
       industries_query = "("
 
       industry_ids.each_with_index do |id, index|
-
-        logger.debug index == 0
-        logger.debug index
 
         if index == 0
           industries_query += "industries like '%#{list_of_clusters[id.to_i]}%'"
@@ -188,9 +174,6 @@ class CareerController < ApplicationController
 
       skill_ids.each_with_index do |id, index|
 
-        logger.debug index == 0
-        logger.debug index
-
         if index == 0
           skills_query += "skills like '%#{list_of_skills[id.to_i]}%'"
         else
@@ -210,14 +193,10 @@ class CareerController < ApplicationController
     education_ids = params[:educations]
     if education_ids && education_ids != ""
       education_ids = education_ids.split(',')
-      logger.debug education_ids
 
       educations_query = "("
 
       education_ids.each_with_index do |id, index|
-
-        logger.debug index == 0
-        logger.debug index
 
         if index == 0
           educations_query += "education like '%#{list_of_educations[id.to_i]}%'"
@@ -238,14 +217,10 @@ class CareerController < ApplicationController
     interest_ids = params[:interests]
     if interest_ids && interest_ids != ""
       interest_ids = interest_ids.split(',')
-      logger.debug interest_ids
 
       interests_query = "("
 
       interest_ids.each_with_index do |id, index|
-
-        logger.debug index == 0
-        logger.debug index
 
         if index == 0
           interests_query += "interests like '%#{list_of_interests[id.to_i]}%'"
@@ -266,15 +241,10 @@ class CareerController < ApplicationController
     demand_ids = params[:demands]
     if demand_ids && demand_ids != ""
       demand_ids = demand_ids.split(',')
-      logger.debug demand_ids
 
       demands_query = "("
 
       demand_ids.each_with_index do |id, index|
-
-        logger.debug index == 0
-        logger.debug index
-        logger.debug id
 
         if index == 0
           demands_query += " demand = #{id.to_i} "
@@ -296,9 +266,6 @@ class CareerController < ApplicationController
     salary_max = params[:salary_max]
     if salary_max && salary_max != "" && salary_min && salary_min != ""
 
-      logger.debug salary_max
-      logger.debug salary_min
-
       salary_query = "("
 
       salary_query += " salary_max <= #{salary_max} AND salary_min >= #{salary_min} "
@@ -317,8 +284,6 @@ class CareerController < ApplicationController
     if career_title && career_title != ""
 
       career_title = career_title.downcase
-
-      logger.debug career_title
 
       title_query = "("
 

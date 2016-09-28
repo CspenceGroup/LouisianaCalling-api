@@ -1,5 +1,5 @@
 .careers-result {
-  margin-left: rem(324);
+  @extend %margin-auto;
   @extend %acumin-pro-cond-bi;
 
   .btn-sort-by {

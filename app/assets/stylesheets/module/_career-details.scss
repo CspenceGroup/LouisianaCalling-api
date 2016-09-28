@@ -22,6 +22,7 @@
   @extend %background-repeat-x;
   @extend %overflow-hidden;
   @extend %relative;
+  min-height: rem(585);
 
   p {
     font-size: rem(16.7);

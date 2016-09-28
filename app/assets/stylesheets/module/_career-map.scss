@@ -35,6 +35,8 @@
 
   @include m('pull-left') {
     margin-left: rem(282);
+    max-width: rem(550);
+    @extend %truncate;
   }
 
   @include m('pull-right') {

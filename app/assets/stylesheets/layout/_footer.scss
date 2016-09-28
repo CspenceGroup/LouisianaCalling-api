@@ -9,7 +9,6 @@
   @extend %cl-white;
   @extend %text-center;
   @extend %relative;
-  @extend %clear-both;
 
   @include e('nav') {
     font-size: rem(16.7);
