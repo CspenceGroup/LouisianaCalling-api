@@ -127,6 +127,8 @@ div.container-fluid
                   span.careers-filter-details__name College
       .program-list__result
         #program-list-view.program-list-view
+          #program-map-data style="display: none;"
+            = @programs.to_json
           #program-container-list
             = render partial: "education/partial/list", locals: { programs: @programs }
           - if @isSeeMore
