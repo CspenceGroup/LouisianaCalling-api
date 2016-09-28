@@ -257,7 +257,8 @@ $(document).on('turbolinks:load', function(){
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
         type = target[2].value,
-        url = '?title=' + careerName;
+        url = '?title=' + careerName,
+        toUrl;
 
     if (region) {
 
@@ -267,11 +268,12 @@ $(document).on('turbolinks:load', function(){
     if (type && type === 'careers') {
 
       // Redirect to careers landing page
-      var urlCareers = '/careers' + url;
-      window.location = urlCareers;
+      toUrl = '/careers' + url;
+      window.location = toUrl;
     } else if (type && type === 'programs') {
 
-      // Redirect to programs landing page
+      toUrl = '/educations' + url;
+      window.location = toUrl;
     }
   });
 
@@ -687,7 +689,7 @@ $(document).on('turbolinks:load', function(){
             // reinit map
             initMap();
             $('.indicator-loading').hide();
-            $('#program-list-view, #program-map-view').show();
+            // $('#program-list-view, #program-map-view').show();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
@@ -710,7 +712,7 @@ $(document).on('turbolinks:load', function(){
   $('#programSearch').click(function (e) {
     e.preventDefault();
     var searchProgram = $('#programInput').val();
-    
+
     if (searchProgram && searchProgram != "") {
       filterProgram(0);
     }

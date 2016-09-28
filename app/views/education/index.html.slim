@@ -12,13 +12,18 @@ div.container-fluid
         .row.program-list__search
           form name="search-homepage"
             .input-group.search-group.search-group--program
-              input.form-control.search-input#programInput required="required" type="text" name="search-input" placeholder="Search programs"/
+              input.form-control.search-input#programInput required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
               .form-group.btn.btn-search.btn-region
                 select.form-control#programRegion
-                  option value="" disabled="disabled" selected="selected" Location
+                  - if !@region || @region == ""
+                      option value="" disabled="disabled" selected="selected" Location
                   - @list_of_regions.each do |region|
-                      option value="#{region.id}"
-                        = region.name
+                      - if @region && @region != "" && region.name == @region
+                          option value="#{region.id}" selected="selected"
+                            = region.name
+                      - else
+                          option value="#{region.id}"
+                            = region.name
                 span.fa.fa-caret-down
               button.btn-search.btn-submit#programSearch type="submit" Search
         .action-filter

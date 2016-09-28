@@ -30,13 +30,13 @@ class CareerController < ApplicationController
         @isSeeMore = true
       end
     else
-      @title = params["title"]
+      @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @careers = Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
+      @careers = Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
       @isSeeMore = false
 
-      if Career.where("title like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
+      if Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
         @isSeeMore = true
       end
     end
