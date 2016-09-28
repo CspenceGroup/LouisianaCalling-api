@@ -1,5 +1,6 @@
 .site-footer {
   height: rem(183);
+  min-width: rem(1200);
   padding-top: rem(69);
   z-index: 1000;
   @include background-image('bg-footer.png');

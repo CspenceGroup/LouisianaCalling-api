@@ -18,4 +18,9 @@
     @extend %block;
     height: 100%;
   }
+
+  @include e('container') {
+    min-width: rem(1200);
+    @extend %overflow-hidden;
+  }
 }
