@@ -20,9 +20,7 @@ class EducationController < ApplicationController
   def detail
     @programs = Program.where(:slug => params[:slug])
     @program = @programs.first
-
-
-
+    @mapKey = "AIzaSyB37PvABXHFveMjk-4AzolBlsuUqVC-if8"
   end
 
   def filter
