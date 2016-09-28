@@ -587,6 +587,12 @@ $(document).on('turbolinks:load', function(){
 
   // Filter programs
   function filterProgram(id) {
+    if(id > 0) {
+      $('.indicator-loading-see-more').show();
+      $('.icon-see-more').hide();
+    } else {
+      $('.indicator-loading').show();
+    }
     clearTimeout(timeout);
     timeout = setTimeout(function() {
       var cost_min = $("#slider-range").slider("values")[0],
@@ -655,9 +661,12 @@ $(document).on('turbolinks:load', function(){
         data : data,
         success: function(response) {
           if (id > 0) {
+            $('.indicator-loading-see-more').hide();
             $('#program-container-map').append(response.map);
             $('#program-container-list').append(response.list);
           } else {
+            $('.indicator-loading').hide();
+            $('.program-map-view__list').show();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
@@ -667,6 +676,10 @@ $(document).on('turbolinks:load', function(){
           } else {
             $('#education-see-more-map, #education-see-more').hide();;
           }
+        },
+        error: function() {
+          $('.indicator-loading-see-more').hide();
+          $('.indicator-loading').hide();
         }
       });
     }, 500);
