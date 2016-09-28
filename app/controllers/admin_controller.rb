@@ -257,7 +257,9 @@ class AdminController < ApplicationController
                     end
                   end
 
-                  if row[19]
+                  program[:cover_photo] = row[19].strip
+
+                  if row[20]
                     raise "Wrong file"
                   end
 
