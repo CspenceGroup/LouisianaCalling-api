@@ -12,15 +12,15 @@ div.container-fluid
         .row.program-list__search
           form name="search-homepage"
             .input-group.search-group.search-group--program
-              input.form-control.search-input required="required" type="text" name="search-input" placeholder="Search programs"/
+              input.form-control.search-input#programInput required="required" type="text" name="search-input" placeholder="Search programs"/
               .form-group.btn.btn-search.btn-region
-                select.form-control
+                select.form-control#programRegion
                   option value="" disabled="disabled" selected="selected" Location
                   - @list_of_regions.each do |region|
                       option value="#{region.id}"
                         = region.name
                 span.fa.fa-caret-down
-              button.btn-search.btn-submit type="submit" Search
+              button.btn-search.btn-submit#programSearch type="submit" Search
         .action-filter
           p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
           p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
@@ -127,6 +127,8 @@ div.container-fluid
                   span.careers-filter-details__name College
       .program-list__result
         #program-list-view.program-list-view
+          #program-map-data style="display: none;"
+            = @programs.to_json
           #program-container-list
             = render partial: "education/partial/list", locals: { programs: @programs }
           - if @isSeeMore
@@ -157,8 +159,7 @@ div.container-fluid
               = image_tag "loading.gif"
             .indicator-loading-see-more
               = image_tag "loading.gif"
-          .program-map-view__address
-            = image_tag "program-landing/map.jpg"
+          .program-map-view__address#program-map
     section.edu-jumpstart
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
         li.nav-item.col-md-4
