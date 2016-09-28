@@ -14,7 +14,7 @@ div
       #carousel-great-jobs.carousel.slide data-ride="carousel"
         ol.carousel-indicators.carousel-dots-list.carousel-dots-great-jobs
           - @careers_slider.each_with_index do |career, index|
-            li class=(index == 0 ? 'carousel-dots active' : 'carousel-dots') data-slide-to="0" data-target="#carousel-great-jobs"
+            li class=(index == 0 ? 'carousel-dots active' : 'carousel-dots') data-slide-to=index data-target="#carousel-great-jobs"
         .carousel-inner role="listbox"
           - @careers_slider.each_with_index do |career, index|
             div class=(index == 0 ? 'carousel-item active' : 'carousel-item')

@@ -746,7 +746,6 @@ $(document).on('turbolinks:load', function(){
 
   //Init google map
   $(document).on("initGoogleMap", function(){
-    console.log('initGoogleMap');
     initMap();
   });
 
@@ -763,7 +762,6 @@ $(document).on('turbolinks:load', function(){
       lat = parseInt(programsMapData[0].lat);
       lng = parseInt(programsMapData[0].lng);
     }
-console.log(lat, lng);
 
     programsMap = new google.maps.Map(document.getElementById('program-map'), {
       center: {lat: lat, lng: lng},
