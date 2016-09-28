@@ -101,3 +101,14 @@
     }
   }
 }
+
+.labels-marker {
+  color: $black;
+  @extend %acumin-pro-cond;
+  font-size: rem(12.5);
+  text-align: center;
+  width: rem(40);
+  height: rem(20);
+  white-space: nowrap;
+  @extend %absolute;
+}

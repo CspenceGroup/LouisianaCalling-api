@@ -22,7 +22,6 @@
 
 $(document).on('turbolinks:load', function(){
 
-  
 
   /****************************************
    *             HOMEPAGE                 *
@@ -570,13 +569,16 @@ $(document).on('turbolinks:load', function(){
 
   /*Show program by list view or map view*/
   $('.program-view-by__list').click(function() {
-    $('#program-list-view').css('display', 'block');
-    $('#program-map-view').css('display', 'none');
+    $('#program-list-view').show();
+    $('#program-map-view').hide();
   });
 
   $('.program-view-by__map').click(function() {
-    $('#program-list-view').css('display', 'none');
-    $('#program-map-view').css('display', 'block');
+    $('#program-list-view').hide();
+    $('#program-map-view').show();
+
+    $(document).trigger('initGoogleMap');
+    
   });
 
   // Filter programs
@@ -649,5 +651,53 @@ $(document).on('turbolinks:load', function(){
         data : data
       });
     }, 500);
+  }
+  
+});
+
+
+// Init map program
+$(document).ready(function(){
+
+  // Create map in program landing
+  window.map = null;
+  window.locations = [
+    ['Washington Square Arch', 40.7314655, -73.9969555, 1],
+    ['OTTO Enoteca e Pizzeria', 40.732065, -73.998369, 2],
+    ['Tisch School Of The Arts', 40.7305041, -73.9966524, 3]
+  ];
+
+
+  // refresh google map when trigger
+  $(document).on("refreshGoogleMap", function(){
+    if (map){
+      google.maps.event.trigger(map, 'resize');
+    }
+  });
+
+  //Init google map
+  $(document).on("initGoogleMap", function(){
+    window.initMap();
+  });
+
+
+  // Add marker for map
+  window.initMap = function() {
+    // Create a map object and specify the DOM element for display.
+    map = new google.maps.Map(document.getElementById('program-map'), {
+      center: {lat: 40.7342195, lng: -74.0004183},
+      zoom: 16
+    });
+
+    for (var i = 0; i < locations.length; i++) {
+       var marker = new MarkerWithLabel({
+         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+         icon: 'assets/marker.png',
+         map: map,
+         labelContent: String(locations[i][3]),
+         labelAnchor: new google.maps.Point(20, 36),
+         labelClass: "labels-marker"
+       });
+    }
   }
 });
