@@ -18,6 +18,11 @@ class EducationController < ApplicationController
   end
 
   def detail
+    @programs = Program.where(:slug => params[:slug])
+    @program = @programs.first
+
+
+
   end
 
   def filter
