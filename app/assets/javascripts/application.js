@@ -666,7 +666,7 @@ $(document).on('turbolinks:load', function(){
             $('#program-container-list').append(response.list);
           } else {
             $('.indicator-loading').hide();
-            $('.program-map-view__list').show();
+            $('#program-list-view, #program-map-view').show();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
