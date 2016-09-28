@@ -14,3 +14,10 @@
   display: none;
   margin: rem(105) auto rem(100) auto;
 }
+
+.program-map-view,
+.program-list-view {
+  .indicator-loading-see-more {
+    @extend %no-margin-top;
+  }
+}
