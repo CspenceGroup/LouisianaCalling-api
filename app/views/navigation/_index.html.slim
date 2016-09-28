@@ -1,30 +1,32 @@
 <header class="site-header">
-  <h1 class="site-header__logo">
-    <a href="/" class="site-header__link">
-      = image_tag "logo.png"
-    </a>
-  </h1>
-  <nav class="nav-bar">
-    <ul class="nav-bar__list">
-      <li><a href="javascript:void(0)">Skill up</a></li>
-      <li>
-        = link_to "Careers", career_path
-      <li>
-        = link_to "Real stories", stories_path
-      <li><a href="javascript:void(0)">Blog</a></li>
-      <!-- <li><a href="javascript:void(0)">About us</a></li> -->
-      <li>
-        <ul class="nav-bar__list-icon">
-          <li><a href="javascript:void(0)"><i class="fa fa-facebook nav-bar__icon" aria-hidden="true"></i></a></li>
-          <li><a href="javascript:void(0)"><i class="fa fa-twitter nav-bar__icon" aria-hidden="true"></i></a></li>
-        </ul>
-      </li>
-    </ul>
-    <div class="nav-bar__contact">
-      <p><i class="fa fa-phone nav-bar__icon" aria-hidden="true"></i><span>&nbsp; 1.888.888.8888</span></p>
-      <!-- <a href="javascript:void(0)">
-        = image_tag "path-button.png"
-      </a> -->
-    </div>
-  </nav>
+  <div class="site-header__container">
+    <h1 class="site-header__logo">
+      <a href="/" class="site-header__link">
+        = image_tag "logo.png"
+      </a>
+    </h1>
+    <nav class="nav-bar">
+      <ul class="nav-bar__list">
+        <li><a href="javascript:void(0)">Skill up</a></li>
+        <li>
+          = link_to "Careers", career_path
+        <li>
+          = link_to "Real stories", stories_path
+        <li><a href="javascript:void(0)">Blog</a></li>
+        <!-- <li><a href="javascript:void(0)">About us</a></li> -->
+        <li>
+          <ul class="nav-bar__list-icon">
+            <li><a href="javascript:void(0)"><i class="fa fa-facebook nav-bar__icon" aria-hidden="true"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-twitter nav-bar__icon" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-bar__contact">
+        <p><i class="fa fa-phone nav-bar__icon" aria-hidden="true"></i><span>&nbsp; 1.888.888.8888</span></p>
+        <!-- <a href="javascript:void(0)">
+          = image_tag "path-button.png"
+        </a> -->
+      </div>
+    </nav>
+  </div>
 </header>
