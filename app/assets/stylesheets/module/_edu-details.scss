@@ -93,10 +93,18 @@
   @include m('item') {
     @include boxSize(rem(805), rem(170));
     margin: rem(20) auto 0 auto;
+
+    .jobs-head__title {
+      max-width: rem(500);
+    }
   }
 
   @include e('map-item') {
     margin-bottom: rem(17);
+
+    .job-title-aside {
+      max-width: rem(330);
+    }
   }
 }
 
