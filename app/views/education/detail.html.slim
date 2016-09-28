@@ -59,7 +59,7 @@
       .career-desc__news-container.edu-address-container
         section.career-desc__feature-news
           .aside-map.edu-aside-center
-            = image_tag 'http://maps.google.com/maps/api/staticmap?center='+ @program.lat + ',' + @program.lng + '&zoom=16&size=344x293&markers=icon:http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png|'+ @program.lat + ',' + @program.lng + '&zoom=12&size=400x400&sensor=false&key=AIzaSyDlRkOADBoTQhEndW3RH1CxOCtLM8oTTjw'
+            = image_tag 'http://maps.google.com/maps/api/staticmap?center='+ @program.lat + ',' + @program.lng + '&zoom=16&size=344x293&markers=icon:http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png|'+ @program.lat + ',' + @program.lng + '&zoom=12&size=400x400&sensor=false&key=' + @mapKey
             / = image_tag 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=344x293&maptype=roadmap%20&markers=icon:http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png|40.7295031,-73.9935935&key=AIzaSyDlRkOADBoTQhEndW3RH1CxOCtLM8oTTjw'
           .edu-address.edu-aside-center
             .institution-detail
