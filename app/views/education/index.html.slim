@@ -137,6 +137,18 @@ div.container-fluid
             #education-see-more.more-stories__btn.see-more-careers-grid-view style="display:none;"
               .icon-see-more
                 = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+        #program-map-view.program-map-view
+          .program-map-view__list
+            #program-container-map
+              = render partial: "education/partial/map", locals: { programs: @programs }
+            - if @isSeeMore
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view
+                .icon-see-more
+                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+            - else
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view style="display:none;"
+                .icon-see-more
+                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
           .program-map-view__address#program-map
     section.edu-jumpstart
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
