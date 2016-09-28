@@ -31,6 +31,13 @@ class EducationController < ApplicationController
       list_of_clusters[cluster[:id]] = cluster[:name]
     end
 
+    ## get list of region
+    regions = Region.all
+    list_of_regions = []
+    regions.each do |region|
+      list_of_regions[region[:id]] = region[:name]
+    end
+
     list_of_financials = ["Scholarship", "Financial Aid/Grant"]
 
     list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year", "2 Years", "4 Years"]
@@ -54,9 +61,8 @@ class EducationController < ApplicationController
 
     ## filter by region
     region_ids = params[:regions]
-    if region_ids != "" && region_ids
+    if  region_ids && region_ids != ""
       region_ids = region_ids.split(',')
-      logger.debug region_ids
 
       query_temp = []
       region_ids.each do |id|
@@ -70,7 +76,6 @@ class EducationController < ApplicationController
     industry_ids = params[:industries]
     if industry_ids && industry_ids != ""
       industry_ids = industry_ids.split(',')
-      logger.debug industry_ids
 
       industries_query = "("
 
@@ -96,9 +101,6 @@ class EducationController < ApplicationController
     tuition_max = params[:cost_max]
     if tuition_max && tuition_max != "" && tuition_min && tuition_min != ""
 
-      logger.debug tuition_max
-      logger.debug tuition_min
-
       tuition_query = "("
 
       tuition_query += " tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min} "
@@ -117,7 +119,6 @@ class EducationController < ApplicationController
     if finalcial_ids && finalcial_ids != ""
 
       finalcial_ids = finalcial_ids.split(',')
-      logger.debug finalcial_ids
 
       financial_query = "("
 
@@ -143,7 +144,6 @@ class EducationController < ApplicationController
     if program_duration_ids && program_duration_ids != ""
 
       program_duration_ids = program_duration_ids.split(',')
-      logger.debug program_duration_ids
 
       program_duration_query = "("
 
@@ -169,7 +169,6 @@ class EducationController < ApplicationController
     if hour_per_week_ids && hour_per_week_ids != ""
 
       hour_per_week_ids = hour_per_week_ids.split(',')
-      logger.debug hour_per_week_ids
 
       hours_per_week_query = "("
 
@@ -195,7 +194,6 @@ class EducationController < ApplicationController
     if time_of_day_ids && time_of_day_ids != ""
 
       time_of_day_ids = time_of_day_ids.split(',')
-      logger.debug time_of_day_ids
 
       time_of_day_query = "("
 
@@ -221,7 +219,6 @@ class EducationController < ApplicationController
     if education_ids && education_ids != ""
 
       education_ids = education_ids.split(',')
-      logger.debug education_ids
 
       education_query = "("
 
@@ -247,8 +244,6 @@ class EducationController < ApplicationController
     if program_title && program_title != ""
 
       program_title = program_title.downcase
-
-      logger.debug program_title
 
       title_query = "("
 
@@ -276,8 +271,6 @@ class EducationController < ApplicationController
       sort_by = params[:sort]
     end
 
-    logger.debug query
-
     isSeeMore = false
     programs = Program.where(query).order(sort_by)
 
@@ -289,7 +282,7 @@ class EducationController < ApplicationController
       :list => render_to_string('education/partial/_list', :layout => false, :locals => { programs: programs.first(3) }),
       :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3) }),
       :isSeeMore => isSeeMore,
-      :programs => programs
+      :programs => programs.first(3)
     }
   end
 end

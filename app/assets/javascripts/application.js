@@ -577,7 +577,7 @@ $(document).on('turbolinks:load', function(){
     $('#program-map-view').show();
 
     $(document).trigger('initGoogleMap');
-    
+
   });
 
   //Click button see more
@@ -591,18 +591,20 @@ $(document).on('turbolinks:load', function(){
     clearTimeout(timeout);
     timeout = setTimeout(function() {
       var cost_min = $("#slider-range").slider("values")[0],
-        cost_max = $("#slider-range").slider("values")[1],
-        data = {
-          industries: [],
-          cost_max: [],
-          cost_min: [],
-          financials: [],
-          programs: [],
-          hours: [],
-          times: [],
-          educations: [],
-          last_id: []
-        }
+          cost_max = $("#slider-range").slider("values")[1],
+          data = {
+            industries: [],
+            cost_max: [],
+            cost_min: [],
+            financials: [],
+            programs: [],
+            hours: [],
+            times: [],
+            educations: [],
+            last_id: [],
+            title: "",
+            regions: []
+          };
 
       $('.square-checkbox:checked').each(function() {
         data[$(this).attr('name')].push($(this).val());
@@ -611,6 +613,8 @@ $(document).on('turbolinks:load', function(){
       data.cost_max.push(cost_max);
       data.cost_min.push(cost_min);
       data.last_id.push(id);
+      data.title = $('#programInput').val();
+      data.regions.push($("#programRegion").val())
 
       if(!data.industries.length) {
         delete data.industries;
@@ -648,6 +652,14 @@ $(document).on('turbolinks:load', function(){
         data.educations = data.educations.join(',')
       }
 
+      if(data.title == "") {
+        delete data.title;
+      }
+
+      if(!data.regions.length) {
+        delete data.regions
+      }
+
       $.ajax({
         url : '/education/filter',
         type : "get",
@@ -658,7 +670,15 @@ $(document).on('turbolinks:load', function(){
           if (id > 0) {
             $('#program-container-map').append(response.map);
             $('#program-container-list').append(response.list);
+            updateProgramsMapData(response.programs);
+            addMarkerToMap(response.programs);
           } else {
+            // remove all of map markers
+            programMapMarkers = [];
+            // set map data
+            programsMapData = response.programs;
+            // reinit map
+            initMap();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
@@ -672,52 +692,105 @@ $(document).on('turbolinks:load', function(){
       });
     }, 500);
   }
-  
-});
 
+  // Click button Search program
+  $('#programSearch').click(function (e) {
+    e.preventDefault();
+    var searchProgram = $('#programInput').val();
+    
+    if (searchProgram && searchProgram != "") {
+      filterProgram(0);
+    }
+  });
 
-// Init map program
-$(document).ready(function(){
-
+  /*
+    Map
+  */
   // Create map in program landing
-  window.map = null;
-  window.locations = [
-    ['Washington Square Arch', 40.7314655, -73.9969555, 1],
-    ['OTTO Enoteca e Pizzeria', 40.732065, -73.998369, 2],
-    ['Tisch School Of The Arts', 40.7305041, -73.9966524, 3]
-  ];
+  var programsMap = null;
+  var programMapMarkers = [];
+
+  var programsMapData = {};
+  if ($('#program-map-data').html()) {
+    programsMapData = JSON.parse($('#program-map-data').html());
+  }
+
+  // window.locations = [
+  //   ['Washington Square Arch', 40.7314655, -73.9969555, 1],
+  //   ['OTTO Enoteca e Pizzeria', 40.732065, -73.998369, 2],
+  //   ['Tisch School Of The Arts', 40.7305041, -73.9966524, 3]
+  // ];
 
 
   // refresh google map when trigger
   $(document).on("refreshGoogleMap", function(){
-    if (map){
+    if (programsMap){
       google.maps.event.trigger(map, 'resize');
     }
   });
 
   //Init google map
   $(document).on("initGoogleMap", function(){
-    window.initMap();
+    console.log('initGoogleMap');
+    initMap();
   });
 
 
   // Add marker for map
-  window.initMap = function() {
+  var initMap = function() {
     // Create a map object and specify the DOM element for display.
-    map = new google.maps.Map(document.getElementById('program-map'), {
-      center: {lat: 40.7342195, lng: -74.0004183},
-      zoom: 16
+
+    var lat = 31.391830,
+      lng = -92.329102,
+      length = programsMapData.length;
+
+    if (length > 0) {
+      lat = parseInt(programsMapData[0].lat);
+      lng = parseInt(programsMapData[0].lng);
+    }
+console.log(lat, lng);
+
+    programsMap = new google.maps.Map(document.getElementById('program-map'), {
+      center: {lat: lat, lng: lng},
+      zoom: 7
     });
 
-    for (var i = 0; i < locations.length; i++) {
-       var marker = new MarkerWithLabel({
-         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+    addMarkerToMap(programsMapData);
+  }
+
+  var updateProgramsMapData = function(programs) {
+    programsMapData = programsMapData.concat(programs);
+  }
+
+  var addMarkerToMap = function(programs) {
+    if(programsMap) {
+      for (var i = 0; i < programs.length; i++) {
+        var marker = new MarkerWithLabel({
+         position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
          icon: 'assets/marker.png',
-         map: map,
-         labelContent: String(locations[i][3]),
+         map: programsMap,
+         title: programs[i].title,
+         labelContent: String(programs[i].id),
          labelAnchor: new google.maps.Point(20, 36),
          labelClass: "labels-marker"
-       });
+        });
+
+        programMapMarkers.push(marker);
+      }
+
+      fixMapZoomToSeeAllMarker();
+    }
+  }
+
+  var fixMapZoomToSeeAllMarker = function() {
+    if(programsMap && programMapMarkers.length > 0) {
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < programMapMarkers.length; i++) {
+       bounds.extend(programMapMarkers[i].getPosition());
+      }
+
+      programsMap.setCenter(bounds.getCenter());
+      programsMap.fitBounds(bounds);
     }
   }
 });
