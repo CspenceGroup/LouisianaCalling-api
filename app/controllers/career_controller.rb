@@ -23,9 +23,6 @@ class CareerController < ApplicationController
     salary_max = 80000;
 
     if !params["title"] && !params["region"]
-      @careers = Career.first(9)
-      @isSeeMore = false
-
       @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(9)
       @isSeeMore = false
 
@@ -337,7 +334,7 @@ class CareerController < ApplicationController
     end
 
     last_id = 0
-    if params[:last_id] && params[:sort] != ""
+    if params[:last_id] && params[:last_id] != ""
       last_id = params[:last_id]
 
       query = query + " AND id > #{last_id} "

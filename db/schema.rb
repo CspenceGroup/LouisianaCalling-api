@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923093328) do
+ActiveRecord::Schema.define(version: 20160928021732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,30 @@ ActiveRecord::Schema.define(version: 20160923093328) do
     t.string   "image_large"
     t.string   "image_medium"
     t.string   "image_small"
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "region"
+    t.text     "traning_detail"
+    t.text     "description"
+    t.string   "duration"
+    t.string   "time_of_day"
+    t.string   "hours_per_weeks"
+    t.integer  "tuition_min"
+    t.integer  "tuition_max"
+    t.string   "financial_help"
+    t.string   "education"
+    t.string   "institution_name"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "lat"
+    t.string   "lng"
+    t.text     "industries"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "slug"
+    t.string   "cover_photo"
   end
 
   create_table "regions", force: :cascade do |t|
