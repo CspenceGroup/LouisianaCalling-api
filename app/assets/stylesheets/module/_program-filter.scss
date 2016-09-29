@@ -21,17 +21,27 @@
 .program-view-by {
   @extend %float-right;
   width: rem(56);
-  padding-top: rem(15);
+  padding-top: rem(10);
 
   @include e('list') {
     @extend %overflow-hidden;
-    @include boxSize(rem(24), rem(24));
+    @include boxSize(rem(30), rem(30));
     @extend %float-left;
   }
 
+  @include e('list-icon') {
+    @include boxSize(rem(24), rem(24));
+    margin: rem(3) auto 0 auto;
+  }
+
   @include e('map') {
-    @include boxSize(rem(17), rem(24));
+    @include boxSize(rem(23), rem(30));
     @extend %float-right;
+  }
+
+  @include e('list-icon-map') {
+    @include boxSize(rem(17), rem(24));
+    margin: rem(2) auto 0 auto;
   }
 }
 

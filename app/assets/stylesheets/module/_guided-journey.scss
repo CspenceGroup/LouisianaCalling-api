@@ -58,6 +58,8 @@
   z-index: 100;
   @extend %float-right;
   @include boxSize(26%, 100%);
+  @extend %absolute;
+  @extend %right-top-0;
 
   .main-title {
     font-size: rem(29);

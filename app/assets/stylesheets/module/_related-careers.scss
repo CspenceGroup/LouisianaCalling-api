@@ -1,5 +1,5 @@
 .related-careers {
-  height: rem(535);
+  @extend %overflow-hidden;
   color: $default;
   margin-bottom: rem(-20);
   @extend %relative;
