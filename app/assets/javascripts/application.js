@@ -579,11 +579,15 @@ $(document).on('turbolinks:load', function(){
   $('.program-view-by__list').click(function() {
     $('#program-list-view').show();
     $('#program-map-view').hide();
+    $('.program-view-by__list').addClass('active-tab');
+    $('.program-view-by__map').removeClass('active-tab');
   });
 
   $('.program-view-by__map').click(function() {
     $('#program-list-view').hide();
     $('#program-map-view').show();
+    $('.program-view-by__list').removeClass('active-tab');
+    $('.program-view-by__map').addClass('active-tab');
 
     $(document).trigger('initGoogleMap');
 
