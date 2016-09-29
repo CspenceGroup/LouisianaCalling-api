@@ -35,7 +35,13 @@ RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://postgres:Bpa
 # Expose a volume so that nginx will be able to read in assets in production.
 VOLUME ["$INSTALL_PATH/public"]
 
+# Install and configure nginx
+RUN apt-get install -y nginx
+RUN rm -rf /etc/nginx/sites-available/default
+ADD nginx/nginx.conf /etc/nginx/nginx.conf
+
 # The default command that gets ran will be to start the Unicorn server.
-CMD bundle exec unicorn -c config/unicorn.rb
+# CMD bundle exec unicorn -c config/unicorn.rb
+CMD ["foreman", "start"]
 
 # CMD RAILS_ENV=production bundle exec unicorn -c config/unicorn.rb
