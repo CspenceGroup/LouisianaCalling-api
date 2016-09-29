@@ -27,15 +27,14 @@
   @include e('item') {
     border: rem(2) solid $filter-careers-heading;
     background-color: $white;
-    @include boxSize(rem(802), rem(160));
+    @include boxSize(rem(802), rem(68));
     color: $filter-careers-heading;
     padding: 0 rem(13);
     margin-bottom: rem(21);
   }
 
   @include e('heading') {
-    height: rem(79);
-    border-color: $filter-careers-heading;
+    padding-top: rem(20);
   }
 
   @include e('icon-salary') {
@@ -54,35 +53,10 @@
 
   @include e('head-salary') {
     @extend %float-right;
-    margin-top: rem(30);
   }
 
-  @include e('icon-education') {
-    @include background-image('career-options.png');
-    @extend %background-no-repeat;
-    background-position: rem(-7) rem(-48);
-    @include boxSize(rem(24), rem(28));
-    @extend %float-left;
-  }
-
-  @include e('footer') {
-    margin-top: rem(28);
-    @extend %overflow-hidden;
-  }
-
-  @include e('footer-details') {
-    width: auto;
-
-    p {
-      margin-left: rem(45);
-    }
-  }
-
-  @include e('icon-map') {
-    @include boxSize(rem(28), rem(25));
-    @extend %float-left;
-    @include background-image('careers/icon-map-popup.png');
-    @extend %background-no-repeat;
+  .jobs-head__name {
+    @extend %no-padding-top;
   }
 }
 
