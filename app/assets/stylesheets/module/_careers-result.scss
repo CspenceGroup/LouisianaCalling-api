@@ -125,8 +125,9 @@
     @extend %float-left;
     @extend %relative;
     @include boxSize(rem(254), rem(254));
-    border: 1px solid $default;
+    border: rem(1) solid $default;
     margin: rem(20) rem(20) 0 0;
+    background-color: $white;
 
     &:last-child {
       @extend %no-margin-right;
@@ -140,21 +141,6 @@
 
     i {
       margin-left: rem(5);
-    }
-
-    .related-item__info {
-      padding-top: rem(8);
-    }
-
-    .related-item__name {
-      width: rem(225);
-      line-height: rem(20);
-    }
-
-    .related-item__salary {
-      width: auto;
-      float: none;
-      @extend %no-margin-top;
     }
   }
 }

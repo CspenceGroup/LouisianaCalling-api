@@ -165,6 +165,7 @@
     line-height: 1.2;
     @extend %i-owan-old-style;
     @extend %text-capitalize;
+    @include shadow(0, 0, rem(49), $black);
   }
 
   @include e('text') {
