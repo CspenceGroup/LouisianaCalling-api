@@ -536,6 +536,8 @@ $(document).on('turbolinks:load', function(){
   // Click button Search
   $('#careerSearch').click(function () {
     var searchTitle = $('#careerAutocomplete').val();
+    $('.careers-grid-details').hide();
+    $('#careers-see-more,#careers-see-more-list').hide();
 
     if (searchTitle && searchTitle != "") {
       getValueCheck(0);
@@ -702,7 +704,7 @@ $(document).on('turbolinks:load', function(){
           if (response.isSeeMore) {
             $('#education-see-more-map, #education-see-more').show();
           } else {
-            $('#education-see-more-map, #education-see-more').hide();;
+            $('#education-see-more-map, #education-see-more').hide();
           }
         },
         error: function() {
@@ -717,6 +719,8 @@ $(document).on('turbolinks:load', function(){
   $('#programSearch').click(function (e) {
     e.preventDefault();
     var searchProgram = $('#programInput').val();
+    $('#education-see-more-map, #education-see-more').hide();
+    $('#program-container-list, #program-container-map').hide();
 
     if (searchProgram && searchProgram != "") {
       filterProgram(0);

@@ -13,10 +13,5 @@
           .careers-list-view__icon-salary
           p.careers-list-view__salary
             = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
-      .great-jobs__list-icon.careers-list-view__footer
-        .careers-list-view__footer-details.careers-details-education
-          .careers-list-view__icon-education
-          p
-            = career.education
 - else
   p.no-result-found.no-result-list No results found.
