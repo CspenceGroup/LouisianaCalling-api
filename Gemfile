@@ -42,6 +42,7 @@ gem "font-awesome-rails"
 gem "slim-rails"
 
 gem 'unicorn'
+gem 'foreman'
 gem 'sidekiq'
 gem 'redis-rails'
 
