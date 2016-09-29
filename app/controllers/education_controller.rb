@@ -104,7 +104,7 @@ class EducationController < ApplicationController
       if query == ""
         query = industries_query
       else
-        query = regions_query + " AND " + industries_query
+        query = query + " AND " + industries_query
       end
     end
 
