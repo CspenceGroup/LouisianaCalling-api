@@ -1,8 +1,5 @@
 .more-stories {
   @include background-image('profile/more-stories-bg.png');
-  @extend %background-no-repeat;
-  @extend %background-position-center;
-  @extend %background-cover;
 
   @include e('title') {
     padding-top: rem(30);

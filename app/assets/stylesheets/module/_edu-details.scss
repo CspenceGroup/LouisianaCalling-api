@@ -78,7 +78,7 @@
 
 .edu-program-info {
   .icon {
-    margin-right: rem(14);
+    margin-right: rem(13);
     @extend %float-left;
   }
 
@@ -179,7 +179,7 @@
   &:after {
     content: '';
     width: rem(15);
-    height: rem(40);
+    height: rem(30);
     bottom: rem(3);
     right: rem(5);
     @extend %absolute;
