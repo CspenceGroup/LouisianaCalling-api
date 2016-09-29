@@ -592,7 +592,7 @@ $(document).on('turbolinks:load', function(){
   function filterProgram(id) {
     if(id > 0) {
       $('.indicator-loading-see-more').show();
-      $('.icon-see-more').hide();
+      $('#education-see-more-map, #education-see-more').hide();
     } else {
       $('.indicator-loading').show();
     }
@@ -689,7 +689,6 @@ $(document).on('turbolinks:load', function(){
             // reinit map
             initMap();
             $('.indicator-loading').hide();
-            // $('#program-list-view, #program-map-view').show();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
@@ -697,7 +696,7 @@ $(document).on('turbolinks:load', function(){
           if (response.isSeeMore) {
             $('#education-see-more-map, #education-see-more').show();
           } else {
-            $('#education-see-more-map, #education-see-more').hide();;
+            $('#education-see-more-map, #education-see-more').hide();
           }
         },
         error: function() {
