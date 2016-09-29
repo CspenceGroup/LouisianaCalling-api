@@ -18,6 +18,10 @@
 .program-list-view {
   @extend %overflow-hidden;
   margin-bottom: rem(170);
+
+  .no-result-found {
+    @extend %text-center;
+  }
 }
 
 .i-career {
@@ -58,6 +62,10 @@
   @include e('list') {
     width: rem(385);
     @extend %float-left;
+
+    .no-result-found {
+      margin-left: rem(50);
+    }
   }
 
   @include e('address') {
