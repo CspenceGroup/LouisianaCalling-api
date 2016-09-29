@@ -402,6 +402,9 @@ $(document).on('turbolinks:load', function(){
     }
 
     if($(this).closest('.program-filter').length) {
+      $('#program-container-list, #program-container-map').hide();
+      $('#education-see-more-map, #education-see-more').hide();
+
       filterProgram(0);
     }
 
@@ -415,6 +418,8 @@ $(document).on('turbolinks:load', function(){
     }
 
     if($(this).closest('.program-filter').length) {
+      $('#program-container-list, #program-container-map').hide();
+      $('#education-see-more-map, #education-see-more').hide();
       filterProgram(0);
     }
   });
@@ -592,7 +597,7 @@ $(document).on('turbolinks:load', function(){
   function filterProgram(id) {
     if(id > 0) {
       $('.indicator-loading-see-more').show();
-      $('.icon-see-more').hide();
+      $('#education-see-more-map, #education-see-more').hide();
     } else {
       $('.indicator-loading').show();
     }
@@ -689,7 +694,7 @@ $(document).on('turbolinks:load', function(){
             // reinit map
             initMap();
             $('.indicator-loading').hide();
-            // $('#program-list-view, #program-map-view').show();
+            $('#program-container-list, #program-container-map').show();
             $('#program-container-map').html(response.map);
             $('#program-container-list').html(response.list);
           }
