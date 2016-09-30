@@ -154,7 +154,8 @@
     @extend %overflow-hidden;
 
     &:last-child {
-      width: rem(133);
+      width: rem(71);
+      margin-left: rem(18);
     }
 
     &:first-child {
