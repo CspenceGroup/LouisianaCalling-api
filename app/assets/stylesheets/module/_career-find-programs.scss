@@ -13,4 +13,9 @@
     margin: 0 rem(95) rem(28) 0;
     @extend %text-center;
   }
+
+  .search-input {
+    color: $search-text;
+    @extend %text-capitalize;
+  }
 }

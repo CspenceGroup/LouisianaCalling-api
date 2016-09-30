@@ -363,6 +363,26 @@ $(document).on('turbolinks:load', function(){
     $('#sortSkills').addClass('btn-sort-active');
   });
 
+  /**
+   * Search nearby programs from career details page
+   */
+  $('#search-career-detail').submit(function(e) {
+    e.preventDefault();
+
+    var target = e.target,
+        careerName = convertToUrl(target[0].value),
+        region = convertToUrl(target[1].value),
+        url = '/educations?title=' + careerName;
+
+    if (region) {
+
+      url = url + '&region=' + region;
+      window.location = url;
+    } else {
+      window.location = url;
+    }
+  });
+
   // autocomplete for program in careers details page
   var availableProgramCareer = {};
   if ($('#availableProgramCareer').html()) {
@@ -372,7 +392,6 @@ $(document).on('turbolinks:load', function(){
   $("#programAutocompleteCareers").autocomplete({
     source: availableProgramCareer
   });
-
 
   /****************************************
    *            CAREER LANDING            *
