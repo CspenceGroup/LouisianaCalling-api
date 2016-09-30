@@ -18,7 +18,7 @@
     background-repeat: repeat;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    padding-top: rem(73);
+    padding: rem(73) 0 0 0;
 
     h3 {
       font-size: rem(21);
@@ -96,6 +96,10 @@
 }
 
 .profile-content {
-  width: rem(445);
-  @extend %margin-auto;
+  margin-left: rem(60);
+
+  @include m('pull-left') {
+    @extend %float-right;
+    margin: 0 rem(60) 0 0;
+  }
 }
