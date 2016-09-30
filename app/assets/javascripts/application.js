@@ -272,7 +272,7 @@ $(document).on('turbolinks:load', function(){
       window.location = toUrl;
     } else if (type && type === 'programs') {
 
-      toUrl = '/educations' + url;
+      toUrl = '/programs' + url;
       window.location = toUrl;
     }
   });
@@ -372,7 +372,7 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/educations?title=' + careerName;
+        url = '/programs?title=' + careerName;
 
     if (region) {
 
