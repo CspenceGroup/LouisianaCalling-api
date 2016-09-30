@@ -107,6 +107,14 @@
       height: rem(44);
       @extend %overflow-hidden;
     }
+
+    .icon {
+      margin-right: rem(6);
+    }
+
+    &:last-child {
+      @extend %no-margin-right;
+    }
   }
 }
 
