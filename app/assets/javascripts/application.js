@@ -685,8 +685,8 @@ $(document).on('turbolinks:load', function(){
       data.cost_max.push(cost_max);
       data.cost_min.push(cost_min);
       data.last_id.push(id);
-      data.title = $('#programInput').val();
-      data.regions.push($("#programRegion").val())
+      data.title = $('.program-search-input').val();
+      // data.regions.push($("#programRegion").val())
 
       if(!data.industries.length) {
         delete data.industries;
@@ -730,6 +730,8 @@ $(document).on('turbolinks:load', function(){
 
       if(!data.regions.length) {
         delete data.regions
+      } else {
+        data.regions = data.regions.join(',')
       }
 
       $.ajax({

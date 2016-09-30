@@ -12,19 +12,7 @@
         .row.program-list__search
           form name="search-homepage"
             .input-group.search-group.search-group--program
-              input.form-control.search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
-              .form-group.btn.btn-search.btn-region
-                select.form-control#programRegion
-                  - if !@region || @region == ""
-                      option value="" disabled="disabled" selected="selected" Location
-                  - @list_of_regions.each do |region|
-                      - if @region && @region != "" && region.name == @region
-                          option value="#{region.id}" selected="selected"
-                            = region.name
-                      - else
-                          option value="#{region.id}"
-                            = region.name
-                span.fa.fa-caret-down
+              input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
               button.btn-search.btn-submit#programSearch type="submit" Search
           #availableProgram.auto-fill-data
             = @list_of_programs.to_json
@@ -59,14 +47,13 @@
                 .sliders_filter-salary
                   #tuition-cost
             .program-filter__details-desc.program-filter__details-item
-              h3.careers-filter__title Financial help
+              h3.careers-filter__title Region
               ul.careers-filter-details
-                li
-                  input.square-checkbox name="financials" type="checkbox" value="0"
-                  span.careers-filter-details__name Scholarship
-                li
-                  input.square-checkbox name="financials" type="checkbox" value="1"
-                  span.careers-filter-details__name Financial Aid/Grant
+                - @list_of_regions.each do |region|
+                  li
+                    input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.name == @region ? 'checked' : false)
+                    span.careers-filter-details__name 
+                      = region.name
           .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Program duration
