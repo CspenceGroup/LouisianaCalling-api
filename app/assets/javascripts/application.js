@@ -363,6 +363,15 @@ $(document).on('turbolinks:load', function(){
     $('#sortSkills').addClass('btn-sort-active');
   });
 
+  // autocomplete for program in careers details page
+  var availableProgramCareer = {};
+  if ($('#availableProgramCareer').html()) {
+    availableProgramCareer = JSON.parse($('#availableProgramCareer').html());
+  }
+
+  $("#programAutocompleteCareers").autocomplete({
+    source: availableProgramCareer
+  });
 
 
   /****************************************
@@ -743,6 +752,16 @@ $(document).on('turbolinks:load', function(){
     // }
   });
 
+  // autocomplete for program page.
+  var availableProgram = {};
+  if ($('#availableProgram').html()) {
+    availableProgram = JSON.parse($('#availableProgram').html());
+  }
+
+  $("#programAutocomplete").autocomplete({
+    source: availableProgram
+  });
+
   /*
     Map
   */
@@ -754,13 +773,6 @@ $(document).on('turbolinks:load', function(){
   if ($('#program-map-data').html()) {
     programsMapData = JSON.parse($('#program-map-data').html());
   }
-
-  // window.locations = [
-  //   ['Washington Square Arch', 40.7314655, -73.9969555, 1],
-  //   ['OTTO Enoteca e Pizzeria', 40.732065, -73.998369, 2],
-  //   ['Tisch School Of The Arts', 40.7305041, -73.9966524, 3]
-  // ];
-
 
   // refresh google map when trigger
   $(document).on("refreshGoogleMap", function(){
@@ -831,4 +843,5 @@ $(document).on('turbolinks:load', function(){
       programsMap.fitBounds(bounds);
     }
   }
+
 });

@@ -464,16 +464,20 @@
       <h2 class="find-programs__title main-title">Like this career? Find programs near you.</h2>
       <form name="search-career">
         <div class="input-group search-group">
-          <input class="form-control search-input" type="text" name="search-input" placeholder="Boilmaker"/>
+          <input class="form-control search-input" id="programAutocompleteCareers" type="text" name="search-input" placeholder="Boilmaker"/>
           <div class="form-group btn btn-search btn-region">
             <select class="form-control">
               <option value="" disabled selected>Region</option>
+              <% @list_of_regions.each do |region|%>
+                <option value="<%= region.name %>"><%= region.name %></option>
+              <% end %>
             </select>
             <span class="fa fa-caret-down"></span>
           </div>
           <button type="submit" class="btn-search btn-submit">Search</button>
         </div>
       </form>
+      <div class="auto-fill-data" id="availableProgramCareer"><%= @list_of_programs.to_json %></div>
     </section>
     <% if @profile %>
       <section class="story-owner row">
