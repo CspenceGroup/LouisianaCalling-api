@@ -40,7 +40,7 @@ div.container-fluid
                 = image_tag 'map-view.png'
       #action-filter.collapse.program-filter
         .program-filter__container.row
-          .program-filter__details.col-md-3
+          .program-filter__details.col-xs-3.col-md-3
             .program-filter__details-desc
               h3.careers-filter__title Industry
               ul.careers-filter-details
@@ -49,7 +49,7 @@ div.container-fluid
                       input.square-checkbox name="industries" type="checkbox" value="#{industry.id}"
                       span.careers-filter-details__name
                         = industry.name
-          .col-md-3.program-filter__details
+          .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Tuition cost
               #salary-range.careers-salary
@@ -65,7 +65,7 @@ div.container-fluid
                 li
                   input.square-checkbox name="financials" type="checkbox" value="1"
                   span.careers-filter-details__name Financial Aid/Grant
-          .col-md-3.program-filter__details
+          .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Program duration
               ul.careers-filter-details
@@ -102,7 +102,7 @@ div.container-fluid
                 li
                   input.square-checkbox name="hours" type="checkbox" value="3"
                   span.careers-filter-details__name 31 - 40 Hours
-          .col-md-3.program-filter__details
+          .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Day/night Offering
               ul.careers-filter-details
@@ -167,13 +167,13 @@ div.container-fluid
           .program-map-view__address#program-map
     section.edu-jumpstart
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
-        li.nav-item.col-md-4
+        li.nav-item.col-xs-4.col-md-4
           a.active(href='#eduJumpstart' role='tab' data-toggle='tab')
             span Jumpstart
-        li.nav-item.col-md-4
+        li.nav-item.col-xs-4.col-md-4
           a(href='#eduTraining' role='tab' data-toggle='tab')
             span Training
-        li.nav-item.col-md-4
+        li.nav-item.col-xs-4.col-md-4
           a(href='#eduCollege' role='tab' data-toggle='tab')
             span College
 

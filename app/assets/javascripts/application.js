@@ -277,7 +277,19 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  /**
+   * Scrolling fixed header with locked screen 1200px
+   */
+  $(window).on('wheel scroll', function() {
+    if($(window).scrollLeft() > 60) {
 
+      $('.site-header').css("left","-" + ($(window).scrollLeft() + 60) +"px");
+    } else {
+
+      $('.site-header').css("left","-" + $(window).scrollLeft() + "px");
+    }
+    
+  })
 
   /****************************************
    *             PROFILE                  *

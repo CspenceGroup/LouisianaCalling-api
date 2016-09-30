@@ -19,24 +19,24 @@
                     = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
             .great-jobs__list-icon.program-item-map__footer
               ul.row.edu-detail-row
-                li.col-md-12.program-item-map__footer-item title="#{program.industries.join(',')}"
+                li.col-xs-12.col-md-12.program-item-map__footer-item title="#{program.industries.join(',')}"
                   .icon.i-career
                     = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
                   .career-industry
                     - program.industries.each do |industry|
                         p
                           = industry
-                li.col-md-3.program-item-map__footer-item
+                li.col-xs-3.col-md-3.program-item-map__footer-item
                   .icon.i-calendar
                     = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
                   p
                     = program.duration
-                li.col-md-4.program-item-map__footer-item
+                li.col-xs-4.col-md-4.program-item-map__footer-item
                   .icon.i-clock
                     = image_tag "program-landing/clock.png", :alt => 'icon clock'
                   p
                     = program.hours_per_weeks
-                li.col-md-4.program-item-map__footer-item
+                li.col-xs-4.col-md-4.program-item-map__footer-item
                   .icon.i-day
                     = image_tag "program-landing/day_night.png", :alt => 'icon day night'
                   p
