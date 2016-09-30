@@ -111,6 +111,6 @@ form {
 
 // Style drop down auto complete
 .ui-autocomplete {
-  @include boxSize(rem(588), rem(250));
+  @include boxSize(rem(375), rem(250));
   @extend %overflow-y-scroll;
 }

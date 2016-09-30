@@ -7,6 +7,7 @@ class EducationController < ApplicationController
 
     @list_of_regions = Region.all
     @list_of_industries = Cluster.all
+    @list_of_programs = Program.select(:title).map(&:title).uniq
 
     if !params["title"] && !params["region"]
       @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)

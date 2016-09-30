@@ -46,6 +46,8 @@ class CareerController < ApplicationController
 
     @careers = Career.where(:slug => params[:slug])
     @career = @careers.first
+    @list_of_programs = Program.select(:title).map(&:title).uniq
+    @list_of_regions = Region.all
 
     if @career
       interests = Interest.all
