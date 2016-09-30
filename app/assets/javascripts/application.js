@@ -431,18 +431,18 @@ $(document).on('turbolinks:load', function(){
 
   });
 
+  // Filter careers by salary range
   $("#slider-range").on("slidechange", function() {
-    if($(this).closest('.careers-filter').length) {
-      $('.careers-grid-details').hide();
-      $('.see-more-careers').hide();
-      getValueCheck(0);
-    }
+    $('.careers-grid-details').hide();
+    $('.see-more-careers').hide();
+    getValueCheck(0);
+  });
 
-    if($(this).closest('.program-filter').length) {
-      $('#program-container-list, #program-container-map').hide();
-      $('#education-see-more-map, #education-see-more').hide();
-      filterProgram(0);
-    }
+  // Filter program by tuition cost
+  $("#tuition-cost").on("slidechange", function() {
+    $('#program-container-list, #program-container-map').hide();
+    $('#education-see-more-map, #education-see-more').hide();
+    filterProgram(0);
   });
 
   //Requets url when filter follow condition careers
@@ -620,6 +620,19 @@ $(document).on('turbolinks:load', function(){
     filterProgram(last_id);
   });
 
+  // Tuition cost
+  $("#tuition-cost").slider({
+    range: true,
+    min: 0,
+    max: 40000,
+    values: [10000, 20000],
+    slide: function( event, ui ) {
+      $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+    }
+  });
+
+  $("#tuition").val( "$" + $("#tuition-cost").slider("values", 0).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + $("#tuition-cost").slider("values", 1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+
   // Filter programs
   function filterProgram(id) {
     if(id > 0) {
@@ -630,8 +643,8 @@ $(document).on('turbolinks:load', function(){
     }
     clearTimeout(timeout);
     timeout = setTimeout(function() {
-      var cost_min = $("#slider-range").slider("values")[0],
-          cost_max = $("#slider-range").slider("values")[1],
+      var cost_min = $("#tuition-cost").slider("values")[0],
+          cost_max = $("#tuition-cost").slider("values")[1],
           data = {
             industries: [],
             cost_max: [],

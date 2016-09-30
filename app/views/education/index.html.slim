@@ -54,10 +54,10 @@
           .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Tuition cost
-              #salary-range.careers-salary
-                input#salary.range-salary-text readonly="readonly" type="text" /
+              .careers-salary
+                input#tuition.range-salary-text readonly="readonly" type="text" /
                 .sliders_filter-salary
-                  #slider-range
+                  #tuition-cost
             .program-filter__details-desc.program-filter__details-item
               h3.careers-filter__title Financial help
               ul.careers-filter-details
@@ -82,13 +82,13 @@
                   span.careers-filter-details__name 6 Months
                 li
                   input.square-checkbox name="programs" type="checkbox" value="3"
-                  span.careers-filter-details__name 1 Year
+                  span.careers-filter-details__name 1 Year or 2 Semesters
                 li
                   input.square-checkbox name="programs" type="checkbox" value="4"
-                  span.careers-filter-details__name 2 Years
+                  span.careers-filter-details__name 2 Years or 4 Semesters
                 li
                   input.square-checkbox name="programs" type="checkbox" value="5"
-                  span.careers-filter-details__name 4 Years
+                  span.careers-filter-details__name 2 Years+
             .program-filter__details-desc.program-filter__details-item
               h3.careers-filter__title Hours per week
               ul.careers-filter-details
@@ -110,28 +110,31 @@
               ul.careers-filter-details
                 li
                   input.square-checkbox name="times" type="checkbox" value="0"
-                  span.careers-filter-details__name Day time only
+                  span.careers-filter-details__name Day
                 li
                   input.square-checkbox name="times" type="checkbox" value="1"
-                  span.careers-filter-details__name Night time only
+                  span.careers-filter-details__name Night
                 li
                   input.square-checkbox name="times" type="checkbox" value="2"
-                  span.careers-filter-details__name Full day
+                  span.careers-filter-details__name Both
             .program-filter__details-desc.program-filter__details-item
               h3.careers-filter__title Education
               ul.careers-filter-details
                 li
                   input.square-checkbox name="educations" type="checkbox" value="0"
-                  span.careers-filter-details__name Hight School Diploma/GED
+                  span.careers-filter-details__name Hight School Diploma/Hi-SET
                 li
                   input.square-checkbox name="educations" type="checkbox" value="1"
-                  span.careers-filter-details__name JumpStart
+                  span.careers-filter-details__name Certificate or Credential
                 li
                   input.square-checkbox name="educations" type="checkbox" value="2"
-                  span.careers-filter-details__name Training
-                li
-                  input.square-checkbox name="educations" type="checkbox" value="3"
-                  span.careers-filter-details__name College
+                  span.careers-filter-details__name Associate's Degree
+                //- li
+                //-   input.square-checkbox name="educations" type="checkbox" value="3"
+                //-   span.careers-filter-details__name Bachelor's Degree
+                //- li
+                //-   input.square-checkbox name="educations" type="checkbox" value="4"
+                //-   span.careers-filter-details__name Master's Degree
       .program-list__result
         #program-list-view.program-list-view
           #program-map-data style="display: none;"
