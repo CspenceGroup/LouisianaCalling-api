@@ -4,7 +4,7 @@
 
   @include e('head') {
     padding-top: rem(55);
-    @include boxSize(rem(1050), rem(108));
+    @include boxSize(rem(815), rem(108));
     @extend %margin-auto;
     @extend %overflow-hidden;
   }
@@ -15,7 +15,7 @@
 }
 
 .search-group--program {
-  width: rem(829);
+  width: rem(600);
 }
 
 .program-view-by {
@@ -77,7 +77,7 @@
       content: "";
       @extend %absolute;
       top: rem(-22);
-      left: 87%;
+      left: 76%;
       margin-left: rem(-11);
       border-width: rem(11);
       border-style: solid;
