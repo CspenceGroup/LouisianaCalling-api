@@ -20,10 +20,10 @@ class EducationController < ApplicationController
       @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @programs = Program.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
       @isSeeMore = false
 
-      if Program.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
         @isSeeMore = true
       end
     end
@@ -259,7 +259,7 @@ class EducationController < ApplicationController
 
       title_query = "("
 
-      title_query += " LOWER(title) like '%#{program_title}%' "
+      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' "
 
       title_query += ")"
 

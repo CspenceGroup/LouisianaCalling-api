@@ -288,7 +288,7 @@ $(document).on('turbolinks:load', function(){
 
       $('.site-header').css("left","-" + $(window).scrollLeft() + "px");
     }
-    
+
   })
 
   /****************************************
@@ -756,9 +756,9 @@ $(document).on('turbolinks:load', function(){
     $('#education-see-more-map, #education-see-more').hide();
     $('#program-container-list, #program-container-map').hide();
 
-    if (searchProgram && searchProgram != "") {
+    // if (searchProgram && searchProgram != "") {
       filterProgram(0);
-    }
+    // }
   });
 
   /*
