@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     topJobs = TopJob.all
     @jobs = {}
     @videos = Video.all
+    @regions = Region.all
 
     # Handle render top job
     topJobs.each do |job|

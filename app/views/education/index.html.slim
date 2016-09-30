@@ -1,4 +1,4 @@
-div.container-fluid
+.container-fluid
   = render 'navigation/index'
   .main-content
     section.hero-banner
@@ -12,7 +12,7 @@ div.container-fluid
         .row.program-list__search
           form name="search-homepage"
             .input-group.search-group.search-group--program
-              input.form-control.search-input#programInput required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
+              input.form-control.search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
               .form-group.btn.btn-search.btn-region
                 select.form-control#programRegion
                   - if !@region || @region == ""
@@ -26,6 +26,8 @@ div.container-fluid
                             = region.name
                 span.fa.fa-caret-down
               button.btn-search.btn-submit#programSearch type="submit" Search
+          #availableProgram.auto-fill-data
+            = @list_of_programs.to_json
         .action-filter
           p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
           p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
