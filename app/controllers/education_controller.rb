@@ -53,13 +53,13 @@ class EducationController < ApplicationController
 
     list_of_financials = ["Scholarship", "Financial Aid/Grant"]
 
-    list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year", "2 Years", "4 Years"]
+    list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+"]
 
     list_of_hours_per_week = ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours"]
 
-    list_of_time_of_day = ["Day Time Only", "Night Time Only", "Full Day"]
+    list_of_time_of_day = ["Day", "Night", "Both"]
 
-    list_of_educations = ["High School Diploma/GED", "JumpStart", "Training", "College"]
+    list_of_educations = ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree"]
 
     # define query
     query = ""
