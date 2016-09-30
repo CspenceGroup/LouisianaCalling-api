@@ -462,12 +462,20 @@
     </section>
     <section class="search-bar find-programs">
       <h2 class="find-programs__title main-title">Like this career? Find programs near you.</h2>
-      <form name="search-career">
+      <form name="search-career" id="search-career-detail">
         <div class="input-group search-group">
-          <input class="form-control search-input" type="text" name="search-input" placeholder="Boilmaker"/>
+          <input class="form-control search-input" type="text" name="search-input" value="<%= @career.title %>"/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control">
+            <select class="form-control" required>
               <option value="" disabled selected>Region</option>
+              <option value="Lake Charles">Lake Charles</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Shreveport">Shreveport</option>
+              <option value="Monroe">Monroe</option>
+              <option value="Baton Rouge">Baton Rouge</option>
+              <option value="Lafayette">Lafayette</option>
+              <option value="Houma">Houma</option>
+              <option value="New Orleans">New Orleans</option>
             </select>
             <span class="fa fa-caret-down"></span>
           </div>
