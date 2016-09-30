@@ -101,7 +101,6 @@
   }
 
   @include e('title') {
-    font-size: rem(33.2);
     @extend %cl-white;
     @extend %text-capitalize;
   }
