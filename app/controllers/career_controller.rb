@@ -71,8 +71,8 @@ class CareerController < ApplicationController
         }
       end
 
-      @related_by_skills = Career.where(title: @career.related_career_by_skill)
-      @related_by_interests = Career.where(title: @career.related_career_by_interest)
+      @related_by_skills = Career.where(title: @career.related_career_by_skill).first(3)
+      @related_by_interests = Career.where(title: @career.related_career_by_interest).first(3)
 
       profileName = @career.profile_name
       @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
