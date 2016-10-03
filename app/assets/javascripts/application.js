@@ -372,7 +372,7 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/programs?title=' + careerName;
+        url = '/programs?career=' + careerName;
 
     if (region) {
 
@@ -851,7 +851,7 @@ $(document).on('turbolinks:load', function(){
       for (var i = 0; i < programs.length; i++) {
         var marker = new MarkerWithLabel({
          position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
-         icon: 'assets/marker.png',
+         icon: '/assets/marker.png',
          map: programsMap,
          title: programs[i].title,
          labelContent: String(programs[i].id),

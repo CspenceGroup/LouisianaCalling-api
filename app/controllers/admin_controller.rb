@@ -281,8 +281,10 @@ class AdminController < ApplicationController
                   end
 
                   program[:cover_photo] = row[19].strip
+                  program[:interests] = row[20].split(',').map{ |s| s.strip }
+                  program[:career] = row[21].strip
 
-                  if row[20]
+                  if row[22]
                     raise "Wrong file"
                   end
 
