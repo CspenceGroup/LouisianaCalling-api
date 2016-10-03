@@ -34,11 +34,11 @@
             .program-filter__details-desc
               h3.careers-filter__title Interests
               ul.careers-filter-details
-                - @list_of_industries.each do |industry|
+                - @list_of_interests.each do |interest|
                     li
-                      input.square-checkbox name="interests" type="checkbox" value="#{industry.id}"
+                      input.square-checkbox name="interests" type="checkbox" value="#{interest.id}"
                       span.careers-filter-details__name
-                        = industry.name
+                        = interest.name
           .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
               h3.careers-filter__title Tuition cost

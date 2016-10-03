@@ -6,7 +6,7 @@ class EducationController < ApplicationController
     offset = 3
 
     @list_of_regions = Region.all
-    @list_of_industries = Cluster.all
+    @list_of_interests = Interest.all
     @list_of_programs = Program.select(:title).map(&:title).uniq
 
     if !params["title"] && !params["region"]
@@ -38,10 +38,10 @@ class EducationController < ApplicationController
 
   def filter
     ## get list of industries
-    clusters = Cluster.all
-    list_of_clusters = []
-    clusters.each do |cluster|
-      list_of_clusters[cluster[:id]] = cluster[:name]
+    interests = Interest.all
+    list_of_interests = []
+    interests.each do |interest|
+      list_of_interests[interest[:id]] = interest[:name]
     end
 
     ## get list of region
@@ -64,7 +64,7 @@ class EducationController < ApplicationController
     # define query
     query = ""
     regions_query = ""
-    industries_query = ""
+    interests_query = ""
     tuition_query = ""
     financial_query = ""
     program_duration_query = ""
@@ -86,26 +86,26 @@ class EducationController < ApplicationController
     end
 
     ## filter by industry
-    industry_ids = params[:industries]
-    if industry_ids && industry_ids != ""
-      industry_ids = industry_ids.split(',')
+    interest_ids = params[:interests]
+    if interest_ids && interest_ids != ""
+      interest_ids = interest_ids.split(',')
 
-      industries_query = "("
+      interests_query = "("
 
-      industry_ids.each_with_index do |id, index|
+      interest_ids.each_with_index do |id, index|
 
         if index == 0
-          industries_query += "industries like '%#{list_of_clusters[id.to_i]}%'"
+          interests_query += "interests like '%#{list_of_interests[id.to_i]}%'"
         else
-          industries_query += " OR industries like '%#{list_of_clusters[id.to_i]}%'"
+          interests_query += " OR interests like '%#{list_of_interests[id.to_i]}%'"
         end
       end
-      industries_query += ")"
+      interests_query += ")"
 
       if query == ""
-        query = industries_query
+        query = interests_query
       else
-        query = query + " AND " + industries_query
+        query = query + " AND " + interests_query
       end
     end
 
