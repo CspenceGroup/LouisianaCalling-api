@@ -1,54 +1,54 @@
 /* Font family */
 @font-face {
   font-family: 'BrandonGrotesque-Bold';
-  src: asset-url$font-path + 'BrandonGrotesque-Bold' + '.otf'),
-       asset-url$font-path + 'BrandonGrotesque-Bold' + '.woff');
+  src: asset-url($font-path + 'BrandonGrotesque-Bold' + '.otf'),
+       asset-url($font-path + 'BrandonGrotesque-Bold' + '.woff');
 }
 
 @font-face {
   font-family: 'BrandonGrotesque';
-  src: asset-url$font-path + 'BrandonGrotesque' + '.otf'),
-       asset-url$font-path + 'BrandonGrotesque' + '.woff');
+  src: asset-url($font-path + 'BrandonGrotesque' + '.otf'),
+       asset-url($font-path + 'BrandonGrotesque' + '.woff');
 }
 
 @font-face {
   font-family: 'IowanOldStyle';
-  src: asset-url$font-path + 'IowanOldStyle' + '.ttf'),
-       asset-url$font-path + 'IowanOldStyle' + '.woff');
+  src: asset-url($font-path + 'IowanOldStyle' + '.ttf'),
+       asset-url($font-path + 'IowanOldStyle' + '.woff');
 }
 
 @font-face {
   font-family: 'IowanOldStyle-BoldItalic';
-  src: asset-url$font-path + 'IowanOldStyle-BoldItalic' + '.ttf'),
-       asset-url$font-path + 'IowanOldStyle-BoldItalic' + '.woff');
+  src: asset-url($font-path + 'IowanOldStyle-BoldItalic' + '.ttf'),
+       asset-url($font-path + 'IowanOldStyle-BoldItalic' + '.woff');
 }
 
 @font-face {
   font-family: 'IowanOldStyleItalic';
-  src: asset-url$font-path + 'IowanOldStyleItalic' + '.ttf'),
-       asset-url$font-path + 'IowanOldStyleItalic' + '.woff');
+  src: asset-url($font-path + 'IowanOldStyleItalic' + '.ttf'),
+       asset-url($font-path + 'IowanOldStyleItalic' + '.woff');
 }
 
 @font-face {
   font-family: 'AcuminProCond-Bold';
-  src: asset-url$font-path + 'AcuminProCond-Bold' + '.otf'),
-       asset-url$font-path + 'AcuminProCond-Bold' + '.woff');
+  src: asset-url($font-path + 'AcuminProCond-Bold' + '.otf'),
+       asset-url($font-path + 'AcuminProCond-Bold' + '.woff');
 }
 
 @font-face {
   font-family: 'AcuminProCond-BoldItalic';
-  src: asset-url$font-path + 'AcuminProCond-BoldItalic' + '.otf'),
-       asset-url$font-path + 'AcuminProCond-BoldItalic' + '.woff');
+  src: asset-url($font-path + 'AcuminProCond-BoldItalic' + '.otf'),
+       asset-url($font-path + 'AcuminProCond-BoldItalic' + '.woff');
 }
 
 @font-face {
   font-family: 'AcuminProCond-Regular';
-  src: asset-url$font-path + 'AcuminProCond-Regular' + '.otf'),
-       asset-url$font-path + 'AcuminProCond-Regular' + '.woff');
+  src: asset-url($font-path + 'AcuminProCond-Regular' + '.otf'),
+       asset-url($font-path + 'AcuminProCond-Regular' + '.woff');
 }
 
 @font-face {
   font-family: 'AcuminProCond-Italic';
-  src: asset-url$font-path + 'AcuminProCond-Italic' + '.otf'),
-       asset-url$font-path + 'AcuminProCond-Italic' + '.woff');
+  src: asset-url($font-path + 'AcuminProCond-Italic' + '.otf'),
+       asset-url($font-path + 'AcuminProCond-Italic' + '.woff');
 }
