@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   get 'programs/:slug' => 'education#detail', :as => :education_detail
   get 'education/filter/' => 'education#filter', :as => :education_filter
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Private policy page
+  get 'policy' => 'policy#index', :as => :policy
 end
