@@ -1,0 +1,41 @@
+.policy-main-title {
+  padding-top: rem(45);
+  @extend %text-capitalize;
+}
+
+.policy-heading {
+  @extend .profile-heading;
+}
+
+.policy {
+  color: $default;
+  font-size: rem(16.67);
+  padding: rem(53) 0 rem(25);
+  @extend %acumin-pro-cond-regular;
+  @include background-image('program-landing/bg-program.png');
+
+  @include e('container') {
+    width: rem(985);
+    @extend %margin-auto;
+  }
+
+  @include e('item') {
+    padding-bottom: rem(10);
+  }
+
+  @include e('item-title') {
+    font-size: rem(16.67);
+    margin-bottom: rem(25);
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+  }
+
+  p {
+    margin-bottom: rem(20);
+    line-height: rem(20);
+  }
+
+  span {
+    @extend %block;
+  }
+}
