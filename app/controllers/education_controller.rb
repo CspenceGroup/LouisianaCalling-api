@@ -9,7 +9,14 @@ class EducationController < ApplicationController
     @list_of_interests = Interest.all
     @list_of_programs = Program.select(:title).map(&:title).uniq
 
-    if !params["title"] && !params["region"]
+    if params["career"]
+      career = params["career"].downcase if params["career"]
+      region = params["region"]
+
+      @programs = Program.where("LOWER(career) like '%#{career}%' AND region like '%#{region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").all
+      @isSeeMore = false
+
+    elsif !params["title"] && !params["region"]
       @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
       @isSeeMore = false
 

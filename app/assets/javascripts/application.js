@@ -372,7 +372,7 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/programs?title=' + careerName;
+        url = '/programs?career=' + careerName;
 
     if (region) {
 
