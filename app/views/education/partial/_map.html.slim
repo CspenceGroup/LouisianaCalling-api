@@ -9,17 +9,21 @@
                   p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
                     = "#{program.id}. #{program.title}"
               .jobs-head__content
-                .edu-scholarship.edu-scholarship--view-map
-                  p
-                    = program.financial_help
+                //- .edu-scholarship.edu-scholarship--view-map
+                //-   p
+                //-     = program.financial_help
+                .edu-region
+                  .icon.i-edu-region
+                    = image_tag "region.png", :alt => 'icon region'
+                  p Lake Charles
                 .edu-salary
                   .icon.i-edu-salary
                     = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
                   .edu-salary-range
                     = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
-            .great-jobs__list-icon.program-item-map__footer
-              ul.row.edu-detail-row
-                li.col-xs-12.col-md-12.program-item-map__footer-item title="#{program.industries.join(',')}"
+            .great-jobs__list-icon.program-list__item-footer
+              ul.row.edu-detail-row.program-list__item-row
+                li.col-xs-7.col-md-7.program-item-map__footer-item title="#{program.industries.join(',')}"
                   .icon.i-career
                     = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
                   .career-industry
@@ -31,12 +35,16 @@
                     = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
                   p
                     = program.duration
-                li.col-xs-4.col-md-4.program-item-map__footer-item
+                li.col-xs-7.col-md-7.program-item-map__footer-item
+                  .icon.i-education
+                    = image_tag "icon-education.png", :alt => "icon education"
+                  p Associate's Degree
+                li.col-xs-5.col-md-5.program-item-map__footer-item
                   .icon.i-clock
                     = image_tag "program-landing/clock.png", :alt => 'icon clock'
                   p
                     = program.hours_per_weeks
-                li.col-xs-2.col-md-2.program-item-map__footer-item
+                li.col-xs-5.col-xs-offset-5.col-md-5.col-md-offset-5.program-item-map__footer-item
                   .icon.i-day
                     = image_tag "program-landing/day_night.png", :alt => 'icon day night'
                   p
