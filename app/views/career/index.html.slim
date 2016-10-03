@@ -156,26 +156,26 @@
               #list-view-icon.careers-view-by__list
                 .careers-view-by__list-icon
                   a href="javascript:void(0)"
-                    = image_tag 'list-view.png'
+                    = image_tag asset_path('list-view.png')
               #grid-view-icon.careers-view-by__grid.active-tab
                 .careers-view-by__grid-icon
                   a href="javascript:void(0)"
-                    = image_tag 'grid-view.png'
+                    = image_tag asset_path('grid-view.png')
           #grid-view.grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: @careers }
             - if @isSeeMore
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
                   div
-                    = image_tag "profile/btn-see-more.png"
+                    = image_tag asset_path("profile/btn-see-more.png")
             - else
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view style="display:none;"
                   div
-                    = image_tag "profile/btn-see-more.png"
+                    = image_tag asset_path("profile/btn-see-more.png")
             .indicator-loading
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
           /! careers list view
           #list-view.careers-list-view
             #careersList.careers-grid-details
@@ -183,13 +183,13 @@
             - if @isSeeMore
                 #careers-see-more-list.more-stories__btn.see-more-careers
                   div
-                    = image_tag "profile/btn-see-more.png"
+                    = image_tag asset_path("profile/btn-see-more.png")
             - else
                 #careers-see-more-list.more-stories__btn.see-more-careers style="display:none;"
                   div
-                    = image_tag "profile/btn-see-more.png"
+                    = image_tag asset_path("profile/btn-see-more.png")
             .indicator-loading
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
   = render 'footer/index'
