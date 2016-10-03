@@ -56,26 +56,6 @@
   }
 }
 
-.edu-scholarship {
-  @extend %float-right;
-  background-color: $red-bg;
-  margin-top: rem(8);
-
-  p {
-    font-size: rem(12.5);
-    color: $white;
-    @extend %text-center;
-    @extend %acumin-pro-cond-regular;
-    padding: rem(3) rem(6) 0 rem(6);
-    line-height: rem(13);
-  }
-
-  @include m('view-map') {
-    margin-top: rem(10);
-  }
-}
-
-
 .edu-program-info {
   .icon {
     margin-right: rem(13);
@@ -88,7 +68,7 @@
   }
 
   .jobs-head__content {
-    margin-top: rem(5);
+    margin-top: rem(20);
   }
 
   .jobs-head__title {
@@ -96,8 +76,8 @@
   }
 
   @include m('item') {
-    @include boxSize(rem(805), rem(170));
-    margin: rem(20) auto 0 auto;
+    height: rem(170);
+    margin-top: rem(20);
 
     .jobs-head__title {
       max-width: rem(500);
@@ -119,6 +99,7 @@
 
 .edu-detail-row {
   padding-top: rem(28);
+  @extend %overflow-hidden;
 }
 
 .edu-detail-item {
@@ -178,9 +159,10 @@
 
   @include m('landing') {
     @extend %no-padding;
-    margin-left: rem(20);
+    margin-left: rem(30);
     height: rem(48);
     @extend %overflow-hidden;
+    @extend %float-left;
 
     &:last-child {
       width: rem(71);
@@ -189,6 +171,24 @@
 
     &:first-child {
       @extend %no-margin-left;
+      width: rem(200);
+      height: rem(28);
+    }
+
+    &:nth-child(2) {
+      width: rem(140);
+    }
+
+    &:nth-child(3) {
+      width: rem(150);
+    }
+
+    &:nth-child(4) {
+      width: rem(105);
+    }
+
+    p {
+      padding-top: rem(3);
     }
   }
 }
@@ -209,14 +209,29 @@
 }
 
 .edu-cost {
-  margin-top: rem(15);
+  @extend %float-right;
 }
 
 .edu-region {
-  margin: rem(22) rem(15) 0 0;
+  @extend %float-left;
+  width: rem(115);
+  margin: rem(9) rem(23) 0 0;
+
+  p {
+    @extend %float-right;
+  }
+  
 }
 
 .edu-certificate {
   width: rem(120);
   @extend %overflow-hidden;
 }
+
+.edu-details-region {
+  margin: rem(8) rem(15) 0 0;
+}
+
+// .edu-details-cost {
+//   margin-top: rem(7);
+// }

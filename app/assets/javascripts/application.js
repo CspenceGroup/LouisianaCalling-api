@@ -644,7 +644,7 @@ $(document).on('turbolinks:load', function(){
     range: true,
     min: 0,
     max: 40000,
-    values: [10000, 20000],
+    values: [0, 40000],
     slide: function( event, ui ) {
       $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
@@ -665,7 +665,7 @@ $(document).on('turbolinks:load', function(){
       var cost_min = $("#tuition-cost").slider("values")[0],
           cost_max = $("#tuition-cost").slider("values")[1],
           data = {
-            industries: [],
+            interests: [],
             cost_max: [],
             cost_min: [],
             financials: [],
@@ -688,10 +688,10 @@ $(document).on('turbolinks:load', function(){
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
-      if(!data.industries.length) {
-        delete data.industries;
+      if(!data.interests.length) {
+        delete data.interests;
       } else {
-        data.industries = data.industries.join(',')
+        data.interests = data.interests.join(',')
       }
 
       if(!data.financials.length) {
