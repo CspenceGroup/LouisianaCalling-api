@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20161003070910) do
     t.datetime "updated_at",       null: false
     t.string   "slug"
     t.string   "cover_photo"
-    t.string   "career"
   end
 
   create_table "regions", force: :cascade do |t|
