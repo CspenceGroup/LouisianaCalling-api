@@ -10,11 +10,11 @@ $image-path: '';
 @mixin font-face($font-name) {
   @font-face {
     font-family: $font-name;
-    src: url($font-path + $font-name + '.eot');
-    src: url($font-path + $font-name + '.eot?#iefix') format('embedded-opentype'),
-         url($font-path + $font-name + '.woff') format('woff'),
-         url($font-path + $font-name + '.ttf') format('truetype'),
-         url($font-path + $font-name + '.svg#') format('svg');
+    src: asset-url($font-path + $font-name + '.eot');
+    src: asset-url($font-path + $font-name + '.eot?#iefix') format('embedded-opentype'),
+         asset-url($font-path + $font-name + '.woff') format('woff'),
+         asset-url($font-path + $font-name + '.ttf') format('truetype'),
+         asset-url($font-path + $font-name + '.svg#') format('svg');
   }
 }
 
@@ -30,7 +30,7 @@ $image-path: '';
  * $image: is name and type of image
  */
 @mixin background-image($image) {
-  background-image: url('#{$image-path+$image}');
+  background-image: asset-url('#{$image-path+$image}');
 }
 
 @mixin linkState () {
