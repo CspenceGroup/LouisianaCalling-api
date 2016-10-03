@@ -15,7 +15,8 @@
               .edu-region
                 .icon.i-edu-region
                   = image_tag "region.png", :alt => 'icon region'
-                p Lake Charles
+                p
+                  = program.region
               .edu-cost
                 .icon.i-edu-salary
                   = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
@@ -27,9 +28,8 @@
                 .icon.i-career
                   = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
                 .career-industry
-                  - program.industries.each do |industry|
-                      p
-                        = industry
+                  p
+                    = program.career
               li.edu-detail-item--landing
                 .icon.i-education
                   = image_tag "icon-education.png", :alt => "icon education"

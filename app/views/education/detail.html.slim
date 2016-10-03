@@ -30,9 +30,8 @@
                 .icon.i-industry
                   = image_tag "program-landing/icon-career.png"
                 .edu-industry
-                  - @program.industries.each do |industry|
-                    p
-                      = industry
+                  p
+                    = @program.career
               li.edu-detail-item
                 .icon.i-edu-certificate
                   = image_tag "careers/icon-training.png"

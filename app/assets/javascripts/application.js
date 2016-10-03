@@ -851,7 +851,7 @@ $(document).on('turbolinks:load', function(){
       for (var i = 0; i < programs.length; i++) {
         var marker = new MarkerWithLabel({
          position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
-         icon: 'assets/marker.png',
+         icon: '/assets/marker.png',
          map: programsMap,
          title: programs[i].title,
          labelContent: String(programs[i].id),
