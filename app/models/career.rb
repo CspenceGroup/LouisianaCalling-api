@@ -5,9 +5,9 @@ class Career < ApplicationRecord
   serialize :industries, Array
   serialize :related_career_by_skill, Array
   serialize :related_career_by_interest, Array
+  serialize :region, Array
 
   validates :title, presence: true
-  validates :region, presence: true
   validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true

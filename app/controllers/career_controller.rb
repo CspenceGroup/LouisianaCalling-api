@@ -44,8 +44,8 @@ class CareerController < ApplicationController
 
   def detail
 
-    @careers = Career.where(:slug => params[:slug])
-    @career = @careers.first
+    @careers = CareerRegion.where(:slug => params[:slug])
+    @career = Career.where(:slug => params[:slug]).first
     @list_of_programs = Program.select(:title).map(&:title).uniq
     @list_of_regions = Region.all
 
@@ -131,15 +131,22 @@ class CareerController < ApplicationController
 
     ## filter by region
     region_ids = params[:regions]
-    if region_ids != "" && region_ids
+    if region_ids && region_ids != ""
       region_ids = region_ids.split(',')
 
-      query_temp = []
-      region_ids.each do |id|
-        query_temp << "'#{list_of_regions[id.to_i]}'"
-      end
+      regions_query = "("
+      region_ids.each_with_index do |id, index|
 
-      query = " region IN (#{query_temp.join(',')}) "
+        if index == 0
+          regions_query += "region like '%#{list_of_regions[id.to_i]}%'"
+        else
+          regions_query += " OR region like '%#{list_of_regions[id.to_i]}%'"
+        end
+      end
+      regions_query += ")"
+
+      query = regions_query
+
     end
 
     ## filter by industry

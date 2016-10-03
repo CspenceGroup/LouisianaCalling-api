@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928021732) do
+ActiveRecord::Schema.define(version: 20161003070910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "career_regions", force: :cascade do |t|
+    t.string   "title"
+    t.string   "region"
+    t.integer  "salary_min"
+    t.integer  "salary_max"
+    t.string   "education"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+  end
 
   create_table "careers", force: :cascade do |t|
     t.string   "slug"
@@ -103,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160928021732) do
     t.datetime "updated_at",       null: false
     t.string   "slug"
     t.string   "cover_photo"
+    t.string   "career"
   end
 
   create_table "regions", force: :cascade do |t|

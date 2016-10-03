@@ -174,7 +174,7 @@ class AdminController < ApplicationController
                 career = Career.new
                 career[:title] = row[0].strip
                 career[:slug] = row[0].parameterize
-                career[:region] = row[1].strip
+                career[:region] = row[1].split(',').map{ |s| s.strip }
                 career[:industries] = []
 
                 for i in 2..5
@@ -207,21 +207,43 @@ class AdminController < ApplicationController
               end
             end
 
-            when name="educations"
-              Education.transaction do
-                Education.delete_all
+          when name="careers_region"
+            CareerRegion.transaction do
+              CareerRegion.delete_all
 
-                csv.each do |row|
-                  education = Education.new
-                  education[:name] = row[0].strip
+              csv.each do |row|
+                careerRegion = CareerRegion.new
+                careerRegion[:title] = row[0].strip
+                careerRegion[:slug] = row[0].parameterize
+                careerRegion[:region] = row[1].strip
+                careerRegion[:salary_min] = row[2].strip
+                careerRegion[:salary_max] = row[3].strip
+                careerRegion[:education] = row[4].strip
 
-                  if row[1]
-                    raise "Wrong file"
-                  end
-
-                  education.save!
+                if row[5]
+                  raise "Wrong file"
                 end
+
+                careerRegion.save!
               end
+            end
+
+
+          when name="educations"
+            Education.transaction do
+              Education.delete_all
+
+              csv.each do |row|
+                education = Education.new
+                education[:name] = row[0].strip
+
+                if row[1]
+                  raise "Wrong file"
+                end
+
+                education.save!
+              end
+            end
 
             when name="programs"
               Program.transaction do
