@@ -1,0 +1,2 @@
+class CareerRegion < ApplicationRecord
+end
