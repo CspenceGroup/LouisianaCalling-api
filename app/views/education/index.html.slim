@@ -23,11 +23,11 @@
           .program-view-by__list.active-tab
             .program-view-by__list-icon
               a href="javascript:void(0)"
-                = image_tag 'list-view.png'
+                = image_tag asset_path('list-view.png')
           .program-view-by__map
             .program-view-by__list-icon-map
               a href="javascript:void(0)"
-                = image_tag 'map-view.png'
+                = image_tag asset_path('map-view.png')
       #action-filter.collapse.program-filter
         .program-filter__container.row
           .program-filter__details.col-xs-3.col-md-3
@@ -52,7 +52,7 @@
                 - @list_of_regions.each do |region|
                   li
                     input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.name == @region ? 'checked' : false)
-                    span.careers-filter-details__name 
+                    span.careers-filter-details__name
                       = region.name
           .col-xs-3.col-md-3.program-filter__details
             .program-filter__details-desc
@@ -131,15 +131,15 @@
           - if @isSeeMore
             #education-see-more.more-stories__btn.see-more-careers-grid-view
               .icon-see-more
-                = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           - else
             #education-see-more.more-stories__btn.see-more-careers-grid-view style="display:none;"
               .icon-see-more
-                = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           .indicator-loading
-            = image_tag "loading.gif"
+            = image_tag asset_path("loading.gif")
           .indicator-loading-see-more
-            = image_tag "loading.gif"
+            = image_tag asset_path("loading.gif")
         #program-map-view.program-map-view
           .program-map-view__list
             #program-container-map
@@ -147,15 +147,15 @@
             - if @isSeeMore
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view
                 .icon-see-more
-                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             - else
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view style="display:none;"
                 .icon-see-more
-                  = image_tag "/assets/profile/btn-see-more.png", :alt => "Btn see more"
+                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             .indicator-loading
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
-              = image_tag "loading.gif"
+              = image_tag asset_path("loading.gif")
           .program-map-view__address#program-map
     section.edu-jumpstart
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
@@ -177,7 +177,7 @@
               .hero-banner__introduce.program-banner__introduce
                 h3.hero-banner__text.program-banner__text Lorem ipsum dolor sit amet, at vel tale ceteros, dicat appareat pri at. Pri at vulputate pertinacia. Id clita vituperatoribus qui.
                 a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                  = image_tag "tell-me-more.png"
+                  = image_tag asset_path("tell-me-more.png")
         #eduTraining.tab-pane(role='tabpanel')
           section.hero-banner
             .hero-banner__container
@@ -185,7 +185,7 @@
               .hero-banner__introduce.program-banner__introduce
                 h3.hero-banner__text.program-banner__text Lorem ipsum dolor sit amet, at vel tale ceteros, dicat appareat pri at. Pri at vulputate pertinacia. Id clita vituperatoribus qui.
                 a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                  = image_tag "tell-me-more.png"
+                  = image_tag asset_path("tell-me-more.png")
         #eduCollege.tab-pane(role='tabpanel')
           section.hero-banner
             .hero-banner__container
@@ -193,5 +193,5 @@
               .hero-banner__introduce.program-banner__introduce
                 h3.hero-banner__text.program-banner__text Lorem ipsum dolor sit amet, at vel tale ceteros, dicat appareat pri at. Pri at vulputate pertinacia. Id clita vituperatoribus qui.
                 a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                  = image_tag "tell-me-more.png"
+                  = image_tag asset_path("tell-me-more.png")
   = render 'footer/index'
