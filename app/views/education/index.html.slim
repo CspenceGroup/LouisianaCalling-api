@@ -32,11 +32,11 @@
         .program-filter__container.row
           .program-filter__details.col-xs-3.col-md-3
             .program-filter__details-desc
-              h3.careers-filter__title Interests
+              h3.careers-filter__title Industry
               ul.careers-filter-details
                 - @list_of_industries.each do |industry|
                     li
-                      input.square-checkbox name="interests" type="checkbox" value="#{industry.id}"
+                      input.square-checkbox name="industries" type="checkbox" value="#{industry.id}"
                       span.careers-filter-details__name
                         = industry.name
           .col-xs-3.col-md-3.program-filter__details

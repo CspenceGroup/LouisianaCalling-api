@@ -54,6 +54,16 @@ $(document).on('turbolinks:load', function(){
   showRegionCareerOptions();
 
   /**
+   * Start video
+   */
+  startCarouselVideo();
+  function startCarouselVideo() {
+    var videos = $('video');
+    if (videos && videos[0]) {
+      videos[0].play();
+    }
+  }
+  /**
    * This function handle the action when user click on region map
    * @return void
    */
@@ -233,8 +243,30 @@ $(document).on('turbolinks:load', function(){
   });
 
   // set home page carousel move
-  $('#carousel-banner, #carousel-great-jobs').carousel({
+  $('#carousel-great-jobs').carousel({
     interval: 5000
+  });
+
+  $('#carousel-banner').carousel({
+    interval: false
+  });
+
+  $('#carousel-banner').on('slid.bs.carousel', function (evt) {
+
+    // stop all current videos
+    var videos = $(this).find('video');
+    if (videos) {
+      for (var i = 0; i < videos.length; i ++) {
+        videos[i].pause();
+      }
+    }
+
+    // play active video
+    var video = $(this).find('.carousel-item.active').find('video')[0].play();
+  });
+
+  $('#carousel-banner').find('video').on('ended', function () {
+    $('#carousel-banner').carousel('next');
   });
 
   //Remove video when modal hide
@@ -670,7 +702,7 @@ $(document).on('turbolinks:load', function(){
       var cost_min = $("#tuition-cost").slider("values")[0],
           cost_max = $("#tuition-cost").slider("values")[1],
           data = {
-            interests: [],
+            industries: [],
             cost_max: [],
             cost_min: [],
             financials: [],
@@ -693,10 +725,10 @@ $(document).on('turbolinks:load', function(){
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
-      if(!data.interests.length) {
-        delete data.interests;
+      if(!data.industries.length) {
+        delete data.industries;
       } else {
-        data.interests = data.interests.join(',')
+        data.industries = data.industries.join(',')
       }
 
       if(!data.financials.length) {
@@ -856,7 +888,7 @@ $(document).on('turbolinks:load', function(){
       for (var i = 0; i < programs.length; i++) {
         var marker = new MarkerWithLabel({
          position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
-         icon: 'assets/marker.png',
+         icon: '/assets/marker.png',
          map: programsMap,
          title: programs[i].title,
          labelContent: String(programs[i].id),
@@ -881,31 +913,6 @@ $(document).on('turbolinks:load', function(){
       programsMap.setCenter(bounds.getCenter());
       programsMap.fitBounds(bounds);
     }
-  }
-
-  // Active tab navigation
-  var  pathname = window.location.pathname;
-  switch(true) {
-
-    case pathname === "/stories":
-      $('#nav-stories').addClass('nav-active');
-      break;
-
-    case pathname === "/careers":
-      $('#nav-careers').addClass('nav-active');
-      break;
-
-    case pathname === "/programs":
-      $('#nav-programs').addClass('nav-active');
-      break;
-
-    case pathname.includes("/careers/"):
-      $('#nav-careers').addClass('nav-active');
-      break;
-
-    case pathname.includes("/programs/"):
-      $('#nav-programs').addClass('nav-active');
-      break;
   }
 });
 

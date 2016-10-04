@@ -1,4 +1,4 @@
-- if careers.length > 0  
+- if careers.length > 0
   - careers.each do |career|
     .careers-list-view__item id=career.id
       .jobs-head.careers-list-view__heading
@@ -8,7 +8,7 @@
               = career.title
           .jobs-head__icon
             - career.demand.to_i.times do
-              = image_tag("careers/icon-vote-careers.png", alt: "fire icon")
+              = image_tag(asset_path("careers/icon-vote-careers.png"), alt: "fire icon")
         .careers-list-view__head-salary
           .careers-list-view__icon-salary
           p.careers-list-view__salary

@@ -9,7 +9,7 @@
         </ol>
         <div class="carousel-inner carousel-content" role="listbox">
           <div class="carousel-item active">
-            <video controls loop autoplay muted class="video-playing video-player">
+            <video controls muted class="video-playing video-player">
               <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
             </video>
             <div class="carousel-caption carousel-title">
@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <video controls loop autoplay muted class="video-playing video-player">
+            <video controls muted class="video-playing video-player">
               <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
             </video>
             <div class="carousel-caption carousel-title">
@@ -54,7 +54,7 @@
                 </div>
                 <!-- <div class="btn-tell-more">
                   <a href="javascript:void(0)">
-                    <%= image_tag("tell-me-more.png", :alt => "tell me more") %>
+                    <%= image_tag(asset_path("tell-me-more.png"), :alt => "tell me more") %>
                   </a>
                 </div> -->
               </div>
@@ -86,7 +86,7 @@
         </div>
       </form>
       <div class="search-bg">
-        <%= image_tag("bg-search-careers.jpg", alt: "Search background") %>
+        <%= image_tag(asset_path("bg-search-careers.jpg"), alt: "Search background") %>
       </div>
     </section>
     <section class="guided-journey row">

@@ -21,10 +21,10 @@ class EducationController < ApplicationController
       @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
       @isSeeMore = false
 
-      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
         @isSeeMore = true
       end
     end
@@ -38,10 +38,10 @@ class EducationController < ApplicationController
 
   def filter
     ## get list of industries
-    clusters = Cluster.all
-    list_of_clusters = []
-    clusters.each do |cluster|
-      list_of_clusters[cluster[:id]] = cluster[:name]
+    industries = Cluster.all
+    list_of_industries = []
+    industries.each do |industry|
+      list_of_industries[industry[:id]] = industry[:name]
     end
 
     ## get list of region
@@ -95,9 +95,9 @@ class EducationController < ApplicationController
       industry_ids.each_with_index do |id, index|
 
         if index == 0
-          industries_query += "industries like '%#{list_of_clusters[id.to_i]}%'"
+          industries_query += "industries like '%#{list_of_industries[id.to_i]}%'"
         else
-          industries_query += " OR industries like '%#{list_of_clusters[id.to_i]}%'"
+          industries_query += " OR industries like '%#{list_of_industries[id.to_i]}%'"
         end
       end
       industries_query += ")"
@@ -260,7 +260,7 @@ class EducationController < ApplicationController
 
       title_query = "("
 
-      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' "
+      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' OR LOWER(career) like '%#{program_title}%'"
 
       title_query += ")"
 
