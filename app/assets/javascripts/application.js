@@ -277,11 +277,6 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
-  // $(document).on('ended', 'video.video-playing', function(){
-  //   console.log('abc')
-  //   $(this).closest('.cycle-slideshow').cycle('next'); // trigger next slide
-  // });
-
   /**
    *
    * Handle for Homepage Searchbar
@@ -680,7 +675,7 @@ $(document).on('turbolinks:load', function(){
   $("#tuition-cost").slider({
     range: true,
     min: 0,
-    max: 4000,
+    max: 40000,
     values: [0, 4000],
     slide: function( event, ui ) {
       $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
