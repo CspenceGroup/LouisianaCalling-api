@@ -45,7 +45,8 @@
 
 .aside-map {
   border: solid rem(1) $default;
-  height: rem(295);
+  height: rem(295.5);
+  @extend %overflow-hidden;
 }
 
 .edu-address {
