@@ -1,0 +1,38 @@
+@-moz-document url-prefix() { 
+  .careers-filter-details {
+    li {
+      input[type="checkbox"] {
+        z-index: 0;
+        -moz-appearance: none;
+        position: relative;
+        @include boxSize(rem(18), rem(18));
+      }
+
+      .filter-checkbox {
+        left: rem(-18);
+        z-index: 10;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $filter-careers-bg;
+        display: block;
+        float: left;
+        position: relative;
+        @include boxSize(rem(19), rem(19));
+      }
+
+      input[type="checkbox"]:checked + .filter-checkbox:before {
+        content: '\2714';
+        top: rem(-1);
+        left: rem(-1);
+        z-index: 10;
+        font-size: rem(13);
+        text-indent: rem(2);
+        position: absolute;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $filter-careers-bg;
+        @include boxSize(rem(19), rem(19));
+      }
+    }
+  }
+}

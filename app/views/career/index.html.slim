@@ -85,6 +85,7 @@
               - @list_of_regions.each do |region|
                 li
                   input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.name == @region ? 'checked' : false)
+                  span.filter-checkbox
                   span.careers-filter-details__name
                     = region.name
           li.careers-filter__desc
@@ -93,6 +94,7 @@
               - @list_of_industries.each do |industry|
                 li
                   input.square-checkbox name="industrys" type="checkbox" value=industry.id /
+                  span.filter-checkbox
                   p.careers-filter-details__name
                     = industry.name
           li.careers-filter__desc
@@ -101,6 +103,7 @@
               - @skills.each do |skill|
                 li
                   input.square-checkbox name="skills" type="checkbox" value=skill.id /
+                  span.filter-checkbox
                   span.careers-filter-details__name
                     = skill.name
           li.careers-filter__desc
@@ -109,6 +112,7 @@
               - @interests.each do |interest|
                 li
                   input.square-checkbox name="interests" type="checkbox" value=interest.id /
+                  span.filter-checkbox
                   span.careers-filter-details__name
                     = interest.name
           li.careers-filter__desc
@@ -123,6 +127,7 @@
               - @list_of_educations.each do |education|
                 li
                   input.square-checkbox name="educations" type="checkbox" value=education.id /
+                  span.filter-checkbox
                   span.careers-filter-details__name
                     = education.name
           li.careers-filter__desc
@@ -130,18 +135,23 @@
             ul.careers-filter-details.careers-filter-details--hottest-jobs
               li
                 input.square-checkbox name="demands" type="checkbox" value="5" /
+                span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs
               li
                 input.square-checkbox name="demands" type="checkbox" value="4" /
+                span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--four
               li
                 input.square-checkbox name="demands" type="checkbox" value="3" /
+                span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--three
               li
                 input.square-checkbox name="demands" type="checkbox" value="2" /
+                span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--two
               li
                 input.square-checkbox name="demands" type="checkbox" value="1" /
+                span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
       .careers-result
         .careers-result__container
