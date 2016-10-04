@@ -372,7 +372,7 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/programs?career=' + careerName;
+        url = '/programs?title=' + careerName;
 
     if (region) {
 
@@ -665,7 +665,7 @@ $(document).on('turbolinks:load', function(){
       var cost_min = $("#tuition-cost").slider("values")[0],
           cost_max = $("#tuition-cost").slider("values")[1],
           data = {
-            interests: [],
+            industries: [],
             cost_max: [],
             cost_min: [],
             financials: [],
@@ -688,10 +688,10 @@ $(document).on('turbolinks:load', function(){
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
-      if(!data.interests.length) {
-        delete data.interests;
+      if(!data.industries.length) {
+        delete data.industries;
       } else {
-        data.interests = data.interests.join(',')
+        data.industries = data.industries.join(',')
       }
 
       if(!data.financials.length) {
