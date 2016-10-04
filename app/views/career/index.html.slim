@@ -27,7 +27,7 @@
                           = career.title
                         .jobs-head__icon
                           - career.demand.to_i.times
-                            = image_tag("careers/fire-icon.png", alt: "fire icon")
+                            = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
                       .jobs-head__content
                         ul.jobs-head__desc
                           li
@@ -49,20 +49,20 @@
                   .great-jobs__list-icon
                     ul.row
                       li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.industries.join(', ')
-                        = image_tag("careers/icon-industry.png", alt: "icon industry", class:"icon-industry")
+                        = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
                         - career.industries.each do |industry|
                           p
                             = industry
                       li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag("careers/icon-salary.png", alt: "icon salary", class:"icon-salary")
+                        = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
                         p
                           | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
                       li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag("careers/icon-training.png", alt: "icon training", class:"icon-training")
+                        = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
                         p
                           = career.education
                       li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.regions_high_demand.join(', ')
-                        = image_tag("careers/icon-map.png", alt: "icon map", class:"icon-map")
+                        = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
                         - career.regions_high_demand.each do |region|
                           p
                             = region
