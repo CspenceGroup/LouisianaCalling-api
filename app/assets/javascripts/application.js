@@ -54,6 +54,16 @@ $(document).on('turbolinks:load', function(){
   showRegionCareerOptions();
 
   /**
+   * Start video
+   */
+  startCarouselVideo();
+  function startCarouselVideo() {
+    var videos = $('video');
+    if (videos) {
+      videos[0].play();
+    }
+  }
+  /**
    * This function handle the action when user click on region map
    * @return void
    */
@@ -233,9 +243,31 @@ $(document).on('turbolinks:load', function(){
   });
 
   // set home page carousel move
-  $('#carousel-banner, #carousel-great-jobs').carousel({
-      interval: 5000
-    });
+  $('#carousel-great-jobs').carousel({
+    interval: 5000
+  });
+
+  $('#carousel-banner').carousel({
+    interval: false
+  });
+
+  $('#carousel-banner').on('slid.bs.carousel', function (evt) {
+
+    // stop all current videos
+    var videos = $(this).find('video');
+    if (videos) {
+      for (var i = 0; i < videos.length; i ++) {
+        videos[i].pause();
+      }
+    }
+
+    // play active video
+    var video = $(this).find('.carousel-item.active').find('video')[0].play();
+  });
+
+  $('#carousel-banner').find('video').on('ended', function () {
+    $('#carousel-banner').carousel('next');
+  });
 
   //Remove video when modal hide
   $('#videoModal').on('hide.bs.modal', function (event) {
