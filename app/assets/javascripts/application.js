@@ -54,6 +54,16 @@ $(document).on('turbolinks:load', function(){
   showRegionCareerOptions();
 
   /**
+   * Start video
+   */
+  startCarouselVideo();
+  function startCarouselVideo() {
+    var videos = $('video');
+    if (videos && videos[0]) {
+      videos[0].play();
+    }
+  }
+  /**
    * This function handle the action when user click on region map
    * @return void
    */
@@ -233,9 +243,31 @@ $(document).on('turbolinks:load', function(){
   });
 
   // set home page carousel move
-  $('#carousel-banner, #carousel-great-jobs').carousel({
-      interval: 5000
-    });
+  $('#carousel-great-jobs').carousel({
+    interval: 5000
+  });
+
+  $('#carousel-banner').carousel({
+    interval: false
+  });
+
+  $('#carousel-banner').on('slid.bs.carousel', function (evt) {
+
+    // stop all current videos
+    var videos = $(this).find('video');
+    if (videos) {
+      for (var i = 0; i < videos.length; i ++) {
+        videos[i].pause();
+      }
+    }
+
+    // play active video
+    var video = $(this).find('.carousel-item.active').find('video')[0].play();
+  });
+
+  $('#carousel-banner').find('video').on('ended', function () {
+    $('#carousel-banner').carousel('next');
+  });
 
   //Remove video when modal hide
   $('#videoModal').on('hide.bs.modal', function (event) {
@@ -244,6 +276,11 @@ $(document).on('turbolinks:load', function(){
       videoModal.find('video').remove();
     }
   });
+
+  // $(document).on('ended', 'video.video-playing', function(){
+  //   console.log('abc')
+  //   $(this).closest('.cycle-slideshow').cycle('next'); // trigger next slide
+  // });
 
   /**
    *
@@ -372,7 +409,7 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/programs?career=' + careerName;
+        url = '/programs?title=' + careerName;
 
     if (region) {
 
@@ -643,8 +680,8 @@ $(document).on('turbolinks:load', function(){
   $("#tuition-cost").slider({
     range: true,
     min: 0,
-    max: 40000,
-    values: [0, 40000],
+    max: 4000,
+    values: [0, 4000],
     slide: function( event, ui ) {
       $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
@@ -665,7 +702,7 @@ $(document).on('turbolinks:load', function(){
       var cost_min = $("#tuition-cost").slider("values")[0],
           cost_max = $("#tuition-cost").slider("values")[1],
           data = {
-            interests: [],
+            industries: [],
             cost_max: [],
             cost_min: [],
             financials: [],
@@ -688,10 +725,10 @@ $(document).on('turbolinks:load', function(){
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
-      if(!data.interests.length) {
-        delete data.interests;
+      if(!data.industries.length) {
+        delete data.industries;
       } else {
-        data.interests = data.interests.join(',')
+        data.industries = data.industries.join(',')
       }
 
       if(!data.financials.length) {
@@ -877,5 +914,5 @@ $(document).on('turbolinks:load', function(){
       programsMap.fitBounds(bounds);
     }
   }
-
 });
+

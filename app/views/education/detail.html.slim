@@ -16,41 +16,41 @@
             .jobs-head__content
               .edu-head-info.edu-details-region
                 .icon.i-edu-map
-                  = image_tag "careers/icon-map.png"
+                  = image_tag asset_path("careers/icon-map.png")
                 span
                   = @program.region
               .edu-head-info
                 .icon.i-edu-salary
-                  = image_tag "education-details/dollar-sign.png"
+                  = image_tag asset_path("education-details/dollar-sign.png")
                 span.edu-salary-range
                   = "$#{number_with_delimiter(@program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(@program.tuition_max, :delimiter => ',')}"
           .great-jobs__list-icon
             ul.edu-detail-row
               li.edu-detail-item.list-icon__details--more(title='#{@program.career}')
                 .icon.i-industry
-                  = image_tag "program-landing/icon-career.png"
+                  = image_tag asset_path("program-landing/icon-career.png")
                 .edu-industry
                   p
                     = @program.career
               li.edu-detail-item
                 .icon.i-edu-certificate
-                  = image_tag "careers/icon-training.png"
+                  = image_tag asset_path("careers/icon-training.png")
                 .edu-certificate(title="#{@program.education}")
                   p
                     = @program.education
               li.edu-detail-item
                 .icon.i-calendar
-                  = image_tag "education-details/icon-calendar.png"
+                  = image_tag asset_path("education-details/icon-calendar.png")
                 p(title="#{@program.duration}")
                   = @program.duration
               li.edu-detail-item
                 .icon.i-clock
-                  = image_tag "education-details/icon-clock.png"
+                  = image_tag asset_path("education-details/icon-clock.png")
                 p(title="#{@program.hours_per_weeks}")
                   = @program.hours_per_weeks
               li.edu-detail-item
                 .icon.i-day
-                  = image_tag "education-details/icon-day-night.png"
+                  = image_tag asset_path("education-details/icon-day-night.png")
                 p(title="#{@program.time_of_day}")
                   = @program.time_of_day
     section.career-desc

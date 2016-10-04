@@ -2,21 +2,14 @@ class EducationController < ApplicationController
   def index
 
     tuition_min = 0;
-    tuition_max = 40000;
+    tuition_max = 4000;
     offset = 3
 
     @list_of_regions = Region.all
-    @list_of_interests = Interest.all
+    @list_of_industries = Cluster.all
     @list_of_programs = Program.select(:title).map(&:title).uniq
 
-    if params["career"]
-      career = params["career"].downcase if params["career"]
-      region = params["region"]
-
-      @programs = Program.where("LOWER(career) like '%#{career}%' AND region like '%#{region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").all
-      @isSeeMore = false
-
-    elsif !params["title"] && !params["region"]
+    if !params["title"] && !params["region"]
       @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
       @isSeeMore = false
 
@@ -28,10 +21,10 @@ class EducationController < ApplicationController
       @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
       @isSeeMore = false
 
-      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
         @isSeeMore = true
       end
     end
@@ -45,10 +38,10 @@ class EducationController < ApplicationController
 
   def filter
     ## get list of industries
-    interests = Interest.all
-    list_of_interests = []
-    interests.each do |interest|
-      list_of_interests[interest[:id]] = interest[:name]
+    industries = Cluster.all
+    list_of_industries = []
+    industries.each do |industry|
+      list_of_industries[industry[:id]] = industry[:name]
     end
 
     ## get list of region
@@ -71,7 +64,7 @@ class EducationController < ApplicationController
     # define query
     query = ""
     regions_query = ""
-    interests_query = ""
+    industries_query = ""
     tuition_query = ""
     financial_query = ""
     program_duration_query = ""
@@ -93,26 +86,26 @@ class EducationController < ApplicationController
     end
 
     ## filter by industry
-    interest_ids = params[:interests]
-    if interest_ids && interest_ids != ""
-      interest_ids = interest_ids.split(',')
+    industry_ids = params[:industries]
+    if industry_ids && industry_ids != ""
+      industry_ids = industry_ids.split(',')
 
-      interests_query = "("
+      industries_query = "("
 
-      interest_ids.each_with_index do |id, index|
+      industry_ids.each_with_index do |id, index|
 
         if index == 0
-          interests_query += "interests like '%#{list_of_interests[id.to_i]}%'"
+          industries_query += "industries like '%#{list_of_industries[id.to_i]}%'"
         else
-          interests_query += " OR interests like '%#{list_of_interests[id.to_i]}%'"
+          industries_query += " OR industries like '%#{list_of_industries[id.to_i]}%'"
         end
       end
-      interests_query += ")"
+      industries_query += ")"
 
       if query == ""
-        query = interests_query
+        query = industries_query
       else
-        query = query + " AND " + interests_query
+        query = query + " AND " + industries_query
       end
     end
 
@@ -267,7 +260,7 @@ class EducationController < ApplicationController
 
       title_query = "("
 
-      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' "
+      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' OR LOWER(career) like '%#{program_title}%'"
 
       title_query += ")"
 

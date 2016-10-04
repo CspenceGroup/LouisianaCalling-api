@@ -4,6 +4,7 @@
   margin-bottom: rem(-29);
   @extend %relative;
   @include background-image('map-bg.png');
+  min-height: rem(511);
   
   .col-md-6,
   .col-md-4,
@@ -21,6 +22,7 @@
 
   @include e('title') {
     margin-bottom: rem(30);
+    @extend %text-capitalize;
   }
 
   @include e('items') {
@@ -40,6 +42,10 @@
       @include boxSize(100%, 100%);
       color: $default;
     }
+  }
+
+  @include e('sort-by') {
+    margin-top: rem(7);
   }
 }
 

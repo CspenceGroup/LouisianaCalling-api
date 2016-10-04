@@ -40,7 +40,7 @@
               <p class="jobs-head__title jobs-head__title-great-jobs" title="<%= @career.title%>" ><%= @career.title%></p>
               <div class="jobs-head__icon">
                 <% @career.demand.to_i.times do |i| %>
-                    <%= image_tag("careers/fire-icon.png", :alt => "fire icon") %>
+                    <%= image_tag(asset_path("careers/fire-icon.png"), :alt => "fire icon") %>
                 <%
                   end
                 %>
@@ -82,7 +82,7 @@
           <div class="great-jobs__list-icon">
             <ul class="row">
               <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= @career.industries.join(', ')%>">
-                <%= image_tag("careers/icon-industry.png", :alt => "icon industry", :class => "icon-industry") %>
+                <%= image_tag(asset_path("careers/icon-industry.png"), :alt => "icon industry", :class => "icon-industry") %>
                 <% @career.industries.each do |industry| %>
                     <p><%= industry %></p>
                 <%
@@ -90,15 +90,15 @@
                 %>
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details">
-                <%= image_tag("careers/icon-salary.png", :alt => "icon salary", :class => "icon-salary") %>
+                <%= image_tag(asset_path("careers/icon-salary.png"), :alt => "icon salary", :class => "icon-salary") %>
                 <p>$<%= number_with_delimiter(@career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(@career.salary_max, :delimiter => ',')%></p>
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details">
-                <%= image_tag("careers/icon-training.png", :alt => "icon training", :class => "icon-training") %>
+                <%= image_tag(asset_path("careers/icon-training.png"), :alt => "icon training", :class => "icon-training") %>
                 <p><%= @career.education%></p>
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= @career.regions_high_demand.join(', ')%>">
-                <%= image_tag("careers/icon-map.png", :alt => "icon map", :class => "icon-map") %>
+                <%= image_tag(asset_path("careers/icon-map.png"), :alt => "icon map", :class => "icon-map") %>
                 <% @career.regions_high_demand.each do |region| %>
                     <p><%= region %></p>
                 <%
@@ -496,7 +496,7 @@
           <div class="related-careers__header">
             <h2 class="related-careers__title main-title shadow-main-title">Find related careers</h2>
             <div class="row">
-              <div class="col-xs-6 col-md-6">
+              <div class="col-xs-6 col-md-6 related-careers__sort-by">
                 <span class="sort-by">Sort by:</span>
                 <button class="btn-sort btn-interest btn-sort-active" id="sortInterests" type="button">Interests</button>
                 <button class="btn-sort btn-skill" id="sortSkills" type="button">Skills</button>

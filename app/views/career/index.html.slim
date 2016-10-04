@@ -27,7 +27,7 @@
                           = career.title
                         .jobs-head__icon
                           - career.demand.to_i.times
-                            = image_tag("careers/fire-icon.png", alt: "fire icon")
+                            = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
                       .jobs-head__content
                         ul.jobs-head__desc
                           li
@@ -49,26 +49,26 @@
                   .great-jobs__list-icon
                     ul.row
                       li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.industries.join(', ')
-                        = image_tag("careers/icon-industry.png", alt: "icon industry", class:"icon-industry")
+                        = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
                         - career.industries.each do |industry|
                           p
                             = industry
                       li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag("careers/icon-salary.png", alt: "icon salary", class:"icon-salary")
+                        = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
                         p
                           | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
                       li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag("careers/icon-training.png", alt: "icon training", class:"icon-training")
+                        = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
                         p
                           = career.education
                       li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.regions_high_demand.join(', ')
-                        = image_tag("careers/icon-map.png", alt: "icon map", class:"icon-map")
+                        = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
                         - career.regions_high_demand.each do |region|
                           p
                             = region
               .btn-tell-me-jobs
                 = link_to career_detail_path(career.slug), :id => "news", :class => "btn-tell-me-jobs__link"
-                  = image_tag("tell-me-more.png", alt: "tell me more")
+                  = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
         a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
           span.icon-prev.i-career-prev aria-hidden="true"
           span.sr-only Previous
@@ -158,7 +158,7 @@
           .careers-result__head-search
             .careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
-                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="(Search for careers), like 'welding'." type="text" value=@title /
+                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="Search for careers, like 'welding'." type="text" value=@title /
                 button#careerSearch.btn-search.btn-submit Search
               #availableCareers.auto-fill-data
                 = @list_of_careers.to_json
