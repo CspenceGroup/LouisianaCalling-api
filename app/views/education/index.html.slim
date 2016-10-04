@@ -13,7 +13,7 @@
           form name="search-homepage"
             .input-group.search-group.search-group--program
               input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Find the program that’s right for you" value=@title /
-              button.btn-search.btn-submit#programSearch type="submit" Search
+              button.btn.btn-search.btn-submit#programSearch type="submit" Search
           #availableProgram.auto-fill-data
             = @list_of_programs.to_json
         .action-filter

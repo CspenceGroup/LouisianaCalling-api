@@ -10,7 +10,7 @@
 .edu-address-container {
   width: 35.25%;
   font-size: rem(16.67);
-  padding: rem(67) 0 0 0;
+  padding: rem(67) 0 rem(30) 0;
   @extend %background-cover;
   @extend %background-position-center;
   @include background-image('education-details/edu-map-bg.jpg');
