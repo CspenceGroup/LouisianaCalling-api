@@ -43,11 +43,11 @@
 .job-heading {
 
   @include m('pull-left') {
-    margin-right: rem(125);
+    margin-right: rem(160);
   }
 
   @include m('pull-right') {
-    margin: 0 rem(92) rem(12);
+    margin: 0 rem(140) rem(12);
   }
 }
 
@@ -56,6 +56,7 @@
   margin-right: rem(65);
   @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
+  @extend %font-weight-normal;
 }
 
 .region-name {
