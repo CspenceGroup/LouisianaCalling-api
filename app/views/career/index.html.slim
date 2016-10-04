@@ -68,7 +68,7 @@
                             = region
               .btn-tell-me-jobs
                 = link_to career_detail_path(career.slug), :id => "news", :class => "btn-tell-me-jobs__link"
-                  = image_tag("tell-me-more.png", alt: "tell me more")
+                  = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
         a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
           span.icon-prev.i-career-prev aria-hidden="true"
           span.sr-only Previous
