@@ -121,17 +121,6 @@
   width: rem(230);
   @extend %overflow-hidden;
 
-  // &:first-child {
-  //   max-height: rem(37);
-  //   overflow: hidden;
-    
-  //   p:nth-child(2) {
-  //     &:before {
-  //       content: '...';
-  //     }
-  //   }
-  // }
-
   &:last-child {
     @extend %no-margin-right;
     width: rem(155);
@@ -149,6 +138,7 @@
     @extend %acumin-pro-cond;
     margin-left: rem(34);
     line-height: rem(19);
+    padding-top: rem(3);
   }
 
   .icon-salary {
@@ -165,13 +155,13 @@
 
   @include m('more') {
     @extend %relative;
-    max-height: rem(54);
+    max-height: rem(44);
 
     &:before {
       content: '...';
       @extend %absolute;
       @extend %right-0;
-      top: rem(33);
+      top: rem(24);
     }
     
     &:after {
@@ -179,7 +169,7 @@
       @extend %absolute;
       @extend %right-0;
       @include boxSize(rem(22), rem(22));
-      margin-top: rem(-15);
+      top: rem(42);
       @include background-image('careers/great-job-bg.jpg');
     }
   }

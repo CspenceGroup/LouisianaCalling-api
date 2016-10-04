@@ -15,16 +15,16 @@
   }
 
   @include e('call-us') {
-    height: rem(31);
+    @include boxSize(rem(815), rem(31));
     background-color: $red-bg;
     @extend %text-center;
     font-size: rem(14.5);
     @extend %acumin-pro-cond;
     color: $white;
-    padding-top: rem(5);
+    padding-top: rem(10);
     margin-bottom: rem(35);
-    width: rem(815);
     margin: rem(30) auto 0 auto;
+    line-height: rem(14.5);
   }
 
   @include e('item-footer') {
