@@ -8,12 +8,12 @@
     <nav class="nav-bar">
       <ul class="nav-bar__list">
         <li>
-          = link_to "Skill up", education_path
+          = link_to "Skill up", education_path, :class => (params[:controller] == "education" ? "nav-active" : "")
         </li>
         <li>
-          = link_to "Careers", career_path
+          = link_to "Careers", career_path, :class => (params[:controller] == "career" ? "nav-active" : "")
         <li>
-          = link_to "Real stories", stories_path
+          = link_to "Real stories", stories_path, :class => (params[:controller] == "profile" ? "nav-active" : "")
         <!-- <li><a href="javascript:void(0)">Blog</a></li> -->
         <!-- <li><a href="javascript:void(0)">About us</a></li> -->
         <li>
