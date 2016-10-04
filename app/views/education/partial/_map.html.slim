@@ -15,7 +15,8 @@
                 .edu-region
                   .icon.i-edu-region
                     = image_tag "region.png", :alt => 'icon region'
-                  p Lake Charles
+                  p
+                    = program.region
                 .edu-salary
                   .icon.i-edu-salary
                     = image_tag "program-landing/dollar-sign.png", :alt => 'icon dollar'
@@ -23,13 +24,12 @@
                     = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
             .great-jobs__list-icon.program-list__item-footer
               ul.row.edu-detail-row.program-list__item-row
-                li.col-xs-7.col-md-7.program-item-map__footer-item title="#{program.industries.join(',')}"
+                li.col-xs-7.col-md-7.program-item-map__footer-item title="#{program.career}"
                   .icon.i-career
                     = image_tag "program-landing/icon-career.png", :alt => 'icon industry'
                   .career-industry
-                    - program.industries.each do |industry|
-                        p
-                          = industry
+                    p
+                      = program.career
                 li.col-xs-5.col-md-5.program-item-map__footer-item
                   .icon.i-calendar
                     = image_tag "program-landing/calendar.png", :alt => 'icon calendar'
