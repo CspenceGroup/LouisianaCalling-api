@@ -39,6 +39,7 @@ form {
     @extend %float-left;
     @extend %no-border-radius;
     @extend %no-border;
+    @extend %no-outline;
   }
 
   .btn-region,

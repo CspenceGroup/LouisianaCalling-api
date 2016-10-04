@@ -32,25 +32,17 @@
 
   @include e('contact') {
     @extend %float-right;
-    padding: rem(19) 0 0 rem(24);
+    padding: rem(22) 0 0 rem(24);
 
     a {
       @extend %brandon-grotesque;
-      @extend %block;
       color: $white;
-
-      &:first-child {
-        padding-bottom: rem(7);
-
-        @include linkState() {
-          color: $red-bg;
-        }
-      }
-    }
-
-    span {
+      @extend %float-right;
       font-size: rem(18.9);
+      line-height: rem(18.9);
+      padding-top: rem(2);
     }
+
   }
 
   @include e('icon') {
