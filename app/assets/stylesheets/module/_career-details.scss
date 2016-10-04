@@ -19,10 +19,9 @@
 .career-desc {
   color: $default;
   @include background-image('map-bg.png');
-  @extend %background-repeat-x;
   @extend %overflow-hidden;
   @extend %relative;
-  min-height: rem(585);
+  @extend %display-flex;
 
   p {
     font-size: rem(16.7);
@@ -45,11 +44,8 @@
 
   @include e('news-container') {
     width: 35.25%;
-    height: 100%;
     padding: rem(130) rem(98) 0 rem(60);
     background: $feature-news-bg;
-    @extend %right-top-0;
-    @extend %absolute;
   }
 
   @include e('what-to-do') {

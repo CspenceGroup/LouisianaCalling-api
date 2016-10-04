@@ -10,7 +10,7 @@
 .edu-address-container {
   width: 35.25%;
   font-size: rem(16.67);
-  padding: rem(67) 0 0 0;
+  padding: rem(67) 0 rem(30) 0;
   @extend %background-cover;
   @extend %background-position-center;
   @include background-image('education-details/edu-map-bg.jpg');
@@ -45,7 +45,8 @@
 
 .aside-map {
   border: solid rem(1) $default;
-  height: rem(295);
+  height: rem(295.5);
+  @extend %overflow-hidden;
 }
 
 .edu-address {
@@ -225,5 +226,5 @@
 }
 
 .edu-details-region {
-  margin: rem(8) rem(15) 0 0;
+  margin: rem(8) rem(30) 0 0;
 }

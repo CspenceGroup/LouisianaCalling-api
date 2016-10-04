@@ -17,3 +17,9 @@
     background-color: $red-bg;
   }
 }
+
+.btn {
+  &:focus {
+    @extend %no-outline;
+  }
+}
