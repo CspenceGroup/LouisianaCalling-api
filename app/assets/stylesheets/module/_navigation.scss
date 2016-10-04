@@ -24,6 +24,10 @@
         @extend %no-text-decoration;
       }
     }
+
+    .nav-active {
+      color: $red-bg;
+    }
   }
 
   @include e('contact') {

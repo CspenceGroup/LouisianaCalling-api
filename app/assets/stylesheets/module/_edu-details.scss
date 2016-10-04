@@ -28,6 +28,7 @@
   span {
     width: rem(135);
     @extend %float-left;
+    @extend %text-capitalize;
   }
 
   p {
@@ -216,11 +217,6 @@
   @extend %float-left;
   width: rem(115);
   margin: rem(9) rem(23) 0 0;
-
-  p {
-    @extend %float-right;
-  }
-  
 }
 
 .edu-certificate {
@@ -231,7 +227,3 @@
 .edu-details-region {
   margin: rem(8) rem(15) 0 0;
 }
-
-// .edu-details-cost {
-//   margin-top: rem(7);
-// }

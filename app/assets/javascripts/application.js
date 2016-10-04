@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function(){
   startCarouselVideo();
   function startCarouselVideo() {
     var videos = $('video');
-    if (videos) {
+    if (videos && videos[0]) {
       videos[0].play();
     }
   }
@@ -276,6 +276,11 @@ $(document).on('turbolinks:load', function(){
       videoModal.find('video').remove();
     }
   });
+
+  // $(document).on('ended', 'video.video-playing', function(){
+  //   console.log('abc')
+  //   $(this).closest('.cycle-slideshow').cycle('next'); // trigger next slide
+  // });
 
   /**
    *
@@ -675,8 +680,8 @@ $(document).on('turbolinks:load', function(){
   $("#tuition-cost").slider({
     range: true,
     min: 0,
-    max: 40000,
-    values: [0, 40000],
+    max: 4000,
+    values: [0, 4000],
     slide: function( event, ui ) {
       $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
@@ -909,5 +914,5 @@ $(document).on('turbolinks:load', function(){
       programsMap.fitBounds(bounds);
     }
   }
-
 });
+

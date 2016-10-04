@@ -12,7 +12,7 @@
         .row.program-list__search
           form name="search-homepage"
             .input-group.search-group.search-group--program
-              input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Search programs" value=@title /
+              input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Find the program that’s right for you" value=@title /
               button.btn-search.btn-submit#programSearch type="submit" Search
           #availableProgram.auto-fill-data
             = @list_of_programs.to_json
@@ -109,7 +109,7 @@
               ul.careers-filter-details
                 li
                   input.square-checkbox name="educations" type="checkbox" value="0"
-                  span.careers-filter-details__name Hight School Diploma/Hi-SET
+                  span.careers-filter-details__name High School Diploma/Hi-SET
                 li
                   input.square-checkbox name="educations" type="checkbox" value="1"
                   span.careers-filter-details__name Certificate or Credential
@@ -162,7 +162,7 @@
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
         li.nav-item.col-xs-4.col-md-4
           a.active(href='#eduJumpstart' role='tab' data-toggle='tab')
-            span Jumpstart
+            span Jump Start
         li.nav-item.col-xs-4.col-md-4
           a(href='#eduTraining' role='tab' data-toggle='tab')
             span Training
@@ -174,9 +174,9 @@
         #eduJumpstart.tab-pane.active(role='tabpanel')
           section.hero-banner
             .hero-banner__container
-              h2.hero-banner__title JumpStart
+              h2.hero-banner__title Jump Start
               .hero-banner__introduce.program-banner__introduce
-                h3.hero-banner__text.program-banner__text Lorem ipsum dolor sit amet, at vel tale ceteros, dicat appareat pri at. Pri at vulputate pertinacia. Id clita vituperatoribus qui.
+                h3.hero-banner__text.program-banner__text Jump Start helps our public high school students get nationally-recognized training certifications that can be used to pursue great careers right here in Louisiana.
                 a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
                   = image_tag asset_path("tell-me-more.png")
         #eduTraining.tab-pane(role='tabpanel')

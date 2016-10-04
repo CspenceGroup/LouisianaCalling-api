@@ -2,7 +2,7 @@ class EducationController < ApplicationController
   def index
 
     tuition_min = 0;
-    tuition_max = 40000;
+    tuition_max = 4000;
     offset = 3
 
     @list_of_regions = Region.all
