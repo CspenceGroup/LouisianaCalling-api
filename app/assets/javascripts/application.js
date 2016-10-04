@@ -234,8 +234,8 @@ $(document).on('turbolinks:load', function(){
 
   // set home page carousel move
   $('#carousel-banner, #carousel-great-jobs').carousel({
-      interval: 5000
-    });
+    interval: 5000
+  });
 
   //Remove video when modal hide
   $('#videoModal').on('hide.bs.modal', function (event) {
@@ -244,6 +244,11 @@ $(document).on('turbolinks:load', function(){
       videoModal.find('video').remove();
     }
   });
+
+  // $(document).on('ended', 'video.video-playing', function(){
+  //   console.log('abc')
+  //   $(this).closest('.cycle-slideshow').cycle('next'); // trigger next slide
+  // });
 
   /**
    *
@@ -643,8 +648,8 @@ $(document).on('turbolinks:load', function(){
   $("#tuition-cost").slider({
     range: true,
     min: 0,
-    max: 40000,
-    values: [0, 40000],
+    max: 4000,
+    values: [0, 4000],
     slide: function( event, ui ) {
       $("#tuition").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
@@ -878,4 +883,29 @@ $(document).on('turbolinks:load', function(){
     }
   }
 
+  // Active tab navigation
+  var  pathname = window.location.pathname;
+  switch(true) {
+
+    case pathname === "/stories":
+      $('#nav-stories').addClass('nav-active');
+      break;
+
+    case pathname === "/careers":
+      $('#nav-careers').addClass('nav-active');
+      break;
+
+    case pathname === "/programs":
+      $('#nav-programs').addClass('nav-active');
+      break;
+
+    case pathname.includes("/careers/"):
+      $('#nav-careers').addClass('nav-active');
+      break;
+
+    case pathname.includes("/programs/"):
+      $('#nav-programs').addClass('nav-active');
+      break;
+  }
 });
+

@@ -81,6 +81,8 @@
 
 .careers-filter-search-group {
   width: rem(598);
+  @extend %block;
+  @extend %overflow-hidden;
 }
 
 .careers-view-by {
