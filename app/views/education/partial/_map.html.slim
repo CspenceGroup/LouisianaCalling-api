@@ -7,7 +7,7 @@
               a href="/programs/#{program.slug}"
                 .jobs-head__name
                   p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
-                    = "#{program.id}. #{program.title}"
+                    = "#{ids.index(program.id) + 1}. #{program.title}"
               .jobs-head__content
                 //- .edu-scholarship.edu-scholarship--view-map
                 //-   p

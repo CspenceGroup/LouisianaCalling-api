@@ -164,7 +164,7 @@
         #program-map-view.program-map-view
           .program-map-view__list
             #program-container-map
-              = render partial: "education/partial/map", locals: { programs: @programs }
+              = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }
             - if @isSeeMore
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view
                 .icon-see-more
