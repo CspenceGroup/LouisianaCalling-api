@@ -1,0 +1,19 @@
+.message {
+  margin: auto;
+  color: $default;
+  font-size: rem(16.67);
+  @extend %overflow-auto;
+  @extend %text-left;
+  @extend %absolute;
+  @extend %left-top-0;
+  @extend %right-bottom-0;
+  @extend %acumin-pro-cond-regular;
+  @include boxSize(56%, 37%);
+
+  @include e('title') {
+    line-height: rem(40);
+    font-size: rem(16.67);
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+  }
+}
