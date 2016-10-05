@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   get 'policy' => 'policy#index', :as => :policy
 
   # Contact Us page
-  resource :contacts
+  get 'contacts/new' => 'contact#new', :as => :contact
+  post 'contacts/create' => 'contact#create', :as => :create_contact
 end
