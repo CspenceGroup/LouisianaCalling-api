@@ -1,4 +1,7 @@
 class Profile < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_by_name, use: [:slugged, :finders]
+
   serialize :interests, Array
   serialize :skills, Array
 
@@ -18,4 +21,19 @@ class Profile < ApplicationRecord
   validates :image_medium, presence: true
   validates :image_small, presence: true
 
+
+  private
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  # Defaults a slug with name
+  def slug_by_name
+    "#{full_name.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || first_name_changed? || last_name_changed?
+  end
 end
