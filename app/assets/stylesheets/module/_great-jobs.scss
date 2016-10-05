@@ -155,7 +155,7 @@
 
   @include m('more') {
     @extend %relative;
-    max-height: rem(44);
+    max-height: rem(43);
 
     &:before {
       content: '...';
