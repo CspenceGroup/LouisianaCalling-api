@@ -22,7 +22,7 @@
               - if @profiles[0]
                 <article class="row profile-common__info">
                   <div class="col-xs-6 col-md-6 pull-md-left profile-common__photo">
-                    = image_tag @profiles[0].image_medium
+                    = image_tag @profiles[0].image_medium, lazy: true, class: "lazy-load"
                   </div>
                   <div class="col-xs-6 col-md-6 profile-common__desc">
                     <div class="profile-content">
@@ -40,7 +40,7 @@
               - if @profiles[1]
                   <article class="row profile-common__info">
                     <div class="col-xs-6 col-md-6 pull-md-right profile-common__photo">
-                      = image_tag @profiles[1].image_medium
+                      = image_tag @profiles[1].image_medium, lazy: true, class: "lazy-load"
                     </div>
                     <div class="col-xs-6 col-md-6 profile-common__desc">
                       <div class="profile-content profile-content--pull-left">

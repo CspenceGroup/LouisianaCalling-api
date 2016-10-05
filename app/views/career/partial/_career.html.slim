@@ -6,7 +6,7 @@
           - career.demand.to_i.times do
               i.icon.i-vote
         .related-item__photo
-          = image_tag career.photo_medium
+          = image_tag career.photo_medium, lazy: true, class: "lazy-load"
         .related-item__info
           span.related-item__name title=career.title
             = career.title
