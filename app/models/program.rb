@@ -1,4 +1,7 @@
 class Program < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_by_title, use: [:slugged, :finders]
+
   serialize :industries, Array
   serialize :interests, Array
   serialize :career, Array
@@ -8,4 +11,15 @@ class Program < ApplicationRecord
   validates_inclusion_of :hours_per_weeks, :in => ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours", ""]
   validates_inclusion_of :financial_help, :in => ["Scholarship", "Financial Aid/Grant", ""]
   validates_inclusion_of :education, :in => ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree", ""]
+
+  private
+
+  # Defaults a slug with title
+  def slug_by_title
+    "#{title.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end
