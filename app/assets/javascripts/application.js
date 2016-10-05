@@ -14,6 +14,8 @@
 //= require tether
 //= require bootstrap
 //= require jquery_ujs
+//= require jquery_ui
+//= require markerlabel
 //= require lazyload
 //= require turbolinks
 //= require_tree .

@@ -70,10 +70,10 @@
 .btn-play-video {
   margin-top: rem(160);
   @extend %background-transparent;
-  background-size: rem(52), rem(52);
+  background-size: rem(56), rem(56);
   @extend %no-border;
   @extend %background-no-repeat;
-  @include boxSize(rem(52), rem(52));
+  @include boxSize(rem(56), rem(56));
   @include background-image('play-button.png');
 }
 
