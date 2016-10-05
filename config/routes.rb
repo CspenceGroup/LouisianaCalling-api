@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   match "/500", :to => "errors#internal_server_error", :via => :all
 
   # Contact Us page
-  resource :contacts
+  get 'contacts/new' => 'contact#new', :as => :contact
+  post 'contacts/create' => 'contact#create', :as => :create_contact
 end
