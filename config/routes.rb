@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   # Private policy page
   get 'policy' => 'policy#index', :as => :policy
+
+  # Contact Us page
+  resource :contacts
 end
