@@ -9,9 +9,7 @@ class ContactController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      # Send email to Support team
-
-      flash[:notice] = "Your message have successfully sent out."
+      flash[:notice] = "Your message has successfully sent out."
       redirect_to contact_path
     else
       # Handling error messages
