@@ -16,4 +16,12 @@
     @extend %text-uppercase;
     @extend %brandon-grotesque;
   }
+
+  p {
+    margin-top: rem(11);
+  }
+
+  a {
+    color: $default;
+  }
 }
