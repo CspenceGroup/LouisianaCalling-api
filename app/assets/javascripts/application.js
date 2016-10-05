@@ -14,6 +14,7 @@
 //= require tether
 //= require bootstrap
 //= require jquery_ujs
+//= require lazyload
 //= require turbolinks
 //= require_tree .
 
@@ -589,6 +590,8 @@ $(document).on('turbolinks:load', function(){
             $('#careersList').html(response.list);
           }
 
+          lazyloadImages();
+
           if (response.isSeeMore) {
             $('#careers-see-more,#careers-see-more-list').show();
           } else {
@@ -792,6 +795,8 @@ $(document).on('turbolinks:load', function(){
             $('#program-container-list').html(response.list);
           }
 
+          lazyloadImages();
+
           if (response.isSeeMore) {
             $('#education-see-more-map, #education-see-more').show();
           } else {
@@ -909,5 +914,20 @@ $(document).on('turbolinks:load', function(){
       programsMap.fitBounds(bounds);
     }
   }
+
+  // Apply lazyload
+  function lazyloadImages() {
+    $("img.lazy-load").lazyload({
+      effect : "fadeIn",
+      event : "timeout"
+    });
+    
+    // Trigger timeout event for lazyload
+    var timeout = setTimeout(function() {
+      $("img.lazy-load").trigger("timeout");
+    }, 200);
+  }
+
+  lazyloadImages();
 });
 
