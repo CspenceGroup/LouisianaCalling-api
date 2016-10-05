@@ -1,4 +1,7 @@
 class Career < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_by_title, use: [:slugged, :finders]
+
   serialize :regions_high_demand, Array
   serialize :interests, Array
   serialize :skills, Array
@@ -24,4 +27,15 @@ class Career < ApplicationRecord
   validates :salary_max, presence: true
   validates :demand, presence: true
   validates :regions_high_demand, presence: true
+
+  private
+
+  # Defaults a slug with title
+  def slug_by_title
+    "#{title.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end
