@@ -173,7 +173,7 @@ class AdminController < ApplicationController
               csv.each do |row|
                 career = Career.new
                 career[:title] = row[0].strip
-                career[:slug] = row[0].parameterize
+                # career[:slug] = row[0].parameterize
                 career[:region] = row[1].split(',').map{ |s| s.strip }
                 career[:industries] = []
 
@@ -214,7 +214,7 @@ class AdminController < ApplicationController
               csv.each do |row|
                 careerRegion = CareerRegion.new
                 careerRegion[:title] = row[0].strip
-                careerRegion[:slug] = row[0].parameterize
+                # careerRegion[:slug] = row[0].parameterize
                 careerRegion[:region] = row[1].strip
                 careerRegion[:salary_min] = row[2].strip
                 careerRegion[:salary_max] = row[3].strip
@@ -253,7 +253,7 @@ class AdminController < ApplicationController
                   program = Program.new
                   program[:title] = row[0].strip
                   program[:id] = index + 1
-                  program[:slug] = row[0].parameterize + '-' + (index + 1).to_s
+                  # program[:slug] = row[0].parameterize + '-' + (index + 1).to_s
                   program[:region] = row[1].strip
                   program[:traning_detail] = row[2].strip
                   program[:description] = row[3].strip
