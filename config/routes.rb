@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   get 'admin' => 'admin#index', :as => :admin
   post 'upload' => 'admin#upload'
   # resource :admin, only: [:index, :new, :create, :destroy]
@@ -23,4 +27,9 @@ Rails.application.routes.draw do
 
   # Private policy page
   get 'policy' => 'policy#index', :as => :policy
+
+  # error pages
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
+
 end
