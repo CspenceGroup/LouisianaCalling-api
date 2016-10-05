@@ -889,13 +889,13 @@ $(document).on('turbolinks:load', function(){
     if(programsMap) {
       for (var i = 0; i < programs.length; i++) {
         var marker = new MarkerWithLabel({
-         position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
-         icon: '/assets/marker.png',
-         map: programsMap,
-         title: programs[i].title,
-         labelContent: String(programs[i].id),
-         labelAnchor: new google.maps.Point(20, 36),
-         labelClass: "labels-marker"
+          position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
+          icon: 'http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png',
+          map: programsMap,
+          title: programs[i].title,
+          labelContent: String(programs[i].id),
+          labelAnchor: new google.maps.Point(20, 36),
+          labelClass: "labels-marker"
         });
 
         programMapMarkers.push(marker);
