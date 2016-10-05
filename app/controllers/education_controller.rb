@@ -10,10 +10,12 @@ class EducationController < ApplicationController
     @list_of_programs = Program.select(:title).map(&:title).uniq
 
     if !params["title"] && !params["region"]
-      @programs = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @allPrograms = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
+      @programs = @allPrograms.first(offset)
+      @ids = @allPrograms.map(&:id)
       @isSeeMore = false
 
-      if Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      if @allPrograms.length > offset
         @isSeeMore = true
       end
     else
@@ -21,10 +23,12 @@ class EducationController < ApplicationController
       @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @programs = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").first(offset)
+      @allPrograms = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
+      @programs = @allPrograms.first(offset)
+      @ids = @allPrograms.map(&:id)
       @isSeeMore = false
 
-      if Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND  tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}").count > offset
+      if @allPrograms.length > offset
         @isSeeMore = true
       end
     end
@@ -271,17 +275,20 @@ class EducationController < ApplicationController
       end
     end
 
+    ## sort by
+    sort_by = "id"
+    if params[:sort] && params[:sort] != ""
+      sort_by = params[:sort]
+    end
+
+    programs = Program.where(query).order(sort_by)
+    ids = programs.map(&:id)
+
     last_id = 0
     if params[:last_id] && params[:last_id] != ""
       last_id = params[:last_id]
 
       query = query + " AND id > #{last_id} "
-    end
-
-    ## sort by
-    sort_by = "id"
-    if params[:sort] && params[:sort] != ""
-      sort_by = params[:sort]
     end
 
     isSeeMore = false
@@ -293,7 +300,7 @@ class EducationController < ApplicationController
 
     render :json => {
       :list => render_to_string('education/partial/_list', :layout => false, :locals => { programs: programs.first(3) }),
-      :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3) }),
+      :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3), ids: ids }),
       :isSeeMore => isSeeMore,
       :programs => programs.first(3)
     }
