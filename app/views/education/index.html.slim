@@ -150,11 +150,11 @@
           #program-container-list.program-list-view__container
             = render partial: "education/partial/list", locals: { programs: @programs }
           - if @isSeeMore
-            #education-see-more.more-stories__btn.see-more-careers-grid-view
+            #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program
               .icon-see-more
                 = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           - else
-            #education-see-more.more-stories__btn.see-more-careers-grid-view style="display:none;"
+            #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
               .icon-see-more
                 = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           .indicator-loading
@@ -166,11 +166,11 @@
             #program-container-map
               = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }
             - if @isSeeMore
-              #education-see-more-map.more-stories__btn.see-more-careers-grid-view
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program
                 .icon-see-more
                   = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             - else
-              #education-see-more-map.more-stories__btn.see-more-careers-grid-view style="display:none;"
+              #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
                 .icon-see-more
                   = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             .indicator-loading
