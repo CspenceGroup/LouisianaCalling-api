@@ -788,6 +788,7 @@ $(document).on('turbolinks:load', function(){
             programMapMarkers = [];
             // set map data
             programsMapData = response.programs;
+            programsMapIds = response.ids;
             // reinit map
             initMap();
             $('.indicator-loading').hide();
