@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
@@ -35,13 +34,13 @@ gem 'pg'
 # import bootstrap
 gem 'bootstrap', '4.0.0.alpha4'
 
-gem "rails-assets-tether"
+gem 'rails-assets-tether'
 
-#import font-awesome
-gem "font-awesome-rails"
+# Import font-awesome
+gem 'font-awesome-rails'
 
 # slim template
-gem "slim-rails"
+gem 'slim-rails'
 
 # Using FriendlyId to generate slugging and permalink plugins for ActiveRecord
 gem 'friendly_id', '~> 5.1.0'
@@ -61,6 +60,9 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
+  # Ruby on Rails code optimization and cleanup
+  gem 'rails_best_practices'
+  gem 'rubocop', '~> 0.43.0', require: false
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
