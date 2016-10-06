@@ -195,6 +195,7 @@
 
     p {
       padding-top: rem(3);
+      @extend %truncate;
     }
   }
 }
