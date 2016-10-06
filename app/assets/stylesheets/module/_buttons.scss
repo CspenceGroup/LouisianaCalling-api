@@ -1,6 +1,7 @@
 .btn-sort {
   color: $profile-header;
   background-color: $profile-name-shadow;
+  @extend %no-border-radius;
   @extend %float-left;
   @extend %no-border;
   @extend %i-owan-old-style-italic;
