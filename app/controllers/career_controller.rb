@@ -1,6 +1,5 @@
 class CareerController < ApplicationController
   include CareerHelper
-
   before_filter :data_for_filter_details, only: [:index]
   before_filter :career_titles, only: [:index, :detail]
 
