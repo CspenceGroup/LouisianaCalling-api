@@ -26,11 +26,11 @@
                   = "$#{number_with_delimiter(@program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(@program.tuition_max, :delimiter => ',')}"
           .great-jobs__list-icon
             ul.edu-detail-row
-              - @program.career.each do |career|
-                li.edu-detail-item.list-icon__details--more(title=career)
-                  .icon.i-industry
-                    = image_tag asset_path("program-landing/icon-career.png")
-                  .edu-industry
+              li.edu-detail-item.list-icon__details--more
+                .icon.i-industry
+                  = image_tag asset_path("program-landing/icon-career.png")
+                .edu-industry title="#{@program.career.join(';') if @program.career}"
+                  - @program.career.each do |career|
                     p
                       = career
               li.edu-detail-item
