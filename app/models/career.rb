@@ -32,6 +32,14 @@ class Career < ApplicationRecord
     where('title IN (?)', titles)
   }
 
+  scope :filter_by_title_and_region, lambda { |title, region|
+    where('LOWER(title) like ? AND regions_high_demand like ?', title.downcase, region)
+  }
+
+  scope :filter_by_salary, lambda { |salary_min, salary_max|
+    where('salary_max <= ? AND salary_min >= ?', salary_max, salary_min)
+  }
+
   private
 
   # Defaults a slug with title
