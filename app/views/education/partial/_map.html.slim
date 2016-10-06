@@ -39,7 +39,8 @@
                 li.col-xs-7.col-md-7.program-item-map__footer-item
                   .icon.i-education
                     = image_tag asset_path("icon-education.png"), :alt => "icon education"
-                  p Associate's Degree
+                  p title=program.education
+                    = program.education
                 li.col-xs-5.col-md-5.program-item-map__footer-item
                   .icon.i-clock
                     = image_tag asset_path("program-landing/clock.png"), :alt => 'icon clock'

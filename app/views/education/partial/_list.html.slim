@@ -34,7 +34,8 @@
               li.edu-detail-item--landing
                 .icon.i-education
                   = image_tag asset_path("icon-education.png"), :alt => "icon education"
-                p Associate's Degree
+                p title=program.education
+                  = program.education
               li.edu-detail-item--landing
                 .icon.i-calendar
                   = image_tag asset_path("program-landing/calendar.png"), :alt => 'icon calendar'
