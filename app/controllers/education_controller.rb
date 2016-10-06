@@ -240,11 +240,16 @@ class EducationController < ApplicationController
       education_query = "("
 
       education_ids.each_with_index do |id, index|
+        education = list_of_educations[id.to_i]
+
+        if education.include? "'"
+          education = education.gsub!(/'/, "''")
+        end
 
         if index == 0
-          education_query += "education like '%#{list_of_educations[id.to_i].gsub!(/'/, "''")}%'"
+          education_query += "education like '%#{education}%'"
         else
-          education_query += " OR education like '%#{list_of_educations[id.to_i].gsub!(/'/, "''")}%'"
+          education_query += " OR education like '%#{education}%'"
         end
       end
       education_query += ")"
