@@ -153,18 +153,18 @@ class CareerController < ApplicationController
       [industry.id, industry.name]
     end
     list_of_clusters = list_of_clusters.to_h
-    industries_query = ['(']
+    industries_q = ['(']
 
     industry_ids.each_with_index do |id, index|
       if index.zero?
-        industries_query.push "industries like '%#{list_of_clusters[id.to_i]}%'"
+        industries_q.push "industries like '%#{list_of_clusters[id.to_i]}%'"
       else
-        industries_query.push " OR industries like '%#{list_of_clusters[id.to_i]}%'"
+        industries_q.push " OR industries like '%#{list_of_clusters[id.to_i]}%'"
       end
     end
-    industries_query.push ')'
+    industries_q.push ')'
 
-    industries_query.join('')
+    industries_q.join('')
   end
 
   def skills_query_str(skill_ids)
@@ -187,7 +187,7 @@ class CareerController < ApplicationController
 
   def educations_query_str(education_ids)
     education_ids = education_ids.split(',')
-    educations_query = ['(']
+    edu_query = ['(']
 
     ## get list of educations
     list_of_educations = Education.all.map do |education|
@@ -197,36 +197,36 @@ class CareerController < ApplicationController
 
     education_ids.each_with_index do |id, index|
       if index.zero?
-        educations_query.push "education like '%#{list_of_educations[id.to_i]}%'"
+        edu_query.push "education like '%#{list_of_educations[id.to_i]}%'"
       else
-        educations_query.push " OR education like '%#{list_of_educations[id.to_i]}%'"
+        edu_query.push " OR education like '%#{list_of_educations[id.to_i]}%'"
       end
     end
-    educations_query.push ')'
+    edu_query.push ')'
 
-    educations_query.join('')
+    edu_query.join('')
   end
 
   def interests_query_str(interest_ids)
     interest_ids = interest_ids.split(',')
-    interests_query = ['(']
+    interests_q = ['(']
 
     ## get list of interests
-    list_of_interests = Interest.all.map  do |interest|
+    list_of_interests = Interest.all.map do |interest|
       [interest.id, interest.name]
     end
     list_of_interests = list_of_interests.to_h
 
     interest_ids.each_with_index do |id, index|
       if index.zero?
-        interests_query.push "interests like '%#{list_of_interests[id.to_i]}%'"
+        interests_q.push "interests like '%#{list_of_interests[id.to_i]}%'"
       else
-        interests_query.push " OR interests like '%#{list_of_interests[id.to_i]}%'"
+        interests_q.push " OR interests like '%#{list_of_interests[id.to_i]}%'"
       end
     end
-    interests_query.push ')'
+    interests_q.push ')'
 
-    interests_query.join('')
+    interests_q.join('')
   end
 
   def demands_query_str(demand_ids)
@@ -236,9 +236,9 @@ class CareerController < ApplicationController
 
     demand_ids.each_with_index do |id, index|
       if index.zero?
-        demands_query.push " demand = #{id.to_i} "
+        demands_query.push "demand = #{id.to_i}"
       else
-        demands_query.push " OR demand = #{id.to_i} "
+        demands_query.push " OR demand = #{id.to_i}"
       end
     end
     demands_query.push ')'
