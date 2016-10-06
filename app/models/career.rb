@@ -1,6 +1,6 @@
 class Career < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_by_title, use: [:slugged, :finders]
+  friendly_id :slug_by_title, use: :slugged
 
   serialize :regions_high_demand, Array
   serialize :interests, Array
@@ -27,6 +27,10 @@ class Career < ApplicationRecord
   validates :salary_max, presence: true
   validates :demand, presence: true
   validates :regions_high_demand, presence: true
+
+  scope :filter_by_title, lambda { |titles|
+    where('title IN (?)', titles)
+  }
 
   private
 
