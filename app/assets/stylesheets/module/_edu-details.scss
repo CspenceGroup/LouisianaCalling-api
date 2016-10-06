@@ -113,6 +113,7 @@
   @extend %overflow-hidden; 
   @extend %no-padding-right;
   @extend %float-left;
+  @extend %display-flex;
 
   p {
     margin-top: rem(3);
