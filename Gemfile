@@ -45,9 +45,6 @@ gem 'slim-rails'
 # Using FriendlyId to generate slugging and permalink plugins for ActiveRecord
 gem 'friendly_id', '~> 5.1.0'
 
-# Using FriendlyId to generate slugging and permalink plugins for ActiveRecord
-gem 'friendly_id', '~> 5.1.0'
-
 gem 'unicorn'
 gem 'foreman'
 gem 'sidekiq'
