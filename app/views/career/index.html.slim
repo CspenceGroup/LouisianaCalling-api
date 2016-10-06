@@ -33,17 +33,17 @@
                           li
                             p.jobs-head__desc-text Interests
                             .jobs-head__desc-icon
-                              - career.interests.each do |interest|
-                                - if @list_of_interests[interest]
-                                  = image_tag(@list_of_interests[interest], :alt => "fire icon")
+                              - career.interests.each do |interest, url|
+                                - if url.present?
+                                  = image_tag(url, :alt => "fire icon")
                                 - else
                                   = image_tag("", :alt => "fire icon")
                           li
                             p.jobs-head__desc-text Skills
                             .jobs-head__desc-icon
-                              - career.skills.each do |skill|
-                                - if @list_of_skills[skill]
-                                  = image_tag(@list_of_skills[skill], :alt => "fire icon")
+                              - career.skills.each do |skill, url|
+                                - if url.present?
+                                  = image_tag(url, :alt => "fire icon")
                                 - else
                                   = image_tag("", :alt => "fire icon")
                   .great-jobs__list-icon
