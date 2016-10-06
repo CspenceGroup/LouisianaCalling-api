@@ -147,6 +147,8 @@
         #program-list-view.program-list-view
           #program-map-data style="display: none;"
             = @programs.to_json
+          #program-map-ids-data style="display: none;"
+            = @ids.to_json
           #program-container-list.program-list-view__container
             = render partial: "education/partial/list", locals: { programs: @programs }
           - if @isSeeMore

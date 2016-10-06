@@ -302,7 +302,8 @@ class EducationController < ApplicationController
       :list => render_to_string('education/partial/_list', :layout => false, :locals => { programs: programs.first(3) }),
       :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3), ids: ids }),
       :isSeeMore => isSeeMore,
-      :programs => programs.first(3)
+      :programs => programs.first(3),
+      :ids => ids
     }
   end
 end

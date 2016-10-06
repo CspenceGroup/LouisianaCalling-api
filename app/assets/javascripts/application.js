@@ -782,8 +782,7 @@ $(document).on('turbolinks:load', function(){
             $('.indicator-loading-see-more').hide();
             $('#program-container-map').append(response.map);
             $('#program-container-list').append(response.list);
-            updateProgramsMapData(response.programs);
-            addMarkerToMap(response.programs);
+            updateProgramsMapData(response.programs, response.ids);
           } else {
             // remove all of map markers
             programMapMarkers = [];
@@ -841,10 +840,12 @@ $(document).on('turbolinks:load', function(){
   // Create map in program landing
   var programsMap = null;
   var programMapMarkers = [];
+  var programsMapIds = [];
 
   var programsMapData = {};
   if ($('#program-map-data').html()) {
     programsMapData = JSON.parse($('#program-map-data').html());
+    programsMapIds = JSON.parse($('#program-map-ids-data').html());
   }
 
   // refresh google map when trigger
@@ -878,14 +879,16 @@ $(document).on('turbolinks:load', function(){
       zoom: 7
     });
 
-    addMarkerToMap(programsMapData);
+    addMarkerToMap(programsMapData, programsMapIds);
   }
 
-  var updateProgramsMapData = function(programs) {
+  var updateProgramsMapData = function(programs, ids) {
     programsMapData = programsMapData.concat(programs);
+    programsMapIds = programsMapIds.concat(programs, ids);
+    addMarkerToMap(programsMapData, programsMapIds);
   }
 
-  var addMarkerToMap = function(programs) {
+  var addMarkerToMap = function(programs, ids) {
     if(programsMap) {
       for (var i = 0; i < programs.length; i++) {
         var marker = new MarkerWithLabel({
@@ -893,7 +896,7 @@ $(document).on('turbolinks:load', function(){
           icon: 'http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png',
           map: programsMap,
           title: programs[i].title,
-          labelContent: String(programs[i].id),
+          labelContent: String(ids.indexOf(programs[i].id) + 1),
           labelAnchor: new google.maps.Point(20, 36),
           labelClass: "labels-marker"
         });
