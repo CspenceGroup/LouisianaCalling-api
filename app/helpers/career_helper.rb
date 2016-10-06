@@ -34,14 +34,14 @@ module CareerHelper
 
     if career_regions.present?
       regions = career_regions.map do |career_region|
-        { career_region.region => {
+        [career_region.region, {
           salary_min: career_region.salary_min,
           salary_max: career_region.salary_max,
           education: career_region.education
-        } }
+        }]
       end
     end
 
-    regions
+    regions.uniq.to_h
   end
 end

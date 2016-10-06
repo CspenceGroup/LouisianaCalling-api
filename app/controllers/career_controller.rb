@@ -1,47 +1,34 @@
 class CareerController < ApplicationController
   include CareerHelper
 
+  before_filter :data_for_filter_details, only: [:index]
+  before_filter :career_titles, only: [:index, :detail]
+
   def index
-    @careers_slider = Career.first(5)
+    @careers_slider = []
 
-    @interests = Interest.all
-    @list_of_interests = {}
-    @interests.each do |interest|
-      @list_of_interests[interest[:name]] = interest[:url]
+    Career.first(5).each do |career|
+      # get_image_for_career_interest is invoked from CareerHelper
+      career.interests = get_image_for_career_interest(career.interests)
+      # get_image_for_career_skill is invoked from CareerHelper
+      career.skills = get_image_for_career_skill(career.skills)
+      @careers_slider << career
     end
-
-    @skills = Skill.all
-    @list_of_skills = {}
-    @skills.each do |skill|
-      @list_of_skills[skill[:name]] = skill[:url]
-    end
-
-    @list_of_regions = Region.all
-    @list_of_industries = Cluster.all
-    @list_of_educations = Education.all
-    @list_of_careers = Career.select(:title).map(&:title).uniq
-
-    salary_min = 30000;
-    salary_max = 80000;
-
-    if !params["title"] && !params["region"]
-      @careers = Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").first(9)
-      @isSeeMore = false
-
-      if Career.where("salary_max <= #{salary_max} AND salary_min >= #{salary_min}").count > 9
-        @isSeeMore = true
+    careers =
+      if !params['title'].present? && !params['region'].present?
+        Career.all.filter_by_salary(
+          Constants::SALARY_MAX, Constants::SALARY_MIN
+        )
+      else
+        Career.all
+              .filter_by_title_and_region(params['title'], params['region'])
+              .filter_by_salary(
+                Constants::SALARY_MAX, Constants::SALARY_MIN
+              )
       end
-    else
-      @title = params["title"].downcase if params["title"]
-      @region = params["region"]
 
-      @careers = Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
-      @isSeeMore = false
-
-      if Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
-        @isSeeMore = true
-      end
-    end
+    @careers = careers.offset(0).limit(9)
+    @isSeeMore = careers.count > 9 ? true : false
   end
 
   def detail
@@ -323,5 +310,19 @@ class CareerController < ApplicationController
     }
     # render :partial => "career/partial/career", :locals => { careers: careers}
     # render :json => careers
+  end
+
+  private
+
+  def data_for_filter_details
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
+    @skills = Skill.all
+    @interests = Interest.all
+  end
+
+  def career_titles
+    @list_of_careers = Career.all.map(&:title).uniq
   end
 end
