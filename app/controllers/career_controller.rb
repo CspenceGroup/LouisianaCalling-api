@@ -1,15 +1,17 @@
 class CareerController < ApplicationController
+  include CareerHelper
+
   def index
     @careers_slider = Career.first(5)
 
     @interests = Interest.all
-    @list_of_interests = Hash.new
+    @list_of_interests = {}
     @interests.each do |interest|
       @list_of_interests[interest[:name]] = interest[:url]
     end
 
     @skills = Skill.all
-    @list_of_skills = Hash.new
+    @list_of_skills = {}
     @skills.each do |skill|
       @list_of_skills[skill[:name]] = skill[:url]
     end
@@ -43,45 +45,32 @@ class CareerController < ApplicationController
   end
 
   def detail
-
-    @careers = CareerRegion.where(:slug => params[:slug])
-    @career = Career.where(:slug => params[:slug]).first
+    @career = Career.friendly.find(params[:slug])
     @list_of_careers = Career.select(:title).map(&:title).uniq
     @list_of_regions = Region.all
 
-    if @career
-      interests = Interest.all
-      @list_of_interests = Hash.new
-      interests.each do |interest|
-        @list_of_interests[interest[:name]] = interest[:url]
-      end
+    return unless @career.present?
+    # get_image_for_career_interest is invoked from CareerHelper
+    @career.interests = get_image_for_career_interest(@career.interests)
 
-      skills = Skill.all
-      @list_of_skills = Hash.new
-      skills.each do |skill|
-        @list_of_skills[skill[:name]] = skill[:url]
-      end
+    # get_image_for_career_skill is invoked from CareerHelper
+    @career.skills = get_image_for_career_skill(@career.skills)
 
-      @regions = Hash.new
-      @careers.map do |career|
-        @regions[career.region] = {
-          :salary_min => career.salary_min,
-          :salary_max => career.salary_max,
-          :education => career.education
-        }
-      end
+    # get_career_regions_by_career_title is invoked from CareerHelper
+    @regions = get_career_regions_by_career_title(@career.title)
 
-      @related_by_skills = Career.where(title: @career.related_career_by_skill).first(3)
-      @related_by_interests = Career.where(title: @career.related_career_by_interest).first(3)
+    @related_by_skills = Career.all
+                               .filter_by_title(@career.related_career_by_skill)
+                               .offset(0).limit(3)
 
-      profileName = @career.profile_name
-      if (profileName)
-        @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
-      end
+    @related_by_interests =
+      Career.all
+            .filter_by_title(@career.related_career_by_interest)
+            .offset(0).limit(3)
 
-    else
+    if @career.profile_name.present?
+      @profile = Profile.find_by_full_name(@career.profile_name).first
     end
-
   end
 
   def filter

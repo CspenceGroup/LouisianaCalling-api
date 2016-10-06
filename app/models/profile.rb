@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_by_name, use: [:slugged, :finders]
+  friendly_id :slug_by_name, use: :slugged
 
   serialize :interests, Array
   serialize :skills, Array
@@ -21,6 +21,10 @@ class Profile < ApplicationRecord
   validates :image_medium, presence: true
   validates :image_small, presence: true
 
+  scope :find_by_full_name, lambda { |full_name|
+    full_name = full_name.split(' ')
+    where('first_name = ? AND last_name = ?', full_name.first, full_name.last)
+  }
 
   private
 

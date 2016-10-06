@@ -51,9 +51,9 @@
                 <li>
                   <p class="jobs-head__desc-text">Interests</p>
                   <div class="jobs-head__desc-icon">
-                    <% @career.interests.each do |interest| %>
-                      <% if @list_of_interests[interest] %>
-                        <%= image_tag(@list_of_interests[interest], :alt => "fire icon") %>
+                    <% @career.interests.each do |interest, url| %>
+                      <% if url.present? %>
+                        <%= image_tag(url, :alt => "fire icon") %>
                       <% else %>
                         <%= image_tag("", :alt => "fire icon") %>
                       <% end %>
@@ -65,9 +65,9 @@
                 <li>
                   <p class="jobs-head__desc-text">Skills</p>
                   <div class="jobs-head__desc-icon">
-                    <% @career.skills.each do |skill| %>
-                      <% if @list_of_skills[skill] %>
-                        <%= image_tag(@list_of_skills[skill], :alt => "icon computer") %>
+                    <% @career.skills.each do |skill, url| %>
+                      <% if url.present? %>
+                        <%= image_tag(url, :alt => "icon computer") %>
                       <% else %>
                         <%= image_tag("", :alt => "fire icon") %>
                       <% end %>
@@ -503,12 +503,12 @@
               </div>
               <div class="col-xs-6 col-md-6">
                 <div id="interest-icons">
-                  <% @career.interests.each do |interest| %>
+                  <% @career.interests.each do |interest, url| %>
                     <div class="sort-item">
                       <span class="sort-item__title" title="<%= interest %>"><%= interest%></span>
                       <div class="sort-item__icon">
-                        <% if @list_of_interests[interest] %>
-                          <%= image_tag(@list_of_interests[interest], :alt => "interest icon") %>
+                        <% if url.present? %>
+                          <%= image_tag(url, :alt => "interest icon") %>
                         <% else %>
                           <%= image_tag("", :alt => "interest icon") %>
                         <% end %>
@@ -519,12 +519,12 @@
                   %>
                 </div>
                 <div id="skill-icons">
-                  <% @career.skills.each do |skill| %>
+                  <% @career.skills.each do |skill, url| %>
                     <div class="sort-item">
                       <span class="sort-item__title" title="<%= skill %>"><%= skill%></span>
                       <div class="sort-item__icon">
-                        <% if @list_of_skills[skill] %>
-                        <%= image_tag(@list_of_skills[skill], :alt => "interest icon")%>
+                        <% if url.present? %>
+                        <%= image_tag(url, :alt => "interest icon")%>
                         <% else %>
                           <%= image_tag("", :alt => "interest icon") %>
                         <% end %>
