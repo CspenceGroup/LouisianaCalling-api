@@ -38,8 +38,18 @@
 
   @include e('link') {
     margin-top: rem(-10);
-    @include background-image('call-number.png');
+    @extend %relative;
+    @include background-image('tel-arrow.png');
     @include boxSize(rem(220), rem(90));
+
+    span {
+      font-size: rem(25);
+      width: 100%;
+      top: rem(33);
+      right: rem(8);
+      @extend %absolute;
+      @extend %brandon-grotesque;
+    }
   }
 }
 
