@@ -26,6 +26,7 @@ class CareerController < ApplicationController
               )
       end
     puts careers.count
+
     @careers = careers.offset(0).limit(9)
     @isSeeMore = careers.count > 9 ? true : false
   end
@@ -126,6 +127,20 @@ class CareerController < ApplicationController
 
     query
   end
+
+  def data_for_filter_details
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
+    @skills = Skill.all
+    @interests = Interest.all
+  end
+
+  def career_titles
+    @list_of_careers = Career.all.map(&:title).uniq
+  end
+
+  private
 
   def data_for_filter_details
     @list_of_regions = Region.all
