@@ -117,9 +117,10 @@ class CareerController < ApplicationController
 
     ## filter by salary
     if params[:salary_max].present? && params[:salary_min].present?
-      query.push(
-        "(salary_max <= #{params[:salary_max]} AND salary_min >= #{params[:salary_min]})"
-      )
+      salary_query = ["salary_max <= #{params[:salary_max]}"]
+      salary_query.push "salary_min >= #{params[:salary_min]}"
+
+      query.push(salary_query)
     end
 
     query
@@ -146,7 +147,9 @@ class CareerController < ApplicationController
   def industries_query_str(industry_ids)
     industry_ids = industry_ids.split(',')
     ## get list of industries
-    list_of_clusters = Cluster.all.map { |industry| [industry.id, industry.name] }
+    list_of_clusters = Cluster.all.map do |industry|
+      [industry.id, industry.name]
+    end
     list_of_clusters = list_of_clusters.to_h
     industries_query = ['(']
 
@@ -185,7 +188,9 @@ class CareerController < ApplicationController
     educations_query = ['(']
 
     ## get list of educations
-    list_of_educations = Education.all.map { |education| [education.id, education.name] }
+    list_of_educations = Education.all.map do |education|
+      [education.id, education.name]
+    end
     list_of_educations = list_of_educations.to_h
 
     education_ids.each_with_index do |id, index|
@@ -205,7 +210,9 @@ class CareerController < ApplicationController
     interests_query = ['(']
 
     ## get list of interests
-    list_of_interests = Interest.all.map  { |interest| [interest.id, interest.name] }
+    list_of_interests = Interest.all.map  do |interest|
+      [interest.id, interest.name]
+    end
     list_of_interests = list_of_interests.to_h
 
     interest_ids.each_with_index do |id, index|
