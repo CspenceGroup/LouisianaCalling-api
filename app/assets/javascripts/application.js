@@ -514,7 +514,7 @@ $(document).on('turbolinks:load', function(){
         salary_max = $("#slider-range").slider("values")[1],
         data = {
           regions: [],
-          industrys: [],
+          industries: [],
           skills: [],
           interests: [],
           educations: [],
@@ -540,10 +540,10 @@ $(document).on('turbolinks:load', function(){
         data.regions = data.regions.join(',')
       }
 
-      if(!data.industrys.length) {
-        delete data.industrys;
+      if(!data.industries.length) {
+        delete data.industries;
       } else {
-        data.industrys = data.industrys.join(',')
+        data.industries = data.industries.join(',')
       }
 
       if(!data.skills.length) {
@@ -927,7 +927,7 @@ $(document).on('turbolinks:load', function(){
       effect : "fadeIn",
       event : "timeout"
     });
-    
+
     // Trigger timeout event for lazyload
     var timeout = setTimeout(function() {
       $("img.lazy-load").trigger("timeout");

@@ -17,16 +17,16 @@ class CareerController < ApplicationController
     careers =
       if !params['title'].present? && !params['region'].present?
         Career.all.filter_by_salary(
-          Constants::SALARY_MAX, Constants::SALARY_MIN
+          Constants::SALARY_MIN, Constants::SALARY_MAX
         )
       else
         Career.all
               .filter_by_title_and_region(params['title'], params['region'])
               .filter_by_salary(
-                Constants::SALARY_MAX, Constants::SALARY_MIN
+                Constants::SALARY_MIN, Constants::SALARY_MAX
               )
       end
-
+    puts careers.count
     @careers = careers.offset(0).limit(9)
     @isSeeMore = careers.count > 9 ? true : false
   end
@@ -59,260 +59,183 @@ class CareerController < ApplicationController
   end
 
   def filter
-    ## get list of industries
-    clusters = Cluster.all
-    list_of_clusters = []
-    clusters.each do |cluster|
-      list_of_clusters[cluster[:id]] = cluster[:name]
-    end
-
-    ## get list of region
-    regions = Region.all
-    list_of_regions = []
-    regions.each do |region|
-      list_of_regions[region[:id]] = region[:name]
-    end
-
-    ## get list of skills
-    skills = Skill.all
-    list_of_skills = []
-    skills.each do |skill|
-      list_of_skills[skill[:id]] = skill[:name]
-    end
-
-    ## get list of educations
-    educations = Education.all
-    list_of_educations = []
-    educations.each do |education|
-      list_of_educations[education[:id]] = education[:name]
-    end
-
-    ## get list of interests
-    interests = Interest.all
-    list_of_interests = []
-    interests.each do |interest|
-      list_of_interests[interest[:id]] = interest[:name]
-    end
-
-    # define query
-    query = ""
-    regions_query = ""
-    industries_query = ""
-    skills_query = ""
-    educations_query = ""
-    interests_query = ""
-    demands_query = ""
-    salary_query = ""
-    title_query = ""
-
-    ## filter by region
-    region_ids = params[:regions]
-    if region_ids && region_ids != ""
-      region_ids = region_ids.split(',')
-
-      regions_query = "("
-      region_ids.each_with_index do |id, index|
-
-        if index == 0
-          regions_query += "region like '%#{list_of_regions[id.to_i]}%'"
-        else
-          regions_query += " OR region like '%#{list_of_regions[id.to_i]}%'"
-        end
-      end
-      regions_query += ")"
-
-      query = regions_query
-
-    end
-
-    ## filter by industry
-    industry_ids = params[:industries]
-    if industry_ids && industry_ids != ""
-      industry_ids = industry_ids.split(',')
-
-      industries_query = "("
-
-      industry_ids.each_with_index do |id, index|
-
-        if index == 0
-          industries_query += "industries like '%#{list_of_clusters[id.to_i]}%'"
-        else
-          industries_query += " OR industries like '%#{list_of_clusters[id.to_i]}%'"
-        end
-      end
-      industries_query += ")"
-
-      if query == ""
-        query = industries_query
-      else
-        query = regions_query + " AND " + industries_query
-      end
-    end
-
-    ## filter by industry
-    skill_ids = params[:skills]
-
-    if skill_ids && skill_ids != ""
-      skill_ids = skill_ids.split(',')
-
-      skills_query = "("
-
-      skill_ids.each_with_index do |id, index|
-
-        if index == 0
-          skills_query += "skills like '%#{list_of_skills[id.to_i]}%'"
-        else
-          skills_query += " OR skills like '%#{list_of_skills[id.to_i]}%'"
-        end
-      end
-      skills_query += ")"
-
-      if query == "" && industries_query == ""
-        query = skills_query
-      else
-        query = query + " AND " + skills_query
-      end
-    end
-
-    ## filter by education
-    education_ids = params[:educations]
-    if education_ids && education_ids != ""
-      education_ids = education_ids.split(',')
-
-      educations_query = "("
-
-      education_ids.each_with_index do |id, index|
-
-        if index == 0
-          educations_query += "education like '%#{list_of_educations[id.to_i]}%'"
-        else
-          educations_query += " OR education like '%#{list_of_educations[id.to_i]}%'"
-        end
-      end
-      educations_query += ")"
-
-      if query == "" && industries_query == "" && skills_query == ""
-        query = educations_query
-      else
-        query = query + " AND " + educations_query
-      end
-    end
-
-    ## filter by interests
-    interest_ids = params[:interests]
-    if interest_ids && interest_ids != ""
-      interest_ids = interest_ids.split(',')
-
-      interests_query = "("
-
-      interest_ids.each_with_index do |id, index|
-
-        if index == 0
-          interests_query += "interests like '%#{list_of_interests[id.to_i]}%'"
-        else
-          interests_query += " OR interests like '%#{list_of_interests[id.to_i]}%'"
-        end
-      end
-      interests_query += ")"
-
-      if query == "" && industries_query == "" && skills_query == "" && educations_query == ""
-        query = interests_query
-      else
-        query = query + " AND " + interests_query
-      end
-    end
-
-    ## filter by demand
-    demand_ids = params[:demands]
-    if demand_ids && demand_ids != ""
-      demand_ids = demand_ids.split(',')
-
-      demands_query = "("
-
-      demand_ids.each_with_index do |id, index|
-
-        if index == 0
-          demands_query += " demand = #{id.to_i} "
-        else
-          demands_query += " OR demand = #{id.to_i} "
-        end
-      end
-      demands_query += ")"
-
-      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == ""
-        query = demands_query
-      else
-        query = query + " AND " + demands_query
-      end
-    end
-
-    ## filter by salary
-    salary_min = params[:salary_min]
-    salary_max = params[:salary_max]
-    if salary_max && salary_max != "" && salary_min && salary_min != ""
-
-      salary_query = "("
-
-      salary_query += " salary_max <= #{salary_max} AND salary_min >= #{salary_min} "
-
-      salary_query += ")"
-
-      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == ""
-        query = salary_query
-      else
-        query = query + " AND " + salary_query
-      end
-    end
+    query = convert_query_str(params)
 
     ## seach by career title
-    career_title = params[:title]
-    if career_title && career_title != ""
-
-      career_title = career_title.downcase
-
-      title_query = "("
-
-      title_query += " LOWER(title) like '%#{career_title}%' "
-
-      title_query += ")"
-
-      if query == "" && industries_query == "" && skills_query == "" && educations_query == "" && interests_query == "" && demands_query == "" && salary_query == ""
-        query = title_query
-      else
-        query = query + " AND " + title_query
-      end
+    if params[:title].present?
+      query.push("(LOWER(title) like '%#{params[:title].downcase}%')")
     end
 
-    last_id = 0
-    if params[:last_id] && params[:last_id] != ""
-      last_id = params[:last_id]
+    last_id = params[:last_id].present? ? params[:last_id] : 0
+    query.push("id > #{last_id}")
 
-      query = query + " AND id > #{last_id} "
-    end
+    ## Sort by, defaut sort by ID
+    sort_by = params[:sort].present? ? params[:sort] : 'id'
 
-    ## sort by
-    sort_by = "id"
-    if params[:sort] && params[:sort] != ""
-      sort_by = params[:sort]
-    end
+    careers = Career.all.where(query.join(' AND ')).order(sort_by)
+    is_see_more = careers.count > 9 ? true : false
+    careers = careers.offset(0).limit(9)
 
-    isSeeMore = false
-    careers = Career.where(query).order(sort_by)
-
-    if careers.length > 9
-      isSeeMore = true
-    end
-
-    render :json => {
-      :careers => render_to_string('career/partial/_career', :layout => false, :locals => { careers: careers.first(9) }),
-      :list => render_to_string('career/partial/_list', :layout => false, :locals => { careers: careers.first(9) }),
-      :isSeeMore => isSeeMore
+    render json: {
+      careers: render_to_string(
+        'career/partial/_career', layout: false, locals: { careers: careers }
+      ),
+      list: render_to_string(
+        'career/partial/_list', layout: false, locals: { careers: careers }
+      ),
+      isSeeMore: is_see_more
     }
-    # render :partial => "career/partial/career", :locals => { careers: careers}
-    # render :json => careers
   end
 
   private
+
+  def convert_query_str(params)
+    query = []
+    ## filter by region
+    query.push(regions_query_str(params[:regions])) if params[:regions].present?
+
+    ## filter by industry
+    if params[:industries].present?
+      query.push(industries_query_str(params[:industries]))
+    end
+
+    ## filter by industry
+    query.push(skills_query_str(params[:skills])) if params[:skills].present?
+
+    ## filter by education
+    if params[:educations].present?
+      query.push(educations_query_str(params[:educations]))
+    end
+
+    ## filter by interests
+    if params[:interests].present?
+      query.push(interests_query_str(params[:interests]))
+    end
+
+    ## filter by demand
+    query.push(demands_query_str(params[:demands])) if params[:demands].present?
+
+    ## filter by salary
+    if params[:salary_max].present? && params[:salary_min].present?
+      query.push(
+        "(salary_max <= #{params[:salary_max]} AND salary_min >= #{params[:salary_min]})"
+      )
+    end
+
+    query
+  end
+
+  def regions_query_str(region_ids)
+    region_ids = region_ids.split(',')
+    ## get list of region
+    list_of_regions = Region.all.map { |region| [region.id, region.name] }
+    list_of_regions = list_of_regions.to_h
+    regions_query = ['(']
+    region_ids.each_with_index do |id, index|
+      if index.zero?
+        regions_query.push "region like '%#{list_of_regions[id.to_i]}%'"
+      else
+        regions_query.push " OR region like '%#{list_of_regions[id.to_i]}%'"
+      end
+    end
+    regions_query.push ')'
+
+    regions_query.join('')
+  end
+
+  def industries_query_str(industry_ids)
+    industry_ids = industry_ids.split(',')
+    ## get list of industries
+    list_of_clusters = Cluster.all.map { |industry| [industry.id, industry.name] }
+    list_of_clusters = list_of_clusters.to_h
+    industries_query = ['(']
+
+    industry_ids.each_with_index do |id, index|
+      if index.zero?
+        industries_query.push "industries like '%#{list_of_clusters[id.to_i]}%'"
+      else
+        industries_query.push " OR industries like '%#{list_of_clusters[id.to_i]}%'"
+      end
+    end
+    industries_query.push ')'
+
+    industries_query.join('')
+  end
+
+  def skills_query_str(skill_ids)
+    skill_ids = skill_ids.split(',')
+    ## get list of skills
+    list_of_skills = Skill.all.map { |skill| [skill.id, skill.name] }
+    list_of_skills = list_of_skills.to_h
+    skills_query = ['(']
+    skill_ids.each_with_index do |id, index|
+      if index.zero?
+        skills_query.push "skills like '%#{list_of_skills[id.to_i]}%'"
+      else
+        skills_query.push " OR skills like '%#{list_of_skills[id.to_i]}%'"
+      end
+    end
+    skills_query.push ')'
+
+    skills_query.join('')
+  end
+
+  def educations_query_str(education_ids)
+    education_ids = education_ids.split(',')
+    educations_query = ['(']
+
+    ## get list of educations
+    list_of_educations = Education.all.map { |education| [education.id, education.name] }
+    list_of_educations = list_of_educations.to_h
+
+    education_ids.each_with_index do |id, index|
+      if index.zero?
+        educations_query.push "education like '%#{list_of_educations[id.to_i]}%'"
+      else
+        educations_query.push " OR education like '%#{list_of_educations[id.to_i]}%'"
+      end
+    end
+    educations_query.push ')'
+
+    educations_query.join('')
+  end
+
+  def interests_query_str(interest_ids)
+    interest_ids = interest_ids.split(',')
+    interests_query = ['(']
+
+    ## get list of interests
+    list_of_interests = Interest.all.map  { |interest| [interest.id, interest.name] }
+    list_of_interests = list_of_interests.to_h
+
+    interest_ids.each_with_index do |id, index|
+      if index.zero?
+        interests_query.push "interests like '%#{list_of_interests[id.to_i]}%'"
+      else
+        interests_query.push " OR interests like '%#{list_of_interests[id.to_i]}%'"
+      end
+    end
+    interests_query.push ')'
+
+    interests_query.join('')
+  end
+
+  def demands_query_str(demand_ids)
+    demand_ids = demand_ids.split(',')
+
+    demands_query = ['(']
+
+    demand_ids.each_with_index do |id, index|
+      if index.zero?
+        demands_query.push " demand = #{id.to_i} "
+      else
+        demands_query.push " OR demand = #{id.to_i} "
+      end
+    end
+    demands_query.push ')'
+
+    demands_query.join('')
+  end
 
   def data_for_filter_details
     @list_of_regions = Region.all
