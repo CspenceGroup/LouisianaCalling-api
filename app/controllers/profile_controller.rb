@@ -5,27 +5,25 @@ class ProfileController < ApplicationController
   end
 
   def getMore
-
     id = params[:id]
-    if id
 
-      # get all records with id less than 'our last id'
-      # and limit the results to 3
-      profiles = Profile.where('id > ?', id).limit(3).order(:id)
+    return unless id.present?
+    # get all records with id less than 'our last id'
+    # and limit the results to 3
+    profiles = Profile.where('id > ?', id)
 
-      isSeeMore = false
-      profilesCount = Profile.where('id > ?', id).count
+    is_see_more = profiles.count > 3 ? true : false
+    profiles = profiles.limit(3).order(:id)
 
-      if profilesCount > 3
-        isSeeMore = true
-      end
+    render json: {
+      profiles: render_to_string(
+        'profile/partial/_profile', layout: false, locals: { profiles: profiles }
+      ),
+      isSeeMore: is_see_more
+    }
+  end
 
-      render :json => {
-        :profiles => render_to_string('profile/partial/_profile', :layout => false, :locals => { profiles: profiles}),
-        :isSeeMore => isSeeMore
-      }
+  def detail
 
-      # render :partial => "profile/partial/profile", :locals => { profiles: profiles}
-    end
   end
 end
