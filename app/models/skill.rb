@@ -1,4 +1,4 @@
-class Skill < ApplicationRecord
+class Skill < ActiveRecord::Base
   validates :name, presence: true
   validates :url, presence: true
 

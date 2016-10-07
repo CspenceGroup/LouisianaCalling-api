@@ -1,4 +1,4 @@
-class Education < ApplicationRecord
+class Education < ActiveRecord::Base
   validates :name, presence: true
 
   def self.import_from_csv(csv)
