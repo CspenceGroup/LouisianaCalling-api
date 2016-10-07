@@ -1,37 +1,27 @@
 class EducationController < ApplicationController
+  before_filter :data_for_filter_details, only: [:index]
+
   def index
+    limit = 3
+    list_programs =
+      if !params['title'].present? && !params['region'].present?
+        Program.all
+               .filter_by_tuition(
+                 Constants::TUITION_MIN, Constants::TUITION_MAX
+               )
+      else
 
-    tuition_min = 0;
-    tuition_max = 4000;
-    offset = 3
-
-    @list_of_regions = Region.all
-    @list_of_industries = Cluster.all
-    @list_of_programs = Program.select(:title).map(&:title).uniq
-
-    if !params["title"] && !params["region"]
-      @allPrograms = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
-      @programs = @allPrograms.first(offset)
-      @ids = @allPrograms.map(&:id)
-      @isSeeMore = false
-
-      if @allPrograms.length > offset
-        @isSeeMore = true
+        Program.all
+               .filter_by_title(params['title'])
+               .filter_by_region(params['region'])
+               .filter_by_tuition(
+                 Constants::TUITION_MIN, Constants::TUITION_MAX
+               )
       end
-    else
 
-      @title = params["title"].downcase if params["title"]
-      @region = params["region"]
-
-      @allPrograms = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
-      @programs = @allPrograms.first(offset)
-      @ids = @allPrograms.map(&:id)
-      @isSeeMore = false
-
-      if @allPrograms.length > offset
-        @isSeeMore = true
-      end
-    end
+    @is_see_more = list_programs.count > limit ? true : false
+    @programs = list_programs.offset(0).limit(limit)
+    @ids = list_programs.map(&:id)
   end
 
   def detail
@@ -308,5 +298,13 @@ class EducationController < ApplicationController
       :programs => programs.first(3),
       :ids => ids
     }
+  end
+
+  private
+
+  def data_for_filter_details
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_programs = Program.select(:title).map(&:title).uniq
   end
 end

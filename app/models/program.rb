@@ -12,6 +12,22 @@ class Program < ApplicationRecord
   validates_inclusion_of :financial_help, :in => ["Scholarship", "Financial Aid/Grant", ""]
   validates_inclusion_of :education, :in => ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree", ""]
 
+  scope :filter_by_tuition, lambda { |tuition_min, tuition_max|
+    where('tuition_max <= ? AND tuition_min >= ?', tuition_max, tuition_min)
+  }
+
+  scope :filter_by_title, lambda { |title|
+    query = ["LOWER(title) like '%?%'"]
+    query.push("LOWER(institution_name) like '%?%'")
+    query.push("LOWER(career) like '%?%')")
+
+    where(query.json(' OR '), title.downcase)
+  }
+
+  scope :filter_by_region, lambda { |region|
+    where('region like ?', region)
+  }
+
   private
 
   # Defaults a slug with title

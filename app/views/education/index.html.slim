@@ -151,7 +151,7 @@
             = @ids.to_json
           #program-container-list.program-list-view__container
             = render partial: "education/partial/list", locals: { programs: @programs }
-          - if @isSeeMore
+          - if @is_see_more
             #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program
               .icon-see-more
                 = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
@@ -167,7 +167,7 @@
           .program-map-view__list
             #program-container-map
               = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }
-            - if @isSeeMore
+            - if @is_see_more
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program
                 .icon-see-more
                   = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
