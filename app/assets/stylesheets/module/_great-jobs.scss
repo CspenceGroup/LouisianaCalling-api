@@ -114,7 +114,7 @@
 .great-jobs__list-icon {
   margin-bottom: rem(10);
 
-  ul {
+  .great-jobs__row {
     max-height: rem(68);
     @extend %overflow-hidden;
   }

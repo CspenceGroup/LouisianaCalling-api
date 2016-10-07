@@ -187,10 +187,10 @@ $(document).on('turbolinks:load', function(){
     if (videoSource) {
       videoSource = JSON.parse(videoSource);
       $('#videoModal').find('.modal-video__details').prepend(
-        '<video preload autoplay class="video-playing video-player">\
+        '<div class="video-container"><video preload autoplay class="video-playing video-player">\
           <source src=' + videoSource.url + ' type="video/mp4">\
         </video>\
-        <div class="button-pause" style="display: none;"><i class="icon-pause"></i><div>');
+        <div class="button-pause" style="display: none;"><i class="icon-pause"></i></div></div>');
       $('#videoModal').find('.modal-video__text h2').html(videoSource.title);
       $('#videoModal').find('.modal-video__text p').html(videoSource.description);
     }
@@ -248,8 +248,8 @@ $(document).on('turbolinks:load', function(){
   //Remove video when modal hide
   $('#videoModal').on('hide.bs.modal', function (event) {
     videoModal = $(event.target);
-    if(videoModal.find('video').length > 0) {
-      videoModal.find('video').remove();
+    if(videoModal.find('.video-container').length > 0) {
+      videoModal.find('.video-container').remove();
     }
   });
 

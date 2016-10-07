@@ -83,13 +83,14 @@ class EducationController < ApplicationController
       query.push(str_query.join(' OR '))
     end
 
+    ids = Program.where(query.join(' AND ')).order('id').map(&:id)
+
     query.push("id > #{params[:last_id]}") if params[:last_id].present?
 
     ## Sort by, defaut sort by ID
     sort_by = params[:sort].present? ? params[:sort] : 'id'
 
     programs = Program.where(query.join(' AND ')).order(sort_by)
-    ids = programs.map(&:id)
 
     is_see_more = programs.length > 3 ? true : false
     programs = programs.offset(0).limit(3)
