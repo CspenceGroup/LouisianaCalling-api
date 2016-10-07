@@ -1,4 +1,4 @@
-class TopJob < ApplicationRecord
+class TopJob < ActiveRecord::Base
   validates :region, presence: true
   validates :job_title, presence: true
 

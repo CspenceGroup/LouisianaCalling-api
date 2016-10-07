@@ -1,4 +1,4 @@
-class Profile < ApplicationRecord
+class Profile < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_name, use: :slugged
 

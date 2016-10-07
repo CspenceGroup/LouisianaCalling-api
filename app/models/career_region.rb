@@ -1,4 +1,4 @@
-class CareerRegion < ApplicationRecord
+class CareerRegion < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: [:slugged, :finders]
 
