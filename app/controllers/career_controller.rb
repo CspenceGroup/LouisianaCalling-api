@@ -33,10 +33,10 @@ class CareerController < ApplicationController
       @title = params["title"].downcase if params["title"]
       @region = params["region"]
 
-      @careers = Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
+      @careers = Career.where("LOWER(title) like '%#{@title}%' AND regions_high_demand like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").first(9)
       @isSeeMore = false
 
-      if Career.where("LOWER(title) like '%#{@title}%' AND region like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
+      if Career.where("LOWER(title) like '%#{@title}%' AND regions_high_demand like '%#{@region}%' AND salary_max <= #{salary_max} AND salary_min >= #{salary_min} ").count > 9
         @isSeeMore = true
       end
     end
@@ -75,7 +75,9 @@ class CareerController < ApplicationController
       @related_by_interests = Career.where(title: @career.related_career_by_interest).first(3)
 
       profileName = @career.profile_name
-      @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
+      if (profileName)
+        @profile = Profile.where(:first_name => profileName.split(' ', 2).first, :last_name => profileName.split(' ', 2).last).first
+      end
 
     else
     end
@@ -138,9 +140,9 @@ class CareerController < ApplicationController
       region_ids.each_with_index do |id, index|
 
         if index == 0
-          regions_query += "region like '%#{list_of_regions[id.to_i]}%'"
+          regions_query += "regions_high_demand like '%#{list_of_regions[id.to_i]}%'"
         else
-          regions_query += " OR region like '%#{list_of_regions[id.to_i]}%'"
+          regions_query += " OR regions_high_demand like '%#{list_of_regions[id.to_i]}%'"
         end
       end
       regions_query += ")"
