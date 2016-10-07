@@ -13,7 +13,7 @@
               <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
             </video>
             <div class="carousel-caption carousel-title">
-              <button type="button" class="btn-play-video" data-source="<%= @videos[0].url if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
+              <button type="button" class="btn-play-video" data-source="<%= @videos[0].to_json if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
             </div>
           </div>
           <div class="carousel-item">
@@ -21,7 +21,7 @@
               <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
             </video>
             <div class="carousel-caption carousel-title">
-              <button type="button" class="btn-play-video" data-source="<%= @videos[1].url if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
+              <button type="button" class="btn-play-video" data-source="<%= @videos[1].to_json if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
             </div>
           </div>
         </div>

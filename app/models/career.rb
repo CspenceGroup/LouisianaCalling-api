@@ -13,7 +13,7 @@ class Career < ApplicationRecord
   validates :what_will_do, presence: true
   validates :related_career_by_skill, presence: true
   validates :related_career_by_interest, presence: true
-  validates :profile_name, presence: true
+  # validates :profile_name, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
   validates :photo_small, presence: true

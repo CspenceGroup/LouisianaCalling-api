@@ -69,8 +69,10 @@ class AdminController < ApplicationController
               video = Video.new
               video[:title] = row[0].strip
               video[:url] = row[1].strip
+              video[:profile_name] = row[2].strip
+              video[:description] = row[3].strip
 
-              if row[3]
+              if row[4]
                 raise "Wrong file"
               end
 
@@ -174,32 +176,31 @@ class AdminController < ApplicationController
                 career = Career.new
                 career[:title] = row[0].strip
                 career[:slug] = row[0].parameterize
-                career[:region] = row[1].split(',').map{ |s| s.strip }
                 career[:industries] = []
 
-                for i in 2..5
+                for i in 1..4
                   if (row[i] != "" && row[i] != nil) then
                     career[:industries] << row[i].strip
                   end
                 end
 
-                career[:skills] = row[6].split(',').map{ |s| s.strip }
-                career[:interests] = row[7].split(',').map{ |s| s.strip }
-                career[:salary_min] = row[8].strip
-                career[:salary_max] = row[9].strip
-                career[:education] = row[10].strip
-                career[:about_job] = row[11].strip
-                career[:what_will_do] = row[12].strip
-                career[:related_career_by_skill] = row[13].split(',').map{ |s| s.strip }
-                career[:related_career_by_interest] = row[14].split(',').map{ |s| s.strip }
-                career[:demand] = row[15].strip
-                career[:photo_large] = row[16].strip
-                career[:photo_medium] = row[17].strip
-                career[:photo_small] = row[18].strip
-                career[:regions_high_demand] = row[19].split(',').map{ |s| s.strip }
-                career[:profile_name] = row[20].strip
+                career[:skills] = row[5].split(',').map{ |s| s.strip }
+                career[:interests] = row[6].split(',').map{ |s| s.strip }
+                career[:salary_min] = row[7].strip
+                career[:salary_max] = row[8].strip
+                career[:education] = row[9].strip
+                career[:about_job] = row[10].strip
+                career[:what_will_do] = row[11].strip
+                career[:related_career_by_skill] = row[12].split(',').map{ |s| s.strip }
+                career[:related_career_by_interest] = row[13].split(',').map{ |s| s.strip }
+                career[:demand] = row[14].strip
+                career[:photo_large] = row[15].strip
+                career[:photo_medium] = row[16].strip
+                career[:photo_small] = row[17].strip
+                career[:regions_high_demand] = row[18].split(',').map{ |s| s.strip }
+                career[:profile_name] = row[19].strip if row[19]
 
-                if row[21]
+                if row[20]
                   raise "Wrong file"
                 end
 
@@ -262,28 +263,27 @@ class AdminController < ApplicationController
                   program[:hours_per_weeks] = row[6].strip
                   program[:tuition_min] = row[7].strip
                   program[:tuition_max] = row[8].strip
-                  program[:financial_help] = row[9].strip
-                  program[:education] = row[10].strip
-                  program[:institution_name] = row[11].strip
-                  program[:phone] = row[12].strip
-                  program[:address] = row[13].strip
+                  program[:education] = row[9].strip
+                  program[:institution_name] = row[10].strip
+                  program[:phone] = row[11].strip
+                  program[:address] = row[12].strip
 
-                  location = row[14].split(',').map{ |s| s.strip }
+                  location = row[13].split(',').map{ |s| s.strip }
                   program[:lat] = location[0]
                   program[:lng] = location[1]
 
                   program[:industries] = []
 
-                  for i in 15..18
+                  for i in 14..17
                     if (row[i] != "" && row[i] != nil) then
                       program[:industries] << row[i].strip
                     end
                   end
 
-                  program[:cover_photo] = row[19].strip
-                  program[:career] = row[20].split(';').map{ |s| s.strip }
+                  program[:cover_photo] = row[18].strip
+                  program[:career] = row[19].split(';').map{ |s| s.strip }
 
-                  if row[21]
+                  if row[20]
                     raise "Wrong file"
                   end
 

@@ -55,8 +55,6 @@ class EducationController < ApplicationController
       list_of_regions[region[:id]] = region[:name]
     end
 
-    list_of_financials = ["Scholarship", "Financial Aid/Grant"]
-
     list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+"]
 
     list_of_hours_per_week = ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours"]
@@ -70,7 +68,6 @@ class EducationController < ApplicationController
     regions_query = ""
     industries_query = ""
     tuition_query = ""
-    financial_query = ""
     program_duration_query = ""
     hours_per_week_query = ""
     time_of_day_query = ""
@@ -131,31 +128,6 @@ class EducationController < ApplicationController
       end
     end
 
-    # filter by financial help
-    finalcial_ids = params[:financials]
-    if finalcial_ids && finalcial_ids != ""
-
-      finalcial_ids = finalcial_ids.split(',')
-
-      financial_query = "("
-
-      finalcial_ids.each_with_index do |id, index|
-
-        if index == 0
-          financial_query += "financial_help like '%#{list_of_financials[id.to_i]}%'"
-        else
-          financial_query += " OR financial_help like '%#{list_of_financials[id.to_i]}%'"
-        end
-      end
-      financial_query += ")"
-
-      if query == "" && tuition_query == ""
-        query = financial_query
-      else
-        query = query + " AND " + financial_query
-      end
-    end
-
     # filter by program duration
     program_duration_ids = params[:programs]
     if program_duration_ids && program_duration_ids != ""
@@ -174,7 +146,7 @@ class EducationController < ApplicationController
       end
       program_duration_query += ")"
 
-      if query == "" && tuition_query == "" && financial_query == ""
+      if query == "" && tuition_query == ""
         query = program_duration_query
       else
         query = query + " AND " + program_duration_query
@@ -199,7 +171,7 @@ class EducationController < ApplicationController
       end
       hours_per_week_query += ")"
 
-      if query == "" && tuition_query == "" && financial_query == "" && program_duration_query == ""
+      if query == "" && tuition_query == "" && program_duration_query == ""
         query = hours_per_week_query
       else
         query = query + " AND " + hours_per_week_query
@@ -224,7 +196,7 @@ class EducationController < ApplicationController
       end
       time_of_day_query += ")"
 
-      if query == "" && tuition_query == "" && financial_query == "" && program_duration_query == "" && hours_per_week_query == ""
+      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == ""
         query = time_of_day_query
       else
         query = query + " AND " + time_of_day_query
@@ -254,7 +226,7 @@ class EducationController < ApplicationController
       end
       education_query += ")"
 
-      if query == "" && tuition_query == "" && financial_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == ""
+      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == ""
         query = education_query
       else
         query = query + " AND " + education_query
@@ -273,7 +245,7 @@ class EducationController < ApplicationController
 
       title_query += ")"
 
-      if query == "" && tuition_query == "" && financial_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == "" && education_query == ""
+      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == "" && education_query == ""
         query = title_query
       else
         query = query + " AND " + title_query
