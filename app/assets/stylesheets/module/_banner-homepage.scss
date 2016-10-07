@@ -134,8 +134,8 @@
 .icon-pause {
   @include background-image('play-button.png');
   @extend %background-no-repeat;
-  background-size: rem(50), rem(50);
-  @include boxSize(rem(50), rem(50));
+  background-size: rem(56), rem(56);
+  @include boxSize(rem(56), rem(56));
   @extend %absolute;
   left: 50%;
   margin: auto;
