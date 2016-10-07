@@ -131,15 +131,21 @@
   height: auto;
 }
 
+.video-container {
+  @extend %relative;
+}
+
 .icon-pause {
   @include background-image('play-button.png');
   @extend %background-no-repeat;
   background-size: rem(56), rem(56);
   @include boxSize(rem(56), rem(56));
   @extend %absolute;
-  left: 50%;
+  @extend %bottom-0;
+  @extend %left-0;
+  @extend %right-0;
+  @extend %top-0;
   margin: auto;
-  top: 45%;
   transform: translate(-50%, -50%);
 }
 
