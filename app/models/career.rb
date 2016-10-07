@@ -50,4 +50,45 @@ class Career < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
+
+  def self.import_from_csv(csv)
+    Career.transaction do
+      Career.delete_all
+
+      csv.each do |row|
+        career = Career.new
+        career[:title] = row[0].strip
+        # career[:slug] = row[0].parameterize
+        career[:industries] = []
+
+        for i in 1..4
+          if (row[i] != "" && row[i] != nil) then
+            career[:industries] << row[i].strip
+          end
+        end
+
+        career[:skills] = row[5].split(',').map{ |s| s.strip }
+        career[:interests] = row[6].split(',').map{ |s| s.strip }
+        career[:salary_min] = row[7].strip
+        career[:salary_max] = row[8].strip
+        career[:education] = row[9].strip
+        career[:about_job] = row[10].strip
+        career[:what_will_do] = row[11].strip
+        career[:related_career_by_skill] = row[12].split(',').map{ |s| s.strip }
+        career[:related_career_by_interest] = row[13].split(',').map{ |s| s.strip }
+        career[:demand] = row[14].strip
+        career[:photo_large] = row[15].strip
+        career[:photo_medium] = row[16].strip
+        career[:photo_small] = row[17].strip
+        career[:regions_high_demand] = row[18].split(',').map{ |s| s.strip }
+        career[:profile_name] = row[19].strip if row[19]
+
+        if row[20]
+          raise "Wrong file"
+        end
+
+        career.save!
+      end
+    end
+  end
 end
