@@ -69,7 +69,7 @@
 }
 
 .see-more-careers {
-  margin: rem(55) 0 rem(100) rem(363);
+  margin: rem(27) 0 rem(100) rem(363);
   @extend %float-left;
 }
 
@@ -119,7 +119,7 @@
   @extend %no-margin-right;
   width: rem(835);
   @extend %overflow-hidden;
-  margin-bottom: rem(20);
+  // margin-bottom: rem(20);
   color: $default;
 
   @include e('item') {
