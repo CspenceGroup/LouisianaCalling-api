@@ -1,4 +1,4 @@
-class Interest < ApplicationRecord
+class Interest < ActiveRecord::Base
   validates :name, presence: true
   validates :url, presence: true
 

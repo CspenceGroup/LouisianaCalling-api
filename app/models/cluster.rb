@@ -1,4 +1,4 @@
-class Cluster < ApplicationRecord
+class Cluster < ActiveRecord::Base
   validates :name, presence: true
 
   def self.import_from_csv(csv)

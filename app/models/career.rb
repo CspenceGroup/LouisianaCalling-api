@@ -1,4 +1,4 @@
-class Career < ApplicationRecord
+class Career < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 

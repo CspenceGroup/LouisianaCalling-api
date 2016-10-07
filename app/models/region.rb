@@ -1,4 +1,4 @@
-class Region < ApplicationRecord
+class Region < ActiveRecord::Base
   def self.import_from_csv(csv)
     Region.transaction do
       Region.delete_all

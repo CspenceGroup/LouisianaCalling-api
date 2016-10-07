@@ -1,4 +1,4 @@
-class Program < ApplicationRecord
+class Program < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
