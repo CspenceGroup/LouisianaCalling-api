@@ -33,17 +33,17 @@
                           li
                             p.jobs-head__desc-text Interests
                             .jobs-head__desc-icon
-                              - career.interests.each do |interest|
-                                - if @list_of_interests[interest]
-                                  = image_tag(@list_of_interests[interest], :alt => "fire icon")
+                              - career.interests.each do |interest, url|
+                                - if url.present?
+                                  = image_tag(url, :alt => "fire icon")
                                 - else
                                   = image_tag("", :alt => "fire icon")
                           li
                             p.jobs-head__desc-text Skills
                             .jobs-head__desc-icon
-                              - career.skills.each do |skill|
-                                - if @list_of_skills[skill]
-                                  = image_tag(@list_of_skills[skill], :alt => "fire icon")
+                              - career.skills.each do |skill, url|
+                                - if url.present?
+                                  = image_tag(url, :alt => "fire icon")
                                 - else
                                   = image_tag("", :alt => "fire icon")
                   .great-jobs__list-icon
@@ -93,7 +93,7 @@
             ul.careers-filter-details
               - @list_of_industries.each do |industry|
                 li
-                  input.square-checkbox name="industrys" type="checkbox" value=industry.id /
+                  input.square-checkbox name="industries" type="checkbox" value=industry.id /
                   span.filter-checkbox
                   p.careers-filter-details__name
                     = industry.name
@@ -174,7 +174,7 @@
           #grid-view.grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: @careers }
-            - if @isSeeMore
+            - if @is_see_more
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
                   div
                     = image_tag asset_path("profile/btn-see-more.png")
@@ -190,7 +190,7 @@
           #list-view.careers-list-view
             #careersList.careers-grid-details
               = render partial: "career/partial/list", locals: { careers: @careers }
-            - if @isSeeMore
+            - if @is_see_more
                 #careers-see-more-list.more-stories__btn.see-more-careers
                   div
                     = image_tag asset_path("profile/btn-see-more.png")

@@ -18,7 +18,7 @@ This code repository is a starter code base for creating a server with ruby, RAI
     [public]      # Contains public
     [test]        # Contains test cases
     [tmp]       # Temporary directory
-    [vendor]      
+    [vendor]
       [asserts]   # Vendor
 ```
 
@@ -47,21 +47,16 @@ This code repository is a starter code base for creating a server with ruby, RAI
     ```
     bundle install
     ```
-    
 ### Development:
 
 1. Database initiazlization
 
     ```
     bundle exec rake db:create
-    
     bundle exec rake db:migrate
     ```
- 
 2. Start Server
 
   ```
   bundle exec rails s
   ```
- 
-   

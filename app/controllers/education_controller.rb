@@ -1,299 +1,120 @@
 class EducationController < ApplicationController
+  include ProgramHelper
+
+  before_filter :data_for_filter_details, only: [:index]
+
   def index
+    limit = 3
+    @title = params[:title]
+    @region = params[:region]
 
-    tuition_min = 0;
-    tuition_max = 4000;
-    offset = 3
-
-    @list_of_regions = Region.all
-    @list_of_industries = Cluster.all
-
-    programs = Program.select(:title, :institution_name, :career)
-    @list_of_programs = []
-    programs.each do |program|
-      @list_of_programs.push(program.title)
-      if program.career
-        program.career.each do |career|
-           @list_of_programs.push(career)
-        end
+    list_programs =
+      if !params[:title].present? && !params[:region].present?
+        Program.all
+               .filter_by_tuition(
+                 Constants::TUITION_MIN, Constants::TUITION_MAX
+               )
+      else
+        Program.all
+               .filter_by_title(params[:title])
+               .filter_by_region(params[:region])
+               .filter_by_tuition(
+                 Constants::TUITION_MIN, Constants::TUITION_MAX
+               )
       end
-      @list_of_programs.push(program.institution_name)
-    end
 
-    @list_of_programs = @list_of_programs.uniq
-
-    if !params["title"] && !params["region"]
-      @allPrograms = Program.where("tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
-      @programs = @allPrograms.first(offset)
-      @ids = @allPrograms.map(&:id)
-      @isSeeMore = false
-
-      if @allPrograms.length > offset
-        @isSeeMore = true
-      end
-    else
-
-      @title = params["title"].downcase if params["title"]
-      @region = params["region"]
-
-      @allPrograms = Program.where("(LOWER(title) like '%#{@title}%' OR LOWER(institution_name) like '%#{@title}%' OR LOWER(career) like '%#{@title}%') AND region like '%#{@region}%' AND tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min}")
-      @programs = @allPrograms.first(offset)
-      @ids = @allPrograms.map(&:id)
-      @isSeeMore = false
-
-      if @allPrograms.length > offset
-        @isSeeMore = true
-      end
-    end
+    @is_see_more = list_programs.count > limit ? true : false
+    @programs = list_programs.offset(0).limit(limit)
+    @ids = list_programs.map(&:id)
   end
 
   def detail
-    @programs = Program.where(:slug => params[:slug])
-    @program = @programs.first
-    @mapKey = "AIzaSyB37PvABXHFveMjk-4AzolBlsuUqVC-if8"
+    @program = Program.friendly.find(params[:slug])
   end
 
   def filter
-    ## get list of industries
-    industries = Cluster.all
-    list_of_industries = []
-    industries.each do |industry|
-      list_of_industries[industry[:id]] = industry[:name]
-    end
-
-    ## get list of region
-    regions = Region.all
-    list_of_regions = []
-    regions.each do |region|
-      list_of_regions[region[:id]] = region[:name]
-    end
-
-    list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+"]
-
-    list_of_hours_per_week = ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours"]
-
-    list_of_time_of_day = ["Day", "Night", "Both"]
-
-    list_of_educations = ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree"]
-
     # define query
-    query = ""
-    regions_query = ""
-    industries_query = ""
-    tuition_query = ""
-    program_duration_query = ""
-    hours_per_week_query = ""
-    time_of_day_query = ""
-    education_query = ""
+    query = []
 
     ## filter by region
-    region_ids = params[:regions]
-    if  region_ids && region_ids != ""
-      region_ids = region_ids.split(',')
-
-      query_temp = []
-      region_ids.each do |id|
-        query_temp << "'#{list_of_regions[id.to_i]}'"
-      end
-
-      query = " region IN (#{query_temp.join(',')}) "
-    end
+    query.push(regions_query_str(params[:regions])) if params[:regions].present?
 
     ## filter by industry
-    industry_ids = params[:industries]
-    if industry_ids && industry_ids != ""
-      industry_ids = industry_ids.split(',')
-
-      industries_query = "("
-
-      industry_ids.each_with_index do |id, index|
-
-        if index == 0
-          industries_query += "industries like '%#{list_of_industries[id.to_i]}%'"
-        else
-          industries_query += " OR industries like '%#{list_of_industries[id.to_i]}%'"
-        end
-      end
-      industries_query += ")"
-
-      if query == ""
-        query = industries_query
-      else
-        query = query + " AND " + industries_query
-      end
+    if params[:industries].present?
+      query.push(industries_query_str(params[:industries]))
     end
 
     ## filter by tuition
     tuition_min = params[:cost_min]
     tuition_max = params[:cost_max]
-    if tuition_max && tuition_max != "" && tuition_min && tuition_min != ""
+    if tuition_max.present? && tuition_min.present?
+      tuition_query = ["tuition_max <= #{tuition_max}"]
+      tuition_query.push("tuition_min >= #{tuition_min}")
 
-      tuition_query = "("
-
-      tuition_query += " tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min} "
-
-      tuition_query += ")"
-
-      if query == ""
-        query = tuition_query
-      else
-        query = query + " AND " + tuition_query
-      end
+      query.push(tuition_query)
     end
 
     # filter by program duration
-    program_duration_ids = params[:programs]
-    if program_duration_ids && program_duration_ids != ""
-
-      program_duration_ids = program_duration_ids.split(',')
-
-      program_duration_query = "("
-
-      program_duration_ids.each_with_index do |id, index|
-
-        if index == 0
-          program_duration_query += "duration like '%#{list_of_program_durations[id.to_i]}%'"
-        else
-          program_duration_query += " OR duration like '%#{list_of_program_durations[id.to_i]}%'"
-        end
-      end
-      program_duration_query += ")"
-
-      if query == "" && tuition_query == ""
-        query = program_duration_query
-      else
-        query = query + " AND " + program_duration_query
-      end
+    if params[:programs].present?
+      query.push(programs_query_str(params[:programs]))
     end
 
     # filter by hour per week
-    hour_per_week_ids = params[:hours]
-    if hour_per_week_ids && hour_per_week_ids != ""
-
-      hour_per_week_ids = hour_per_week_ids.split(',')
-
-      hours_per_week_query = "("
-
-      hour_per_week_ids.each_with_index do |id, index|
-
-        if index == 0
-          hours_per_week_query += "hours_per_weeks like '%#{list_of_hours_per_week[id.to_i]}%'"
-        else
-          hours_per_week_query += " OR hours_per_weeks like '%#{list_of_hours_per_week[id.to_i]}%'"
-        end
-      end
-      hours_per_week_query += ")"
-
-      if query == "" && tuition_query == "" && program_duration_query == ""
-        query = hours_per_week_query
-      else
-        query = query + " AND " + hours_per_week_query
-      end
-    end
+    query.push(hours_query_str(params[:hours])) if params[:hours].present?
 
     # filter by time of day
-    time_of_day_ids = params[:times]
-    if time_of_day_ids && time_of_day_ids != ""
-
-      time_of_day_ids = time_of_day_ids.split(',')
-
-      time_of_day_query = "("
-
-      time_of_day_ids.each_with_index do |id, index|
-
-        if index == 0
-          time_of_day_query += "time_of_day like '%#{list_of_time_of_day[id.to_i]}%'"
-        else
-          time_of_day_query += " OR time_of_day like '%#{list_of_time_of_day[id.to_i]}%'"
-        end
-      end
-      time_of_day_query += ")"
-
-      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == ""
-        query = time_of_day_query
-      else
-        query = query + " AND " + time_of_day_query
-      end
-    end
+    query.push(times_query_str(params[:times])) if params[:times].present?
 
     # filter by education
-    education_ids = params[:educations]
-    if education_ids && education_ids != ""
-
-      education_ids = education_ids.split(',')
-
-      education_query = "("
-
-      education_ids.each_with_index do |id, index|
-        education = list_of_educations[id.to_i]
-
-        if education.include? "'"
-          education = education.gsub!(/'/, "''")
-        end
-
-        if index == 0
-          education_query += "education like '%#{education}%'"
-        else
-          education_query += " OR education like '%#{education}%'"
-        end
-      end
-      education_query += ")"
-
-      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == ""
-        query = education_query
-      else
-        query = query + " AND " + education_query
-      end
+    if params[:educations].present?
+      query.push(educations_query_str(params[:educations]))
     end
 
     ## seach by program title
-    program_title = params[:title]
-    if program_title && program_title != ""
+    if params[:title].present?
+      title = params[:title].downcase
 
-      program_title = program_title.downcase
+      str_query = [
+        "LOWER(title) like '%#{title}%'",
+        "LOWER(institution_name) like '%#{title}%'",
+        "LOWER(career) like '%#{title}%'"
+      ]
 
-      title_query = "("
-
-      title_query += " LOWER(title) like '%#{program_title}%' OR LOWER(institution_name) like '%#{program_title}%' OR LOWER(career) like '%#{program_title}%'"
-
-      title_query += ")"
-
-      if query == "" && tuition_query == "" && program_duration_query == "" && hours_per_week_query == "" && time_of_day_query == "" && education_query == ""
-        query = title_query
-      else
-        query = query + " AND " + title_query
-      end
+      query.push(str_query.join(' OR '))
     end
 
-    ## sort by
-    sort_by = "id"
-    if params[:sort] && params[:sort] != ""
-      sort_by = params[:sort]
-    end
+    query.push("id > #{params[:last_id]}") if params[:last_id].present?
 
-    programs = Program.where(query).order(sort_by)
+    ## Sort by, defaut sort by ID
+    sort_by = params[:sort].present? ? params[:sort] : 'id'
+
+    programs = Program.where(query.join(' AND ')).order(sort_by)
     ids = programs.map(&:id)
 
-    last_id = 0
-    if params[:last_id] && params[:last_id] != ""
-      last_id = params[:last_id]
-
-      query = query + " AND id > #{last_id} "
-    end
-
-    isSeeMore = false
-    programs = Program.where(query).order(sort_by)
-
-    if programs.length > 3
-      isSeeMore = true
-    end
-
-    render :json => {
-      :list => render_to_string('education/partial/_list', :layout => false, :locals => { programs: programs.first(3) }),
-      :map => render_to_string('education/partial/_map', :layout => false, :locals => { programs: programs.first(3), ids: ids }),
-      :isSeeMore => isSeeMore,
-      :programs => programs.first(3),
-      :ids => ids
+    is_see_more = programs.length > 3 ? true : false
+    programs = programs.offset(0).limit(3)
+    render json: {
+      list: render_to_string(
+        'education/partial/_list', layout: false, locals: { programs: programs }
+      ),
+      map: render_to_string(
+        'education/partial/_map', layout: false, locals: {
+          programs: programs,
+          ids: ids
+        }
+      ),
+      is_see_more: is_see_more,
+      programs: programs,
+      ids: ids
     }
+  end
+
+  private
+
+  def data_for_filter_details
+    @list_of_regions = Region.all
+    @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
+    @list_of_programs = Program.select(:title).map(&:title).uniq
   end
 end

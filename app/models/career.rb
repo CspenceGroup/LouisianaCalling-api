@@ -1,4 +1,7 @@
-class Career < ApplicationRecord
+class Career < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_by_title, use: :slugged
+
   serialize :regions_high_demand, Array
   serialize :interests, Array
   serialize :skills, Array
@@ -24,4 +27,67 @@ class Career < ApplicationRecord
   validates :salary_max, presence: true
   validates :demand, presence: true
   validates :regions_high_demand, presence: true
+
+  scope :filter_by_title, lambda { |titles|
+    where('title IN (?)', titles)
+  }
+
+  scope :filter_by_title_and_region, lambda { |title, region|
+    where('LOWER(title) like ? AND regions_high_demand like ?', title.downcase, region)
+  }
+
+  scope :filter_by_salary, lambda { |salary_min, salary_max|
+    where('salary_max <= ? AND salary_min >= ?', salary_max, salary_min)
+  }
+
+  private
+
+  # Defaults a slug with title
+  def slug_by_title
+    "#{title.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
+
+  def self.import_from_csv(csv)
+    Career.transaction do
+      Career.delete_all
+
+      csv.each do |row|
+        career = Career.new
+        career[:title] = row[0].strip
+        # career[:slug] = row[0].parameterize
+        career[:industries] = []
+
+        for i in 1..4
+          if (row[i] != "" && row[i] != nil) then
+            career[:industries] << row[i].strip
+          end
+        end
+
+        career[:skills] = row[5].split(',').map{ |s| s.strip }
+        career[:interests] = row[6].split(',').map{ |s| s.strip }
+        career[:salary_min] = row[7].strip
+        career[:salary_max] = row[8].strip
+        career[:education] = row[9].strip
+        career[:about_job] = row[10].strip
+        career[:what_will_do] = row[11].strip
+        career[:related_career_by_skill] = row[12].split(',').map{ |s| s.strip }
+        career[:related_career_by_interest] = row[13].split(',').map{ |s| s.strip }
+        career[:demand] = row[14].strip
+        career[:photo_large] = row[15].strip
+        career[:photo_medium] = row[16].strip
+        career[:regions_high_demand] = row[17].split(',').map{ |s| s.strip }
+        career[:profile_name] = row[18].strip if row[18]
+
+        if row[19]
+          raise "Wrong file"
+        end
+
+        career.save!
+      end
+    end
+  end
 end

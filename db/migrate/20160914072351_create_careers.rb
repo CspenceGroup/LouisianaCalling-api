@@ -13,7 +13,6 @@ class CreateCareers < ActiveRecord::Migration[5.0]
       t.string :profile_name
       t.text :job_growth
 
-
       t.timestamps
     end
   end

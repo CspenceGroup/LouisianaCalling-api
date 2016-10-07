@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
@@ -20,8 +19,6 @@ gem 'jquery-rails'
 gem 'lazyload-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -35,20 +32,24 @@ gem 'pg'
 # import bootstrap
 gem 'bootstrap', '4.0.0.alpha4'
 
-gem "rails-assets-tether"
+gem 'rails-assets-tether'
 
-#import font-awesome
-gem "font-awesome-rails"
+# Import font-awesome
+gem 'font-awesome-rails'
 
 # slim template
-gem "slim-rails"
+gem 'slim-rails'
+
+# Using FriendlyId to generate slugging and permalink plugins for ActiveRecord
+gem 'friendly_id', '~> 5.1.0'
 
 gem 'unicorn'
 gem 'foreman'
 gem 'sidekiq'
 gem 'redis-rails'
 
-gem 'dotenv'
+# Loads environment variables from `.env`.
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,6 +59,9 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
+  # Ruby on Rails code optimization and cleanup
+  gem 'rails_best_practices'
+  gem 'rubocop', '~> 0.43.0', require: false
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'stories' => 'profile#index', :as => :stories
   get 'profile/get-more' => 'profile#getMore'
-
+  get 'profile/:slug' => 'profile#detail', :as => :profile_detail
 
   # career page
   get 'careers' => 'career#index', :as => :career
