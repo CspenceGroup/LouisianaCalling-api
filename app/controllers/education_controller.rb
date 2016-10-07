@@ -5,16 +5,19 @@ class EducationController < ApplicationController
 
   def index
     limit = 3
+    @title = params[:title]
+    @region = params[:region]
+
     list_programs =
-      if !params['title'].present? && !params['region'].present?
+      if !params[:title].present? && !params[:region].present?
         Program.all
                .filter_by_tuition(
                  Constants::TUITION_MIN, Constants::TUITION_MAX
                )
       else
         Program.all
-               .filter_by_title(params['title'])
-               .filter_by_region(params['region'])
+               .filter_by_title(params[:title])
+               .filter_by_region(params[:region])
                .filter_by_tuition(
                  Constants::TUITION_MIN, Constants::TUITION_MAX
                )
@@ -111,6 +114,7 @@ class EducationController < ApplicationController
   def data_for_filter_details
     @list_of_regions = Region.all
     @list_of_industries = Cluster.all
+    @list_of_educations = Education.all
     @list_of_programs = Program.select(:title).map(&:title).uniq
   end
 end

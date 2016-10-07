@@ -79,11 +79,10 @@ class Career < ActiveRecord::Base
         career[:demand] = row[14].strip
         career[:photo_large] = row[15].strip
         career[:photo_medium] = row[16].strip
-        career[:photo_small] = row[17].strip
-        career[:regions_high_demand] = row[18].split(',').map{ |s| s.strip }
-        career[:profile_name] = row[19].strip if row[19]
+        career[:regions_high_demand] = row[17].split(',').map{ |s| s.strip }
+        career[:profile_name] = row[18].strip if row[18]
 
-        if row[20]
+        if row[19]
           raise "Wrong file"
         end
 

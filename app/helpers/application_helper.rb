@@ -2,7 +2,7 @@ module ApplicationHelper
   # Convert list interests to hash
   def convert_interests_to_hash
     interests = Interest.all.map do |interest|
-      [interest.id, interest.name]
+      [interest.id, interest.name.gsub(/'/, "''")]
     end
     interests.to_h
   end
@@ -10,7 +10,7 @@ module ApplicationHelper
   # Convert list regions to hash
   def convert_regions_to_hash
     regions = Region.all.map do |region|
-      [region.id, region.name]
+      [region.id, region.name.gsub(/'/, "''")]
     end
     regions.to_h
   end
@@ -18,7 +18,7 @@ module ApplicationHelper
   # Convert list industries to hash
   def convert_industries_to_hash
     industries = Cluster.all.map do |cluster|
-      [cluster.id, cluster.name]
+      [cluster.id, cluster.name.gsub(/'/, "''")]
     end
     industries.to_h
   end
@@ -26,7 +26,7 @@ module ApplicationHelper
   # Convert list skills to hash
   def convert_skills_to_hash
     skills = Skill.all.map do |skill|
-      [skill.id, skill.name]
+      [skill.id, skill.name.gsub(/'/, "''")]
     end
     skills.to_h
   end
@@ -34,7 +34,7 @@ module ApplicationHelper
   # Convert list educations to hash
   def convert_educations_to_hash
     educations = Education.all.map do |education|
-      [education.id, education.name]
+      [education.id, education.name.gsub(/'/, "''")]
     end
     educations.to_h
   end

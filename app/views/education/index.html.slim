@@ -120,28 +120,16 @@
                   span.filter-checkbox
                   span.careers-filter-details__name Both
             .program-filter__details-desc.program-filter__details-item
+              - if @list_of_educations.present?
               h3.careers-filter__title Education awarded upon completion
               ul.careers-filter-details
-                li
-                  input.square-checkbox name="educations" type="checkbox" value="0"
-                  span.filter-checkbox
-                  span.careers-filter-details__name High School Diploma/Hi-SET
-                li
-                  input.square-checkbox name="educations" type="checkbox" value="1"
-                  span.filter-checkbox
-                  span.careers-filter-details__name Certificate or Credential
-                li
-                  input.square-checkbox name="educations" type="checkbox" value="2"
-                  span.filter-checkbox
-                  span.careers-filter-details__name Associate's Degree
-                / li
-                /   input.square-checkbox name="educations" type="checkbox" value="3"
-                /   span.filter-checkbox
-                /   span.careers-filter-details__name Bachelor's Degree
-                / li
-                /   input.square-checkbox name="educations" type="checkbox" value="4"
-                /   span.filter-checkbox
-                /   span.careers-filter-details__name Master's Degree
+                - @list_of_educations.each  do |education|
+                  li
+                    input.square-checkbox name="educations" type="checkbox" value="#{education.id}"
+                    span.filter-checkbox
+                    span.careers-filter-details__name
+                      = education.name
+
       .program-list__result
         p.program-list__call-us Need financial aid? Call us to learn about your options: 1.255.522.2557.
         #program-list-view.program-list-view

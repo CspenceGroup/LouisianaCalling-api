@@ -27,6 +27,8 @@ class CareerController < ApplicationController
       end
 
     @careers = careers.offset(0).limit(9)
+    @title = params[:title]
+    @region = params[:region]
     @is_see_more = careers.count > 9 ? true : false
   end
 

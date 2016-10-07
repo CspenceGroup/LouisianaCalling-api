@@ -16,11 +16,11 @@ class Program < ActiveRecord::Base
   }
 
   scope :filter_by_title, lambda { |title|
-    query = ["LOWER(title) like '%?%'"]
-    query.push("LOWER(institution_name) like '%?%'")
-    query.push("LOWER(career) like '%?%')")
-
-    where(query.json(' OR '), title.downcase)
+    query = ["LOWER(title) like ? "]
+    query.push("LOWER(institution_name) like ? ")
+    query.push("LOWER(career) like ? ")
+    title = "%#{title.downcase}%"
+    where(query.join(' OR '), title, title, title)
   }
 
   scope :filter_by_region, lambda { |region|

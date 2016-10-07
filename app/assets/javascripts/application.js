@@ -18,4 +18,5 @@
 //= require markerlabel
 //= require lazyload
 //= require turbolinks
+//= require common
 //= require_tree .
