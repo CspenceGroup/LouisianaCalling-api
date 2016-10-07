@@ -19,7 +19,7 @@ class Career < ActiveRecord::Base
   # validates :profile_name, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
-  validates :photo_small, presence: true
+  # validates :photo_small, presence: true
   validates :industries, presence: true
   validates :interests, presence: true
   validates :skills, presence: true
