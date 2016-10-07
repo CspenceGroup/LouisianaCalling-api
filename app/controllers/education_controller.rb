@@ -49,7 +49,6 @@ class EducationController < ApplicationController
 
   def detail
     @program = Program.friendly.find(params[:slug])
-    # @mapKey = "AIzaSyB37PvABXHFveMjk-4AzolBlsuUqVC-if8"
   end
 
   def filter
