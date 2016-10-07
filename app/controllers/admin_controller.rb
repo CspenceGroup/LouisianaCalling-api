@@ -254,7 +254,7 @@ class AdminController < ApplicationController
                 csv.each_with_index do |row, index|
                   program = Program.new
                   program[:title] = row[0].strip
-                  program[:id] = index + 1
+                  # program[:id] = index + 1
                   # program[:slug] = row[0].parameterize + '-' + (index + 1).to_s
                   program[:region] = row[1].strip
                   program[:traning_detail] = row[2].strip
