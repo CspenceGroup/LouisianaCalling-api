@@ -1,28 +1,20 @@
 class HomeController < ApplicationController
   def index
-
-    topJobs = TopJob.all
+    top_jobs = TopJob.all
     @jobs = {}
     @videos = Video.all
     @regions = Region.all
 
     # Handle render top job
-    topJobs.each do |job|
-      if @jobs[job.region]
-        temp = {}
-        temp[:job] = job.job_title
-        temp[:link] = "javascript:void(0);"
+    top_jobs.each do |job|
+      @jobs[job.region] = [] unless @jobs[job.region].present?
 
-        @jobs[job.region] << temp
-      else
-        @jobs[job.region] = []
+      temp = {
+        job: job.job_title,
+        link: 'javascript:void(0);'
+      }
 
-        temp = {}
-        temp[:job] = job.job_title
-        temp[:link] = "javascript:void(0);"
-
-        @jobs[job.region] << temp
-      end
+      @jobs[job.region] << temp
     end
   end
 end
