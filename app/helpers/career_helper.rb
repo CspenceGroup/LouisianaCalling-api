@@ -53,9 +53,9 @@ module CareerHelper
 
     region_ids.each_with_index do |id, index|
       if index.zero?
-        regions_query.push "region like '%#{list_of_regions[id.to_i]}%'"
+        regions_query.push "regions_high_demand like '%#{list_of_regions[id.to_i]}%'"
       else
-        regions_query.push " OR region like '%#{list_of_regions[id.to_i]}%'"
+        regions_query.push " OR regions_high_demand like '%#{list_of_regions[id.to_i]}%'"
       end
     end
     regions_query.push ')'
