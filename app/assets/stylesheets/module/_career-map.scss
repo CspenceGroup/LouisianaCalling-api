@@ -27,6 +27,7 @@
     width: rem(165);
     margin-left: rem(60);
     @extend %inline-block;
+    @extend %truncate;
   }
 }
 
