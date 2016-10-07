@@ -19,7 +19,7 @@ class ProfileController < ApplicationController
       profiles: render_to_string(
         'profile/partial/_profile', layout: false, locals: { profiles: profiles }
       ),
-      isSeeMore: is_see_more
+      is_see_more: is_see_more
     }
   end
 

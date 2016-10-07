@@ -236,7 +236,7 @@ $(document).on('turbolinks:load', function(){
 
           lazyloadImages();
 
-          if (response.isSeeMore) {
+          if (response.is_see_more) {
             $('#careers-see-more,#careers-see-more-list').show();
           } else {
             $('#careers-see-more,#careers-see-more-list').hide();;
@@ -441,7 +441,7 @@ $(document).on('turbolinks:load', function(){
 
           lazyloadImages();
 
-          if (response.isSeeMore) {
+          if (response.is_see_more) {
             $('#education-see-more-map, #education-see-more').show();
           } else {
             $('#education-see-more-map, #education-see-more').hide();
