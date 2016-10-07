@@ -113,6 +113,11 @@
 // Style list icon in great jobs
 .great-jobs__list-icon {
   margin-bottom: rem(10);
+
+  ul {
+    max-height: rem(68);
+    @extend %overflow-hidden;
+  }
 }
 
 .list-icon__details {
@@ -155,7 +160,7 @@
 
   @include m('more') {
     @extend %relative;
-    max-height: rem(43);
+    height: auto;
 
     &:before {
       content: '...';
@@ -169,7 +174,7 @@
       @extend %absolute;
       @extend %right-0;
       @include boxSize(rem(22), rem(22));
-      top: rem(42);
+      @extend %bottom-0;
       @include background-image('careers/great-job-bg.jpg');
     }
   }
