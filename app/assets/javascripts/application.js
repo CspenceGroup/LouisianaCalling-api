@@ -216,11 +216,16 @@ $(document).on('turbolinks:load', function(){
     var buttonPlayVideo = $(event.target);
     var videoSource = buttonPlayVideo.attr('data-source');
 
-    $('#videoModal').find('.modal-video__details').prepend(
-      '<video preload autoplay class="video-playing video-player">\
-        <source src=' + videoSource + ' type="video/mp4">\
-      </video>\
-      <div class="button-pause" style="display: none;"><i class="icon-pause"></i><div>');
+    if (videoSource) {
+      videoSource = JSON.parse(videoSource);
+      $('#videoModal').find('.modal-video__details').prepend(
+        '<video preload autoplay class="video-playing video-player">\
+          <source src=' + videoSource.url + ' type="video/mp4">\
+        </video>\
+        <div class="button-pause" style="display: none;"><i class="icon-pause"></i><div>');
+      $('#videoModal').find('.modal-video__text h2').html(videoSource.title);
+      $('#videoModal').find('.modal-video__text p').html(videoSource.description);
+    }
   });
 
   //Show modal and show button play and pause video
@@ -927,7 +932,7 @@ $(document).on('turbolinks:load', function(){
       effect : "fadeIn",
       event : "timeout"
     });
-    
+
     // Trigger timeout event for lazyload
     var timeout = setTimeout(function() {
       $("img.lazy-load").trigger("timeout");

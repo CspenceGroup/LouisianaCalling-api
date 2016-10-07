@@ -69,8 +69,10 @@ class AdminController < ApplicationController
               video = Video.new
               video[:title] = row[0].strip
               video[:url] = row[1].strip
+              video[:profile_name] = row[2].strip
+              video[:description] = row[3].strip
 
-              if row[3]
+              if row[4]
                 raise "Wrong file"
               end
 
@@ -261,28 +263,27 @@ class AdminController < ApplicationController
                   program[:hours_per_weeks] = row[6].strip
                   program[:tuition_min] = row[7].strip
                   program[:tuition_max] = row[8].strip
-                  program[:financial_help] = row[9].strip
-                  program[:education] = row[10].strip
-                  program[:institution_name] = row[11].strip
-                  program[:phone] = row[12].strip
-                  program[:address] = row[13].strip
+                  program[:education] = row[9].strip
+                  program[:institution_name] = row[10].strip
+                  program[:phone] = row[11].strip
+                  program[:address] = row[12].strip
 
-                  location = row[14].split(',').map{ |s| s.strip }
+                  location = row[13].split(',').map{ |s| s.strip }
                   program[:lat] = location[0]
                   program[:lng] = location[1]
 
                   program[:industries] = []
 
-                  for i in 15..18
+                  for i in 14..17
                     if (row[i] != "" && row[i] != nil) then
                       program[:industries] << row[i].strip
                     end
                   end
 
-                  program[:cover_photo] = row[19].strip
-                  program[:career] = row[20].split(';').map{ |s| s.strip }
+                  program[:cover_photo] = row[18].strip
+                  program[:career] = row[19].split(';').map{ |s| s.strip }
 
-                  if row[21]
+                  if row[20]
                     raise "Wrong file"
                   end
 

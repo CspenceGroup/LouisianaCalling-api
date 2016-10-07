@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007030636) do
+ActiveRecord::Schema.define(version: 20161007031725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20161007030636) do
     t.string   "hours_per_weeks"
     t.integer  "tuition_min"
     t.integer  "tuition_max"
-    t.string   "financial_help"
     t.string   "education"
     t.string   "institution_name"
     t.string   "phone"
@@ -138,12 +137,12 @@ ActiveRecord::Schema.define(version: 20161007030636) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "main_title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "profile_name"
+    t.string   "url"
+    t.string   "title"
   end
 
 end
