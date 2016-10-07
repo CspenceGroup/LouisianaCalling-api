@@ -1,20 +1,19 @@
 module ProgramHelper
   include ApplicationHelper
 
-  def industries_query_str(industry_ids)
-    industry_ids = industry_ids.split(',')
-    list_of_clusters = convert_industries_to_hash
-    industries_q = ['(']
+  # Get regions query string
+  def regions_query_str(region_ids)
+    region_ids = region_ids.split(',')
+    list_of_regions = convert_regions_to_hash
 
-    industry_ids.each_with_index do |id, index|
-      if index.zero?
-        industries_q.push "industries like '%#{list_of_clusters[id.to_i]}%'"
-      else
-        industries_q.push " OR industries like '%#{list_of_clusters[id.to_i]}%'"
-      end
-    end
-    industries_q.push ')'
+    regions = region_ids.map { |region| list_of_regions[region.to_i] }
 
-    industries_q.join('')
+    "region IN (#{regions.join(',')})"
+  end
+
+  # Get programs query string
+  def programs_query_str(program_duration_ids)
+    program_duration_ids = program_duration_ids.split(',')
+
   end
 end
