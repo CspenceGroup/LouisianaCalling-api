@@ -1,4 +1,6 @@
 class EducationController < ApplicationController
+  include ProgramHelper
+
   before_filter :data_for_filter_details, only: [:index]
 
   def index
@@ -28,28 +30,6 @@ class EducationController < ApplicationController
   end
 
   def filter
-    ## get list of industries
-    industries = Cluster.all
-    list_of_industries = []
-    industries.each do |industry|
-      list_of_industries[industry[:id]] = industry[:name]
-    end
-
-    ## get list of region
-    regions = Region.all
-    list_of_regions = []
-    regions.each do |region|
-      list_of_regions[region[:id]] = region[:name]
-    end
-
-    list_of_program_durations = ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+"]
-
-    list_of_hours_per_week = ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours"]
-
-    list_of_time_of_day = ["Day", "Night", "Both"]
-
-    list_of_educations = ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree"]
-
     # define query
     query = ""
     regions_query = ""
@@ -61,64 +41,28 @@ class EducationController < ApplicationController
     education_query = ""
 
     ## filter by region
-    region_ids = params[:regions]
-    if  region_ids && region_ids != ""
-      region_ids = region_ids.split(',')
-
-      query_temp = []
-      region_ids.each do |id|
-        query_temp << "'#{list_of_regions[id.to_i]}'"
-      end
-
-      query = " region IN (#{query_temp.join(',')}) "
+    if  params[:regions].present?
+      query.push(regions_query_str(params[:regions]))
     end
 
     ## filter by industry
-    industry_ids = params[:industries]
-    if industry_ids && industry_ids != ""
-      industry_ids = industry_ids.split(',')
-
-      industries_query = "("
-
-      industry_ids.each_with_index do |id, index|
-
-        if index == 0
-          industries_query += "industries like '%#{list_of_industries[id.to_i]}%'"
-        else
-          industries_query += " OR industries like '%#{list_of_industries[id.to_i]}%'"
-        end
-      end
-      industries_query += ")"
-
-      if query == ""
-        query = industries_query
-      else
-        query = query + " AND " + industries_query
-      end
+    if params[:industries].present?
+      query.push(industries_query_str(params[:industries]))
     end
 
     ## filter by tuition
     tuition_min = params[:cost_min]
     tuition_max = params[:cost_max]
-    if tuition_max && tuition_max != "" && tuition_min && tuition_min != ""
+    if tuition_max.present? && tuition_min.present?
+      tuition_query = ["tuition_max <= #{tuition_max}"]
+      tuition_query.push("tuition_min >= #{tuition_min}")
 
-      tuition_query = "("
-
-      tuition_query += " tuition_max <= #{tuition_max} AND tuition_min >= #{tuition_min} "
-
-      tuition_query += ")"
-
-      if query == ""
-        query = tuition_query
-      else
-        query = query + " AND " + tuition_query
-      end
+      query.push(tuition_query)
     end
 
     # filter by program duration
     program_duration_ids = params[:programs]
-    if program_duration_ids && program_duration_ids != ""
-
+    if params[:programs].present?
       program_duration_ids = program_duration_ids.split(',')
 
       program_duration_query = "("
