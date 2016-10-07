@@ -1,6 +1,6 @@
 class Program < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_by_title, use: [:slugged, :finders]
+  friendly_id :slug_by_title, use: :slugged
 
   serialize :industries, Array
   serialize :interests, Array
