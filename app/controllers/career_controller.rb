@@ -27,7 +27,7 @@ class CareerController < ApplicationController
       end
 
     @careers = careers.offset(0).limit(9)
-    @isSeeMore = careers.count > 9 ? true : false
+    @is_see_more = careers.count > 9 ? true : false
   end
 
   def detail
@@ -84,7 +84,7 @@ class CareerController < ApplicationController
       list: render_to_string(
         'career/partial/_list', layout: false, locals: { careers: careers }
       ),
-      isSeeMore: is_see_more
+      is_see_more: is_see_more
     }
   end
 

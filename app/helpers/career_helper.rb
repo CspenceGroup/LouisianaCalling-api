@@ -80,23 +80,6 @@ module CareerHelper
     skills_query.join('')
   end
 
-  def educations_query_str(education_ids)
-    education_ids = education_ids.split(',')
-    list_of_educations = convert_educations_to_hash
-    edu_query = ['(']
-
-    education_ids.each_with_index do |id, index|
-      if index.zero?
-        edu_query.push "education like '%#{list_of_educations[id.to_i]}%'"
-      else
-        edu_query.push " OR education like '%#{list_of_educations[id.to_i]}%'"
-      end
-    end
-    edu_query.push ')'
-
-    edu_query.join('')
-  end
-
   def interests_query_str(interest_ids)
     interest_ids = interest_ids.split(',')
     list_of_interests = convert_interests_to_hash

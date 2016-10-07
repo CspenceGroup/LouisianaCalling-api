@@ -174,7 +174,7 @@
           #grid-view.grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: @careers }
-            - if @isSeeMore
+            - if @is_see_more
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
                   div
                     = image_tag asset_path("profile/btn-see-more.png")
@@ -190,7 +190,7 @@
           #list-view.careers-list-view
             #careersList.careers-grid-details
               = render partial: "career/partial/list", locals: { careers: @careers }
-            - if @isSeeMore
+            - if @is_see_more
                 #careers-see-more-list.more-stories__btn.see-more-careers
                   div
                     = image_tag asset_path("profile/btn-see-more.png")
