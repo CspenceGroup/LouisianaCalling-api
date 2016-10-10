@@ -492,34 +492,53 @@
       </section>
     <% end %>
     <section class="related-careers">
-      <section class="related-careers__content">
-        <div class="related-careers-container">
-          <div class="related-careers__header">
-            <h2 class="related-careers__title main-title shadow-main-title">Find related careers</h2>
-            <div class="row">
-              <div class="col-xs-6 col-md-6 related-careers__sort-by">
-                <span class="sort-by">Sort by:</span>
-                <button class="btn btn-sort btn-interest btn-sort-active" id="sortInterests" type="button">Interests</button>
-                <button class="btn btn-sort btn-skill" id="sortSkills" type="button">Skills</button>
-              </div>
-              <div class="col-xs-6 col-md-6">
-                <div id="interest-icons">
-                  <%= render "career/partial/detail-interest" %>
+      <% related_by_skills = @related_by_skills %>
+      <% related_by_interests = @related_by_interests %>
+      <% has_skills  = related_by_skills.present? %>
+      <% has_interests  = related_by_interests.present? %>
+      <% if has_skills || has_interests %>
+        <section class="related-careers__content">
+          <div class="related-careers-container">
+            <div class="related-careers__header">
+              <h2 class="related-careers__title main-title shadow-main-title">Find related careers</h2>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 related-careers__sort-by">
+                  <span class="sort-by">Sort by:</span>
+                  <% if has_interests %>
+                    <button class="btn btn-sort btn-interest btn-sort-active" id="sortInterests" type="button">Interests</button>
+                  <% end %>
+                  <% if has_skills %>
+                    <% className = has_interests ? 'btn btn-sort btn-skill' : 'btn btn-sort btn-skill btn-sort-active' %>
+                    <button class="<%= className %>" id="sortSkills" type="button">Skills</button>
+                  <% end %>
                 </div>
-                <div id="skill-icons">
-                  <%= render "career/partial/detail-skill" %>
+                <div class="col-xs-6 col-md-6">
+                  <% if has_interests %>
+                    <div id="interest-icons">
+                      <%= render partial: "career/partial/detail-interest",locals: { interests: @career.interests } %>
+                    </div>
+                  <% end %>
+                  <% if has_skills %>
+                    <div id="skill-icons">
+                      <%= render partial: "career/partial/detail-skill", locals: { skills: @career.skills } %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
+            <% if has_skills %>
+              <div class="related-careers__items row" id="careers-by-skills">
+                <%= render partial: "career/partial/related-career-by-skill",locals: { related_by_skills: related_by_skills } %>
+              </div>
+            <% end %>
+            <% if has_interests %>
+              <div class="related-careers__items row" id="careers-by-interests">
+                <%= render partial: "career/partial/related-career-by-interest", locals: { related_by_interests: related_by_interests } %>
+              </div>
+            <% end %>
           </div>
-          <div class="related-careers__items row" id="careers-by-interests">
-            <%= render "career/partial/related-career-by-skill" %>
-          </div>
-          <div class="related-careers__items row" id="careers-by-skills">
-            <%= render "career/partial/related-career-by-interest" %>
-          </div>
-        </div>
-      </section>
+        </section>
+      <% end %>
       <section class="want-to-talk guided-journey__box career-guided-journey">
         <h2 class="main-title want-to-talk__title">Want to talk?</h2>
         <p class="journey-link want-to-talk__link">
