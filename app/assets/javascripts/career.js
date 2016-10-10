@@ -15,17 +15,6 @@ $(document).on('turbolinks:load', function(){
       .closest('.related-careers-container')
       .removeClass('career-skill-active')
       .addClass('career-interest-active');
-    // // Active Careers sorted by interests
-    // $('#interest-icons').css('display', 'block');
-    // $('#careers-by-interests').css('display', 'block');
-
-    // // Hide Careers sorted by skills
-    // $('#skill-icons').css('display', 'none');
-    // $('#careers-by-skills').css('display', 'none');
-
-    // // Active button
-    // $('#sortSkills').removeClass('btn-sort-active');
-    // $('#sortInterests').addClass('btn-sort-active');
   });
 
   $('#sortSkills').on('click', function() {
@@ -33,17 +22,6 @@ $(document).on('turbolinks:load', function(){
       .closest('.related-careers-container')
       .removeClass('career-interest-active')
       .addClass('career-skill-active');
-    // // Hide Careers sorted by interests
-    // $('#interest-icons').css('display', 'none');
-    // $('#careers-by-interests').css('display', 'none');
-
-    // // Active Careers sorted by skills
-    // $('#skill-icons').css('display', 'block');
-    // $('#careers-by-skills').css('display', 'block');
-
-    // // Active button
-    // $('#sortInterests').removeClass('btn-sort-active');
-    // $('#sortSkills').addClass('btn-sort-active');
   });
 
   /**
@@ -85,20 +63,18 @@ $(document).on('turbolinks:load', function(){
   */
   $('#list-view-icon').on('click', function() {
 
-    // Active list view
-    $('#list-view').css('display', 'block');
-    $('.careers-view-by__list').addClass('active-tab');
-    $('.careers-view-by__grid').removeClass('active-tab');
-    $('#grid-view').css('display', 'none');
+    $(this)
+      .closest('.careers-result__container')
+      .removeClass('career-grid-view-active')
+      .addClass('career-list-view-active');
   });
 
   $('#grid-view-icon').on('click', function() {
 
-    // Active grid view
-    $('#list-view').css('display', 'none');
-    $('#grid-view').css('display', 'block');
-    $('.careers-view-by__grid').addClass('active-tab');
-    $('.careers-view-by__list').removeClass('active-tab');
+    $(this)
+      .closest('.careers-result__container')
+      .removeClass('career-list-view-active')
+      .addClass('career-grid-view-active');
   });
 
   $("#slider-range").slider({
@@ -301,18 +277,18 @@ $(document).on('turbolinks:load', function(){
   });
 
   /*Show program by list view or map view*/
-  $('.program-view-by__list').click(function() {
-    $('#program-list-view').show();
-    $('#program-map-view').hide();
-    $('.program-view-by__list').addClass('active-tab');
-    $('.program-view-by__map').removeClass('active-tab');
+  $('#programListView').click(function() {
+    $(this)
+      .closest('.program-list')
+      .removeClass('program-map-active')
+      .addClass('program-list-active');
   });
 
-  $('.program-view-by__map').click(function() {
-    $('#program-list-view').hide();
-    $('#program-map-view').show();
-    $('.program-view-by__list').removeClass('active-tab');
-    $('.program-view-by__map').addClass('active-tab');
+  $('#programMapView').click(function() {
+    $(this)
+      .closest('.program-list')
+      .removeClass('program-list-active')
+      .addClass('program-map-active');
 
     $(document).trigger('initGoogleMap');
 
@@ -440,9 +416,8 @@ $(document).on('turbolinks:load', function(){
             // reinit map
             initMap();
             $('.indicator-loading').hide();
-            $('#program-container-list, #program-container-map').show();
-            $('#program-container-map').html(response.map);
-            $('#program-container-list').html(response.list);
+            $('#program-container-map').show().html(response.map);
+            $('#program-container-list').show().html(response.list);
           }
 
           lazyloadImages();

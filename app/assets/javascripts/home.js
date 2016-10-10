@@ -181,18 +181,22 @@ $(document).on('turbolinks:load', function(){
 
   //Show popup video when click button play
   $('.btn-play-video').on('click', function(event) {
-    var buttonPlayVideo = $(event.target);
-    var videoSource = buttonPlayVideo.attr('data-source');
+    var buttonPlayVideo = $(event.target),
+        videoSource = buttonPlayVideo.attr('data-source');
 
     if (videoSource) {
       videoSource = JSON.parse(videoSource);
-      $('#videoModal').find('.modal-video__details').prepend(
-        '<div class="video-container"><video preload autoplay class="video-playing video-player">\
-          <source src=' + videoSource.url + ' type="video/mp4">\
-        </video>\
-        <div class="button-pause" style="display: none;"><i class="icon-pause"></i></div></div>');
-      $('#videoModal').find('.modal-video__text h2').html(videoSource.title);
-      $('#videoModal').find('.modal-video__text p').html(videoSource.description);
+      var videoModelElement = $('#videoModal');
+      
+      videoModelElement.find('.modal-video__details').prepend(
+        '<div class="video-container">\
+          <video preload autoplay class="video-playing video-player">\
+            <source src=' + videoSource.url + ' type="video/mp4">\
+          </video>\
+          <div class="button-pause" style="display: none;"><i class="icon-pause"></i></div>\
+        </div>');
+      videoModelElement.find('.modal-video__text h2').html(videoSource.title);
+      videoModelElement.find('.modal-video__text p').html(videoSource.description);
     }
   });
 
