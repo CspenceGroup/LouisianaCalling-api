@@ -125,3 +125,52 @@
   @extend %float-right;
   @extend %absolute;
 }
+
+.btn-sort-active {
+  @extend %cl-white;
+  background-color: $red-bg;
+}
+
+.related-careers-container.career-interest-active {
+  .btn-interest-active {
+    @extend .btn-sort-active;
+  }
+
+  #careers-by-interests {
+    @extend %block;
+  }
+
+  #careers-by-skills {
+    display: none;
+  }
+
+  #interest-icons {
+    @extend %block;
+  }
+
+  #skill-icons {
+    display: none;
+  }
+}
+
+.related-careers-container.career-skill-active {
+  .btn-skill-active {
+    @extend .btn-sort-active;
+  }
+
+  #careers-by-skills {
+    @extend %block;
+  }
+
+  #careers-by-interests {
+    display: none;
+  }
+
+  #interest-icons {
+    display: none;
+  }
+
+  #skill-icons {
+    @extend %block;
+  }
+}
