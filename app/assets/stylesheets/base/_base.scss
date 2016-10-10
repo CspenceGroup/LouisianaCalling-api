@@ -43,3 +43,7 @@ a {
   @extend %no-outline;
   @extend %no-text-decoration;
 }
+
+video {
+  @extend %no-outline;
+}

@@ -1,0 +1,6 @@
+- list_of_industries.each do |industry|
+  li
+    input.square-checkbox name="industries" type="checkbox" value="#{industry.id}"
+    span.filter-checkbox
+    span.careers-filter-details__name
+      = industry.name
