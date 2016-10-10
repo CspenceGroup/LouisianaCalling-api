@@ -100,3 +100,31 @@
     margin-top: rem(50);
   }
 }
+
+.program-map-active {
+  .program-map-view-active {
+    @extend %block;
+  }
+
+  .map-active-tab {
+    @extend .active-tab;
+  }
+
+  .program-list-view-active {
+    display: none;
+  }
+}
+
+.program-list-active {
+  .program-list-view-active {
+    @extend %block;
+  }
+
+  .list-active-tab {
+    @extend .active-tab;
+  }
+
+  .program-map-view-active {
+    display: none;
+  }
+}
