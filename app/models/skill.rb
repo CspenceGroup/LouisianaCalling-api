@@ -1,4 +1,7 @@
 class Skill < ActiveRecord::Base
+  has_many :career
+  has_many :profile
+
   validates :name, presence: true
   validates :url, presence: true
 

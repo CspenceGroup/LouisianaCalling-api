@@ -1,4 +1,6 @@
 class Region < ActiveRecord::Base
+  has_many :career
+
   def self.import_from_csv(csv)
     Region.transaction do
       Region.delete_all

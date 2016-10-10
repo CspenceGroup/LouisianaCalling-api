@@ -2,13 +2,23 @@ class Career < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
-  serialize :regions_high_demand, Array
-  serialize :interests, Array
-  serialize :skills, Array
-  serialize :industries, Array
-  serialize :related_career_by_skill, Array
-  serialize :related_career_by_interest, Array
-  serialize :region, Array
+  has_many :region, as: :regions_high_demand
+  has_many :interest
+  has_many :skill
+  has_many :cluster, as: :industries
+
+  has_many :career, as: :related_career_by_skill
+  has_many :career, as: :related_career_by_interest
+
+  has_one :education
+
+  # serialize :regions_high_demand, Array
+  # serialize :interests, Array
+  # serialize :skills, Array
+  # serialize :industries, Array
+  # serialize :related_career_by_skill, Array
+  # serialize :related_career_by_interest, Array
+  # serialize :region, Array
 
   validates :title, presence: true
   validates :education, presence: true

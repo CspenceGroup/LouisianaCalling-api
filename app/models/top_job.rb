@@ -1,22 +1,23 @@
 class TopJob < ActiveRecord::Base
+  has_one :region
+  has_one :career
+
   validates :region, presence: true
-  validates :job_title, presence: true
+  # validates :job_title, presence: true
 
   def self.import_from_csv(csv)
     TopJob.transaction do
       TopJob.delete_all
+
       csv.each do |row|
-        topJobs = TopJob.new
-        topJobs[:region] = row[0].strip
-        topJobs[:job_title] = row[1].strip
+        top_jobs = TopJob.new
+        top_jobs[:region] = row[0].strip
+        top_jobs[:job_title] = row[1].strip
 
-        if row[2]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[2]
 
-        topJobs.save!
+        top_jobs.save!
       end
     end
   end
-
 end
