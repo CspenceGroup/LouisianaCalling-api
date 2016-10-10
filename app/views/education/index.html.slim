@@ -7,7 +7,7 @@
         h1.hero-banner__title Time to build your rocket.
         .hero-banner__introduce.program-banner__introduce
           h2.hero-banner__text.program-banner__text From private training programs to college classes, you'll find everything you need here to give you the life you've almost dared not dream about.
-    section.program-list
+    section.program-list.program-list-active
       .program-list__head
         .row.program-list__search
           form name="search-homepage"
@@ -20,11 +20,11 @@
           p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
           p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
         .program-view-by
-          .program-view-by__list.active-tab
+          .program-view-by__list.list-active-tab#programListView
             .program-view-by__list-icon
               a href="javascript:void(0)"
                 = image_tag asset_path('list-view.png')
-          .program-view-by__map
+          .program-view-by__map.map-active-tab#programMapView
             .program-view-by__list-icon-map
               a href="javascript:void(0)"
                 = image_tag asset_path('map-view.png')
@@ -114,7 +114,7 @@
 
       .program-list__result
         p.program-list__call-us Need financial aid? Call us to learn about your options: 1.255.522.2557.
-        #program-list-view.program-list-view
+        #program-list-view.program-list-view.program-list-view-active
           #program-map-data style="display: none;"
             = @programs.to_json
           #program-map-ids-data style="display: none;"
@@ -133,7 +133,7 @@
             = image_tag asset_path("loading.gif")
           .indicator-loading-see-more
             = image_tag asset_path("loading.gif")
-        #program-map-view.program-map-view
+        #program-map-view.program-map-view.program-map-view-active
           .program-map-view__list
             #program-container-map
               = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }

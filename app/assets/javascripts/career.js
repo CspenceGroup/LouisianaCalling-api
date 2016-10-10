@@ -277,18 +277,18 @@ $(document).on('turbolinks:load', function(){
   });
 
   /*Show program by list view or map view*/
-  $('.program-view-by__list').click(function() {
-    $('#program-list-view').show();
-    $('#program-map-view').hide();
-    $('.program-view-by__list').addClass('active-tab');
-    $('.program-view-by__map').removeClass('active-tab');
+  $('#programListView').click(function() {
+    $(this)
+      .closest('.program-list')
+      .removeClass('program-map-active')
+      .addClass('program-list-active');
   });
 
-  $('.program-view-by__map').click(function() {
-    $('#program-list-view').hide();
-    $('#program-map-view').show();
-    $('.program-view-by__list').removeClass('active-tab');
-    $('.program-view-by__map').addClass('active-tab');
+  $('#programMapView').click(function() {
+    $(this)
+      .closest('.program-list')
+      .removeClass('program-list-active')
+      .addClass('program-map-active');
 
     $(document).trigger('initGoogleMap');
 
