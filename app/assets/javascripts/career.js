@@ -416,9 +416,8 @@ $(document).on('turbolinks:load', function(){
             // reinit map
             initMap();
             $('.indicator-loading').hide();
-            $('#program-container-list, #program-container-map').show();
-            $('#program-container-map').html(response.map);
-            $('#program-container-list').html(response.list);
+            $('#program-container-map').show().html(response.map);
+            $('#program-container-list').show().html(response.list);
           }
 
           lazyloadImages();
