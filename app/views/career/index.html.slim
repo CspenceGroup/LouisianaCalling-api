@@ -1,3 +1,5 @@
+- careers_slider = @careers_slider
+- careers = @careers
 .container-fluid
   = render 'navigation/index'
   .main-content
@@ -13,62 +15,9 @@
         p Great Jobs. Right Now.
       #carousel-great-jobs.carousel.slide data-ride="carousel"
         ol.carousel-indicators.carousel-dots-list.carousel-dots-great-jobs
-          - @careers_slider.each_with_index do |career, index|
-            li class=(index == 0 ? 'carousel-dots active' : 'carousel-dots') data-slide-to=index data-target="#carousel-great-jobs"
+          = render partial: "career/partial/slider-dot", locals: { careers_slider: careers_slider }
         .carousel-inner role="listbox"
-          - @careers_slider.each_with_index do |career, index|
-            div class=(index == 0 ? 'carousel-item active' : 'carousel-item')
-              .great-jobs__container
-                .great-jobs__content
-                  .great-jobs__content-head
-                    .jobs-head
-                      .jobs-head__name
-                        p.jobs-head__title.jobs-head__title-great-jobs title=career.title
-                          = career.title
-                        .jobs-head__icon
-                          - career.demand.to_i.times
-                            = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                      .jobs-head__content
-                        ul.jobs-head__desc
-                          li
-                            p.jobs-head__desc-text Interests
-                            .jobs-head__desc-icon
-                              - career.interests.each do |interest, url|
-                                - if url.present?
-                                  = image_tag(url, :alt => "fire icon")
-                                - else
-                                  = image_tag("", :alt => "fire icon")
-                          li
-                            p.jobs-head__desc-text Skills
-                            .jobs-head__desc-icon
-                              - career.skills.each do |skill, url|
-                                - if url.present?
-                                  = image_tag(url, :alt => "fire icon")
-                                - else
-                                  = image_tag("", :alt => "fire icon")
-                  .great-jobs__list-icon
-                    ul.row.great-jobs__row
-                      li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.industries.join(', ')
-                        = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
-                        - career.industries.each do |industry|
-                          p
-                            = industry
-                      li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
-                        p
-                          | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
-                      li.col-xs-3.col-md-3.list-icon__details
-                        = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
-                        p
-                          = career.education
-                      li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.regions_high_demand.join(', ')
-                        = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
-                        - career.regions_high_demand.each do |region|
-                          p
-                            = region
-              .btn-tell-me-jobs
-                = link_to career_detail_path(career.slug), :id => "news", :class => "btn-tell-me-jobs__link"
-                  = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
+          = render partial: "career/partial/career-slider", locals: { careers_slider: careers_slider }
         a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
           span.icon-prev.i-career-prev aria-hidden="true"
           span.sr-only Previous
@@ -82,39 +31,19 @@
           li.careers-filter__desc
             h3.careers-filter__title Region
             ul.careers-filter-details
-              - @list_of_regions.each do |region|
-                li
-                  input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.name == @region ? 'checked' : false)
-                  span.filter-checkbox
-                  span.careers-filter-details__name
-                    = region.name
+              = render partial: "career/partial/region", locals: { regions: @list_of_regions }
           li.careers-filter__desc
             h3.careers-filter__title Industry
             ul.careers-filter-details
-              - @list_of_industries.each do |industry|
-                li
-                  input.square-checkbox name="industries" type="checkbox" value=industry.id /
-                  span.filter-checkbox
-                  p.careers-filter-details__name
-                    = industry.name
+              = render partial: "career/partial/industry", locals: { industries: @list_of_industries }
           li.careers-filter__desc
             h3.careers-filter__title Skills
             ul.careers-filter-details
-              - @skills.each do |skill|
-                li
-                  input.square-checkbox name="skills" type="checkbox" value=skill.id /
-                  span.filter-checkbox
-                  span.careers-filter-details__name
-                    = skill.name
+              = render partial: "career/partial/skill", locals: { skills: @skills }
           li.careers-filter__desc
             h3.careers-filter__title Interests
             ul.careers-filter-details
-              - @interests.each do |interest|
-                li
-                  input.square-checkbox name="interests" type="checkbox" value=interest.id /
-                  span.filter-checkbox
-                  span.careers-filter-details__name
-                    = interest.name
+              = render partial: "career/partial/interest", locals: { interests: @interests }
           li.careers-filter__desc
             h3.careers-filter__title Average salary
             #salary-range.careers-salary
@@ -124,12 +53,7 @@
           li.careers-filter__desc
             h3.careers-filter__title Education requirement
             ul.careers-filter-details
-              - @list_of_educations.each do |education|
-                li
-                  input.square-checkbox name="educations" type="checkbox" value=education.id /
-                  span.filter-checkbox
-                  span.careers-filter-details__name
-                    = education.name
+              = render partial: "career/partial/education", locals: { educations: @list_of_educations }
           li.careers-filter__desc
             h3.careers-filter__title Hottest jobs
             ul.careers-filter-details.careers-filter-details--hottest-jobs
@@ -173,7 +97,7 @@
                     = image_tag asset_path('grid-view.png')
           #grid-view.grid-view-container
             #careersGrid.careers-grid-details
-              = render partial: "career/partial/career", locals: { careers: @careers }
+              = render partial: "career/partial/career", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
                   div
@@ -189,7 +113,7 @@
           /! careers list view
           #list-view.careers-list-view
             #careersList.careers-grid-details
-              = render partial: "career/partial/list", locals: { careers: @careers }
+              = render partial: "career/partial/list", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more-list.more-stories__btn.see-more-careers
                   div

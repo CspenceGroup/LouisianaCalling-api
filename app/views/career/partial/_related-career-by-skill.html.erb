@@ -1,0 +1,20 @@
+<% @related_by_skills.each do |career|%>
+  <div class="col-xs-4 col-md-4 related-careers__details">
+    <a href="/careers/<%=career.slug%>">
+      <div class="related-item">
+        <div class="interest-votes">
+          <% career.demand.to_i.times do %>
+            <i class="icon i-vote"></i>
+          <% end %>
+        </div>
+        <div class="related-item__photo">
+          <%= image_tag career.photo_medium, lazy: true, class: "lazy-load"%>
+        </div>
+        <div class="related-item__info">
+          <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
+          <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
+        </div>
+      </div>
+    </a>
+  </div>
+<% end %>

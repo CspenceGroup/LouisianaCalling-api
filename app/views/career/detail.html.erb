@@ -1,21 +1,22 @@
+<% career = @career %>
 <div class="container-fluid">
   <%= render "navigation/index" %>
   <div class="main-content">
     <section class="career-banner">
-      <h2 class="career-banner__title hero-banner__title"><%= @career.title%></h2>
+      <h2 class="career-banner__title hero-banner__title"><%= career.title%></h2>
       <div class="career-banner__bg">
-        <%= image_tag @career.photo_large, alt: 'career banner', lazy: true, class: "lazy-load"%>
+        <%= image_tag career.photo_large, alt: 'career banner', lazy: true, class: "lazy-load"%>
       </div>
     </section>
     <section class="career-desc" id="career-desc">
       <div class="career-desc__main-container">
         <section class="career-desc__about">
           <h2 class="main-title">About the job</h2>
-          <p><%= @career.about_job.html_safe %></p>
+          <p><%= career.about_job.html_safe %></p>
         </section>
         <section class="career-desc__what-to-do">
           <h2 class="main-title">What you'll do</h2>
-          <p><%= @career.what_will_do.html_safe %></p>
+          <p><%= career.what_will_do.html_safe %></p>
         </section>
         <!-- <section class="career-desc__social-networks">
           <i class="icon i-social i-facebook" aria-hidden="true"></i>
@@ -37,9 +38,9 @@
         <div class="great-jobs__content">
           <div class="jobs-head">
             <div class="jobs-head__name">
-              <p class="jobs-head__title jobs-head__title-great-jobs" title="<%= @career.title%>" ><%= @career.title%></p>
+              <p class="jobs-head__title jobs-head__title-great-jobs" title="<%= career.title%>" ><%= career.title %></p>
               <div class="jobs-head__icon">
-                <% @career.demand.to_i.times do |i| %>
+                <% career.demand.to_i.times do |i| %>
                     <%= image_tag(asset_path("careers/fire-icon.png"), :alt => "fire icon") %>
                 <%
                   end
@@ -51,7 +52,7 @@
                 <li>
                   <p class="jobs-head__desc-text">Interests</p>
                   <div class="jobs-head__desc-icon">
-                    <% @career.interests.each do |interest, url| %>
+                    <% career.interests.each do |interest, url| %>
                       <% if url.present? %>
                         <%= image_tag(url, :alt => "fire icon") %>
                       <% else %>
@@ -65,7 +66,7 @@
                 <li>
                   <p class="jobs-head__desc-text">Skills</p>
                   <div class="jobs-head__desc-icon">
-                    <% @career.skills.each do |skill, url| %>
+                    <% career.skills.each do |skill, url| %>
                       <% if url.present? %>
                         <%= image_tag(url, :alt => "icon computer") %>
                       <% else %>
@@ -81,9 +82,9 @@
           </div>
           <div class="great-jobs__list-icon">
             <ul class="row great-jobs__row">
-              <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= @career.industries.join(', ')%>">
+              <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= career.industries.join(', ')%>">
                 <%= image_tag(asset_path("careers/icon-industry.png"), :alt => "icon industry", :class => "icon-industry") %>
-                <% @career.industries.each do |industry| %>
+                <% career.industries.each do |industry| %>
                     <p><%= industry %></p>
                 <%
                   end
@@ -91,15 +92,15 @@
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details">
                 <%= image_tag(asset_path("careers/icon-salary.png"), :alt => "icon salary", :class => "icon-salary") %>
-                <p>$<%= number_with_delimiter(@career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(@career.salary_max, :delimiter => ',')%></p>
+                <p>$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></p>
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details">
                 <%= image_tag(asset_path("careers/icon-training.png"), :alt => "icon training", :class => "icon-training") %>
-                <p><%= @career.education%></p>
+                <p><%= career.education%></p>
               </li>
-              <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= @career.regions_high_demand.join(', ')%>">
+              <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= career.regions_high_demand.join(', ')%>">
                 <%= image_tag(asset_path("careers/icon-map.png"), :alt => "icon map", :class => "icon-map") %>
-                <% @career.regions_high_demand.each do |region| %>
+                <% career.regions_high_demand.each do |region| %>
                     <p><%= region %></p>
                 <%
                   end
@@ -114,7 +115,7 @@
       <div class="data-map-hidden" id="careerMapData"><%= @regions.to_json%></div>
       <div class="jobs-container">
         <div class="career-map__title map-title shadow-main-title">
-          <h2 class="main-title career-title career-title--pull-left" id="career-name" title="<%= @career.title%>"><%= @career.title%></h2>
+          <h2 class="main-title career-title career-title--pull-left" id="career-name" title="<%= career.title%>"><%= career.title %></h2>
           <h2 class="main-title career-title career-title--pull-right">Statistics By Region</h2>
         </div>
         <div class="top-jobs__map" id="career-map">
@@ -464,7 +465,7 @@
       <h2 class="find-programs__title main-title">Like this career? Find programs near you.</h2>
       <form name="search-career" id="search-career-detail">
         <div class="input-group search-group">
-          <input class="form-control search-input" id="programAutocompleteCareers" type="text" name="search-input" value="<%= @career.title %>"/>
+          <input class="form-control search-input" id="programAutocompleteCareers" type="text" name="search-input" value="<%= career.title %>"/>
           <div class="form-group btn btn-search btn-region">
             <select class="form-control">
               <option value="" disabled selected>Region</option>
@@ -503,83 +504,20 @@
               </div>
               <div class="col-xs-6 col-md-6">
                 <div id="interest-icons">
-                  <% @career.interests.each do |interest, url| %>
-                    <div class="sort-item">
-                      <span class="sort-item__title" title="<%= interest %>"><%= interest%></span>
-                      <div class="sort-item__icon">
-                        <% if url.present? %>
-                          <%= image_tag(url, :alt => "interest icon") %>
-                        <% else %>
-                          <%= image_tag("", :alt => "interest icon") %>
-                        <% end %>
-                      </div>
-                    </div>
-                  <%
-                    end
-                  %>
+                  <%= render "career/partial/detail-interest" %>
                 </div>
                 <div id="skill-icons">
-                  <% @career.skills.each do |skill, url| %>
-                    <div class="sort-item">
-                      <span class="sort-item__title" title="<%= skill %>"><%= skill%></span>
-                      <div class="sort-item__icon">
-                        <% if url.present? %>
-                        <%= image_tag(url, :alt => "interest icon")%>
-                        <% else %>
-                          <%= image_tag("", :alt => "interest icon") %>
-                        <% end %>
-                      </div>
-                    </div>
-                  <%
-                    end
-                  %>
+                  <%= render "career/partial/detail-skill" %>
                 </div>
               </div>
             </div>
           </div>
           <div class="related-careers__items row" id="careers-by-interests">
-            <% @related_by_skills.each do |career|%>
-              <div class="col-xs-4 col-md-4 related-careers__details">
-                <a href="/careers/<%=career.slug%>">
-                  <div class="related-item">
-                    <div class="interest-votes">
-                      <% career.demand.to_i.times do %>
-                        <i class="icon i-vote"></i>
-                      <% end %>
-                    </div>
-                    <div class="related-item__photo">
-                      <%= image_tag career.photo_medium, lazy: true, class: "lazy-load"%>
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
-                      <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            <% end %>
+            <%= render "career/partial/related-career-by-skill" %>
           </div>
           <div class="related-careers__items row" id="careers-by-skills">
-            <% @related_by_interests.each do |career|%>
-              <div class="col-xs-4 col-md-4 related-careers__details">
-                <a href="/careers/<%=career.slug%>">
-                  <div class="related-item">
-                    <div class="interest-votes">
-                      <% career.demand.to_i.times do %>
-                        <i class="icon i-vote"></i>
-                      <% end %>
-                    </div>
-                    <div class="related-item__photo">
-                      <%= image_tag career.photo_medium, lazy: true, class: "lazy-load"%>
-                    </div>
-                    <div class="related-item__info">
-                      <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
-                      <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            <% end %>
+            <%= render "career/partial/related-career-by-interest" %>
+          </div>
         </div>
       </section>
       <section class="want-to-talk guided-journey__box career-guided-journey">
