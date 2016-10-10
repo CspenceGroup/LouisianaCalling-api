@@ -54,29 +54,6 @@
   @extend %margin-auto;
 }
 
-.related-careers-container.skill-active {
-  .btn-skill
-    // active
-  .btn-interest
-    // inactive
-
-  .interest-icons
-    // none
-  .skill-icons
-    // block
-}
-.related-careers-container.interest-active {
-  .btn-skill
-    // inactive
-  .btn-interest
-    // active
-    //
-  .interest-icons
-    // block
-  .skill-icons
-    // none
-}
-
 .sort-item {
   margin-right: rem(10);
   @extend %acumin-pro-cond;
