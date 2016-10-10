@@ -2,6 +2,11 @@ class CareerRegion < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: [:slugged, :finders]
 
+  has_one :region
+  has_one :career
+
+  has_many :education
+
   private
 
   # Defaults a slug with title
