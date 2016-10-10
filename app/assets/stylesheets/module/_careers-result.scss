@@ -154,3 +154,31 @@
 .active-tab {
   background-color: $range-bg;
 }
+
+.careers-result__container.career-grid-view-active {
+  .careers-view-by__grid {
+    @extend .active-tab;
+  }
+
+  .grid-view-container {
+    @extend %block;
+  }
+
+  .careers-list-view {
+    display: none;
+  }
+}
+
+.careers-result__container.career-list-view-active {
+  .careers-view-by__list {
+    @extend .active-tab;
+  }
+
+  .grid-view-container {
+    display: none;
+  }
+
+  .careers-list-view {
+    @extend %block;
+  }
+}

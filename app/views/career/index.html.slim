@@ -78,7 +78,7 @@
                 span.filter-checkbox
                 p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
       .careers-result
-        .careers-result__container
+        .careers-result__container.career-grid-view-active
           .careers-result__head-search
             .careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
@@ -91,11 +91,11 @@
                 .careers-view-by__list-icon
                   a href="javascript:void(0)"
                     = image_tag asset_path('list-view.png')
-              #grid-view-icon.careers-view-by__grid.active-tab
+              #grid-view-icon.careers-view-by__grid
                 .careers-view-by__grid-icon
                   a href="javascript:void(0)"
                     = image_tag asset_path('grid-view.png')
-          #grid-view.grid-view-container
+          .grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: careers }
             - if @is_see_more
@@ -111,7 +111,7 @@
             .indicator-loading-see-more
               = image_tag asset_path("loading.gif")
           /! careers list view
-          #list-view.careers-list-view
+          .careers-list-view
             #careersList.careers-grid-details
               = render partial: "career/partial/list", locals: { careers: careers }
             - if @is_see_more
