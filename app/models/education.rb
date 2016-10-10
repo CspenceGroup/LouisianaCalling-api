@@ -1,4 +1,8 @@
 class Education < ActiveRecord::Base
+  has_many :career
+  has_many :career_region
+  has_many :profile
+
   validates :name, presence: true
 
   def self.import_from_csv(csv)

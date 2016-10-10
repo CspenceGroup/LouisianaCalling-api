@@ -1,4 +1,6 @@
 class Cluster < ActiveRecord::Base
+  has_many :career
+
   validates :name, presence: true
 
   def self.import_from_csv(csv)
