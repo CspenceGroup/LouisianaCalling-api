@@ -12,13 +12,6 @@
   }
 }
 
-.related-careers__header {
-  .btn-sort-active {
-    @extend %cl-white;
-    background-color: $red-bg;
-  }
-}
-
 .btn {
   &:focus {
     @extend %no-outline;

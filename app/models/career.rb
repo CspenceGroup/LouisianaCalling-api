@@ -14,8 +14,6 @@ class Career < ActiveRecord::Base
   validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
-  validates :related_career_by_skill, presence: true
-  validates :related_career_by_interest, presence: true
   # validates :profile_name, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
@@ -61,30 +59,26 @@ class Career < ActiveRecord::Base
         # career[:slug] = row[0].parameterize
         career[:industries] = []
 
-        for i in 1..4
-          if (row[i] != "" && row[i] != nil) then
-            career[:industries] << row[i].strip
-          end
+        (1..4).each do |i|
+          career[:industries] << row[i].strip if row[i].present?
         end
 
-        career[:skills] = row[5].split(',').map{ |s| s.strip }
-        career[:interests] = row[6].split(',').map{ |s| s.strip }
+        career[:skills] = row[5].split(',').map(&:strip)
+        career[:interests] = row[6].split(',').map(&:strip)
         career[:salary_min] = row[7].strip
         career[:salary_max] = row[8].strip
         career[:education] = row[9].strip
         career[:about_job] = row[10].strip
         career[:what_will_do] = row[11].strip
-        career[:related_career_by_skill] = row[12].split(',').map{ |s| s.strip }
-        career[:related_career_by_interest] = row[13].split(',').map{ |s| s.strip }
+        career[:related_career_by_skill] = row[12].split(',').map(&:strip)
+        career[:related_career_by_interest] = row[13].split(',').map(&:strip)
         career[:demand] = row[14].strip
         career[:photo_large] = row[15].strip
         career[:photo_medium] = row[16].strip
-        career[:regions_high_demand] = row[17].split(',').map{ |s| s.strip }
+        career[:regions_high_demand] = row[17].split(',').map(&:strip)
         career[:profile_name] = row[18].strip if row[18]
 
-        if row[19]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[19]
 
         career.save!
       end
