@@ -1,0 +1,6 @@
+- skills.each do |skill|
+  li
+    input.square-checkbox name="skills" type="checkbox" value=skill.id /
+    span.filter-checkbox
+    span.careers-filter-details__name
+      = skill.name

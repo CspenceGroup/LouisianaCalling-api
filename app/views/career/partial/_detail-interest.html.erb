@@ -1,0 +1,12 @@
+<% @career.interests.each do |interest, url| %>
+  <div class="sort-item">
+    <span class="sort-item__title" title="<%= interest %>"><%= interest%></span>
+    <div class="sort-item__icon">
+      <% if url.present? %>
+        <%= image_tag(url, :alt => "interest icon") %>
+      <% else %>
+        <%= image_tag("", :alt => "interest icon") %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
