@@ -70,11 +70,11 @@ class Career < ActiveRecord::Base
         career[:education] = row[9].strip
         career[:about_job] = row[10].strip
         career[:what_will_do] = row[11].strip
-        career[:related_career_by_skill] = row[12].split(',').map(&:strip)
-        career[:related_career_by_interest] = row[13].split(',').map(&:strip)
+        career[:related_career_by_skill] = row[12].split(';').map(&:strip) if row[12]
+        career[:related_career_by_interest] = row[13].split(';').map(&:strip) if row[13]
         career[:demand] = row[14].strip
-        career[:photo_large] = row[15].strip
-        career[:photo_medium] = row[16].strip
+        career[:photo_large] = row[15].strip if row[15]
+        career[:photo_medium] = row[16].strip if row[16]
         career[:regions_high_demand] = row[17].split(',').map(&:strip)
         career[:profile_name] = row[18].strip if row[18]
 
