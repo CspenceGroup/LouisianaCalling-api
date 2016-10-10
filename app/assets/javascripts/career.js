@@ -11,33 +11,39 @@ $(document).on('turbolinks:load', function(){
    * Related Careers sorting tabs
    */
   $('#sortInterests').on('click', function() {
+    $(this)
+      .closest('.related-careers-container')
+      .removeClass('career-skill-active')
+      .addClass('career-interest-active');
+    // // Active Careers sorted by interests
+    // $('#interest-icons').css('display', 'block');
+    // $('#careers-by-interests').css('display', 'block');
 
-    // Active Careers sorted by interests
-    $('#interest-icons').css('display', 'block');
-    $('#careers-by-interests').css('display', 'block');
+    // // Hide Careers sorted by skills
+    // $('#skill-icons').css('display', 'none');
+    // $('#careers-by-skills').css('display', 'none');
 
-    // Hide Careers sorted by skills
-    $('#skill-icons').css('display', 'none');
-    $('#careers-by-skills').css('display', 'none');
-
-    // Active button
-    $('#sortSkills').removeClass('btn-sort-active');
-    $('#sortInterests').addClass('btn-sort-active');
+    // // Active button
+    // $('#sortSkills').removeClass('btn-sort-active');
+    // $('#sortInterests').addClass('btn-sort-active');
   });
 
   $('#sortSkills').on('click', function() {
-
+    $(this)
+      .closest('.related-careers-container')
+      .removeClass('career-interest-active')
+      .addClass('career-skill-active');
     // // Hide Careers sorted by interests
-    $('#interest-icons').css('display', 'none');
-    $('#careers-by-interests').css('display', 'none');
+    // $('#interest-icons').css('display', 'none');
+    // $('#careers-by-interests').css('display', 'none');
 
-    // Active Careers sorted by skills
-    $('#skill-icons').css('display', 'block');
-    $('#careers-by-skills').css('display', 'block');
+    // // Active Careers sorted by skills
+    // $('#skill-icons').css('display', 'block');
+    // $('#careers-by-skills').css('display', 'block');
 
-    // Active button
-    $('#sortInterests').removeClass('btn-sort-active');
-    $('#sortSkills').addClass('btn-sort-active');
+    // // Active button
+    // $('#sortInterests').removeClass('btn-sort-active');
+    // $('#sortSkills').addClass('btn-sort-active');
   });
 
   /**
