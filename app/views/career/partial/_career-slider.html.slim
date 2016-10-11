@@ -39,7 +39,7 @@
               = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
               p
                 | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
-            li.col-xs-3.col-md-3.list-icon__details
+            li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more.list-icon__details--education title=career.education
               = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
               p
                 = career.education
