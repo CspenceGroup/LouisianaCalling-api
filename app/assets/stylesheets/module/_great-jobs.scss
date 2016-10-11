@@ -178,6 +178,14 @@
       @include background-image('careers/great-job-bg.jpg');
     }
   }
+
+  @include m('education') {
+    max-height: rem(62);
+
+    &:before {
+      top: rem(22);
+    }
+  }
 }
 
 // Button tell me jobs
