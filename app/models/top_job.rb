@@ -32,7 +32,7 @@ class TopJob < ActiveRecord::Base
         top_jobs[:region_id] = region.id if region.present?
 
         career = Career.find_by_title(row[1].strip)
-        puts row[1].strip unless career.present?
+
         top_jobs[:career_id] = career.id if career.present?
 
         top_jobs.save!
