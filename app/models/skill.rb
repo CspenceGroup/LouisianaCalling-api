@@ -1,5 +1,8 @@
 class Skill < ActiveRecord::Base
-  has_many :career
+
+  has_many :career_skills, dependent: :destroy
+  has_many :careers, through: :career_skills
+
   has_many :profile
 
   validates :name, presence: true
