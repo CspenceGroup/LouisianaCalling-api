@@ -166,7 +166,7 @@
             span College
 
       .tab-content.edu-jumpstart__tab-content
-        #eduJumpstart.tab-pane.active(role='tabpanel')
+        #eduJumpstart.tab-pane.active.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title Jump Start
@@ -174,7 +174,7 @@
                 h3.hero-banner__text.program-banner__text Jump Start helps our public high school students get nationally-recognized training certifications that can be used to pursue great careers right here in Louisiana.
                 / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
                 /   = image_tag asset_path("tell-me-more.png")
-        #eduTraining.tab-pane(role='tabpanel')
+        #eduTraining.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title Training
@@ -182,7 +182,7 @@
                 h3.hero-banner__text.program-banner__text Professional training facilities across the state can give you the skills you need to become certified, properly preparing you for your new career.
                 / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
                 /   = image_tag asset_path("tell-me-more.png")
-        #eduCollege.tab-pane(role='tabpanel')
+        #eduCollege.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title College
