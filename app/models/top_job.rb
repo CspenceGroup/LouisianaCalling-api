@@ -1,6 +1,6 @@
 class TopJob < ActiveRecord::Base
-  has_one :region
-  has_one :career
+  belongs_to :region
+  belongs_to :career
 
   validates :region, presence: true
 
@@ -10,8 +10,12 @@ class TopJob < ActiveRecord::Base
 
       csv.each do |row|
         top_jobs = TopJob.new
-        top_jobs[:region] = row[0].strip
-        top_jobs[:job_title] = row[1].strip
+
+        region = Region.filter_by_name(row[0].strip).first
+        top_jobs[:region_id] = region.id if region.present?
+
+        career = Career.filter_by_title(row[1].strip).first
+        top_jobs[:career_id] = career.id if career.present?
 
         raise 'Wrong file' if row[2]
 
