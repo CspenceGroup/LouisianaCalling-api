@@ -23,6 +23,8 @@ class Video < ActiveRecord::Base
       Video.delete_all
 
       csv.each do |row|
+        raise 'Wrong file' if row[4].present?
+
         video = Video.new
         video[:title] = row[0].strip
         video[:url] = row[1].strip
@@ -32,8 +34,6 @@ class Video < ActiveRecord::Base
           video[:profile_id] = profile.id if profile.present?
         end
         video[:description] = row[3].strip
-
-        raise 'Wrong file' if row[4].present?
 
         video.save!
       end
