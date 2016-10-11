@@ -1,7 +1,7 @@
 .site-footer {
   height: rem(183);
   min-width: rem(1200);
-  padding-top: rem(69);
+  padding-top: rem(50); //69px
   z-index: 1000;
   @include background-image('bg-footer.png');
   @extend %background-repeat-x;
@@ -19,7 +19,7 @@
     @extend %text-uppercase;
     @extend %clear-both;
     @extend %table;
-    margin: 0 auto rem(19) auto;
+    margin: rem(10) auto rem(19) auto;
 
     li {
       @extend %float-left;
@@ -42,5 +42,9 @@
     font-size: rem(12.5);
     @extend %clear-both;
     @extend %block;
+  }
+
+  > p {
+    font-size: rem(12.5);
   }
 }
