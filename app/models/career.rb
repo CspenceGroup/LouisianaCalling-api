@@ -3,9 +3,15 @@ class Career < ActiveRecord::Base
   friendly_id :slug_by_title, use: :slugged
 
   has_many :regions_high_demand, class_name: 'Region'
-  has_many :interests
-  has_many :skills
-  has_many :industries, class_name: 'Cluster'
+
+  has_many :career_interests, dependent: :destroy
+  has_many :interests, through: :career_interests, source: :interest
+
+  has_many :career_skills, dependent: :destroy
+  has_many :skills, through: :career_skills, source: :skill
+
+  has_many :career_clusters, dependent: :destroy
+  has_many :industries, through: :career_clusters, source: :cluster
 
   has_many :career_skill_relationships, foreign_key: :career_id,
                                         class_name: 'CareerSkillship'

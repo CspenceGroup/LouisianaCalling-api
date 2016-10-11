@@ -1,11 +1,7 @@
 class CareerRegion < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :slug_by_title, use: [:slugged, :finders]
-
-  has_one :region
-  has_one :career
-
-  has_many :education
+  belongs_to :region
+  belongs_to :career
+  has_many :educations
 
   def self.import_from_csv(csv)
     CareerRegion.transaction do

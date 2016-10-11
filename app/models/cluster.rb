@@ -1,5 +1,7 @@
 class Cluster < ActiveRecord::Base
-  has_many :career
+
+  has_many :career_clusters, dependent: :destroy
+  has_many :careers, through: :career_clusters
 
   validates :name, presence: true
 
@@ -11,9 +13,7 @@ class Cluster < ActiveRecord::Base
         cluster = Cluster.new
         cluster[:name] = row[0].strip
 
-        if row[1]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[1].present?
 
         cluster.save!
       end
