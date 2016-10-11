@@ -1,5 +1,8 @@
 class Interest < ActiveRecord::Base
-  has_many :career
+
+  has_many :career_interests, dependent: :destroy
+  has_many :careers, through: :career_interests
+
   has_many :profile
 
   validates :name, presence: true
@@ -14,9 +17,7 @@ class Interest < ActiveRecord::Base
         interest[:name] = row[0].strip
         interest[:url] = row[1].strip
 
-        if row[2]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[2].present?
 
         interest.save!
       end

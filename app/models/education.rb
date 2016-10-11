@@ -1,7 +1,6 @@
 class Education < ActiveRecord::Base
-  has_many :career
-  has_many :career_region
-  has_many :profile
+  has_many :careers
+  has_many :profiles
 
   validates :name, presence: true
 
@@ -13,9 +12,7 @@ class Education < ActiveRecord::Base
         education = Education.new
         education[:name] = row[0].strip
 
-        if row[1]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[1].present?
 
         education.save!
       end
