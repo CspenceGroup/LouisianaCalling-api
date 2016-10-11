@@ -106,26 +106,26 @@
     width: rem(225);
     line-height: rem(20);
     max-height: rem(40);
-    @extend %overflow-hidden;
+    // @extend %overflow-hidden;
     @extend %brandon-grotesque;
     @extend %text-uppercase;
     @extend %block;
     @extend %relative;
 
-    &:before {
-      content: '...';
-      // margin-right: rem(14);
-      @extend %absolute;
-      @extend %right-bottom-0;
-    }
-    &:after {
-      content: '';
-      background: $white;
-      margin-top: rem(1);
-      @extend %right-0;
-      @extend %absolute;
-      @include boxSize(rem(12), rem(30));
-    }
+    // &:before {
+    //   content: '...';
+    //   // margin-right: rem(14);
+    //   @extend %absolute;
+    //   @extend %right-bottom-0;
+    // }
+    // &:after {
+    //   content: '';
+    //   background: $white;
+    //   margin-top: rem(1);
+    //   @extend %right-0;
+    //   @extend %absolute;
+    //   @include boxSize(rem(12), rem(30));
+    // }
   }
 
   @include e('salary') {

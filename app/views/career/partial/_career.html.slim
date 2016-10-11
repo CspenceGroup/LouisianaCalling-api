@@ -9,7 +9,7 @@
           = image_tag career.photo_medium, lazy: true, class: "lazy-load"
         .related-item__info
           span.related-item__name title=career.title
-            = career.title
+            = truncate(career.title, :length => 42)
           span.related-item__salary
             = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
 - else
