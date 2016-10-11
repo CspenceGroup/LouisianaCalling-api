@@ -3,7 +3,6 @@ class TopJob < ActiveRecord::Base
   has_one :career
 
   validates :region, presence: true
-  # validates :job_title, presence: true
 
   def self.import_from_csv(csv)
     TopJob.transaction do
