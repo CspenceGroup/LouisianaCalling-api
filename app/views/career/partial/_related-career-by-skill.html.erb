@@ -11,7 +11,7 @@
           <%= image_tag career.photo_medium, lazy: true, class: "lazy-load"%>
         </div>
         <div class="related-item__info">
-          <span class="related-item__name" title="<%= career.title %>"><%= career.title %></span>
+          <span class="related-item__name" title="<%= career.title %>"><%= truncate(career.title, :length => 43) %></span>
           <span class="related-item__salary" title="$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%>">$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',')%></span>
         </div>
       </div>
