@@ -15,7 +15,6 @@ class Profile < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :job_title, presence: true
   validates :region, presence: true
   validates :description, presence: true
   validates :interests, presence: true
@@ -34,21 +33,6 @@ class Profile < ActiveRecord::Base
     where('first_name = ? AND last_name = ?', full_name.first, full_name.last)
   }
 
-  private
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
-  # Defaults a slug with name
-  def slug_by_name
-    "#{full_name.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || first_name_changed? || last_name_changed?
-  end
-
   def self.import_from_csv(csv)
     Profile.transaction do
       Profile.delete_all
@@ -58,7 +42,7 @@ class Profile < ActiveRecord::Base
         profile[:first_name] = row[0].strip
         profile[:last_name] = row[1].strip
         profile[:job_title] = row[2].strip
-        # profile[:education] = row[3]
+        profile[:education] = row[3]
         profile[:region] = row[4].strip
         profile[:description] = row[5].strip
 
@@ -73,7 +57,6 @@ class Profile < ActiveRecord::Base
         profile[:demand] = row[8].strip
         profile[:cluster] = row[9].strip
         profile[:salary] = row[10].strip
-        profile[:education] = row[11].strip
         profile[:video] = row[12].strip
         profile[:image_medium] = row[13].strip
         profile[:image_small] = row[14].strip
@@ -86,5 +69,20 @@ class Profile < ActiveRecord::Base
         profile.save!
       end
     end
+  end
+
+  private
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  # Defaults a slug with name
+  def slug_by_name
+    "#{full_name.gsub(/[^a-zA-Z0-9]/, '-')}-#{id}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || first_name_changed? || last_name_changed?
   end
 end
