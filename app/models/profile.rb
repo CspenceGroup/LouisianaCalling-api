@@ -2,12 +2,16 @@ class Profile < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_name, use: :slugged
 
-  has_one :education
-  has_many :interest
-  has_many :skill
+  belongs_to :education
+  belongs_to :cluster
+  belongs_to :region
+  belongs_to :career
 
-  # serialize :interests, Array
-  # serialize :skills, Array
+  has_many :profile_interests, dependent: :destroy
+  has_many :interests, through: :profile_interests, source: :interest
+
+  has_many :profile_skills, dependent: :destroy
+  has_many :skills, through: :profile_skills, source: :skill
 
   validates :first_name, presence: true
   validates :last_name, presence: true

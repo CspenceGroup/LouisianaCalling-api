@@ -2,6 +2,7 @@ class Career < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
+  has_many :profiles
   has_many :regions_high_demand, class_name: 'Region'
 
   has_many :career_interests, dependent: :destroy
