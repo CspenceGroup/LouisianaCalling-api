@@ -3,7 +3,8 @@ class Skill < ActiveRecord::Base
   has_many :career_skills, dependent: :destroy
   has_many :careers, through: :career_skills
 
-  has_many :profile
+  has_many :profile_skills, dependent: :destroy
+  has_many :profiles, through: :profile_skills
 
   validates :name, presence: true
   validates :url, presence: true

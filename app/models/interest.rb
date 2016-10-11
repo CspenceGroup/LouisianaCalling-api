@@ -3,7 +3,8 @@ class Interest < ActiveRecord::Base
   has_many :career_interests, dependent: :destroy
   has_many :careers, through: :career_interests
 
-  has_many :profile
+  has_many :profile_interests, dependent: :destroy
+  has_many :profiles, through: :profile_interests
 
   validates :name, presence: true
   validates :url, presence: true

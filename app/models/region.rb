@@ -1,5 +1,6 @@
 class Region < ActiveRecord::Base
-  belongs_to :career
+  has_many :careers
+  has_many :profiles
 
   def self.import_from_csv(csv)
     Region.transaction do
