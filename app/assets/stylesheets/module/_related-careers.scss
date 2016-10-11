@@ -90,7 +90,7 @@
   background-color: $white;
   @extend %margin-auto;
   @extend %relative;
-  @include boxSize(rem(254), rem(254));
+  @include boxSize(rem(254), rem(270));
 
   @include e('photo') {
     @extend %overflow-hidden;
@@ -105,10 +105,27 @@
     font-size: rem(17);
     width: rem(225);
     line-height: rem(20);
-    @extend %truncate;
+    max-height: rem(40);
+    @extend %overflow-hidden;
     @extend %brandon-grotesque;
     @extend %text-uppercase;
     @extend %block;
+    @extend %relative;
+
+    &:before {
+      content: '...';
+      margin-right: rem(14);
+      @extend %absolute;
+      @extend %right-bottom-0;
+    }
+    &:after {
+      content: '';
+      background: $white;
+      margin: rem(0.2) rem(14) 0 0;
+      @extend %right-0;
+      @extend %absolute;
+      @include boxSize(rem(12), rem(110));
+    }
   }
 
   @include e('salary') {
