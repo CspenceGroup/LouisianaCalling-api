@@ -13,9 +13,7 @@ class Video < ActiveRecord::Base
         video[:profile_name] = row[2].strip
         video[:description] = row[3].strip
 
-        if row[4]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[4].present?
 
         video.save!
       end
