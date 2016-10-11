@@ -111,7 +111,7 @@
     @extend %text-uppercase;
     @extend %block;
     @extend %relative;
-
+    word-break: break-all;
     // &:before {
     //   content: '...';
     //   // margin-right: rem(14);
