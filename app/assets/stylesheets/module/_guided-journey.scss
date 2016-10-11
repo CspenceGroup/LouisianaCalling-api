@@ -70,6 +70,7 @@
   @include boxSize(26%, 100%);
   @extend %absolute;
   @extend %right-top-0;
+  @include background-image('careers/career-call-center.jpg');
 
   .main-title {
     font-size: rem(29);
