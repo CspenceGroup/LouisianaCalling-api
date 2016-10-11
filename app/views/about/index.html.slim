@@ -1,0 +1,45 @@
+.container-fluid
+  = render 'navigation/index'
+  .main-content
+    .about-content
+      section.about-tabs
+        ul.nav.nav-tabs.about-tabs__nav.row(role='tablist')
+          li.nav-item.col-xs-3.col-md-3
+            a.active(href='#whoWeAre' role='tab' data-toggle='tab')
+              span Who we are
+          li.nav-item.col-xs-3.col-md-3
+            a(href='#ourCommunity' role='tab' data-toggle='tab')
+              span Our community
+          li.nav-item.col-xs-3.col-md-3
+            a(href='#faq' role='tab' data-toggle='tab')
+              span Faq
+          li.nav-item.col-xs-3.col-md-3
+            a(href='#contactUs' role='tab' data-toggle='tab')
+              span Contact us
+
+        .tab-content.about-tabs__content
+          #whoWeAre.tab-pane.active(role='tabpanel')
+            section.hero-banner
+              .hero-banner__container.banner-who-we-are
+            section.about-tabs__desc
+              .about-tabs__container-who
+                h3 We're connecting Louisianans to success. Right here. Right now.
+                p All Louisianans have the opportunity to achieve career and financial success. We all have a calling and we are focused on helping every one of us find our path.
+                p Our first priority is making sure everyone recognizes the many opportunities available in Louisiana, right here, right now. Louisiana Calling's multiyear public messaging campaing, resources and strategic partnerships will help Louisians to discover and learn about the many pathways to career and financial success.
+                p Our second priority is connecting Louisiana's citizens to those opportunities to develop the high-value skills fot short- and long-term success. By partnering with organizations like Jump Start, or colleges and universities, technical institutes and private training facilities, Louisiana Calling is doing just that.
+          #ourCommunity.tab-pane(role='tabpanel')
+            section.hero-banner
+              .hero-banner__container.banner-our-comminity
+            section.about-tabs__desc
+              p xyz
+          #faq.tab-pane(role='tabpanel')
+            section.hero-banner
+              .hero-banner__container.banner-faq
+            section.about-tabs__desc
+              p mnh
+          #contactUs.tab-pane(role='tabpanel')
+            section.hero-banner
+              .hero-banner__container.banner-contact-us
+            section.about-tabs__desc
+              p hfudasf
+  = render 'footer/index'

@@ -54,7 +54,7 @@
   @include boxSize(rem(141), rem(30));
 }
 
-.tab-pane {
+.tab-pane__edu-content {
   @extend %background-cover;
   @extend %background-position-center;
 }
