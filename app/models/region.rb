@@ -2,6 +2,12 @@ class Region < ActiveRecord::Base
   has_many :careers
   has_many :profiles
 
+  has_many :top_jobs
+
+  scope :filter_by_name, lambda { |name|
+    where('name like ?', name)
+  }
+
   def self.import_from_csv(csv)
     Region.transaction do
       Region.delete_all
