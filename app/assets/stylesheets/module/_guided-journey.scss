@@ -70,6 +70,7 @@
   @include boxSize(26%, 100%);
   @extend %absolute;
   @extend %right-top-0;
+  @include background-image('careers/career-call-center.jpg');
 
   .main-title {
     font-size: rem(29);
@@ -87,7 +88,7 @@
   @extend %text-center;
   @extend %background-cover;
   @extend %background-position-center;
-  @include background-image('education-details/want-to-talk-large-bg.jpg');
+  @include background-image('photo-talk.jpg');
 }
 
 .edu-guided-link {

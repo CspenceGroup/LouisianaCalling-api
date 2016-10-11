@@ -57,9 +57,16 @@
 .tab-pane {
   @extend %background-cover;
   @extend %background-position-center;
+}
+
+#eduJumpstart {
   @include background-image('program-landing/jumpstart-banner.jpg');
 }
 
-// #eduJumpstart {
-//   @include background-image('program-landing/jumpstart-banner.jpg');
-// }
+#eduTraining {
+  @include background-image('program-landing/training-banner.jpg');
+}
+
+#eduCollege {
+  @include background-image('program-landing/college-banner.jpg');
+}
