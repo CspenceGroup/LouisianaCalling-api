@@ -21,7 +21,7 @@
 }
 
 .careers-list-view {
-  margin-top: rem(86);
+  margin: rem(86) 0 rem(170) 0;
   display: none;
 
   @include e('item') {
@@ -111,7 +111,7 @@
 }
 
 .grid-view-container {
-  margin-top: rem(8);
+  margin: rem(8) 0 rem(170) 0;
   @extend %overflow-hidden;
 }
 
