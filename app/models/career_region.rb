@@ -7,6 +7,26 @@ class CareerRegion < ActiveRecord::Base
 
   has_many :education
 
+  def self.import_from_csv(csv)
+    CareerRegion.transaction do
+      CareerRegion.delete_all
+
+      csv.each do |row|
+        career_region = CareerRegion.new
+        career_region[:title] = row[0].strip
+        # career_region[:slug] = row[0].parameterize
+        career_region[:region] = row[1].strip
+        career_region[:salary_min] = row[2].strip
+        career_region[:salary_max] = row[3].strip
+        career_region[:education] = row[4].strip
+
+        raise 'Wrong file' if row[5].present?
+
+        career_region.save!
+      end
+    end
+  end
+
   private
 
   # Defaults a slug with title
@@ -16,27 +36,5 @@ class CareerRegion < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def self.import_from_csv(csv)
-    CareerRegion.transaction do
-      CareerRegion.delete_all
-
-      csv.each do |row|
-        careerRegion = CareerRegion.new
-        careerRegion[:title] = row[0].strip
-        # careerRegion[:slug] = row[0].parameterize
-        careerRegion[:region] = row[1].strip
-        careerRegion[:salary_min] = row[2].strip
-        careerRegion[:salary_max] = row[3].strip
-        careerRegion[:education] = row[4].strip
-
-        if row[5]
-          raise "Wrong file"
-        end
-
-        careerRegion.save!
-      end
-    end
   end
 end
