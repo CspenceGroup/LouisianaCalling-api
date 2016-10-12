@@ -468,7 +468,7 @@
         <div class="input-group search-group">
           <input class="form-control search-input" id="programAutocompleteCareers" type="text" name="search-input" value="<%= career.title %>"/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control">
+            <select class="form-control" required>
               <option value="" disabled selected>Region</option>
               <% @list_of_regions.each do |region|%>
                 <option value="<%= region.name %>"><%= region.name %></option>
