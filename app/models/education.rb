@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: educations
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+#
 class Education < ActiveRecord::Base
   has_many :careers
   has_many :profiles
@@ -10,6 +20,8 @@ class Education < ActiveRecord::Base
       Education.delete_all
 
       csv.each do |row|
+        next if Education.exists?(name: row[0].strip)
+
         education = Education.new
         education[:name] = row[0].strip
 
