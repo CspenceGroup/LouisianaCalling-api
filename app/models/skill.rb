@@ -1,5 +1,4 @@
 class Skill < ActiveRecord::Base
-
   has_many :career_skills, dependent: :destroy
   has_many :careers, through: :career_skills
 
@@ -8,6 +7,8 @@ class Skill < ActiveRecord::Base
 
   validates :name, presence: true
   validates :url, presence: true
+
+  validates_uniqueness_of :name
 
   def self.import_from_csv(csv)
     Skill.transaction do

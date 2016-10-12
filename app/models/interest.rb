@@ -1,5 +1,4 @@
 class Interest < ActiveRecord::Base
-
   has_many :career_interests, dependent: :destroy
   has_many :careers, through: :career_interests
 
@@ -8,6 +7,8 @@ class Interest < ActiveRecord::Base
 
   validates :name, presence: true
   validates :url, presence: true
+
+  validates_uniqueness_of :name
 
   def self.import_from_csv(csv)
     Interest.transaction do
