@@ -83,7 +83,7 @@ $(document).on('turbolinks:load', function(){
     range: true,
     min: 15000,
     max: 187000,
-    values: [30000, 80000],
+    values: [15000, 80000],
     slide: function( event, ui ) {
       $("#salary").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     }
