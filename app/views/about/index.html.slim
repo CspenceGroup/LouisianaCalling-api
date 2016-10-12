@@ -19,27 +19,11 @@
 
         .tab-content.about-tabs__content
           #whoWeAre.tab-pane.active(role='tabpanel')
-            section.hero-banner
-              .hero-banner__container.banner-who-we-are
-            section.about-tabs__desc
-              .about-tabs__container-who
-                h3 We're connecting Louisianans to success. Right here. Right now.
-                p All Louisianans have the opportunity to achieve career and financial success. We all have a calling and we are focused on helping every one of us find our path.
-                p Our first priority is making sure everyone recognizes the many opportunities available in Louisiana, right here, right now. Louisiana Calling's multiyear public messaging campaing, resources and strategic partnerships will help Louisians to discover and learn about the many pathways to career and financial success.
-                p Our second priority is connecting Louisiana's citizens to those opportunities to develop the high-value skills fot short- and long-term success. By partnering with organizations like Jump Start, or colleges and universities, technical institutes and private training facilities, Louisiana Calling is doing just that.
+            = render partial: "about/partial/who-we-are"
           #ourCommunity.tab-pane(role='tabpanel')
-            section.hero-banner
-              .hero-banner__container.banner-our-comminity
-            section.about-tabs__desc
-              p xyz
+            = render partial: "about/partial/our-comminity"
           #faq.tab-pane(role='tabpanel')
-            section.hero-banner
-              .hero-banner__container.banner-faq
-            section.about-tabs__desc
-              p mnh
+            = render partial: "about/partial/faq"
           #contactUs.tab-pane(role='tabpanel')
-            section.hero-banner
-              .hero-banner__container.banner-contact-us
-            section.about-tabs__desc
-              p hfudasf
+            = render partial: "about/partial/contact-us"
   = render 'footer/index'
