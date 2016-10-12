@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function(){
       .closest('.related-careers-container')
       .removeClass('career-skill-active')
       .addClass('career-interest-active');
+    $(".related-item__name").dotdotdot({});
   });
 
   $('#sortSkills').on('click', function() {
@@ -22,6 +23,7 @@ $(document).on('turbolinks:load', function(){
       .closest('.related-careers-container')
       .removeClass('career-interest-active')
       .addClass('career-skill-active');
+    $(".related-item__name").dotdotdot({});
   });
 
   /**
@@ -217,6 +219,8 @@ $(document).on('turbolinks:load', function(){
           }
 
           lazyloadImages();
+
+          $(".related-item__name").dotdotdot({});
 
           if (response.is_see_more) {
             $('#careers-see-more,#careers-see-more-list').show();
@@ -558,4 +562,6 @@ $(document).on('turbolinks:load', function(){
   }
 
   lazyloadImages();
+
+  $(".related-item__name").dotdotdot({});
 });

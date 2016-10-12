@@ -31,7 +31,7 @@ class Career < ActiveRecord::Base
   }
 
   scope :filter_by_title_and_region, lambda { |title, region|
-    where('LOWER(title) like ? AND regions_high_demand like ?', title.downcase, region)
+    where('LOWER(title) like ? AND regions_high_demand like ?', "%#{title.downcase}%", "%#{region}%")
   }
 
   scope :filter_by_salary, lambda { |salary_min, salary_max|
