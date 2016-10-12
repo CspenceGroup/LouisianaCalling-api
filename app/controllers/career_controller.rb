@@ -66,7 +66,7 @@ class CareerController < ApplicationController
 
     ## seach by career title
     if params[:title].present?
-      query.push("(LOWER(title) like '%#{params[:title].downcase}%')")
+      query.push("(LOWER(title) like '%#{params[:title].gsub(/'/, "''").downcase}%')")
     end
 
     last_id = params[:last_id].present? ? params[:last_id] : 0
