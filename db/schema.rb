@@ -10,16 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012051456) do
+ActiveRecord::Schema.define(version: 20161012065724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "career_clusters", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "cluster_id"
+    t.index ["career_id"], name: "index_career_clusters_on_career_id", using: :btree
+    t.index ["cluster_id"], name: "index_career_clusters_on_cluster_id", using: :btree
+  end
+
+  create_table "career_educations", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "education_id"
+    t.index ["career_id"], name: "index_career_educations_on_career_id", using: :btree
+    t.index ["education_id"], name: "index_career_educations_on_education_id", using: :btree
+  end
 
   create_table "career_interests", force: :cascade do |t|
     t.integer "career_id"
     t.integer "interest_id"
     t.index ["career_id"], name: "index_career_interests_on_career_id", using: :btree
     t.index ["interest_id"], name: "index_career_interests_on_interest_id", using: :btree
+  end
+
+  create_table "career_interestships", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "career_related_id"
+    t.index ["career_id"], name: "index_career_interestships_on_career_id", using: :btree
+    t.index ["career_related_id"], name: "index_career_interestships_on_career_related_id", using: :btree
+  end
+
+  create_table "career_region_high_demands", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "region_id"
+    t.index ["career_id"], name: "index_career_region_high_demands_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_career_region_high_demands_on_region_id", using: :btree
   end
 
   create_table "career_regions", force: :cascade do |t|
@@ -31,6 +59,20 @@ ActiveRecord::Schema.define(version: 20161012051456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+  end
+
+  create_table "career_skills", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "skill_id"
+    t.index ["career_id"], name: "index_career_skills_on_career_id", using: :btree
+    t.index ["skill_id"], name: "index_career_skills_on_skill_id", using: :btree
+  end
+
+  create_table "career_skillships", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "career_related_id"
+    t.index ["career_id"], name: "index_career_skillships_on_career_id", using: :btree
+    t.index ["career_related_id"], name: "index_career_skillships_on_career_related_id", using: :btree
   end
 
   create_table "careers", force: :cascade do |t|
