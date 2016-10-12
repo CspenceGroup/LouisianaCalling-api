@@ -4,6 +4,9 @@ class Region < ActiveRecord::Base
 
   has_many :top_jobs
 
+  validates :name, presence: true
+  validates_uniqueness_of :name
+
   scope :filter_by_name, lambda { |name|
     where('name like ?', name)
   }
