@@ -96,7 +96,7 @@
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more list-icon__details--education" title="<%= career.education%>">
                 <%= image_tag(asset_path("careers/icon-training.png"), :alt => "icon training", :class => "icon-training") %>
-                <p>&ast; <%= career.education%></p>
+                <p><%= career.education%></p>
               </li>
               <li class="col-xs-3 col-md-3 list-icon__details list-icon__details--more" title="<%= career.regions_high_demand.join(', ')%>">
                 <%= image_tag(asset_path("careers/icon-map.png"), :alt => "icon map", :class => "icon-map") %>
@@ -459,6 +459,7 @@
             <li id="career-certificate"></li>
           </ul>
         </div>
+        <p class="asterisk-copy asterisk-copy--map"> &ast; For this career, it’s recommended that you have this type of education. </p>
         <!-- <div class="data-map-hidden" id="mapData"><%= @jobs.to_json%></div> -->
     </section>
     <section class="search-bar find-programs">
