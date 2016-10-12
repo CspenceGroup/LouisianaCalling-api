@@ -1,4 +1,20 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id             :integer          not null, primary key
+#  profile_id     :integer
+#  title          :string
+#  url            :string
+#  description    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+#
+
 class Video < ActiveRecord::Base
+  belongs_to :profile
+
   validates :title, presence: true
   validates :url, presence: true
 
@@ -10,7 +26,11 @@ class Video < ActiveRecord::Base
         video = Video.new
         video[:title] = row[0].strip
         video[:url] = row[1].strip
-        video[:profile_name] = row[2].strip
+
+        if row[2].strip.present?
+          profile = Profile.find_by_full_name(row[2].strip).first
+          video[:profile_id] = profile.id if profile.present?
+        end
         video[:description] = row[3].strip
 
         raise 'Wrong file' if row[4].present?

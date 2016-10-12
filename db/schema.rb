@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007031725) do
+ActiveRecord::Schema.define(version: 20161012014115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20161007031725) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "email"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -83,7 +91,6 @@ ActiveRecord::Schema.define(version: 20161007031725) do
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "job_title"
     t.string   "region"
     t.string   "facebook"
     t.string   "twitter"
@@ -102,6 +109,8 @@ ActiveRecord::Schema.define(version: 20161007031725) do
     t.string   "image_medium"
     t.string   "image_small"
     t.string   "slug"
+    t.integer  "video_id"
+    t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
   create_table "programs", force: :cascade do |t|
@@ -144,18 +153,20 @@ ActiveRecord::Schema.define(version: 20161007031725) do
 
   create_table "top_jobs", force: :cascade do |t|
     t.string   "region"
-    t.string   "job_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "videos", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "profile_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "url"
     t.string   "title"
+    t.integer  "profile_id"
+    t.index ["profile_id"], name: "index_videos_on_profile_id", using: :btree
   end
 
+  add_foreign_key "profiles", "videos"
+  add_foreign_key "videos", "profiles"
 end
