@@ -3,6 +3,7 @@ class Education < ActiveRecord::Base
   has_many :profiles
 
   validates :name, presence: true
+  validates_uniqueness_of :name
 
   def self.import_from_csv(csv)
     Education.transaction do
