@@ -35,9 +35,10 @@ class AdminController < ApplicationController
       end
 
       case name
+        when 'regions'
+          Region.import_from_csv(csv)
         when name="homePageTopJobs"
           TopJob.import_from_csv(csv)
-          Region.import_from_csv(csv)
 
         when name="homePageVideo"
           Video.import_from_csv(csv)
