@@ -104,7 +104,6 @@
   }
 
   @include e('text') {
-    width: rem(705);
     @extend %float-left;
     h2 {
       @extend %i-owan-old-style;
