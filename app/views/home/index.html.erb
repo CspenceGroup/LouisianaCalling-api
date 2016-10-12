@@ -67,7 +67,7 @@
         <div class="input-group search-group">
           <input required class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control">
+            <select class="form-control" required>
               <option value="" disabled selected>Region</option>
               <% @regions.each do |region|%>
                 <option value="<%= region.name %>"><%= region.name %></option>
