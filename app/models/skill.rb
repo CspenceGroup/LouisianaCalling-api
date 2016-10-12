@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: skills
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  url            :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+#
 class Skill < ActiveRecord::Base
   has_many :career_skills, dependent: :destroy
   has_many :careers, through: :career_skills
@@ -15,13 +26,13 @@ class Skill < ActiveRecord::Base
       Skill.delete_all
 
       csv.each do |row|
+        next if Skill.exists?(name: row[0].strip)
+
         skill = Skill.new
         skill[:name] = row[0].strip
         skill[:url] = row[1].strip
 
-        if row[2]
-          raise "Wrong file"
-        end
+        raise 'Wrong file' if row[2].present?
 
         skill.save!
       end
