@@ -11,7 +11,6 @@
 class Cluster < ActiveRecord::Base
   has_many :profiles
 
-  has_many :profiles
   has_many :career_clusters, dependent: :destroy
   has_many :careers, through: :career_clusters
 
