@@ -87,26 +87,22 @@
 
 .careers-view-by {
   @extend %float-right;
+  padding-top: rem(13);
 
   @include e('list') {
-    @include boxSize(rem(50), rem(50));
+    @include boxSize(rem(30), rem(30));
     @extend %float-left;
+    margin-right: rem(13);
   }
 
   @include e('grid') {
-    @include boxSize(rem(50), rem(50));
+    @include boxSize(rem(30), rem(30));
     @extend %float-right;
-    margin-left: rem(22);
   }
 
-  @include e('list-icon') {
-    @include boxSize(rem(35), rem(35));
-    margin: rem(8) auto 0 auto;
-  }
-
-  @include e('grid-icon') {
-    @include boxSize(rem(35), rem(35));
-    margin: rem(8) auto 0 auto;
+  @include e('icon') {
+    @include boxSize(rem(24), rem(24));
+    margin: rem(3) auto 0 auto;
   }
 }
 
