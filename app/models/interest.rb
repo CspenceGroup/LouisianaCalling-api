@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: educations
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  url            :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+#
 class Interest < ActiveRecord::Base
   has_many :career_interests, dependent: :destroy
   has_many :careers, through: :career_interests
@@ -15,6 +26,8 @@ class Interest < ActiveRecord::Base
       Interest.delete_all
 
       csv.each do |row|
+        next if Interest.exists?(name: row[0].strip)
+
         interest = Interest.new
         interest[:name] = row[0].strip
         interest[:url] = row[1].strip
