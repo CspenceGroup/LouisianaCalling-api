@@ -15,21 +15,25 @@ class TopJob < ActiveRecord::Base
   belongs_to :career
 
   validates :region, presence: true
+  validates :career, presence: true
+
+  scope :valid, -> { where('career_id IS NOT NULL') }
 
   def self.import_from_csv(csv)
     TopJob.transaction do
       TopJob.delete_all
 
       csv.each do |row|
+        raise 'Wrong file' if row[2].present?
+
         top_jobs = TopJob.new
 
-        region = Region.filter_by_name(row[0].strip).first
+        region = Region.find_by_name(row[0].strip)
         top_jobs[:region_id] = region.id if region.present?
 
-        career = Career.filter_by_title(row[1].strip).first
+        career = Career.find_by_title(row[1].strip)
+        puts row[1].strip unless career.present?
         top_jobs[:career_id] = career.id if career.present?
-
-        raise 'Wrong file' if row[2].present?
 
         top_jobs.save!
       end
