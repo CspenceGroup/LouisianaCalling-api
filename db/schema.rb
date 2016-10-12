@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012030553) do
+ActiveRecord::Schema.define(version: 20161012051456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "career_interests", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "interest_id"
+    t.index ["career_id"], name: "index_career_interests_on_career_id", using: :btree
+    t.index ["interest_id"], name: "index_career_interests_on_interest_id", using: :btree
+  end
 
   create_table "career_regions", force: :cascade do |t|
     t.string   "title"
@@ -29,38 +36,21 @@ ActiveRecord::Schema.define(version: 20161012030553) do
   create_table "careers", force: :cascade do |t|
     t.string   "slug"
     t.string   "title"
-    t.string   "education"
     t.text     "about_job"
     t.text     "what_will_do"
-    t.string   "related_career_by_skill"
-    t.string   "related_career_by_interest"
-    t.string   "profile_name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "photo_large"
     t.string   "photo_medium"
-    t.string   "photo_small"
-    t.text     "industries"
-    t.text     "interests"
-    t.text     "skills"
     t.integer  "salary_min"
     t.integer  "salary_max"
     t.float    "demand"
-    t.text     "regions_high_demand"
     t.integer  "top_job_id"
     t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 
   create_table "clusters", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "email"
-    t.string   "subject"
-    t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -158,8 +148,8 @@ ActiveRecord::Schema.define(version: 20161012030553) do
   create_table "top_jobs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "region_id"
     t.integer  "career_id"
+    t.integer  "region_id"
     t.index ["career_id"], name: "index_top_jobs_on_career_id", using: :btree
     t.index ["region_id"], name: "index_top_jobs_on_region_id", using: :btree
   end
@@ -174,6 +164,4 @@ ActiveRecord::Schema.define(version: 20161012030553) do
     t.index ["profile_id"], name: "index_videos_on_profile_id", using: :btree
   end
 
-  add_foreign_key "profiles", "videos"
-  add_foreign_key "videos", "profiles"
 end
