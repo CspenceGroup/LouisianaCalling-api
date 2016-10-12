@@ -222,6 +222,13 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
+  //close pop up when they click anywhere that have no text or video
+  $('.modal-video__details').on('click', function(event) {
+    if(event.target === this) {
+      $('#videoModal').modal('hide');
+    }
+  })
+
   // set home page carousel move
   $('#carousel-great-jobs').carousel({
     interval: 5000
