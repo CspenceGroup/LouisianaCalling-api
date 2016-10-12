@@ -1,5 +1,5 @@
 module Constants
-  SALARY_MIN = 30000
+  SALARY_MIN = 15000
   SALARY_MAX = 80000
 
   TUITION_MIN = 0
