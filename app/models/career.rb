@@ -19,8 +19,8 @@ class Career < ActiveRecord::Base
   has_many :profiles
   has_many :top_jobs
 
-  has_many :region_high_demands, dependent: :destroy
-  has_many :regions_high_demand, through: :region_high_demands, source: :region
+  has_many :career_region_high_demands, dependent: :destroy
+  has_many :regions_high_demand, through: :career_region_high_demands, source: :region
 
   has_many :career_interests, dependent: :destroy
   has_many :interests, through: :career_interests, source: :interest
@@ -161,7 +161,7 @@ class Career < ActiveRecord::Base
     regions.each do |region_name|
       region = Region.find_by_name(region_name)
 
-      CareerRegion.create(
+      CareerRegionHighDemand.create(
         career_id: career.id,
         region_id: region.present? ? region.id : nil
       )
@@ -170,22 +170,22 @@ class Career < ActiveRecord::Base
 
   def self.create_career_interestships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_name(career_name)
+      career_related = Career.find_by_title(career_name)
 
       CareerInterestship.create(
         career_id: career.id,
-        region_id: career_related.present? ? career_related.id : nil
+        career_related_id: career_related.present? ? career_related.id : nil
       )
     end
   end
 
   def self.create_career_skillships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_name(career_name)
+      career_related = Career.find_by_title(career_name)
 
       CareerSkillship.create(
         career_id: career.id,
-        region_id: career_related.present? ? career_related.id : nil
+        career_related_id: career_related.present? ? career_related.id : nil
       )
     end
   end
