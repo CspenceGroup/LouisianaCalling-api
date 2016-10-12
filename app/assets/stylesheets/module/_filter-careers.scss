@@ -33,6 +33,12 @@
   @include e('desc') {
     margin-bottom: rem(30);
     padding-right: rem(15);
+
+    > p{
+      font-size: rem(14.5);
+      @extend %acumin-pro-cond-regular;
+      margin-bottom: rem(10);
+    }
   }
 }
 
