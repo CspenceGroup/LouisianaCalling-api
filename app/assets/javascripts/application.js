@@ -19,4 +19,5 @@
 //= require lazyload
 //= require turbolinks
 //= require common
+//= require truncate
 //= require_tree .
