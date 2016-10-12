@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012014115) do
+ActiveRecord::Schema.define(version: 20161012030553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20161012014115) do
     t.integer  "salary_max"
     t.float    "demand"
     t.text     "regions_high_demand"
+    t.integer  "top_job_id"
+    t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 
   create_table "clusters", force: :cascade do |t|
@@ -142,6 +144,8 @@ ActiveRecord::Schema.define(version: 20161012014115) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "top_job_id"
+    t.index ["top_job_id"], name: "index_regions_on_top_job_id", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
@@ -152,9 +156,12 @@ ActiveRecord::Schema.define(version: 20161012014115) do
   end
 
   create_table "top_jobs", force: :cascade do |t|
-    t.string   "region"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "region_id"
+    t.integer  "career_id"
+    t.index ["career_id"], name: "index_top_jobs_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_top_jobs_on_region_id", using: :btree
   end
 
   create_table "videos", force: :cascade do |t|
