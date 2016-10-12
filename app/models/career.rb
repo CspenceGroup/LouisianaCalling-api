@@ -19,7 +19,8 @@ class Career < ActiveRecord::Base
   has_many :profiles
   has_many :top_jobs
 
-  has_many :regions_high_demand, class_name: 'Region'
+  has_many :region_high_demands, dependent: :destroy
+  has_many :regions_high_demand, through: :region_high_demands, source: :region
 
   has_many :career_interests, dependent: :destroy
   has_many :interests, through: :career_interests, source: :interest
@@ -40,14 +41,15 @@ class Career < ActiveRecord::Base
   has_many :related_by_interests, through: :career_interest_relationships,
                                   source: :career_related
 
-  has_many :educations
+  has_many :career_educations, dependent: :destroy
+  has_many :educations, through: :career_educations, source: :education
 
   validates :title, presence: true
   # validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
-  # validates :photo_large, presence: true
-  # validates :photo_medium, presence: true
+  validates :photo_large, presence: true
+  validates :photo_medium, presence: true
   # validates :industries, presence: true
   # validates :interests, presence: true
   # validates :skills, presence: true
@@ -73,39 +75,56 @@ class Career < ActiveRecord::Base
       Career.delete_all
 
       csv.each do |row|
+        raise 'Wrong file' if row[19].present?
+
         career = Career.new
         career[:title] = row[0].strip
-        # career[:industries] = []
 
-        # (1..4).each do |i|
-        #   career[:industries] << row[i].strip if row[i].present?
-        # end
-
-        # career[:skills] = row[5].split(',').map(&:strip)
-        # career[:interests] = row[6].split(',').map(&:strip)
         career[:salary_min] = row[7].strip
         career[:salary_max] = row[8].strip
-        # career[:education] = row[9].strip
         career[:about_job] = row[10].strip
         career[:what_will_do] = row[11].strip
-        # career[:related_career_by_skill] = row[12].split(';').map(&:strip) if row[12]
-        # career[:related_career_by_interest] = row[13].split(';').map(&:strip) if row[13]
         career[:demand] = row[14].strip
-        career[:photo_large] = row[15].strip if row[15]
-        career[:photo_medium] = row[16].strip if row[16]
-        # career[:regions_high_demand] = row[17].split(',').map(&:strip)
-        # career[:profile_name] = row[18].strip if row[18]
-
-        raise 'Wrong file' if row[19]
+        career[:photo_large] = row[15].strip if row[15].present?
+        career[:photo_medium] = row[16].strip if row[16].present?
 
         career.save!
-        interests = row[6].split(',').map(&:strip)
-        create_career_interest(interests, career)
+
+        # Adding interests
+        create_career_interests(row[6].split(',').map(&:strip), career) if row[6].present?
+
+        # Adding skills
+        create_career_skills(row[5].split(',').map(&:strip), career) if row[5].present?
+
+        # Adding regions high demand
+        if row[17].present?
+          create_career_regions(row[17].split(',').map(&:strip), career)
+        end
+
+        # Adding educations
+        if row[9].present?
+          create_career_educations(row[9].split(',').map(&:strip), career)
+        end
+
+        # Adding related_career_by_skill
+        if row[12].present?
+          create_career_skillships(row[12].split(';').map(&:strip), career)
+        end
+
+        # Adding related_career_by_interest
+        if row[13].present?
+          create_career_interestships(row[13].split(';').map(&:strip), career)
+        end
+
+        # Adding industries
+        (1..4).each do |i|
+          create_career_cluster(row[i].strip, career) if row[i].present?
+        end
       end
     end
   end
 
-  def self.create_career_interest(interests, career)
+  def self.create_career_interests(interests, career)
     interests.each do |interest_name|
       interest = Interest.find_by_name(interest_name)
 
@@ -114,6 +133,70 @@ class Career < ActiveRecord::Base
         interest_id: interest.present? ? interest.id : nil
       )
     end
+  end
+
+  def self.create_career_skills(skills, career)
+    skills.each do |skill_name|
+      skill = Skill.find_by_name(skill_name)
+
+      CareerSkill.create(
+        career_id: career.id,
+        skill_id: skill.present? ? skill.id : nil
+      )
+    end
+  end
+
+  def self.create_career_educations(educations, career)
+    educations.each do |education_name|
+      education = Education.find_by_name(education_name)
+
+      CareerEducation.create(
+        career_id: career.id,
+        education_id: education.present? ? education.id : nil
+      )
+    end
+  end
+
+  def self.create_career_regions(regions, career)
+    regions.each do |region_name|
+      region = Region.find_by_name(region_name)
+
+      CareerRegion.create(
+        career_id: career.id,
+        region_id: region.present? ? region.id : nil
+      )
+    end
+  end
+
+  def self.create_career_interestships(careers, career)
+    careers.each do |career_name|
+      career_related = Career.find_by_name(career_name)
+
+      CareerInterestship.create(
+        career_id: career.id,
+        region_id: career_related.present? ? career_related.id : nil
+      )
+    end
+  end
+
+  def self.create_career_skillships(careers, career)
+    careers.each do |career_name|
+      career_related = Career.find_by_name(career_name)
+
+      CareerSkillship.create(
+        career_id: career.id,
+        region_id: career_related.present? ? career_related.id : nil
+      )
+    end
+  end
+
+  def self.create_career_cluster(cluster_name, career)
+    cluster = Cluster.find_by_name(cluster_name)
+
+    CareerCluster.create(
+      career_id: career.id,
+      cluster_id: cluster.present? ? cluster.id : nil
+    )
   end
 
   private
