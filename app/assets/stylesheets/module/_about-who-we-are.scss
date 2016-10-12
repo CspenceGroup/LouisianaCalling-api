@@ -66,10 +66,9 @@
     padding: rem(60) 0 rem(62) 0;
     color: $default;
 
-    h3 {
+    h2 {
       font-size: rem(29);
       @extend %i-owan-old-style;
-      @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
       padding-bottom: rem(20);
     }
 
