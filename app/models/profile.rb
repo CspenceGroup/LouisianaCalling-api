@@ -7,6 +7,8 @@ class Profile < ActiveRecord::Base
   belongs_to :region
   belongs_to :career
 
+  has_many :videos
+
   has_many :profile_interests, dependent: :destroy
   has_many :interests, through: :profile_interests, source: :interest
 
