@@ -1,0 +1,118 @@
+.about-faq-container {
+  width: rem(1030);
+  padding-top: rem(41);
+  @extend %margin-auto;
+}
+
+.about-faq {
+
+  .main-title {
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+  }
+
+  h2 {
+    font-size: rem(25);
+  }
+
+  h3 {
+    font-size: rem(16.67);
+  }
+
+  @include e('search') {
+    margin-bottom: rem(55);
+    @extend %text-center;
+
+    .main-title {
+      font-size: rem(29.17);
+      text-transform: none;
+      @extend %i-owan-old-style;
+    }
+  }
+
+  @include e('main-content') {
+    color: $default;
+    font-size: rem(16.67);
+    @extend %acumin-pro-cond-regular;
+
+    h3 {
+      font-size: rem(16.67);
+    }
+  }
+
+  @include e('topics') {
+    padding: rem(32) rem(5);
+    margin-top: rem(25);
+    color: $faq-topic;
+    background-color: $faq-topic-bg;
+  }
+
+  @include e('topics-title') {
+    padding-left: rem(15);
+    margin-bottom: rem(20);
+  }
+
+  @include e('topic-list') {
+    list-style-type: disc;
+    @extend %overflow-hidden;
+
+    li {
+      line-height: rem(25);
+    }
+  }
+
+  @include e('items') {
+    margin-top: rem(55);
+  }
+
+  @include e('item') {
+    border-bottom: solid rem(1) $default;
+    padding-bottom: rem(17);
+    margin-top: rem(20);
+
+    h3 {
+      margin-bottom: rem(17);
+    }
+  }
+
+  @include e('contact') {
+    color: $default;
+    margin: rem(70) 0 rem(60) 0;
+    @extend %text-center; 
+  }
+}
+
+.faq-search {
+  width: rem(825);
+  margin-top: rem(25);
+  @extend %margin-auto;
+
+  .faq-input {
+    width: rem(610);
+    font-size: rem(18.86);
+    text-indent: rem(-3);
+  }
+
+  .btn-search {
+    font-size: rem(18.86);
+  }
+}
+
+.topic-col {
+  width: rem(455);
+  margin-left: rem(30);
+  @extend %float-left;
+
+  &:last-child {
+    margin-left: rem(65);
+  }
+}
+
+.faq-contact-btn {
+  margin-top: rem(15);
+  @extend %block;
+  @extend %margin-auto;
+  @extend %background-no-repeat;
+  @include boxSize(rem(120), rem(30));
+  @include background-image('about/contact-us-btn.png');
+}
