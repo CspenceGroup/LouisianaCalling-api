@@ -54,6 +54,7 @@ class Career < ActiveRecord::Base
   validates :what_will_do, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
+
   # validates :industries, presence: true
   # validates :interests, presence: true
   # validates :skills, presence: true
@@ -256,9 +257,5 @@ class Career < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def to_s
-    title
   end
 end
