@@ -1,10 +1,10 @@
 class Cluster < ActiveRecord::Base
-
   has_many :profiles
   has_many :career_clusters, dependent: :destroy
   has_many :careers, through: :career_clusters
 
   validates :name, presence: true
+  validates_uniqueness_of :name
 
   def self.import_from_csv(csv)
     Cluster.transaction do
