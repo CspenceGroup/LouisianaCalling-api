@@ -109,6 +109,15 @@ class Career < ActiveRecord::Base
           create_career_educations(row[9].split(',').map(&:strip), career)
         end
 
+        # Adding industries
+        (1..4).each do |i|
+          create_career_cluster(row[i].strip, career) if row[i].present?
+        end
+      end
+
+      csv.each do |row|
+        career = Career.find_by_title(row[0].strip)
+
         # Adding related_career_by_skill
         if row[12].present?
           create_career_skillships(row[12].split(';').map(&:strip), career)
@@ -117,11 +126,6 @@ class Career < ActiveRecord::Base
         # Adding related_career_by_interest
         if row[13].present?
           create_career_interestships(row[13].split(';').map(&:strip), career)
-        end
-
-        # Adding industries
-        (1..4).each do |i|
-          create_career_cluster(row[i].strip, career) if row[i].present?
         end
       end
     end

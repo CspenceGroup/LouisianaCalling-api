@@ -492,8 +492,8 @@
       </section>
     <% end %>
     <section class="related-careers">
-      <% related_by_skills = @related_by_skills %>
-      <% related_by_interests = @related_by_interests %>
+      <% related_by_skills = @career.related_by_skills.first(3) %>
+      <% related_by_interests = @career.related_by_interests.first(3) %>
       <% has_skills  = related_by_skills.present? %>
       <% has_interests  = related_by_interests.present? %>
       <% if has_skills || has_interests %>
