@@ -52,9 +52,9 @@
                 <li>
                   <p class="jobs-head__desc-text">Interests</p>
                   <div class="jobs-head__desc-icon">
-                    <% career.interests.each do |interest, url| %>
-                      <% if url.present? %>
-                        <%= image_tag(url, :alt => "fire icon") %>
+                    <% career.interests.each do |interest| %>
+                      <% if interest.url.present? %>
+                        <%= image_tag(interest.url, :alt => "fire icon") %>
                       <% else %>
                         <%= image_tag("", :alt => "fire icon") %>
                       <% end %>
@@ -66,9 +66,9 @@
                 <li>
                   <p class="jobs-head__desc-text">Skills</p>
                   <div class="jobs-head__desc-icon">
-                    <% career.skills.each do |skill, url| %>
-                      <% if url.present? %>
-                        <%= image_tag(url, :alt => "icon computer") %>
+                    <% career.skills.each do |skill| %>
+                      <% if skill.url.present? %>
+                        <%= image_tag(skill.url, :alt => "icon computer") %>
                       <% else %>
                         <%= image_tag("", :alt => "fire icon") %>
                       <% end %>
