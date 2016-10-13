@@ -2,7 +2,6 @@ class Profile < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_name, use: :slugged
 
-  belongs_to :education
   belongs_to :cluster
   belongs_to :region
   belongs_to :career
@@ -14,6 +13,9 @@ class Profile < ActiveRecord::Base
 
   has_many :profile_skills, dependent: :destroy
   has_many :skills, through: :profile_skills, source: :skill
+
+  has_many :profile_educations, dependent: :destroy
+  has_many :educations, through: :profile_educations, source: :education
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -44,17 +46,17 @@ class Profile < ActiveRecord::Base
         profile[:first_name] = row[0].strip
         profile[:last_name] = row[1].strip
         profile[:job_title] = row[2].strip
-        profile[:education] = row[3]
-        profile[:region] = row[4].strip
+        profile[:education] = row[3].strip
+        # profile[:region] = row[4].strip
         profile[:description] = row[5].strip
 
-        if row[6]
-          profile[:interests] = row[6].split(',').map{ |s| s.strip }
-        end
+        # if row[6]
+        #   profile[:interests] = row[6].split(',').map{ |s| s.strip }
+        # end
 
-        if row[7]
-          profile[:skills] = row[7].split(',').map{ |s| s.strip }
-        end
+        # if row[7]
+        #   profile[:skills] = row[7].split(',').map{ |s| s.strip }
+        # end
 
         profile[:demand] = row[8].strip
         profile[:cluster] = row[9].strip
