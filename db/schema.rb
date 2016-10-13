@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012065724) do
+ActiveRecord::Schema.define(version: 20161013065717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20161012065724) do
     t.index ["career_related_id"], name: "index_career_interestships_on_career_related_id", using: :btree
   end
 
+  create_table "career_region_educations", force: :cascade do |t|
+    t.integer "career_region_id"
+    t.integer "education_id"
+    t.index ["career_region_id"], name: "index_career_region_educations_on_career_region_id", using: :btree
+    t.index ["education_id"], name: "index_career_region_educations_on_education_id", using: :btree
+  end
+
   create_table "career_region_high_demands", force: :cascade do |t|
     t.integer "career_id"
     t.integer "region_id"
@@ -51,14 +58,14 @@ ActiveRecord::Schema.define(version: 20161012065724) do
   end
 
   create_table "career_regions", force: :cascade do |t|
-    t.string   "title"
-    t.string   "region"
     t.integer  "salary_min"
     t.integer  "salary_max"
-    t.string   "education"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "slug"
+    t.integer  "career_id"
+    t.integer  "region_id"
+    t.index ["career_id"], name: "index_career_regions_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_career_regions_on_region_id", using: :btree
   end
 
   create_table "career_skills", force: :cascade do |t|
