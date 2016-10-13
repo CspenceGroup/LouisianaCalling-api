@@ -1,0 +1,103 @@
+.about-contact {
+  @include background-image('filter-bg.png');
+
+  @include e('help-number') {
+    color: $default;
+    @extend %text-center;
+
+    p {
+      width: rem(375);
+      line-height: rem(20);
+      @extend %margin-auto;
+    }
+  }
+
+  @include e('donate') {
+    color: $faq-topic;
+    padding: rem(9) 0 rem(50);
+    margin-bottom: rem(-25);
+    background-color: $filter-careers-bg;
+    @extend %acumin-pro-cond-regular;
+  }
+
+  @include e('address') {
+    padding: rem(25) 0 rem(6);
+
+    p {
+      margin-bottom: rem(12);
+    }
+  }
+}
+
+.about-help-container {
+  width: rem(670);
+  padding: rem(40) 0 rem(45);
+  @extend %margin-auto;
+
+  .help-form-title {
+    font-size: rem(25);
+    margin-bottom: rem(15);
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+  }
+}
+
+.need-help-title {
+  margin-bottom: rem(25);
+  @extend %text-capitalize;
+}
+
+.about-call-number {
+  color: $white;
+  margin-top: rem(5);
+  @extend %block;
+  @extend %margin-auto;
+  @extend %background-no-repeat;
+  @include boxSize(rem(215), rem(87));
+  @include background-image('tel-arrow.png');
+}
+
+.about-help-form {
+  font-size: rem(18.86);
+  color: $donate-form-txt;
+  @extend %font-style-italic;
+
+  .form-control {
+    margin-top: rem(20);
+    @extend %no-border;
+    @extend %no-border-radius;
+  }
+
+  input {
+    @include boxSize(100%, rem(53));
+  }
+
+  textarea {
+    @include boxSize(100%, rem(237));
+  }
+}
+
+.btn-help-message {
+  color: $white;
+  font-size: rem(18.86);
+  margin-top: rem(35);
+  background-color: $default;
+  @extend %block;
+  @extend %margin-auto;
+  @extend %no-border-radius;
+  @extend %text-capitalize;
+  @extend %i-owan-old-style-bi;
+  @include boxSize(rem(211), rem(52));
+}
+
+.icon-address {
+  margin: 0 rem(15) 0 rem(2);
+  @include boxSize(rem(14), rem(20));
+  @include background-image('about-address.png');
+}
+
+.icon-email {
+  margin-right: rem(12);
+  @include boxSize(rem(19), rem(13));
+  @include background-image('icon-about-email.png');
+}
