@@ -1,0 +1,60 @@
+.about-comminity-container {
+  width: rem(1054);
+  margin: rem(50) auto 0 auto;
+  padding-bottom: rem(53);
+  
+  @include e('heading') {
+    @extend %text-center;
+    color: $default;
+    width: rem(650);
+    margin: 0 auto rem(69) auto;
+
+    h2 {
+      font-size: rem(33.3);
+      @extend %i-owan-old-style; 
+    }
+
+    p {
+      font-size: rem(16.7);
+      @extend %acumin-pro-cond;
+      padding-top: rem(21);
+    }
+  }
+
+}
+
+.about-comminity {
+  margin-top: rem(31);
+
+  &:first-child {
+    @extend %no-margin-top;
+  }
+
+  h3 {
+    font-size: rem(25);
+    @extend %text-uppercase;
+    color: $default;
+    @extend %brandon-grotesque;
+    padding-left: rem(8);
+  }
+
+  @include e('content') {
+    margin-top: rem(9);
+    @extend %overflow-hidden;
+  }
+
+  @include e('details') {
+    @extend %overflow-hidden;
+  }
+
+  @include e('item') {
+    @include boxSize(rem(335), rem(335));
+    margin: rem(20) rem(8) 0 rem(8);
+    @extend %float-left;
+
+    &:last-child {
+      // @extend %no-margin-right;
+    }
+  }
+}
+
