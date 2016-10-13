@@ -4,15 +4,15 @@ class CareerController < ApplicationController
   before_filter :career_titles, only: [:index, :detail]
 
   def index
-    @careers_slider = []
+    @careers_slider = Career.first(5)
 
-    Career.first(5).each do |career|
-      # get_image_for_career_interest is invoked from CareerHelper
-      career.interests = get_image_for_career_interest(career.interests)
-      # get_image_for_career_skill is invoked from CareerHelper
-      career.skills = get_image_for_career_skill(career.skills)
-      @careers_slider << career
-    end
+    # Career.first(5).each do |career|
+    #   # get_image_for_career_interest is invoked from CareerHelper
+    #   # career.interests = get_image_for_career_interest(career.interests)
+    #   # get_image_for_career_skill is invoked from CareerHelper
+    #   # career.skills = get_image_for_career_skill(career.skills)
+    #   @careers_slider << career
+    # end
     careers =
       if !params[:title].present? && !params[:region].present?
         Career.all.filter_by_salary(
@@ -39,26 +39,27 @@ class CareerController < ApplicationController
 
     return unless @career.present?
     # get_image_for_career_interest is invoked from CareerHelper
-    @career.interests = get_image_for_career_interest(@career.interests)
+    # @career.interests = get_image_for_career_interest(@career.interests)
 
     # get_image_for_career_skill is invoked from CareerHelper
-    @career.skills = get_image_for_career_skill(@career.skills)
+    # @career.skills = get_image_for_career_skill(@career.skills)
 
     # get_career_regions_by_career_title is invoked from CareerHelper
-    @regions = get_career_regions_by_career_title(@career.title)
+    # @regions = get_career_regions_by_career_title(@career.title)
+    @regions = get_regions_by_career(@career.id)
 
-    @related_by_skills = Career.all
-                               .filter_by_title(@career.related_career_by_skill)
-                               .offset(0).limit(3)
+    # @related_by_skills = Career.all
+    #                            .filter_by_title(@career.related_career_by_skill)
+    #                            .offset(0).limit(3)
 
-    @related_by_interests =
-      Career.all
-            .filter_by_title(@career.related_career_by_interest)
-            .offset(0).limit(3)
+    # @related_by_interests =
+    #   Career.all
+    #         .filter_by_title(@career.related_career_by_interest)
+    #         .offset(0).limit(3)
 
-    if @career.profile_name.present?
-      @profile = Profile.find_by_full_name(@career.profile_name).first
-    end
+    # if @career.profile_name.present?
+    #   @profile = Profile.find_by_full_name(@career.profile_name).first
+    # end
   end
 
   def filter

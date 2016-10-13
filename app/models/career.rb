@@ -19,6 +19,9 @@ class Career < ActiveRecord::Base
   has_many :profiles
   has_many :top_jobs
 
+  has_many :career_regions
+  has_many :regions, through: :career_regions, source: :region
+
   has_many :career_region_high_demands, dependent: :destroy
   has_many :regions_high_demand, through: :career_region_high_demands, source: :region
 
