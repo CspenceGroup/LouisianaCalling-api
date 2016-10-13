@@ -156,7 +156,7 @@ $(document).on('turbolinks:load', function(){
 
     if (activeRegionData) {
       $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
-      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ activeRegionData.education + '">' + "&ast;&nbsp;" + activeRegionData.education +'</span>');
+      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ activeRegionData.educations[0].name + '">' + activeRegionData.educations[0].name +'</span>');
     }
   }
 
@@ -188,7 +188,7 @@ $(document).on('turbolinks:load', function(){
     if (videoSource) {
       videoSource = JSON.parse(videoSource);
       var videoModelElement = $('#videoModal');
-      
+
       videoModelElement.find('.modal-video__details').prepend(
         '<div class="video-container">\
           <video preload autoplay class="video-playing video-player">\
@@ -297,7 +297,7 @@ $(document).on('turbolinks:load', function(){
         window.location = toUrl;
       }
     }
-    
+
     return false;
   });
 
