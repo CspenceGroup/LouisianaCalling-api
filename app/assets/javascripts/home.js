@@ -155,8 +155,9 @@ $(document).on('turbolinks:load', function(){
     }
 
     if (activeRegionData) {
+      var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
       $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
-      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ activeRegionData.educations[0].name + '">' + activeRegionData.educations[0].name +'</span>');
+      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.toString() + '">' + educations.toString() +'</span>');
     }
   }
 
