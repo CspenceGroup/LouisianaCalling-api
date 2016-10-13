@@ -13,5 +13,9 @@
 
   @include e('text') {
     line-height: rem(23);
+
+    &:nth-child(2){
+      margin-top: 0;
+    }
   }
 }

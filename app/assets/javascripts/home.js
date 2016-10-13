@@ -174,6 +174,7 @@ $(document).on('turbolinks:load', function(){
 
     addRegionName(regionId);
     showCareerRequired(regionId);
+    $('.career-options__text').dotdotdot({});
   }
 
   //Show video banner homepage

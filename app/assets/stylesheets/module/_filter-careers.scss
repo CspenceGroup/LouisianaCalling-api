@@ -33,12 +33,10 @@
   @include e('desc') {
     margin-bottom: rem(30);
     padding-right: rem(15);
+  }
 
-    > p{
-      font-size: rem(14.5);
-      @extend %acumin-pro-cond-regular;
-      margin-bottom: rem(10);
-    }
+  @include e('title-edu') {
+    padding-bottom: 0;
   }
 }
 
@@ -141,4 +139,10 @@
   outline: none;
   border: rem(1) solid $range-border;
   @include boxSize(rem(12), rem(27));
+}
+
+.asterisk-careers-filter {
+  font-size: rem(14.5);
+  @extend %acumin-pro-cond-regular;
+  padding: rem(5) 0 rem(17) 0;
 }

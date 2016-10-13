@@ -21,21 +21,21 @@
 
   @include e('map') {
     top: rem(-250);
-    right: rem(404);
+    right: rem(510);
     @include boxSize(rem(585), rem(615));
     @extend %absolute;
   }
 }
 
 .map-details {
-  margin-right: rem(55);
+  margin-right: rem(163);
   @extend %background-no-repeat;
   @extend %relative;
   @extend %float-right;
 }
 
 .jobs-container {
-  width: rem(880);
+  width: rem(1100);
   @extend %margin-auto;
   @extend %relative;
 }
@@ -43,17 +43,17 @@
 .job-heading {
 
   @include m('pull-left') {
-    margin-right: rem(160);
+    margin-right: rem(321);
   }
 
   @include m('pull-right') {
-    margin: 0 rem(140) rem(12);
+    margin: 0 rem(302) rem(12) 0;
   }
 }
 
 .job-desc {
   font-size: rem(18.8);
-  margin-right: rem(65);
+  margin-right: rem(225);
   @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
   @extend %font-weight-normal;
@@ -68,6 +68,10 @@
   @extend %text-uppercase;
   @extend %brandon-grotesque;
   @extend %absolute;
+
+  @include m('careers') {
+    padding-top: rem(9);
+  }
 }
 
 .job-list {
@@ -89,7 +93,7 @@
 }
 
 .map-title {
-  margin: rem(57) rem(54) rem(20);
+  margin: rem(57) 0 rem(20) rem(178);
   @extend %overflow-hidden;
 }
 
@@ -106,4 +110,11 @@
 
 .data-map-hidden {
   display: none;
+}
+
+.asterisk-copy-home {
+  margin-top: rem(365);
+  font-size: rem(15);
+  @extend %acumin-pro-cond-regular;
+  @extend %text-center;
 }
