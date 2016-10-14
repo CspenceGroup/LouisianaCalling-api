@@ -63,6 +63,10 @@
     li {
       line-height: rem(25);
     }
+
+    a {
+      color: $faq-topic;
+    }
   }
 
   @include e('items') {
@@ -130,7 +134,7 @@
   a {
     color: $default;
   }
-  
+
   @include e('name') {
     font-size: rem(16.67);
     padding: rem(7) 0 0 rem(22);
