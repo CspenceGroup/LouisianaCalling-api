@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013065717) do
+ActiveRecord::Schema.define(version: 20161014041515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,28 +129,56 @@ ActiveRecord::Schema.define(version: 20161013065717) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_careers", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "career_id"
+    t.index ["career_id"], name: "index_profile_careers_on_career_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_careers_on_profile_id", using: :btree
+  end
+
+  create_table "profile_educations", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "education_id"
+    t.index ["education_id"], name: "index_profile_educations_on_education_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_educations_on_profile_id", using: :btree
+  end
+
+  create_table "profile_interests", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "interest_id"
+    t.index ["interest_id"], name: "index_profile_interests_on_interest_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_interests_on_profile_id", using: :btree
+  end
+
+  create_table "profile_skills", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "skill_id"
+    t.index ["profile_id"], name: "index_profile_skills_on_profile_id", using: :btree
+    t.index ["skill_id"], name: "index_profile_skills_on_skill_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "region"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "email"
     t.text     "description"
-    t.text     "interests"
-    t.text     "skills"
     t.string   "demand"
-    t.string   "cluster"
     t.string   "salary"
-    t.string   "education"
     t.string   "video"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "image_large"
     t.string   "image_medium"
     t.string   "image_small"
     t.string   "slug"
     t.integer  "video_id"
+    t.integer  "region_id"
+    t.integer  "cluster_id"
+    t.string   "educational_institution"
+    t.index ["cluster_id"], name: "index_profiles_on_cluster_id", using: :btree
+    t.index ["region_id"], name: "index_profiles_on_region_id", using: :btree
     t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
