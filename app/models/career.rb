@@ -206,6 +206,10 @@ class Career < ActiveRecord::Base
     )
   end
 
+  def to_s
+    title
+  end
+
   private
 
   # Defaults a slug with title
@@ -215,9 +219,5 @@ class Career < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def to_s
-    title
   end
 end

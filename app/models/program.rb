@@ -2,23 +2,27 @@ class Program < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
-  serialize :industries, Array
-  serialize :interests, Array
-  serialize :career, Array
+  has_many :industries
+  has_many :interests
+  has_many :careers
 
-  validates_inclusion_of :duration, :in => ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+", ""]
-  validates_inclusion_of :time_of_day, :in => ["Day", "Night", "Both", ""]
-  validates_inclusion_of :hours_per_weeks, :in => ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours", ""]
-  # validates_inclusion_of :education, :in => ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree", ""]
+  belongs_to :education
+  # serialize :industries, Array
+  # serialize :interests, Array
+  # serialize :career, Array
+
+  validates_inclusion_of :duration, in: Constants::PROGRAM_DURATIONS
+  validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
+  validates_inclusion_of :hours_per_weeks, in: Constants::HOURS_PER_WEEK
 
   scope :filter_by_tuition, lambda { |tuition_min, tuition_max|
     where('tuition_max <= ? AND tuition_min >= ?', tuition_max, tuition_min)
   }
 
   scope :filter_by_title, lambda { |title|
-    query = ["LOWER(title) like ? "]
-    query.push("LOWER(institution_name) like ? ")
-    query.push("LOWER(career) like ? ")
+    query = ['LOWER(title) like ? ']
+    query.push('LOWER(institution_name) like ? ')
+    query.push('LOWER(career) like ? ')
     title = "%#{title.downcase}%"
     where(query.join(' OR '), title, title, title)
   }
@@ -31,12 +35,12 @@ class Program < ActiveRecord::Base
     Program.transaction do
       Program.delete_all
 
-      csv.each_with_index do |row, index|
+      csv.each_with_index do |row|
+        raise 'Wrong file' if row[20].present?
+
         program = Program.new
         program[:title] = row[0].strip
-        # program[:id] = index + 1
-        # program[:slug] = row[0].parameterize + '-' + (index + 1).to_s
-        program[:region] = row[1].strip
+        # program[:region] = row[1].strip
         program[:traning_detail] = row[2].strip
         program[:description] = row[3].strip
         program[:duration] = row[4].strip
@@ -44,7 +48,7 @@ class Program < ActiveRecord::Base
         program[:hours_per_weeks] = row[6].strip
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
-        program[:education] = row[9].strip
+        # program[:education] = row[9].strip
         program[:institution_name] = row[10].strip
         program[:phone] = row[11].strip
         program[:address] = row[12].strip
@@ -53,24 +57,24 @@ class Program < ActiveRecord::Base
         program[:lat] = location[0]
         program[:lng] = location[1]
 
-        program[:industries] = []
+        # program[:industries] = []
 
-        for i in 14..17
-          if (row[i] != "" && row[i] != nil) then
-            program[:industries] << row[i].strip
-          end
-        end
+        # for i in 14..17
+        #   if (row[i] != "" && row[i] != nil) then
+        #     program[:industries] << row[i].strip
+        #   end
+        # end
 
         program[:cover_photo] = row[18].strip
-        program[:career] = row[19].split(';').map{ |s| s.strip }
-
-        if row[20]
-          raise "Wrong file"
-        end
+        # program[:career] = row[19].split(';').map{ |s| s.strip }
 
         program.save!
       end
     end
+  end
+
+  def to_s
+    title
   end
 
   private
@@ -83,5 +87,4 @@ class Program < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
-
 end

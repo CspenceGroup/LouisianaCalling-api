@@ -133,6 +133,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def to_s
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def full_name
@@ -146,9 +150,5 @@ class Profile < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || first_name_changed? || last_name_changed?
-  end
-
-  def to_s
-    "#{first_name} #{last_name}"
   end
 end
