@@ -9,29 +9,8 @@ section.about-tabs__desc.about-faq
           input.form-control.search-input.faq-input(required='required' type='text' name='search-input' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"')
           button.btn.btn-search.btn-submit(type='submit') Search
     section.about-faq__main-content
-      h2.main-title Category 1
-      section.about-faq__topics
-        h3.main-title.about-faq__topics-title Jump to a topic
-        ul.about-faq__topic-list
-          .topic-col
-            li Do I have to have a Vimeo Profile?
-            li How do I edit my Profile?
-            li What should I write in the Bio section?
-            li What is that weird smiley face icon and how do I upload my own picture?
-            li How do I delete a Profile picture?
-          .topic-col
-            li My Vimeo account is showing up when I Google my name. How do I stop that?
-            li How do I create a custom URL for my profile?
-            li Is it possible to choose my Profile videos?
-            li How can I change the order of the videos under My Videos?
-            li Why don't my Channels and Groups display on my Profile?
-      .about-faq__items
-        section.about-faq__item
-          h3.main-title Do I have to have a vimeo profile?
-          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid odio quibusdam vero nam officiis, natus nihil esse iste consectetur, pariatur obcaecati cum ducimus, numquam repellat nemo laudantium doloribus. Inventore, consequuntur?
-        section.about-faq__item
-          h3.main-title How do I edit my profile?
-          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus quae temporibus adipisci mollitia nam consequatur minima omnis voluptates ratione repellendus voluptas, debitis sint laudantium deleniti ea recusandae ullam quibusdam. Autem?
+      / = render partial: "about/partial/category"
+      = render partial: "about/partial/questions-categories"
     section.about-faq__contact
       h2.main-title Can't find what you're looking for?
       a.faq-contact-btn(href="#contactUs" role='tab' data-toggle='tab')

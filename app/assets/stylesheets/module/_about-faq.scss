@@ -1,7 +1,11 @@
 .about-faq-container {
-  width: rem(1030);
+  width: rem(1060);
   padding-top: rem(41);
   @extend %margin-auto;
+}
+
+.category-container {
+  width: rem(1030);
 }
 
 .about-faq {
@@ -11,7 +15,7 @@
     @extend %brandon-grotesque;
   }
 
-  h2 {
+  h2.main-title {
     font-size: rem(25);
   }
 
@@ -116,3 +120,34 @@
   @include boxSize(rem(120), rem(30));
   @include background-image('about/contact-us-btn.png');
 }
+
+.category-col {
+  padding: 0 rem(10);
+  @extend %no-padding;
+}
+
+.categories {
+  a {
+    color: $default;
+  }
+  
+  @include e('name') {
+    font-size: rem(16.67);
+    padding: rem(7) 0 0 rem(22);
+    background-color: $profile-name-shadow;
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    @include boxSize(rem(330), rem(32));
+
+    a {
+      color: $faq-topic;
+    }
+  }
+
+  @include e('questions') {
+    padding-top: rem(15);
+    margin-left: rem(35);
+    list-style: disc;
+  }
+}
+
