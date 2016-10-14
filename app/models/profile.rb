@@ -10,8 +10,6 @@ class Profile < ActiveRecord::Base
 
   has_many :videos
 
-  has_many :videos
-
   has_many :profile_interests, dependent: :destroy
   has_many :interests, through: :profile_interests, source: :interest
 
