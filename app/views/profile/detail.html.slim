@@ -1,0 +1,28 @@
+.container-fluid
+  = render 'navigation/index'
+  .main-content
+    section.hero-banner.profile-owner
+      .hero-banner__container.profile-owner__container
+        h1.hero-banner__title.profile-owner__name Clifton smith
+      .profile-owner__photo
+        = image_tag 'https://s3.amazonaws.com/louisiana-calling/Test+1/Photos+for+Profile+Story+/clifton.jpg', lazy: true, class: "lazy-load"
+    section.guideline
+      .row.guideline-row
+        .col-xs-4.col-md-4.guideline-col.guideline__more-stories
+          h2
+            a(href="/stories")
+        .col-xs-4.col-md-4.guideline-col.guideline__find-program
+          h2
+            a(href="/programs")
+              span near you
+        .col-xs-4.col-md-4.guideline-col.guideline__call-center
+          .want-to-talk
+            h2.main-title.want-to-talk__title Want to talk?
+            p.journey-link.want-to-talk__link
+              span 1-844-LA-CALLS
+    section.profile-guided-journey
+      h2.main-title.shadow-main-title.profile-guided-journey__title Still not convinced?  
+      h2.main-title.shadow-main-title.profile-guided-journey__title Try this.
+      a(href="javascript:void(0);")
+
+  = render 'footer/index'

@@ -1,0 +1,115 @@
+.profile-owner {
+  @extend %relative;
+
+  @include e('container') {
+    padding-top: rem(160);
+  }
+
+  @include e('name') {
+
+  }
+
+  @include e('photo') {
+    z-index: -1;
+    @extend %absolute;
+    @extend %left-top-0;
+    @extend %overflow-hidden;
+    @include boxSize(100%, 100%);
+  }
+}
+
+.guideline-row,
+.guideline-col {
+  @extend %no-padding;
+}
+
+.guideline-col {
+  height: rem(348);
+  @extend %background-no-repeat;
+  @extend %background-cover;
+  @extend %background-position-center;
+}
+
+.guideline {
+  a {
+    margin-top: rem(88);
+    @extend %block;
+    @extend %margin-auto;
+  }
+  @include e('more-stories') {
+    @include background-image('profile-details/more-stories.jpg');
+
+    a {
+      @include boxSize(rem(182), rem(185));
+      @include background-image('profile-details/more-stories-btn.png');
+    }
+  }
+
+  @include e('find-program') {
+    @include background-image('profile-details/find-program.jpg');
+
+    h2 {
+      font-size: rem(29);
+      line-height: rem(40);
+      @extend %i-owan-old-style;
+    }
+
+    a {
+      @extend %relative;
+      @include boxSize(rem(243), rem(164));
+      @include background-image('profile-details/find-programs-btn.png');
+    
+      &:hover {
+        color: $white;
+      }
+    }
+
+    span {
+      top: rem(95);
+      left: rem(43);
+      @extend %inline-block;
+      @extend %absolute;
+    }
+
+  }
+
+  @include e('call-center') {
+    @include background-image('profile-details/call-center.jpg');
+
+    .want-to-talk {
+      background-image: none; 
+      padding-top: rem(115);
+      width: rem(230);
+      @extend %margin-auto;
+
+      @include e('link') {
+        margin-left: rem(-15);
+      }
+
+      span {
+        left: rem(8);
+      }
+    }
+  }
+}
+
+.profile-guided-journey {
+  margin-bottom: rem(-30);
+  padding-top: rem(58);
+  @include boxSize(100%, rem(290));
+  @include background-image('filter-bg.png');
+
+  @include e('title') {
+    font-size: rem(33.16);
+    line-height: rem(40);
+    @extend %text-center;
+  }
+
+  a {
+    margin-top: rem(20);
+    @extend %block;
+    @extend %margin-auto;
+    @include boxSize(rem(162), rem(45));
+    @include background-image('path-button.png');
+  }
+}
