@@ -277,24 +277,28 @@ $(document).on('turbolinks:load', function(){
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
         type = target[2].value,
-        url = '?title=' + careerName,
+        url = "",
         toUrl;
 
-    if (region) {
+    if (careerName && region) {
 
-      url = url + '&region=' + region;
+      url = url + '?title=' + careerName + '&region=' + region;
     }
 
-    if (type && type === 'careers') {
+    if (url != "") {
+      if (type && type === 'careers') {
 
-      // Redirect to careers landing page
-      toUrl = '/careers' + url;
-      window.location = toUrl;
-    } else if (type && type === 'programs') {
+        // Redirect to careers landing page
+        toUrl = '/careers' + url;
+        window.location = toUrl;
+      } else if (type && type === 'programs') {
 
-      toUrl = '/programs' + url;
-      window.location = toUrl;
+        toUrl = '/programs' + url;
+        window.location = toUrl;
+      }
     }
+    
+    return false;
   });
 
   /**

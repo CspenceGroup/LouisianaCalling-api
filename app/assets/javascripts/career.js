@@ -35,15 +35,19 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url = '/programs?title=' + careerName;
+        url;
 
-    if (region) {
+    if (careerName != '' || !careerName) {
+      if (careerName && region) {
 
-      url = url + '&region=' + region;
-      window.location = url;
-    } else {
-      window.location = url;
+        url = '/programs?title=' + careerName + '&region=' + region;
+        window.location = url;
+      } else {
+
+        return false;
+      }
     }
+
   });
 
   // autocomplete for program in careers details page
@@ -247,9 +251,7 @@ $(document).on('turbolinks:load', function(){
     $('.careers-grid-details').hide();
     $('#careers-see-more,#careers-see-more-list').hide();
 
-    if (searchTitle && searchTitle != "") {
-      getValueCheck(0);
-    }
+    getValueCheck(0);
   });
 
   //Click button see more
