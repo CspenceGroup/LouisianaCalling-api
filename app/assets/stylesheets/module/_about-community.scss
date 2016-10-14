@@ -51,10 +51,37 @@
     @include boxSize(rem(335), rem(335));
     margin: rem(20) rem(8) 0 rem(8);
     @extend %float-left;
+  }
 
-    &:last-child {
-      // @extend %no-margin-right;
+  @include e('photo') {
+    @extend %relative;
+
+    &:hover {
+      .about-comminity__overlay {
+        display: block;
+      }
+    }
+  }
+
+  @include e('overlay') {
+    @extend %absolute;
+    @extend %top-0;
+    height: 100%;
+    display: none;
+    color: $white;
+    padding: rem(45) rem(28) 0 rem(32);
+    line-height: rem(20);
+
+    h4 {
+      font-size: rem(20.83);
+      @extend %text-uppercase;
+      @extend %brandon-grotesque;
+    }
+
+    p {
+      font-size: rem(16.67);
+      @extend %acumin-pro-cond;
+      padding-top: rem(32);
     }
   }
 }
-

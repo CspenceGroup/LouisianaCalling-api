@@ -13,9 +13,9 @@
   @include e('nav') {
     font-size: rem(16.7);
     line-height: rem(18);
-    // margin-bottom: rem(37);
-    // width: rem(300);
-    // @extend %margin-auto;
+    margin-bottom: rem(37);
+    width: rem(300);
+    @extend %margin-auto;
     @extend %text-uppercase;
     @extend %clear-both;
     @extend %table;
