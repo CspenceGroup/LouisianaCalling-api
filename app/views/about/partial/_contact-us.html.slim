@@ -16,11 +16,17 @@ section.about-tabs__desc.about-contact
           p
             span.icon.icon-address
             | Lousiana Calling, 9331 Bluebonnet Blvd., Baton Roughe, LA 70810
-          p 
+          p
             span.icon.icon-email
             | Info@lousianacalling.org
-        form.about-help-form#aboutHelpForm
-          input.form-control(name="help-email-input" placeholder="Email Address" type="email")
-          input.form-control(name="help-subject-input" placeholder="Subject" type="text")
-          textarea.form-control(name="help-message-input" placeholder="Message")
+        - if flash[:errors].present?
+          .alert.alert-danger
+            - flash[:errors].each do |msg|
+              = content_tag :div, msg, class: 'errors'
+        - elsif flash[:notice].present?
+          = content_tag :div, flash[:notice], class: 'alert alert-success'
+        form.about-help-form#aboutHelpForm accept-charset="UTF-8" action="/abouts" method="post"
+          input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}")
+          input.form-control(name="contact[subject]" placeholder="Subject" type="text" value="#{@contact.subject}")
+          textarea.form-control(name="contact[message]" placeholder="Message" value="#{@contact.message}")
           button.btn.btn-submit.btn-help-message Send message
