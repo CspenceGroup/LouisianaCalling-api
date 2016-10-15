@@ -10,43 +10,92 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007031725) do
+ActiveRecord::Schema.define(version: 20161014041515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "career_clusters", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "cluster_id"
+    t.index ["career_id"], name: "index_career_clusters_on_career_id", using: :btree
+    t.index ["cluster_id"], name: "index_career_clusters_on_cluster_id", using: :btree
+  end
+
+  create_table "career_educations", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "education_id"
+    t.index ["career_id"], name: "index_career_educations_on_career_id", using: :btree
+    t.index ["education_id"], name: "index_career_educations_on_education_id", using: :btree
+  end
+
+  create_table "career_interests", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "interest_id"
+    t.index ["career_id"], name: "index_career_interests_on_career_id", using: :btree
+    t.index ["interest_id"], name: "index_career_interests_on_interest_id", using: :btree
+  end
+
+  create_table "career_interestships", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "career_related_id"
+    t.index ["career_id"], name: "index_career_interestships_on_career_id", using: :btree
+    t.index ["career_related_id"], name: "index_career_interestships_on_career_related_id", using: :btree
+  end
+
+  create_table "career_region_educations", force: :cascade do |t|
+    t.integer "career_region_id"
+    t.integer "education_id"
+    t.index ["career_region_id"], name: "index_career_region_educations_on_career_region_id", using: :btree
+    t.index ["education_id"], name: "index_career_region_educations_on_education_id", using: :btree
+  end
+
+  create_table "career_region_high_demands", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "region_id"
+    t.index ["career_id"], name: "index_career_region_high_demands_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_career_region_high_demands_on_region_id", using: :btree
+  end
+
   create_table "career_regions", force: :cascade do |t|
-    t.string   "title"
-    t.string   "region"
     t.integer  "salary_min"
     t.integer  "salary_max"
-    t.string   "education"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "slug"
+    t.integer  "career_id"
+    t.integer  "region_id"
+    t.index ["career_id"], name: "index_career_regions_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_career_regions_on_region_id", using: :btree
+  end
+
+  create_table "career_skills", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "skill_id"
+    t.index ["career_id"], name: "index_career_skills_on_career_id", using: :btree
+    t.index ["skill_id"], name: "index_career_skills_on_skill_id", using: :btree
+  end
+
+  create_table "career_skillships", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "career_related_id"
+    t.index ["career_id"], name: "index_career_skillships_on_career_id", using: :btree
+    t.index ["career_related_id"], name: "index_career_skillships_on_career_related_id", using: :btree
   end
 
   create_table "careers", force: :cascade do |t|
     t.string   "slug"
     t.string   "title"
-    t.string   "education"
     t.text     "about_job"
     t.text     "what_will_do"
-    t.string   "related_career_by_skill"
-    t.string   "related_career_by_interest"
-    t.string   "profile_name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "photo_large"
     t.string   "photo_medium"
-    t.string   "photo_small"
-    t.text     "industries"
-    t.text     "interests"
-    t.text     "skills"
     t.integer  "salary_min"
     t.integer  "salary_max"
     t.float    "demand"
-    t.text     "regions_high_demand"
+    t.integer  "top_job_id"
+    t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 
   create_table "clusters", force: :cascade do |t|
@@ -88,28 +137,57 @@ ActiveRecord::Schema.define(version: 20161007031725) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_careers", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "career_id"
+    t.index ["career_id"], name: "index_profile_careers_on_career_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_careers_on_profile_id", using: :btree
+  end
+
+  create_table "profile_educations", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "education_id"
+    t.index ["education_id"], name: "index_profile_educations_on_education_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_educations_on_profile_id", using: :btree
+  end
+
+  create_table "profile_interests", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "interest_id"
+    t.index ["interest_id"], name: "index_profile_interests_on_interest_id", using: :btree
+    t.index ["profile_id"], name: "index_profile_interests_on_profile_id", using: :btree
+  end
+
+  create_table "profile_skills", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "skill_id"
+    t.index ["profile_id"], name: "index_profile_skills_on_profile_id", using: :btree
+    t.index ["skill_id"], name: "index_profile_skills_on_skill_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "job_title"
-    t.string   "region"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "email"
     t.text     "description"
-    t.text     "interests"
-    t.text     "skills"
     t.string   "demand"
-    t.string   "cluster"
     t.string   "salary"
-    t.string   "education"
     t.string   "video"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "image_large"
     t.string   "image_medium"
     t.string   "image_small"
     t.string   "slug"
+    t.integer  "video_id"
+    t.integer  "region_id"
+    t.integer  "cluster_id"
+    t.string   "educational_institution"
+    t.index ["cluster_id"], name: "index_profiles_on_cluster_id", using: :btree
+    t.index ["region_id"], name: "index_profiles_on_region_id", using: :btree
+    t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
   create_table "programs", force: :cascade do |t|
@@ -141,6 +219,8 @@ ActiveRecord::Schema.define(version: 20161007031725) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "top_job_id"
+    t.index ["top_job_id"], name: "index_regions_on_top_job_id", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
@@ -151,19 +231,22 @@ ActiveRecord::Schema.define(version: 20161007031725) do
   end
 
   create_table "top_jobs", force: :cascade do |t|
-    t.string   "region"
-    t.string   "job_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "career_id"
+    t.integer  "region_id"
+    t.index ["career_id"], name: "index_top_jobs_on_career_id", using: :btree
+    t.index ["region_id"], name: "index_top_jobs_on_region_id", using: :btree
   end
 
   create_table "videos", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "profile_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "url"
     t.string   "title"
+    t.integer  "profile_id"
+    t.index ["profile_id"], name: "index_videos_on_profile_id", using: :btree
   end
 
 end

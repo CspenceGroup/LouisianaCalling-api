@@ -5,6 +5,9 @@ $(document).on('turbolinks:load', function(){
    ****************************************/
 
   $('.faq-contact-btn').on('click', function() {
+    // Hidden alert
+    $('.about-contact-container').find('.alert').hide();
+
     $('#about-tabs a[href="#contactUs"]').tab('show');
   });
 

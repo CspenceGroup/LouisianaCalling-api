@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 #
-class Contact < ApplicationRecord
+class Contact < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_presence_of :email, :subject, :message
 
@@ -20,6 +20,6 @@ class Contact < ApplicationRecord
 
   # Send email to Support team
   def send_contact_email_to_supporter
-    UserMailer.contact_us(self).deliver_now
+    # UserMailer.contact_us(self).deliver_now
   end
 end
