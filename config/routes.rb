@@ -32,10 +32,7 @@ Rails.application.routes.draw do
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
 
-  # Contact Us page
-  get 'contacts/new' => 'contact#new', :as => :contact
-  post 'contacts/create' => 'contact#create', :as => :create_contact
-
   # About Us page
   get 'abouts' => 'about#index'
+  post 'abouts' => 'about#create'
 end
