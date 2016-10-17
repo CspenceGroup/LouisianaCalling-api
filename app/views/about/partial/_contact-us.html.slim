@@ -26,7 +26,7 @@ section.about-tabs__desc.about-contact
         - elsif flash[:notice].present?
           = content_tag :div, flash[:notice], class: 'alert alert-success'
         form.about-help-form#aboutHelpForm accept-charset="UTF-8" action="/abouts" method="post"
-          input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}")
-          input.form-control(name="contact[subject]" placeholder="Subject" type="text" value="#{@contact.subject}")
-          textarea.form-control(name="contact[message]" placeholder="Message" value="#{@contact.message}")
+          input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}" required='required')
+          input.form-control(name="contact[subject]" placeholder="Subject" type="text" value="#{@contact.subject}" required='required')
+          textarea.form-control(name="contact[message]" placeholder="Message" value="#{@contact.message}" required='required')
           button.btn.btn-submit.btn-help-message Send message

@@ -9,7 +9,7 @@ section.about-tabs__desc.about-faq
           input.form-control.search-input.faq-input(required='required' type='text' name='search-input' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"')
           button.btn.btn-search.btn-submit(type='submit') Search
     section.about-faq__main-content
-      / = render partial: "about/partial/category"
+      = render partial: "about/partial/category"
       = render partial: "about/partial/questions-categories"
     section.about-faq__contact
       h2.main-title Can't find what you're looking for?

@@ -48,4 +48,46 @@ $(document).on('turbolinks:load', function(){
       window.location.href = '/abouts?tab=contact-us'
     }
   });
+
+  /*
+   * Transfering to category or question which use want to move to.
+   */
+  $('.about-faq__main-content a').click(function(e) {
+    e.preventDefault();
+    var hash = $(this)[0].hash;
+    var parent = $(this).closest('.about-faq__main-content');
+
+    if (hash.indexOf("-q") >= 0) {
+
+      // Scroll to question
+      var id = hash.split('-').slice(0, -1).join('-');
+      var ele = $(id);
+      var page = $('html, body');
+      
+      ele
+        .closest('.about-faq__main-content')
+        .find('.categories')
+        .removeClass('category-active')
+        .addClass('category-inactive');
+
+      ele
+        .removeClass('category-inactive')
+        .addClass('category-active');
+
+      page.animate({
+        scrollTop: $(hash).offset().top-90
+      }, 1000);
+
+    } else {
+
+      // Move to Catogory
+      parent.find('.categories')
+        .removeClass('category-active')
+        .addClass('category-inactive');
+
+      parent.find(hash)
+        .removeClass('category-inactive')
+        .addClass('category-active');
+    }
+  });
 });
