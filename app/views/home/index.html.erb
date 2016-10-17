@@ -70,7 +70,7 @@
             <select class="form-control" required="true">
               <option value="" disabled selected>Region</option>
               <% @regions.each do |region|%>
-                <option value="<%= region.name %>"><%= region.name %></option>
+                <option value="<%= region.id %>"><%= region.name %></option>
               <% end %>
             </select>
             <span class="fa fa-caret-down"></span>

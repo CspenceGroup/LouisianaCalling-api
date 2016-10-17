@@ -62,16 +62,16 @@ class Career < ActiveRecord::Base
   validates :demand, presence: true
   # validates :regions_high_demand, presence: true
 
-  scope :filter_by_title, lambda { |titles|
-    where('title IN (?)', titles)
+  scope :filter_by_title, lambda { |title|
+    where('LOWER(title) like ?', title)
   }
 
-  scope :with_regions_high_demand, lambda { |region|
-    joins(:regions_high_demand).where('regions_high_demand.region_id = ?', region)
+  scope :with_regions_high_demand, lambda {
+    joins(:career_region_high_demands).distinct
   }
 
-  scope :filter_by_title_and_region, lambda { |title, region|
-    where('LOWER(title) like ? AND regions_high_demand like ?', "%#{title.downcase}%", "%#{region}%")
+  scope :filter_by_regions_high_demand, lambda { |region|
+    with_regions_high_demand.where('career_region_high_demands.region_id = ?', region)
   }
 
   scope :filter_by_salary, lambda { |salary_min, salary_max|
