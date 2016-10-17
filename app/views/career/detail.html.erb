@@ -471,7 +471,7 @@
             <select class="form-control" required>
               <option value="" disabled selected>Region</option>
               <% @list_of_regions.each do |region|%>
-                <option value="<%= region.name %>"><%= region.name %></option>
+                <option value="<%= region.id %>"><%= region.name %></option>
               <% end %>
             </select>
             <span class="fa fa-caret-down"></span>
@@ -481,14 +481,14 @@
       </form>
       <div class="auto-fill-data" id="availableProgramCareer"><%= @list_of_careers.to_json %></div>
     </section>
-    <% if @profile %>
+    <% if @career.profiles.first.present? %>
       <section class="story-owner row">
         <div class="col-xs-6 col-md-6 pull-right story-owner__content">
-          <h2 class="story-owner__title main-title"><%= @profile.first_name + ' ' + @profile.last_name %></h2>
-          <!-- <a href="javascript:void(0);" class="story-owner__link"></a> -->
+          <h2 class="story-owner__title main-title"><%= @career.profiles.first %></h2>
+          <a href="<%= profile_detail_path(@career.profiles.first) %>" class="story-owner__link"></a>
         </div>
         <div class="story-owner__photo">
-          <%= image_tag @profile.image_large, lazy: true, class: "lazy-load" %>
+          <%= image_tag @career.profiles.first.image_large, lazy: true, class: "lazy-load" %>
         </div>
       </section>
     <% end %>
