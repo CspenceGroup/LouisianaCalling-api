@@ -4,7 +4,7 @@ class AboutController < ApplicationController
   def index
     @contact = Contact.new
     @tab = params[:tab]
-    @tag |= 'who-we-are'
+    @tab = 'who-we-are' unless @tab.present?
   end
 
   def create
