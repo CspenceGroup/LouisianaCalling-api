@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function(){
       $('#about-tabs a[href="#faq"]').tab('show');
     } else {
       // Goto About us page with FAQ tab
-      window.location.href = '/abouts'
+      window.location.href = '/abouts?tab=faq'
     }
   });
 
@@ -45,7 +45,7 @@ $(document).on('turbolinks:load', function(){
       $('#about-tabs a[href="#contactUs"]').tab('show');
     } else {
       // Goto About us page with contact-us tab
-      window.location.href = '/abouts'
+      window.location.href = '/abouts?tab=contact-us'
     }
   });
 });
