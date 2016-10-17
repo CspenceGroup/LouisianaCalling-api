@@ -19,12 +19,17 @@ class CareerController < ApplicationController
           Constants::SALARY_MIN, Constants::SALARY_MAX
         )
       else
-        Career.all
-              .filter_by_regions_high_demand(params[:region])
-              .filter_by_title(params[:title])
-              .filter_by_salary(
-                Constants::SALARY_MIN, Constants::SALARY_MAX
-              )
+        careers = Career.all
+
+        if params[:region].present?
+          careers = careers.filter_by_region(params[:region].split(','))
+        end
+
+        careers = careers.filter_by_title(params[:title])
+                         .filter_by_salary(
+                           Constants::SALARY_MIN, Constants::SALARY_MAX
+                         )
+        careers
       end
 
     @careers = careers.offset(0).limit(9)
@@ -44,20 +49,15 @@ class CareerController < ApplicationController
   end
 
   def filter
-    query = convert_query_str(params)
+    careers = list_careers_by_query(params)
 
     ## seach by career title
-    if params[:title].present?
-      query.push("(LOWER(title) like '%#{params[:title].gsub(/'/, "''").downcase}%')")
-    end
-
-    last_id = params[:last_id].present? ? params[:last_id] : 0
-    query.push("id > #{last_id}")
+    careers = careers.filter_by_title(params[:title]) if params[:title].present?
 
     ## Sort by, defaut sort by ID
     sort_by = params[:sort].present? ? params[:sort] : 'id'
+    careers = careers.order(sort_by)
 
-    careers = Career.all.where(query.join(' AND ')).order(sort_by)
     is_see_more = careers.count > 9 ? true : false
     careers = careers.offset(0).limit(9)
 
@@ -74,41 +74,37 @@ class CareerController < ApplicationController
 
   private
 
-  def convert_query_str(params)
-    query = []
+  def list_careers_by_query(params)
+    careers = Career.all
+
     ## filter by region
-    query.push(regions_query_str(params[:regions])) if params[:regions].present?
+    careers = careers.filter_by_region(params[:regions].split(',')) if params[:regions].present?
 
     ## filter by industry
-    if params[:industries].present?
-      query.push(industries_query_str(params[:industries]))
-    end
+    careers = careers.filter_by_industry(params[:industries].split(',')) if params[:industries].present?
 
-    ## filter by industry
-    query.push(skills_query_str(params[:skills])) if params[:skills].present?
+    ## filter by skill
+    careers = careers.filter_by_skill(params[:skills].split(',')) if params[:skills].present?
 
     ## filter by education
     if params[:educations].present?
-      query.push(educations_query_str(params[:educations]))
+      careers = careers.filter_by_education(params[:educations].split(','))
     end
 
     ## filter by interests
-    if params[:interests].present?
-      query.push(interests_query_str(params[:interests]))
-    end
+    careers = careers.filter_by_interest(params[:interests].split(',')) if params[:interests].present?
 
     ## filter by demand
-    query.push(demands_query_str(params[:demands])) if params[:demands].present?
+    if params[:demand].present?
+      careers = careers.where('demand IN (?)', params[:demand].split(','))
+    end
 
     ## filter by salary
     if params[:salary_max].present? && params[:salary_min].present?
-      salary_query = ["salary_max <= #{params[:salary_max]}"]
-      salary_query.push "salary_min >= #{params[:salary_min]}"
-
-      query.push(salary_query)
+      careers = careers.filter_by_salary(params[:salary_min], params[:salary_max])
     end
 
-    query
+    careers
   end
 
   def data_for_filter_details
