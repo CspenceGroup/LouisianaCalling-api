@@ -16,7 +16,8 @@ class Career < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
-  has_many :profiles
+  has_many :profile_careers, dependent: :destroy
+  has_many :profiles, through: :profile_careers, source: :profile
   has_many :top_jobs
 
   has_many :career_regions
@@ -63,6 +64,10 @@ class Career < ActiveRecord::Base
 
   scope :filter_by_title, lambda { |titles|
     where('title IN (?)', titles)
+  }
+
+  scope :with_regions_high_demand, lambda { |region|
+    joins(:regions_high_demand).where('regions_high_demand.region_id = ?', region)
   }
 
   scope :filter_by_title_and_region, lambda { |title, region|
