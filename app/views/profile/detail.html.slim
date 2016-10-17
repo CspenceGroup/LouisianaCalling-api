@@ -1,11 +1,17 @@
+- url = 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
+/ - url = 'https://s3.amazonaws.com/louisiana-calling/Test+1/Photos+for+Profile+Story+/clifton.jpg'
 .container-fluid
   = render 'navigation/index'
   .main-content
     section.hero-banner.profile-owner
       .hero-banner__container.profile-owner__container
         h1.hero-banner__title.profile-owner__name Clifton smith
-      .profile-owner__photo
-        = image_tag 'https://s3.amazonaws.com/louisiana-calling/Test+1/Photos+for+Profile+Story+/clifton.jpg', lazy: true, class: "lazy-load"
+      .profile-owner__photo#profile-video
+        - if url.include? ".mp4"
+          video.video-playing.video-player#profile-video(muted='')
+            source(src=url type='video/mp4')
+        - else
+          = image_tag url, lazy: true, class: "lazy-load"
     section.career-desc.personal-profile
       section.personal-profile-career
         ul.profile-career-details
