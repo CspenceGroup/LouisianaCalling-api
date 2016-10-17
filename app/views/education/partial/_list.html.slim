@@ -6,8 +6,8 @@
           .jobs-head.program-list__item-header
             a href="/programs/#{program.slug}"
               .jobs-head__name
-                .jobs-head__title.jobs-head__title-great-jobs title="#{program.title}"
-                  = program.title
+                .jobs-head__title.jobs-head__title-great-jobs title="#{program}"
+                  = program
             .jobs-head__content
               //- .edu-scholarship
               //-   p
@@ -27,8 +27,8 @@
               li.edu-detail-item--landing
                 .icon.i-career
                   = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
-                .career-industry title="#{program.career.join(';') if program.career}"
-                  - program.career.each do |career|
+                .career-industry title="#{program.careers if program.careers.present?}"
+                  - program.careers.each do |career|
                     p
                       = career
               li.edu-detail-item--landing
