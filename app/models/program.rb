@@ -2,14 +2,14 @@ class Program < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
-  has_many :industries
-  has_many :interests
-  has_many :careers
+  has_many :program_clusters, dependent: :destroy
+  has_many :industries, through: :program_clusters, source: :cluster
+
+  has_many :program_careers, dependent: :destroy
+  has_many :careers, through: :program_careers, source: :career
 
   belongs_to :education
-  # serialize :industries, Array
-  # serialize :interests, Array
-  # serialize :career, Array
+  belongs_to :region
 
   validates_inclusion_of :duration, in: Constants::PROGRAM_DURATIONS
   validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
@@ -40,7 +40,10 @@ class Program < ActiveRecord::Base
 
         program = Program.new
         program[:title] = row[0].strip
-        # program[:region] = row[1].strip
+
+        region = Region.find_by_name(row[1].strip)
+        program[:region_id] = region.id if region.present?
+
         program[:traning_detail] = row[2].strip
         program[:description] = row[3].strip
         program[:duration] = row[4].strip
@@ -48,29 +51,52 @@ class Program < ActiveRecord::Base
         program[:hours_per_weeks] = row[6].strip
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
-        # program[:education] = row[9].strip
+
+        education = Education.find_by_name(row[9].strip)
+        program[:education_id] = education.id if education.present?
+
         program[:institution_name] = row[10].strip
         program[:phone] = row[11].strip
         program[:address] = row[12].strip
 
-        location = row[13].split(',').map{ |s| s.strip }
-        program[:lat] = location[0]
-        program[:lng] = location[1]
-
-        # program[:industries] = []
-
-        # for i in 14..17
-        #   if (row[i] != "" && row[i] != nil) then
-        #     program[:industries] << row[i].strip
-        #   end
-        # end
-
-        program[:cover_photo] = row[18].strip
-        # program[:career] = row[19].split(';').map{ |s| s.strip }
+        if row[13].present?
+          location = row[13].split(',').map(&:strip)
+          program[:lat] = location[0]
+          program[:lng] = location[1]
+        end
 
         program.save!
+
+        (14..17).each do |i|
+          create_program_cluster(row[i].strip, program) if row[i].present?
+        end
+
+        program[:cover_photo] = row[18].strip
+        if row[19].present?
+          create_program_careers(row[19].split(';').map(&:strip), program)
+        end
       end
     end
+  end
+
+  def self.create_program_careers(careers, program)
+    careers.each do |career_name|
+      career = Career.find_by_title(career_name)
+
+      ProgramCareer.create(
+        program_id: program.id,
+        career_id: career.present? ? career.id : nil
+      )
+    end
+  end
+
+  def self.create_program_cluster(cluster_name, program)
+    cluster = Cluster.find_by_name(cluster_name)
+
+    ProgramCluster.create(
+      program_id: program.id,
+      cluster_id: cluster.present? ? cluster.id : nil
+    )
   end
 
   def to_s
