@@ -29,11 +29,11 @@
                       <h2 class="main-title profile-title profile-name">#{@profiles[0]}</h2>
                       <h3>#{@profiles[0].careers.first}</h3>
                       <p>#{@profiles[0].description}</p>
-                      <!-- <div class="btn-full-story">
-                        <a href="javascript:void(0)" class="btn-full-story--link">
+                      <div class="btn-full-story">
+                        <a href="#{profile_detail_path(@profiles[0])}" class="btn-full-story--link">
                           = image_tag asset_path("profile/btn-full-story.png")
                         </a>
-                      </div> -->
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -47,11 +47,11 @@
                         <h2 class="main-title profile-title profile-name">#{@profiles[1]}</h2>
                         <h3>#{@profiles[1].careers.first}</h3>
                         <p>#{@profiles[1].description}</p>
-                        <!-- <div class="btn-full-story">
-                          <a href="javascript:void(0)">
+                        <div class="btn-full-story">
+                          <a href="#{profile_detail_path(@profiles[1])}">
                             = image_tag asset_path("profile/btn-full-story.png")
                           </a>
-                        </div> -->
+                        </div>
                       </div>
                     </div>
                   </article>
