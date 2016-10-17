@@ -113,3 +113,134 @@
     @include background-image('path-button.png');
   }
 }
+
+.career-info {
+  padding-top: rem(60);
+  @extend %relative;
+
+  .career-info-container {
+    @extend %no-margin-top;
+  }
+
+  .career-info-label {
+    @extend %absolute;
+    @extend %left-top-0;
+    @extend %text-capitalize;
+    @include boxSize(rem(200), rem(45));
+  }
+
+  .great-jobs__row {
+    overflow: visible;
+  }
+}
+
+.personal-profile {
+  @extend %relative;
+
+  @include e('main-container') {
+    padding-top: rem(155);
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: rem(15);
+  }
+
+  .profile-social-sharings {
+    margin-left: rem(30);
+    @extend %no-padding-top;
+
+    .i-social {
+      margin-right: rem(25);
+    }
+  }
+
+  .profile-career-details {
+    @extend %block;
+    @extend %margin-auto;
+    @extend %no-list-style;
+    @include boxSize(rem(625), rem(55));
+
+    li {
+      border: solid rem(1) $default;
+      @extend %float-left;
+      @extend %text-center;
+      @include boxSize(rem(208), 100%);
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        @extend %no-border-left;
+      }
+
+      p {
+        padding-top: rem(17);
+        margin-left: rem(9);
+        max-width: rem(160);
+        @extend %truncate;
+        @extend %float-left;
+        @extend %text-capitalize;
+        @extend %acumin-pro-cond-regular;
+      }
+
+      img {
+        @extend %float-left;
+      }
+    }
+  }
+}
+
+.personal-profile-title,
+.profile-social-sharings {
+  @extend %float-left;
+}
+
+.personal-profile-title {
+  width: auto;
+}
+
+.profile-details-info {
+  @extend %clear-both;
+}
+
+.personal-profile-career {
+  width: 64.75%;
+  padding-top: rem(52);
+  @extend %absolute;
+  @extend %left-top-0;
+}
+
+.profile-career-content {
+  @extend %margin-auto;
+  @extend %inline-block;
+  @extend %overflow-hidden;
+}
+
+.i-profile-training {
+  margin-top: rem(14);
+  @include boxSize(rem(21), rem(25));
+}
+
+.i-profile-map {
+  margin-top: rem(17);
+  @include boxSize(rem(21), rem(20));
+}
+
+.i-profile-career {
+  margin-top: rem(13);
+  @include boxSize(rem(21), rem(26));
+}
+
+.i-fb {
+  @include boxSize(rem(8), rem(19));
+  @include background-image('profile-details/i-fb.png');
+}
+
+.i-tweet {
+  @include boxSize(rem(22), rem(17));
+  @include background-image('profile-details/i-twitter.png');
+}
+
+.i-email {
+  @include boxSize(rem(24), rem(16));
+  @include background-image('profile-details/i-email.png');
+}
