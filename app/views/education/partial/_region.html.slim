@@ -1,6 +1,6 @@
 - list_of_regions.each do |region|
   li
-    input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.id == @region ? 'checked' : false)
+    input.square-checkbox name="regions" type="checkbox" value=(region.id) checked=(region.id == @region.to_i ? 'checked' : false)
     span.filter-checkbox
     span.careers-filter-details__name
       = region.name
