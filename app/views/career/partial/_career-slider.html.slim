@@ -39,10 +39,10 @@
               = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
               p
                 | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
-            li.col-xs-3.col-md-3.list-icon__details.list-icon__details--education title=career.education
+            li.col-xs-3.col-md-3.list-icon__details.list-icon__details--education title=career.educations
               = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
               p
-                = truncate(career.educations.first, length: 55)
+                = truncate(career.educations.map(&:name).join(', '), length: 55)
             li.col-xs-3.col-md-3.list-icon__details.list-icon__details--more title=career.regions_high_demand.join(', ')
               = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
               - career.regions_high_demand.each do |region|
