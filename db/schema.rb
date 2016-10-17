@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014041515) do
+ActiveRecord::Schema.define(version: 20161017050155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,14 @@ ActiveRecord::Schema.define(version: 20161014041515) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "email"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -182,9 +190,22 @@ ActiveRecord::Schema.define(version: 20161014041515) do
     t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
+  create_table "program_careers", force: :cascade do |t|
+    t.integer "career_id"
+    t.integer "program_id"
+    t.index ["career_id"], name: "index_program_careers_on_career_id", using: :btree
+    t.index ["program_id"], name: "index_program_careers_on_program_id", using: :btree
+  end
+
+  create_table "program_clusters", force: :cascade do |t|
+    t.integer "cluster_id"
+    t.integer "program_id"
+    t.index ["cluster_id"], name: "index_program_clusters_on_cluster_id", using: :btree
+    t.index ["program_id"], name: "index_program_clusters_on_program_id", using: :btree
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string   "title"
-    t.string   "region"
     t.text     "traning_detail"
     t.text     "description"
     t.string   "duration"
@@ -192,19 +213,19 @@ ActiveRecord::Schema.define(version: 20161014041515) do
     t.string   "hours_per_weeks"
     t.integer  "tuition_min"
     t.integer  "tuition_max"
-    t.string   "education"
     t.string   "institution_name"
     t.string   "phone"
     t.string   "address"
     t.string   "lat"
     t.string   "lng"
-    t.text     "industries"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "slug"
     t.string   "cover_photo"
-    t.string   "interests"
-    t.string   "career"
+    t.integer  "region_id"
+    t.integer  "education_id"
+    t.index ["education_id"], name: "index_programs_on_education_id", using: :btree
+    t.index ["region_id"], name: "index_programs_on_region_id", using: :btree
   end
 
   create_table "regions", force: :cascade do |t|
@@ -241,4 +262,6 @@ ActiveRecord::Schema.define(version: 20161014041515) do
     t.index ["profile_id"], name: "index_videos_on_profile_id", using: :btree
   end
 
+  add_foreign_key "program_clusters", "clusters"
+  add_foreign_key "program_clusters", "programs"
 end
