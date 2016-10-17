@@ -22,13 +22,24 @@ class Program < ActiveRecord::Base
   scope :filter_by_title, lambda { |title|
     query = ['LOWER(title) like ? ']
     query.push('LOWER(institution_name) like ? ')
-    query.push('LOWER(career) like ? ')
     title = "%#{title.downcase}%"
-    where(query.join(' OR '), title, title, title)
+    where(query.join(' OR '), title, title)
   }
 
-  scope :filter_by_region, lambda { |region|
-    where('region like ?', region)
+  scope :filter_by_regions, lambda { |regions|
+    where('region_id IN (?)', regions)
+  }
+
+  scope :filter_by_educations, lambda { |educations|
+    where('education_id IN (?)', educations)
+  }
+
+  scope :with_clusters, lambda {
+    joins(:program_clusters).distinct
+  }
+
+  scope :filter_by_industries, lambda { |industries|
+    with_clusters.where('program_clusters.cluster IN (?)', industries)
   }
 
   def self.import_from_csv(csv)
