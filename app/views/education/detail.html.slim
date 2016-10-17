@@ -4,16 +4,16 @@
   .main-content
     section.career-banner.edu-detail-banner
       h2.career-banner__title.hero-banner__title
-        = program.title
+        = program
       .career-banner__bg
-        = image_tag program.cover_photo
+        = image_tag program.cover_photo || ""
     section.great-jobs.great-jobs-careers-details.edu-program-info.edu-great-jobs
       .great-jobs__container
         .great-jobs__content.edu-detail-content
           .jobs-head
             .jobs-head__name
-              p.jobs-head__title.jobs-head__title-great-jobs(title="#{program.title}")
-                = program.title
+              p.jobs-head__title.jobs-head__title-great-jobs(title="#{program}")
+                = program
             .jobs-head__content
               .edu-head-info.edu-details-region
                 .icon.i-edu-map
@@ -30,8 +30,8 @@
               li.edu-detail-item.list-icon__details--more
                 .icon.i-industry
                   = image_tag asset_path("program-landing/icon-career.png")
-                .edu-industry title="#{program.career.join(';') if program.career}"
-                  - program.career.each do |career|
+                .edu-industry title="#{program.careers if program.careers}"
+                  - program.careers.each do |career|
                     p
                       = career
               li.edu-detail-item

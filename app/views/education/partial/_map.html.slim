@@ -27,8 +27,8 @@
                 li.col-xs-7.col-md-7.program-item-map__footer-item
                   .icon.i-career
                     = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
-                  .career-industry title="#{program.career.join(';') if program.career}"
-                    - program.career.each do |career|
+                  .career-industry title="#{program.careers if program.careers.present?}"
+                    - program.careers.each do |career|
                         p
                           = career
                 li.col-xs-5.col-md-5.program-item-map__footer-item
