@@ -64,15 +64,47 @@ class Career < ActiveRecord::Base
   # validates :regions_high_demand, presence: true
 
   scope :filter_by_title, lambda { |title|
-    where('LOWER(title) like ?', title)
+    where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
   }
 
   scope :with_regions_high_demand, lambda {
     joins(:career_region_high_demands).distinct
   }
 
-  scope :filter_by_regions_high_demand, lambda { |region|
-    with_regions_high_demand.where('career_region_high_demands.region_id = ?', region)
+  scope :with_industries, lambda {
+    joins(:career_clusters).distinct
+  }
+
+  scope :with_educations, lambda {
+    joins(:career_educations).distinct
+  }
+
+  scope :with_interests, lambda {
+    joins(:career_interests).distinct
+  }
+
+  scope :with_skills, lambda {
+    joins(:career_skills).distinct
+  }
+
+  scope :filter_by_region, lambda { |region|
+    with_regions_high_demand.where('career_region_high_demands.region_id IN (?)', region)
+  }
+
+  scope :filter_by_industry, lambda { |industry|
+    with_industries.where('career_clusters.cluster_id IN (?)', industry)
+  }
+
+  scope :filter_by_education, lambda { |education|
+    with_educations.where('career_educations.education_id IN (?)', education)
+  }
+
+  scope :filter_by_interest, lambda { |interest|
+    career_interests.where('career_interests.interest_id IN (?)', interest)
+  }
+
+  scope :filter_by_skill, lambda { |skill|
+    with_skills.where('career_skills.skill_id IN (?)', skill)
   }
 
   scope :filter_by_salary, lambda { |salary_min, salary_max|
