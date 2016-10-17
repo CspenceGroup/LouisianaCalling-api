@@ -85,7 +85,7 @@
 
   @include e('contact') {
     color: $default;
-    margin: rem(70) 0 rem(60) 0;
+    margin: rem(35) 0 rem(60) 0;
     @extend %text-center; 
   }
 }
@@ -126,7 +126,7 @@
 }
 
 .category-col {
-  padding: 0 rem(10);
+  padding: 0 rem(10) rem(35) rem(10);
   @extend %no-padding;
 }
 
@@ -155,3 +155,10 @@
   }
 }
 
+.catogory-active {
+  @extend %block;
+}
+
+.category-inactive {
+  display: none;
+}
