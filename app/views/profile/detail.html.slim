@@ -8,7 +8,7 @@
         h1.hero-banner__title.profile-owner__name Clifton smith
       .profile-owner__photo#profile-video
         - if url.include? ".mp4"
-          video.video-playing.video-player#profile-video(muted='')
+          video.video-playing.video-player#profile-video(muted='' loop="loop")
             source(src=url type='video/mp4')
         - else
           = image_tag url, lazy: true, class: "lazy-load"
