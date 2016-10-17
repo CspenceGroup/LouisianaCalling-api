@@ -20,7 +20,8 @@ class CareerController < ApplicationController
         )
       else
         Career.all
-              .filter_by_title_and_region(params[:title], params[:region])
+              .filter_by_regions_high_demand(params[:region])
+              .filter_by_title(params[:title])
               .filter_by_salary(
                 Constants::SALARY_MIN, Constants::SALARY_MAX
               )
