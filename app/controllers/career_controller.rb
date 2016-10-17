@@ -38,28 +38,8 @@ class CareerController < ApplicationController
     @list_of_regions = Region.all
 
     return unless @career.present?
-    # get_image_for_career_interest is invoked from CareerHelper
-    # @career.interests = get_image_for_career_interest(@career.interests)
 
-    # get_image_for_career_skill is invoked from CareerHelper
-    # @career.skills = get_image_for_career_skill(@career.skills)
-
-    # get_career_regions_by_career_title is invoked from CareerHelper
-    # @regions = get_career_regions_by_career_title(@career.title)
     @regions = get_regions_by_career(@career.id)
-
-    # @related_by_skills = Career.all
-    #                            .filter_by_title(@career.related_career_by_skill)
-    #                            .offset(0).limit(3)
-
-    # @related_by_interests =
-    #   Career.all
-    #         .filter_by_title(@career.related_career_by_interest)
-    #         .offset(0).limit(3)
-
-    # if @career.profile_name.present?
-    #   @profile = Profile.find_by_full_name(@career.profile_name).first
-    # end
   end
 
   def filter
