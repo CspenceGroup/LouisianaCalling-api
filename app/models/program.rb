@@ -39,7 +39,7 @@ class Program < ActiveRecord::Base
   }
 
   scope :filter_by_industries, lambda { |industries|
-    with_clusters.where('program_clusters.cluster IN (?)', industries)
+    with_clusters.where('program_clusters.cluster_id IN (?)', industries)
   }
 
   def self.import_from_csv(csv)
