@@ -197,14 +197,55 @@
   }
 }
 
-.faq-back {
+.faq-txt {
+  color: $faq-topic;
   font-size: rem(20.83);
+  @extend %text-uppercase;
+  @extend %brandon-grotesque;
+}
+
+.faq-back {
   color: $btn-see-more-bg;
   @extend %float-right;
-  @extend %text-uppercase;
-  @extend %brandon-grotesque-bold;
+  @extend %font-weight-bold;
 
   @include linkState () {
     color: $btn-see-more-bg;
   }
 }
+
+.faq-search-term {
+  color: $faq-topic;
+  padding-left: rem(117);
+  @include boxSize(rem(1200), rem(955));
+
+  .search-result-title {
+    font-size: rem(20.83);
+  }
+}
+
+.search-not-found {
+  h4 {
+    font-size: rem(16.67);
+    margin-top: rem(42);
+  }
+
+  p {
+    margin-top: rem(20);
+  }
+}
+
+.faq-search-suggestions {
+  list-style: disc;
+  margin-left: rem(18);
+  padding-top: rem(3);
+}
+
+.faq-result-item {
+  margin-top: rem(38);
+
+  h4 {
+    font-size: rem(16.67);
+  }
+}
+
