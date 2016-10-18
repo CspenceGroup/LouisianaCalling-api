@@ -5,6 +5,8 @@ class AboutController < ApplicationController
     @contact = Contact.new
     @tab = params[:tab]
     @tab = 'who-we-are' unless @tab.present?
+    # file = File.read('/faq.json')
+    # @categories = JSON.parse(file)
   end
 
   def create
