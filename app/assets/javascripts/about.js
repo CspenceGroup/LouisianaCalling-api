@@ -54,6 +54,7 @@ $(document).on('turbolinks:load', function(){
    */
   $('.about-faq__main-content a').click(function(e) {
     e.preventDefault();
+
     var hash = $(this)[0].hash;
     var parent = $(this).closest('.about-faq__main-content');
 
@@ -75,11 +76,12 @@ $(document).on('turbolinks:load', function(){
         .addClass('category-active');
 
       page.animate({
-        scrollTop: $(hash).offset().top-90
+        scrollTop: $(hash).offset().top-95
       }, 1000);
 
     } else {
-
+      console.log(hash);
+      debugger;
       // Move to Catogory
       parent.find('.categories')
         .removeClass('category-active')
@@ -90,4 +92,20 @@ $(document).on('turbolinks:load', function(){
         .addClass('category-active');
     }
   });
+
+  $('.faq-back').click(function(e) {
+    e.preventDefault();
+
+    var parent = $(this).closest('.about-faq__main-content');
+
+    parent.find('.category-active')
+      .removeClass('category-active')
+      .addClass('category-inactive');
+
+    // Move to Catogory
+    parent.find('.categories')
+      .removeClass('category-inactive')
+      .addClass('category-active');
+  });
+
 });

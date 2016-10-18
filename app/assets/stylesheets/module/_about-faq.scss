@@ -58,6 +58,7 @@
 
   @include e('topic-list') {
     list-style-type: disc;
+    padding-left: rem(30);
     @extend %overflow-hidden;
 
     li {
@@ -106,16 +107,6 @@
   }
 }
 
-.topic-col {
-  width: rem(455);
-  margin-left: rem(30);
-  @extend %float-left;
-
-  &:last-child {
-    margin-left: rem(65);
-  }
-}
-
 .faq-contact-btn {
   margin-top: rem(15);
   @extend %block;
@@ -161,4 +152,59 @@
 
 .category-inactive {
   display: none;
+}
+
+.category-list {
+  font-size: rem(20.83);
+  @extend %text-uppercase;
+  @extend %brandon-grotesque-bold;
+
+  @include e('container') {
+    width: rem(1200);
+    padding-left: rem(118);
+    min-height: rem(645);
+    @extend %margin-auto;
+  }
+
+  @include e('title') {
+    font-size: rem(20.83);
+    margin-left: rem(22);
+    color: $btn-see-more-bg;
+  }
+
+  @include e('items') {
+    padding-top: rem(18);
+    li {
+      padding: rem(13) 0 0 rem(22);
+      @include boxSize(rem(330), rem(55));
+
+      &:nth-child(odd) {
+        background-color: $profile-name-shadow;
+      }
+    }
+
+    a {
+      color: $profile-header;
+    }
+  }
+}
+
+.category-details-head {
+  @extend %overflow-hidden;
+
+  h2 {
+    @extend %float-left;
+  }
+}
+
+.faq-back {
+  font-size: rem(20.83);
+  color: $btn-see-more-bg;
+  @extend %float-right;
+  @extend %text-uppercase;
+  @extend %brandon-grotesque-bold;
+
+  @include linkState () {
+    color: $btn-see-more-bg;
+  }
 }
