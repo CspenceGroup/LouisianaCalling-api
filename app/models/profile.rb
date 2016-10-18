@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
   has_many :profile_careers, dependent: :destroy
   has_many :careers, through: :profile_careers, source: :career
 
-  has_many :videos
+  has_one :video
 
   has_many :videos
 
