@@ -18,7 +18,10 @@
     background-repeat: repeat;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    padding: rem(73) 0 0 0;
+    // padding: rem(73) 0 0 0;
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
 
     h3 {
       font-size: rem(21);
@@ -29,7 +32,6 @@
     p {
       font-size: rem(16.7);
       line-height: rem(20);
-      width: rem(470);
       max-height: rem(100); 
       margin-right: rem(-16);
       padding-right: rem(16);
@@ -96,10 +98,11 @@
 }
 
 .profile-content {
-  margin-left: rem(60);
+  @extend %margin-auto;
+  width: rem(480);
 
   @include m('pull-left') {
-    @extend %float-right;
-    margin: 0 rem(60) 0 0;
+    // @extend %float-right;
+    // margin: 0 rem(60) 0 0;
   }
 }
