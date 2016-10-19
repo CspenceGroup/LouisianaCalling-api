@@ -100,4 +100,11 @@ $image-path: '';
   background: -o-radial-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
   background: -moz-radial-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
   background: radial-gradient($color1, $color2);
+/* Transform */
+@mixin transform($val) {
+  -webkit-transform: rotate($val);
+     -moz-transform: rotate($val);
+      -ms-transform: rotate($val);
+       -o-transform: rotate($val);
+          transform: rotate($val);
 }

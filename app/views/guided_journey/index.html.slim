@@ -1,0 +1,36 @@
+.container-fluid
+  = render 'navigation/index'
+  .main-content.main-guided-journey
+    .main-guided-journey__heading.policy-heading
+      h2.main-title Let's Take a Look At Your Opinions.
+      p Welcome to our Guided Journey! With this tool, you'll find the best jobs and training for you in no time.
+    .main-guided-journey__steps
+      form.guided-form
+        ul.guided-form__steps#form-progressbar
+          li.step-active
+            button.btn.btn-arrow-right(type="button") 1. Interests
+          li
+            button.btn.btn-arrow-right(type="button") 2. Skills
+          li
+            button.btn.btn-arrow-right(type="button") 3. Region
+          li
+            button.btn.btn-arrow-right(type="button") 4. Education
+          li
+            button.btn.btn-arrow-right(type="button") 5. Results
+        fieldset
+          h3.guided-form__title.main-title.shadow-main-title What are you interested in?
+          p Show us what you love and enjoy and it'll help us find the best career for you.
+        fieldset
+          h3.guided-form__title.main-title.shadow-main-title What skills do you have or want?
+          p Tell us what you're really good at. Or, tell us what you want to be really good at. Both will inform your results!
+        fieldset
+          h3.guided-form__title.main-title.shadow-main-title What regions should we search in?
+          p Now it's time to pick out where you'd link to see great careers.
+        fieldset
+          h3.guided-form__title.main-title.shadow-main-title What type of education do you have right now?
+          p What have you learned so far? Let us know and we'll find options that match your education.
+        fieldset
+          h3.guided-form__title.main-title.shadow-main-title See your calling?
+          p Congrats! Here's what we've got for you.
+
+  = render 'footer/index'

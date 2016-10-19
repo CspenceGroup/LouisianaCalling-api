@@ -1,0 +1,100 @@
+.main-guided-journey {
+  @include e('heading') {
+    padding-top: rem(32);
+    @include boxSize(100%, rem(137));
+
+    p {
+      margin-top: rem(22);
+    }
+  }
+
+  @include e('steps') {
+    color: $default;
+    min-height: rem(735);
+    margin-bottom: rem(-30);
+    @include background-image('filter-bg.png');
+
+    li {
+      @extend %float-left;
+    }
+  }
+}
+
+.guided-form {
+  width: rem(1200);
+  padding: rem(30) rem(80) 0;
+  @extend %margin-auto;
+  @extend %relative;
+
+  .btn {
+    padding: rem(7) rem(12);
+    @extend %no-border-radius;
+  }
+
+  .btn-arrow-right {
+    color: $white;
+    margin-left: rem(2);
+    background-color: $default;
+    padding: 0 rem(18) 0 rem(50);
+    @extend %relative;
+    @include boxSize(rem(153), rem(50));
+
+    &:before,
+    &:after {
+      /* make two squares (before and after) */
+      content: "";
+      top: rem(7);
+      left: rem(135);
+      @extend %absolute;
+      /* use parent background */
+      background: inherit;
+      /* use parent border */
+      border: inherit;
+      /* hide left border */
+      border-left-color: transparent;
+      /* hide bottom border */
+      border-bottom-color: transparent;
+      /* round arrow corner */
+      @extend %no-border-radius;
+      /* rotate right arrow squares 45 deg to point right */
+      @include transform(45deg);
+      @include boxSize(rem(35), rem(35));
+      
+    }
+
+    &:before {
+      left: rem(-18);
+      background-color: $white;
+    }
+
+    &:after {
+      right: rem(-11);
+      z-index: 1;
+    }
+  }
+
+  @include e('steps') {
+    margin: 0 auto rem(38) auto;
+    @extend %text-left;
+    @extend %overflow-hidden;
+  }
+
+  fieldset {
+    background: white;
+    border: 0 none;
+    padding: 20px 30px;
+    border: solid 1px $default;
+    box-sizing: border-box;
+    width: rem(805);
+
+    &:not(:first-of-type) {
+      display: none;
+    }
+  }
+}
+
+.step-active {
+  .btn {
+    background-color: $red-bg;
+  }
+}
