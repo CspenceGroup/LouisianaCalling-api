@@ -155,8 +155,9 @@ $(document).on('turbolinks:load', function(){
     }
 
     if (activeRegionData) {
+      var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
       $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
-      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ activeRegionData.education + '">' + "&ast;&nbsp;" + activeRegionData.education +'</span>');
+      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
     }
   }
 
@@ -183,30 +184,21 @@ $(document).on('turbolinks:load', function(){
   //Show popup video when click button play
   $('.btn-play-video').on('click', function(event) {
     var buttonPlayVideo = $(event.target),
-        videoSource = buttonPlayVideo.attr('data-source');
+        playVideoId = buttonPlayVideo.attr('data-source');
 
-    if (videoSource) {
-      videoSource = JSON.parse(videoSource);
-      var videoModelElement = $('#videoModal');
-      
-      videoModelElement.find('.modal-video__details').prepend(
-        '<div class="video-container">\
-          <video preload autoplay class="video-playing video-player">\
-            <source src=' + videoSource.url + ' type="video/mp4">\
-          </video>\
-          <div class="button-pause" style="display: none;"><i class="icon-pause"></i></div>\
-        </div>');
-      videoModelElement.find('.modal-video__text h2').html(videoSource.title);
-      videoModelElement.find('.modal-video__text p').html(videoSource.description);
+    if (playVideoId) {
+      var videoModelElement = $('#' + playVideoId);
+
+      $('#videoModal').find('.modal-video__details').hide();
+
+      videoModelElement.show();
+      videoModelElement.find('video')[0].play();
     }
   });
 
-  //Show modal and show button play and pause video
-  $('#videoModal').on('shown.bs.modal', function (event) {
-    videoModal = $(event.target);
-    var buttonPause = videoModal.find('.button-pause');
+  $('#videoModal').find('video').on('click', function(e) {
+      var buttonPause = $(this).next();
 
-    videoModal.find('video').on('click', function(e) {
       e.preventDefault();
       if(this.paused) {
         this.play();
@@ -215,18 +207,25 @@ $(document).on('turbolinks:load', function(){
         this.pause();
         buttonPause.show();
       }
-    });
-
-    // Close modal when end video
-    videoModal.find('video').on('ended', function () {
+    }).on('ended', function () {
+      // Close modal when end video
       $('#videoModal').modal('hide');
     });
+
+  // //Show modal and show button play and pause video
+  $('#videoModal').on('hide.bs.modal', function (event) {
+    $(this).find('video').each(function(i, el) {
+      el.pause();
+    });
+  }).on('show.bs.modal', function (event) {
+    $(this).find('.button-pause').hide();
   });
 
   //close pop up when they click anywhere that have no text or video
   $('.modal-video__details').on('click', function(event) {
     if(event.target === this) {
       $('#videoModal').modal('hide');
+      $(this).find('video')[0].pause();
     }
   })
 
@@ -258,12 +257,12 @@ $(document).on('turbolinks:load', function(){
   });
 
   //Remove video when modal hide
-  $('#videoModal').on('hide.bs.modal', function (event) {
-    videoModal = $(event.target);
-    if(videoModal.find('.video-container').length > 0) {
-      videoModal.find('.video-container').remove();
-    }
-  });
+  // $('#videoModal').on('hide.bs.modal', function (event) {
+  //   videoModal = $(event.target);
+  //   if(videoModal.find('.video-container').length > 0) {
+  //     videoModal.find('.video-container').remove();
+  //   }
+  // });
 
   /**
    *
@@ -297,7 +296,7 @@ $(document).on('turbolinks:load', function(){
         window.location = toUrl;
       }
     }
-    
+
     return false;
   });
 

@@ -24,6 +24,6 @@ class ProfileController < ApplicationController
   end
 
   def detail
-
+    @profile = Profile.friendly.find(params[:slug])
   end
 end

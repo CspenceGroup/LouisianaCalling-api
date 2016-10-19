@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'stories' => 'profile#index', :as => :stories
-  get 'profile/get-more' => 'profile#getMore'
-  get 'profile/:slug' => 'profile#detail', :as => :profile_detail
+  get 'profiles/get-more' => 'profile#getMore'
+  get 'profiles/:slug' => 'profile#detail', :as => :profile_detail
 
   # career page
   get 'careers' => 'career#index', :as => :career

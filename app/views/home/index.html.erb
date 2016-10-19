@@ -8,22 +8,16 @@
           <li data-target="#carousel-banner" data-slide-to="1" class="carousel-dots"></li>
         </ol>
         <div class="carousel-inner carousel-content" role="listbox">
-          <div class="carousel-item active">
-            <video muted class="video-playing video-player">
-              <source src="<%= @videos[0].url if @videos[0]%>" type="video/mp4">
-            </video>
-            <div class="carousel-caption carousel-title">
-              <button type="button" class="btn-play-video" data-source="<%= @videos[0].to_json if @videos[0]%>" data-toggle="modal" data-target="#videoModal"></button>
+          <%- @videos.each_with_index do |video, idx| %>
+            <div class="carousel-item <%= idx == 0 ? 'active' : '' %>">
+              <video muted class="video-playing video-player">
+                <source src="<%= video.url if video %>" type="video/mp4">
+              </video>
+              <div class="carousel-caption carousel-title">
+                <button type="button" class="btn-play-video" data-source="play-video-<%= video.present? ? video.id : '' %>" data-toggle="modal" data-target="#videoModal"></button>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <video muted class="video-playing video-player">
-              <source src="<%= @videos[1].url if @videos[1]%>" type="video/mp4">
-            </video>
-            <div class="carousel-caption carousel-title">
-              <button type="button" class="btn-play-video" data-source="<%= @videos[1].to_json if @videos[1]%>" data-toggle="modal" data-target="#videoModal"></button>
-            </div>
-          </div>
+          <% end %>
         </div>
         <a class="left carousel-control carousel-control--beside" href="#carousel-banner" role="button" data-slide="prev">
           <span class="icon-prev" aria-hidden="true"></span>
@@ -46,19 +40,30 @@
         <!-- Modal -->
         <div class="modal fade modal-video" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-video__content" role="document">
-            <div class="modal-video__details">
-              <div class="modal-video__desc">
-                <div class="modal-video__text">
-                  <h2>Cliftton Smith</h2>
-                  <p>Lorem ipsum dolor sit amet, vis et unum euripidis. Eripuit detracto definitiones vis ex, ut qui dicant ornatus, mea fabellas,suavitate ne. Vel cu emin facilis comprehensam.</p>
+            <%- @videos.each_with_index do |video, idx| %>
+              <%- puts video, idx%>
+              <div class="modal-video__details" id="play-video-<%= video.id %>">
+                <div class="video-container">
+                  <video class="video-playing video-player">
+                    <source src="<%= video.url %>" type="video/mp4">
+                  </video>
+                  <div class="button-pause" style="display: none;"><i class="icon-pause"></i></div>
                 </div>
-                <!-- <div class="btn-tell-more">
-                  <a href="javascript:void(0)">
-                    <%= image_tag(asset_path("tell-me-more.png"), :alt => "tell me more") %>
-                  </a>
-                </div> -->
+                <%- if video.profile.present? %>
+                  <div class="modal-video__desc">
+                    <div class="modal-video__text">
+                      <h2><%= video.profile %></h2>
+                      <p><%= video.profile.description %></p>
+                    </div>
+                     <div class="btn-tell-more">
+                      <a href="<%= profile_detail_path(video.profile) %>">
+                        <%= image_tag(asset_path("tell-me-more.png"), :alt => "tell me more") %>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
     </section>
@@ -67,10 +72,10 @@
         <div class="input-group search-group">
           <input required class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control" required>
+            <select class="form-control" required="true">
               <option value="" disabled selected>Region</option>
               <% @regions.each do |region|%>
-                <option value="<%= region.name %>"><%= region.name %></option>
+                <option value="<%= region.id %>"><%= region.name %></option>
               <% end %>
             </select>
             <span class="fa fa-caret-down"></span>

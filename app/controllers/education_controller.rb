@@ -15,12 +15,18 @@ class EducationController < ApplicationController
                  Constants::TUITION_MIN, Constants::TUITION_MAX
                )
       else
-        Program.all
-               .filter_by_title(params[:title])
-               .filter_by_region(params[:region])
-               .filter_by_tuition(
-                 Constants::TUITION_MIN, Constants::TUITION_MAX
-               )
+        programs = Program.all
+        programs =
+          if params[:title].present?
+            programs.filter_by_title(params[:title])
+          else
+            programs.filter_by_regions(params[:region].split(','))
+          end
+
+        programs = programs.filter_by_tuition(
+                    Constants::TUITION_MIN, Constants::TUITION_MAX
+                  )
+        programs
       end
 
     @is_see_more = list_programs.count > limit ? true : false
@@ -33,26 +39,34 @@ class EducationController < ApplicationController
   end
 
   def filter
-    # define query
-    query = []
+    programs = Program.all
 
     ## filter by region
-    query.push(regions_query_str(params[:regions])) if params[:regions].present?
+    programs = programs.filter_by_regions(params[:regions].split(',')) if params[:regions].present?
 
     ## filter by industry
     if params[:industries].present?
-      query.push(industries_query_str(params[:industries]))
+      programs = programs.filter_by_industries(params[:industries].split(','))
     end
 
     ## filter by tuition
     tuition_min = params[:cost_min]
     tuition_max = params[:cost_max]
     if tuition_max.present? && tuition_min.present?
-      tuition_query = ["tuition_max <= #{tuition_max}"]
-      tuition_query.push("tuition_min >= #{tuition_min}")
-
-      query.push(tuition_query)
+      programs = programs.filter_by_tuition(tuition_min, tuition_max)
     end
+
+    ## seach by program title
+    if params[:title].present?
+      programs = programs.filter_by_title(params[:title])
+    end
+
+    # filter by education
+    if params[:educations].present?
+      programs = programs.filter_by_educations(params[:educations].split(','))
+    end
+
+    query = []
 
     # filter by program duration
     if params[:programs].present?
@@ -65,35 +79,12 @@ class EducationController < ApplicationController
     # filter by time of day
     query.push(times_query_str(params[:times])) if params[:times].present?
 
-    # filter by education
-    if params[:educations].present?
-      query.push(educations_query_str(params[:educations]))
-    end
-
-    ## seach by program title
-    if params[:title].present?
-      title = params[:title].downcase
-
-      str_query = [
-        "LOWER(title) like '%#{title}%'",
-        "LOWER(institution_name) like '%#{title}%'",
-        "LOWER(career) like '%#{title}%'"
-      ]
-
-      query.push(str_query.join(' OR '))
-    end
-
-    ids = Program.where(query.join(' AND ')).order('id').map(&:id)
-
-    query.push("id > #{params[:last_id]}") if params[:last_id].present?
-
-    ## Sort by, defaut sort by ID
-    sort_by = params[:sort].present? ? params[:sort] : 'id'
-
-    programs = Program.where(query.join(' AND ')).order(sort_by)
+    programs = programs.where(query.join(' AND '))
+    ids = programs.map(&:id)
 
     is_see_more = programs.length > 3 ? true : false
     programs = programs.offset(0).limit(3)
+
     render json: {
       list: render_to_string(
         'education/partial/_list', layout: false, locals: { programs: programs }

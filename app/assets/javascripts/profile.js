@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
     last_id = $('.more-stories__details').last().attr('data-id');
     $.ajax({
       type: 'GET',
-      url: 'profile/get-more',
+      url: 'profiles/get-more',
       data: {
         id: last_id
       },

@@ -2,41 +2,59 @@ class Program < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_by_title, use: :slugged
 
-  serialize :industries, Array
-  serialize :interests, Array
-  serialize :career, Array
+  has_many :program_clusters, dependent: :destroy
+  has_many :industries, through: :program_clusters, source: :cluster
 
-  validates_inclusion_of :duration, :in => ["8 Weeks", "3 Months", "6 Months", "1 Year or 2 Semesters", "2 Years or 4 Semesters", "2 Years+", ""]
-  validates_inclusion_of :time_of_day, :in => ["Day", "Night", "Both", ""]
-  validates_inclusion_of :hours_per_weeks, :in => ["3 - 10 Hours", "11 - 20 Hours", "21 - 30 Hours", "31 - 40 Hours", ""]
-  # validates_inclusion_of :education, :in => ["High School Diploma/Hi-SET", "Certificate or Credential", "Associate's Degree", "Bachelor's Degree", "Master's Degree", ""]
+  has_many :program_careers, dependent: :destroy
+  has_many :careers, through: :program_careers, source: :career
+
+  belongs_to :education
+  belongs_to :region
+
+  validates_inclusion_of :duration, in: Constants::PROGRAM_DURATIONS
+  validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
+  validates_inclusion_of :hours_per_weeks, in: Constants::HOURS_PER_WEEK
 
   scope :filter_by_tuition, lambda { |tuition_min, tuition_max|
     where('tuition_max <= ? AND tuition_min >= ?', tuition_max, tuition_min)
   }
 
   scope :filter_by_title, lambda { |title|
-    query = ["LOWER(title) like ? "]
-    query.push("LOWER(institution_name) like ? ")
-    query.push("LOWER(career) like ? ")
+    query = ['LOWER(title) like ? ']
+    query.push('LOWER(institution_name) like ? ')
     title = "%#{title.downcase}%"
-    where(query.join(' OR '), title, title, title)
+    where(query.join(' OR '), title, title)
   }
 
-  scope :filter_by_region, lambda { |region|
-    where('region like ?', region)
+  scope :filter_by_regions, lambda { |regions|
+    where('region_id IN (?)', regions)
+  }
+
+  scope :filter_by_educations, lambda { |educations|
+    where('education_id IN (?)', educations)
+  }
+
+  scope :with_clusters, lambda {
+    joins(:program_clusters).distinct
+  }
+
+  scope :filter_by_industries, lambda { |industries|
+    with_clusters.where('program_clusters.cluster_id IN (?)', industries)
   }
 
   def self.import_from_csv(csv)
     Program.transaction do
       Program.delete_all
 
-      csv.each_with_index do |row, index|
+      csv.each_with_index do |row|
+        raise 'Wrong file' if row[20].present?
+
         program = Program.new
         program[:title] = row[0].strip
-        # program[:id] = index + 1
-        # program[:slug] = row[0].parameterize + '-' + (index + 1).to_s
-        program[:region] = row[1].strip
+
+        region = Region.find_by_name(row[1].strip)
+        program[:region_id] = region.id if region.present?
+
         program[:traning_detail] = row[2].strip
         program[:description] = row[3].strip
         program[:duration] = row[4].strip
@@ -44,33 +62,56 @@ class Program < ActiveRecord::Base
         program[:hours_per_weeks] = row[6].strip
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
-        program[:education] = row[9].strip
+
+        education = Education.find_by_name(row[9].strip)
+        program[:education_id] = education.id if education.present?
+
         program[:institution_name] = row[10].strip
         program[:phone] = row[11].strip
         program[:address] = row[12].strip
 
-        location = row[13].split(',').map{ |s| s.strip }
-        program[:lat] = location[0]
-        program[:lng] = location[1]
-
-        program[:industries] = []
-
-        for i in 14..17
-          if (row[i] != "" && row[i] != nil) then
-            program[:industries] << row[i].strip
-          end
-        end
-
-        program[:cover_photo] = row[18].strip
-        program[:career] = row[19].split(';').map{ |s| s.strip }
-
-        if row[20]
-          raise "Wrong file"
+        if row[13].present?
+          location = row[13].split(',').map(&:strip)
+          program[:lat] = location[0]
+          program[:lng] = location[1]
         end
 
         program.save!
+
+        (14..17).each do |i|
+          create_program_cluster(row[i].strip, program) if row[i].present?
+        end
+
+        program[:cover_photo] = row[18].strip
+        if row[19].present?
+          create_program_careers(row[19].split(';').map(&:strip), program)
+        end
       end
     end
+  end
+
+  def self.create_program_careers(careers, program)
+    careers.each do |career_name|
+      career = Career.find_by_title(career_name)
+
+      ProgramCareer.create(
+        program_id: program.id,
+        career_id: career.present? ? career.id : nil
+      )
+    end
+  end
+
+  def self.create_program_cluster(cluster_name, program)
+    cluster = Cluster.find_by_name(cluster_name)
+
+    ProgramCluster.create(
+      program_id: program.id,
+      cluster_id: cluster.present? ? cluster.id : nil
+    )
+  end
+
+  def to_s
+    title
   end
 
   private
@@ -83,5 +124,4 @@ class Program < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
-
 end

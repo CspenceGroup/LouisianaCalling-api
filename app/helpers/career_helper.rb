@@ -46,6 +46,24 @@ module CareerHelper
     regions.uniq.to_h
   end
 
+  # Get regions info by career
+  def get_regions_by_career(career_id)
+    career_regions = CareerRegion.where(career_id: career_id)
+    regions = []
+
+    if career_regions.present?
+      regions = career_regions.map do |career_region|
+        [career_region.region, {
+          salary_min: career_region.salary_min,
+          salary_max: career_region.salary_max,
+          educations: career_region.educations
+        }]
+      end
+    end
+
+    regions.uniq.to_h
+  end
+
   def regions_query_str(region_ids)
     region_ids = region_ids.split(',')
     list_of_regions = convert_regions_to_hash
