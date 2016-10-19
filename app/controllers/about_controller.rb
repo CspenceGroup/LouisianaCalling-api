@@ -1,3 +1,6 @@
+require 'json'
+require 'open-uri'
+
 class AboutController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
 
@@ -5,8 +8,10 @@ class AboutController < ApplicationController
     @contact = Contact.new
     @tab = params[:tab]
     @tab = 'who-we-are' unless @tab.present?
-    # file = File.read('/faq.json')
-    # @categories = JSON.parse(file)
+
+    faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
+
+    @categories = JSON.parse(faq_json_file).to_a
   end
 
   def create

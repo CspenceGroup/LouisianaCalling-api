@@ -5,12 +5,12 @@
     section.hero-banner.profile-owner
       .hero-banner__container.profile-owner__container
         h1.hero-banner__title.profile-owner__name = @profile
-      .profile-owner__photo#profile-video
+      .profile-owner__photo
         - images_type = ['.png', '.jpg', '.tif', '.bmp', '.jpeg']
         - if images_type.any? { |type| url.include?(type) }
           = image_tag url, lazy: true, class: "lazy-load"
         - else
-          video.video-playing.video-player#profile-video(muted='' loop="loop")
+          video.video-playing.video-player(muted='' loop="loop")
             source(src=url type='video/mp4')
     section.career-desc.personal-profile
       section.personal-profile-career

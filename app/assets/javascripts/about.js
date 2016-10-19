@@ -64,7 +64,7 @@ $(document).on('turbolinks:load', function(){
       var id = hash.split('-').slice(0, -1).join('-');
       var ele = $(id);
       var page = $('html, body');
-      
+
       ele
         .closest('.about-faq__main-content')
         .find('.categories')
@@ -80,8 +80,6 @@ $(document).on('turbolinks:load', function(){
       }, 1000);
 
     } else {
-      console.log(hash);
-      debugger;
       // Move to Catogory
       parent.find('.categories')
         .removeClass('category-active')
