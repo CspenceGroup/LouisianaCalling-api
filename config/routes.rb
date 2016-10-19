@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   # About Us page
   get 'abouts' => 'about#index'
   post 'abouts' => 'about#create'
+  get 'abouts/search' => 'about#search', :as => "faq_search"
 end
