@@ -1,0 +1,26 @@
+/*Style header page*/
+.site-header {
+  height: rem(75);
+  @extend %fixed;
+  @extend %left-0;
+  @extend %right-0;
+  z-index: 10000;
+  padding: 0 rem(30);
+  background-color: $profile-header;
+
+  @include e('logo') {
+    @extend %float-left;
+    margin-top: rem(22);
+    font-size: rem(16);
+  }
+
+  @include e('link') {
+    @extend %block;
+    height: 100%;
+  }
+
+  @include e('container') {
+    min-width: rem(1200);
+    @extend %overflow-hidden;
+  }
+}

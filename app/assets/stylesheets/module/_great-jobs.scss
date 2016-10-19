@@ -1,0 +1,227 @@
+// Style for great jobs
+.great-jobs {
+  height: rem(304);
+  @include background-image('careers/great-job-bg.jpg');
+
+  @include e('lable') {
+    @include boxSize(rem(301), rem(46));
+    background-color: $red-bg;
+
+    p {
+      font-size: rem(17);
+      @extend %i-owan-old-style-italic;
+      margin-left: rem(88);
+      padding-top: rem(10);
+    }
+  }
+
+  @include e('container') {
+    @include boxSize(rem(1034), rem(180));
+    border: rem(2) solid $white;
+    margin: rem(15) auto 0 auto;
+  }
+
+  @include e('content') {
+    @include boxSize(rem(992), 100%);
+    @extend %margin-auto;
+  }
+}
+
+// Style for header top great jobs
+.jobs-head {
+  border-bottom: rem(2) solid $white;
+  @extend %overflow-hidden;
+  height: rem(71);
+
+  a {
+    @include boxSize(100%, 100%);
+    color: $default;
+  }
+
+  @include e('name') {
+    @extend %float-left;
+    padding-top: rem(25);
+  }
+
+  @include e('title') {
+    font-size: rem(21);
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    @extend %float-left;
+    padding-right: rem(16);
+
+    max-width: rem(440);
+    @extend %truncate;
+  }
+  @include e('title-great-jobs') {
+    max-width: rem(320);
+    &:after {
+      @include background-image('careers/great-job-bg.jpg');
+    }
+  }
+
+  @include e('icon') {
+    @extend %float-right;
+    margin-top: rem(4);
+
+    img {
+      @extend %float-left;
+      @include boxSize(rem(16), 100%);
+      margin-left: rem(6);
+    }
+  }
+
+  @include e('content') {
+    margin-top: rem(12);
+    @extend %float-right;
+    @extend %overflow-hidden;
+  }
+
+  @include e('desc') {
+    @extend %float-left;
+
+    li {
+      @extend %float-left;
+      padding-left: rem(31);
+
+      &:first-child {
+        @extend %no-padding-left;
+      }
+    }
+  }
+
+  @include e('desc-text') {
+    font-size: rem(17);
+    line-height: 2.375;
+    padding-top: rem(8);
+    @extend %acumin-pro-cond;
+    @extend %float-left;
+  }
+
+  @include e('desc-icon') {
+    @extend %float-left;
+    height: rem(46);
+
+    img {
+      width: rem(46);
+      height: 100%;
+      margin-left: rem(10);
+    }
+  }
+}
+
+// Style list icon in great jobs
+.great-jobs__list-icon {
+  margin-bottom: rem(10);
+
+  .great-jobs__row {
+    max-height: rem(68);
+    @extend %overflow-hidden;
+  }
+}
+
+.list-icon__details {
+  margin: rem(26) rem(47) 0 0;
+  @extend %no-padding;
+  width: rem(230);
+  @extend %overflow-hidden;
+
+  &:last-child {
+    @extend %no-margin-right;
+    width: rem(155);
+  }
+
+
+  img {
+    @include boxSize(rem(25), rem(25));
+    @extend %float-left;
+    margin-right: rem(10);
+  }
+
+  p {
+    font-size: rem(17);
+    @extend %acumin-pro-cond;
+    margin-left: rem(34);
+    line-height: rem(19);
+    padding-top: rem(3);
+  }
+
+  .icon-salary {
+    @include boxSize(rem(34), rem(24));
+  }
+
+  .icon-training {
+    @include boxSize(rem(21), rem(25));
+  }
+
+  .icon-map {
+    @include boxSize(rem(25), rem(22));
+  }
+
+  @include m('more') {
+    @extend %relative;
+    height: auto;
+
+    &:before {
+      content: '...';
+      @extend %absolute;
+      @extend %right-0;
+      top: rem(24);
+    }
+    
+    &:after {
+      content: '';
+      @extend %absolute;
+      @extend %right-0;
+      @include boxSize(rem(22), rem(22));
+      @extend %bottom-0;
+      @include background-image('careers/great-job-bg.jpg');
+    }
+  }
+
+  @include m('education') {
+    max-height: rem(62);
+
+    &:before {
+      top: rem(22);
+    }
+  }
+}
+
+// Button tell me jobs
+.btn-tell-me-jobs {
+  @include boxSize(rem(1036), rem(27));
+  margin: rem(20) auto 0  auto;
+
+  @include e('link') {
+    @extend %float-right;
+    width: rem(122);
+  }
+
+  img {
+    height: rem(27);
+  }
+}
+
+.great-jobs-careers-details {
+  padding-top: rem(26);
+  height: rem(262);
+}
+
+.carousel-dots-great-jobs {
+  margin-bottom: rem(-18);
+  left: 52%;
+  width: 49%;
+}
+
+.carousel-control--beside {
+  .i-career-next,
+  .i-career-prev {
+    top: rem(100);
+  }
+}
+
+// Override Job title in Career Landing
+.careers-job-title {
+  max-width: rem(510);
+}

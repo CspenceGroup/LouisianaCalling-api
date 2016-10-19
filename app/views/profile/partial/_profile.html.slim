@@ -1,0 +1,10 @@
+<div class="more-stories__content" >
+  <div class="row">
+    - profiles.each do |profile|
+        <div class="col-xs-4 col-md-4 more-stories__details" data-id=#{profile.id}>
+          <a href="javascript:void(0)">
+            = image_tag profile.image_small, lazy: true, class: "lazy-load"
+          </a>
+        </div>
+  </div>
+</div>

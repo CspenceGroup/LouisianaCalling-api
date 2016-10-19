@@ -1,0 +1,108 @@
+.profile-common {
+  @include e('info') {
+    @extend %display-flex;
+
+    &:last-child {
+      .profile-common__desc {
+        order: 1;
+      }
+
+      .profile-common__photo {
+        order: 2;
+      }
+    }
+  }
+
+  @include e('desc') {
+    @include background-image('profile/profile-decs-bg.png');
+    background-repeat: repeat;
+    color: $profile-header;
+    @extend %acumin-pro-cond;
+    // padding: rem(73) 0 0 0;
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+
+    h3 {
+      font-size: rem(21);
+      @extend %acumin-pro-cond-bi;
+      padding-bottom: rem(23);
+    }
+
+    p {
+      font-size: rem(16.7);
+      line-height: rem(20);
+      max-height: rem(100); 
+      margin-right: rem(-16);
+      padding-right: rem(16);
+      @extend %acumin-pro-cond;
+      @extend %overflow-hidden;
+      @extend %relative;
+
+      &:before {
+        content: '...';
+        margin-right: rem(14);
+        @extend %absolute;
+        @extend %right-bottom-0;
+      }
+      &:after {
+        content: '';
+        background: $white;
+        margin: rem(0.2) rem(14) 0 0;
+        @extend %right-0;
+        @extend %absolute;
+        @include boxSize(rem(12), rem(110));
+      }
+    }
+  }
+
+  @include e('photo') {
+    @extend %no-padding;
+
+    img {
+      height: auto;
+    }
+  }
+}
+
+
+.profile-heading {
+  @include background-image('profile/profile-heading-bg.png');
+  @extend %background-no-repeat;
+  color: $profile-header;
+  height: rem(160);
+  @extend %background-position-center;
+  @extend %background-cover;
+  @extend %text-center;
+  padding-top: rem(37);
+
+  p {
+    font-size: rem(16.7);
+    line-height: rem(20);
+    @extend %acumin-pro-cond-bi;
+  }
+}
+
+.profile-name {
+  color: $default;
+  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
+}
+
+.profile-title {
+  padding-bottom: rem(17);
+}
+
+.btn-full-story {
+  margin-top: rem(15);
+  @include boxSize(rem(140), rem(56));
+}
+
+.profile-content {
+  @extend %margin-auto;
+  width: rem(480);
+
+  @include m('pull-left') {
+    // @extend %float-right;
+    // margin: 0 rem(60) 0 0;
+  }
+}

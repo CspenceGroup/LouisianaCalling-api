@@ -1,0 +1,39 @@
+.hero-banner {
+  @extend %color-white;
+  @extend %text-center;
+  @extend %clear-both;
+
+  @include e('introduce') {
+    padding-top: rem(14);
+  }
+
+  @include e('title') {
+    font-size: rem(50);
+    line-height: rem(63);
+    @extend %i-owan-old-style;
+    @include shadow(0, 0, rem(49), $black);
+  }
+
+  @include e('text') {
+    font-size: rem(18.8);
+    margin-top: rem(10);
+    line-height: rem(12);
+    @extend %acumin-pro-cond-bi;
+  }
+
+  @include e('container') {
+    height: rem(450);
+    @extend %background-position-center;
+    @extend %background-cover;
+    padding-top: rem(82);
+  }
+}
+
+.careers-banner__container {
+  @include background-image('careers/banner-careers-landing.jpg');
+}
+
+.profile-banner__container {
+  padding-top: rem(92);
+  @include background-image('profile/banner-profile.jpg');
+}

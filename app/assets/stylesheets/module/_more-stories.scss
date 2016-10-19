@@ -1,0 +1,29 @@
+.more-stories {
+  @include background-image('profile/more-stories-bg.png');
+
+  @include e('title') {
+    padding-top: rem(29);
+  }
+
+  @include e('list') {
+    padding: rem(70) 0 rem(50) 0;
+  }
+
+  @include e('details') {
+    @include boxSize(rem(333), rem(333));
+    padding: 0 rem(8);
+  }
+
+  @include e('content') {
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+  }
+
+  @include e('btn') {
+    @include boxSize(rem(110), rem(32));
+    margin: rem(48) auto 0 auto;
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,148 @@
+.careers-lists {
+  @include background-image('filter-bg.png');
+  @extend %overflow-hidden;
+  @extend %display-flex;
+}
+
+.careers-filter {
+  background-color: $filter-careers-bg;
+  width: rem(325);
+  color: $profile-header;
+  padding: rem(56) 0 0 rem(26);
+  @extend %float-left;
+
+  @include e('heading') {
+    font-size: rem(17);
+    color: $filter-careers-heading;
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+  }
+
+  @include e('details') {
+    color: $filter-careers-details;
+    @extend %acumin-pro-cond;
+    margin-top: rem(45);
+  }
+
+  @include e('title') {
+    font-size: rem(16.7);
+    @extend %text-uppercase;
+    padding-bottom: rem(17);
+  }
+
+  @include e('desc') {
+    margin-bottom: rem(30);
+    padding-right: rem(15);
+  }
+
+  @include e('title-edu') {
+    padding-bottom: 0;
+  }
+}
+
+.careers-filter-details {
+
+  @include e('name') {
+    font-size: rem(14.5);
+    @extend %vertical-top;
+    margin-left: rem(32);
+    @extend %block;
+  }
+
+  li {
+    @extend %relative;
+    margin-bottom: rem(2);
+  }
+
+  @include m('hottest-jobs') {
+    li {
+      margin-bottom: rem(5);
+      @extend %overflow-hidden;
+    }
+    
+  }
+}
+
+.square-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  @include boxSize(rem(18), rem(18));
+  border: rem(1) solid $filter-careers-details;
+  @extend %no-border-radius;
+  @extend %no-outline;
+  @extend %float-left;
+
+  &:checked:before {
+    content:"✔";
+    @extend %absolute;
+    top: rem(-1);
+    left: rem(2);
+    @include boxSize(rem(18), rem(18));
+  }
+}
+
+.icon-hottest-jobs {
+  @include background-image('careers/hottest-jobs.png');
+  @extend %background-no-repeat;
+  height: rem(16);
+
+  @include m('four') {
+    background-position: rem(-18);
+  }
+
+  @include m('three') {
+    background-position: rem(-37);
+  }
+
+  @include m('two') {
+    background-position: rem(-55);
+  }
+
+  @include m('one') {
+    background-position: rem(-73);
+  }
+}
+
+// Style slider range
+.sliders_filter-salary {
+  margin-top: rem(25);
+}
+
+.range-salary-text {
+  @extend %no-border;
+  @extend %background-none;
+  font-size: rem(15);
+  @extend %acumin-pro-cond;
+  color: $filter-careers-details;
+}
+
+.ui-slider-horizontal {
+  @include boxSize(rem(192), rem(7));
+}
+
+.ui-slider {
+  background-color: $range-bg;
+}
+
+.ui-corner-all {
+  @extend %no-border-radius;
+}
+
+.ui-slider-handle {
+  @include boxSize(rem(12), rem(27));
+  outline: none;
+}
+
+.ui-state-default:active {
+  background-color: $range-bg;
+  outline: none;
+  border: rem(1) solid $range-border;
+  @include boxSize(rem(12), rem(27));
+}
+
+.asterisk-careers-filter {
+  font-size: rem(14.5);
+  @extend %acumin-pro-cond-regular;
+  padding: rem(5) 0 rem(17) 0;
+}

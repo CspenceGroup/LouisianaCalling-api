@@ -1,0 +1,172 @@
+.program-list {
+  @include e('item') {
+    border: rem(1) solid $default;
+    background-color: $white;
+    color: $default;
+  }
+
+  @include e('item-header') {
+    border-bottom: rem(1) solid $default;
+    height: rem(80);
+  }
+
+  @include e('item-content') {
+    width: rem(774);
+  }
+
+  @include e('call-us') {
+    @include boxSize(rem(815), rem(31));
+    background-color: $red-bg;
+    @extend %text-center;
+    font-size: rem(14.5);
+    @extend %acumin-pro-cond;
+    color: $white;
+    padding-top: rem(10);
+    margin-bottom: rem(35);
+    margin: rem(30) auto rem(14) auto;
+    line-height: rem(14.5);
+  }
+
+  @include e('item-footer') {
+    font-size: rem(14.5);
+    @extend %acumin-pro-cond-regular;
+  }
+
+  @include e('item-row') {
+    padding-top: rem(20);
+  }
+}
+
+.program-list-view {
+  @extend %overflow-hidden;
+  margin-bottom: rem(170);
+
+  .no-result-found {
+    @extend %text-center;
+  }
+
+  @include e('container') {
+    width: rem(815);
+    @extend %margin-auto;
+  }
+}
+
+.i-career {
+  @include boxSize(rem(22), rem(27));
+}
+
+.career-industry {
+  @extend %overflow-hidden;
+  @extend %relative;
+  
+  p {
+    @extend %truncate;
+  }
+}
+
+// Style program view map
+
+.program-map-view {
+  width: rem(1155);
+  margin: rem(25) auto rem(45) auto;
+  display: none;
+  @extend %overflow-hidden;
+
+  @include e('list') {
+    width: rem(385);
+    @extend %float-left;
+
+    .no-result-found {
+      margin-left: rem(50);
+    }
+  }
+
+  @include e('address') {
+    @include boxSize(rem(753), rem(640));
+    @extend %float-right;
+  }
+  
+}
+
+.program-item-map {
+  height: rem(270);
+
+  @include e('container') {
+    @include boxSize(rem(353), 100%);
+    @extend %margin-auto;
+  }
+
+  @include e('header') {
+    height: rem(120);
+
+    .jobs-head__content {
+      @extend %float-left;
+      width: 100%;
+      margin-top: rem(10);
+    }
+
+    .jobs-head__name {
+      padding: rem(21) 0 rem(13) 0;
+      border-bottom: rem(1) solid $default;
+      width: rem(353);
+    }
+
+    .edu-salary {
+      @extend %float-right;
+    }
+  }
+
+  @include e('footer-item') {
+    @extend %no-padding;
+    padding-top: rem(13);
+
+    &:first-child {
+      @extend %no-padding-top;
+      height: rem(29);
+      @extend %overflow-hidden;
+
+      p {
+        padding-right: rem(10);
+      }
+    }
+
+    .icon {
+      margin-right: rem(6);
+    }
+
+    &:last-child {
+      @extend %no-margin-right;
+      @extend %float-right;
+    }
+
+    &:nth-child(2) {
+      @extend %no-padding-top;
+    }
+
+    p {
+      padding-top: rem(3);
+    }
+  }
+}
+
+.labels-marker {
+  color: $black;
+  @extend %acumin-pro-cond;
+  font-size: rem(12.5);
+  text-align: center;
+  width: rem(40);
+  height: rem(20);
+  white-space: nowrap;
+  @extend %absolute;
+}
+
+.see-more-program {
+  margin-top: rem(35);
+}
+
+// Program Landing Message
+.edu-landing-message {
+  background: none;
+  padding-top: rem(48);
+
+}

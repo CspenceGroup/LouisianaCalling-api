@@ -1,0 +1,56 @@
+<div>
+  <br/>
+  <br/>
+  <br/>
+  - if flash[:notice]
+    = content_tag :div, flash[:notice], class: "alert alert-info"
+
+  = form_tag('/upload', multipart: true)
+    section
+      .container style=("color: #000;")
+        .row
+          input checked="checked" name="name" type="radio" value="regions" /
+          |  Regions
+        .row
+          input name="name" type="radio" value="interests" /
+          |  List of Interests
+        .row
+          input name="name" type="radio" value="skills" /
+          |  List of Skills
+        .row
+          input name="name" type="radio" value="clusters" /
+          |  List of Clusters
+        .row
+          input name="name" type="radio" value="educations" /
+          |  List of Education
+        .row
+          input name="name" type="radio" value="careers" /
+          |  Careers by State
+        .row
+          input name="name" type="radio" value="careers_region" /
+          |  Careers by Regions
+        .row
+          input name="name" type="radio" value="homePageTopJobs" /
+          |  Home Page - Top Jobs
+        .row
+          input name="name" type="radio" value="profiles" /
+          |  Profile Stories
+        .row
+          input name="name" type="radio" value="homePageVideo" /
+          |  Home Page - Video
+        .row
+          input name="name" type="radio" value="programs" /
+          |  Programs
+    section
+      .container
+        .row
+          label for="attachment"  Choose file
+          .input-group
+            input.form-control name="attachment" type="file" /
+          br/
+          .input-group
+            input type="submit" value="Upload" /
+
+
+
+<div>

@@ -1,0 +1,236 @@
+.edu-detail-banner {
+  height: rem(427);
+  @extend %overflow-hidden;
+}
+
+.edu-detail-desc {
+  width: 64.75%;
+}
+
+.edu-address-container {
+  width: 35.25%;
+  font-size: rem(16.67);
+  padding: rem(67) 0 rem(30) 0;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include background-image('education-details/edu-map-bg.jpg');
+}
+
+.edu-aside-center {
+  width: rem(346);
+  @extend %margin-auto;
+}
+
+.institution-detail {
+  width: rem(346);
+  @extend %overflow-hidden;
+
+  span {
+    width: rem(135);
+    @extend %float-left;
+    @extend %text-capitalize;
+  }
+
+  p {
+    width: rem(200);
+    margin-bottom: rem(5);
+    color: $profile-header;
+    @extend %float-left;
+  }
+
+  &:first-child {
+    margin-top: rem(30);
+  }
+}
+
+.aside-map {
+  border: solid rem(1) $default;
+  height: rem(295.5);
+  @extend %overflow-hidden;
+}
+
+.edu-address {
+  .call-us {
+    font-size: rem(20.7);
+    margin-top: rem(27);
+    @extend %clear-both;
+    @extend %i-owan-old-style;
+  }
+}
+
+.edu-program-info {
+  .icon {
+    margin-right: rem(13);
+    @extend %float-left;
+  }
+
+  .great-jobs__container {
+    padding: 0 rem(20);
+    @include boxSize(rem(800), rem(155));
+  }
+
+  .jobs-head__content {
+    margin-top: rem(20);
+  }
+
+  .jobs-head__title {
+    max-width: rem(370);
+  }
+
+  @include m('item') {
+    height: rem(170);
+    margin-top: rem(20);
+
+    .jobs-head__title {
+      max-width: rem(500);
+    }
+  }
+
+  @include e('map-item') {
+    margin-bottom: rem(17);
+
+    .job-title-aside {
+      max-width: rem(330);
+    }
+  }
+}
+
+.edu-great-jobs {
+  padding-top: rem(35);
+}
+
+.edu-detail-content {
+  width: 100%;
+}
+
+.edu-detail-row {
+  padding-top: rem(28);
+  @extend %overflow-hidden;
+}
+
+.edu-detail-item {
+  margin-left: rem(30);
+  @extend %overflow-hidden; 
+  @extend %no-padding-right;
+  @extend %float-left;
+  @extend %display-flex;
+
+  p {
+    margin-top: rem(3);
+    width: 100%;
+    @extend %truncate;
+    @extend %float-left;
+  }
+
+  &:first-child {
+    @extend %no-margin-top;
+    @extend %no-margin-left;
+    @extend %no-padding;
+    @extend %overflow-hidden;
+    @include boxSize(rem(190), rem(25));
+
+    &:before {
+      @extend %no-content;
+    }
+
+    &:after {
+      @extend %no-content;
+    }
+  }
+
+  &:nth-child(2) {
+    width: rem(155);
+  }
+
+  &:nth-child(3) {
+    width: rem(100);
+    
+    p {
+      width: rem(65);
+      @extend %truncate;
+    }
+  }
+
+  &:nth-child(4) {
+    p {
+      width: rem(75);
+      @extend %truncate;
+    }
+  }
+
+  &:last-child {
+    p {
+      width: auto;
+    }
+  }
+
+  @include m('landing') {
+    @extend %no-padding;
+    margin-left: rem(30);
+    height: rem(48);
+    @extend %overflow-hidden;
+    @extend %float-left;
+
+    &:last-child {
+      width: rem(71);
+      margin-left: rem(18);
+    }
+
+    &:first-child {
+      @extend %no-margin-left;
+      width: rem(200);
+      height: rem(28);
+    }
+
+    &:nth-child(2) {
+      width: rem(140);
+    }
+
+    &:nth-child(3) {
+      width: rem(150);
+    }
+
+    &:nth-child(4) {
+      width: rem(105);
+    }
+
+    p {
+      padding-top: rem(3);
+      @extend %truncate;
+    }
+  }
+}
+
+.edu-industry {
+  width: rem(150);
+  @extend %overflow-hidden;
+  @extend %relative;
+}
+
+.edu-salary-range {
+  margin-top: rem(8);
+  @extend %inline-block;
+}
+
+.edu-head-info {
+  @extend %float-left;
+}
+
+.edu-cost {
+  @extend %float-right;
+}
+
+.edu-region {
+  @extend %float-left;
+  width: rem(115);
+  margin: rem(9) rem(23) 0 0;
+}
+
+.edu-certificate {
+  width: rem(120);
+  @extend %overflow-hidden;
+}
+
+.edu-details-region {
+  margin: rem(8) rem(30) 0 0;
+}

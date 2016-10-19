@@ -1,0 +1,6 @@
+- interests.each do |interest|
+  li
+    input.square-checkbox name="interests" type="checkbox" value=interest.id /
+    span.filter-checkbox
+    span.careers-filter-details__name
+      = interest.name

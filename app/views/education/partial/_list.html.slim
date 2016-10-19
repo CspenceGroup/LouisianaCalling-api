@@ -1,0 +1,55 @@
+- if programs.length > 0
+  - programs.each do |program|
+    .edu-program-info.edu-program-info--item id=program.id
+      .program-list__item
+        .great-jobs__content.program-list__item-content
+          .jobs-head.program-list__item-header
+            a href="/programs/#{program.slug}"
+              .jobs-head__name
+                .jobs-head__title.jobs-head__title-great-jobs title="#{program}"
+                  = program
+            .jobs-head__content
+              //- .edu-scholarship
+              //-   p
+              //-     = program.financial_help
+              .edu-region
+                .icon.i-edu-region
+                  = image_tag asset_path("region.png"), :alt => 'icon region'
+                p
+                  = program.region
+              .edu-cost
+                .icon.i-edu-salary
+                  = image_tag asset_path("program-landing/dollar-sign.png"), :alt => 'icon dollar'
+                .edu-salary-range
+                  = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
+          .great-jobs__list-icon.program-list__item-footer
+            ul.edu-detail-row
+              li.edu-detail-item--landing
+                .icon.i-career
+                  = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
+                .career-industry title="#{program.careers if program.careers.present?}"
+                  - program.careers.each do |career|
+                    p
+                      = career
+              li.edu-detail-item--landing
+                .icon.i-education
+                  = image_tag asset_path("icon-education.png"), :alt => "icon education"
+                p title=program.education
+                  = program.education
+              li.edu-detail-item--landing
+                .icon.i-calendar
+                  = image_tag asset_path("program-landing/calendar.png"), :alt => 'icon calendar'
+                p
+                  = program.duration
+              li.edu-detail-item--landing
+                .icon.i-clock
+                  = image_tag asset_path("program-landing/clock.png"), :alt => 'icon clock'
+                p
+                  = program.hours_per_weeks
+              li.edu-detail-item--landing
+                .icon.i-day
+                  = image_tag asset_path("program-landing/day_night.png"), :alt => 'icon day night'
+                p
+                  = program.time_of_day
+- else
+  p.no-result-found No results found.

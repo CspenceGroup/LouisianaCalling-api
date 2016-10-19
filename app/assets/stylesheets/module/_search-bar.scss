@@ -1,0 +1,117 @@
+.search-bar {
+  height: rem(161);
+  color: $search-text;
+  padding-top: rem(55);
+  @include background-image('career-search-bg.jpg');
+  @extend %background-cover;
+  @extend %background-position-center;
+  @extend %text-left;
+  @extend %relative;
+  @extend %overflow-hidden;
+}
+
+form {
+  z-index: 1000;
+  @extend %relative;
+}
+
+.search-group {
+  width: rem(1045);
+  @extend %margin-auto;
+
+  .search-input {
+    font-size: rem(14.7);
+    text-indent: rem(5);
+    border: solid rem(1) $search-border;
+    @extend %no-border-radius;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
+    @include boxSize(rem(379), rem(53));
+  }
+
+  .btn-submit {
+    width: rem(212);
+    font-size: rem(14.7);
+    margin-right: rem(7);
+    background-color: $default;
+    @extend %i-owan-old-style-bi;
+    @extend %cl-white;
+    @extend %float-left;
+    @extend %no-border-radius;
+    @extend %no-border;
+    @extend %no-outline;
+  }
+
+  .btn-region,
+  .btn-career {
+    padding-left: rem(10);
+    @extend %text-left;
+    @extend %no-border-left;
+  }
+
+  .fa {
+    color: $default;
+    top: rem(18);
+    right: rem(12);
+    @extend %absolute;
+  }
+}
+
+.btn-search {
+  border: solid rem(1) $search-border;
+  background-color: $white;
+  height: rem(53);
+  @extend %float-left;
+  @extend %no-border-radius;
+  @extend %relative;
+
+  .form-control {
+    font-size: rem(14.7);
+    color: $search-text;
+    @extend %no-outline;
+    @extend %appearance-none;
+    @extend %no-padding-left;
+    @extend %acumin-pro-cond-regular;
+    @extend %font-style-italic;
+    @include boxSize(100%, 100%);
+    @extend %no-border;
+    @extend %background-none;
+  }
+
+  /* for IE10 */
+  select::-ms-expand {
+    @extend %hide;
+  }
+}
+
+.btn-region {
+  width: rem(231);
+}
+
+.btn-career {
+  width: rem(211);
+}
+
+.search-bg {
+  z-index: 10;
+  left: rem(-27);
+  top: rem(10);
+  @extend %absolute;
+  @include boxSize(auto, rem(161));
+}
+
+.no-result-found {
+  font-size: rem(40);
+  margin-top: rem(78);
+  color: $default;
+}
+
+.no-result-list {
+  margin-top: rem(0) !important;
+}
+
+// Style drop down auto complete
+.ui-autocomplete {
+  @include boxSize(rem(375), rem(250));
+  @extend %overflow-y-scroll;
+}

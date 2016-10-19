@@ -1,0 +1,10 @@
+.main-title {
+  font-size: rem(29.17);
+  line-height: 1;
+  @extend %i-owan-old-style;
+}
+
+.shadow-main-title {
+  color: $default;
+  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
+}

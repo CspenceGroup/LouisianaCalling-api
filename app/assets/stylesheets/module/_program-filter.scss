@@ -1,0 +1,130 @@
+.program-list {
+  @include background-image('filter-bg.png');
+  @extend %overflow-hidden;
+
+  @include e('head') {
+    padding-top: rem(55);
+    @include boxSize(rem(815), rem(108));
+    @extend %margin-auto;
+    @extend %overflow-hidden;
+  }
+
+  @include e('search') {
+    @extend %float-left;
+  }
+}
+
+.search-group--program {
+  width: rem(600);
+}
+
+.program-view-by {
+  @extend %float-right;
+  width: rem(56);
+  padding-top: rem(10);
+
+  @include e('list') {
+    @extend %overflow-hidden;
+    @include boxSize(rem(30), rem(30));
+    @extend %float-left;
+  }
+
+  @include e('list-icon') {
+    @include boxSize(rem(24), rem(24));
+    margin: rem(3) auto 0 auto;
+  }
+
+  @include e('map') {
+    @include boxSize(rem(23), rem(30));
+    @extend %float-right;
+  }
+
+  @include e('list-icon-map') {
+    @include boxSize(rem(17), rem(24));
+    margin: rem(2) auto 0 auto;
+  }
+}
+
+.action-filter {
+  color: $black;
+  @extend %float-left;
+  font-size: rem(16.7);
+  color: $default;
+  @extend %text-uppercase;
+  @extend %brandon-grotesque-bold;
+  margin-left: rem(30);
+  padding-top: rem(16);
+  cursor: pointer;
+
+  @include e('hide') {
+    display: none;
+  }
+}
+
+.program-filter {
+  color: $profile-header;
+  @extend %acumin-pro-cond;
+  background-color: $filter-careers-bg;
+  @extend %relative;
+
+  @include e('container') {
+    width: rem(1050);
+    @extend %margin-auto;
+    padding: rem(45) 0;
+    @extend %relative;
+
+    &:before {
+      content: "";
+      @extend %absolute;
+      top: rem(-22);
+      left: 76%;
+      margin-left: rem(-11);
+      border-width: rem(11);
+      border-style: solid;
+      border-color: transparent transparent $filter-careers-bg transparent;
+    }
+  }
+
+  @include e('details') {
+    @extend %no-padding;
+    margin-left: rem(70);
+    width: rem(193);
+
+    &:first-child {
+      @extend %no-margin;
+      width: rem(261);
+    }
+  }
+
+  @include e('details-item') {
+    margin-top: rem(50);
+  }
+}
+
+.program-map-active {
+  .program-map-view-active {
+    @extend %block;
+  }
+
+  .map-active-tab {
+    @extend .active-tab;
+  }
+
+  .program-list-view-active {
+    display: none;
+  }
+}
+
+.program-list-active {
+  .program-list-view-active {
+    @extend %block;
+  }
+
+  .list-active-tab {
+    @extend .active-tab;
+  }
+
+  .program-map-view-active {
+    display: none;
+  }
+}

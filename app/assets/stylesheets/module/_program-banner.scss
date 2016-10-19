@@ -1,0 +1,21 @@
+.program-banner {
+  @include e('container') {
+    @include background-image('program-landing/program-landing-banner.jpg');
+    padding-top: rem(98);
+    height: rem(450);
+  }
+
+  @include e('introduce') {
+    width: rem(627);
+    @extend %margin-auto;
+    padding-top: rem(6);
+  }
+
+  @include e('text') {
+    line-height: rem(23);
+
+    &:nth-child(2){
+      margin-top: 0;
+    }
+  }
+}

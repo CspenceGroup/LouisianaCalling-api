@@ -1,0 +1,64 @@
+/*Style navigations*/
+.nav-bar {
+  @extend %vertical-top;
+  @extend %float-right;
+  @extend %brandon-grotesque;
+
+  @include e('list') {
+    @extend %overflow-hidden;
+    @extend %float-left;
+    padding: rem(27) 0;
+
+    > li {
+      @extend %float-left;
+      padding: 0 rem(25);
+    }
+
+    a {
+      @extend %text-uppercase;
+      font-size: rem(12.6);
+      color: $white;
+
+      @include linkState() {
+        color: $red-bg;
+        @extend %no-text-decoration;
+      }
+    }
+
+    .nav-active {
+      color: $red-bg;
+    }
+  }
+
+  @include e('contact') {
+    @extend %float-right;
+    padding: rem(22) 0 0 rem(24);
+
+    a {
+      @extend %brandon-grotesque;
+      color: $white;
+      @extend %float-right;
+      font-size: rem(18.9);
+      line-height: rem(18.9);
+      padding-top: rem(2);
+    }
+
+  }
+
+  @include e('icon') {
+    font-size: rem(18.9);
+  }
+
+  @include e('list-icon') {
+    @extend %overflow-hidden;
+
+    > li {
+      @extend %float-left;
+      padding-right: rem(22);
+
+      &:last-child {
+        @extend %no-padding-right;
+      }
+    }
+  }
+}

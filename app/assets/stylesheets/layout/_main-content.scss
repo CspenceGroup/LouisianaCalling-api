@@ -1,0 +1,23 @@
+.main-content {
+  padding-top: rem(75);
+  min-width: rem(1200);
+}
+
+.error-container,
+.error-main-content {
+  height: 100%;
+}
+
+.error-container {
+  .site-footer {
+    width: 100%;
+    @extend %fixed;
+    @extend %bottom-0;
+  }
+}
+
+.error-main-content {
+  padding-top: rem(75);
+  @extend %relative;
+  @include background-image('filter-bg.png');
+}

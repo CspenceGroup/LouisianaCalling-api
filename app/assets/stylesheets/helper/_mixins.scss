@@ -1,0 +1,95 @@
+/* Mixin definitions */
+$font-path: '';
+$image-path: '';
+
+@function rem($num) {
+  @return #{$num/$base-font-size}rem;
+}
+
+/* Mixin for font face */
+@mixin font-face($font-name) {
+  @font-face {
+    font-family: $font-name;
+    src: asset-url($font-path + $font-name + '.eot');
+    src: asset-url($font-path + $font-name + '.eot?#iefix') format('embedded-opentype'),
+         asset-url($font-path + $font-name + '.woff') format('woff'),
+         asset-url($font-path + $font-name + '.ttf') format('truetype'),
+         asset-url($font-path + $font-name + '.svg#') format('svg');
+  }
+}
+
+/* Border radius */
+@mixin border-radius($radius) {
+  @include border-top-radius($radius);
+  @include border-right-radius($radius);
+  @include border-bottom-radius($radius);
+  @include border-left-radius($radius);
+}
+
+/* Background image mixin
+ * $image: is name and type of image
+ */
+@mixin background-image($image) {
+  background-image: asset-url('#{$image-path+$image}');
+}
+
+@mixin linkState () {
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    @content;
+  }
+}
+
+/* Background sprite */
+@mixin backgroundSprite ($width, $height, $value1, $value2) {
+  width: rem($width);
+  height: rem($height);
+  background-position: rem($value1) rem($value2);
+}
+
+/* Block Element
+ * @param {String} $element - Element's name
+ */
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/* Block Modifier
+ * @param {String} $modifier - Modifier's name
+ */
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/* @alias element */
+@mixin e($element) {
+  @include element($element)  {
+    @content;
+  }
+}
+
+/* @alias modifier */
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
+
+/* Block size */
+@mixin boxSize ($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+/* Box shadow */
+@mixin shadow ($x, $y, $z, $color) {
+  -webkit-text-shadow: $x $y $z $color;
+     -moz-text-shadow: $x $y $z $color;
+          text-shadow: $x $y $z $color;
+}

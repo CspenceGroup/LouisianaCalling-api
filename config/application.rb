@@ -11,5 +11,15 @@ module Api
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.cache_store = :redis_store, ENV['CACHE_URL'],
+                         { namespace: 'drkiq::cache' }
+    config.active_job.queue_adapter = :sidekiq
+
+    config.generators do |g|
+      g.template_engine :slim
+    end
+
+    config.exceptions_app = self.routes
   end
 end

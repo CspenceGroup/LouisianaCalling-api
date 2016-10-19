@@ -1,0 +1,17 @@
+- if careers.length > 0
+  - careers.each do |career|
+    .careers-list-view__item id=career.id
+      .jobs-head.careers-list-view__heading
+        .jobs-head__name
+          a href="/careers/#{career.slug}"
+            p.jobs-head__title title=career.title
+              = career.title
+          .jobs-head__icon
+            - career.demand.to_i.times do
+              = image_tag(asset_path("careers/icon-vote-careers.png"), alt: "fire icon")
+        .careers-list-view__head-salary
+          .careers-list-view__icon-salary
+          p.careers-list-view__salary
+            = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+- else
+  p.no-result-found.no-result-list No results found.

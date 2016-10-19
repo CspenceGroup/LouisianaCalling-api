@@ -1,0 +1,193 @@
+.related-careers {
+  @extend %overflow-hidden;
+  color: $default;
+  margin-bottom: rem(-29);
+  @extend %relative;
+  @include background-image('map-bg.png');
+  min-height: rem(511);
+
+  .col-md-6,
+  .col-md-4,
+  .col-md-9 {
+    @extend %no-padding;
+  }
+
+  .want-to-talk {
+    @extend %cl-white;
+  }
+
+  @include e('header') {
+    padding: rem(53) 0 rem(33) rem(5);
+  }
+
+  @include e('title') {
+    margin-bottom: rem(30);
+    @extend %text-capitalize;
+  }
+
+  @include e('items') {
+    margin-right: rem(10);
+    color: $default;
+  }
+
+  @include e('content') {
+    width: 74%;
+    @extend %float-left;
+    margin-bottom: rem(45);
+  }
+
+  @include e('details') {
+    margin-bottom: rem(20);
+    a {
+      @include boxSize(100%, 100%);
+      color: $default;
+    }
+  }
+
+  @include e('sort-by') {
+    margin-top: rem(7);
+  }
+}
+
+.related-careers-container {
+  width: rem(810);
+  @extend %margin-auto;
+}
+
+.sort-item {
+  margin-right: rem(10);
+  @extend %acumin-pro-cond;
+  @extend %float-left;
+
+  &:last-child {
+    @extend %no-margin-right;
+  }
+
+  @include e('title') {
+    font-size: rem(16.7);
+    width: rem(70);
+    margin-top: rem(15);
+    @extend %text-capitalize;
+    @extend %float-left;
+    @extend %truncate;
+  }
+
+  @include e('icon') {
+    @extend %float-left;
+    @include boxSize(rem(46), rem(46));
+  }
+}
+
+.sort-by {
+  font-size: rem(16.7);
+  margin: rem(5) rem(22) 0 0;
+  @extend %float-left;
+  @extend %acumin-pro-cond-bi;
+}
+
+.related-item {
+  border: solid rem(1) $default;
+  background-color: $white;
+  @extend %margin-auto;
+  @extend %relative;
+  @include boxSize(rem(234), rem(270));
+
+  @include e('photo') {
+    @extend %overflow-hidden;
+    @include boxSize(100%, rem(197));
+  }
+
+  @include e('info') {
+    padding: rem(8) rem(10) 0;
+  }
+
+  @include e('name') {
+    font-size: rem(17);
+    width: rem(225);
+    line-height: rem(20);
+    max-height: rem(40);
+    // @extend %overflow-hidden;
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    @extend %block;
+    @extend %relative;
+    // word-break: break-all;
+    // &:before {
+    //   content: '...';
+    //   // margin-right: rem(14);
+    //   @extend %absolute;
+    //   @extend %right-bottom-0;
+    // }
+    // &:after {
+    //   content: '';
+    //   background: $white;
+    //   margin-top: rem(1);
+    //   @extend %right-0;
+    //   @extend %absolute;
+    //   @include boxSize(rem(12), rem(30));
+    // }
+  }
+
+  @include e('salary') {
+    font-size: rem(14.8);
+    @extend %truncate;
+    @extend %acumin-pro-cond;
+    @extend %block;
+  }
+}
+
+.interest-votes {
+  right: rem(15);
+  top: rem(7);
+  @extend %float-right;
+  @extend %absolute;
+}
+
+.btn-sort-active {
+  @extend %cl-white;
+  background-color: $red-bg;
+}
+
+.related-careers-container.career-interest-active {
+  .btn-interest-active {
+    @extend .btn-sort-active;
+  }
+
+  #careers-by-interests {
+    @extend %block;
+  }
+
+  #careers-by-skills {
+    display: none;
+  }
+
+  #interest-icons {
+    @extend %block;
+  }
+
+  #skill-icons {
+    display: none;
+  }
+}
+
+.related-careers-container.career-skill-active {
+  .btn-skill-active {
+    @extend .btn-sort-active;
+  }
+
+  #careers-by-skills {
+    @extend %block;
+  }
+
+  #careers-by-interests {
+    display: none;
+  }
+
+  #interest-icons {
+    display: none;
+  }
+
+  #skill-icons {
+    @extend %block;
+  }
+}

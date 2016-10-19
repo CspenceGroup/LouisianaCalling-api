@@ -1,0 +1,251 @@
+.about-faq-container {
+  width: rem(1060);
+  padding-top: rem(41);
+  @extend %margin-auto;
+}
+
+.category-container {
+  width: rem(1030);
+}
+
+.about-faq {
+
+  .main-title {
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+  }
+
+  h2.main-title {
+    font-size: rem(25);
+  }
+
+  h3 {
+    font-size: rem(16.67);
+  }
+
+  @include e('search') {
+    margin-bottom: rem(55);
+    @extend %text-center;
+
+    .main-title {
+      font-size: rem(29.17);
+      text-transform: none;
+      @extend %i-owan-old-style;
+    }
+  }
+
+  @include e('main-content') {
+    color: $default;
+    font-size: rem(16.67);
+    @extend %acumin-pro-cond-regular;
+
+    h3 {
+      font-size: rem(16.67);
+    }
+  }
+
+  @include e('topics') {
+    padding: rem(32) rem(5);
+    margin-top: rem(25);
+    color: $faq-topic;
+    background-color: $faq-topic-bg;
+  }
+
+  @include e('topics-title') {
+    padding-left: rem(15);
+    margin-bottom: rem(20);
+  }
+
+  @include e('topic-list') {
+    list-style-type: disc;
+    padding-left: rem(30);
+    @extend %overflow-hidden;
+
+    li {
+      line-height: rem(25);
+    }
+
+    a {
+      color: $faq-topic;
+    }
+  }
+
+  @include e('items') {
+    margin-top: rem(55);
+  }
+
+  @include e('item') {
+    border-bottom: solid rem(1) $default;
+    padding-bottom: rem(17);
+    margin-top: rem(20);
+
+    h3 {
+      margin-bottom: rem(17);
+    }
+  }
+
+  @include e('contact') {
+    color: $default;
+    margin: rem(35) 0 rem(60) 0;
+    @extend %text-center; 
+  }
+}
+
+.faq-search {
+  width: rem(825);
+  margin-top: rem(25);
+  @extend %margin-auto;
+
+  .faq-input {
+    width: rem(610);
+    font-size: rem(18.86);
+    text-indent: rem(-3);
+  }
+
+  .btn-search {
+    font-size: rem(18.86);
+  }
+}
+
+.faq-contact-btn {
+  margin-top: rem(15);
+  @extend %block;
+  @extend %margin-auto;
+  @extend %background-no-repeat;
+  @include boxSize(rem(120), rem(30));
+  @include background-image('about/contact-us-btn.png');
+}
+
+.category-col {
+  padding: 0 rem(10) rem(35) rem(10);
+  @extend %no-padding;
+}
+
+.categories {
+  a {
+    color: $default;
+  }
+
+  @include e('name') {
+    font-size: rem(16.67);
+    padding: rem(7) 0 0 rem(22);
+    background-color: $profile-name-shadow;
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    @include boxSize(rem(330), rem(32));
+
+    a {
+      color: $faq-topic;
+    }
+  }
+
+  @include e('questions') {
+    padding-top: rem(15);
+    margin-left: rem(35);
+    list-style: disc;
+  }
+}
+
+.catogory-active {
+  @extend %block;
+}
+
+.category-inactive {
+  display: none;
+}
+
+.category-list {
+  font-size: rem(20.83);
+  @extend %text-uppercase;
+  @extend %brandon-grotesque-bold;
+
+  @include e('container') {
+    width: rem(1200);
+    padding-left: rem(118);
+    min-height: rem(645);
+    @extend %margin-auto;
+  }
+
+  @include e('title') {
+    font-size: rem(20.83);
+    margin-left: rem(22);
+    color: $btn-see-more-bg;
+  }
+
+  @include e('items') {
+    padding-top: rem(18);
+    li {
+      padding: rem(13) 0 0 rem(22);
+      @include boxSize(rem(330), rem(55));
+
+      &:nth-child(odd) {
+        background-color: $profile-name-shadow;
+      }
+    }
+
+    a {
+      color: $profile-header;
+    }
+  }
+}
+
+.category-details-head {
+  @extend %overflow-hidden;
+
+  h2 {
+    @extend %float-left;
+  }
+}
+
+.faq-txt {
+  color: $faq-topic;
+  font-size: rem(20.83);
+  @extend %text-uppercase;
+  @extend %brandon-grotesque;
+}
+
+.faq-back {
+  color: $btn-see-more-bg;
+  @extend %float-right;
+  @extend %font-weight-bold;
+
+  @include linkState () {
+    color: $btn-see-more-bg;
+  }
+}
+
+.faq-search-term {
+  color: $faq-topic;
+  padding-left: rem(117);
+  @include boxSize(rem(1200), rem(955));
+
+  .search-result-title {
+    font-size: rem(20.83);
+  }
+}
+
+.search-not-found {
+  h4 {
+    font-size: rem(16.67);
+    margin-top: rem(42);
+  }
+
+  p {
+    margin-top: rem(20);
+  }
+}
+
+.faq-search-suggestions {
+  list-style: disc;
+  margin-left: rem(18);
+  padding-top: rem(3);
+}
+
+.faq-result-item {
+  margin-top: rem(38);
+
+  h4 {
+    font-size: rem(16.67);
+  }
+}
+

@@ -1,0 +1,19 @@
+section.hero-banner
+  .hero-banner__container.banner-faq
+section.about-tabs__desc.about-faq
+  .about-faq-container
+    section.about-faq__search
+      h2.main-title.shadow-main-title Got a Question? Or perhaps many? Start here.
+      form#searchFaq.faq-search(name='search-faq')
+        .input-group.search-group
+          input.form-control.search-input.faq-input(required='required' type='text' name='search-input' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"')
+          button.btn.btn-search.btn-submit(type='submit') Search
+    section.about-faq__main-content
+      = render partial: "about/partial/category"
+      = render partial: "about/partial/category-list"
+      = render partial: "about/partial/search-results"
+    section.about-faq__contact
+      h2.main-title Can't find what you're looking for?
+      a.faq-contact-btn(href="#contactUs" role='tab' data-toggle='tab')
+
+  

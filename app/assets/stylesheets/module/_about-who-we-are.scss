@@ -1,0 +1,103 @@
+.about-tabs {
+  @include e('nav') {
+    height: rem(136);
+    @extend %absolute;
+    @include boxSize(100%, rem(136));
+    top: rem(-2);
+
+    li {
+      height: 100%;
+      border-left: solid rem(1) $map-bg;
+      @extend %no-padding;
+      @extend %no-margin-left;
+      @include background-image('education-details/edu-map-bg.jpg');
+
+      &:first-child {
+        @extend %no-border-left;
+      }
+    }
+
+    a {
+      @extend %text-center;
+      @include boxSize(100%, 100%);
+      color: $profile-header;
+      @extend %block;
+
+      span {
+        color: $filter-careers-details;
+        font-size: rem(20.8);
+        @extend %text-uppercase;
+        @extend %brandon-grotesque;
+        @extend %block;
+        padding-top: rem(55);
+      }
+    }
+
+    .active {
+      height: rem(144);
+      z-index: 1000;
+      @extend %cl-white;
+      @extend %relative;
+      @extend %background-position-center;
+      @include background-image('tab-active.png');
+    }
+  }
+
+  @include e('desc') {
+    @include background-image('profile/profile-decs-bg.png');
+  }
+
+  @include e('content') {
+    margin-top: 451px;
+    .hero-banner {
+      @extend %absolute;
+      width: 100%;
+      top: rem(-451);
+    }
+  }
+
+  @include e('desc') {
+    padding-top: rem(135);
+  }
+
+  @include e('container-who') {
+    width: rem(667);
+    @extend %margin-auto;
+    padding: rem(60) 0 rem(62) 0;
+    color: $default;
+
+    h2 {
+      font-size: rem(29);
+      @extend %i-owan-old-style;
+      padding-bottom: rem(20);
+    }
+
+    p {
+      font-size: rem(16.7);
+      @extend %acumin-pro-cond-regular;
+      padding-top: rem(18);
+    }
+  }
+}
+
+
+.about-content {
+  @extend %relative;
+}
+
+.banner-who-we-are {
+  @include background-image('about/about-whoweare.jpg');
+  padding-top: 0;
+}
+
+.banner-our-comminity {
+  @include background-image('about/about-community.jpg');
+}
+
+.banner-faq {
+  @include background-image('about/about-faq.jpg');
+}
+
+.banner-contact-us {
+  @include background-image('about/about-contact-us.jpg');
+}
