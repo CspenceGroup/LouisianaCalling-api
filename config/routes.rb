@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   # About Us page
   get 'abouts' => 'about#index'
   post 'abouts' => 'about#create'
+
+  # Guided Journey page
+  get 'guided-journey' => 'guided_journey#index'
 end
