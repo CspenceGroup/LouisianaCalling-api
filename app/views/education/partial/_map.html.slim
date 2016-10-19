@@ -1,5 +1,5 @@
 - if programs.length > 0
-  - programs.each do |program|
+  - programs.each_with_index do |program, idx|
       .edu-program-info.edu-program-info__map-item id=program.id
         .program-list__item.program-item-map
           .program-item-map__container
@@ -7,7 +7,7 @@
               a href="/programs/#{program.slug}"
                 .jobs-head__name
                   p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
-                    / = "#{ids.index(program.id) + 1}. #{program.title}"
+                    = "#{idx + 1}. #{program.title}"
               .jobs-head__content
                 //- .edu-scholarship.edu-scholarship--view-map
                 //-   p
