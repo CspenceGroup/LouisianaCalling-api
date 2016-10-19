@@ -5,25 +5,25 @@
       section.about-tabs
         ul.nav.nav-tabs.about-tabs__nav.row#about-tabs(role='tablist')
           li.nav-item.col-xs-3.col-md-3
-            a(href='#whoWeAre' role='tab' data-toggle='tab' class="#{@tab == 'who-we-are' ? 'active' : ''}")
+            a(href='#who-we-are' role='tab' data-toggle='tab' class="#{@tab == 'who-we-are' ? 'active' : ''}")
               span Who we are
           li.nav-item.col-xs-3.col-md-3
-            a(href='#ourCommunity' role='tab' data-toggle='tab' class="#{@tab == 'our-community' ? 'active' : ''}")
+            a(href='#our-community' role='tab' data-toggle='tab' class="#{@tab == 'our-community' ? 'active' : ''}")
               span Our community
           li.nav-item.col-xs-3.col-md-3
             a(href='#faq' role='tab' data-toggle='tab' class="#{@tab == 'faq' ? 'active' : ''}")
               span Faq
           li.nav-item.col-xs-3.col-md-3
-            a(href='#contactUs' role='tab' data-toggle='tab' class="#{@tab == 'contact-us' ? 'active' : ''}")
+            a(href='#contact-us' role='tab' data-toggle='tab' class="#{@tab == 'contact-us' ? 'active' : ''}")
               span Contact us
 
         .tab-content.about-tabs__content
-          #whoWeAre.tab-pane(role='tabpanel' class="#{@tab == 'who-we-are' ? 'active' : ''}")
+          #who-we-are.tab-pane(role='tabpanel' class="#{@tab == 'who-we-are' ? 'active' : ''}")
             = render partial: "about/partial/who-we-are"
-          #ourCommunity.tab-pane(role='tabpanel' class="#{@tab == 'our-community' ? 'active' : ''}")
+          #our-community.tab-pane(role='tabpanel' class="#{@tab == 'our-community' ? 'active' : ''}")
             = render partial: "about/partial/our-community"
           #faq.tab-pane(role='tabpanel' class="#{@tab == 'faq' ? 'active' : ''}")
             = render partial: "about/partial/faq"
-          #contactUs.tab-pane(role='tabpanel' class="#{@tab == 'contact-us' ? 'active' : ''}")
+          #contact-us.tab-pane(role='tabpanel' class="#{@tab == 'contact-us' ? 'active' : ''}")
             = render partial: "about/partial/contact-us"
   = render 'footer/index'

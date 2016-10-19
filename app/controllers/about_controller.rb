@@ -7,7 +7,9 @@ class AboutController < ApplicationController
   def index
     @contact = Contact.new
     @tab = params[:tab]
-    @tab = 'who-we-are' unless @tab.present?
+    tabs = %w(who-we-are our-community faq contact-us)
+
+    @tab = 'our-community' if !@tab.present? || !tabs.include?(@tab)
 
     faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
 

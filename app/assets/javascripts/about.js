@@ -12,17 +12,19 @@ $(document).on('turbolinks:load', function(){
     }
   };
 
-  $( document ).ready(function() {
-    if (window.location.pathname.indexOf('abouts') != -1) {
-      changeURL('About us', 'abouts')
-    }
-  });
+  $('#about-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href"); // activated tab
+
+    target = target.slice(1)
+    changeURL('About us', 'abouts?tab=' + target)
+  })
 
   $('.faq-contact-btn').on('click', function(e) {
     e.preventDefault();
     // Hidden alert info
     $('.about-contact-container').find('.alert').hide();
-    $('#about-tabs a[href="#contactUs"]').tab('show');
+    $('#about-tabs a[href="#contact-us"]').tab('show');
+    changeURL('About us', 'abouts?tab=contact-us')
   });
 
   $('#faq-footer').on('click', function(e) {
@@ -31,6 +33,7 @@ $(document).on('turbolinks:load', function(){
     // Currently, About us page
     if (window.location.pathname.indexOf('abouts') != -1) {
       $('#about-tabs a[href="#faq"]').tab('show');
+      changeURL('About us', 'abouts?tab=faq')
     } else {
       // Goto About us page with FAQ tab
       window.location.href = '/abouts?tab=faq'
@@ -42,7 +45,8 @@ $(document).on('turbolinks:load', function(){
 
     // Currently, About us page
     if (window.location.pathname.indexOf('abouts') != -1) {
-      $('#about-tabs a[href="#contactUs"]').tab('show');
+      $('#about-tabs a[href="#contact-us"]').tab('show');
+      changeURL('About us', 'abouts?tab=contact-us')
     } else {
       // Goto About us page with contact-us tab
       window.location.href = '/abouts?tab=contact-us'
