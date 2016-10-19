@@ -1,19 +1,18 @@
-#faq-category-details
-  - @categories.each do |category|
-    - questions = category['questions']
-    .category-container.category-inactive id="faq-category-#{category['id']}"
-      .category-details-head
-        h2.main-title = category['name']
-        a.faq-txt.faq-back(href="javascript:void(0);") Back
-      section.about-faq__topics
-        h3.main-title.about-faq__topics-title Jump to a topic
-        ul.about-faq__topic-list
-          - questions.each do |question|
-            li
-              a(href="#faq-category-#{category['id']}-q#{question['id']}")
-                = question['content']
-      .about-faq__items
+- @categories.each do |category|
+  - questions = category['questions']
+  .category-container.category-inactive id="faq-category-#{category['id']}"
+    .category-details-head
+      h2.main-title = category['name']
+      a.faq-txt.faq-back(href="javascript:void(0);") Back
+    section.about-faq__topics
+      h3.main-title.about-faq__topics-title Jump to a topic
+      ul.about-faq__topic-list
         - questions.each do |question|
-          section.about-faq__item id="faq-category-#{category['id']}-q#{question['id']}"
-            h3.main-title = question['content']
-            p = question['answer']
+          li
+            a(href="#faq-category-#{category['id']}-q#{question['id']}")
+              = question['content']
+    .about-faq__items
+      - questions.each do |question|
+        section.about-faq__item id="faq-category-#{category['id']}-q#{question['id']}"
+          h3.main-title = question['content']
+          p = question['answer']
