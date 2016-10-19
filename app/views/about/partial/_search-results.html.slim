@@ -1,5 +1,5 @@
 h3.search-result-title.faq-txt here's what we found matching [#{params[:key]}]
--  @results.each do |item|
+-  @results[:objects].each do |item|
   section.faq-result-item
     h4.faq-txt = item[:category]
     p = item[:content]

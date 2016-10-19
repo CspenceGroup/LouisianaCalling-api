@@ -52,22 +52,22 @@ class AboutController < ApplicationController
       questions = category['questions'].to_a
 
       questions.each do |question|
-        question.each do |key, value|
-          if key == 'content' || key == 'answer'
-            if value.include?(params[:key])
-              results.push({
-                category: category['name'],
-                question: question['content'],
-                answer: question['answer']
-              })
-              next
-            end
-          end
+        if question['content'].include?(params[:key]) || question['answer'].include?(params[:key])
+          results.push({
+            category: category['name'],
+            content: question['content'],
+            answer: question['answer']
+          })
         end
       end
     end
-
-    results
+    limit = params[:limit] + params[:offset]
+    {
+      count: results.count,
+      objects: results.slice(params[:offset], limit),
+      limit: params[:limit],
+      offset: limit
+    }
   end
 
   def contact_params
