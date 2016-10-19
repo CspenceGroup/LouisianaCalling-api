@@ -6,7 +6,8 @@
           .jobs-head
             .jobs-head__name
               p.jobs-head__title.jobs-head__title-great-jobs.careers-job-title title=career.title
-                = career.title
+                = link_to career_detail_path(career.slug)
+                  = career.title
               / .jobs-head__icon
               /   - career.demand.to_i.times
               /     = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")

@@ -224,4 +224,8 @@
 // Override Job title in Career Landing
 .careers-job-title {
   max-width: rem(510);
+
+  a {
+    color: $white;
+  }
 }

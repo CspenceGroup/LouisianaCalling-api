@@ -84,7 +84,6 @@
 
   a {
     color: $default;
-    cursor: default;
     
     @include linkState () {
       color: $default;

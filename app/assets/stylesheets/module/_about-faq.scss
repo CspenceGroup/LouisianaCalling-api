@@ -207,7 +207,6 @@
 .faq-back {
   color: $btn-see-more-bg;
   @extend %float-right;
-  @extend %font-weight-bold;
 
   @include linkState () {
     color: $btn-see-more-bg;
