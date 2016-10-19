@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       @jobs[region.name] = top_jobs.map do |top_job|
         {
           job: top_job.career.title,
-          link: 'javascript:void(0);'
+          link: career_detail_path(top_job.career)
         }
       end
     end
