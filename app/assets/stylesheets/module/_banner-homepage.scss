@@ -14,6 +14,12 @@
 .carousel-title {
   @extend %absolute;
   top: rem(58);
+
+   p {
+    font-size: rem(25);
+    @extend %i-owan-old-style;
+    padding-top: rem(15);
+   }
 }
 
 .carousel-text {
@@ -132,6 +138,8 @@
 
 .video-container {
   @extend %relative;
+  width: rem(1200);
+  @extend %margin-auto;
 }
 
 .icon-pause {

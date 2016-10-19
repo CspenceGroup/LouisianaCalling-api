@@ -227,6 +227,12 @@ $(document).on('turbolinks:load', function(){
       $('#videoModal').modal('hide');
       $(this).find('video')[0].pause();
     }
+  });
+
+  $('.modal-video__desc').on('click', function(event) {
+    if(event.target === this) {
+      $('#videoModal').modal('hide');
+    }
   })
 
   // set home page carousel move
