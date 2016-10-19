@@ -93,3 +93,12 @@ $image-path: '';
      -moz-text-shadow: $x $y $z $color;
           text-shadow: $x $y $z $color;
 }
+
+/* Transform */
+@mixin transform($val) {
+  -webkit-transform: rotate($val);
+     -moz-transform: rotate($val);
+      -ms-transform: rotate($val);
+       -o-transform: rotate($val);
+          transform: rotate($val);
+}
