@@ -1,5 +1,4 @@
-- url = 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
-/ - url = 'https://s3.amazonaws.com/louisiana-calling/Test+1/Photos+for+Profile+Story+/clifton.jpg'
+- url = @profile.video.url if @profile.video.present?
 .container-fluid
   = render 'navigation/index'
   .main-content
@@ -18,15 +17,15 @@
           li
             .profile-career-content
               = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
-              p Welder
+              p = @profile.careers.first
           li
             .profile-career-content
               = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
-              p Delgado community college
+              p = @profile.educations.map(&:name).join(', ')
           li
             .profile-career-content
               = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
-              p New orleans
+              p = @profile.region
       .career-desc__main-container.personal-profile__main-container
         section.career-desc__about
           h2.main-title.personal-profile-title Meet Clifton
@@ -36,7 +35,7 @@
             a(href='javascript:void(0);')
               i.icon.i-social.i-email
           .profile-details-info
-            p What program the person took, how long they've been in the career, how did they pay for school, similar programs that exist, about the job, salary, similar programs, etc. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate delectus, laborum, beatae cumque, eligendi maiores harum voluptatibus officia adipisci, velit natus quasi assumenda? Rerum dolores eaque culpa placeat quae adipisci!
+            p = @profile.description
             ul
               li Lorem ipsum dolor sit amet, consectetur adipisicing
               li Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -48,55 +47,53 @@
           p
             | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.
           a.btn-feature-more(href='javascript:void(0);')
-    section.career-info.great-jobs
-      .great-jobs__lable.career-info-label
-        p Career info
-      .great-jobs__container.career-info-container
-        .great-jobs__content
-          .great-jobs__content-head
-            .jobs-head
-              .jobs-head__name
-                p.jobs-head__title.jobs-head__title-great-jobs.careers-job-title welder
-                .jobs-head__icon
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-              .jobs-head__content
-                ul.jobs-head__desc
-                  li
-                    p.jobs-head__desc-text Interests
-                    .jobs-head__desc-icon
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-                  li
-                    p.jobs-head__desc-text Skills
-                    .jobs-head__desc-icon
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-          .great-jobs__list-icon
-            ul.row.great-jobs__row
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
-                p Fuel & Energy
-                p Building & Construction
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
-                p $42,000 - $55,000
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
-                p High school diploma 2-year training
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
-                p Lafayette
-                p Alexandra
-                p New Orleans
-      .btn-tell-me-jobs
-        a.btn-tell-me-jobs__link
-          = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
+    - career = @profile.careers.first
+    - if career.present?
+      section.career-info.great-jobs
+        .great-jobs__lable.career-info-label
+          p Career info
+        .great-jobs__container.career-info-container
+          .great-jobs__content
+            .great-jobs__content-head
+              .jobs-head
+                .jobs-head__name
+                  p.jobs-head__title.jobs-head__title-great-jobs.careers-job-title = career
+                  .jobs-head__icon
+                    - for i in 0..career.demand
+                      = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
+                .jobs-head__content
+                  ul.jobs-head__desc
+                    - if career.interests.present?
+                      li
+                        p.jobs-head__desc-text Interests
+                        .jobs-head__desc-icon
+                          - career.interests.each do |interest|
+                            = image_tag("#{interest.url}", :alt => "#{interest}")
+                    - if career.skills.present?
+                      li
+                        p.jobs-head__desc-text Skills
+                        .jobs-head__desc-icon
+                          - career.skills.each do |skill|
+                            = image_tag("#{skill.url}", :alt => "#{skill}")
+            .great-jobs__list-icon
+              ul.row.great-jobs__row
+                li.col-xs-3.col-md-3.list-icon__details
+                  = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
+                  - career.industries.each do |industry|
+                    p = industry
+                li.col-xs-3.col-md-3.list-icon__details
+                  = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
+                  p = "$#{career.salary_min} - $#{career.salary_max}"
+                li.col-xs-3.col-md-3.list-icon__details
+                  = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
+                  p = career.educations.map(&:name).join(', ')
+                li.col-xs-3.col-md-3.list-icon__details
+                  = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
+                  - career.regions_high_demand.each do |region|
+                    p = region
+        .btn-tell-me-jobs
+          a.btn-tell-me-jobs__link(href= career_detail_path(career))
+            = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
     section.guideline
       .row.guideline-row
         .col-xs-4.col-md-4.guideline-col.guideline__more-stories
@@ -112,7 +109,7 @@
             p.journey-link.want-to-talk__link
               span 1-844-LA-CALLS
     section.profile-guided-journey
-      h2.main-title.shadow-main-title.profile-guided-journey__title Still not convinced?  
+      h2.main-title.shadow-main-title.profile-guided-journey__title Still not convinced?
       h2.main-title.shadow-main-title.profile-guided-journey__title Try this.
       a(href="javascript:void(0);")
 
