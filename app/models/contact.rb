@@ -20,6 +20,6 @@ class Contact < ActiveRecord::Base
 
   # Send email to Support team
   def send_contact_email_to_supporter
-    # UserMailer.contact_us(self).deliver_now
+    UserMailer.contact_us(self).deliver_now
   end
 end
