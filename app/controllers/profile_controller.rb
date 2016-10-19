@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
     @profiles = Profile.first(5)
   end
 
-  def getMore
+  def get_more
     id = params[:id]
 
     return unless id.present?
