@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017050155) do
+ActiveRecord::Schema.define(version: 20161019073942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,13 +181,12 @@ ActiveRecord::Schema.define(version: 20161017050155) do
     t.string   "image_medium"
     t.string   "image_small"
     t.string   "slug"
-    t.integer  "video_id"
     t.integer  "region_id"
     t.integer  "cluster_id"
     t.string   "educational_institution"
+    t.string   "sub_head"
     t.index ["cluster_id"], name: "index_profiles_on_cluster_id", using: :btree
     t.index ["region_id"], name: "index_profiles_on_region_id", using: :btree
-    t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
   create_table "program_careers", force: :cascade do |t|

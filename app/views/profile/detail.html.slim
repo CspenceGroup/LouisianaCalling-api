@@ -1,34 +1,38 @@
-- url = @profile.video.url if @profile.video.present?
+- url = @profile.video if @profile.video.present?
 .container-fluid
   = render 'navigation/index'
   .main-content
     section.hero-banner.profile-owner
       .hero-banner__container.profile-owner__container
-        h1.hero-banner__title.profile-owner__name Clifton smith
+        h1.hero-banner__title.profile-owner__name = @profile
       .profile-owner__photo#profile-video
-        - if url.include? ".mp4"
+        - images_type = ['.png', '.jpg', '.tif', '.bmp', '.jpeg']
+        - if images_type.any? { |type| url.include?(type) }
+          = image_tag url, lazy: true, class: "lazy-load"
+        - else
           video.video-playing.video-player#profile-video(muted='' loop="loop")
             source(src=url type='video/mp4')
-        - else
-          = image_tag url, lazy: true, class: "lazy-load"
     section.career-desc.personal-profile
       section.personal-profile-career
         ul.profile-career-details
-          li
-            .profile-career-content
-              = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
-              p = @profile.careers.first
-          li
-            .profile-career-content
-              = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
-              p = @profile.educations.map(&:name).join(', ')
-          li
-            .profile-career-content
-              = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
-              p = @profile.region
+          - if @profile.careers.present?
+            li
+              .profile-career-content
+                = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
+                p = @profile.careers.first
+          - if @profile.educations.present?
+            li
+              .profile-career-content
+                = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
+                p = @profile.educations.map(&:name).join(', ')
+          - if @profile.region.present?
+            li
+              .profile-career-content
+                = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
+                p = @profile.region
       .career-desc__main-container.personal-profile__main-container
         section.career-desc__about
-          h2.main-title.personal-profile-title Meet Clifton
+          h2.main-title.personal-profile-title = @profile
           section.career-desc__social-networks.profile-social-sharings
             i.icon.i-social.i-fb(aria-hidden='true')
             i.icon.i-social.i-tweet(aria-hidden='true')
@@ -36,11 +40,6 @@
               i.icon.i-social.i-email
           .profile-details-info
             p = @profile.description
-            ul
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur
       .career-desc__news-container
         section.career-desc__feature-news
           h2 Feature news
