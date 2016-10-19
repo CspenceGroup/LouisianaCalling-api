@@ -45,6 +45,7 @@
 
   @include e('desc') {
     @include background-image('profile/profile-decs-bg.png');
+    @extend %background-no-repeat;
   }
 
   @include e('content') {
@@ -90,7 +91,7 @@
   padding-top: 0;
 }
 
-.banner-our-comminity {
+.banner-our-community {
   @include background-image('about/about-community.jpg');
 }
 

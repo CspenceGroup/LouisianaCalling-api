@@ -1,4 +1,4 @@
-.about-comminity-container {
+.about-community-container {
   width: rem(1054);
   margin: rem(50) auto 0 auto;
   padding-bottom: rem(53);
@@ -23,8 +23,8 @@
 
 }
 
-.about-comminity {
-  margin-top: rem(31);
+.about-community {
+  margin-top: rem(80);
 
   &:first-child {
     @extend %no-margin-top;
@@ -39,7 +39,7 @@
   }
 
   @include e('content') {
-    margin-top: rem(9);
+    margin-top: rem(40);
     @extend %overflow-hidden;
   }
 
@@ -47,42 +47,140 @@
     @extend %overflow-hidden;
   }
 
+  @include e('details-donors') {
+    padding: 0 rem(11);
+  }
+
   @include e('item') {
-    @include boxSize(rem(335), rem(335));
-    margin: rem(20) rem(8) 0 rem(8);
+    @include boxSize(rem(335), rem(245));
+    margin: rem(16) rem(8) 0 rem(8);
     @extend %float-left;
-  }
 
-  @include e('photo') {
-    @extend %relative;
-
-    &:hover {
-      .about-comminity__overlay {
-        display: block;
-      }
+    &:first-child,
+    &:nth-child(6),
+    &:nth-child(8),
+    &:nth-child(10) {
+      background-color: $faq-topic;
     }
+
+    &:nth-child(2),
+    &:nth-child(4),
+    &:nth-child(9) {
+      background-color: $filter-careers-heading;
+    }
+
+    &:nth-child(3),
+    &:nth-child(5),
+    &:nth-child(7) {
+      background-color: $red-bg;
+    }
+
   }
 
-  @include e('overlay') {
-    @extend %absolute;
-    @extend %top-0;
-    height: 100%;
-    display: none;
-    color: $white;
-    padding: rem(45) rem(28) 0 rem(32);
-    line-height: rem(20);
-    background-color: $modal-video-bg;
+  @include e('desc') {
+    // @extend %relative;
+    padding: rem(40) 0 0 rem(30);
+
+    p {
+      padding: rem(30) rem(39) 0 0;
+      font-size: rem(16.67);
+      @extend %acumin-pro-cond-regular;
+    }
 
     h4 {
       font-size: rem(20.83);
       @extend %text-uppercase;
       @extend %brandon-grotesque;
     }
+  }
 
-    p {
-      font-size: rem(16.67);
-      @extend %acumin-pro-cond;
-      padding-top: rem(32);
+  @include e('item-donors') {
+    @include boxSize(rem(257), rem(192));
+    @extend %float-left;
+    border: rem(1) solid $default;
+    border-right: 0;
+    border-bottom: 0;
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+
+
+    &:nth-child(4),
+    &:nth-child(8),
+    &:nth-child(12),
+    &:nth-child(16),
+    &:nth-child(20),
+    &:nth-child(24),
+    &:nth-child(27) {
+      border-right: rem(1) solid $default;
+    }
+
+    &:nth-child(24),
+    &:nth-child(25),
+    &:nth-child(26),
+    &:nth-child(27) {
+      border-bottom: rem(1) solid $default;
+    }
+
+    &:nth-child(27) {
+      width: rem(258);
     }
   }
+
+  @include e('donors-logo') {
+    p {
+      font-size: rem(25);
+      @extend %text-uppercase;
+      color: $profile-header;
+      @extend %brandon-grotesque-bold;
+      @extend %text-center;
+    }
+  }
+
 }
+
+.about-community-partner {
+  padding-top: rem(27);
+  a {
+    font-size: rem(29);
+    @extend %acumin-pro-cond-regular;
+    color:$filter-careers-details;
+    padding-left: rem(8);
+  }
+}
+
+
+  // &:hover {
+  //   .about-community__overlay {
+  //     display: block;
+  //   }
+  // }
+
+  // @include e('overlay') {
+  //   @extend %absolute;
+  //   @extend %top-0;
+  //   height: 100%;
+  //   display: none;
+  //   color: $white;
+  //   padding: rem(45) rem(28) 0 rem(32);
+  //   line-height: rem(20);
+  //   background-color: $modal-video-bg;
+
+  //   h4 {
+  //     font-size: rem(20.83);
+  //     @extend %text-uppercase;
+  //     @extend %brandon-grotesque;
+  //   }
+
+  //   p {
+  //     font-size: rem(16.67);
+  //     @extend %acumin-pro-cond;
+  //     padding-top: rem(32);
+  //   }
+  // }
+// }
+
+
+
+
+
