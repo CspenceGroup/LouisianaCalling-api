@@ -1,0 +1,35 @@
+{ "categories": [
+    {
+      "id": 1,
+      "name": "education",
+      "questions": [
+        {
+          "id": 1,
+          "content": "Do I have to have a Vimeo Profile?",
+          "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        },
+        {
+          "id": 2,
+          "content": "How do I edit my Profile?",
+          "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Careers",
+      "questions": [
+        {
+          "id": 1,
+          "content": "Do I have to have a Vimeo Profile?",
+          "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        },
+        {
+          "id": 2,
+          "content": "How do I edit my Profile?",
+          "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        }
+      ]
+    }
+  ]
+}
