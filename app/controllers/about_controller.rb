@@ -3,6 +3,7 @@ require 'open-uri'
 
 class AboutController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
+  before_filter :categories_list, only: [:index, :create]
 
   def index
     @contact = Contact.new
@@ -10,10 +11,6 @@ class AboutController < ApplicationController
     tabs = %w(who-we-are our-community faq contact-us)
 
     @tab = 'our-community' if !@tab.present? || !tabs.include?(@tab)
-
-    faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
-
-    @categories = JSON.parse(faq_json_file).to_a
   end
 
   def create
@@ -41,5 +38,11 @@ class AboutController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:email, :message, :subject)
+  end
+
+  def categories_list
+    faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
+
+    @categories = JSON.parse(faq_json_file).to_a
   end
 end
