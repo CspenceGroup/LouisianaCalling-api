@@ -285,8 +285,17 @@ $(document).on('turbolinks:load', function(){
         url = "",
         toUrl;
 
-    if (careerName && region) {
+    // if (careerName && region) {
 
+    //   url = url + '?title=' + careerName + '&region=' + region;
+    // }
+    if(!careerName) {
+      $('.alert-danger-search--career').show();
+      $('.alert-danger-search--region').hide();
+    } else if(!region) {
+      $('.alert-danger-search--career').hide();
+      $('.alert-danger-search--region').show();
+    } else {
       url = url + '?title=' + careerName + '&region=' + region;
     }
 
