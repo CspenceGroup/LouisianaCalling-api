@@ -2,7 +2,7 @@ require 'mandrill'
 
 class BaseMandrillMailer < ActionMailer::Base
   default(
-    from: 'Louisiana Calling <noreply@example.com>'
+    from: 'Louisiana Calling <noreply@louisianacalling.org>'
   )
 
   private
