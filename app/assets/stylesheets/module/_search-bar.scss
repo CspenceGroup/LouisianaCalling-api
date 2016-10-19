@@ -16,7 +16,7 @@ form {
 }
 
 .search-group {
-  width: rem(1045);
+  width: rem(1034);
   @extend %margin-auto;
 
   .search-input {
@@ -32,7 +32,7 @@ form {
   .btn-submit {
     width: rem(212);
     font-size: rem(14.7);
-    margin-right: rem(7);
+    // margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
     @extend %cl-white;
@@ -47,6 +47,7 @@ form {
     padding-left: rem(10);
     @extend %text-left;
     @extend %no-border-left;
+    margin-bottom: 0;
   }
 
   .fa {
@@ -114,4 +115,19 @@ form {
 .ui-autocomplete {
   @include boxSize(rem(375), rem(250));
   @extend %overflow-y-scroll;
+}
+
+.alert-danger-search {
+  @include boxSize(rem(1034), rem(35));
+  @extend %margin-auto;
+  padding-top: rem(6);
+  @extend %text-center;
+
+  @include m('career') {
+    display: none;
+  }
+
+  @include m('region') {
+    display: none;
+  }
 }

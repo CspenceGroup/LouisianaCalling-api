@@ -71,9 +71,9 @@
     <section class="search-bar row">
       <form name="search-homepage" id="searchHomepage">
         <div class="input-group search-group">
-          <input required class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
+          <input class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welding'."/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control" required="true">
+            <select class="form-control">
               <option value="" disabled selected>Region</option>
               <% @regions.each do |region|%>
                 <option value="<%= region.id %>"><%= region.name %></option>
@@ -89,6 +89,12 @@
             <span class="fa fa-caret-down">
           </div>
           <button type="submit" class="btn btn-search btn-submit">Search</button>
+        </div>
+        <div class="alert alert-danger alert-danger-search alert-danger-search--career">
+          <p class="errors">Careers name is required</p>
+        </div>
+        <div class="alert alert-danger alert-danger-search alert-danger-search--region">
+          <p class="errors">Region is required</p>
         </div>
       </form>
       <div class="search-bg">
