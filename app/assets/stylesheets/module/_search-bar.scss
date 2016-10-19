@@ -122,6 +122,8 @@ form {
   @extend %margin-auto;
   padding-top: rem(6);
   @extend %text-center;
+  font-size: rem(14);
+  @extend %acumin-pro-cond-regular;
 
   @include m('career') {
     display: none;
