@@ -3,7 +3,7 @@ require 'open-uri'
 
 class AboutController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
-  before_filter :categories_list, only: [:index, :create, :search]
+  before_filter :categories_list, only: [:index, :create]
 
   def index
     @contact = Contact.new
@@ -44,29 +44,29 @@ class AboutController < ApplicationController
 
   def search_results
     results = []
-    faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
 
-    categories = JSON.parse(faq_json_file).to_a
+    categories = categories_list
+    key = params[:key]
 
     categories.each do |category|
       questions = category['questions'].to_a
 
       questions.each do |question|
-        if question['content'].include?(params[:key]) || question['answer'].include?(params[:key])
-          results.push({
-            category: category['name'],
-            content: question['content'],
-            answer: question['answer']
-          })
+        unless question['content'].include?(key) || question['answer'].include?(key)
+          next
         end
+        question = {
+          category: category['name'],
+          content: question['content'],
+          answer: question['answer']
+        }
+        results.push(question)
       end
     end
-    limit = params[:limit] + params[:offset]
+    puts 'count', results.count
     {
       count: results.count,
-      objects: results,
-      limit: params[:limit],
-      offset: limit
+      objects: results
     }
   end
 
@@ -75,8 +75,14 @@ class AboutController < ApplicationController
   end
 
   def categories_list
-    faq_json_file = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
+    faq_json_file =
+      if Rails.env == 'development'
+        "#{Rails.root}/public/faq.json"
+      else
+        "#{Rails.root}/drkiq/public/faq.json"
+      end
+    faq_json = File.read(File.expand_path(faq_json_file, __FILE__))
 
-    @categories = JSON.parse(faq_json_file).to_a
+    @categories = JSON.parse(faq_json).to_a
   end
 end

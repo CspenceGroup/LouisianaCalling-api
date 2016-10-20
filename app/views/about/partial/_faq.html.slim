@@ -8,8 +8,6 @@ section.about-tabs__desc.about-faq
         .input-group.search-group
           input.form-control.search-input.faq-input(required='required' type='text' name='key' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"' value="#{params[:key]}")
           input type='text' name='tab' value="faq" hidden=true
-          input type='text' name='limit' value="#{@results.present? ? @results[:limit] : 10}" hidden=true
-          input type='text' name='offset' value="#{@results.present? ? @results[:offset] : 0}" hidden=true
           button.btn.btn-search.btn-submit(type='submit') Search
     section.about-faq__main-content
       #faq-category-details
@@ -20,8 +18,9 @@ section.about-tabs__desc.about-faq
         - if @results[:objects].present?
           .faq-search-results.faq-search-term.category-active#faq-search-results
             = render partial: "about/partial/search-results"
-          div.faq-see-more
-            = image_tag asset_path("profile/btn-see-more.png")
+          - if @results[:count] > 7
+            div.faq-see-more
+              = image_tag asset_path("profile/btn-see-more.png")
         - else
           .search-not-found.faq-search-term.category-active#search-not-found
             = render partial: "about/partial/search-no-results"
