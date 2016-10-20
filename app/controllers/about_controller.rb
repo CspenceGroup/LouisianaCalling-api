@@ -64,7 +64,7 @@ class AboutController < ApplicationController
     limit = params[:limit] + params[:offset]
     {
       count: results.count,
-      objects: results.slice(params[:offset], limit),
+      objects: results,
       limit: params[:limit],
       offset: limit
     }
