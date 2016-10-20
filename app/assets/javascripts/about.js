@@ -110,14 +110,14 @@ $(document).on('turbolinks:load', function(){
       .addClass('category-active');
   });
 
-  $('.faq-input').on('blur', function() {
-    var value = $(this).val();
-    if(!value) {
-      $('#faq-category-list').removeClass('category-inactive').addClass('category-active');
-      $('#faq-search-results').hide();
-      $('.faq-see-more').hide();
-    }
-  });
+  // $('.faq-input').on('blur', function() {
+  //   var value = $(this).val();
+  //   if(!value) {
+  //     $('#faq-category-list').removeClass('category-inactive').addClass('category-active');
+  //     $('#faq-search-results').hide();
+  //     $('.faq-see-more').hide();
+  //   }
+  // });
 
 
   /*Show question result when click search question*/
