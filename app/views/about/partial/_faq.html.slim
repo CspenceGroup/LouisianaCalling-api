@@ -17,7 +17,7 @@ section.about-tabs__desc.about-faq
       .category-list.categories#faq-category-list class="#{@searching == true ? 'category-inactive' : 'category-active'}"
         = render partial: "about/partial/category-list"
       - if @searching == true
-        - if @results.present?
+        - if @results[:objects].present?
           .faq-search-results.faq-search-term.category-active#faq-search-results
             = render partial: "about/partial/search-results"
           div.faq-see-more
