@@ -117,6 +117,23 @@ $(document).on('turbolinks:load', function(){
       $('#faq-search-results').hide();
       $('.faq-see-more').hide();
     }
-  })
+  });
+
+
+  /*Show question result when click search question*/
+  var size = $("#faq-search-results").find('.faq-result-item').size(),
+      countItem = $("#faq-search-results").find('.faq-result-item').length,
+      item = 5;
+  $("#faq-search-results").find('.faq-result-item:lt('+item+')').show();
+
+  $('#faqSeeMore').on('click', function() {
+    item = (item+5 <= size) ? item+5 : size;
+    $("#faq-search-results").find('.faq-result-item:lt('+item+')').show();
+    var sizeShow = $("#faq-search-results").find('.faq-result-item:lt('+item+')').show().size();
+
+    if(sizeShow === countItem) {
+      $('.faq-see-more').hide();
+    }
+  });
 
 });

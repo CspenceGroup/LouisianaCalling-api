@@ -215,9 +215,8 @@
 
 .faq-search-term {
   color: $faq-topic;
-  @include boxSize(rem(825), rem(955));
+  width: rem(825);
   @extend %margin-auto;
-  @extend %overflow-hidden;
 
   .search-result-title {
     font-size: rem(20.83);
@@ -243,6 +242,7 @@
 
 .faq-result-item {
   margin-top: rem(38);
+  display: none;
 
   h4 {
     font-size: rem(16.67);
@@ -253,5 +253,5 @@
 .faq-see-more {
   @include boxSize(rem(110), rem(32));
   @extend %cursor-pointer;
-  @extend %margin-auto;
+  margin: rem(20) auto 0 auto;
 }
