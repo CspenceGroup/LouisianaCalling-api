@@ -20,6 +20,8 @@ section.about-tabs__desc.about-faq
         - if @results.present?
           .faq-search-results.faq-search-term.category-active#faq-search-results
             = render partial: "about/partial/search-results"
+          div.faq-see-more
+            = image_tag asset_path("profile/btn-see-more.png")
         - else
           .search-not-found.faq-search-term.category-active#search-not-found
             = render partial: "about/partial/search-no-results"
