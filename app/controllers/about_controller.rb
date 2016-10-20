@@ -75,13 +75,7 @@ class AboutController < ApplicationController
   end
 
   def categories_list
-    faq_json_file =
-      if Rails.env == 'development'
-        "#{Rails.root}/public/faq.json"
-      else
-        "#{Rails.root}/drkiq/public/faq.json"
-      end
-    faq_json = File.read(File.expand_path(faq_json_file, __FILE__))
+    faq_json = File.read(File.expand_path("#{Rails.root}/public/faq.json", __FILE__))
 
     @categories = JSON.parse(faq_json).to_a
   end
