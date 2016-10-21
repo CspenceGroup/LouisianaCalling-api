@@ -32,7 +32,7 @@
                 p = @profile.region
       .career-desc__main-container.personal-profile__main-container
         section.career-desc__about
-          h2.main-title.personal-profile-title = @profile
+          h2.main-title.personal-profile-title = "Meet #{@profile.first_name}"
           section.career-desc__social-networks.profile-social-sharings
             i.icon.i-social.i-fb(aria-hidden='true')
             i.icon.i-social.i-tweet(aria-hidden='true')
@@ -100,7 +100,7 @@
             a(href="/stories")
         .col-xs-4.col-md-4.guideline-col.guideline__find-program
           h2
-            a(href="/programs")
+            a(href="#{career.programs.present? ? education_detail_path(career.programs.first) : education_path}")
               span near you
         .col-xs-4.col-md-4.guideline-col.guideline__call-center
           .want-to-talk

@@ -1,21 +1,6 @@
-.search-not-found.faq-search-term.category-inactive#search-not-found
-  h3.search-result-title.faq-txt we couldn't find anything matching [search term].
-  h4.faq-txt A couple suggestions:
-  ul.faq-search-suggestions
-    li Ensure you've spelled everything correctly.
-    li Try more general words.
-    li Or try different words that mean the same thing.
-  p If all else fails, just call in to our Call Center at 1-844-LA-CALLS and we'll help answer your questions.
-
-.faq-search-results.faq-search-term.category-inactive#faq-search-results
-  h3.search-result-title.faq-txt here's what we found matching [search term] 
+h3.search-result-title.faq-txt here's what we found matching [#{params[:key]}]
+-  @results[:objects].each do |item|
   section.faq-result-item
-    h4.faq-txt Category title
-    p Example of FAQ Question that contains the keyword user searched
-  section.faq-result-item
-    h4.faq-txt Category title
-    p Example of FAQ Question that contains the keyword user searched
-    p Example of FAQ Question that contains the keyword user searched
-  section.faq-result-item
-    h4.faq-txt Category title
-    p Example of FAQ Question that contains the keyword user searched
+    h4.faq-txt = item[:category]
+    p = item[:content]
+    p = item[:answer]
