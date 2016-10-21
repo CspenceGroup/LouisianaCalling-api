@@ -95,6 +95,8 @@
             .careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
                 input.form-control.search-input.search-careers-landing id="careerAutocomplete" name="search-input" placeholder="Search for careers, like 'welders'." type="text" value=@title /
+                input.form-control id="careerLimit" name="limit" hidden=true type="text" value=@limit /
+                input.form-control id="careerOffset" name="offset" hidden=true type="text" value=@offset /
                 button#careerSearch.btn.btn-search.btn-submit.btn-search-career Search
               #availableCareers.auto-fill-data
                 = @list_of_careers.to_json

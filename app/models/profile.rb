@@ -68,7 +68,7 @@ class Profile < ActiveRecord::Base
         profile.save!
 
         # Adding careers
-        create_profile_careers(row[16].split(',').map(&:strip), profile) if row[2].present?
+        create_profile_careers(row[16].split(',').map(&:strip), profile) if row[16].present?
 
         # Adding interest
         if row[6].present?

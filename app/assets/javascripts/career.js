@@ -139,6 +139,10 @@ $(document).on('turbolinks:load', function(){
       $('.indicator-loading-see-more').show();
       $('.see-more-careers').hide();
     } else {
+      // Update limit/offset default
+      $('#careerLimit').val(9);
+      $('#careerOffset').val(0);
+
       $('.indicator-loading').show();
     }
     clearTimeout(timeout);
@@ -154,8 +158,9 @@ $(document).on('turbolinks:load', function(){
           demands: [],
           salary_max: [],
           salary_min: [],
-          last_id: [],
-          title: ""
+          title: "",
+          limit: $('#careerLimit').val(),
+          offset: $('#careerOffset').val()
         }
 
       $('.square-checkbox:checked').each(function() {
@@ -164,7 +169,6 @@ $(document).on('turbolinks:load', function(){
 
       data.salary_max.push(salary_max);
       data.salary_min.push(salary_min);
-      data.last_id.push(id);
       data.title = $('#careerAutocomplete').val();
 
       if(!data.regions.length) {
@@ -224,6 +228,10 @@ $(document).on('turbolinks:load', function(){
             $('#careersGrid').html(response.careers);
             $('#careersList').html(response.list);
           }
+
+          // Update limit/offset
+          $('#careerLimit').val(response.limit);
+          $('#careerOffset').val(response.offset);
 
           lazyloadImages();
 
@@ -328,6 +336,10 @@ $(document).on('turbolinks:load', function(){
       $('.indicator-loading-see-more').show();
       $('#education-see-more-map, #education-see-more').hide();
     } else {
+      // Update limit/offset default
+      $('#educationLimit').val(3);
+      $('#educationOffset').val(0);
+
       $('.indicator-loading').show();
     }
     clearTimeout(timeout);
@@ -343,9 +355,10 @@ $(document).on('turbolinks:load', function(){
             hours: [],
             times: [],
             educations: [],
-            last_id: [],
             title: "",
-            regions: []
+            regions: [],
+            limit: $('#educationLimit').val(),
+            offset: $('#educationOffset').val()
           };
 
       $('.square-checkbox:checked').each(function() {
@@ -354,7 +367,6 @@ $(document).on('turbolinks:load', function(){
 
       data.cost_max.push(cost_max);
       data.cost_min.push(cost_min);
-      data.last_id.push(id);
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
@@ -430,6 +442,10 @@ $(document).on('turbolinks:load', function(){
           }
 
           lazyloadImages();
+
+          // Update limit/offset
+          $('#educationLimit').val(response.limit);
+          $('#educationOffset').val(response.offset);
 
           if (response.is_see_more) {
             $('#education-see-more-map, #education-see-more').show();
