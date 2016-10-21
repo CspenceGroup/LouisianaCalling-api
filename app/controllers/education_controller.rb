@@ -4,7 +4,9 @@ class EducationController < ApplicationController
   before_filter :data_for_filter_details, only: [:index]
 
   def index
-    limit = 3
+    @limit = params[:limit] || 3
+    @offset = params[:offset] || 0
+
     @title = params[:title]
     @region = params[:region]
 
@@ -29,9 +31,16 @@ class EducationController < ApplicationController
         programs
       end
 
-    @is_see_more = list_programs.count > limit ? true : false
-    @programs = list_programs.offset(0).limit(limit)
+    @limit = @limit.to_i
+    @offset = @offset.to_i
+
+    next_offset = @offset + @limit
+    @is_see_more = list_programs.count > next_offset ? true : false
+
+    @programs = list_programs.offset(@offset).limit(@limit)
     @ids = list_programs.map(&:id)
+
+    @offset = next_offset
   end
 
   def detail
@@ -40,6 +49,9 @@ class EducationController < ApplicationController
 
   def filter
     programs = Program.all
+
+    @limit = params[:limit] || 9
+    @offset = params[:offset] || 0
 
     ## filter by region
     programs = programs.filter_by_regions(params[:regions].split(',')) if params[:regions].present?
@@ -82,8 +94,13 @@ class EducationController < ApplicationController
     programs = programs.where(query.join(' AND '))
     ids = programs.map(&:id)
 
-    is_see_more = programs.length > 3 ? true : false
-    programs = programs.offset(0).limit(3)
+    @limit = @limit.to_i
+    @offset = @offset.to_i
+
+    next_offset = @limit + @offset
+    is_see_more = programs.count > next_offset ? true : false
+
+    programs = programs.offset(@offset).limit(@limit)
 
     render json: {
       list: render_to_string(
@@ -97,7 +114,9 @@ class EducationController < ApplicationController
       ),
       is_see_more: is_see_more,
       programs: programs,
-      ids: ids
+      ids: ids,
+      limit: @limit,
+      offset: next_offset
     }
   end
 

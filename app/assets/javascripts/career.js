@@ -336,6 +336,10 @@ $(document).on('turbolinks:load', function(){
       $('.indicator-loading-see-more').show();
       $('#education-see-more-map, #education-see-more').hide();
     } else {
+      // Update limit/offset default
+      $('#educationLimit').val(3);
+      $('#educationOffset').val(0);
+
       $('.indicator-loading').show();
     }
     clearTimeout(timeout);
@@ -351,9 +355,10 @@ $(document).on('turbolinks:load', function(){
             hours: [],
             times: [],
             educations: [],
-            last_id: [],
             title: "",
-            regions: []
+            regions: [],
+            limit: $('#educationLimit').val(),
+            offset: $('#educationOffset').val()
           };
 
       $('.square-checkbox:checked').each(function() {
@@ -362,7 +367,6 @@ $(document).on('turbolinks:load', function(){
 
       data.cost_max.push(cost_max);
       data.cost_min.push(cost_min);
-      data.last_id.push(id);
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
@@ -438,6 +442,10 @@ $(document).on('turbolinks:load', function(){
           }
 
           lazyloadImages();
+
+          // Update limit/offset
+          $('#educationLimit').val(response.limit);
+          $('#educationOffset').val(response.offset);
 
           if (response.is_see_more) {
             $('#education-see-more-map, #education-see-more').show();
