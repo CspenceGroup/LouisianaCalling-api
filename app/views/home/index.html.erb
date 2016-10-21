@@ -53,7 +53,7 @@
                   <div class="modal-video__desc">
                     <div class="modal-video__text">
                       <h2><%= video.profile %></h2>
-                      <p><%= video.profile.description %></p>
+                      <p><%= raw video.description %></p>
                     </div>
                      <div class="btn-tell-more">
                       <a href="<%= profile_detail_path(video.profile) %>">
