@@ -5,23 +5,23 @@
     "questions": [
       {
         "id": 1,
-        "content": "What's a GED? What is HiSET?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "What’s a GED? What is HiSET?",
+        "answer": "<p>GED stands for “General Educational Development,” and for many years taking and passing the GED test was the way people who didn’t get a high school equivalent education credential.</p><p>The GED is no longer used in Louisiana.  It has been replaced with another nationally recognized high school equivalency exam called HiSET which stands for “High School Equivalency Test”</p>"
       },
       {
         "id": 2,
         "content": "What is Jump Start?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "answer": "<p>Jump Start is Louisiana’s innovative career and technical education (CTE) program for high school students. Jump Start prepares students to lead productive adult lives, capable of continuing their education after high school while earning certifications in high-wage career sectors. Students are required to attain industry-promulgated, industry-valued credentials in order to graduate with a Career Diploma. (Jump Start is an elective path for students pursuing a university-preparatory diploma.) To see if Jump Start is in your area &lt;<a href='https://www.louisianabelieves.com/courses/all-things-jump-start&sa=D&ust=1477043462642000&usg=AFQjCNE2Vhkc9POoj9Or35TAcuar-E5p3Q' target='_blank'>click here</a>&gt;.</p>"
       },
       {
         "id": 3,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "What is LCTCS?",
+        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='https://www.onetcenter.org/&sa=D&ust=1477043896277000&usg=AFQjCNFZd0yqFRNJ2n9OIw6F7UUJl5vcvQ' target='_blank'>here</a>&gt;.</p>"
       },
       {
         "id": 4,
         "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "answer": "<p>No, there are a variety of educational paths you can take that will provide the basic skills and knowledge you need to get a good job. There are many high-value jobs like engineers, social workers and accountants that do require 4-year college degrees. However, there are many more high-value jobs and careers that require some type of education beyond high school – but not a 4-year degree. A few good examples include: machinists and welders, mechanical drafters, PTECH operators, web developers and radiologic technologists. The important thing is to find something that matches your interests. To figure out what works best for you, start &lt;<a href='' target='_blank'>here</a>&gt;.</p>"
       }
     ]
   },
@@ -31,99 +31,138 @@
     "questions": [
       {
         "id": 1,
-        "content": "What's a GED? What is HiSET?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "Do jobs transfer between industries?",
+        "answer": "<p>Yes, many jobs and career paths require skills and abilities that can be used across industries.For example, Computer Network Support Specialists and Bookkeepers are vital jobs in almost every type of business, industry and government organization. However, some jobs like Paramedics and Automotive Technicians are more industry-specific.</p>"
       },
       {
         "id": 2,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "How do I find the main industries in my region?",
+        "answer": "<p>You can find significant industries in your region by going to &lt;<a href='/'>our homepage</a>&gt;. Just click on your region of the Louisiana map and you’ll find them.</p>"
       },
       {
         "id": 3,
-        "content": "What is Jump Start?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "Where did you get the salary range data used on this website?",
+        "answer": "<p>Salary ranges are provided by &lt;<a href='https://www.onetcenter.org/&sa=D&ust=1477043896277000&usg=AFQjCNFZd0yqFRNJ2n9OIw6F7UUJl5vcvQ' target='_blank'>O*Net</a>&gt;, a national primary source for current, reliable occupational data.</p>"
       },
       {
         "id": 4,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 5,
-        "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 6,
-        "content": "What's a GED? What is HiSET?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 7,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 8,
-        "content": "What is Jump Start?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 9,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 10,
-        "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 11,
-        "content": "What's a GED? What is HiSET?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 12,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 13,
-        "content": "What is Jump Start?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 14,
-        "content": "What is LCTCS",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
-      },
-      {
-        "id": 15,
-        "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic error sapiente, quis, optio architecto laudantium, dolorum sunt culpa tenetur libero velit natus quae doloribus cum. Neque eum, nostrum velit blanditiis!"
+        "content": "How did you decide which jobs to feature?",
+        "answer": "<p>We chose to feature the most available, high-wage high-skill jobs in Louisiana that do not require a four-year college degree. We’re committed to helping you find something more than just a job — we want to help you find a sustainable, rewarding career.</p>"
       }
     ]
   },
   {
     "id": 3,
     "name": "Financial",
-    "questions": []
+    "questions": [
+      {
+        "id": 1,
+        "content": "How can I pay for school?",
+        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fafsa.ed.gov/FAFSA/app/fafsa?locale%3Den_US&sa=D&ust=1477044478760000&usg=AFQjCNFopyyf1QiD4OMZCcjAyj-vSIo9bA' target='_blank'>here</a>&gt;.</p>"
+      },
+      {
+        "id": 2,
+        "content": "How did you decide which jobs to feature?",
+        "answer": "<p>We chose to feature the most available, high-wage high-skill jobs in Louisiana that do not require a four-year college degree. We’re committed to helping you find something more than just a job — we want to help you find a sustainable, rewarding career.</p>"
+      },
+      {
+        "id": 3,
+        "content": "What are the different types of financial aid?",
+        "answer": "<p><strong>Grants</strong> are financial aid packages that don’t have to be repaid (unless, for example, you withdraw from school and owe a refund).</p><p><strong>Loans</strong> are financial aid packages made of borrowed money for college or career school. You must repay your loans, with interest.</p><p><strong>Work-Study</strong> is a financial aid program that lets you earn money to help you pay for school by working select jobs.</p>"
+      },
+      {
+        "id": 4,
+        "content": "If I’m a non-degree seeking student, can I receive financial aid?",
+        "answer": "<p>No. For students taking classes in the LCTCS network, Federal guidelines specify that only degree seeking students are eligible for financial aid.</p>"
+      },
+      {
+        "id": 5,
+        "content": "What can I do if I still need more money, but have used up all of my financial aid?",
+        "answer": "<p>If you’re pursuing education in the LCTCS, you can get on an installment plan with your school’s Bursar’s Office and/or apply for an alternative loan.</p>"
+      },
+      {
+        "id": 6,
+        "content": "Do I need to be admitted before I can apply for financial aid at a particular college or university within LCTCS?",
+        "answer": "Not at all. You can apply for aid any time after January 1st. To actually receive your funds however, you must be admitted and enrolled at the school of your choice."
+      },
+      {
+        "id": 7,
+        "content": "What is the difference between a subsidized and unsubsidized student loan?",
+        "answer": "<p><strong>Direct Subsidized Loans</strong> are loans made to eligible undergraduate students who demonstrate financial need to help cover the costs of higher education at a college or career school.</p><p><strong>Direct Unsubsidized Loans</strong> are loans made to eligible undergraduate, graduate, and professional students, but in this case, the student does not have to demonstrate financial need to be eligible for the loan.</p><p><strong>Direct PLUS Loans</strong> are loans made to graduate or professional students and parents of dependent undergraduate students to help pay for education expenses not covered by other financial aid.</p><p><strong>Direct Consolidation Loans</strong> allow you to combine all of your eligible federal student loans into a single loan with a single loan servicer.</p>"
+      }
+    ]
   },
   {
     "id": 4,
     "name": "Louisiana Calling",
-    "questions": []
+    "questions": [
+      {
+        "id": 1,
+        "content": "What is Louisiana Calling?",
+        "answer": "<p>Louisiana Calling is a nonprofit organization dedicated to inspiring all Louisiana residents to find the educational and career paths the best lead them to the life they hope for and the career success they want.</p><p>We believe all Louisianans have the opportunity to achieve career success right here, right now. Louisiana Calling’s multiyear public messaging campaign is designed to identify and connect our citizens with high-value career opportunities that do not require a 4-year college degree and are available in Louisiana today</p>"
+      },
+      {
+        "id": 2,
+        "content": "Why are you doing this? What is the goal of Louisiana Calling?",
+        "answer": "<p>We believe every Louisianan deserves the opportunity to find a rewarding career that allows them to pursue their own hopes and dreams.</p><p>We also believe that there is a need here in Louisiana to raise our awareness of the many high-value careers available today in our state that require some level of training and education beyond high school but not a 4-year college degree.</p><p>Louisiana Calling is doing this to help Louisiana families live the lives they want for themselves. Strong families make for strong communities and strong communities make a more prosperous Louisiana.</p>"
+      },
+      {
+        "id": 3,
+        "content": "How is Louisiana Calling funded? Who are the donors? ",
+        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community&sa=D&ust=1477044640318000&usg=AFQjCNG_hbtAuwZ9NfPcAu1FJRa9fbMWEg'>here</a>.&gt;</p>"
+      },
+      {
+        "id": 4,
+        "content": "Where is Louisiana Calling based and how is it managed?",
+        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community&sa=D&ust=1477044658877000&usg=AFQjCNHdV7lh5NDqdcqALqwMvGMYNOxTgg'>here</a>.&gt;</p>"
+      }
+    ]
   },
   {
     "id": 5,
     "name": "Getting Involved",
-    "questions": []
+    "questions": [
+      {
+        "id": 1,
+        "content": "I really appreciate the work Louisiana Calling is doing. How can I volunteer and help?",
+        "answer": "<p>There are two great ways you can help. First, you can spread the word. Share with everyone who will listen why you appreciate the work of Louisiana Calling – and encourage them to check out the stories and resources available on this website.</p><p>Second, you can make a financial contribution to help underwrite the work of Louisiana Calling. A multiyear, statewide public messaging effort this big and ambitious requires a whole lot of money …and we are raising the money as we go from individuals, organizations and foundations that, like you, appreciate the work Louisiana Calling is doing.</p>"
+      }
+    ]
   },
   {
     "id": 6,
     "name": "Misc",
-    "questions": []
+    "questions": [
+      {
+        "id": 1,
+        "content": "Are there jobs listed on this website that are available in my region of the state?",
+        "answer": "<p>You can find out which ones are available in your area by searching for them on our &lt;<a href='/careers'>careers page</a>&gt;.</p>"
+      },
+      {
+        "id": 2,
+        "content": "What are “Interests” and how do you define each interest listed on this website?",
+        "answer": "<p>We define interests as the preferences you have for where you want to work, and how you’d like to work, in any given job-site or environment. The source for these definitions is the O*NET Online, the most widely recognized national resource for career information.</p><p><strong>Realistic</strong> careers often involve practical, hands-on problems and solutions. Examples of this career’s duties and environments include: working outside with tools, and/or working with nature and real-world materials like wood and machinery.</p><p><strong>Investigative</strong> careers often involve critical thinking. Examples of this career’s duties and environments include: in-depth research, paperwork, finding clues and curiosity, and working in groups or teams.</p><p><strong>Artistic</strong> careers often involve working with creative ideas, designs and different materials. Examples of this career’s duties and environments include: self-expression through design, forms and patterns, and working independently and on teams.</p><p><strong>Social</strong> careers often involve talking to lots of people and engaging with teams everyday. Examples of this career type’s duties and environments include: teaching people and learning from them, group and team work, and service-oriented workplaces.</p><p><strong>Enterprising</strong> careers often involve kickstarting and leading projects. Examples of this career type’s duties and environments include: teaching and leading people, making decisions, taking risks and business-oriented workplaces.</p><p><strong>Conventional</strong> careers often involve following a set number of steps, or procedures. Examples of this career type’s duties and environments include: repetition, data and information analysis, detail-oriented work, following authority figures, and workplaces where rules and regulations are often stressed.</p>"
+      },
+      {
+        "id": 3,
+        "content": "Do I need to go to college to get one of these jobs?",
+        "answer": "<p>All of the careers listed on our website are high-value jobs that typically require some type of education or training beyond a high school diploma.</p><p>However, none of these jobs require a 4-year college degree.</p>"
+      },
+      {
+        "id": 4,
+        "content": "I’m in High School, can I still get a job?",
+        "answer": "<p>It’s definitely possible. If you’re in HS, we suggest checking out JumpStart. With this program, you can get a leg up on professional skills training for jobs in your area.</p>"
+      },
+      {
+        "id": 5,
+        "content": "What are “Skills” and how do you define each skill listed on this website?",
+        "answer": "<p>We define skills as the know how required, or learned, for different careers and pathways. The source for these definitions is the O*NET Online, the most widely recognized national resource for career information.</p><p><strong>Communication and Social Skills</strong> are all about active listening, speaking and communicating with people.</p><p><strong>Computer and IT Skills</strong> are technical skills that are specific to electronic and computer devices, including repairing software and hardware, and understanding mathematical and design concepts.</p><p><strong>Learning Skills</strong> are all about understanding information, its implications for future and past decisions, and problem-solving and decision-making.</p><p><strong>Management Skills</strong> involve having a good grasp on working with different resources, human and otherwise, and allocating them best for any situation.</p><p><strong>Problem Solving Skills</strong> spring from your use of logic and reasoning. With them you can find solutions to situations, come to conclusions, and identify issues in the workplace or the work itself.</p><p><strong>Reading Skills</strong> are all about understanding and interpreting written work like data, paperwork, and notes.</p><p><strong>Technical and Mechanical Skills</strong> are about applying your hands-on and thinking abilities to design, operate, repair, or set-up different machines, tools, and technological systems.</p><p><strong>Writing Skills</strong> involve the usage of your language abilities to effectively communicate ideas, problems, and more through writing.</p>"
+      },
+      {
+        "id": 6,
+        "content": "How do you know about all these jobs?",
+        "answer": "<p>We collaborate with the Louisiana Workforce Commission and Louisiana Community and Technical College System. This allows us access to current databases of jobs and training programs available across the state.</p>"
+      }
+    ]
   }
 ]

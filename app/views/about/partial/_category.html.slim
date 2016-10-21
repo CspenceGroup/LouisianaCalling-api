@@ -15,4 +15,4 @@
       - questions.each do |question|
         section.about-faq__item id="faq-category-#{category['id']}-q#{question['id']}"
           h3.main-title = question['content']
-          p = question['answer']
+          = question['answer'].html_safe
