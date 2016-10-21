@@ -29,10 +29,13 @@ class TopJob < ActiveRecord::Base
         top_jobs = TopJob.new
 
         region = Region.find_by_name(row[0].strip)
+        raise "Do not found with region: '#{row[0].strip}'" unless region.present?
+
         top_jobs[:region_id] = region.id if region.present?
 
         career = Career.find_by_title(row[1].strip)
 
+        raise "Do not found with career: '#{row[1].strip}'" unless career.present?
         top_jobs[:career_id] = career.id if career.present?
 
         top_jobs.save!
