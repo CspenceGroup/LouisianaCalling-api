@@ -25,35 +25,39 @@
     section.career-desc.personal-profile
       .career-desc__main-container.personal-profile__main-container
         section.career-desc__about.personal-profile__about
-          h2.main-title.personal-profile-title 
-            | Meet 
-            = @profile
-          section.personal-profile-career
-            ul.profile-career-details
-              - if @profile.careers.present?
-                li
-                  .profile-career-content
-                    = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
-                    p(title=@profile.careers.first) = truncate(@profile.careers.first.to_s, length: 27)
-              - if @profile.educations.present?
-                li
-                  .profile-career-content
-                    = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
-                    p(title=@profile.educations.map(&:name).join(', ')) = truncate(@profile.educations.map(&:name).join(', '), length: 30)
-              - if @profile.region.present?
-                li
-                  .profile-career-content
-                    = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
-                    p = @profile.region
-          .profile-details-info
-            p = @profile.description
-          / section.career-desc__social-networks
-          /   i.icon.i-social.i-facebook(aria-hidden='true')
-          /   i.icon.i-social.i-twitter(aria-hidden='true')
-          /   a(href='mailto:')
-          /     i.icon.i-social.i-envelope
-          /   a(href='javascript:void(0);')
-          /     i.icon.i-social.i-print
+          .personal-profile-about
+            h2.main-title.personal-profile-title 
+              | Meet 
+              = @profile
+            section.personal-profile-career
+              ul.profile-career-details
+                - if @profile.careers.present?
+                  li
+                    .i-profile-info.i-profile-career
+                      = image_tag(asset_path("career-info/career-industry.png"), alt: "icon training")
+                    .profile-info-txt
+                      p(title=@profile.careers.first) = truncate(@profile.careers.first.to_s, length: 27)
+                - if @profile.educations.present?
+                  li
+                    .i-profile-info.i-profile-training
+                      = image_tag(asset_path("career-info/career-edu.png"), alt: "icon training")
+                    .profile-info-txt
+                      p(title=@profile.educations.map(&:name).join(', ')) = truncate(@profile.educations.map(&:name).join(', '), length: 30)
+                - if @profile.region.present?
+                  li
+                    .i-profile-info.i-profile-map
+                      = image_tag(asset_path("career-info/career-map.png"), alt: "icon map")
+                    .profile-info-txt
+                      p = @profile.region
+            .profile-details-info
+              p = @profile.description
+            / section.career-desc__social-networks
+            /   i.icon.i-social.i-facebook(aria-hidden='true')
+            /   i.icon.i-social.i-twitter(aria-hidden='true')
+            /   a(href='mailto:')
+            /     i.icon.i-social.i-envelope
+            /   a(href='javascript:void(0);')
+            /     i.icon.i-social.i-print
       / .career-desc__news-container.personal-profile__news-container
       /   section.career-desc__feature-news
       /     h2 Feature news
