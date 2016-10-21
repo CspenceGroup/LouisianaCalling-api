@@ -11,12 +11,12 @@
       {
         "id": 2,
         "content": "What is Jump Start?",
-        "answer": "<p>Jump Start is Louisiana’s innovative career and technical education (CTE) program for high school students. Jump Start prepares students to lead productive adult lives, capable of continuing their education after high school while earning certifications in high-wage career sectors. Students are required to attain industry-promulgated, industry-valued credentials in order to graduate with a Career Diploma. (Jump Start is an elective path for students pursuing a university-preparatory diploma.) To see if Jump Start is in your area &lt;<a href='https://www.louisianabelieves.com/courses/all-things-jump-start&sa=D&ust=1477043462642000&usg=AFQjCNE2Vhkc9POoj9Or35TAcuar-E5p3Q' target='_blank'>click here</a>&gt;.</p>"
+        "answer": "<p>Jump Start is Louisiana’s innovative career and technical education (CTE) program for high school students. Jump Start prepares students to lead productive adult lives, capable of continuing their education after high school while earning certifications in high-wage career sectors. Students are required to attain industry-promulgated, industry-valued credentials in order to graduate with a Career Diploma. (Jump Start is an elective path for students pursuing a university-preparatory diploma.) To see if Jump Start is in your area &lt;<a href='https://www.louisianabelieves.com/courses/all-things-jump-start' target='_blank'>click here</a>&gt;.</p>"
       },
       {
         "id": 3,
         "content": "What is LCTCS?",
-        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='https://www.onetcenter.org/&sa=D&ust=1477043896277000&usg=AFQjCNFZd0yqFRNJ2n9OIw6F7UUJl5vcvQ' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='https://www.onetcenter.org/' target='_blank'>here</a>&gt;.</p>"
       },
       {
         "id": 4,
@@ -42,7 +42,7 @@
       {
         "id": 3,
         "content": "Where did you get the salary range data used on this website?",
-        "answer": "<p>Salary ranges are provided by &lt;<a href='https://www.onetcenter.org/&sa=D&ust=1477043896277000&usg=AFQjCNFZd0yqFRNJ2n9OIw6F7UUJl5vcvQ' target='_blank'>O*Net</a>&gt;, a national primary source for current, reliable occupational data.</p>"
+        "answer": "<p>Salary ranges are provided by &lt;<a href='https://www.onetcenter.org/' target='_blank'>O*Net</a>&gt;, a national primary source for current, reliable occupational data.</p>"
       },
       {
         "id": 4,
@@ -58,7 +58,7 @@
       {
         "id": 1,
         "content": "How can I pay for school?",
-        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fafsa.ed.gov/FAFSA/app/fafsa?locale%3Den_US&sa=D&ust=1477044478760000&usg=AFQjCNFopyyf1QiD4OMZCcjAyj-vSIo9bA' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fafsa.ed.gov/FAFSA/app/fafsa?locale=en_US' target='_blank'>here</a>&gt;.</p>"
       },
       {
         "id": 2,
@@ -109,12 +109,12 @@
       {
         "id": 3,
         "content": "How is Louisiana Calling funded? Who are the donors? ",
-        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community&sa=D&ust=1477044640318000&usg=AFQjCNG_hbtAuwZ9NfPcAu1FJRa9fbMWEg'>here</a>.&gt;</p>"
+        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community'>here</a>.&gt;</p>"
       },
       {
         "id": 4,
         "content": "Where is Louisiana Calling based and how is it managed?",
-        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community&sa=D&ust=1477044658877000&usg=AFQjCNHdV7lh5NDqdcqALqwMvGMYNOxTgg'>here</a>.&gt;</p>"
+        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community'>here</a>.&gt;</p>"
       }
     ]
   },
