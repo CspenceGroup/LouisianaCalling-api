@@ -136,4 +136,29 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+
+  /*Show validation messages contact us form*/
+  $('#aboutHelpForm').submit(function(event) {
+    event.preventDefault();
+
+    var target = event.target,
+        email = target[0].value,
+        subject = target[1].value,
+        message = target[2].value;
+    
+    if(!email) {
+      $('.alert-danger-email').show();
+      $('.alert-danger-subject, .alert-danger-message').hide();
+    } else if(!subject) {
+      $('.alert-danger-subject').show();
+      $('.alert-danger-email, .alert-danger-message').hide();
+    } else if(!message) {
+      $('.alert-danger-message').show();
+      $('.alert-danger-email, .alert-danger-subject').hide();
+    } else {
+      $('.alert-danger-email, .alert-danger-subject, .alert-danger-message').hide();
+      target.submit();
+    }
+  });
+
 });
