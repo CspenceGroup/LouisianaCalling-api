@@ -222,6 +222,16 @@
   @extend %absolute;
 }
 
+.profile-video-desc {
+  font-size: rem(18.75);
+  width: 100%;
+  text-shadow: 0 0 0 rem(50) $black;
+  top: rem(253);
+  @extend %absolute;
+  @extend %text-capitalize;
+  @extend %acumin-pro-cond-bi;
+}
+
 @media screen and (max-width: rem(1200)) {
   .personal-profile__main-container {
     width: rem(795);

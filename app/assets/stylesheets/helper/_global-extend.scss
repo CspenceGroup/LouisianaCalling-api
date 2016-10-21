@@ -121,6 +121,11 @@
   bottom: 0;
 }
 
+%left-bottom-0 {
+  left: 0;
+  bottom: 0;
+}
+
 /* Class extend for display */
 %inline-block {
   display: inline-block;
@@ -385,6 +390,14 @@
   -ms-flex-pack: center;
   -webkit-justify-content : center;
   justify-content : center;
+}
+
+%justify-content-end {
+  -webkit-box-pack: flex-end;
+  -moz-box-pack: flex-end;
+  -ms-flex-pack: flex-end;
+  -webkit-justify-content : flex-end;
+  justify-content : flex-end;
 }
 
 %flex-col-center {
