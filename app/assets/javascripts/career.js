@@ -588,19 +588,41 @@ $(document).on('turbolinks:load', function(){
 
   /*Collapse filter careers. Show hide icon minimize and expend*/
   $('.careers-icon-collapse').on('click', function(event) {
-    var expended = $(event.target).attr('aria-expanded');
-    if(!expended) {
-      $(event.target)
-        .closest('.careers-filter__head')
-        .removeClass('careers-icon-collapse-expend')
-        .addClass('careers-icon-collapse-mini');
-    } else {
-      $(event.target)
-        .closest('.careers-filter__head')
-        .removeClass('careers-icon-collapse-mini')
-        .addClass('careers-icon-collapse-expend');
-    }
+    // var expended = $(event.target).attr('aria-expanded');
+    // console.log(expended);
+    // if(!expended) {
+    //   $(event.target)
+    //     .closest('.careers-filter__head')
+    //     .removeClass('careers-icon-collapse-expend')
+    //     .addClass('careers-icon-collapse-mini');
+    // } else {
+    //   $(event.target)
+    //     .closest('.careers-filter__head')
+    //     .removeClass('careers-icon-collapse-mini')
+    //     .addClass('careers-icon-collapse-expend');
+    // }
+
+
+
+
     
-  })
+  });
+
+  /*Collapse filter careers. Show hide icon minimize and expend*/
+  $('.careers-icon-collapse-mini').on('click', function(event) {
+    var target = event.target,
+        nextElement = $(target).next();
+
+    $(target).hide();
+    $(nextElement).show();
+  });
+
+  $('.careers-icon-collapse-expend').on('click', function(event) {
+    var target = event.target,
+        prevElement = $(target).prev();
+
+    $(target).hide();
+    $(prevElement).show();
+  });
 
 });
