@@ -98,7 +98,7 @@
             a(href="/stories")
         .col-xs-4.col-md-4.guideline-col.guideline__find-program
           h2
-            a(href="#{career.programs.present? ? education_detail_path(career.programs.first) : education_path}")
+            a(href="#{career.present? && career.programs.present? ? education_detail_path(career.programs.first) : education_path}")
               span near you
         .col-xs-4.col-md-4.guideline-col.guideline__call-center
           .want-to-talk

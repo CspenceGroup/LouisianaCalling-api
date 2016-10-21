@@ -256,6 +256,18 @@
   h4 {
     font-size: rem(16.67);
   }
+
+  a {
+    color: $faq-topic;
+
+    @include linkState() {
+      color: $faq-topic;
+    }
+  }
+
+  p {
+    margin-top: rem(5);
+  }
 }
 
 

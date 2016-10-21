@@ -62,31 +62,26 @@
       },
       {
         "id": 2,
-        "content": "How did you decide which jobs to feature?",
-        "answer": "<p>We chose to feature the most available, high-wage high-skill jobs in Louisiana that do not require a four-year college degree. We’re committed to helping you find something more than just a job — we want to help you find a sustainable, rewarding career.</p>"
-      },
-      {
-        "id": 3,
         "content": "What are the different types of financial aid?",
         "answer": "<p><strong>Grants</strong> are financial aid packages that don’t have to be repaid (unless, for example, you withdraw from school and owe a refund).</p><p><strong>Loans</strong> are financial aid packages made of borrowed money for college or career school. You must repay your loans, with interest.</p><p><strong>Work-Study</strong> is a financial aid program that lets you earn money to help you pay for school by working select jobs.</p>"
       },
       {
-        "id": 4,
+        "id": 3,
         "content": "If I’m a non-degree seeking student, can I receive financial aid?",
         "answer": "<p>No. For students taking classes in the LCTCS network, Federal guidelines specify that only degree seeking students are eligible for financial aid.</p>"
       },
       {
-        "id": 5,
+        "id": 4,
         "content": "What can I do if I still need more money, but have used up all of my financial aid?",
         "answer": "<p>If you’re pursuing education in the LCTCS, you can get on an installment plan with your school’s Bursar’s Office and/or apply for an alternative loan.</p>"
       },
       {
-        "id": 6,
+        "id": 5,
         "content": "Do I need to be admitted before I can apply for financial aid at a particular college or university within LCTCS?",
         "answer": "Not at all. You can apply for aid any time after January 1st. To actually receive your funds however, you must be admitted and enrolled at the school of your choice."
       },
       {
-        "id": 7,
+        "id": 6,
         "content": "What is the difference between a subsidized and unsubsidized student loan?",
         "answer": "<p><strong>Direct Subsidized Loans</strong> are loans made to eligible undergraduate students who demonstrate financial need to help cover the costs of higher education at a college or career school.</p><p><strong>Direct Unsubsidized Loans</strong> are loans made to eligible undergraduate, graduate, and professional students, but in this case, the student does not have to demonstrate financial need to be eligible for the loan.</p><p><strong>Direct PLUS Loans</strong> are loans made to graduate or professional students and parents of dependent undergraduate students to help pay for education expenses not covered by other financial aid.</p><p><strong>Direct Consolidation Loans</strong> allow you to combine all of your eligible federal student loans into a single loan with a single loan servicer.</p>"
       }
