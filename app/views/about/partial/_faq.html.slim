@@ -4,15 +4,27 @@ section.about-tabs__desc.about-faq
   .about-faq-container
     section.about-faq__search
       h2.main-title.shadow-main-title Got a Question? Or perhaps many? Start here.
-      form#searchFaq.faq-search(name='search-faq' action="#{faq_search_path}" method="get")
+      form#searchFaq.faq-search(name='search-faq' action="#{abouts_path}" method="get")
         .input-group.search-group
-          input.form-control.search-input.faq-input(required='required' type='text' name='key' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"')
+          input.form-control.search-input.faq-input(required='required' type='text' name='key' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"' value="#{params[:key]}")
           input type='text' name='tab' value="faq" hidden=true
           button.btn.btn-search.btn-submit(type='submit') Search
     section.about-faq__main-content
-      = render partial: "about/partial/category"
-      = render partial: "about/partial/category-list"
-      = render partial: "about/partial/search-results"
+      #faq-category-details
+        = render partial: "about/partial/category"
+      .category-list.categories#faq-category-list class="#{@searching == true ? 'category-inactive' : 'category-active'}"
+        = render partial: "about/partial/category-list"
+      - if @searching == true
+        - if @results[:objects].present?
+          .faq-search-results.faq-search-term.category-active#faq-search-results
+            = render partial: "about/partial/search-results"
+          - if @results[:count] > 7
+            div.faq-see-more#faqSeeMore
+              = image_tag asset_path("profile/btn-see-more.png")
+        - else
+          .search-not-found.faq-search-term.category-active#search-not-found
+            = render partial: "about/partial/search-no-results"
+
     section.about-faq__contact
       h2.main-title Can't find what you're looking for?
       a.faq-contact-btn(href="#contact-us" role='tab' data-toggle='tab')

@@ -99,7 +99,7 @@
   .faq-input {
     width: rem(610);
     font-size: rem(18.86);
-    text-indent: rem(-3);
+    text-indent: rem(11);
   }
 
   .btn-search {
@@ -215,8 +215,8 @@
 
 .faq-search-term {
   color: $faq-topic;
-  padding-left: rem(117);
-  @include boxSize(rem(1200), rem(955));
+  width: rem(825);
+  @extend %margin-auto;
 
   .search-result-title {
     font-size: rem(20.83);
@@ -242,9 +242,16 @@
 
 .faq-result-item {
   margin-top: rem(38);
+  display: none;
 
   h4 {
     font-size: rem(16.67);
   }
 }
 
+
+.faq-see-more {
+  @include boxSize(rem(110), rem(32));
+  @extend %cursor-pointer;
+  margin: rem(20) auto 0 auto;
+}

@@ -46,9 +46,10 @@
   }
 
   @include e('salary') {
-    margin-left: rem(59);
+    margin-left: rem(35);
     font-size: rem(21);
     @extend %acumin-pro-cond ;
+    @extend %float-right;
   }
 
   @include e('head-salary') {
@@ -76,23 +77,23 @@
 // Style careers view by
 .careers-filter-search {
   @extend %float-left;
-  width: rem(598);
+  width: rem(517);
 }
 
 .careers-filter-search-group {
-  width: rem(598);
+  width: rem(518);
   @extend %block;
   @extend %overflow-hidden;
 }
 
 .careers-view-by {
   @extend %float-right;
-  padding-top: rem(13);
+  padding-top: rem(10);
 
   @include e('list') {
     @include boxSize(rem(30), rem(30));
     @extend %float-left;
-    margin-right: rem(13);
+    margin-right: rem(10);
   }
 
   @include e('grid') {
@@ -101,7 +102,7 @@
   }
 
   @include e('icon') {
-    @include boxSize(rem(24), rem(24));
+    @include boxSize(rem(22), rem(22));
     margin: rem(3) auto 0 auto;
   }
 }
@@ -122,7 +123,7 @@
     @extend %no-padding;
     @extend %float-left;
     @extend %relative;
-    @include boxSize(rem(254), rem(270)); // height: 254px
+    @include boxSize(rem(254), rem(305)); // height: 254px
     border: rem(1) solid $default;
     margin: rem(20) rem(20) 0 0;
     background-color: $white;
@@ -139,6 +140,10 @@
 
     i {
       margin-left: rem(5);
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }

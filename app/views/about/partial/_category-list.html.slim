@@ -1,8 +1,7 @@
-.category-list.categories.category-active#faq-category-list
-  .category-list__container
-    h2.category-list__title Pick a category
-    ul.category-list__items#category-list-items
-      - @categories.each do |category|
-        li
-          a(href="#faq-category-#{category['id']}")
-            = category['name']
+.category-list__container
+  h2.category-list__title Pick a category
+  ul.category-list__items#category-list-items
+    - @categories.each do |category|
+      li
+        a(href="#faq-category-#{category['id']}")
+          = category['name']

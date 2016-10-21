@@ -1,5 +1,6 @@
 .about-contact {
   @include background-image('filter-bg.png');
+  @extend %background-repeat-x;
 
   @include e('help-number') {
     color: $default;

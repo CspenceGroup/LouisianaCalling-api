@@ -48,6 +48,9 @@ class Career < ActiveRecord::Base
   has_many :career_educations, dependent: :destroy
   has_many :educations, through: :career_educations, source: :education
 
+  has_many :program_careers, dependent: :destroy
+  has_many :programs, through: :program_careers, source: :program
+
   validates :title, presence: true
   # validates :education, presence: true
   validates :about_job, presence: true

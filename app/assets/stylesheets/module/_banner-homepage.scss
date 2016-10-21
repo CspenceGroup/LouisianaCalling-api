@@ -16,9 +16,9 @@
   top: rem(58);
 
    p {
-    font-size: rem(25);
-    @extend %i-owan-old-style;
-    padding-top: rem(15);
+    font-size: rem(18.75);
+    @extend %acumin-pro-cond-bi;
+    padding-top: rem(8);
    }
 }
 
@@ -107,6 +107,7 @@
     width: rem(895);
     margin: rem(60) auto 0 auto;
     @extend %overflow-hidden;
+    @extend %relative;
   }
 
   @include e('text') {
@@ -126,8 +127,9 @@
 
 .btn-tell-more {
   @include boxSize(rem(158), rem(37));
-  margin-top: rem(75);
   @extend %float-right;
+  @extend %absolute;
+  @extend %right-top-0;
 }
 
 // Style button play/pause video
