@@ -129,6 +129,7 @@
 
   @include e('main-container') {
     padding-top: rem(51);
+    padding-left: 0;
   }
 
   @include e('about') {
@@ -151,11 +152,10 @@
       min-width: rem(198);
       max-width: rem(285);
       height: 100%;
-      padding: 0 rem(25);
+      padding: rem(5) rem(25) 0 rem(25);
       @extend %float-left;
       @extend %text-center;
       @extend %relative;
-      @extend %flex-col-center;
 
       &:nth-child(2),
       &:nth-child(3) {
@@ -163,21 +163,18 @@
       }
 
       p {
-        margin: 0 0 0 rem(27);
-        max-width: rem(182);
-        @extend %float-left;
+        margin: 0 0 0 rem(12);
         @extend %text-left;
         @extend %text-uppercase;
         @extend %brandon-grotesque-bold;
       }
-
-      img {
-        top: rem(18);
-        left: rem(20);
-        @extend %absolute;
-      }
     }
   }
+}
+
+.personal-profile-about {
+  width: rem(740);
+  @extend %margin-auto;
 }
 
 .personal-profile-title,
@@ -204,15 +201,15 @@
 }
 
 .i-profile-training {
-  @include boxSize(rem(21), rem(25));
+  @include boxSize(rem(24), rem(31));
 }
 
 .i-profile-map {
-  @include boxSize(rem(21), rem(20));
+  @include boxSize(rem(33), rem(33));
 }
 
 .i-profile-career {
-  @include boxSize(rem(21), rem(26));
+  @include boxSize(rem(23), rem(29));
 }
 
 .btn-profile-video {
@@ -230,6 +227,18 @@
   @extend %absolute;
   @extend %text-capitalize;
   @extend %acumin-pro-cond-bi;
+}
+
+.i-profile-info {
+  padding-top: rem(7);
+  @extend %float-left;
+}
+
+.profile-info-txt {
+  height: rem(45);
+  max-width: rem(182);
+  @extend %float-left;
+  @extend %flex-col-center;
 }
 
 @media screen and (max-width: rem(1200)) {
