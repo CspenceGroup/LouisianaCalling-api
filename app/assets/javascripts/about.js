@@ -81,7 +81,7 @@ $(document).on('turbolinks:load', function(){
 
       page.animate({
         scrollTop: $(hash).offset().top-95
-      }, 1000);
+      }, 10);
 
     } else {
       // Move to Catogory

@@ -33,4 +33,39 @@ $(document).on('turbolinks:load', function(){
       }
     });
   });
+
+
+  //Show popup video when click button play
+  $('#videoProfileModal').on('shown.bs.modal', function(event) {
+    $('#video-profile')[0].play();
+  }).on('hide.bs.modal', function() {
+    $('#video-profile')[0].pause();
+  });
+
+  $('#video-profile').on('click', function(e) {
+    e.preventDefault();
+
+    var btnPause = $('#btn-profile-pause');
+
+    if(this.paused) {
+
+      this.play();
+      btnPause.hide();
+    } else {
+
+      this.pause();
+      btnPause.show();
+    }
+  }).on('ended', function() {
+    $('#videoProfileModal').modal('hide');
+  });
+
+  $('#profile-video-content').on('click', function(e) {
+    if (e.target !== this) {
+      return;
+    }
+
+    $('#videoProfileModal').modal('hide');
+  });
+
 });

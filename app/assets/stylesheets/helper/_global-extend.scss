@@ -387,6 +387,12 @@
   justify-content : center;
 }
 
+%flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /*Opacity*/
 %no-opacity {
   opacity: 0;

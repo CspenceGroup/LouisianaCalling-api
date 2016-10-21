@@ -3,49 +3,61 @@
   = render 'navigation/index'
   .main-content
     section.hero-banner.profile-owner
-      .hero-banner__container.profile-owner__container
-        h1.hero-banner__title.profile-owner__name = @profile
+      / .hero-banner__container.profile-owner__container
+        / h1.hero-banner__title.profile-owner__name = @profile
       .profile-owner__photo
         - images_type = ['.png', '.jpg', '.tif', '.bmp', '.jpeg']
         - if images_type.any? { |type| url.include?(type) }
           = image_tag url, lazy: true, class: "lazy-load"
         - else
           video.video-playing.video-player(muted='' loop="loop")
-            source(src=url type='video/mp4')
+            source(src=url type='video/mp4') 
+          button.btn-play.btn-profile-video#btn-video-profile(type='button' data-source=url data-toggle='modal' data-target='#videoProfileModal')
+          .modal.fade.modal-video(id="videoProfileModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true")
+            .modal-dialog.modal-video__content#profile-video-content(role="document")
+              .video-container#video-profile-container
+                video.video-playing.video-player#video-profile
+                  source(src=url type="video/mp4")
+                .button-pause#btn-profile-pause(style="display: none;")
+                  i.icon-pause
     section.career-desc.personal-profile
-      section.personal-profile-career
-        ul.profile-career-details
-          - if @profile.careers.present?
-            li
-              .profile-career-content
-                = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
-                p = @profile.careers.first
-          - if @profile.educations.present?
-            li
-              .profile-career-content
-                = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
-                p = @profile.educations.map(&:name).join(', ')
-          - if @profile.region.present?
-            li
-              .profile-career-content
-                = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
-                p = @profile.region
       .career-desc__main-container.personal-profile__main-container
-        section.career-desc__about
-          h2.main-title.personal-profile-title = @profile
-          section.career-desc__social-networks.profile-social-sharings
-            i.icon.i-social.i-fb(aria-hidden='true')
-            i.icon.i-social.i-tweet(aria-hidden='true')
-            a(href='javascript:void(0);')
-              i.icon.i-social.i-email
+        section.career-desc__about.personal-profile__about
+          h2.main-title.personal-profile-title 
+            | Meet 
+            = @profile
+          section.personal-profile-career
+            ul.profile-career-details
+              - if @profile.careers.present?
+                li
+                  .profile-career-content
+                    = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
+                    p(title=@profile.careers.first) = truncate(@profile.careers.first.to_s, length: 27)
+              - if @profile.educations.present?
+                li
+                  .profile-career-content
+                    = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
+                    p(title=@profile.educations.map(&:name).join(', ')) = truncate(@profile.educations.map(&:name).join(', '), length: 30)
+              - if @profile.region.present?
+                li
+                  .profile-career-content
+                    = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
+                    p = @profile.region
           .profile-details-info
             p = @profile.description
-      .career-desc__news-container
-        section.career-desc__feature-news
-          h2 Feature news
-          p
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.
-          a.btn-feature-more(href='javascript:void(0);')
+          / section.career-desc__social-networks
+          /   i.icon.i-social.i-facebook(aria-hidden='true')
+          /   i.icon.i-social.i-twitter(aria-hidden='true')
+          /   a(href='mailto:')
+          /     i.icon.i-social.i-envelope
+          /   a(href='javascript:void(0);')
+          /     i.icon.i-social.i-print
+      / .career-desc__news-container.personal-profile__news-container
+      /   section.career-desc__feature-news
+      /     h2 Feature news
+      /     p
+      /       | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.
+      /     a.btn-feature-more(href='javascript:void(0);')
     - career = @profile.careers.first
     - if career.present?
       section.career-info.great-jobs
