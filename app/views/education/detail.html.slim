@@ -30,7 +30,7 @@
               li.edu-detail-item.list-icon__details--more
                 .icon.i-industry
                   = image_tag asset_path("program-landing/icon-career.png")
-                .edu-industry title="#{program.careers if program.careers}"
+                .edu-industry title="#{program.careers.map(&:title).join('; ') if program.careers}"
                   - program.careers.each do |career|
                     p
                       = career
