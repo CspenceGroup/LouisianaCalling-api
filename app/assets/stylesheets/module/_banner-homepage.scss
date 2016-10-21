@@ -41,7 +41,7 @@
   border-color: $red-bg;
 }
 
-.btn-play-video:focus {
+.btn-play:focus {
   outline: none;
 }
 
@@ -73,7 +73,7 @@
   }
 }
 
-.btn-play-video {
+.btn-play {
   margin-top: rem(160);
   @extend %background-transparent;
   background-size: rem(56), rem(56);

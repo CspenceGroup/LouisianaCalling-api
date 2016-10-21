@@ -14,7 +14,7 @@
                 <source src="<%= video.url if video %>" type="video/mp4">
               </video>
               <div class="carousel-caption carousel-title">
-                <button type="button" class="btn-play-video" data-source="play-video-<%= video.present? ? video.id : '' %>" data-toggle="modal" data-target="#videoModal"></button>
+                <button type="button" class="btn-play btn-play-video" data-source="play-video-<%= video.present? ? video.id : '' %>" data-toggle="modal" data-target="#videoModal"></button>
                 <p><%= video.profile %></p>
               </div>
             </div>
