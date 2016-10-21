@@ -27,7 +27,7 @@
               li.edu-detail-item--landing
                 .icon.i-career
                   = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
-                .career-industry title="#{program.careers if program.careers.present?}"
+                .career-industry title="#{program.careers.map(&:title).join('; ') if program.careers.present?}"
                   - program.careers.each do |career|
                     p
                       = career
