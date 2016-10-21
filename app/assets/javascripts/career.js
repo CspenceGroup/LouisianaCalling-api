@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function(){
     if (careerName != '' || !careerName) {
       if (careerName && region) {
 
-        url = '/programs?title=' + careerName + '&region=' + region;
+        url = '/educations?title=' + careerName + '&region=' + region;
         window.location = url;
       } else {
 
@@ -405,7 +405,7 @@ $(document).on('turbolinks:load', function(){
       }
 
       $.ajax({
-        url : '/education/filter',
+        url : '/educations/filter',
         type : "get",
         dateType:"text",
         traditional: true,
