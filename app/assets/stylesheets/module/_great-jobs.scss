@@ -61,8 +61,10 @@
   }
 
   @include e('icon') {
-    @extend %float-right;
+    // @extend %float-right;
     margin-top: rem(4);
+    @extend %overflow-hidden;
+    @extend %float-left;
 
     img {
       @extend %float-left;

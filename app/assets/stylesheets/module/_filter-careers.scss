@@ -38,6 +38,14 @@
   @include e('title-edu') {
     padding-bottom: 0;
   }
+
+  @include e('head') {
+    @extend %overflow-hidden;
+
+    .careers-filter__title {
+      @extend %float-left;
+    }
+  }
 }
 
 .careers-filter-details {
@@ -145,4 +153,24 @@
   font-size: rem(14.5);
   @extend %acumin-pro-cond-regular;
   padding: rem(5) 0 rem(17) 0;
+}
+
+.careers-icon-collapse {
+  @include boxSize(rem(17), rem(17));
+  @extend %float-right;
+  margin-right: rem(26);
+  border-right: rem(1) solid $filter-careers-bg;
+  border-bottom: rem(1) solid $filter-careers-bg;
+}
+
+.careers-filter__head.careers-icon-collapse-mini {
+  .careers-icon-collapse {
+    @include background-image('careers/minimize.png');
+  }
+}
+
+.careers-filter__head.careers-icon-collapse-expend {
+  .careers-icon-collapse {
+    @include background-image('careers/expand.png');
+  }
 }

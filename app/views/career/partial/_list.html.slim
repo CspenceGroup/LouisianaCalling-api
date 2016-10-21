@@ -6,11 +6,10 @@
           a href="/careers/#{career.slug}"
             p.jobs-head__title title=career.title
               = career.title
+        .careers-list-view__head-salary
           .jobs-head__icon
             - career.demand.to_i.times do
-              = image_tag(asset_path("careers/icon-vote-careers.png"), alt: "fire icon")
-        .careers-list-view__head-salary
-          .careers-list-view__icon-salary
+              = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
           p.careers-list-view__salary
             = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
 - else
