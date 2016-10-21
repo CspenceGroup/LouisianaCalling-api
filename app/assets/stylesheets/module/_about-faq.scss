@@ -72,16 +72,25 @@
 
   @include e('items') {
     margin-top: rem(55);
+
+    a {
+      color: $default;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+
+    p {
+      line-height: rem(20);
+      margin-top: rem(20);
+    }
   }
 
   @include e('item') {
     border-bottom: solid rem(1) $default;
     padding-bottom: rem(17);
     margin-top: rem(20);
-
-    h3 {
-      margin-bottom: rem(17);
-    }
   }
 
   @include e('contact') {
@@ -246,6 +255,18 @@
 
   h4 {
     font-size: rem(16.67);
+  }
+
+  a {
+    color: $faq-topic;
+
+    @include linkState() {
+      color: $faq-topic;
+    }
+  }
+
+  p {
+    margin-top: rem(5);
   }
 }
 
