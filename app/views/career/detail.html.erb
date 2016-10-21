@@ -3,13 +3,13 @@
   <%= render "navigation/index" %>
   <div class="main-content">
     <section class="career-banner">
-      <h2 class="career-banner__title hero-banner__title"><%= career.title%></h2>
       <div class="career-banner__bg">
         <%= image_tag career.photo_large, alt: 'career banner', lazy: true, class: "lazy-load"%>
       </div>
     </section>
     <section class="career-desc" id="career-desc">
       <div class="career-desc__main-container">
+        <h2 class="career-desc__title"><%= career.title%></h2>
         <section class="career-desc__about">
           <h2 class="main-title">About the job</h2>
           <p><%= career.about_job.html_safe %></p>
@@ -25,13 +25,40 @@
           <a href="javascript:void(0);"><i class="icon i-social i-print"></i></a>
         </section> -->
       </div>
-      <!-- <div class="career-desc__news-container" id="feature-news">
-        <section class="career-desc__feature-news">
+      <div class="career-desc__news-container" id="feature-news">
+        <section class="career-desc__feature-news career-desc__interest">
+          <h2>Interests</h2>
+          <div class="career-desc__interest-item">
+            <div class="career-desc__interest-icon">
+              <%= image_tag(asset_path("careers/investigation.png"), :alt => "careers icon") %>
+            </div>
+            <div class="career-desc__interest-text">
+              <p>Investigation</p>
+            </div>
+          </div>
+          <div class="career-desc__interest-item">
+            <div class="career-desc__interest-icon">
+              <%= image_tag(asset_path("careers/calculation.png"), :alt => "careers icon") %>
+            </div>
+            <div class="career-desc__interest-text">
+              <p>Math and calculations</p>
+            </div>
+          </div>
+          <div class="career-desc__interest-item">
+            <div class="career-desc__interest-icon">
+              <%= image_tag(asset_path("careers/collaborating.png"), :alt => "careers icon") %>
+            </div>
+            <div class="career-desc__interest-text">
+              <p>Collaborating with others</p>
+            </div>
+          </div>
+        </section>
+        <!-- <section class="career-desc__feature-news">
           <h2>Feature news</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.</p>
           <a href="javascript:void(0);" class="btn-feature-more"></a>
-        </section>
-      </div> -->
+        </section> -->
+      </div>
     </section>
     <section class="great-jobs great-jobs-careers-details">
       <div class="great-jobs__container">
