@@ -569,4 +569,22 @@ $(document).on('turbolinks:load', function(){
   lazyloadImages();
 
   $(".related-item__name").dotdotdot({});
+
+  /*Collapse filter careers. Show hide icon minimize and expend*/
+  $('.careers-icon-collapse').on('click', function(event) {
+    var expended = $(event.target).attr('aria-expanded');
+    if(!expended) {
+      $(event.target)
+        .closest('.careers-filter__head')
+        .removeClass('careers-icon-collapse-expend')
+        .addClass('careers-icon-collapse-mini');
+    } else {
+      $(event.target)
+        .closest('.careers-filter__head')
+        .removeClass('careers-icon-collapse-mini')
+        .addClass('careers-icon-collapse-expend');
+    }
+    
+  })
+
 });
