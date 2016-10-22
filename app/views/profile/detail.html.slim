@@ -21,7 +21,7 @@
                 video.video-playing.video-player#video-profile
                   source(src=url type="video/mp4")
                 .button-pause#btn-profile-pause(style="display: none;")
-                  i.icon-pause
+                  i.icon-pause.i-profile-pause
     section.career-desc.personal-profile
       .career-desc__main-container.personal-profile__main-container
         section.career-desc__about.personal-profile__about
@@ -37,12 +37,12 @@
                       = image_tag(asset_path("career-info/career-industry.png"), alt: "icon training")
                     .profile-info-txt
                       p(title=@profile.careers.first) = truncate(@profile.careers.first.to_s, length: 27)
-                - if @profile.educations.present?
+                - if @profile.educational_institution.present?
                   li
                     .i-profile-info.i-profile-training
                       = image_tag(asset_path("career-info/career-edu.png"), alt: "icon training")
                     .profile-info-txt
-                      p(title=@profile.educations.map(&:name).join(', ')) = truncate(@profile.educations.map(&:name).join(', '), length: 30)
+                      p(title=@profile.educational_institution) = truncate(@profile.educational_institution, length: 30)
                 - if @profile.region.present?
                   li
                     .i-profile-info.i-profile-map
@@ -86,7 +86,7 @@
           .career-shortcut__body
             p Interests
             ul.career-interests
-              - career.interests.each do |interest|
+              - career.interests.first(3).each do |interest|
                 li
                   .career-interest-icon
                     = image_tag("#{interest.url}", :alt => "#{interest}")

@@ -37,9 +37,12 @@ $(document).on('turbolinks:load', function(){
 
   //Show popup video when click button play
   $('#videoProfileModal').on('shown.bs.modal', function(event) {
+
     $('#video-profile')[0].play();
   }).on('hide.bs.modal', function() {
+
     $('#video-profile')[0].pause();
+    $('#btn-profile-pause').hide();
   });
 
   $('#video-profile').on('click', function(e) {
@@ -57,6 +60,7 @@ $(document).on('turbolinks:load', function(){
       btnPause.show();
     }
   }).on('ended', function() {
+
     $('#videoProfileModal').modal('hide');
   });
 
