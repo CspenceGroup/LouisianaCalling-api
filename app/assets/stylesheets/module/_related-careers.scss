@@ -23,10 +23,11 @@
   @include e('title') {
     margin-bottom: rem(30);
     @extend %text-capitalize;
+    padding-left: rem(7);
   }
 
   @include e('items') {
-    margin-right: rem(10);
+    margin-left: rem(7);
     color: $default;
   }
 
@@ -47,10 +48,29 @@
   @include e('sort-by') {
     margin-top: rem(7);
   }
+
+  @include e('interest') {
+    @extend %float-left;
+    margin-bottom: 0;
+    margin-left: rem(20);
+    width: rem(260);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    p {
+      max-width: rem(183);
+    }
+  }
+
+  @include e('icon-interest') {
+    @extend %overflow-hidden;
+  }
 }
 
 .related-careers-container {
-  width: rem(810);
+  width: rem(825);
   @extend %margin-auto;
 }
 
