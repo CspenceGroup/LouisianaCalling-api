@@ -104,10 +104,10 @@
       @extend %float-left;
       @extend %text-uppercase;
       font-size: rem(22.85);
-      @extend %acumin-pro-cond-regular;
+      @extend %brandon-grotesque-bold;
       color: $filter-careers-heading;
       margin-bottom: 0;
-      padding-left: rem(13);
+      padding-left: rem(4);
     }
 
   }
@@ -118,15 +118,14 @@
     @extend %display-flex;
     @extend %align-items-center;
     @extend %justify-content-center;
-
-    img {
-      width: auto;
-    }
   }
 
   @include e('interest-text') {
     min-height: rem(45);
     @extend %flex-col-center;
+    @extend %relative;
+    top: 50%;
+    transform: translateY(30%);
   }
 }
 
