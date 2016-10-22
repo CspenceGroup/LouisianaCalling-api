@@ -114,14 +114,22 @@
     @extend %float-left;
     h2 {
       @extend %i-owan-old-style;
-      font-size: rem(33);
+      font-size: rem(29.4);
     }
 
     p {
-      font-size: rem(18);
+      font-size: rem(16.67);
       @extend %acumin-pro-cond;
       padding-top: rem(27);
     }
+  }
+
+  @include e('close') {
+    font-size: rem(16.67);
+    @extend %acumin-pro-cond;
+    padding-bottom: rem(31);
+    @extend %float-right;
+    @extend %cursor-pointer;
   }
 }
 

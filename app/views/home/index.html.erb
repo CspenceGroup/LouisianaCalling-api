@@ -44,6 +44,7 @@
             <%- @videos.each_with_index do |video, idx| %>
               <div class="modal-video__details" id="play-video-<%= video.id %>">
                 <div class="video-container">
+                  <p class="modal-video__close">Close</p>
                   <video class="video-playing video-player">
                     <source src="<%= video.url %>" type="video/mp4">
                   </video>
