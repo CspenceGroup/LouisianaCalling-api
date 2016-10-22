@@ -103,7 +103,7 @@ class Career < ActiveRecord::Base
   }
 
   scope :filter_by_interest, lambda { |interest|
-    career_interests.where('career_interests.interest_id IN (?)', interest)
+    with_interests.where('career_interests.interest_id IN (?)', interest)
   }
 
   scope :filter_by_skill, lambda { |skill|
