@@ -16,9 +16,9 @@
   top: rem(58);
 
    p {
-    font-size: rem(25);
-    @extend %i-owan-old-style;
-    padding-top: rem(15);
+    font-size: rem(18.75);
+    @extend %acumin-pro-cond-bi;
+    padding-top: rem(8);
    }
 }
 
@@ -41,7 +41,7 @@
   border-color: $red-bg;
 }
 
-.btn-play-video:focus {
+.btn-play:focus {
   outline: none;
 }
 
@@ -73,7 +73,7 @@
   }
 }
 
-.btn-play-video {
+.btn-play {
   margin-top: rem(160);
   @extend %background-transparent;
   background-size: rem(56), rem(56);
@@ -107,27 +107,37 @@
     width: rem(895);
     margin: rem(60) auto 0 auto;
     @extend %overflow-hidden;
+    @extend %relative;
   }
 
   @include e('text') {
     @extend %float-left;
     h2 {
       @extend %i-owan-old-style;
-      font-size: rem(33);
+      font-size: rem(29.4);
     }
 
     p {
-      font-size: rem(18);
+      font-size: rem(16.67);
       @extend %acumin-pro-cond;
       padding-top: rem(27);
     }
+  }
+
+  @include e('close') {
+    font-size: rem(16.67);
+    @extend %acumin-pro-cond;
+    padding-bottom: rem(31);
+    @extend %float-right;
+    @extend %cursor-pointer;
   }
 }
 
 .btn-tell-more {
   @include boxSize(rem(158), rem(37));
-  margin-top: rem(75);
   @extend %float-right;
+  @extend %absolute;
+  @extend %right-top-0;
 }
 
 // Style button play/pause video

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'stories' => 'profile#index', :as => :stories
-  get 'profiles/get-more' => 'profile#getMore'
+  get 'profiles/get-more' => 'profile#get_more'
   get 'profiles/:slug' => 'profile#detail', :as => :profile_detail
 
   # career page
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   get 'careers/:slug' => 'career#detail', :as => :career_detail
 
   # education page
-  get 'programs' => 'education#index', :as => :education
-  get 'programs/:slug' => 'education#detail', :as => :education_detail
-  get 'education/filter/' => 'education#filter', :as => :education_filter
+  get 'educations' => 'education#index', :as => :education
+  get 'educations/filter' => 'education#filter', :as => :education_filter
+  get 'educations/:slug' => 'education#detail', :as => :education_detail
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Private policy page

@@ -4,15 +4,20 @@ class CareerController < ApplicationController
   before_filter :career_titles, only: [:index, :detail]
 
   def index
-    @careers_slider = Career.first(5)
+    @jobs = {}
 
-    # Career.first(5).each do |career|
-    #   # get_image_for_career_interest is invoked from CareerHelper
-    #   # career.interests = get_image_for_career_interest(career.interests)
-    #   # get_image_for_career_skill is invoked from CareerHelper
-    #   # career.skills = get_image_for_career_skill(career.skills)
-    #   @careers_slider << career
-    # end
+    TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
+      @jobs[region.name] = top_jobs.map do |top_job|
+        {
+          job: top_job.career.title,
+          link: career_detail_path(top_job.career)
+        }
+      end
+    end
+
+    @limit = params[:limit] || 9
+    @offset = params[:offset] || 0
+
     careers =
       if !params[:title].present? && !params[:region].present?
         Career.all.filter_by_salary(
@@ -31,11 +36,16 @@ class CareerController < ApplicationController
                          )
         careers
       end
+    @limit = @limit.to_i
+    @offset = @offset.to_i
 
-    @careers = careers.offset(0).limit(9)
+    next_offset = @offset + @limit
+    @is_see_more = careers.count > next_offset ? true : false
+
+    @careers = careers.offset(@offset).limit(@limit)
     @title = params[:title]
     @region = params[:region]
-    @is_see_more = careers.count > 9 ? true : false
+    @offset = next_offset
   end
 
   def detail
@@ -50,7 +60,11 @@ class CareerController < ApplicationController
 
   def filter
     careers = list_careers_by_query(params)
+    @limit = params[:limit] || 9
+    @offset = params[:offset] || 0
 
+    @limit = @limit.to_i
+    @offset = @offset.to_i
     ## seach by career title
     careers = careers.filter_by_title(params[:title]) if params[:title].present?
 
@@ -58,8 +72,9 @@ class CareerController < ApplicationController
     sort_by = params[:sort].present? ? params[:sort] : 'id'
     careers = careers.order(sort_by)
 
-    is_see_more = careers.count > 9 ? true : false
-    careers = careers.offset(0).limit(9)
+    next_offset = @limit + @offset
+    is_see_more = careers.count > next_offset ? true : false
+    careers = careers.offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -68,7 +83,9 @@ class CareerController < ApplicationController
       list: render_to_string(
         'career/partial/_list', layout: false, locals: { careers: careers }
       ),
-      is_see_more: is_see_more
+      is_see_more: is_see_more,
+      offset: next_offset,
+      limit: @limit
     }
   end
 

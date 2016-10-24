@@ -18,15 +18,21 @@ section.about-tabs__desc.about-contact
             | Lousiana Calling, 9331 Bluebonnet Blvd., Baton Roughe, LA 70810
           p
             span.icon.icon-email
-            | Info@lousianacalling.org
-        - if flash[:errors].present?
-          .alert.alert-danger
-            - flash[:errors].each do |msg|
-              = content_tag :div, msg, class: 'errors'
-        - elsif flash[:notice].present?
+            | info@louisianacalling.org
+        //- if flash[:errors].present?
+        //-   .alert.alert-danger
+        //-     flash[:errors].each do |msg|
+        //-       = content_tag :div, msg, class: 'errors'
+        - if flash[:notice].present?
           = content_tag :div, flash[:notice], class: 'alert alert-success'
         form.about-help-form#aboutHelpForm accept-charset="UTF-8" action="/abouts" method="post"
-          input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}" required='required')
-          input.form-control(name="contact[subject]" placeholder="Subject" type="text" value="#{@contact.subject}" required='required')
-          textarea.form-control(name="contact[message]" placeholder="Message" value="#{@contact.message}" required='required')
-          button.btn.btn-submit.btn-help-message Send message
+          input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}")
+          .alert.alert-danger.alert-danger-contact-us.alert-danger-email
+            .errors Email Address is required
+          input.form-control(name="contact[subject]" placeholder="Subject" type="text" value="#{@contact.subject}")
+          .alert.alert-danger.alert-danger-contact-us.alert-danger-subject
+            .errors Subject is required
+          textarea.form-control(name="contact[message]" placeholder="Message" value="#{@contact.message}")
+          .alert.alert-danger.alert-danger-contact-us.alert-danger-message
+            .errors Message is required
+          button.btn.btn-submit.btn-help-message value="submit" Send message

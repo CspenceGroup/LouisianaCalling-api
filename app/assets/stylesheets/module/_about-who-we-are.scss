@@ -40,11 +40,16 @@
       @extend %relative;
       @extend %background-position-center;
       @include background-image('tab-active.png');
+
+      span {
+        color: $white;
+      }
     }
   }
 
   @include e('desc') {
     @include background-image('profile/profile-decs-bg.png');
+    @extend %background-repeat-x;
   }
 
   @include e('content') {
@@ -90,7 +95,7 @@
   padding-top: 0;
 }
 
-.banner-our-comminity {
+.banner-our-community {
   @include background-image('about/about-community.jpg');
 }
 

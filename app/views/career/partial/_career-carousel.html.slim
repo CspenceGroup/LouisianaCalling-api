@@ -1,0 +1,28 @@
+- careers_slider.each_with_index do |career, index|
+  div class=(index == 0 ? 'carousel-item active' : 'carousel-item')
+    section.career-shortcut.career-carousels__item
+      .career-shortcut__container.career-carousel-container
+        .career-shortcut__head.career-carousel-head
+          .career-shortcut__head--pull-left
+            .career-head-left
+              .career-flames
+                - career.demand.to_i.times
+                  .career-flames__item
+                    = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
+              a.career-info-title(href=career_detail_path(career.slug) title=career.title) 
+                = truncate(career.title, length: 65)
+          .career-shortcut__head--pull-right
+            a.career-shortcut__btn-more(href=career_detail_path(career.slug))
+              = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
+            .career-shortcut__salary
+              .icon.i-career-salary.i-career-salary-carousel
+              p 
+                | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
+        .career-shortcut__body
+          p Interests
+          ul.career-interests
+            - career.interests.first(3).each do |interest|
+              li
+                .career-interest-icon
+                  = image_tag("#{interest.url}", :alt => "#{interest}")
+                p.career-interest-text = truncate(interest.to_s, length: 25)

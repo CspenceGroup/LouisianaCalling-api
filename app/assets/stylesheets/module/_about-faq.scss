@@ -47,8 +47,8 @@
   @include e('topics') {
     padding: rem(32) rem(5);
     margin-top: rem(25);
-    color: $faq-topic;
-    background-color: $faq-topic-bg;
+    color: $profile-header;
+    background-color: $profile-name-shadow;
   }
 
   @include e('topics-title') {
@@ -66,22 +66,31 @@
     }
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
   @include e('items') {
     margin-top: rem(55);
+
+    a {
+      color: $default;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+
+    p {
+      line-height: rem(20);
+      margin-top: rem(20);
+    }
   }
 
   @include e('item') {
     border-bottom: solid rem(1) $default;
     padding-bottom: rem(17);
     margin-top: rem(20);
-
-    h3 {
-      margin-bottom: rem(17);
-    }
   }
 
   @include e('contact') {
@@ -99,7 +108,7 @@
   .faq-input {
     width: rem(610);
     font-size: rem(18.86);
-    text-indent: rem(-3);
+    text-indent: rem(11);
   }
 
   .btn-search {
@@ -135,7 +144,7 @@
     @include boxSize(rem(330), rem(32));
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
@@ -169,7 +178,7 @@
   @include e('title') {
     font-size: rem(20.83);
     margin-left: rem(22);
-    color: $btn-see-more-bg;
+    color: $map-active;
   }
 
   @include e('items') {
@@ -198,26 +207,25 @@
 }
 
 .faq-txt {
-  color: $faq-topic;
+  color: $profile-header;
   font-size: rem(20.83);
   @extend %text-uppercase;
   @extend %brandon-grotesque;
 }
 
 .faq-back {
-  color: $btn-see-more-bg;
+  color: $map-active;
   @extend %float-right;
-  @extend %font-weight-bold;
 
   @include linkState () {
-    color: $btn-see-more-bg;
+    color: $map-active;
   }
 }
 
 .faq-search-term {
-  color: $faq-topic;
-  padding-left: rem(117);
-  @include boxSize(rem(1200), rem(955));
+  color: $profile-header;
+  width: rem(825);
+  @extend %margin-auto;
 
   .search-result-title {
     font-size: rem(20.83);
@@ -243,9 +251,28 @@
 
 .faq-result-item {
   margin-top: rem(38);
+  display: none;
 
   h4 {
     font-size: rem(16.67);
   }
+
+  a {
+    color: $profile-header;
+
+    @include linkState() {
+      color: $profile-header;
+    }
+  }
+
+  p {
+    margin-top: rem(5);
+  }
 }
 
+
+.faq-see-more {
+  @include boxSize(rem(110), rem(32));
+  @extend %cursor-pointer;
+  margin: rem(20) auto 0 auto;
+}

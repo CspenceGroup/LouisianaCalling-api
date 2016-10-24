@@ -13,7 +13,7 @@
         z-index: 10;
         pointer-events: none;
         border: rem(1) solid $black;
-        background: $filter-checkbox-bg;
+        background: $profile-name-shadow;
         display: block;
         float: left;
         position: relative;
@@ -30,7 +30,7 @@
         position: absolute;
         pointer-events: none;
         border: rem(1) solid $black;
-        background: $filter-checkbox-bg;
+        background: $profile-name-shadow;
         @include boxSize(rem(19), rem(19));
       }
     }

@@ -1,13 +1,14 @@
 - if programs.length > 0
-  - programs.each do |program|
+  - offset = offset || 0
+  - programs.each_with_index do |program, idx|
       .edu-program-info.edu-program-info__map-item id=program.id
         .program-list__item.program-item-map
           .program-item-map__container
             .program-list__item-header.program-item-map__header.jobs-head
-              a href="/programs/#{program.slug}"
+              a href="/educations/#{program.slug}"
                 .jobs-head__name
                   p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
-                    / = "#{ids.index(program.id) + 1}. #{program.title}"
+                    = "#{offset + idx + 1}. #{program.title}"
               .jobs-head__content
                 //- .edu-scholarship.edu-scholarship--view-map
                 //-   p

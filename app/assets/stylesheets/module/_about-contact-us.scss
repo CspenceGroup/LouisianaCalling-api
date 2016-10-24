@@ -1,5 +1,6 @@
 .about-contact {
   @include background-image('filter-bg.png');
+  @extend %background-repeat-x;
 
   @include e('help-number') {
     color: $default;
@@ -13,7 +14,7 @@
   }
 
   @include e('donate') {
-    color: $faq-topic;
+    color: $profile-header;
     padding: rem(9) 0 rem(50);
     margin-bottom: rem(-25);
     background-color: $filter-careers-bg;
@@ -100,4 +101,11 @@
   margin-right: rem(12);
   @include boxSize(rem(19), rem(13));
   @include background-image('icon-about-email.png');
+}
+
+.alert-danger-contact-us {
+  height: rem(53);
+  margin-top: rem(10);
+  display: none;
+  padding: rem(14);
 }

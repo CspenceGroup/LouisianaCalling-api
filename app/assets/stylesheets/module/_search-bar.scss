@@ -16,7 +16,7 @@ form {
 }
 
 .search-group {
-  width: rem(1045);
+  width: rem(1034);
   @extend %margin-auto;
 
   .search-input {
@@ -29,10 +29,14 @@ form {
     @include boxSize(rem(379), rem(53));
   }
 
+  .search-careers-landing {
+    @include boxSize(rem(370), rem(46));
+  }
+
   .btn-submit {
     width: rem(212);
     font-size: rem(14.7);
-    margin-right: rem(7);
+    // margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
     @extend %cl-white;
@@ -42,11 +46,16 @@ form {
     @extend %no-outline;
   }
 
+  .btn-search-career {
+    @include boxSize(rem(148), rem(46));
+  }
+
   .btn-region,
   .btn-career {
     padding-left: rem(10);
     @extend %text-left;
     @extend %no-border-left;
+    margin-bottom: 0;
   }
 
   .fa {
@@ -82,6 +91,11 @@ form {
   select::-ms-expand {
     @extend %hide;
   }
+
+  .form-sort-by {
+    padding: 0;
+    margin-top: rem(-4);
+  }
 }
 
 .btn-region {
@@ -90,6 +104,12 @@ form {
 
 .btn-career {
   width: rem(211);
+}
+
+.sort-by-salary {
+  @include boxSize(rem(195), rem(46));
+  margin-left: rem(14);
+  @extend %relative;
 }
 
 .search-bg {
@@ -114,4 +134,28 @@ form {
 .ui-autocomplete {
   @include boxSize(rem(375), rem(250));
   @extend %overflow-y-scroll;
+}
+
+.alert-danger-search {
+  @include boxSize(rem(1034), rem(35));
+  @extend %margin-auto;
+  padding-top: rem(6);
+  @extend %text-center;
+  font-size: rem(14);
+  @extend %acumin-pro-cond-regular;
+
+  @include m('career') {
+    display: none;
+  }
+
+  @include m('region') {
+    display: none;
+  }
+}
+
+.fa-sort-by {
+  @extend %absolute;
+  top: rem(15);
+  left: rem(175);
+  color: $default;
 }

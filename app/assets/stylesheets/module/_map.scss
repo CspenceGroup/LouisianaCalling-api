@@ -1,5 +1,5 @@
 .top-jobs {
-  color: $default;
+  color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
   height: rem(580);
@@ -7,7 +7,7 @@
   @extend %font-weight-bold;
   @extend %background-repeat;
   @extend %overflow-hidden;
-  @include background-image('map-bg.png');
+  @include background-image('careers/great-job-bg.jpg');
 
   @include e('details') {
     @include boxSize(rem(326), rem(332));
@@ -24,6 +24,11 @@
     right: rem(510);
     @include boxSize(rem(585), rem(615));
     @extend %absolute;
+  }
+
+  .job-heading {
+    color: $profile-name-shadow;
+    @include shadow(rem(3), rem(3), rem(3), $profile-header); 
   }
 }
 
@@ -54,6 +59,7 @@
 .job-desc {
   font-size: rem(18.8);
   margin-right: rem(225);
+  color: $profile-name-shadow;
   @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
   @extend %font-weight-normal;
@@ -62,15 +68,16 @@
 .region-name {
   font-size: rem(33.3);
   line-height: 1.875;
-  color: $region-name;
+  top: rem(1);
   right: rem(16);
+  color: $profile-name-shadow;
   @extend %top-0;
   @extend %text-uppercase;
   @extend %brandon-grotesque;
   @extend %absolute;
 
   @include m('careers') {
-    padding-top: rem(9);
+    top: rem(2);
   }
 }
 
@@ -83,11 +90,10 @@
   @include boxSize(rem(270), rem(230));
 
   a {
-    color: $default;
-    cursor: default;
+    color: $profile-name-shadow;
     
     @include linkState () {
-      color: $default;
+      color: $profile-name-shadow;
     }
     @extend %text-capitalize;
   }

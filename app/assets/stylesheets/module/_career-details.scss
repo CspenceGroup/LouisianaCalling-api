@@ -23,13 +23,6 @@
   @extend %relative;
   @extend %display-flex;
 
-  p {
-    font-size: rem(16.7);
-    margin-bottom: rem(20);
-    line-height: rem(22);
-    @extend %acumin-pro-cond;
-  }
-
   .main-title {
     margin-bottom: rem(30);
     @extend %text-capitalize;
@@ -38,7 +31,7 @@
 
   @include e('main-container') {
     width: 64.75%;
-    padding: rem(75) rem(67) rem(57) rem(84);
+    padding: rem(75) 0 rem(57) rem(84);
     @extend %float-left;
   }
 
@@ -48,8 +41,31 @@
     background: $feature-news-bg;
   }
 
+  @include e('main-content') {
+    width: rem(700);
+    @extend %float-right;
+  }
+
   @include e('what-to-do') {
-    padding-top: rem(32);
+    padding: rem(32) rem(67) 0 0;
+
+    p {
+      font-size: rem(16.7);
+      margin-bottom: rem(20);
+      line-height: rem(22);
+      @extend %acumin-pro-cond;
+    }
+  }
+
+  @include e('about') {
+    padding-right: rem(67);
+
+    p {
+      font-size: rem(16.7);
+      margin-bottom: rem(20);
+      line-height: rem(22);
+      @extend %acumin-pro-cond;
+    }
   }
 
   @include e('feature-news') {
@@ -73,6 +89,53 @@
 
     a {
       color: $default;
+    }
+  }
+
+  @include e('title') {
+    font-size: rem(37.5);
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+    color: $red-bg;
+    padding-bottom: rem(40);
+  }
+
+  @include e('interest') {
+    margin-bottom: rem(63);
+  }
+
+  @include e('interest-item') {
+    @extend %overflow-hidden;
+    margin-bottom: rem(35);
+
+    &:last-child {
+      @extend %no-margin-bottom;
+    }
+  }
+
+  @include e('interest-icon') {
+    @include boxSize(rem(70), auto);
+    @extend %float-left;
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+  }
+
+  @include e('interest-text') {
+    min-height: rem(45);
+    @extend %flex-col-center;
+    @extend %relative;
+    top: 50%;
+    transform: translateY(30%);
+
+    p {
+      @extend %float-left;
+      @extend %text-uppercase;
+      font-size: rem(22.85);
+      @extend %brandon-grotesque-bold;
+      color: $filter-careers-heading;
+      margin-bottom: 0;
+      padding-left: rem(4);
     }
   }
 }

@@ -48,6 +48,9 @@ class Career < ActiveRecord::Base
   has_many :career_educations, dependent: :destroy
   has_many :educations, through: :career_educations, source: :education
 
+  has_many :program_careers, dependent: :destroy
+  has_many :programs, through: :program_careers, source: :program
+
   validates :title, presence: true
   # validates :education, presence: true
   validates :about_job, presence: true
@@ -100,7 +103,7 @@ class Career < ActiveRecord::Base
   }
 
   scope :filter_by_interest, lambda { |interest|
-    career_interests.where('career_interests.interest_id IN (?)', interest)
+    with_interests.where('career_interests.interest_id IN (?)', interest)
   }
 
   scope :filter_by_skill, lambda { |skill|

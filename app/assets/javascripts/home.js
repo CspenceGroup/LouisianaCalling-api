@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function(){
   */
 
   var regions = {};
-  if ($('#mapData').html()) {
-    regions = JSON.parse($('#mapData').html());
+  if ($('#mapData').data('map')) {
+    regions = $('#mapData').data('map');
   }
 
   /**
@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', function(){
    * @return void
    */
   $('path').hover(function (e) {
-
     // Reset top job list
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
@@ -158,6 +157,13 @@ $(document).on('turbolinks:load', function(){
       var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
       $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
       $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
+
+      var flame_icons = [];
+
+      for (var i = activeRegionData.demand; i > 0; i--) {
+        flame_icons.push('<i class="icon i-flame"></i>')
+      }
+      $('#career-flames').html(flame_icons.join(''));
     }
   }
 
@@ -223,7 +229,8 @@ $(document).on('turbolinks:load', function(){
 
   //close pop up when they click anywhere that have no text or video
   $('.modal-video__details').on('click', function(event) {
-    if(event.target === this) {
+    console.log(event.target);
+    if(event.target === this || event.target.className === 'modal-video__close') {
       $('#videoModal').modal('hide');
       $(this).find('video')[0].pause();
     }
@@ -285,8 +292,17 @@ $(document).on('turbolinks:load', function(){
         url = "",
         toUrl;
 
-    if (careerName && region) {
+    // if (careerName && region) {
 
+    //   url = url + '?title=' + careerName + '&region=' + region;
+    // }
+    if(!careerName) {
+      $('.alert-danger-search--career').show();
+      $('.alert-danger-search--region').hide();
+    } else if(!region) {
+      $('.alert-danger-search--career').hide();
+      $('.alert-danger-search--region').show();
+    } else {
       url = url + '?title=' + careerName + '&region=' + region;
     }
 
@@ -298,7 +314,7 @@ $(document).on('turbolinks:load', function(){
         window.location = toUrl;
       } else if (type && type === 'programs') {
 
-        toUrl = '/programs' + url;
+        toUrl = '/educations' + url;
         window.location = toUrl;
       }
     }

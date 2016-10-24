@@ -4,11 +4,11 @@ class UserMailer < BaseMandrillMailer
     @contact = contact
     merge_vars = {
       'EMAIL' => @contact.email,
-      'MESSAGE' => @contact.message
+      'MESSAGE' => @contact.message,
+      'SUBJECT' => @contact.subject
     }
     body = mandrill_template('contact_us', merge_vars)
-    subject = "Contact Message from #{@contact.email}: #{@contact.subject}"
 
-    send_mail_reply_to(ENV['SUPPORTER_EMAIL'], @contact.email, subject, body)
+    send_mail(ENV['SUPPORTER_EMAIL'], @contact.subject, body)
   end
 end

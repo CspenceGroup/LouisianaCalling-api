@@ -8,8 +8,6 @@ class Profile < ActiveRecord::Base
   has_many :profile_careers, dependent: :destroy
   has_many :careers, through: :profile_careers, source: :career
 
-  has_one :video
-
   has_many :profile_interests, dependent: :destroy
   has_many :interests, through: :profile_interests, source: :interest
 
@@ -43,11 +41,12 @@ class Profile < ActiveRecord::Base
       Profile.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[16].present?
+        raise 'Wrong file' if row[17].present?
 
         profile = Profile.new
         profile[:first_name] = row[0].strip
         profile[:last_name] = row[1].strip
+        profile[:sub_head] = row[2].strip
 
         region = Region.find_by_name(row[4].strip)
         profile[:region_id] = region.id if region.present?
@@ -69,7 +68,7 @@ class Profile < ActiveRecord::Base
         profile.save!
 
         # Adding careers
-        create_profile_careers(row[2].split(',').map(&:strip), profile) if row[2].present?
+        create_profile_careers(row[16].split(',').map(&:strip), profile) if row[16].present?
 
         # Adding interest
         if row[6].present?
