@@ -14,7 +14,7 @@
   }
 
   @include e('donate') {
-    color: $faq-topic;
+    color: $profile-header;
     padding: rem(9) 0 rem(50);
     margin-bottom: rem(-25);
     background-color: $filter-careers-bg;
