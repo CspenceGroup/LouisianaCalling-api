@@ -111,7 +111,7 @@ class Career < ActiveRecord::Base
   }
 
   scope :filter_by_salary, lambda { |salary_min, salary_max|
-    where('salary_max <= ? AND salary_min >= ?', salary_max, salary_min)
+    where.not('salary_max < ? OR salary_min > ?', salary_min, salary_max)
   }
 
   def self.import_from_csv(csv)
