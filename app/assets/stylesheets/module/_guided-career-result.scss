@@ -1,0 +1,61 @@
+.guided-result-item {
+  margin-left: rem(30);
+  margin-top: rem(50);
+  border: solid rem(1) $default;
+  @extend %relative;
+  @include boxSize(rem(385), rem(195));
+
+  @include e('photo') {
+    @extend %overflow-hidden;
+    @extend %float-left;
+    @include boxSize(rem(194), 100%);
+  }
+
+  @include e('info') {
+    padding: rem(15) 0 0 rem(10);
+    @extend %float-right;
+    @include boxSize(rem(188), 100%);
+  }
+
+  @include e('flames') {
+    img {
+      margin-right: rem(5);
+      @include boxSize(rem(16), rem(19));
+    }
+  }
+
+  @include e('career-name') {
+    width: rem(160);
+    margin-top: rem(14);
+
+    a {
+      color: $default;
+      font-size: rem(20.8);
+      line-height: rem(20);
+      @extend %brandon-grotesque;
+      @extend %text-uppercase;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+  }
+
+  @include e('salary') {
+    color: $default;
+    font-size: rem(16.67);
+    left: rem(203);
+    bottom: rem(17);
+    @extend %absolute;
+
+    p {
+      margin-left: rem(10);
+      @extend %float-left;
+    }
+  }
+}
+
+.i-guided-salary {
+  @extend %float-left;
+  @include boxSize(rem(27), rem(19));
+}
