@@ -3,8 +3,6 @@
   min-width: rem(1200);
   color: $career-txt;
   @extend %relative;
-  @include boxSize(100%, rem(302));
-  @include background-image('careers/great-job-bg.jpg');
 
   a {
     color: $career-txt;
@@ -25,7 +23,8 @@
     color: $white;
     font-size: rem(16.67);
     background-color: $red-bg;
-    padding: rem(10) 0 0 rem(60);
+    padding: rem(10) rem(25) 0 0;
+    @extend %text-right;
     @extend %inline-block;
     @extend %absolute;
     @extend %left-top-0;
@@ -146,4 +145,79 @@
   max-width: rem(57);
   height: auto;
   @extend %float-left;
+}
+
+.profile-story-career {
+  @include boxSize(100%, rem(302));
+  @include background-image('careers/great-job-bg.jpg');
+}
+
+.career-slide-label {
+  width: rem(300);
+}
+
+.career-carousels {
+  height: rem(390);
+  padding-top: rem(72);
+  @extend %relative;
+  @include background-image('filter-bg.png');
+
+  @include e('item') {
+    color: $default;
+    padding-top: 0;
+
+    a {
+      color: $default;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+  }
+}
+
+.career-carousel-container,
+.career-carousel-head {
+  border-color: $default;
+}
+
+.i-career-salary-carousel {
+  @include background-image('career-info/blue-career-salary.png');
+}
+
+.career-carousel-content {
+  height: rem(282);
+  @extend %relative;
+}
+
+.career-carousel-dots {
+  padding-left: rem(77);
+  @extend %absolute;
+  @extend %bottom-0;
+  @extend %text-center;
+
+  .carousel-dots {
+    background: $default;
+    border-color: $default;
+    @extend %inline-block;
+  }
+
+  .carousel-dots.active {
+    background: $red-bg;
+    border-color: $red-bg;
+  }
+}
+
+.career-carousel-control {
+  .career-arrow {
+    top: rem(110);
+  }
+
+  .i-career-prev {
+    @include background-image('career-info/btn-arrow-left.png');
+  }
+
+  .i-career-next {
+    @include background-image('career-info/btn-arrow-right.png');
+  }
 }
