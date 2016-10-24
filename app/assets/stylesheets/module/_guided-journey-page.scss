@@ -12,7 +12,7 @@
     color: $default;
     min-height: rem(735);
     margin-bottom: rem(-30);
-    @include background-image('filter-bg.png');
+    @include background-image('map-bg.png');
 
     li {
       @extend %float-left;
@@ -21,69 +21,62 @@
 }
 
 .guided-form {
-  width: rem(1200);
-  padding: rem(30) rem(80) 0;
+  width: rem(1035);
+  padding-top: rem(30);
   @extend %margin-auto;
   @extend %relative;
+  @extend %overflow-hidden;
 
-  .btn {
-    padding: rem(7) rem(12);
-    @extend %no-border-radius;
-  }
-
-  .btn-arrow-right {
-    color: $white;
-    margin-left: rem(2);
-    background-color: $default;
-    padding: 0 rem(18) 0 rem(50);
-    @extend %relative;
-    @include boxSize(rem(153), rem(50));
-
-    &:before,
-    &:after {
-      /* make two squares (before and after) */
-      content: "";
-      top: rem(7);
-      left: rem(135);
-      @extend %absolute;
-      /* use parent background */
-      background: inherit;
-      /* use parent border */
-      border: inherit;
-      /* hide left border */
-      border-left-color: transparent;
-      /* hide bottom border */
-      border-bottom-color: transparent;
-      /* round arrow corner */
-      @extend %no-border-radius;
-      /* rotate right arrow squares 45 deg to point right */
-      @include transform(45deg);
-      @include boxSize(rem(35), rem(35));
-      
-    }
-
-    &:before {
-      left: rem(-18);
-      background-color: $white;
-    }
-
-    &:after {
-      right: rem(-11);
-      z-index: 1;
-    }
+  @include e('title') {
+    @extend %absolute;
+    left: rem(-999);
   }
 
   @include e('steps') {
     margin: 0 auto rem(38) auto;
     @extend %text-left;
     @extend %overflow-hidden;
+    @extend %float-left;
+
+    li {
+      @include boxSize(rem(153), rem(50));
+      background-color: $default;
+      margin-left: rem(2);
+      @extend %relative;
+      @extend %display-flex;
+      @extend %align-items-center;
+      @extend %justify-content-center;
+
+      &:before,
+      &:after {
+        content: "";
+        top: rem(7);
+        left: rem(135);
+        @extend %absolute;
+        background: inherit;
+        border: inherit;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        @extend %no-border-radius;
+        @include transform(45deg);
+        @include boxSize(rem(36), rem(36));
+      }
+
+      &:before {
+        left: rem(-18);
+        background-color: $white;
+      }
+
+      &:after {
+        right: rem(-11);
+        z-index: 1;
+      }
+    }
   }
 
   fieldset {
-    background: white;
-    border: 0 none;
-    padding: 20px 30px;
-    border: solid 1px $default;
+    @extend %no-border;
+    padding: rem(20) rem(30);
     box-sizing: border-box;
     width: rem(805);
 
@@ -93,8 +86,109 @@
   }
 }
 
-.step-active {
-  .btn {
-    background-color: $red-bg;
+.guided-form__steps .steps li.done,
+.guided-form__steps .steps li.current {
+  background-color: $red-bg;
+}
+
+
+.guided-form__steps > .steps a {
+  @extend %no-border-radius;
+  color: $white;
+  @extend %relative;
+  padding-left: rem(20);
+}
+
+.guided-form__steps > .steps .current-info {
+  @extend %absolute;
+  left: rem(-999);
+}
+
+.guided-form__steps > .actions {
+  display: none;
+}
+
+//Style side bar step result when click item
+.sidebar-steps-result {
+  @include boxSize(rem(210), rem(100));
+  background-color: $step-bg;
+  @extend %float-right;
+
+  @include e('btn') {
+    @extend %overflow-hidden;
+  }
+}
+
+.btn-step {
+  @include boxSize(rem(65), rem(28));
+  color: $white;
+  font-size: rem(16.7);
+  @extend %i-owan-old-style-bi;
+  @extend %no-border;
+  @extend %no-outline;
+  @extend %relative;
+  z-index: 200;
+}
+
+.btn-step-back {
+  background-color: $profile-header;
+  @extend %float-left;
+  margin-left: rem(20);
+  padding-right: rem(23);
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(225deg);
+    @include boxSize(rem(20), rem(20));
+  }
+
+  &:before {
+    left: rem(55);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(55);
+    z-index: -2;
+  }
+}
+
+.btn-step-next {
+  background-color: $red-bg;
+  @extend %float-right;
+  margin-right: rem(20);
+  padding-left: rem(23);
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(45deg);
+    @include boxSize(rem(20), rem(20));
+    
+  }
+
+  &:before {
+    left: rem(-10);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(-10);
+    z-index: -22;
   }
 }

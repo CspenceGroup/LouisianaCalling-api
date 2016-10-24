@@ -7,30 +7,27 @@
     .main-guided-journey__steps
       form.guided-form
         ul.guided-form__steps#form-progressbar
-          li.step-active
-            button.btn.btn-arrow-right(type="button") 1. Interests
-          li
-            button.btn.btn-arrow-right(type="button") 2. Skills
-          li
-            button.btn.btn-arrow-right(type="button") 3. Region
-          li
-            button.btn.btn-arrow-right(type="button") 4. Education
-          li
-            button.btn.btn-arrow-right(type="button") 5. Results
-        fieldset
-          h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-          p Show us what you love and enjoy and it'll help us find the best career for you.
-        fieldset
-          h3.guided-form__title.main-title.shadow-main-title What skills do you have or want?
-          p Tell us what you're really good at. Or, tell us what you want to be really good at. Both will inform your results!
-        fieldset
-          h3.guided-form__title.main-title.shadow-main-title What regions should we search in?
-          p Now it's time to pick out where you'd link to see great careers.
-        fieldset
-          h3.guided-form__title.main-title.shadow-main-title What type of education do you have right now?
-          p What have you learned so far? Let us know and we'll find options that match your education.
-        fieldset
-          h3.guided-form__title.main-title.shadow-main-title See your calling?
-          p Congrats! Here's what we've got for you.
+          h2.guided-form__title Interests
+          fieldset
+            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
+            p Show us what you love and enjoy and it'll help us find the best career for you 1.
+          h2.guided-form__title Region
+          fieldset
+            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
+            p Def 2
+          h2.guided-form__title Education
+          fieldset
+            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
+            p Xys 3
+          h2.guided-form__title Results
+          fieldset
+            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
+            p afafds 4
+        .sidebar-steps-result
+          p Side bar
+          div.sidebar-steps-result__btn
+            button.btn-step.btn-step-back value="previous" type="button" Back
+            button.btn-step.btn-step-next value="next" type="button" Next
+
 
   = render 'footer/index'
