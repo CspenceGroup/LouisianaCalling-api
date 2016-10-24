@@ -56,7 +56,8 @@ module CareerHelper
         [career_region.region, {
           salary_min: career_region.salary_min,
           salary_max: career_region.salary_max,
-          educations: career_region.educations
+          educations: career_region.educations,
+          demand: career_region.demand || 0
         }]
       end
     end

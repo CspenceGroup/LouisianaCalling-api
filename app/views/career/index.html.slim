@@ -3,31 +3,23 @@
 .container-fluid
   = render 'navigation/index'
   .main-content
-    //- section.hero-banner
-    //-   .hero-banner__container.careers-banner__container
-    //-     h1.hero-banner__title Find Your Calling.
-    //-     h1.hero-banner__title Create Your Legacy.
-    //-     .hero-banner__introduce
-    //-       h2.hero-banner__text Good news: There are tons of careers to choose from.
-    //-       h2.hero-banner__text Bad news: There are tons of careers to choose from. Let's find the right one for you.
     section.profile-heading
       h2.main-title.profile-title Find your calling. Create your legacy.
       p Good news: There are tons of careers to choose from.
       p Bad news: There are tons of careers to choose from. Let's find the right one for you.
-    section.career-carousels
-      span.career-shortcut__label.career-slide-label Great job. Right now.
-      #carousel-great-jobs.carousel.slide.career-carousel-content data-ride="carousel"
-        ol.carousel-indicators.carousel-dots-list.career-carousel-dots
-          = render partial: "career/partial/slider-dot", locals: { careers_slider: careers_slider }
-        .carousel-inner role="listbox"
-          = render partial: "career/partial/career-carousel", locals: { careers_slider: careers_slider }
-        a.left.carousel-control.career-carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
-          span.career-arrow.icon-prev.i-career-prev aria-hidden="true"
-          span.sr-only Previous
-        a.right.carousel-control.career-carousel-control.carousel-control--beside data-slide="next" href="#carousel-great-jobs" role="button"
-          span.career-arrow.icon-next.i-career-next aria-hidden="true"
-          span.sr-only Next
-
+    section.top-jobs.row
+      .jobs-container
+        .top-jobs__title.map-title.shadow-main-title
+          h2.main-title.job-heading.job-heading--pull-left Careers with Your
+          h2.main-title.job-heading.job-heading--pull-right Name on Them
+          p.job-desc Find the career you want, where you want.
+        #top-jobs__map.top-jobs__map
+          = render partial: "career/partial/map"
+        .top-jobs__details.map-details
+          h3#region-name.region-name
+          ol#top-region-jobs.job-list
+        #mapData.data-map-hidden data-map="#{@jobs.to_json}"
+        p.asterisk-copy.asterisk-copy-home &ast; This data is based on the Louisiana Workforce Commission’s wage and employment projections through 2024.
     section.careers-lists
       .careers-filter
         h2.careers-filter__heading Filter

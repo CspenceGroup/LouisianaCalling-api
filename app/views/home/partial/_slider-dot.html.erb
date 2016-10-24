@@ -1,0 +1,3 @@
+<% @careers_slider.each_with_index do |career, index| %>
+  <li class=<%= index == 0 ? 'carousel-dots active' : 'carousel-dots' %> data-slide-to=index data-target="#carousel-great-jobs"></li>
+<% end %>

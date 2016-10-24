@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function(){
   */
 
   var regions = {};
-  if ($('#mapData').html()) {
-    regions = JSON.parse($('#mapData').html());
+  if ($('#mapData').data('map')) {
+    regions = $('#mapData').data('map');
   }
 
   /**
@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', function(){
    * @return void
    */
   $('path').hover(function (e) {
-
     // Reset top job list
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
@@ -158,6 +157,13 @@ $(document).on('turbolinks:load', function(){
       var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
       $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
       $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
+
+      var flame_icons = [];
+
+      for (var i = activeRegionData.demand; i > 0; i--) {
+        flame_icons.push('<i class="icon i-flame"></i>')
+      }
+      $('#career-flames').html(flame_icons.join(''));
     }
   }
 
