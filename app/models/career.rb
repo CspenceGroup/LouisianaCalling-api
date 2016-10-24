@@ -111,15 +111,28 @@ class Career < ActiveRecord::Base
   }
 
   scope :filter_by_salary, lambda { |salary_min, salary_max|
-    where('salary_max <= ? AND salary_min >= ?', salary_max, salary_min)
+    where.not('salary_max < ? OR salary_min > ?', salary_min, salary_max)
   }
+
+  scope :salary_asc, -> { order(:salary_min) }
+  scope :salary_desc, -> { order(salary_max: :desc) }
+
+  scope :projected_growth_asc, -> { order(:projected_growth) }
+  scope :projected_growth_desc, -> { order(projected_growth: :desc) }
 
   def self.import_from_csv(csv)
     Career.transaction do
       Career.delete_all
+      CareerInterestship.delete_all
+      CareerSkillship.delete_all
+      CareerInterest.delete_all
+      CareerSkill.delete_all
+      CareerEducation.delete_all
+      CareerRegionHighDemand.delete_all
+      CareerCluster.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[19].present?
+        raise 'Wrong file' if row[20].present?
 
         career = Career.new
         career[:title] = row[0].strip
@@ -131,6 +144,7 @@ class Career < ActiveRecord::Base
         career[:demand] = row[14].strip
         career[:photo_large] = row[15].strip if row[15].present?
         career[:photo_medium] = row[16].strip if row[16].present?
+        career[:projected_growth] = row[19].strip if row[19].present?
 
         career.save!
 

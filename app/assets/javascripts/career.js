@@ -160,8 +160,9 @@ $(document).on('turbolinks:load', function(){
           salary_min: [],
           title: "",
           limit: $('#careerLimit').val(),
-          offset: $('#careerOffset').val()
-        }
+          offset: $('#careerOffset').val(),
+          sort: $("#career_sort_by").val()
+        };
 
       $('.square-checkbox:checked').each(function() {
         data[$(this).attr('name')].push($(this).val());
@@ -605,7 +606,7 @@ $(document).on('turbolinks:load', function(){
 
 
 
-    
+
   });
 
   /*Collapse filter careers. Show hide icon minimize and expend*/

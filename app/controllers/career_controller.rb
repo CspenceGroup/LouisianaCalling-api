@@ -68,9 +68,22 @@ class CareerController < ApplicationController
     ## seach by career title
     careers = careers.filter_by_title(params[:title]) if params[:title].present?
 
-    ## Sort by, defaut sort by ID
-    sort_by = params[:sort].present? ? params[:sort] : 'id'
-    careers = careers.order(sort_by)
+    ## Sort by
+    if params[:sort].present?
+      sort_by = params[:sort].to_i
+
+      careers =
+        case sort_by
+        when 1 # Salary high to low
+          careers.salary_desc
+        when 2 # Salary low to high
+          careers.salary_asc
+        when 3 # Projected Growth high to low
+          careers.projected_growth_desc
+        else # Projected Growth low to high
+          careers.projected_growth_asc
+        end
+    end
 
     next_offset = @limit + @offset
     is_see_more = careers.count > next_offset ? true : false
