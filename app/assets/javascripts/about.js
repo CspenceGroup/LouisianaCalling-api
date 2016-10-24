@@ -15,8 +15,8 @@ $(document).on('turbolinks:load', function(){
   $('#about-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var target = $(e.target).attr("href"); // activated tab
 
-    target = target.slice(1)
-    changeURL('About us', 'abouts?tab=' + target)
+    target = target.slice(1);
+    changeURL('About us', 'abouts?tab=' + target);
   })
 
   $('.faq-contact-btn').on('click', function(e) {
@@ -153,7 +153,7 @@ $(document).on('turbolinks:load', function(){
         email = target[0].value,
         subject = target[1].value,
         message = target[2].value;
-    
+
     if(!email) {
       $('.alert-danger-email').show();
       $('.alert-danger-subject, .alert-danger-message').hide();
