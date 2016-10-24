@@ -34,9 +34,11 @@ $(document).on('turbolinks:load', function(){
     if (window.location.pathname.indexOf('abouts') != -1) {
       $('#about-tabs a[href="#faq"]').tab('show');
       changeURL('About us', 'abouts?tab=faq')
+      $('body').scrollTop(0);
     } else {
       // Goto About us page with FAQ tab
       window.location.href = '/abouts?tab=faq'
+      $('body').scrollTop(0);
     }
   });
 
@@ -47,10 +49,16 @@ $(document).on('turbolinks:load', function(){
     if (window.location.pathname.indexOf('abouts') != -1) {
       $('#about-tabs a[href="#contact-us"]').tab('show');
       changeURL('About us', 'abouts?tab=contact-us')
+      $('body').scrollTop(0);
     } else {
       // Goto About us page with contact-us tab
       window.location.href = '/abouts?tab=contact-us'
+      $('body').scrollTop(0);
     }
+  });
+
+  $('.faq-contact-btn').on('click', function() {
+    $('body').scrollTop(0);
   });
 
   /*
