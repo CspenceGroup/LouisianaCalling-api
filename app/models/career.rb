@@ -114,6 +114,9 @@ class Career < ActiveRecord::Base
     where.not('salary_max < ? OR salary_min > ?', salary_min, salary_max)
   }
 
+  scope :salary_asc, -> { order(:salary_min) }
+  scope :salary_desc, -> { order(salary_max: :desc) }
+
   def self.import_from_csv(csv)
     Career.transaction do
       Career.delete_all
