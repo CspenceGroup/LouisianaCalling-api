@@ -18,8 +18,7 @@
         .top-jobs__details.map-details
           h3#region-name.region-name
           ol#top-region-jobs.job-list
-        #mapData.data-map-hidden
-          = @jobs.to_json
+        #mapData.data-map-hidden data-map="#{@jobs.to_json}"
         p.asterisk-copy.asterisk-copy-home &ast; This data is based on the Louisiana Workforce Commission’s wage and employment projections through 2024.
     section.careers-lists
       .careers-filter

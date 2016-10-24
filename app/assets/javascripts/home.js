@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function(){
   */
 
   var regions = {};
-  if ($('#mapData').html()) {
-    regions = JSON.parse($('#mapData').html());
+  if ($('#mapData').data('map')) {
+    regions = $('#mapData').data('map');
   }
 
   /**
@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', function(){
    * @return void
    */
   $('path').hover(function (e) {
-
     // Reset top job list
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
