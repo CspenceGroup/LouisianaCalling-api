@@ -223,7 +223,8 @@ $(document).on('turbolinks:load', function(){
 
   //close pop up when they click anywhere that have no text or video
   $('.modal-video__details').on('click', function(event) {
-    if(event.target === this) {
+    console.log(event.target);
+    if(event.target === this || event.target.className === 'modal-video__close') {
       $('#videoModal').modal('hide');
       $(this).find('video')[0].pause();
     }
