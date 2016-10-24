@@ -41,6 +41,11 @@
     background: $feature-news-bg;
   }
 
+  @include e('main-content') {
+    width: rem(700);
+    @extend %float-right;
+  }
+
   @include e('what-to-do') {
     padding: rem(32) rem(67) 0 0;
 

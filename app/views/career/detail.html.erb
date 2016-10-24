@@ -9,21 +9,23 @@
     </section>
     <section class="career-desc" id="career-desc">
       <div class="career-desc__main-container">
-        <h2 class="career-desc__title"><%= career.title%></h2>
-        <section class="career-desc__about">
-          <h2 class="main-title">About the job</h2>
-          <p><%= career.about_job.html_safe %></p>
-        </section>
-        <section class="career-desc__what-to-do">
-          <h2 class="main-title">What you'll do</h2>
-          <p><%= career.what_will_do.html_safe %></p>
-        </section>
-        <!-- <section class="career-desc__social-networks">
-          <i class="icon i-social i-facebook" aria-hidden="true"></i>
-          <i class="icon i-social i-twitter" aria-hidden="true"></i>
-          <a href="mailto:"><i class="icon i-social i-envelope"></i></a>
-          <a href="javascript:void(0);"><i class="icon i-social i-print"></i></a>
-        </section> -->
+        <div class="career-desc__main-content">
+          <h2 class="career-desc__title"><%= career.title%></h2>
+          <section class="career-desc__about">
+            <h2 class="main-title">About the job</h2>
+            <p><%= career.about_job.html_safe %></p>
+          </section>
+          <section class="career-desc__what-to-do">
+            <h2 class="main-title">What you'll do</h2>
+            <p><%= career.what_will_do.html_safe %></p>
+          </section>
+          <!-- <section class="career-desc__social-networks">
+            <i class="icon i-social i-facebook" aria-hidden="true"></i>
+            <i class="icon i-social i-twitter" aria-hidden="true"></i>
+            <a href="mailto:"><i class="icon i-social i-envelope"></i></a>
+            <a href="javascript:void(0);"><i class="icon i-social i-print"></i></a>
+          </section> -->
+        </div>
       </div>
       <div class="career-desc__news-container" id="feature-news">
         <section class="career-desc__feature-news career-desc__interest">
