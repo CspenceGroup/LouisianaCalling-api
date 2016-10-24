@@ -9,20 +9,16 @@
         ul.guided-form__steps#form-progressbar
           h2.guided-form__title Interests
           fieldset
-            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-            p Show us what you love and enjoy and it'll help us find the best career for you 1.
+            = render partial: "guided_journey/partial/interest"
           h2.guided-form__title Region
           fieldset
-            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-            p Def 2
+            = render partial: "guided_journey/partial/region"
           h2.guided-form__title Education
           fieldset
-            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-            p Xys 3
+            = render partial: "guided_journey/partial/education"
           h2.guided-form__title Results
           fieldset
-            h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-            p afafds 4
+            = render partial: "guided_journey/partial/results"
         .sidebar-steps-result
           p Side bar
           div.sidebar-steps-result__btn
