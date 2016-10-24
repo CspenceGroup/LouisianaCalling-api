@@ -76,12 +76,16 @@
 
   fieldset {
     @extend %no-border;
-    padding: rem(20) rem(30);
+    padding: rem(40) rem(30);
     box-sizing: border-box;
     width: rem(805);
 
     &:not(:first-of-type) {
       display: none;
+    }
+
+    > p {
+      margin-top: rem(23);
     }
   }
 }
