@@ -7,8 +7,9 @@
 #  career_id     :integer
 #  salary_min    :integer
 #  salary_max    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  demand        :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 #
 class CareerRegion < ActiveRecord::Base
@@ -25,7 +26,7 @@ class CareerRegion < ActiveRecord::Base
       CareerRegion.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[5].present?
+        raise 'Wrong file' if row[6].present?
 
         career_region = CareerRegion.new
 
@@ -39,9 +40,9 @@ class CareerRegion < ActiveRecord::Base
 
         career_region[:salary_min] = row[2].strip
         career_region[:salary_max] = row[3].strip
+        career_region[:demand] = row[5].strip
 
         career_region.save!
-        puts 'education', row[4]
         if row[4].present?
           create_career_region_educations(row[4].split(',').map(&:strip), career_region)
         end
