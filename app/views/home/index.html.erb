@@ -113,7 +113,7 @@
         </p>
       </section>
     </section>
-    <section class="top-jobs row">
+    <!-- <section class="top-jobs row">
       <div class="jobs-container">
         <div class="top-jobs__title map-title shadow-main-title">
           <h2 class="main-title job-heading job-heading--pull-left">Careers with Your</h2>
@@ -460,6 +460,26 @@
         </div>
         <div class="data-map-hidden" id="mapData"><%= @jobs.to_json%></div>
         <p class="asterisk-copy asterisk-copy-home">&ast; This data is based on the Louisiana Workforce Commission’s wage and employment projections through 2024.</p>
+      </div>
+    </section> -->
+
+    <section class="career-carousels">
+      <span class="career-shortcut__label career-slide-label">Great job. Right now.</span>
+      <div id="carousel-great-jobs" class="carousel slide career-carousel-content" data-ride="carousel">
+        <ol class="carousel-indicators carousel-dots-list career-carousel-dots">
+          <%= render "home/partial/slider-dot" %>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <%= render "home/partial/career-carousel" %>
+        </div>
+        <a href="#carousel-great-jobs" class="left carousel-control career-carousel-control carousel-control--beside" role="button" data-slide="prev">
+          <span class="career-arrow icon-prev i-career-prev" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a href="#carousel-great-jobs" class="right carousel-control career-carousel-control carousel-control--beside" role="button" data-slide="next">
+          <span class="career-arrow icon-next i-career-next" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </section>
   </div>
