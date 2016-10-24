@@ -23,13 +23,6 @@
   @extend %relative;
   @extend %display-flex;
 
-  p {
-    font-size: rem(16.7);
-    margin-bottom: rem(20);
-    line-height: rem(22);
-    @extend %acumin-pro-cond;
-  }
-
   .main-title {
     margin-bottom: rem(30);
     @extend %text-capitalize;
@@ -50,10 +43,24 @@
 
   @include e('what-to-do') {
     padding: rem(32) rem(67) 0 0;
+
+    p {
+      font-size: rem(16.7);
+      margin-bottom: rem(20);
+      line-height: rem(22);
+      @extend %acumin-pro-cond;
+    }
   }
 
   @include e('about') {
     padding-right: rem(67);
+
+    p {
+      font-size: rem(16.7);
+      margin-bottom: rem(20);
+      line-height: rem(22);
+      @extend %acumin-pro-cond;
+    }
   }
 
   @include e('feature-news') {
@@ -99,17 +106,6 @@
     &:last-child {
       @extend %no-margin-bottom;
     }
-
-    p {
-      @extend %float-left;
-      @extend %text-uppercase;
-      font-size: rem(22.85);
-      @extend %brandon-grotesque-bold;
-      color: $filter-careers-heading;
-      margin-bottom: 0;
-      padding-left: rem(4);
-    }
-
   }
 
   @include e('interest-icon') {
@@ -126,6 +122,16 @@
     @extend %relative;
     top: 50%;
     transform: translateY(30%);
+
+    p {
+      @extend %float-left;
+      @extend %text-uppercase;
+      font-size: rem(22.85);
+      @extend %brandon-grotesque-bold;
+      color: $filter-careers-heading;
+      margin-bottom: 0;
+      padding-left: rem(4);
+    }
   }
 }
 
