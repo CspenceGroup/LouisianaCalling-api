@@ -46,6 +46,7 @@ class CareerController < ApplicationController
     return unless @career.present?
 
     @regions = get_regions_by_career(@career.id)
+    @jobs = {}
 
     TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
       @jobs[region.name] = top_jobs.map do |top_job|
