@@ -109,7 +109,7 @@ class EducationController < ApplicationController
       map: render_to_string(
         'education/partial/_map', layout: false, locals: {
           programs: programs,
-          ids: ids
+          offset: @offset
         }
       ),
       is_see_more: is_see_more,
