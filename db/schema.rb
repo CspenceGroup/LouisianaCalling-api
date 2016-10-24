@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024041959) do
+ActiveRecord::Schema.define(version: 20161024102256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,14 +88,15 @@ ActiveRecord::Schema.define(version: 20161024041959) do
     t.string   "title"
     t.text     "about_job"
     t.text     "what_will_do"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "photo_large"
     t.string   "photo_medium"
     t.integer  "salary_min"
     t.integer  "salary_max"
     t.float    "demand"
     t.integer  "top_job_id"
+    t.integer  "projected_growth"
     t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 

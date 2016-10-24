@@ -79,9 +79,9 @@ class CareerController < ApplicationController
         when 2 # Salary low to high
           careers.salary_asc
         when 3 # Projected Growth high to low
-          careers.salary_desc
+          careers.projected_growth_desc
         else # Projected Growth low to high
-          careers.salary_desc
+          careers.projected_growth_asc
         end
     end
 
