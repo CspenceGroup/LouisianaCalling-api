@@ -15,7 +15,7 @@
               </video>
               <div class="carousel-caption carousel-title">
                 <button type="button" class="btn-play btn-play-video" data-source="play-video-<%= video.present? ? video.id : '' %>" data-toggle="modal" data-target="#videoModal"></button>
-                <p><%= video.profile %></p>
+                <p><%= "Watch #{video.profile.first_name} story's" %></p>
               </div>
             </div>
           <% end %>

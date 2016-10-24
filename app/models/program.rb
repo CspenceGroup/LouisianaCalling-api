@@ -76,13 +76,14 @@ class Program < ActiveRecord::Base
           program[:lng] = location[1]
         end
 
+        program[:cover_photo] = row[18].strip
+
         program.save!
 
         (14..17).each do |i|
           create_program_cluster(row[i].strip, program) if row[i].present?
         end
 
-        program[:cover_photo] = row[18].strip
         if row[19].present?
           create_program_careers(row[19].split(';').map(&:strip), program)
         end
