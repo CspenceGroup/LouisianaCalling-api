@@ -25,10 +25,6 @@ $(document).on('turbolinks:load', function(){
    * @return void
    */
   
-  $('.st1').each(function(v, k) {
-    console.log(v, $(k).attr('id'))
-  })
-
   $('.guided-journey-map path').click(function (e) {
 
     /**
@@ -40,7 +36,7 @@ $(document).on('turbolinks:load', function(){
 
         $('.lafayette').removeClass('active');
       } else {
-        
+
         $(this).removeClass('active');
       }
     } else {
