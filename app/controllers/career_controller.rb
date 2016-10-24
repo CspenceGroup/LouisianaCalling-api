@@ -4,7 +4,17 @@ class CareerController < ApplicationController
   before_filter :career_titles, only: [:index, :detail]
 
   def index
-    @careers_slider = Career.first(5)
+    @jobs = {}
+
+    TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
+      @jobs[region.name] = top_jobs.map do |top_job|
+        {
+          job: top_job.career.title,
+          link: career_detail_path(top_job.career)
+        }
+      end
+    end
+
     @limit = params[:limit] || 9
     @offset = params[:offset] || 0
 
@@ -46,16 +56,6 @@ class CareerController < ApplicationController
     return unless @career.present?
 
     @regions = get_regions_by_career(@career.id)
-    @jobs = {}
-
-    TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
-      @jobs[region.name] = top_jobs.map do |top_job|
-        {
-          job: top_job.career.title,
-          link: career_detail_path(top_job.career)
-        }
-      end
-    end
   end
 
   def filter
