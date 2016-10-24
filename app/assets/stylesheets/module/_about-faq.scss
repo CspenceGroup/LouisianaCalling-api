@@ -47,7 +47,7 @@
   @include e('topics') {
     padding: rem(32) rem(5);
     margin-top: rem(25);
-    color: $faq-topic;
+    color: $profile-header;
     background-color: $faq-topic-bg;
   }
 
@@ -66,7 +66,7 @@
     }
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
@@ -144,7 +144,7 @@
     @include boxSize(rem(330), rem(32));
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
@@ -207,7 +207,7 @@
 }
 
 .faq-txt {
-  color: $faq-topic;
+  color: $profile-header;
   font-size: rem(20.83);
   @extend %text-uppercase;
   @extend %brandon-grotesque;
@@ -223,7 +223,7 @@
 }
 
 .faq-search-term {
-  color: $faq-topic;
+  color: $profile-header;
   width: rem(825);
   @extend %margin-auto;
 
@@ -258,10 +258,10 @@
   }
 
   a {
-    color: $faq-topic;
+    color: $profile-header;
 
     @include linkState() {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
