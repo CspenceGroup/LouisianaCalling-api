@@ -18,13 +18,13 @@ section.about-tabs__desc.about-contact
             | Lousiana Calling, 9331 Bluebonnet Blvd., Baton Roughe, LA 70810
           p
             span.icon.icon-email
-            | Info@lousianacalling.org
+            | info@louisianacalling.org
         //- if flash[:errors].present?
         //-   .alert.alert-danger
         //-     flash[:errors].each do |msg|
         //-       = content_tag :div, msg, class: 'errors'
-        //- elsif flash[:notice].present?
-        //-   = content_tag :div, flash[:notice], class: 'alert alert-success'
+        - if flash[:notice].present?
+          = content_tag :div, flash[:notice], class: 'alert alert-success'
         form.about-help-form#aboutHelpForm accept-charset="UTF-8" action="/abouts" method="post"
           input.form-control(name="contact[email]" placeholder="Email Address" type="email" value="#{@contact.email}")
           .alert.alert-danger.alert-danger-contact-us.alert-danger-email
