@@ -1,2 +1,32 @@
-h3.guided-form__title.main-title.shadow-main-title What are you interested in?
-p Xys 3
+.guided-form__container
+  h3.main-title.shadow-main-title What type of education do you have right now?
+  p What have you learned so far? Let us know and we'll find options that match your education.
+  .guided-form__interest
+    .guided-form__interest-item
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+        .guided-form__interest-icon--active
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+      p Currently in high school
+    .guided-form__interest-item
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+        .guided-form__interest-icon--active
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+      p Currently in high school
+    .guided-form__interest-item
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+        .guided-form__interest-icon--active
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+      p Currently in high school
+    .guided-form__interest-item.guided-form__interest-item--active
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+        .guided-form__interest-icon--active
+          = image_tag asset_path("step-education.png"), alt: 'interest'
+      p Currently in high school
