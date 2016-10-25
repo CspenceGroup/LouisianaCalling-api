@@ -9,6 +9,6 @@
             = image_tag interest.url, alt: "#{interest}"
           .interest-icon--active
             = image_tag interest.url, alt: "#{interest}"
-        p.item-step-title title="#{interest}"
-          = interest
+        p.item-step-title title="#{interest}" 
+          = truncate(interest.to_s, length: 30)
 

@@ -75,6 +75,7 @@
 
 .interest-item {
   border: rem(1) solid $red-bg;
+  color: $red-bg;
 
   &:nth-child(6n + 1) {
     border-left: rem(1) solid $red-bg;
