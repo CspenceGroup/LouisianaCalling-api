@@ -1,12 +1,24 @@
 .guided-journey-map {
   @extend %relative;
   @extend %overflow-hidden;
-  @include boxSize(rem(540), rem(450));
+  @include boxSize(rem(610), rem(450));
 }
 
 .guided-map-container {
   top: rem(-195);
+  left: rem(70);
   @extend %left-0;
   @extend %absolute;
-  @include boxSize(100%, auto);
+  @include boxSize(rem(540), auto);
+
+  .st1 {
+    fill: $white;
+    stroke: $map-active;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+  }
+
+  .st1.active {
+    fill: $map-active;
+  }
 }
