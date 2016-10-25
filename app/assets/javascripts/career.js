@@ -626,4 +626,14 @@ $(document).on('turbolinks:load', function(){
     $(prevElement).show();
   });
 
+  $('#career_sort_by').on('change', function(event) {
+    $('.careers-grid-details').hide();
+    $('.see-more-careers').hide();
+    getValueCheck(0);
+  });
+
+  // $('#career_sort_by').siblings('.fa-sort-by').on('click', function(event) {
+  //   $('#career_sort_by').trigger('click');
+  // });
+
 });
