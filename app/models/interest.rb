@@ -26,7 +26,6 @@ class Interest < ActiveRecord::Base
       Interest.delete_all
 
       csv.each do |row|
-
         name_str = row[0].strip
         next if Interest.exists?(name: name_str)
 

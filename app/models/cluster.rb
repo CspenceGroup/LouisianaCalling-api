@@ -22,7 +22,6 @@ class Cluster < ActiveRecord::Base
       Cluster.delete_all
 
       csv.each do |row|
-
         name_str = row[0].strip
         next if Cluster.exists?(name: name_str)
 

@@ -26,7 +26,6 @@ class Region < ActiveRecord::Base
       Region.delete_all
 
       csv.each do |row|
-
         name_str = row[0].strip
         next if Region.exists?(name: name_str)
 
