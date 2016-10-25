@@ -122,7 +122,7 @@
   }
 
   @include e('name') {
-    font-size: rem(20.8);
+    font-size: rem(16.67);
     width: rem(240);
     line-height: rem(20);
     max-height: rem(45);
@@ -134,7 +134,7 @@
   }
 
   @include e('salary') {
-    font-size: rem(18.2);
+    font-size: rem(14.58);
     @extend %truncate;
     @extend %acumin-pro-cond;
     @extend %block;

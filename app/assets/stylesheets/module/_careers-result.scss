@@ -47,8 +47,8 @@
 
   @include e('salary') {
     margin-left: rem(35);
-    font-size: rem(18.2);
-    padding-top: rem(4);
+    font-size: rem(14.58);
+    padding-top: rem(6);
     @extend %acumin-pro-cond ;
     @extend %float-right;
   }
@@ -58,11 +58,11 @@
   }
 
   .jobs-head__name {
-    padding-top: 0;
+    padding-top: rem(4);
   }
 
   .jobs-head__title {
-    font-size: rem(20.8);
+    font-size: rem(16.67);
   }
 }
 
