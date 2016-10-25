@@ -40,7 +40,7 @@ class GuidedJourneyController < ApplicationController
 
     render json: {
       careers: render_to_string(
-        'guided_journey/partial/guided-career-result', layout: false, locals: { careers: careers }
+        'guided_journey/partial/_guided-career-result', layout: false, locals: { careers: careers }
       ),
       is_see_more: is_see_more,
       offset: next_offset,

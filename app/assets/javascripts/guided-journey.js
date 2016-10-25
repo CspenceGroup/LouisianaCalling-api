@@ -12,10 +12,32 @@ $(document).on('turbolinks:load', function(){
     headerTag: "h2",
     bodyTag: "fieldset",
     autoFocus: true,
-    onStepChanged: function (event, currentIndex, priorIndex) {
-      if (currentIndex < priorIndex){
-        $(event.target).find("li:eq("+priorIndex+")").removeClass('done');
+    onStepChanged: function(event, currentIndex, newIndex) {
+      $(event.target).find("li").removeClass('done');
+    },
+    onStepChanging: function (event, currentIndex, newIndex) {
+      if (newIndex == 3) {
+        // Get career search results
+        //
+        var interests = [],
+          educations = [];
+
+        $('.interest-item.interest-active').each(function() {
+          interests.push(this.data('interest').id);
+        });
+
+        $('.education-item.education-active').each(function() {
+          educations.push(this.data('education').id);
+        });
+
+        var params = {
+          interests: interests.length > 0 ? interests.join(', ') : null,
+          educations: educations.length > 0 ? educations.join(', ') : null
+        };
+
+        getCareerResults(params)
       }
+      return true;
     }
   });
 
@@ -115,7 +137,7 @@ $(document).on('turbolinks:load', function(){
         // Update limit/offset
         $('#searchLimit').val(response.limit);
         $('#searchOffset').val(response.offset);
-
+        $('#guided-search-results').append(response.careers);
       },
       error: function() {
 
