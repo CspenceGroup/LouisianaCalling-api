@@ -28,7 +28,7 @@
 
   .job-heading {
     color: $profile-name-shadow;
-    @include shadow(rem(3), rem(3), rem(3), $profile-header); 
+    @include shadow(rem(3), rem(3), rem(3), $profile-header);
   }
 }
 
@@ -91,7 +91,7 @@
 
   a {
     color: $profile-name-shadow;
-    
+
     @include linkState () {
       color: $profile-name-shadow;
     }
@@ -113,6 +113,18 @@
 
 .st1.active {
   fill: $map-active;
+}
+
+text {
+  fill: $map-active;
+  text-transform: uppercase;
+  // font-family: 'BrandonGrotesque';
+  font-size: 12.5px;
+}
+
+text.active {
+  fill: $white;
+  // font-family: 'BrandonGrotesque-Bold';
 }
 
 .data-map-hidden {
