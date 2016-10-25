@@ -1,64 +1,15 @@
-.guided-result-item
-  .guided-result-item__photo
-    = image_tag('about/about-community1.jpg')
-  .guided-result-item__info
-    .guided-result-item__flames
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-    .guided-result-item__career-name
-      a(href="javascript:void(0);") Industrial Engineering Technicians
-    .guided-result-item__salary
-      .i-guided-salary
-        = image_tag('career-info/blue-career-salary.png')
-      p $42,000 - $50,000
-.guided-result-item
-  .guided-result-item__photo
-    = image_tag('about/about-community1.jpg')
-  .guided-result-item__info
-    .guided-result-item__flames
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-    .guided-result-item__career-name
-      a(href="javascript:void(0);") Industrial Engineering Technicians
-    .guided-result-item__salary
-      .i-guided-salary
-        = image_tag('career-info/blue-career-salary.png')
-      p $42,000 - $50,000
-.guided-result-item
-  .guided-result-item__photo
-    = image_tag('about/about-community1.jpg')
-  .guided-result-item__info
-    .guided-result-item__flames
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-    .guided-result-item__career-name
-      a(href="javascript:void(0);") Industrial Engineering Technicians
-    .guided-result-item__salary
-      .i-guided-salary
-        = image_tag('career-info/blue-career-salary.png')
-      p $42,000 - $50,000
-.guided-result-item
-  .guided-result-item__photo
-    = image_tag('about/about-community1.jpg')
-  .guided-result-item__info
-    .guided-result-item__flames
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-      = image_tag('career-info/blue-fire.png')
-    .guided-result-item__career-name
-      a(href="javascript:void(0);") Industrial Engineering Technicians
-    .guided-result-item__salary
-      .i-guided-salary
-        = image_tag('career-info/blue-career-salary.png')
-      p $42,000 - $50,000
+- careers.each do |career|
+  .guided-result-item
+    .guided-result-item__photo
+      = image_tag career.photo_medium
+    .guided-result-item__info
+      .guided-result-item__flames
+        - career.demand.to_i.times do
+          = image_tag('career-info/blue-fire.png')
+      .guided-result-item__career-name
+        a(href="/careers/#{career.slug}") Industrial Engineering Technicians
+      .guided-result-item__salary
+        .i-guided-salary
+          = image_tag('career-info/blue-career-salary.png')
+        p
+          = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
