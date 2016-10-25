@@ -52,19 +52,14 @@ class Career < ActiveRecord::Base
   has_many :programs, through: :program_careers, source: :program
 
   validates :title, presence: true
-  validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
 
-  validates :industries, presence: true
-  validates :interests, presence: true
-  validates :skills, presence: true
   validates :salary_min, presence: true
   validates :salary_max, presence: true
   validates :demand, presence: true
-  validates :regions_high_demand, presence: true
 
   validates_uniqueness_of :title
 
@@ -122,7 +117,7 @@ class Career < ActiveRecord::Base
   scope :projected_growth_asc, -> { order(:projected_growth) }
   scope :projected_growth_desc, -> { order(projected_growth: :desc) }
 
-  def sef.find_career(career_title)
+  def self.find_career(career_title)
     career = Career.find_by_title(career_title)
 
     unless career.present?
