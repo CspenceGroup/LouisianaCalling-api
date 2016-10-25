@@ -26,13 +26,12 @@ class Skill < ActiveRecord::Base
       Skill.delete_all
 
       csv.each do |row|
-        next if Skill.exists?(name: row[0].strip)
+        name_str = row[0].strip
+        next if Skill.exists?(name: name_str)
 
         skill = Skill.new
-        skill[:name] = row[0].strip
+        skill[:name] = name_str
         skill[:url] = row[1].strip
-
-        raise 'Wrong file' if row[2].present?
 
         skill.save!
       end

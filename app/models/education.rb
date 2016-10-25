@@ -20,12 +20,11 @@ class Education < ActiveRecord::Base
       Education.delete_all
 
       csv.each do |row|
-        next if Education.exists?(name: row[0].strip)
+        name_str = row[0].strip
+        next if Education.exists?(name: name_str)
 
         education = Education.new
-        education[:name] = row[0].strip
-
-        raise 'Wrong file' if row[1].present?
+        education[:name] = name_str
 
         education.save!
       end
