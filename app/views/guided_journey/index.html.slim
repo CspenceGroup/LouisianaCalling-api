@@ -21,10 +21,15 @@
             fieldset
               = render partial: "guided_journey/partial/results"
           .sidebar-steps-result
-            p Side bar
+            .sidebar-steps-result__content
+              .sidebar-steps-result__content-interest.sidebar-steps-result__content-details
+                h4 Interests
+              .sidebar-steps-result__content-region.sidebar-steps-result__content-details
+                h4 Region
+              .sidebar-steps-result__content-education.sidebar-steps-result__content-details
+                h4 Education
             div.sidebar-steps-result__btn
               button.btn-step.btn-step-back value="previous" type="button" Back
               button.btn-step.btn-step-next value="next" type="button" Next
-
 
   = render 'footer/index'

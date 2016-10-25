@@ -129,12 +129,34 @@
 
 //Style side bar step result when click item
 .sidebar-steps-result {
-  @include boxSize(rem(210), rem(100));
+  width: rem(210);
   background-color: $step-bg;
   @extend %float-right;
 
   @include e('btn') {
     @extend %overflow-hidden;
+    padding: rem(33) 0 rem(40) 0;
+  }
+
+  @include e('content') {
+    color: $profile-header;
+    padding: rem(41) 0 0 rem(27);
+
+    h4 {
+      @extend %acumin-pro-cond-regular;
+      font-size: rem(16.67);
+    }
+
+    p {
+      @extend %brandon-grotesque;
+      @extend %text-uppercase;
+      font-size: rem(12);
+      padding-top: rem(7);
+    }
+  }
+
+  @include e('content-details') {
+    padding-bottom: rem(35);
   }
 }
 

@@ -2,31 +2,31 @@
   h3.main-title.shadow-main-title What type of education do you have right now?
   p What have you learned so far? Let us know and we'll find options that match your education.
   .guided-form__interest
-    .guided-form__interest-item
+    .guided-form__interest-item.education-item.education
       .guided-form__interest-details
         .guided-form__interest-icon
           = image_tag asset_path("step-education.png"), alt: 'interest'
-        .guided-form__interest-icon--active
-          = image_tag asset_path("step-education.png"), alt: 'interest'
-      p Currently in high school
-    .guided-form__interest-item
+        .education-icon--active
+          = image_tag asset_path("education-active.png"), alt: 'interest'
+      p title="Currently in high school" Currently in high school
+    .guided-form__interest-item.education-item.education
       .guided-form__interest-details
         .guided-form__interest-icon
           = image_tag asset_path("step-education.png"), alt: 'interest'
-        .guided-form__interest-icon--active
-          = image_tag asset_path("step-education.png"), alt: 'interest'
-      p Currently in high school
-    .guided-form__interest-item
+        .education-icon--active
+          = image_tag asset_path("education-active.png"), alt: 'interest'
+      p title="High school diploma/ hi-set" High school diploma/ hi-set
+    .guided-form__interest-item.education-item.education
       .guided-form__interest-details
         .guided-form__interest-icon
           = image_tag asset_path("step-education.png"), alt: 'interest'
-        .guided-form__interest-icon--active
-          = image_tag asset_path("step-education.png"), alt: 'interest'
-      p Currently in high school
-    .guided-form__interest-item.guided-form__interest-item--active
+        .education-icon--active
+          = image_tag asset_path("education-active.png"), alt: 'interest'
+      p title="Training" Training
+    .guided-form__interest-item.education-item.education
       .guided-form__interest-details
         .guided-form__interest-icon
           = image_tag asset_path("step-education.png"), alt: 'interest'
-        .guided-form__interest-icon--active
-          = image_tag asset_path("step-education.png"), alt: 'interest'
-      p Currently in high school
+        .education-icon--active
+          = image_tag asset_path("education-active.png"), alt: 'interest'
+      p title="College" College
