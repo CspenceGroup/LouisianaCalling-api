@@ -12,8 +12,12 @@ $(document).on('turbolinks:load', function(){
     headerTag: "h2",
     bodyTag: "fieldset",
     autoFocus: true,
-    onStepChanged: function(event, currentIndex, newIndex) {
-      $(event.target).find("li").removeClass('done');
+    onStepChanged: function(event, currentIndex, priorIndex) {
+      if (currentIndex < priorIndex) {
+        for (var idx = priorIndex; idx > currentIndex ; idx--) {
+          $(event.target).find("li:eq(" + idx + ")").removeClass('done');
+        }
+      }
     },
     onStepChanging: function (event, currentIndex, newIndex) {
       if (newIndex == 3) {
@@ -34,6 +38,10 @@ $(document).on('turbolinks:load', function(){
           interests: interests.length > 0 ? interests.join(', ') : null,
           educations: educations.length > 0 ? educations.join(', ') : null
         };
+
+        // Set default limit/offset
+        $('#searchLimit').val(9);
+        $('#searchOffset').val(0);
 
         getCareerResults(params)
       }
