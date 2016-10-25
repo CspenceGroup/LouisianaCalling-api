@@ -221,3 +221,8 @@
     @include background-image('career-info/btn-arrow-right.png');
   }
 }
+
+.home-carousel-item,
+.home-carousel-dots {
+  padding-left: 0;
+}
