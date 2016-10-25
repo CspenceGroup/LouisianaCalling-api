@@ -3,7 +3,7 @@
   p Show us what you love and it will help us find career options for you. Click on all that apply.
   .guided-form__interest
     - interests.each do |interest|
-      .guided-form__interest-item.interest-item.interest
+      .guided-form__interest-item.interest-item.interest  data-interest="#{interest.to_json}"
         .guided-form__interest-details
           .guided-form__interest-icon
             = image_tag interest.url, alt: "#{interest}"
