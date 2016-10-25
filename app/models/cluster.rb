@@ -22,12 +22,12 @@ class Cluster < ActiveRecord::Base
       Cluster.delete_all
 
       csv.each do |row|
-        next if Cluster.exists?(name: row[0].strip)
+
+        name_str = row[0].strip
+        next if Cluster.exists?(name: name_str)
 
         cluster = Cluster.new
-        cluster[:name] = row[0].strip
-
-        raise 'Wrong file' if row[1].present?
+        cluster[:name] = name_str
 
         cluster.save!
       end

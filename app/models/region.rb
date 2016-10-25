@@ -24,11 +24,14 @@ class Region < ActiveRecord::Base
   def self.import_from_csv(csv)
     Region.transaction do
       Region.delete_all
+
       csv.each do |row|
-        next if Region.exists?(name: row[0].strip)
+
+        name_str = row[0].strip
+        next if Region.exists?(name: name_str)
 
         region = Region.new
-        region[:name] = row[0].strip
+        region[:name] = name_str
         region.save!
       end
     end
