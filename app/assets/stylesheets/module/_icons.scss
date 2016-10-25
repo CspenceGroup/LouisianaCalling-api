@@ -73,6 +73,7 @@
 }
 
 .i-flame {
+  margin-right: rem(5);
   @include boxSize(rem(16), rem(19));
   @include background-image('career-info/career-fire-icon.png');
 }
