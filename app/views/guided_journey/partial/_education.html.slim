@@ -10,5 +10,5 @@
           .education-icon--active
             = image_tag asset_path("education-active.png"), alt: "#{education}"
         p.item-step-title title="#{education}"
-          = education
+          = truncate(education.to_s, length: 30)
 

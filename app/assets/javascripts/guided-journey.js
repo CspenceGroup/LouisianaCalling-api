@@ -24,7 +24,6 @@ $(document).on('turbolinks:load', function(){
     $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
 
-  $(".item-step-title").dotdotdot({});
 
   /**
    * This function handle the action when user click on region map
