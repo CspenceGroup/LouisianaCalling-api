@@ -39,10 +39,12 @@ class Profile < ActiveRecord::Base
   def self.import_from_csv(csv)
     Profile.transaction do
       Profile.delete_all
+      ProfileCareer.delete_all
+      ProfileInterest.delete_all
+      ProfileSkill.delete_all
+      ProfileEducation.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[17].present?
-
         profile = Profile.new
         profile[:first_name] = row[0].strip
         profile[:last_name] = row[1].strip

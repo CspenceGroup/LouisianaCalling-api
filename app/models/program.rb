@@ -45,6 +45,8 @@ class Program < ActiveRecord::Base
   def self.import_from_csv(csv)
     Program.transaction do
       Program.delete_all
+      ProgramCareer.delete_all
+      ProgramCluster.delete_all
 
       csv.each_with_index do |row|
         raise 'Wrong file' if row[20].present?
