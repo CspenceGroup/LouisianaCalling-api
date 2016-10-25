@@ -220,7 +220,6 @@
     @extend %no-border-radius;
     @include transform(45deg);
     @include boxSize(rem(20), rem(20));
-
   }
 
   &:before {

@@ -1,14 +1,14 @@
 .career-shortcut {
   padding: rem(33) 0 0 rem(77);
   min-width: rem(1200);
-  color: $career-txt;
+  color: $profile-name-shadow;
   @extend %relative;
 
   a {
-    color: $career-txt;
+    color: $profile-name-shadow;
 
     @include linkState() {
-      color: $career-txt;
+      color: $profile-name-shadow;
     }
   }
 
@@ -96,7 +96,7 @@
 }
 
 .career-info-title {
-  color: $career-txt;
+  color: $profile-name-shadow;
   font-size: rem(22.92);
   line-height: rem(28);
   @extend %text-uppercase;

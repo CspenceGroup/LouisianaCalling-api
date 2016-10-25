@@ -48,7 +48,7 @@
     padding: rem(32) rem(5);
     margin-top: rem(25);
     color: $profile-header;
-    background-color: $faq-topic-bg;
+    background-color: $profile-name-shadow;
   }
 
   @include e('topics-title') {
@@ -178,7 +178,7 @@
   @include e('title') {
     font-size: rem(20.83);
     margin-left: rem(22);
-    color: $btn-see-more-bg;
+    color: $map-active;
   }
 
   @include e('items') {
@@ -214,11 +214,11 @@
 }
 
 .faq-back {
-  color: $btn-see-more-bg;
+  color: $map-active;
   @extend %float-right;
 
   @include linkState () {
-    color: $btn-see-more-bg;
+    color: $map-active;
   }
 }
 
