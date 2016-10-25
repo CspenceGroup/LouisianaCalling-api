@@ -1,9 +1,13 @@
 .guided-result-item {
-  margin-left: rem(30);
-  margin-top: rem(50);
   border: solid rem(1) $default;
+  margin-top: rem(18);
+  @extend %float-left;
   @extend %relative;
   @include boxSize(rem(385), rem(195));
+
+  &:nth-child(even) {
+    margin-left: rem(20);
+  }
 
   @include e('photo') {
     @extend %overflow-hidden;

@@ -6,24 +6,25 @@
       p Welcome to our Guided Journey! With this tool, you'll find the best jobs and training for you in no time.
     .main-guided-journey__steps
       form.guided-form
-        ul.guided-form__steps#form-progressbar
-          h2.guided-form__title Interests
-          fieldset
-            = render partial: "guided_journey/partial/interest"
-          h2.guided-form__title Region
-          fieldset
-            = render partial: "guided_journey/partial/region"
-          h2.guided-form__title Education
-          fieldset
-            = render partial: "guided_journey/partial/education"
-          h2.guided-form__title Results
-          fieldset
-            = render partial: "guided_journey/partial/results"
-        .sidebar-steps-result
-          p Side bar
-          div.sidebar-steps-result__btn
-            button.btn-step.btn-step-back value="previous" type="button" Back
-            button.btn-step.btn-step-next value="next" type="button" Next
+        .guided-form__main-container
+          ul.guided-form__steps#form-progressbar
+            h2.guided-form__title Interests
+            fieldset
+              = render partial: "guided_journey/partial/interest"
+            h2.guided-form__title Region
+            fieldset
+              = render partial: "guided_journey/partial/region"
+            h2.guided-form__title Education
+            fieldset
+              = render partial: "guided_journey/partial/education"
+            h2.guided-form__title Results
+            fieldset
+              = render partial: "guided_journey/partial/results"
+          .sidebar-steps-result
+            p Side bar
+            div.sidebar-steps-result__btn
+              button.btn-step.btn-step-back value="previous" type="button" Back
+              button.btn-step.btn-step-next value="next" type="button" Next
 
 
   = render 'footer/index'
