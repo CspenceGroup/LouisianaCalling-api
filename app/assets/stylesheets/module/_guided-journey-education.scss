@@ -18,6 +18,11 @@
 
   .education-icon--active {
     display: block;
+    height: rem(75);
+
+      img {
+        @include boxSize(auto, 100%);
+      }
   }
 }
 
