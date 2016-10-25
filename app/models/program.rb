@@ -93,7 +93,7 @@ class Program < ActiveRecord::Base
 
   def self.create_program_careers(careers, program)
     careers.each do |career_name|
-      career = Career.find_by_title(career_name)
+      career = Career.find_career(career_name)
 
       ProgramCareer.create(
         program_id: program.id,

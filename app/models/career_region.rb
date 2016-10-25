@@ -29,8 +29,7 @@ class CareerRegion < ActiveRecord::Base
       csv.each do |row|
         career_region = CareerRegion.new
 
-        career = Career.find_by_title(row[0].strip)
-        raise "Do not found with career: '#{row[0].strip}'. Please make sure import Career before." unless career.present?
+        career = Career.find_career(row[0].strip)
         career_region[:career_id] = career.id if career.present?
 
         region = Region.find_region(row[1].strip)

@@ -29,9 +29,7 @@ class TopJob < ActiveRecord::Base
         region = Region.find_region(row[0].strip)
         top_jobs[:region_id] = region.id if region.present?
 
-        career = Career.find_by_title(row[1].strip)
-        raise "Do not found with career: '#{row[1].strip}'. Please make sure import Career before." unless career.present?
-
+        career = Career.find_career(row[1].strip)
         top_jobs[:career_id] = career.id if career.present?
 
         top_jobs.save!

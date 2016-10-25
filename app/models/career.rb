@@ -122,6 +122,17 @@ class Career < ActiveRecord::Base
   scope :projected_growth_asc, -> { order(:projected_growth) }
   scope :projected_growth_desc, -> { order(projected_growth: :desc) }
 
+  def sef.find_career(career_title)
+    career = Career.find_by_title(career_title)
+
+    unless career.present?
+      raise "Do not found with career: '#{career_title}'.
+        Please make sure import Career before."
+    end
+
+    career
+  end
+
   def self.import_from_csv(csv)
     Career.transaction do
       Career.delete_all
@@ -174,7 +185,7 @@ class Career < ActiveRecord::Base
       end
 
       csv.each do |row|
-        career = Career.find_by_title(row[0].strip)
+        career = Career.find_career(row[0].strip)
 
         # Adding related_career_by_skill
         if row[12].present?
@@ -235,7 +246,7 @@ class Career < ActiveRecord::Base
 
   def self.create_career_interestships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_title(career_name)
+      career_related = Career.find_career(career_name)
 
       CareerInterestship.create(
         career_id: career.id,
@@ -246,7 +257,7 @@ class Career < ActiveRecord::Base
 
   def self.create_career_skillships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_title(career_name)
+      career_related = Career.find_career(career_name)
 
       CareerSkillship.create(
         career_id: career.id,

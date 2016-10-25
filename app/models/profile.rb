@@ -90,7 +90,7 @@ class Profile < ActiveRecord::Base
 
   def self.create_profile_careers(careers, profile)
     careers.each do |career_name|
-      career = Career.find_by_title(career_name)
+      career = Career.find_career(career_name)
 
       ProfileCareer.create(
         profile_id: profile.id,
