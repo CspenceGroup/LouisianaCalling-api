@@ -1,0 +1,32 @@
+.guided-journey-results {
+  width: rem(790);
+}
+
+.jump-start-guide {
+  color: $white;
+  font-size: rem(21 );
+  margin-top: rem(35);
+  @extend %i-owan-old-style;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include boxSize(100%, rem(295));
+  @include background-image('jumpstart-guided.jpg');
+
+  a {
+    @extend %text-underline;
+  }
+
+  p {
+    width: rem(490);
+    line-height: rem(25);
+    @extend %margin-auto;
+
+    &:first-child {
+      margin-top: rem(70);
+    }
+
+    &:last-child {
+      margin-top: rem(33);
+    }
+  }
+}

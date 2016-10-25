@@ -73,6 +73,10 @@
         z-index: 1;
       }
     }
+
+    @include e('container') {
+      margin-top: rem(38);
+    }
   }
 
   fieldset {
