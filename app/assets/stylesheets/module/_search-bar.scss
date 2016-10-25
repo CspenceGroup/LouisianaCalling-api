@@ -52,7 +52,7 @@ form {
 
   .btn-region,
   .btn-career {
-    padding-left: rem(10);
+    padding: rem(8) rem(5) rem(8) rem(10);
     @extend %text-left;
     @extend %no-border-left;
     margin-bottom: 0;
@@ -109,6 +109,7 @@ form {
 .sort-by-salary {
   @include boxSize(rem(195), rem(46));
   margin-left: rem(14);
+  padding-right: rem(5);
   @extend %relative;
 }
 
@@ -158,4 +159,5 @@ form {
   top: rem(15);
   left: rem(175);
   color: $default;
+  pointer-events: none;
 }
