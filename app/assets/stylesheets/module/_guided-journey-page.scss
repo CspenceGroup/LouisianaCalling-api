@@ -21,11 +21,14 @@
 }
 
 .guided-form {
-  width: rem(1045);
-  padding-top: rem(30);
-  @extend %margin-auto;
   @extend %relative;
-  @extend %overflow-hidden;
+
+  @include e('main-container') {
+    width: rem(1045);
+    padding-top: rem(30);
+    @extend %margin-auto;
+    @extend %overflow-hidden;
+  }
 
   @include e('title') {
     @extend %absolute;

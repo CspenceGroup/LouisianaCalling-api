@@ -1,11 +1,12 @@
 .guided-journey-results {
   width: rem(790);
+  margin-top: rem(36);
 }
 
 .jump-start-guide {
   color: $white;
   font-size: rem(21 );
-  margin-top: rem(35);
+  padding-top: rem(68);
   @extend %i-owan-old-style;
   @extend %background-cover;
   @extend %background-position-center;
@@ -14,6 +15,10 @@
 
   a {
     @extend %text-underline;
+
+    @include linkState() {
+      color: $white;
+    }
   }
 
   p {
@@ -21,12 +26,75 @@
     line-height: rem(25);
     @extend %margin-auto;
 
-    &:first-child {
-      margin-top: rem(70);
-    }
-
     &:last-child {
       margin-top: rem(33);
+      padding-right: rem(110);
     }
+  }
+}
+
+.guided-results {
+  padding-bottom: rem(42);
+  @extend %overflow-hidden;
+}
+
+.find-opportunity {
+  @include boxSize(100%, rem(450));
+}
+
+.find-opportunity-container {
+  color: $white;
+  font-size: rem(20.83);
+  padding-top: rem(165);
+  @extend %text-center;
+  @extend %absolute;
+  @extend %left-bottom-0;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include boxSize(100%, rem(450));
+  @include background-image('find-opportunity-banner.jpg');
+
+  h3 {
+    padding-left: rem(155);
+  }
+
+  > span {
+    top: rem(-20);
+    padding-right: rem(90);
+    @extend %text-uppercase;
+    @extend %block;
+  }
+
+  a {
+    top: rem(-5);
+    left: rem(-45);
+    @extend %font-style-italic;
+    @extend %i-owan-old-style;
+    @extend %inline-block;
+    @extend %relative;
+    @include boxSize(rem(252), rem(101));
+    @include background-image('find-opportunity-bg.png');
+
+    @include linkState() {
+      color: $white;
+    }
+
+    span {
+      top: rem(34);
+      left: rem(35);
+      width: rem(140);
+      line-height: rem(25);
+      @extend %absolute;
+      @extend %text-left;
+    }
+  }
+}
+
+.guided-sharings {
+  margin-bottom: rem(12);
+  @extend %text-center;
+
+  .icon {
+    margin-right: rem(20);
   }
 }
