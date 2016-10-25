@@ -256,11 +256,11 @@ class Career < ActiveRecord::Base
   end
 
   def self.create_career_cluster(cluster_name, career)
-    cluster = Cluster.find_by_name(cluster_name)
+    cluster = Cluster.find_or_create(cluster_name)
 
     CareerCluster.create(
       career_id: career.id,
-      cluster_id: cluster.present? ? cluster.id : nil
+      cluster_id: cluster.id
     )
   end
 

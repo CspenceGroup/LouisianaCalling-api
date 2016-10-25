@@ -17,6 +17,15 @@ class Cluster < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
+  def self.find_or_create(cluster_name)
+    cluster = Cluster.find_by_name(cluster_name)
+
+    # Adding new cluster
+    cluster = Cluster.create(name: cluster_name) unless cluster.present?
+
+    cluster
+  end
+
   def self.import_from_csv(csv)
     Cluster.transaction do
       Cluster.delete_all

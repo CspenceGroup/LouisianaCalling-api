@@ -55,7 +55,7 @@ class Profile < ActiveRecord::Base
         profile[:description] = row[5].strip
         profile[:demand] = row[8].strip
 
-        cluster = Cluster.find_by_name(row[9].strip)
+        cluster = Cluster.find_or_create(row[9].strip)
         profile[:cluster_id] = cluster.id if cluster.present?
 
         profile[:salary] = row[10].strip
