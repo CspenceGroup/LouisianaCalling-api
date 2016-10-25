@@ -72,13 +72,15 @@
         z-index: 1;
       }
     }
+
+    @include e('container') {
+      margin-top: rem(38);
+    }
   }
 
   fieldset {
     @extend %no-border;
-    padding: rem(40) rem(30);
     box-sizing: border-box;
-    width: rem(805);
 
     &:not(:first-of-type) {
       display: none;
