@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
    * This function handle the action when user click on region map
    * @return void
    */
-  
+
   $('.guided-journey-map path').click(function (e) {
 
     var value = $(this).attr('id'),
@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function(){
         $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
       }
     } else {
-      
+
       if($(this).hasClass('lafayette')) {
 
         $('.lafayette').addClass('active');
@@ -62,8 +62,6 @@ $(document).on('turbolinks:load', function(){
         regionContent.append('<p title="' + value + '">'+ value + '</p>');
       }
     }
-
-    
   });
 
   /**
@@ -107,4 +105,22 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  function getCareerResults(data) {
+    $.ajax({
+      url : '/guided_journey/search',
+      type : "get",
+      dateType:"text",
+      traditional: true,
+      data : data,
+      success: function(response) {
+        // Update limit/offset
+        $('#careerLimit').val(response.limit);
+        $('#careerOffset').val(response.offset);
+
+      },
+      error: function() {
+
+      }
+    });
+  }
 });
