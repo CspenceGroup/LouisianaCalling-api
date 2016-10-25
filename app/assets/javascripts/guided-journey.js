@@ -20,4 +20,37 @@ $(document).on('turbolinks:load', function(){
     $("#form-progressbar [href='#"+value+"']").trigger('click');
   });
 
+  /**
+   * This function handle the action when user click on region map
+   * @return void
+   */
+  
+  $('.guided-journey-map path').click(function (e) {
+
+    /**
+     * Active clicked region & show top jobs in view
+     */
+    if($(this).hasClass('active')) {
+
+      if($(this).hasClass('lafayette')) {
+
+        $('.lafayette').removeClass('active');
+      } else {
+
+        $(this).removeClass('active');
+      }
+    } else {
+      
+      if($(this).hasClass('lafayette')) {
+
+        $('.lafayette').addClass('active');
+      } else {
+
+        $(this).addClass('active');
+      }
+    }
+
+    
+  });
+
 });

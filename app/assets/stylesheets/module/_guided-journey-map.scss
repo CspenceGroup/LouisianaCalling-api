@@ -1,0 +1,12 @@
+.guided-journey-map {
+  @extend %relative;
+  @extend %overflow-hidden;
+  @include boxSize(rem(540), rem(450));
+}
+
+.guided-map-container {
+  top: rem(-195);
+  @extend %left-0;
+  @extend %absolute;
+  @include boxSize(100%, auto);
+}

@@ -47,7 +47,7 @@ $(document).on('turbolinks:load', function(){
    * This function handle the action when user click on region map
    * @return void
    */
-  $('path').hover(function (e) {
+  $('.top-jobs__map path').hover(function (e) {
     // Reset top job list
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
