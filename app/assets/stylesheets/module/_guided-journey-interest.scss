@@ -1,0 +1,48 @@
+.guided-form {
+
+  @include e('interest') {
+    margin-top: rem(40);
+  }
+  
+  @include e('interest-item') {
+    @include boxSize(rem(135), rem(135));
+    border: rem(1) solid $red-bg;
+    @extend %float-left;
+    padding-top: rem(12);
+    
+    &:nth-child(6n + 1){
+      border-left: rem(1) solid $red-bg;
+    }
+
+    &:nth-child(n + 7){
+     border-top: rem(0) solid $red-bg; 
+    }
+
+    & + & {
+      @extend %no-border-left;
+    }
+
+    p {
+      @extend %text-center;
+      font-size: rem(12.5);
+      @extend %brandon-grotesque-bold;
+      @extend %text-uppercase;
+      padding: rem(14) rem(1) 0 rem(1);
+      line-height: rem(15);
+      @extend %cursor-default;
+    }
+  }
+
+  @include e('interest-icon') {
+    
+    @include m('active') {
+      display: none;
+    }
+  }
+
+  @include e('interest-details') {
+    @extend %display-flex;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+  }
+}
