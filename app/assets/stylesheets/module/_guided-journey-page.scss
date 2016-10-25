@@ -21,7 +21,7 @@
 }
 
 .guided-form {
-  width: rem(1035);
+  width: rem(1045);
   padding-top: rem(30);
   @extend %margin-auto;
   @extend %relative;
@@ -34,6 +34,7 @@
 
   @include e('steps') {
     margin: 0 auto rem(38) auto;
+    width: rem(810);
     @extend %text-left;
     @extend %overflow-hidden;
     @extend %float-left;
@@ -76,12 +77,19 @@
 
   fieldset {
     @extend %no-border;
-    padding: rem(20) rem(30);
     box-sizing: border-box;
-    width: rem(805);
 
     &:not(:first-of-type) {
       display: none;
+    }
+  }
+
+  @include e('container') {
+    margin-top: rem(38);
+    @extend %overflow-hidden;
+
+    > p {
+      padding-top: rem(25);
     }
   }
 }
