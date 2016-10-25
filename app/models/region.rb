@@ -21,14 +21,26 @@ class Region < ActiveRecord::Base
     where('name like ?', name)
   }
 
+  def self.find_region(region_name)
+    region = Region.find_by_name(region_name)
+    unless region.present?
+      raise "Do not found with region: '#{region_name}'.
+        Please make sure import Region before."
+    end
+
+    region
+  end
+
   def self.import_from_csv(csv)
     Region.transaction do
       Region.delete_all
+
       csv.each do |row|
-        next if Region.exists?(name: row[0].strip)
+        name_str = row[0].strip
+        next if Region.exists?(name: name_str)
 
         region = Region.new
-        region[:name] = row[0].strip
+        region[:name] = name_str
         region.save!
       end
     end

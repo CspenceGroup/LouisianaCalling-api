@@ -24,19 +24,16 @@ class CareerRegion < ActiveRecord::Base
   def self.import_from_csv(csv)
     CareerRegion.transaction do
       CareerRegion.delete_all
+      CareerRegionEducation.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[6].present?
-
         career_region = CareerRegion.new
 
-        career = Career.find_by_title(row[0].strip)
-        next unless career.present?
-        career_region[:career_id] = career.id
+        career = Career.find_career(row[0].strip)
+        career_region[:career_id] = career.id if career.present?
 
-        region = Region.find_by_name(row[1].strip)
-        next unless region.present?
-        career_region[:region_id] = region.id
+        region = Region.find_region(row[1].strip)
+        career_region[:region_id] = region.id if region.present?
 
         career_region[:salary_min] = row[2].strip
         career_region[:salary_max] = row[3].strip
@@ -52,12 +49,7 @@ class CareerRegion < ActiveRecord::Base
 
   def self.create_career_region_educations(educations, career_region)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
-
-      # Adding new education
-      unless education.present?
-        education = Education.create(name: education_name)
-      end
+      education = Education.find_or_create(education_name)
 
       CareerRegionEducation.create(
         career_region_id: career_region.id,

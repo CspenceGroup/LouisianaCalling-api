@@ -52,19 +52,16 @@ class Career < ActiveRecord::Base
   has_many :programs, through: :program_careers, source: :program
 
   validates :title, presence: true
-  # validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
 
-  # validates :industries, presence: true
-  # validates :interests, presence: true
-  # validates :skills, presence: true
   validates :salary_min, presence: true
   validates :salary_max, presence: true
   validates :demand, presence: true
-  # validates :regions_high_demand, presence: true
+
+  validates_uniqueness_of :title
 
   scope :filter_by_title, lambda { |title|
     where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
@@ -120,6 +117,17 @@ class Career < ActiveRecord::Base
   scope :projected_growth_asc, -> { order(:projected_growth) }
   scope :projected_growth_desc, -> { order(projected_growth: :desc) }
 
+  def self.find_career(career_title)
+    career = Career.find_by_title(career_title)
+
+    unless career.present?
+      raise "Do not found with career: '#{career_title}'.
+        Please make sure import Career before."
+    end
+
+    career
+  end
+
   def self.import_from_csv(csv)
     Career.transaction do
       Career.delete_all
@@ -132,10 +140,11 @@ class Career < ActiveRecord::Base
       CareerCluster.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[20].present?
+        title_str = row[0].strip
+        next if Career.exists?(title: title_str)
 
         career = Career.new
-        career[:title] = row[0].strip
+        career[:title] = title_str
 
         career[:salary_min] = row[7].strip
         career[:salary_max] = row[8].strip
@@ -171,7 +180,7 @@ class Career < ActiveRecord::Base
       end
 
       csv.each do |row|
-        career = Career.find_by_title(row[0].strip)
+        career = Career.find_career(row[0].strip)
 
         # Adding related_career_by_skill
         if row[12].present?
@@ -210,18 +219,18 @@ class Career < ActiveRecord::Base
 
   def self.create_career_educations(educations, career)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
+      education = Education.find_or_create(education_name)
 
       CareerEducation.create(
         career_id: career.id,
-        education_id: education.present? ? education.id : nil
+        education_id: education.id
       )
     end
   end
 
   def self.create_career_regions(regions, career)
     regions.each do |region_name|
-      region = Region.find_by_name(region_name)
+      region = Region.find_region(region_name)
 
       CareerRegionHighDemand.create(
         career_id: career.id,
@@ -232,7 +241,7 @@ class Career < ActiveRecord::Base
 
   def self.create_career_interestships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_title(career_name)
+      career_related = Career.find_career(career_name)
 
       CareerInterestship.create(
         career_id: career.id,
@@ -243,7 +252,7 @@ class Career < ActiveRecord::Base
 
   def self.create_career_skillships(careers, career)
     careers.each do |career_name|
-      career_related = Career.find_by_title(career_name)
+      career_related = Career.find_career(career_name)
 
       CareerSkillship.create(
         career_id: career.id,
@@ -253,11 +262,11 @@ class Career < ActiveRecord::Base
   end
 
   def self.create_career_cluster(cluster_name, career)
-    cluster = Cluster.find_by_name(cluster_name)
+    cluster = Cluster.find_or_create(cluster_name)
 
     CareerCluster.create(
       career_id: career.id,
-      cluster_id: cluster.present? ? cluster.id : nil
+      cluster_id: cluster.id
     )
   end
 

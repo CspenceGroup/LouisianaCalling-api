@@ -45,6 +45,8 @@ class Program < ActiveRecord::Base
   def self.import_from_csv(csv)
     Program.transaction do
       Program.delete_all
+      ProgramCareer.delete_all
+      ProgramCluster.delete_all
 
       csv.each_with_index do |row|
         raise 'Wrong file' if row[20].present?
@@ -52,7 +54,7 @@ class Program < ActiveRecord::Base
         program = Program.new
         program[:title] = row[0].strip
 
-        region = Region.find_by_name(row[1].strip)
+        region = Region.find_region(row[1].strip)
         program[:region_id] = region.id if region.present?
 
         program[:traning_detail] = row[2].strip
@@ -63,7 +65,7 @@ class Program < ActiveRecord::Base
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
 
-        education = Education.find_by_name(row[9].strip)
+        education = Education.find_or_create(row[9].strip)
         program[:education_id] = education.id if education.present?
 
         program[:institution_name] = row[10].strip
@@ -93,7 +95,7 @@ class Program < ActiveRecord::Base
 
   def self.create_program_careers(careers, program)
     careers.each do |career_name|
-      career = Career.find_by_title(career_name)
+      career = Career.find_career(career_name)
 
       ProgramCareer.create(
         program_id: program.id,
@@ -103,11 +105,11 @@ class Program < ActiveRecord::Base
   end
 
   def self.create_program_cluster(cluster_name, program)
-    cluster = Cluster.find_by_name(cluster_name)
+    cluster = Cluster.find_or_create(cluster_name)
 
     ProgramCluster.create(
       program_id: program.id,
-      cluster_id: cluster.present? ? cluster.id : nil
+      cluster_id: cluster.id
     )
   end
 

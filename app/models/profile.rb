@@ -39,23 +39,25 @@ class Profile < ActiveRecord::Base
   def self.import_from_csv(csv)
     Profile.transaction do
       Profile.delete_all
+      ProfileCareer.delete_all
+      ProfileInterest.delete_all
+      ProfileSkill.delete_all
+      ProfileEducation.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[17].present?
-
         profile = Profile.new
         profile[:first_name] = row[0].strip
         profile[:last_name] = row[1].strip
         profile[:sub_head] = row[2].strip
 
-        region = Region.find_by_name(row[4].strip)
+        region = Region.find_region(row[4].strip)
         profile[:region_id] = region.id if region.present?
 
         profile[:educational_institution] = row[3].strip
         profile[:description] = row[5].strip
         profile[:demand] = row[8].strip
 
-        cluster = Cluster.find_by_name(row[9].strip)
+        cluster = Cluster.find_or_create(row[9].strip)
         profile[:cluster_id] = cluster.id if cluster.present?
 
         profile[:salary] = row[10].strip
@@ -90,7 +92,7 @@ class Profile < ActiveRecord::Base
 
   def self.create_profile_careers(careers, profile)
     careers.each do |career_name|
-      career = Career.find_by_title(career_name)
+      career = Career.find_career(career_name)
 
       ProfileCareer.create(
         profile_id: profile.id,
@@ -123,11 +125,11 @@ class Profile < ActiveRecord::Base
 
   def self.create_profile_educations(educations, profile)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
+      education = Education.find_or_create(education_name)
 
       ProfileEducation.create(
         profile_id: profile.id,
-        education_id: education.present? ? education.id : nil
+        education_id: education.id
       )
     end
   end

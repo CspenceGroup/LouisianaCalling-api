@@ -26,13 +26,12 @@ class Interest < ActiveRecord::Base
       Interest.delete_all
 
       csv.each do |row|
-        next if Interest.exists?(name: row[0].strip)
+        name_str = row[0].strip
+        next if Interest.exists?(name: name_str)
 
         interest = Interest.new
-        interest[:name] = row[0].strip
+        interest[:name] = name_str
         interest[:url] = row[1].strip
-
-        raise 'Wrong file' if row[2].present?
 
         interest.save!
       end

@@ -15,17 +15,25 @@ class Education < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
+  def self.find_or_create(education_name)
+    education = Education.find_by_name(education_name)
+
+    # Adding new education
+    education = Education.create(name: education_name) unless education.present?
+
+    education
+  end
+
   def self.import_from_csv(csv)
     Education.transaction do
       Education.delete_all
 
       csv.each do |row|
-        next if Education.exists?(name: row[0].strip)
+        name_str = row[0].strip
+        next if Education.exists?(name: name_str)
 
         education = Education.new
-        education[:name] = row[0].strip
-
-        raise 'Wrong file' if row[1].present?
+        education[:name] = name_str
 
         education.save!
       end
