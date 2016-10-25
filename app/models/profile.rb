@@ -48,7 +48,7 @@ class Profile < ActiveRecord::Base
         profile[:last_name] = row[1].strip
         profile[:sub_head] = row[2].strip
 
-        region = Region.find_by_name(row[4].strip)
+        region = Region.find_region(row[4].strip)
         profile[:region_id] = region.id if region.present?
 
         profile[:educational_institution] = row[3].strip
@@ -123,11 +123,11 @@ class Profile < ActiveRecord::Base
 
   def self.create_profile_educations(educations, profile)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
+      education = Education.find_or_create(education_name)
 
       ProfileEducation.create(
         profile_id: profile.id,
-        education_id: education.present? ? education.id : nil
+        education_id: education.id
       )
     end
   end

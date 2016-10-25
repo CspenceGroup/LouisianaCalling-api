@@ -52,19 +52,21 @@ class Career < ActiveRecord::Base
   has_many :programs, through: :program_careers, source: :program
 
   validates :title, presence: true
-  # validates :education, presence: true
+  validates :education, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
   validates :photo_large, presence: true
   validates :photo_medium, presence: true
 
-  # validates :industries, presence: true
-  # validates :interests, presence: true
-  # validates :skills, presence: true
+  validates :industries, presence: true
+  validates :interests, presence: true
+  validates :skills, presence: true
   validates :salary_min, presence: true
   validates :salary_max, presence: true
   validates :demand, presence: true
-  # validates :regions_high_demand, presence: true
+  validates :regions_high_demand, presence: true
+
+  validates_uniqueness_of :title
 
   scope :filter_by_title, lambda { |title|
     where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
@@ -132,10 +134,11 @@ class Career < ActiveRecord::Base
       CareerCluster.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[20].present?
+        title_str = row[0].strip
+        next if Career.exists?(title: title_str)
 
         career = Career.new
-        career[:title] = row[0].strip
+        career[:title] = title_str
 
         career[:salary_min] = row[7].strip
         career[:salary_max] = row[8].strip
@@ -210,18 +213,18 @@ class Career < ActiveRecord::Base
 
   def self.create_career_educations(educations, career)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
+      education = Education.find_or_create(education_name)
 
       CareerEducation.create(
         career_id: career.id,
-        education_id: education.present? ? education.id : nil
+        education_id: education.id
       )
     end
   end
 
   def self.create_career_regions(regions, career)
     regions.each do |region_name|
-      region = Region.find_by_name(region_name)
+      region = Region.find_region(region_name)
 
       CareerRegionHighDemand.create(
         career_id: career.id,

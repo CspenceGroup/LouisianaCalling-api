@@ -24,18 +24,14 @@ class TopJob < ActiveRecord::Base
       TopJob.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[2].present?
-
         top_jobs = TopJob.new
 
-        region = Region.find_by_name(row[0].strip)
-        raise "Do not found with region: '#{row[0].strip}'" unless region.present?
-
+        region = Region.find_region(row[0].strip)
         top_jobs[:region_id] = region.id if region.present?
 
         career = Career.find_by_title(row[1].strip)
+        raise "Do not found with career: '#{row[1].strip}'. Please make sure import Career before." unless career.present?
 
-        raise "Do not found with career: '#{row[1].strip}'" unless career.present?
         top_jobs[:career_id] = career.id if career.present?
 
         top_jobs.save!

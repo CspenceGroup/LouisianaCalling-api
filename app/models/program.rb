@@ -52,7 +52,7 @@ class Program < ActiveRecord::Base
         program = Program.new
         program[:title] = row[0].strip
 
-        region = Region.find_by_name(row[1].strip)
+        region = Region.find_region(row[1].strip)
         program[:region_id] = region.id if region.present?
 
         program[:traning_detail] = row[2].strip
@@ -63,7 +63,7 @@ class Program < ActiveRecord::Base
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
 
-        education = Education.find_by_name(row[9].strip)
+        education = Education.find_or_create(row[9].strip)
         program[:education_id] = education.id if education.present?
 
         program[:institution_name] = row[10].strip
