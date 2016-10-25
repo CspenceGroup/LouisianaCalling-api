@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function(){
 
   $('.btn-step').on('click', function(e){
     var value = $(e.target).attr('value');
-    $("#form-progressbar [href='#"+value+"']").trigger('click');
+    $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
 
   $(".item-step-title").dotdotdot({});
@@ -114,8 +114,8 @@ $(document).on('turbolinks:load', function(){
       data : data,
       success: function(response) {
         // Update limit/offset
-        $('#careerLimit').val(response.limit);
-        $('#careerOffset').val(response.offset);
+        $('#searchLimit').val(response.limit);
+        $('#searchOffset').val(response.offset);
 
       },
       error: function() {
