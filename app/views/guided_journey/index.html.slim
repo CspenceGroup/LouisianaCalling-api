@@ -10,13 +10,13 @@
           ul.guided-form__steps#form-progressbar
             h2.guided-form__title Interests
             fieldset
-              = render partial: "guided_journey/partial/interest"
+              = render partial: "guided_journey/partial/interest", locals: { interests: @interests }
             h2.guided-form__title Region
             fieldset
               = render partial: "guided_journey/partial/region"
             h2.guided-form__title Education
             fieldset
-              = render partial: "guided_journey/partial/education"
+              = render partial: "guided_journey/partial/education", locals: { educations: @educations }
             h2.guided-form__title Results
             fieldset
               = render partial: "guided_journey/partial/results"
