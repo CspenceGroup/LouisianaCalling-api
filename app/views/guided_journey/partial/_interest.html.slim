@@ -2,52 +2,13 @@
   h3.main-title.shadow-main-title Welcome to our guided Journey. Here you'll find jobs and training for you.
   p Show us what you love and it will help us find career options for you. Click on all that apply.
   .guided-form__interest
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Art, design, and creativity" Art, design, and creativity
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Business and finance" Business and finance
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Caregiving" Caregiving
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Comminication and collaboration" Comminication and collaboration
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Data and analytics" Data and analytics
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="Learnership and management" Learnership and management
-    .guided-form__interest-item.interest-item.interest
-      .guided-form__interest-details
-        .guided-form__interest-icon
-          = image_tag asset_path("step-interest.png"), alt: 'interest'
-        .interest-icon--active
-          = image_tag asset_path("caculation-active.png"), alt: 'interest'
-      p title="7" Physical and hands-on work
+    - interests.each do |interest|
+      .guided-form__interest-item.interest-item.interest
+        .guided-form__interest-details
+          .guided-form__interest-icon
+            = image_tag interest.url, alt: "#{interest}"
+          .interest-icon--active
+            = image_tag interest.url, alt: "#{interest}"
+        p title="#{interest}"
+          = interest
+
