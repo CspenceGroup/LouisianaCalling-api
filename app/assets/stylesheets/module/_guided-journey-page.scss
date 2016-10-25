@@ -21,11 +21,14 @@
 }
 
 .guided-form {
-  width: rem(1045);
-  padding-top: rem(30);
-  @extend %margin-auto;
   @extend %relative;
-  @extend %overflow-hidden;
+
+  @include e('main-container') {
+    width: rem(1045);
+    padding-top: rem(30);
+    @extend %margin-auto;
+    @extend %overflow-hidden;
+  }
 
   @include e('title') {
     @extend %absolute;
@@ -73,11 +76,14 @@
         z-index: 1;
       }
     }
+
+    @include e('container') {
+      margin-top: rem(38);
+    }
   }
 
   fieldset {
     @extend %no-border;
-    // padding: rem(40) rem(30);
     box-sizing: border-box;
 
     &:not(:first-of-type) {

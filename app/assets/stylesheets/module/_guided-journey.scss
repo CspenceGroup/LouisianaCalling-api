@@ -26,7 +26,7 @@
   }
 
   @include e('link') {
-    margin-left: rem(68);
+    margin-left: rem(25);
     @include background-image('find-your-path.png');
     @include boxSize(rem(225), rem(110));
   }
