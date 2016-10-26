@@ -253,6 +253,7 @@
 }
 
 .profile-info-txt {
+  line-height: rem(17);
   @include flex();
 }
 
