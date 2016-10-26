@@ -63,12 +63,15 @@ $(document).on('turbolinks:load', function(){
   $('.guided-journey-map path').click(function (e) {
 
     var value = $(this).attr('id'),
-        regionContent = $('.sidebar-steps-result__content-region');
+        regionContent = $('.sidebar-steps-result__content-region'),
+        $selector = 'text[name=' + value +']';
 
     /**
      * Active clicked region & show top jobs in view
      */
     if($(this).hasClass('active')) {
+
+      $($selector).removeClass('active');
 
       if($(this).hasClass('lafayette')) {
 
@@ -80,6 +83,7 @@ $(document).on('turbolinks:load', function(){
         $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
       }
     } else {
+      $($selector).addClass('active');
 
       if($(this).hasClass('lafayette')) {
 
