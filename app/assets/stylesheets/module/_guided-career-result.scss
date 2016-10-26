@@ -31,6 +31,7 @@
   @include e('career-name') {
     width: rem(160);
     margin-top: rem(14);
+    line-height: 1;
 
     a {
       color: $default;
