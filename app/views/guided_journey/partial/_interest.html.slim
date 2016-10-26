@@ -6,9 +6,9 @@
       .guided-form__interest-item.interest-item.interest  data-interest="#{interest.to_json}"
         .guided-form__interest-details
           .guided-form__interest-icon
-            = image_tag interest.url, alt: "#{interest}"
+            = image_tag interest.url || '', alt: "#{interest}"
           .interest-icon--active
-            = image_tag interest.url_selected, alt: "#{interest}"
+            = image_tag interest.url_selected || '', alt: "#{interest}"
         p.item-step-title title="#{interest}"
           = truncate(interest.to_s, length: 30)
 
