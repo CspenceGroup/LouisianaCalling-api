@@ -31,13 +31,13 @@
 
   @include e('main-container') {
     width: 64.75%;
-    padding: rem(75) 0 rem(57) rem(84);
+    padding: rem(63) 0 rem(57) rem(84);
     @extend %float-left;
   }
 
   @include e('news-container') {
     width: 35.25%;
-    padding: rem(130) rem(98) 0 rem(60);
+    padding: rem(58) rem(98) 0 rem(60);
     background: $feature-news-bg;
   }
 
@@ -102,10 +102,12 @@
 
   @include e('interest') {
     margin-bottom: rem(63);
+    width: rem(265);
   }
 
   @include e('interest-item') {
     @extend %overflow-hidden;
+    @extend %display-flex;
     margin-bottom: rem(35);
 
     &:last-child {
@@ -114,19 +116,16 @@
   }
 
   @include e('interest-icon') {
-    @include boxSize(rem(70), auto);
+    max-width: rem(58);
+    height: auto;
     @extend %float-left;
-    @extend %display-flex;
-    @extend %align-items-center;
-    @extend %justify-content-center;
   }
 
   @include e('interest-text') {
     min-height: rem(45);
+    margin-left: rem(12);
     @extend %flex-col-center;
     @extend %relative;
-    top: 50%;
-    transform: translateY(30%);
 
     p {
       @extend %float-left;
@@ -135,13 +134,12 @@
       @extend %brandon-grotesque-bold;
       color: $filter-careers-heading;
       margin-bottom: 0;
-      padding-left: rem(4);
     }
   }
 }
 
 .btn-feature-more {
-  margin-top: rem(6);
+  margin-top: rem(18);
   @extend %inline-block;
   @include boxSize(rem(113), rem(26));
   @include background-image('btn-read-more.png');
