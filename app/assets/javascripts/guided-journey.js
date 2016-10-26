@@ -22,9 +22,9 @@ $(document).on('turbolinks:load', function(){
 
       if (currentIndex == 3) {
         // Set default limit/offset
-        $('#searchLimit').val(9);
+        $('#searchLimit').val(10);
         $('#searchOffset').val(0);
-        filterGuidedJourney();
+        filterGuidedJourney(false);
       }
     }
   });
@@ -137,7 +137,7 @@ $(document).on('turbolinks:load', function(){
     checkResultStep(contentEducation);
   });
 
-  function getCareerResults(data) {
+  function getCareerResults(data, isSeeMore) {
     $.ajax({
       url : '/guided_journey/search',
       type : "get",
@@ -148,7 +148,18 @@ $(document).on('turbolinks:load', function(){
         // Update limit/offset
         $('#searchLimit').val(response.limit);
         $('#searchOffset').val(response.offset);
-        $('#guided-search-results').append(response.careers);
+        console.log(response.careers);
+        if (response.careers.length == 0) {
+          $('p.no-result-found').show();
+        } else {
+          $('p.no-result-found').hide();
+        }
+
+        if (isSeeMore) {
+          $('#guided-search-results').append(response.careers);
+        } else {
+          $('#guided-search-results').html(response.careers);
+        }
 
         if(response.is_see_more) {
           $('.see-more-result-step').show();
@@ -175,10 +186,10 @@ $(document).on('turbolinks:load', function(){
   $('#see-more-result-step').click(function() {
     $('.indicator-loading-see-more').show();
     $(this).hide();
-    filterGuidedJourney();
+    filterGuidedJourney(true);
   });
 
-  function filterGuidedJourney() {
+  function filterGuidedJourney(isSeeMore) {
     // Get career search results
     //
     var interests = [],
@@ -200,10 +211,12 @@ $(document).on('turbolinks:load', function(){
     var params = {
       interests: interests.length > 0 ? interests.join(', ') : null,
       educations: educations.length > 0 ? educations.join(', ') : null,
-      regions: regions.length > 0 ? regions.join(', ') : null
+      regions: regions.length > 0 ? regions.join(', ') : null,
+      limit: $('#searchLimit').val(),
+      offset: $('#searchOffset').val()
     };
 
-    getCareerResults(params)
+    getCareerResults(params, isSeeMore)
   }
 
   checkResultStep(contentInterest);

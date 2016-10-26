@@ -6,7 +6,7 @@ class GuidedJourneyController < ApplicationController
   end
 
   def search
-    @limit = params[:limit] || 9
+    @limit = params[:limit] || 10
     @offset = params[:offset] || 0
 
     @limit = @limit.to_i
