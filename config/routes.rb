@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
   # career page
   get 'careers' => 'career#index', :as => :career
-  get 'career/filter/' => 'career#filter', :as => :career_filter
+  get 'career/filter' => 'career#filter', :as => :career_filter
   get 'careers/:slug' => 'career#detail', :as => :career_detail
+  get 'guided_journey/search' => 'guided_journey#search', :as => :guided_journey_search
 
   # education page
   get 'educations' => 'education#index', :as => :education

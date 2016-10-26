@@ -78,18 +78,6 @@ $(document).on('turbolinks:load', function(){
    */
 
   /**
-   * Convert ID get from map path into Region Name
-   * @param  {string} name ID of map's path
-   * @return {string} Region Name after convert
-   */
-  function convertToRegionName (name) {
-    if (name) {
-      return name.split('-').join(' ');
-    }
-
-  }
-
-  /**
    * Get Region Name from Element
    * @param  {object} ele element for getting its Id
    * @return {string}     region name after converting
