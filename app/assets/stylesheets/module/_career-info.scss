@@ -160,7 +160,7 @@
   height: rem(390);
   padding-top: rem(72);
   @extend %relative;
-  @include background-image('filter-bg.png');
+  @include background-image('career-carousel-bg.png');
 
   @include e('item') {
     color: $default;
@@ -209,6 +209,12 @@
 }
 
 .career-carousel-control {
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
   .career-arrow {
     top: rem(110);
   }
