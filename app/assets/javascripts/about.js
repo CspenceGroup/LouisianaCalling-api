@@ -154,17 +154,25 @@ $(document).on('turbolinks:load', function(){
         subject = target[1].value,
         message = target[2].value;
 
-    if(!email) {
+    if (!email) {
       $('.alert-danger-email').show();
-      $('.alert-danger-subject, .alert-danger-message').hide();
-    } else if(!subject) {
-      $('.alert-danger-subject').show();
-      $('.alert-danger-email, .alert-danger-message').hide();
-    } else if(!message) {
-      $('.alert-danger-message').show();
-      $('.alert-danger-email, .alert-danger-subject').hide();
     } else {
-      $('.alert-danger-email, .alert-danger-subject, .alert-danger-message').hide();
+      $('.alert-danger-email').hide();
+    }
+
+    if (!subject) {
+      $('.alert-danger-subject').show();
+    } else {
+      $('.alert-danger-subject').hide();
+    }
+
+    if (!message) {
+      $('.alert-danger-message').show();
+    } else {
+      $('.alert-danger-message').hide();
+    }
+
+    if (email && subject && message) {
       target.submit();
     }
   });
