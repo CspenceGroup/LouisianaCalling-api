@@ -64,7 +64,7 @@ $(document).on('turbolinks:load', function(){
   /*
    * Transfering to category or question which use want to move to.
    */
-  $('.about-faq__main-content a').click(function(e) {
+  $('#category-list-items a, .about-faq__topic-list a').click(function(e) {
     e.preventDefault();
 
     var hash = $(this)[0].hash;
