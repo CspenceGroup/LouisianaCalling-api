@@ -108,7 +108,7 @@
   @include e('interest-item') {
     @extend %overflow-hidden;
     @extend %display-flex;
-    margin-bottom: rem(35);
+    margin-bottom: rem(30);
 
     &:last-child {
       @extend %no-margin-bottom;
