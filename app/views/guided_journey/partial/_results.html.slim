@@ -18,6 +18,11 @@
     /     i.icon.i-social.i-envelope
     /   a(href='javascript:void(0);')
     /     i.icon.i-social.i-print
+    #see-more-result-step.more-stories__btn.see-more-result-step style="display:none;"
+      .icon-see-more
+        = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
+    .indicator-loading-see-more
+      = image_tag asset_path("loading.gif")
     .find-opportunity
       .find-opportunity-container
         h3.main-title Want to See More Options?

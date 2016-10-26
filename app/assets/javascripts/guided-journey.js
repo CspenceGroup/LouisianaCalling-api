@@ -18,40 +18,14 @@ $(document).on('turbolinks:load', function(){
           $(event.target).find("li:eq(" + idx + ")").removeClass('done');
         }
       }
-    },
-    onStepChanging: function (event, currentIndex, newIndex) {
-      if (newIndex == 3) {
-        // Get career search results
-        //
-        var interests = [],
-          educations = [],
-          regions = [];
+      console.log('currentIndex:', currentIndex);
 
-        $('.interest-item.interest-active').each(function() {
-          interests.push($(this).data('interest').id);
-        });
-
-        $('.education-item.education-active').each(function() {
-          educations.push($(this).data('education').id);
-        });
-
-        $('.guided-journey-map path.active').each(function() {
-          regions.push(convertToRegionName($(this).attr('id')));
-        });
-
-        var params = {
-          interests: interests.length > 0 ? interests.join(', ') : null,
-          educations: educations.length > 0 ? educations.join(', ') : null,
-          regions: regions.length > 0 ? regions.join(', ') : null
-        };
-
+      if (currentIndex == 3) {
         // Set default limit/offset
         $('#searchLimit').val(9);
         $('#searchOffset').val(0);
-
-        getCareerResults(params)
+        filterGuidedJourney();
       }
-      return true;
     }
   });
 
@@ -59,6 +33,11 @@ $(document).on('turbolinks:load', function(){
     var value = $(e.target).attr('value');
     $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
+
+  var contentStep = $('.sidebar-steps-result__content'),
+      contentInterest = contentStep.find('.sidebar-steps-result__content-interest'),
+      contentRegion = contentStep.find('.sidebar-steps-result__content-region'),
+      contentEducation = contentStep.find('.sidebar-steps-result__content-education');
 
 
   /**
@@ -94,11 +73,15 @@ $(document).on('turbolinks:load', function(){
       $this.removeClass('active');
       $($selector).removeClass('active');
       $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
+      $('.sidebar-steps-result__content-region').show();
+      checkResultStep(contentRegion);
     } else {
 
       $this.addClass('active');
       $($selector).addClass('active');
       regionContent.append('<p title="' + value + '">'+ value + '</p>');
+      $('.sidebar-steps-result__content-region').show();
+      checkResultStep(contentRegion);
     }
   });
 
@@ -121,6 +104,9 @@ $(document).on('turbolinks:load', function(){
       $(this).removeClass('interest-active').addClass('interest');
       $('.sidebar-steps-result__content-interest p[title="' + value + '"]').remove();
     }
+
+    $('.sidebar-steps-result__content-interest').show();
+    checkResultStep(contentInterest);
   });
 
   /**
@@ -146,6 +132,9 @@ $(document).on('turbolinks:load', function(){
     if (value.toLowerCase() === text) {
       $('.guided-journey-results').toggleClass("jump-start-inactive");
     }
+
+    $('.sidebar-steps-result__content-education').show();
+    checkResultStep(contentEducation);
   });
 
   function getCareerResults(data) {
@@ -160,10 +149,72 @@ $(document).on('turbolinks:load', function(){
         $('#searchLimit').val(response.limit);
         $('#searchOffset').val(response.offset);
         $('#guided-search-results').append(response.careers);
+
+        if(response.is_see_more) {
+          $('.see-more-result-step').show();
+        } else {
+          $('.see-more-result-step').hide();
+        }
+
+        $('.indicator-loading-see-more').hide();
+
+        $("img.lazy-load").lazyload({
+          event : "timeout"
+        });
+
+        var timeout = setTimeout(function() {
+          $("img.lazy-load").trigger("timeout");
+        }, 200);
       },
       error: function() {
 
       }
     });
+  }
+
+  $('#see-more-result-step').click(function() {
+    $('.indicator-loading-see-more').show();
+    $(this).hide();
+    filterGuidedJourney();
+  });
+
+  function filterGuidedJourney() {
+    // Get career search results
+    //
+    var interests = [],
+      educations = [],
+      regions = [];
+
+    $('.interest-item.interest-active').each(function() {
+      interests.push($(this).data('interest').id);
+    });
+
+    $('.education-item.education-active').each(function() {
+      educations.push($(this).data('education').id);
+    });
+
+    $('.guided-journey-map path.active').each(function() {
+      regions.push(convertToRegionName($(this).attr('id')));
+    });
+
+    var params = {
+      interests: interests.length > 0 ? interests.join(', ') : null,
+      educations: educations.length > 0 ? educations.join(', ') : null,
+      regions: regions.length > 0 ? regions.join(', ') : null
+    };
+
+    getCareerResults(params)
+  }
+
+  checkResultStep(contentInterest);
+  checkResultStep(contentRegion);
+  checkResultStep(contentEducation);
+
+  function checkResultStep(value) {
+    if(!value.has('p').length) {
+      $(value).hide();
+    } else {
+      $(value).show();
+    }
   }
 });

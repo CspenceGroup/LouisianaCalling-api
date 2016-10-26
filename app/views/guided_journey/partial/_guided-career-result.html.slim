@@ -1,15 +1,18 @@
-- careers.each do |career|
-  .guided-result-item
-    .guided-result-item__photo
-      = image_tag career.photo_medium
-    .guided-result-item__info
-      .guided-result-item__flames
-        - career.demand.to_i.times do
-          = image_tag('career-info/blue-fire.png')
-      .guided-result-item__career-name
-        a(href="/careers/#{career.slug}") Industrial Engineering Technicians
-      .guided-result-item__salary
-        .i-guided-salary
-          = image_tag('career-info/blue-career-salary.png')
-        p
-          = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+- if careers.length > 0
+  - careers.each do |career|
+    .guided-result-item id=career.id
+      .guided-result-item__photo
+        = image_tag career.photo_medium, lazy: true, class: 'lazy-load'
+      .guided-result-item__info
+        .guided-result-item__flames
+          - career.demand.to_i.times do
+            = image_tag('career-info/blue-fire.png')
+        .guided-result-item__career-name
+          a(href="/careers/#{career.slug}") Industrial Engineering Technicians
+        .guided-result-item__salary
+          .i-guided-salary
+            = image_tag('career-info/blue-career-salary.png')
+          p
+            = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+- else
+  p.no-result-found.no-result-step No results found.
