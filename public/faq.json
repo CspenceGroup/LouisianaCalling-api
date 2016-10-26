@@ -16,12 +16,12 @@
       {
         "id": 3,
         "content": "What is LCTCS?",
-        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='https://www.onetcenter.org/' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='/educations'>here</a>&gt;.</p>"
       },
       {
         "id": 4,
         "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "<p>No, there are a variety of educational paths you can take that will provide the basic skills and knowledge you need to get a good job. There are many high-value jobs like engineers, social workers and accountants that do require 4-year college degrees. However, there are many more high-value jobs and careers that require some type of education beyond high school – but not a 4-year degree. A few good examples include: machinists and welders, mechanical drafters, PTECH operators, web developers and radiologic technologists. The important thing is to find something that matches your interests. To figure out what works best for you, start &lt;<a href='' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>No, there are a variety of educational paths you can take that will provide the basic skills and knowledge you need to get a good job. There are many high-value jobs like engineers, social workers and accountants that do require 4-year college degrees. However, there are many more high-value jobs and careers that require some type of education beyond high school – but not a 4-year degree. A few good examples include: machinists and welders, mechanical drafters, PTECH operators, web developers and radiologic technologists. The important thing is to find something that matches your interests. To figure out what works best for you, start &lt;<a href='/guided-journey'>here</a>&gt;.</p>"
       }
     ]
   },
@@ -32,7 +32,7 @@
       {
         "id": 1,
         "content": "Do jobs transfer between industries?",
-        "answer": "<p>Yes, many jobs and career paths require skills and abilities that can be used across industries.For example, Computer Network Support Specialists and Bookkeepers are vital jobs in almost every type of business, industry and government organization. However, some jobs like Paramedics and Automotive Technicians are more industry-specific.</p>"
+        "answer": "<p>Yes, many jobs and career paths require skills and abilities that can be used across industries. For example, Computer Network Support Specialists and Bookkeepers are vital jobs in almost every type of business, industry and government organization. However, some jobs like Paramedics and Automotive Technicians are more industry-specific.</p>"
       },
       {
         "id": 2,
@@ -58,7 +58,7 @@
       {
         "id": 1,
         "content": "How can I pay for school?",
-        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fafsa.ed.gov/FAFSA/app/fafsa?locale=en_US' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fsaid.ed.gov/npas/index.htm' target='_blank'>here</a>&gt;.</p>"
       },
       {
         "id": 2,
@@ -78,7 +78,7 @@
       {
         "id": 5,
         "content": "Do I need to be admitted before I can apply for financial aid at a particular college or university within LCTCS?",
-        "answer": "Not at all. You can apply for aid any time after January 1st. To actually receive your funds however, you must be admitted and enrolled at the school of your choice."
+        "answer": "<p>Not at all. You can apply for aid any time after January 1st. To actually receive your funds however, you must be admitted and enrolled at the school of your choice.</p>"
       },
       {
         "id": 6,
@@ -104,12 +104,12 @@
       {
         "id": 3,
         "content": "How is Louisiana Calling funded? Who are the donors? ",
-        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community'>here</a>.&gt;</p>"
+        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='/abouts?tab=our-community'>here</a>.&gt;</p>"
       },
       {
         "id": 4,
         "content": "Where is Louisiana Calling based and how is it managed?",
-        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='http://104.131.188.55/abouts?tab%3Dour-community'>here</a>.&gt;</p>"
+        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='/abouts?tab=our-community'>here</a>.&gt;</p>"
       }
     ]
   },
