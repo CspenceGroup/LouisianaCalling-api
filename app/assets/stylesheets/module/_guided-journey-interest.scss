@@ -14,7 +14,7 @@
       @extend %no-border-left;
     }
 
-    p {
+    .item-step-title {
       @extend %text-center;
       font-size: rem(12.5);
       @extend %brandon-grotesque-bold;
@@ -22,11 +22,17 @@
       padding: rem(14) rem(1) 0 rem(1);
       line-height: rem(15);
       @extend %cursor-default;
+      max-height: rem(44);
     }
   }
 
   @include e('interest-icon') {
-    
+    height: rem(75);
+
+    img {
+      @include boxSize(auto, 100%);
+    }
+
     @include m('active') {
       display: none;
     }
@@ -49,6 +55,11 @@
 
   .interest-icon--active {
     display: block;
+    height: rem(75);
+
+      img {
+        @include boxSize(auto, 100%);
+      }
   }
 }
 
@@ -64,6 +75,7 @@
 
 .interest-item {
   border: rem(1) solid $red-bg;
+  color: $red-bg;
 
   &:nth-child(6n + 1) {
     border-left: rem(1) solid $red-bg;

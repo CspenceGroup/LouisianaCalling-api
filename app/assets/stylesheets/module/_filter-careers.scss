@@ -163,18 +163,6 @@
   border-bottom: rem(1) solid $filter-careers-bg;
 }
 
-// .careers-filter__head.careers-icon-collapse-mini {
-//   .careers-icon-collapse {
-//     @include background-image('careers/minimize.png');
-//   }
-// }
-
-// .careers-filter__head.careers-icon-collapse-expend {
-//   .careers-icon-collapse {
-//     @include background-image('careers/expand.png');
-//   }
-// }
-
 .careers-icon-collapse-expend {
   @include background-image('careers/expand.png');
 }
@@ -182,4 +170,8 @@
 .careers-icon-collapse-mini {
   display: none;
   @include background-image('careers/minimize.png');
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  margin-left: 0;
 }

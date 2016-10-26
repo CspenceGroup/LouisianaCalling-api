@@ -38,11 +38,16 @@
     padding-top: rem(92);
     @extend %relative;
     @include background-image('profile/banner-profile.jpg');
+    @extend %relative;
   }
 
   @include e('content') {
+    width: rem(725);
     z-index: 10;
-    @extend %relative;
+    @extend %absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-53%);
   }
 
   @include m('gradient') {
