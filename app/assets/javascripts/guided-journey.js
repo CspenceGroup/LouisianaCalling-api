@@ -60,40 +60,39 @@ $(document).on('turbolinks:load', function(){
    * @return void
    */
 
-  $('.guided-journey-map path').click(function (e) {
+  $('.guided-journey-map path, .guided-journey-map text').click(function (event) {
+    var $this = $(this);
 
-    var value = $(this).attr('id'),
+    // Check click into text
+    if (event.currentTarget.tagName == 'text') {
+      var pathId = '#' + event.currentTarget.getAttribute('name');
+
+      $this = $(pathId);
+    }
+
+    var value = $this.attr('id'),
         regionContent = $('.sidebar-steps-result__content-region'),
         $selector = 'text[name=' + value +']';
 
-    /**
-     * Active clicked region & show top jobs in view
-     */
+    // Convert ID to region name
+    value = convertToRegionName(value);
+
+    // Check click Lafayette region
+    if ($this.hasClass('lafayette')) {
+      $this = $('.lafayette');
+    }
+
+    // Check click to region selected or not
     if($(this).hasClass('active')) {
 
+      $this.removeClass('active');
       $($selector).removeClass('active');
-
-      if($(this).hasClass('lafayette')) {
-
-        $('.lafayette').removeClass('active');
-        $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
-      } else {
-
-        $(this).removeClass('active');
-        $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
-      }
+      $('.sidebar-steps-result__content-region p[title="' + value + '"]').remove();
     } else {
+
+      $this.addClass('active');
       $($selector).addClass('active');
-
-      if($(this).hasClass('lafayette')) {
-
-        $('.lafayette').addClass('active');
-        regionContent.append('<p title="' + value + '">'+ value + '</p>');
-      } else {
-
-        $(this).addClass('active');
-        regionContent.append('<p title="' + value + '">'+ value + '</p>');
-      }
+      regionContent.append('<p title="' + value + '">'+ value + '</p>');
     }
   });
 
