@@ -11,26 +11,43 @@ $(document).on('turbolinks:load', function(){
   $("#form-progressbar").steps({
     headerTag: "h2",
     bodyTag: "fieldset",
-    autoFocus: true,
+    autoFocus: false,
+    enableAllSteps: false,
     onStepChanged: function(event, currentIndex, priorIndex) {
       if (currentIndex < priorIndex) {
         for (var idx = priorIndex; idx > currentIndex ; idx--) {
-          $(event.target).find("li:eq(" + idx + ")").removeClass('done');
+          $(event.target).find("li:eq(" + idx + ")").addClass('disabled').removeClass('done');
         }
       }
-      console.log('currentIndex:', currentIndex);
 
       if (currentIndex == 3) {
+
+        $('.sidebar-steps-result__btn')
+          .removeClass('sidebar-steps-result__btn-next')
+          .addClass('sidebar-steps-result__btn-back');
+
         // Set default limit/offset
         $('#searchLimit').val(9);
         $('#searchOffset').val(0);
         filterGuidedJourney();
+      }
+      else if(currentIndex === 0) {
+
+        $('.sidebar-steps-result__btn')
+          .removeClass('sidebar-steps-result__btn-back')
+          .addClass('sidebar-steps-result__btn-next');
+      }
+      else {
+
+        $('.sidebar-steps-result__btn')
+          .removeClass('sidebar-steps-result__btn-next sidebar-steps-result__btn-back');
       }
     }
   });
 
   $('.btn-step').on('click', function(e){
     var value = $(e.target).attr('value');
+
     $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
 
@@ -38,7 +55,6 @@ $(document).on('turbolinks:load', function(){
       contentInterest = contentStep.find('.sidebar-steps-result__content-interest'),
       contentRegion = contentStep.find('.sidebar-steps-result__content-region'),
       contentEducation = contentStep.find('.sidebar-steps-result__content-education');
-
 
   /**
    * This function handle the action when user click on region map
@@ -133,6 +149,9 @@ $(document).on('turbolinks:load', function(){
   });
 
   function getCareerResults(data) {
+
+    $('.indicator-loading-step').show();
+
     $.ajax({
       url : '/guided_journey/search',
       type : "get",
@@ -152,6 +171,7 @@ $(document).on('turbolinks:load', function(){
         }
 
         $('.indicator-loading-see-more').hide();
+        $('.indicator-loading-step').hide();
         
         $("img.lazy-load").lazyload({
           event : "timeout"
@@ -167,10 +187,12 @@ $(document).on('turbolinks:load', function(){
     });
   }
 
+  // Click see more button in result step
   $('#see-more-result-step').click(function() {
-    $('.indicator-loading-see-more').show();
     $(this).hide();
+    $('.indicator-loading-see-more').show();
     filterGuidedJourney();
+    $('.indicator-loading-step').hide();
   });
 
   function filterGuidedJourney() {
@@ -205,6 +227,7 @@ $(document).on('turbolinks:load', function(){
   checkResultStep(contentRegion);
   checkResultStep(contentEducation);
 
+  // Check result step and show, hide valude in side bar step
   function checkResultStep(value) {
     if(!value.has('p').length) {
       $(value).hide();
