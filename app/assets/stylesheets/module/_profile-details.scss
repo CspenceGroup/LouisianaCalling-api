@@ -130,6 +130,11 @@
   @include e('main-container') {
     padding-top: rem(51);
     padding-left: 0;
+    padding-right: rem(55);
+  }
+
+  @include e('news-container') {
+    min-height: rem(517);
   }
 
   @include e('about') {
@@ -145,36 +150,46 @@
     @extend %block;
     @extend %no-list-style;
     @extend %no-margin-left;
-    @include boxSize(auto, rem(55));
+    @extend %display-flex;
+    @include boxSize(rem(660), rem(55));
+
+    .profile-info-wrapper {
+      @extend %display-flex;
+      @extend %align-items-center;
+      @extend %justify-content-center;
+    }
 
     li {
       border: solid rem(1) $default;
-      min-width: rem(198);
-      max-width: rem(285);
-      height: 100%;
-      padding: rem(5) rem(25) 0 rem(25);
+      padding: 0 rem(25);
       @extend %float-left;
       @extend %text-center;
       @extend %relative;
+      @extend %display-flex;
+      @extend %align-items-center;
+      @extend %justify-content-center;
+      @include boxSize(100%, 100%);
+      text-align: initial;
 
       &:nth-child(2),
       &:nth-child(3) {
         @extend %no-border-left;
       }
+    }
 
-      p {
-        margin: 0 0 0 rem(12);
-        @extend %text-left;
-        @extend %text-uppercase;
-        @extend %brandon-grotesque-bold;
-      }
+    span {
+      font-size: rem(14.7);
+      margin-bottom: 0;
+      @extend %text-uppercase;
+      @extend %brandon-grotesque-bold;
+      @extend %text-left;
     }
   }
-}
 
-.personal-profile-about {
-  width: rem(740);
-  @extend %margin-auto;
+  @include e('main-content') {
+    width: rem(660);
+    @extend %float-right;
+  }
 }
 
 .personal-profile-title,
@@ -183,10 +198,12 @@
 }
 
 .personal-profile-title {
+  font-size: rem(33.6);
   width: auto;
 }
 
 .profile-details-info {
+  font-size: rem(16.67);
   @extend %clear-both;
 }
 
@@ -231,17 +248,19 @@
 }
 
 .i-profile-info {
-  padding-top: rem(7);
+  margin-right: rem(15);
   @extend %float-left;
 }
 
 .profile-info-txt {
-  height: rem(45);
-  max-width: rem(182);
-  @extend %float-left;
-  @extend %flex-col-center;
+  @include flex();
 }
 
 .i-profile-pause {
   transform: initial;
+}
+
+.profile-item-container {
+  @extend %inline-block;
+  @extend %margin-auto;
 }
