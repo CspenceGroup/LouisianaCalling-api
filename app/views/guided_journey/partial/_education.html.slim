@@ -6,9 +6,9 @@
       .guided-form__interest-item.education-item.education data-education="#{education.to_json}"
         .guided-form__interest-details
           .guided-form__interest-icon
-            = image_tag asset_path("step-education.png"), alt: "#{education}"
+            = image_tag education.url, alt: "#{education}"
           .education-icon--active
-            = image_tag asset_path("education-active.png"), alt: "#{education}"
+            = image_tag education.url_selected, alt: "#{education}"
         p.item-step-title title="#{education}"
           = truncate(education.to_s, length: 30)
 

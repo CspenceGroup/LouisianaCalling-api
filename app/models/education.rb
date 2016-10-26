@@ -4,6 +4,8 @@
 #
 #  id             :integer          not null, primary key
 #  name           :string
+#  url_selected   :string
+#  url            :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,6 +15,8 @@ class Education < ActiveRecord::Base
   has_many :profiles
 
   validates :name, presence: true
+  validates :url, presence: true
+  validates :url_selected, presence: true
   validates_uniqueness_of :name
 
   def self.find_or_create(education_name)
@@ -34,6 +38,8 @@ class Education < ActiveRecord::Base
 
         education = Education.new
         education[:name] = name_str
+        education[:url] = row[1].strip
+        education[:url_selected] = row[2].strip
 
         education.save!
       end
