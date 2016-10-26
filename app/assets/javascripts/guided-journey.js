@@ -24,19 +24,25 @@ $(document).on('turbolinks:load', function(){
         // Get career search results
         //
         var interests = [],
-          educations = [];
+          educations = [],
+          regions = [];
 
         $('.interest-item.interest-active').each(function() {
-          interests.push(this.data('interest').id);
+          interests.push($(this).data('interest').id);
         });
 
         $('.education-item.education-active').each(function() {
-          educations.push(this.data('education').id);
+          educations.push($(this).data('education').id);
+        });
+
+        $('.guided-journey-map path.active').each(function() {
+          regions.push(convertToRegionName($(this).attr('id')));
         });
 
         var params = {
           interests: interests.length > 0 ? interests.join(', ') : null,
-          educations: educations.length > 0 ? educations.join(', ') : null
+          educations: educations.length > 0 ? educations.join(', ') : null,
+          regions: regions.length > 0 ? regions.join(', ') : null
         };
 
         // Set default limit/offset
