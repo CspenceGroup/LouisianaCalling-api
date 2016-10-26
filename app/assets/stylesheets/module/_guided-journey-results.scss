@@ -59,17 +59,17 @@
   }
 
   > span {
-    top: rem(-20);
+    top: rem(-25);
     padding-right: rem(90);
     @extend %text-uppercase;
     @extend %block;
+    @extend %relative;
   }
 
   a {
-    top: rem(-5);
+    top: rem(-10);
     left: rem(-45);
-    @extend %font-style-italic;
-    @extend %i-owan-old-style;
+    @extend %i-owan-old-style-italic;
     @extend %inline-block;
     @extend %relative;
     @include boxSize(rem(252), rem(101));
