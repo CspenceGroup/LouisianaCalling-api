@@ -18,7 +18,6 @@ $(document).on('turbolinks:load', function(){
           $(event.target).find("li:eq(" + idx + ")").removeClass('done');
         }
       }
-      console.log('currentIndex:', currentIndex);
 
       if (currentIndex == 3) {
         // Set default limit/offset
