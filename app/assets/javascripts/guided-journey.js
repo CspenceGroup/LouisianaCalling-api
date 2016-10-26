@@ -27,9 +27,9 @@ $(document).on('turbolinks:load', function(){
           .addClass('sidebar-steps-result__btn-back');
 
         // Set default limit/offset
-        $('#searchLimit').val(9);
+        $('#searchLimit').val(10);
         $('#searchOffset').val(0);
-        filterGuidedJourney();
+        filterGuidedJourney(false);
       }
       else if(currentIndex === 0) {
 
@@ -47,7 +47,6 @@ $(document).on('turbolinks:load', function(){
 
   $('.btn-step').on('click', function(e){
     var value = $(e.target).attr('value');
-
     $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
 
@@ -154,10 +153,9 @@ $(document).on('turbolinks:load', function(){
 
   });
 
-  function getCareerResults(data) {
+  function getCareerResults(data, isSeeMore) {
 
     $('.indicator-loading-step').show();
-
     $.ajax({
       url : '/guided_journey/search',
       type : "get",
@@ -168,7 +166,18 @@ $(document).on('turbolinks:load', function(){
         // Update limit/offset
         $('#searchLimit').val(response.limit);
         $('#searchOffset').val(response.offset);
-        $('#guided-search-results').append(response.careers);
+        console.log(response.careers);
+        if (response.careers.length == 0) {
+          $('p.no-result-found').show();
+        } else {
+          $('p.no-result-found').hide();
+        }
+
+        if (isSeeMore) {
+          $('#guided-search-results').append(response.careers);
+        } else {
+          $('#guided-search-results').html(response.careers);
+        }
 
         if(response.is_see_more) {
           $('.see-more-result-step').show();
@@ -178,7 +187,7 @@ $(document).on('turbolinks:load', function(){
 
         $('.indicator-loading-see-more').hide();
         $('.indicator-loading-step').hide();
-        
+
         $("img.lazy-load").lazyload({
           event : "timeout"
         });
@@ -197,11 +206,11 @@ $(document).on('turbolinks:load', function(){
   $('#see-more-result-step').click(function() {
     $(this).hide();
     $('.indicator-loading-see-more').show();
-    filterGuidedJourney();
+    filterGuidedJourney(true);
     $('.indicator-loading-step').hide();
   });
 
-  function filterGuidedJourney() {
+  function filterGuidedJourney(isSeeMore) {
     // Get career search results
     //
     var interests = [],
@@ -223,10 +232,12 @@ $(document).on('turbolinks:load', function(){
     var params = {
       interests: interests.length > 0 ? interests.join(', ') : null,
       educations: educations.length > 0 ? educations.join(', ') : null,
-      regions: regions.length > 0 ? regions.join(', ') : null
+      regions: regions.length > 0 ? regions.join(', ') : null,
+      limit: $('#searchLimit').val(),
+      offset: $('#searchOffset').val()
     };
 
-    getCareerResults(params)
+    getCareerResults(params, isSeeMore)
   }
 
   checkResultStep(contentInterest);
