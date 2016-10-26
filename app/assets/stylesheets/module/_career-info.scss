@@ -160,7 +160,7 @@
   height: rem(390);
   padding-top: rem(72);
   @extend %relative;
-  @include background-image('filter-bg.png');
+  @include background-image('career-carousel-bg.png');
 
   @include e('item') {
     color: $default;
@@ -209,6 +209,12 @@
 }
 
 .career-carousel-control {
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
   .career-arrow {
     top: rem(110);
   }
@@ -220,4 +226,9 @@
   .i-career-next {
     @include background-image('career-info/btn-arrow-right.png');
   }
+}
+
+.home-carousel-item,
+.home-carousel-dots {
+  padding-left: 0;
 }
