@@ -15,7 +15,7 @@
               </video>
               <div class="carousel-caption carousel-title">
                 <button type="button" class="btn-play btn-play-video" data-source="play-video-<%= video.present? ? video.id : '' %>" data-toggle="modal" data-target="#videoModal"></button>
-                <p><%= "Watch #{video.profile.first_name} story's" %></p>
+                <p><%= "Watch #{video.profile.first_name}'s Story" %></p>
               </div>
             </div>
           <% end %>
@@ -114,7 +114,7 @@
       </section>
     </section>
     <section class="career-carousels">
-      <span class="career-shortcut__label career-slide-label">Great job. Right now.</span>
+      <span class="career-shortcut__label career-slide-label">Great jobs. Right now.</span>
       <div id="carousel-great-jobs" class="carousel slide career-carousel-content" data-ride="carousel">
         <ol class="carousel-indicators carousel-dots-list career-carousel-dots home-carousel-dots">
           <%= render "home/partial/slider-dot" %>

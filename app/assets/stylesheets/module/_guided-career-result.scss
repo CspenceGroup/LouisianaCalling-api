@@ -31,11 +31,12 @@
   @include e('career-name') {
     width: rem(160);
     margin-top: rem(14);
+    line-height: 1;
 
     a {
       color: $default;
-      font-size: rem(20.8);
-      line-height: rem(20);
+      font-size: rem(16.8);
+      line-height: 1.19;
       @extend %brandon-grotesque;
       @extend %text-uppercase;
 

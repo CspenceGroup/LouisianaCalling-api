@@ -5,6 +5,7 @@
 #  id             :integer          not null, primary key
 #  name           :string
 #  url            :string
+#  url_selected   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -18,6 +19,7 @@ class Interest < ActiveRecord::Base
 
   validates :name, presence: true
   validates :url, presence: true
+  validates :url_selected, presence: true
 
   validates_uniqueness_of :name
 
@@ -32,6 +34,7 @@ class Interest < ActiveRecord::Base
         interest = Interest.new
         interest[:name] = name_str
         interest[:url] = row[1].strip
+        interest[:url_selected] = row[2].strip
 
         interest.save!
       end

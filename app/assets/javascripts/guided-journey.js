@@ -132,7 +132,8 @@ $(document).on('turbolinks:load', function(){
 
   $('.education-item').on('click', function(event) {
     var value = $(this).find('p').attr('title'),
-        educationContent = $('.sidebar-steps-result__content-education');
+        educationContent = $('.sidebar-steps-result__content-education'),
+        text = 'currently in high school';
 
     if($(this).hasClass('education')) {
 
@@ -146,6 +147,11 @@ $(document).on('turbolinks:load', function(){
 
     $('.sidebar-steps-result__content-education').show();
     checkResultStep(contentEducation);
+
+    if (value.toLowerCase() === text) {
+      $('.guided-journey-results').toggleClass("jump-start-inactive");
+    }
+
   });
 
   function getCareerResults(data) {

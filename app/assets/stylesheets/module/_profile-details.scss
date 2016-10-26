@@ -135,6 +135,11 @@
 
   @include e('news-container') {
     min-height: rem(517);
+    padding-top: rem(45);
+  }
+
+  @include e('feature-news') {
+    width: rem(255);
   }
 
   @include e('about') {
@@ -253,6 +258,7 @@
 }
 
 .profile-info-txt {
+  line-height: rem(17);
   @include flex();
 }
 
