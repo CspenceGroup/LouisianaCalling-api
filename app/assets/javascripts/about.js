@@ -177,4 +177,19 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  /*Check validation require keyworks faq*/
+  $('#searchFaq').submit(function(event) {
+    event.preventDefault();
+
+    var target = event.target,
+        keyWord = target[0].value;
+
+    if(!keyWord) {
+      $('.about-faq__search').addClass('about-faq-error');
+    } else {
+      $('.about-faq__search').removeClass('about-faq-error');
+      target.submit();
+    }
+  });
+
 });
