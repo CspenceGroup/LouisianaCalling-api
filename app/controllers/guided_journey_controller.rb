@@ -16,7 +16,9 @@ class GuidedJourneyController < ApplicationController
 
     ## filter by regions
     if params[:regions].present?
-      region_ids = Region.where(name: params[:regions]).distinct.map(&:id)
+      region_name = params[:regions].split(',').map(&:downcase)
+
+      region_ids = Region.filter_by_names(region_name).distinct.map(&:id)
       careers = careers.filter_by_region(region_ids)
     end
 
