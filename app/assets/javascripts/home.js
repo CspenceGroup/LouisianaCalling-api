@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function(){
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
     $('#career-certificate').empty();
-    $('#top-jobs__map text').removeClass('active');
+    $('.top-jobs__map text').removeClass('active');
 
     /**
      * Active clicked region & show top jobs in view
@@ -126,7 +126,7 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showRegionJobs () {
-    var regionId = getRegionId($('#top-jobs__map path.active'));
+    var regionId = getRegionId($('.top-jobs__map path.active'));
 
     addRegionName(regionId);
     showTopJobs(regionId);
@@ -142,6 +142,8 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showCareerRequired (id) {
+    id = convertToRegionName(id);
+
     if (careers && id) {
 
       var activeRegionData = careers[id];
