@@ -11,7 +11,7 @@
   @include e('steps') {
     color: $default;
     min-height: rem(735);
-    margin-bottom: rem(30);
+    padding-bottom: rem(30);
     @include background-image('map-bg.png');
 
     li {

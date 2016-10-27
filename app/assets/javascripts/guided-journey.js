@@ -30,6 +30,7 @@ $(document).on('turbolinks:load', function(){
         $('#searchLimit').val(10);
         $('#searchOffset').val(0);
         filterGuidedJourney(false);
+        $('.find-opportunity').toggleClass('find-opportunity-inactive');
       }
       else if(currentIndex === 0) {
 
@@ -255,4 +256,5 @@ $(document).on('turbolinks:load', function(){
       $(value).show();
     }
   }
+
 });
