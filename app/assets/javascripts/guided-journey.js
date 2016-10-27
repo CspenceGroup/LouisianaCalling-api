@@ -22,40 +22,52 @@ $(document).on('turbolinks:load', function(){
 
       if (currentIndex == 3) {
 
+        /*Show button start over and hide button back, next when step is result*/
         $('.sidebar-steps-result__btn')
-          .removeClass('sidebar-steps-result__btn-next')
-          .addClass('sidebar-steps-result__btn-back');
+          .addClass('sidebar-steps-result__btn-back sidebar-steps-result__btn-next');
+        $('.btn-step-start').show();
+
+        /*Start over step when click button start over*/
+        $('.btn-step-start').on('click', function() {
+          $("#form-progressbar a[href='#form-progressbar-h-0']").trigger('click');
+          resetAllStep();
+        });
 
         // Set default limit/offset
         $('#searchLimit').val(10);
         $('#searchOffset').val(0);
         filterGuidedJourney(false);
-        $('.find-opportunity').toggleClass('find-opportunity-inactive');
+        $('.find-opportunity').removeClass('find-opportunity-inactive');
       }
       else if(currentIndex === 0) {
 
+        /*Show button next and hide button back when step is interest*/
         $('.sidebar-steps-result__btn')
           .removeClass('sidebar-steps-result__btn-back')
           .addClass('sidebar-steps-result__btn-next');
+        $('.btn-step-start').hide();
       }
       else {
-
+        /*Show button back and next when step is diffent interest and result*/
         $('.sidebar-steps-result__btn')
           .removeClass('sidebar-steps-result__btn-next sidebar-steps-result__btn-back');
+        $('.btn-step-start').hide();
       }
+
     }
   });
 
+  /*Click button next and back step*/
   $('.btn-step').on('click', function(e){
     var value = $(e.target).attr('value');
-
     $("#form-progressbar a[href='#"+value+"']").trigger('click');
   });
 
   var contentStep = $('.sidebar-steps-result__content'),
       contentInterest = contentStep.find('.sidebar-steps-result__content-interest'),
       contentRegion = contentStep.find('.sidebar-steps-result__content-region'),
-      contentEducation = contentStep.find('.sidebar-steps-result__content-education');
+      contentEducation = contentStep.find('.sidebar-steps-result__content-education'),
+      text = 'currently in high school';
 
   /**
    * This function handle the action when user click on region map
@@ -111,6 +123,7 @@ $(document).on('turbolinks:load', function(){
     var value = $(this).find('p').attr('title'),
         interestContent = $('.sidebar-steps-result__content-interest');
 
+    /*Check item in step interest when selected and unselected*/
     if($(this).hasClass('interest')) {
 
       $(this).removeClass('interest').addClass('interest-active');
@@ -122,7 +135,7 @@ $(document).on('turbolinks:load', function(){
       $('.sidebar-steps-result__content-interest p[title="' + value + '"]').remove();
     }
 
-    $('.sidebar-steps-result__content-interest').show();
+    /*Check content interest in side bar left have value or not*/
     checkResultStep(contentInterest);
   });
 
@@ -133,9 +146,9 @@ $(document).on('turbolinks:load', function(){
 
   $('.education-item').on('click', function(event) {
     var value = $(this).find('p').attr('title'),
-        educationContent = $('.sidebar-steps-result__content-education'),
-        text = 'currently in high school';
+        educationContent = $('.sidebar-steps-result__content-education');
 
+    /*Check item in step education when selected and unselected*/
     if($(this).hasClass('education')) {
 
       $(this).removeClass('education').addClass('education-active');
@@ -146,17 +159,16 @@ $(document).on('turbolinks:load', function(){
       $('.sidebar-steps-result__content-education p[title="' + value + '"]').remove();
     }
 
-    $('.sidebar-steps-result__content-education').show();
+    /*Check content education in side bar left have value or not*/
     checkResultStep(contentEducation);
+    displayJumpStart(value, text);
 
-    if (value.toLowerCase() === text) {
-      $('.jump-start-guide').toggleClass("jump-start-inactive");
-    }
-
-    $('.sidebar-steps-result__content-education').show();
-    checkResultStep(contentEducation);
   });
 
+  /**
+   * This function request url when filter by item in step
+   * @return void
+   */
   function getCareerResults(data, isSeeMore) {
     $('.indicator-loading-step').show();
 
@@ -170,7 +182,7 @@ $(document).on('turbolinks:load', function(){
         // Update limit/offset
         $('#searchLimit').val(response.limit);
         $('#searchOffset').val(response.offset);
-        console.log(response.careers);
+
         if (response.careers.length == 0) {
           $('p.no-result-found').show();
         } else {
@@ -183,15 +195,18 @@ $(document).on('turbolinks:load', function(){
           $('#guided-search-results').html(response.careers);
         }
 
+        //Check condition have see more
         if(response.is_see_more) {
           $('.see-more-result-step').show();
         } else {
           $('.see-more-result-step').hide();
         }
 
+        //Hide indicator when reponse success
         $('.indicator-loading-see-more').hide();
         $('.indicator-loading-step').hide();
 
+        //Apply lazy load for image
         $("img.lazy-load").lazyload({
           event : "timeout"
         });
@@ -206,13 +221,14 @@ $(document).on('turbolinks:load', function(){
     });
   }
 
-  // Click see more button in result step
+  /* Click see more button when view more result */
   $('#see-more-result-step').click(function() {
     $(this).hide();
     $('.indicator-loading-see-more').show();
     filterGuidedJourney(true);
     $('.indicator-loading-step').hide();
   });
+
 
   function filterGuidedJourney(isSeeMore) {
     // Get career search results
@@ -248,7 +264,7 @@ $(document).on('turbolinks:load', function(){
   checkResultStep(contentRegion);
   checkResultStep(contentEducation);
 
-  // Check result step and show, hide valude in side bar step
+  /* Check result step and show, hide valude in side bar step*/
   function checkResultStep(value) {
     if(!value.has('p').length) {
       $(value).hide();
@@ -257,4 +273,20 @@ $(document).on('turbolinks:load', function(){
     }
   }
 
+  /*Reset all step when click start over*/
+  function resetAllStep(){
+    $('.guided-form__interest .interest-item.interest-active').removeClass('interest-active').addClass('interest');
+    $('.sidebar-steps-result__content-details').hide();
+    $('.sidebar-steps-result__content-details p[title]').remove();
+    $('.guided-journey-map path.active, .guided-journey-map text.active').removeClass('active');
+    $('.guided-form__interest .education-item.education-active').removeClass('education-active').addClass('education');
+    $('.find-opportunity').addClass('find-opportunity-inactive');
+    $('.jump-start-guide').addClass("jump-start-inactive");
+  }
+
+  function displayJumpStart(val, txt) {
+    if (val.toLowerCase() === txt) {
+      $('.jump-start-guide').toggleClass("jump-start-inactive");
+    }
+  }
 });
