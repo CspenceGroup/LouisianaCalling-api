@@ -10,35 +10,26 @@ class EducationController < ApplicationController
     @title = params[:title]
     @region = params[:region]
 
-    list_programs =
-      if !params[:title].present? && !params[:region].present?
-        Program.all
-               .filter_by_tuition(
+    programs = Program.all.filter_by_tuition(
                  Constants::TUITION_MIN, Constants::TUITION_MAX
                )
-      else
-        programs = Program.all
-        programs =
-          if params[:title].present?
-            programs.filter_by_title(params[:title])
-          else
-            programs.filter_by_regions(params[:region].split(','))
-          end
 
-        programs = programs.filter_by_tuition(
-                    Constants::TUITION_MIN, Constants::TUITION_MAX
-                  )
-        programs
-      end
+    if params[:title].present?
+      programs = programs.filter_by_title(params[:title])
+    end
+
+    if params[:region].present?
+      programs = programs.filter_by_regions(params[:region].split(','))
+    end
 
     @limit = @limit.to_i
     @offset = @offset.to_i
 
     next_offset = @offset + @limit
-    @is_see_more = list_programs.count > next_offset ? true : false
+    @is_see_more = programs.count > next_offset ? true : false
 
-    @programs = list_programs.offset(@offset).limit(@limit)
-    @ids = list_programs.map(&:id)
+    @programs = programs.offset(@offset).limit(@limit)
+    @ids = programs.map(&:id)
 
     @offset = next_offset
   end
@@ -54,7 +45,9 @@ class EducationController < ApplicationController
     @offset = params[:offset] || 0
 
     ## filter by region
-    programs = programs.filter_by_regions(params[:regions].split(',')) if params[:regions].present?
+    if params[:regions].present?
+      programs = programs.filter_by_regions(params[:regions].split(','))
+    end
 
     ## filter by industry
     if params[:industries].present?
