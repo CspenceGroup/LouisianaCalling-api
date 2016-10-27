@@ -39,16 +39,13 @@
 }
 
 .find-opportunity {
-  @include boxSize(100%, rem(450));
-}
-
-.find-opportunity-container {
   color: $white;
   font-size: rem(20.83);
   padding-top: rem(165);
-  bottom: rem(-60);
+  bottom: rem(-30);
+  min-width: rem(1200);
   @extend %text-center;
-  @extend %absolute;
+  @extend %relative;
   @extend %left-0;
   @extend %background-cover;
   @extend %background-position-center;
@@ -100,6 +97,7 @@
   }
 }
 
-.jump-start-inactive {
+.jump-start-inactive,
+.find-opportunity-inactive {
   display: none;
 }
