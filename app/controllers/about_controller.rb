@@ -48,13 +48,13 @@ class AboutController < ApplicationController
     results = []
 
     categories = categories_list
-    key = params[:key]
+    key = params[:key].downcase
 
     categories.each do |category|
       questions = category['questions'].to_a
 
       questions.each do |question|
-        unless question['content'].include?(key) || question['answer'].include?(key)
+        unless question['content'].downcase.include?(key) || question['answer'].downcase.include?(key)
           next
         end
         question = {
