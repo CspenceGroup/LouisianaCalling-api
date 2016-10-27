@@ -12,13 +12,13 @@
   @include e('photo') {
     @extend %overflow-hidden;
     @extend %float-left;
-    @include boxSize(rem(194), 100%);
+    @include boxSize(rem(193), 100%);
   }
 
   @include e('info') {
     padding: rem(15) 0 0 rem(10);
     @extend %float-right;
-    @include boxSize(rem(188), 100%);
+    @include boxSize(rem(190), 100%);
   }
 
   @include e('flames') {
