@@ -159,6 +159,7 @@
 .career-carousels {
   height: rem(390);
   padding-top: rem(72);
+  margin-bottom: rem(30);
   @extend %relative;
   @include background-image('career-carousel-bg.png');
 

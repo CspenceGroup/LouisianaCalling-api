@@ -48,6 +48,7 @@
   }
 
   @include e('desc') {
+    padding-top: rem(135);
     @include background-image('profile/profile-decs-bg.png');
     @extend %background-repeat-x;
   }
@@ -61,14 +62,10 @@
     }
   }
 
-  @include e('desc') {
-    padding-top: rem(135);
-  }
-
   @include e('container-who') {
     width: rem(667);
     @extend %margin-auto;
-    padding: rem(60) 0 rem(62) 0;
+    padding: rem(60) 0 rem(85);
     color: $default;
 
     h2 {

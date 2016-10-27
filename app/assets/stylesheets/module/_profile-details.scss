@@ -84,7 +84,6 @@
 }
 
 .profile-guided-journey {
-  margin-bottom: rem(-30);
   padding-top: rem(58);
   @include boxSize(100%, rem(290));
   @include background-image('filter-bg.png');

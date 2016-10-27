@@ -10,7 +10,7 @@
 .policy {
   color: $default;
   font-size: rem(16.67);
-  padding: rem(53) 0 rem(25);
+  padding: rem(53) 0 rem(55);
   @extend %acumin-pro-cond-regular;
   @include background-image('program-landing/bg-program.png');
 
