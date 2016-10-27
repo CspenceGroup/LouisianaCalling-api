@@ -1,6 +1,8 @@
 .guided-form__container
   h3.main-title.shadow-main-title Welcome to our guided Journey. Here you'll find jobs and training for you.
   p Show us what you love and it will help us find career options for you. Click on all that apply.
+  .alert.alert-danger.alert-danger-guided-form
+    .errors Please choose interest
   .guided-form__interest
     - interests.each do |interest|
       .guided-form__interest-item.interest-item.interest  data-interest="#{interest.to_json}"

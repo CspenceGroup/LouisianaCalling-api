@@ -45,6 +45,7 @@ $(document).on('turbolinks:load', function(){
           .removeClass('sidebar-steps-result__btn-back')
           .addClass('sidebar-steps-result__btn-next');
         $('.btn-step-start').hide();
+
       }
       else {
         /*Show button back and next when step is diffent interest and result*/
@@ -53,6 +54,40 @@ $(document).on('turbolinks:load', function(){
         $('.btn-step-start').hide();
       }
 
+    },
+    onStepChanging: function(event, currentIndex, newIndex) {
+      var textError = $('.alert-danger-guided-form');
+      textError.hide();
+
+      /*Check have item selected and show error if don't select*/
+      if(currentIndex === 0) {
+        var checkedInterest = $('.interest-item').hasClass('interest-active');
+        if(!checkedInterest) {
+          textError.show();
+          return false;
+        }
+      }
+      else if((currentIndex === 1 && currentIndex > newIndex) || currentIndex === 2 && currentIndex > newIndex) {
+        return true;
+      }
+      else if(currentIndex === 1 && currentIndex < newIndex) {
+        var checkedRegion = $('.guided-journey-map path').hasClass('active');
+        if(!checkedRegion) {
+          textError.show();
+          return false;
+        }
+      }
+      else if (currentIndex === 2 && currentIndex < newIndex) {
+        var checkedEducation = $('.education-item').hasClass('education-active');
+        if(!checkedEducation) {
+          textError.show();
+          return false;
+        }
+      }
+      else {
+        return true;
+      }
+      return true;
     }
   });
 
