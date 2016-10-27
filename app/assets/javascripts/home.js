@@ -286,19 +286,26 @@ $(document).on('turbolinks:load', function(){
         region = convertToUrl(target[1].value),
         type = target[2].value,
         url = "",
-        toUrl;
+        toUrl,
+        searchGroup = $('.search-bar-group');
 
-    // if (careerName && region) {
-
-    //   url = url + '?title=' + careerName + '&region=' + region;
-    // }
-    if(!careerName) {
-      $('.alert-danger-search--career').show();
-      $('.alert-danger-search--region').hide();
-    } else if(!region) {
-      $('.alert-danger-search--career').hide();
-      $('.alert-danger-search--region').show();
-    } else {
+    if(!careerName && !region) {
+      searchGroup.addClass('error-search-group');
+    }
+    else if(!careerName) {
+      searchGroup
+        .addClass('error-search-career')
+        .removeClass('error-search-group error-search-region');
+    }
+    else if(!region) {
+      searchGroup
+        .addClass('error-search-region')
+        .removeClass('error-search-group error-search-career');
+    }
+    else {
+      searchGroup
+        .addClass('error-search')
+        .removeClass('error-search-group error-search-career error-search-region');
       url = url + '?title=' + careerName + '&region=' + region;
     }
 

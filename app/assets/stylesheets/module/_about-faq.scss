@@ -101,7 +101,7 @@
 }
 
 .faq-search {
-  width: rem(825);
+  width: rem(823);
   margin-top: rem(25);
   @extend %margin-auto;
 
@@ -276,4 +276,15 @@
   @include boxSize(rem(110), rem(32));
   @extend %cursor-pointer;
   margin: rem(20) auto 0 auto;
+}
+
+.alert-danger-faq {
+  width: rem(823);
+  display: none;
+}
+
+.about-faq__search.about-faq-error {
+  .alert-danger-faq {
+    display: block;
+  }
 }
