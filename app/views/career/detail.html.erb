@@ -73,13 +73,13 @@
         </div>
         <p class="asterisk-copy asterisk-copy--map">&ast; For this career, it’s recommended that you have this type of education. </p>
     </section>
-    <section class="search-bar find-programs">
+    <section class="search-bar find-programs search-bar-group">
       <h2 class="find-programs__title main-title">Like this career? Find programs near you.</h2>
       <form name="search-career" id="search-career-detail">
         <div class="input-group search-group">
           <input class="form-control search-input" id="programAutocompleteCareers" type="text" name="search-input" value="<%= career.title %>"/>
           <div class="form-group btn btn-search btn-region">
-            <select class="form-control" required>
+            <select class="form-control">
               <option value="" disabled selected>Region</option>
               <% @list_of_regions.each do |region|%>
                 <option value="<%= region.id %>"><%= region.name %></option>
@@ -88,6 +88,15 @@
             <span class="fa fa-caret-down"></span>
           </div>
           <button type="submit" class="btn btn-search btn-submit">Search</button>
+        </div>
+        <div class="alert alert-danger alert-danger-search alert-danger-search-group alert-danger-career-details">
+          <p class="errors">Careers name and region are required</p>
+        </div>
+        <div class="alert alert-danger alert-danger-search alert-danger-search--career alert-danger-career-details">
+          <p class="errors">Careers name is required</p>
+        </div>
+        <div class="alert alert-danger alert-danger-search alert-danger-search--region alert-danger-career-details">
+          <p class="errors">Region is required</p>
         </div>
       </form>
       <div class="auto-fill-data" id="availableProgramCareer"><%= @list_of_careers.to_json %></div>

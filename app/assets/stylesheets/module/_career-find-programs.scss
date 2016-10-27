@@ -5,12 +5,12 @@
   @include background-image('career-search-bg.jpg');
 
   .search-group {
-    width: rem(835);
+    width: rem(824);
   }
 
   @include e('title') {
     color: $profile-header;
-    margin: 0 rem(95) rem(28) 0;
+    margin-bottom: rem(28);
     @extend %text-center;
   }
 

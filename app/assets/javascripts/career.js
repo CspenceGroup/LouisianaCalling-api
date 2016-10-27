@@ -35,17 +35,28 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url;
+        url,
+        searchGroup = $('.find-programs');
 
-    if (careerName != '' || !careerName) {
-      if (careerName && region) {
-
-        url = '/educations?title=' + careerName + '&region=' + region;
-        window.location = url;
-      } else {
-
-        return false;
-      }
+    if(!careerName && !region) {
+      searchGroup.addClass('error-search-group');
+    }
+    else if(!careerName) {
+      searchGroup
+        .addClass('error-search-career')
+        .removeClass('error-search-group error-search-region');
+    }
+    else if(!region) {
+      searchGroup
+        .addClass('error-search-region')
+        .removeClass('error-search-group error-search-career');
+    }
+    else {
+      searchGroup
+        .addClass('error-search')
+        .removeClass('error-search-group error-search-career error-search-region');
+      url = '/educations?title=' + careerName + '&region=' + region;
+      window.location = url;
     }
 
   });

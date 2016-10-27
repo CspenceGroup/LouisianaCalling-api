@@ -161,3 +161,50 @@ form {
   color: $default;
   pointer-events: none;
 }
+
+.alert-danger-search-group {
+  display: none;
+}
+
+.search-bar-group.error-search-group {
+  .alert-danger-search-group {
+    display: block;
+  }
+
+  .alert-danger-search--career,
+  .alert-danger-search--region {
+    display: none;
+  }
+}
+
+.search-bar-group.error-search-career {
+  .alert-danger-search-group,
+  .alert-danger-search--region {
+    display: none;
+  }
+
+  .alert-danger-search--career {
+    display: block;
+  }
+}
+
+.search-bar-group.error-search-region {
+  .alert-danger-search-group,
+  .alert-danger-search--career {
+    display: none;
+  }
+
+  .alert-danger-search--region {
+    display: block;
+  }
+}
+
+.search-bar-group.error-search {
+  .alert-danger-search {
+    display: none;
+  }
+}
+
+.alert-danger-career-details {
+  width: rem(824);
+}

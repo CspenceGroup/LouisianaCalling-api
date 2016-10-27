@@ -15,15 +15,20 @@ class Program < ActiveRecord::Base
   validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
   validates_inclusion_of :hours_per_weeks, in: Constants::HOURS_PER_WEEK
 
+  scope :with_careers, lambda {
+    joins(:careers)
+  }
+
   scope :filter_by_tuition, lambda { |tuition_min, tuition_max|
-    where('tuition_max <= ? AND tuition_min >= ?', tuition_max, tuition_min)
+    where.not('tuition_max < ? OR tuition_min > ?', tuition_min, tuition_max)
   }
 
   scope :filter_by_title, lambda { |title|
-    query = ['LOWER(title) like ? ']
-    query.push('LOWER(institution_name) like ? ')
+    query = ['LOWER(programs.title) like ? ']
+    query.push('LOWER(careers.title) like ? ')
+    query.push('LOWER(programs.institution_name) like ? ')
     title = "%#{title.downcase}%"
-    where(query.join(' OR '), title, title)
+    with_careers.where(query.join(' OR '), title, title, title)
   }
 
   scope :filter_by_regions, lambda { |regions|
