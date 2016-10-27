@@ -13,7 +13,6 @@
     min-height: rem(735);
     margin-bottom: rem(30);
     @include background-image('map-bg.png');
-    @extend %background-repeat-x;
 
     li {
       @extend %float-left;
@@ -267,4 +266,8 @@ span.current-info.audible {
   .btn-step-next {
     display: none;
   }
+}
+
+.actions.clearfix {
+  display: none;
 }

@@ -7,7 +7,7 @@
         - career.demand.to_i.times do
           = image_tag('career-info/blue-fire.png')
       .guided-result-item__career-name
-        a(href="/careers/#{career.slug}") Industrial Engineering Technicians
+        a(href="/careers/#{career.slug}" title=career) = truncate(career.to_s, length: 39)
       .guided-result-item__salary
         .i-guided-salary
           = image_tag('career-info/blue-career-salary.png')
