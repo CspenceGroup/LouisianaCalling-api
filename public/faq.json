@@ -6,7 +6,7 @@
       {
         "id": 1,
         "content": "What’s a GED? What is HiSET?",
-        "answer": "<p>GED stands for “General Educational Development,” and for many years taking and passing the GED test was the way people who didn’t get a high school equivalent education credential.</p><p>The GED is no longer used in Louisiana.  It has been replaced with another nationally recognized high school equivalency exam called HiSET which stands for “High School Equivalency Test”</p>"
+        "answer": "<p>GED stands for “General Educational Development,” and for many years taking and passing the GED test was the way people who didn’t graduate got a high school equivalent education credential.</p><p>The GED is no longer used in Louisiana. It has been replaced with another nationally recognized high school equivalency exam called Hi-SET, which stands for “High School Equivalency Test.”</p>"
       },
       {
         "id": 2,
@@ -16,12 +16,12 @@
       {
         "id": 3,
         "content": "What is LCTCS?",
-        "answer": "<p>LCTCS is the Louisiana Community and Technical College System and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high value careers. To see some of them, click &lt;<a href='/educations'>here</a>&gt;.</p>"
+        "answer": "<p>LCTCS is the Louisiana Community and Technical College System, and it was established in 1999. LCTCS includes 13 colleges located conveniently across the state, offering a wide variety of programs that are the starting points for high-value careers. To see some of them, click &lt;<a href=’/educations’>here</a>&gt;.</p>"
       },
       {
         "id": 4,
         "content": "Do I need to graduate from a 4-Year university to get a good job?",
-        "answer": "<p>No, there are a variety of educational paths you can take that will provide the basic skills and knowledge you need to get a good job. There are many high-value jobs like engineers, social workers and accountants that do require 4-year college degrees. However, there are many more high-value jobs and careers that require some type of education beyond high school – but not a 4-year degree. A few good examples include: machinists and welders, mechanical drafters, PTECH operators, web developers and radiologic technologists. The important thing is to find something that matches your interests. To figure out what works best for you, start &lt;<a href='/guided-journey'>here</a>&gt;.</p>"
+        "answer": "<p>No, there are a variety of educational paths you can take that will provide the basic skills and knowledge you need to get a good job. There are many high-value jobs like engineers, social workers and accountants that do require 4-year college degrees. However, there are many more highvalue jobs and careers that require some type of education beyond high school — but not a 4-year degree. A few good examples include: machinists and welders, mechanical drafters, PTEC operators, web developers, and radiologic technologists. The important thing is to find something that matches your interests. To figure out what works best for you, start &lt;<a href='/guided-journey'>here</a>&gt;.</p>"
       }
     ]
   },
@@ -32,12 +32,12 @@
       {
         "id": 1,
         "content": "Do jobs transfer between industries?",
-        "answer": "<p>Yes, many jobs and career paths require skills and abilities that can be used across industries. For example, Computer Network Support Specialists and Bookkeepers are vital jobs in almost every type of business, industry and government organization. However, some jobs like Paramedics and Automotive Technicians are more industry-specific.</p>"
+        "answer": "<p>Yes, many jobs and career paths require skills and abilities that can be used across industries. For example, Computer Network Support Specialists and Bookkeepers are vital jobs in almost every type of business, industry, and government organization. However, some jobs like Paramedics and Automotive Technicians are more industry-specific.</p>"
       },
       {
         "id": 2,
         "content": "How do I find the main industries in my region?",
-        "answer": "<p>You can find significant industries in your region by going to &lt;<a href='/'>our homepage</a>&gt;. Just click on your region of the Louisiana map and you’ll find them.</p>"
+        "answer": "<p>You can find significant industries in your region by going to &lt;<a href='/'>our homepage</a>&gt;. Just click on your region of the Louisiana map, and you’ll find them.</p>"
       },
       {
         "id": 3,
@@ -47,7 +47,7 @@
       {
         "id": 4,
         "content": "How did you decide which jobs to feature?",
-        "answer": "<p>We chose to feature the most available, high-wage high-skill jobs in Louisiana that do not require a four-year college degree. We’re committed to helping you find something more than just a job — we want to help you find a sustainable, rewarding career.</p>"
+        "answer": "<p>We chose to feature the most available, high-wage, high-skill jobs in Louisiana that do not require a 4-year college degree. We’re committed to helping you find something more than just a job — we want to help you find a sustainable, rewarding career.</p>"
       }
     ]
   },
@@ -58,7 +58,7 @@
       {
         "id": 1,
         "content": "How can I pay for school?",
-        "answer": "<p>You can apply for financial aid which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fsaid.ed.gov/npas/index.htm' target='_blank'>here</a>&gt;.</p>"
+        "answer": "<p>You can apply for financial aid, which includes grants, loans, and work-study programs. You can apply online at www.fafsa.gov. You will need an FSA ID, which is an electronic signature. To make one, start &lt;<a href='https://fsaid.ed.gov/npas/index.htm' target='_blank'>here</a>&gt;.</p>"
       },
       {
         "id": 2,
@@ -78,7 +78,7 @@
       {
         "id": 5,
         "content": "Do I need to be admitted before I can apply for financial aid at a particular college or university within LCTCS?",
-        "answer": "<p>Not at all. You can apply for aid any time after January 1st. To actually receive your funds however, you must be admitted and enrolled at the school of your choice.</p>"
+        "answer": "<p>Not at all. You can apply for aid any time after January 1. To actually receive your funds, however, you must be admitted and enrolled at the school of your choice.</p>"
       },
       {
         "id": 6,
@@ -99,17 +99,17 @@
       {
         "id": 2,
         "content": "Why are you doing this? What is the goal of Louisiana Calling?",
-        "answer": "<p>We believe every Louisianan deserves the opportunity to find a rewarding career that allows them to pursue their own hopes and dreams.</p><p>We also believe that there is a need here in Louisiana to raise our awareness of the many high-value careers available today in our state that require some level of training and education beyond high school but not a 4-year college degree.</p><p>Louisiana Calling is doing this to help Louisiana families live the lives they want for themselves. Strong families make for strong communities and strong communities make a more prosperous Louisiana.</p>"
+        "answer": "<p>We believe every Louisianan deserves the opportunity to find a rewarding career that allows them to pursue their own hopes and dreams.</p><p>We also believe that there is a need here in Louisiana to raise our awareness of the many high-value careers available today in our state that require some level of training and education beyond high school but not a 4-year college degree.</p><p>Louisiana Calling is doing this to help Louisiana families live the lives they want for themselves. Strong families make for strong communities, and strong communities make a more prosperous Louisiana.</p>"
       },
       {
         "id": 3,
         "content": "How is Louisiana Calling funded? Who are the donors? ",
-        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='/abouts?tab=our-community'>here</a>.&gt;</p>"
+        "answer": "<p>Louisiana Calling is funded through the tax-deductible contributions of a growing list of committed individuals and organizations, and through financial grants from nonprofit foundations that believe in the Louisiana Calling mission. You can find a list of our funders &lt;<a href='/abouts?tab=our-community'>here</a>&gt;.</p>"
       },
       {
         "id": 4,
         "content": "Where is Louisiana Calling based and how is it managed?",
-        "answer": "<p>We’re based in Baton Rouge and our operations are managed by SSA Consultants, a Baton Rouge-based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='/abouts?tab=our-community'>here</a>.&gt;</p>"
+        "answer": "<p>We’re based in Baton Rouge, and our operations are managed by SSA Consultants, a Baton Rouge- –based management consulting firm with decades of broad experience designing and organizing statewide initiatives.</p><p>Louisiana Calling is governed by a dedicated group of individuals that serve (without compensation) on the Board of Directors. You can find our list of Directors &lt;<a href='/abouts?tab=our-community'>here</a>&gt;.</p>"
       }
     ]
   },
@@ -120,7 +120,7 @@
       {
         "id": 1,
         "content": "I really appreciate the work Louisiana Calling is doing. How can I volunteer and help?",
-        "answer": "<p>There are two great ways you can help. First, you can spread the word. Share with everyone who will listen why you appreciate the work of Louisiana Calling – and encourage them to check out the stories and resources available on this website.</p><p>Second, you can make a financial contribution to help underwrite the work of Louisiana Calling. A multiyear, statewide public messaging effort this big and ambitious requires a whole lot of money …and we are raising the money as we go from individuals, organizations and foundations that, like you, appreciate the work Louisiana Calling is doing.</p>"
+        "answer": "<p>There are two great ways you can help. First, you can spread the word. Share with everyone who will listen why you appreciate the work of Louisiana Calling — and encourage them to check out the stories and resources available on this website.</p><p>Second, you can make a financial contribution to help underwrite the work of Louisiana Calling. A multiyear, statewide public messaging effort this big and ambitious requires a whole lot of money, and we are raising the money as we go from individuals, organizations, and foundations that, like you, appreciate the work Louisiana Calling is doing.</p>"
       }
     ]
   },
@@ -135,8 +135,8 @@
       },
       {
         "id": 2,
-        "content": "What are “Interests” and how do you define each interest listed on this website?",
-        "answer": "<p>We define interests as the preferences you have for where you want to work, and how you’d like to work, in any given job-site or environment. The source for these definitions is the O*NET Online, the most widely recognized national resource for career information.</p><p><strong>Realistic</strong> careers often involve practical, hands-on problems and solutions. Examples of this career’s duties and environments include: working outside with tools, and/or working with nature and real-world materials like wood and machinery.</p><p><strong>Investigative</strong> careers often involve critical thinking. Examples of this career’s duties and environments include: in-depth research, paperwork, finding clues and curiosity, and working in groups or teams.</p><p><strong>Artistic</strong> careers often involve working with creative ideas, designs and different materials. Examples of this career’s duties and environments include: self-expression through design, forms and patterns, and working independently and on teams.</p><p><strong>Social</strong> careers often involve talking to lots of people and engaging with teams everyday. Examples of this career type’s duties and environments include: teaching people and learning from them, group and team work, and service-oriented workplaces.</p><p><strong>Enterprising</strong> careers often involve kickstarting and leading projects. Examples of this career type’s duties and environments include: teaching and leading people, making decisions, taking risks and business-oriented workplaces.</p><p><strong>Conventional</strong> careers often involve following a set number of steps, or procedures. Examples of this career type’s duties and environments include: repetition, data and information analysis, detail-oriented work, following authority figures, and workplaces where rules and regulations are often stressed.</p>"
+        "content": "What are “Interests,” and how do you define each interest listed on this website?",
+        "answer": "<p>We define interests as the preferences you have for where you want to work, and how you’d like to work, in any given job-site or environment. The source for these definitions is the O*NET Online, the most widely recognized national resource for career information.</p><p><strong>Realistic</strong> careers often involve <strong>working outdoors, operating tools and equipment, data and analytics, physical and hands-on work,</strong> and <strong>research and exploration.</strong></p><p>Examples of this career’s duties and environments include: working outside with tools, and/or working with nature and real-world materials like wood and machinery.</p><p><strong>Investigative</strong> careers often involve <strong>research and exploration, reading and writing,</strong> and <strong>problem solving.</strong></p><p>Examples of this career’s duties and environments include: in-depth research, paperwork, finding clues and curiosity, reading how-to manuals, writing instructions and messages, and working in groups or teams.</p><p><strong>Artistic</strong> careers often involve working with <strong>art, design and creativity.</strong></p><p>Examples of this career’s duties and environments include: self-expression through design, forms and patterns, and working independently and on teams.</p><p><strong>Social</strong> careers often involve <strong>communication and collaboration,</strong> and <strong>caregiving.</strong></p><p>Examples of this career type’s duties and environments include: teaching people and learning from them, group and team work, and service-oriented workplaces.</p><p><strong>Enterprising</strong> careers often involve <strong>independent decision making, communication and collaboration, business and finance, and health and safety.</strong></p><p>Examples of this career type’s duties and environments include: teaching and leading people, making decisions, taking risks and business-oriented workplaces.</p><p><strong>Conventional</strong> careers often involve <strong>research and exploration, problem solving,</strong> and <strong>technology and computing.</strong></p><p>Examples of this career type’s duties and environments include: repetition, data and information analysis, detail-oriented work, following authority figures, and workplaces where rules and regulations are often stressed.</p>"
       },
       {
         "id": 3,
@@ -145,16 +145,11 @@
       },
       {
         "id": 4,
-        "content": "I’m in High School, can I still get a job?",
-        "answer": "<p>It’s definitely possible. If you’re in HS, we suggest checking out JumpStart. With this program, you can get a leg up on professional skills training for jobs in your area.</p>"
+        "content": "I’m in high school. Can I still get a job?",
+        "answer": "<p>It’s definitely possible. If you’re in high school, we suggest checking out Jump Start. With this program, you can get a leg up on professional skills training for jobs in your area.</p>"
       },
       {
         "id": 5,
-        "content": "What are “Skills” and how do you define each skill listed on this website?",
-        "answer": "<p>We define skills as the know how required, or learned, for different careers and pathways. The source for these definitions is the O*NET Online, the most widely recognized national resource for career information.</p><p><strong>Communication and Social Skills</strong> are all about active listening, speaking and communicating with people.</p><p><strong>Computer and IT Skills</strong> are technical skills that are specific to electronic and computer devices, including repairing software and hardware, and understanding mathematical and design concepts.</p><p><strong>Learning Skills</strong> are all about understanding information, its implications for future and past decisions, and problem-solving and decision-making.</p><p><strong>Management Skills</strong> involve having a good grasp on working with different resources, human and otherwise, and allocating them best for any situation.</p><p><strong>Problem Solving Skills</strong> spring from your use of logic and reasoning. With them you can find solutions to situations, come to conclusions, and identify issues in the workplace or the work itself.</p><p><strong>Reading Skills</strong> are all about understanding and interpreting written work like data, paperwork, and notes.</p><p><strong>Technical and Mechanical Skills</strong> are about applying your hands-on and thinking abilities to design, operate, repair, or set-up different machines, tools, and technological systems.</p><p><strong>Writing Skills</strong> involve the usage of your language abilities to effectively communicate ideas, problems, and more through writing.</p>"
-      },
-      {
-        "id": 6,
         "content": "How do you know about all these jobs?",
         "answer": "<p>We collaborate with the Louisiana Workforce Commission and Louisiana Community and Technical College System. This allows us access to current databases of jobs and training programs available across the state.</p>"
       }

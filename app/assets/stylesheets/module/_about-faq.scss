@@ -75,6 +75,7 @@
 
     a {
       color: $default;
+      @extend %text-underline;
 
       @include linkState() {
         color: $default;
