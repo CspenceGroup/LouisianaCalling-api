@@ -37,6 +37,7 @@ $(document).on('turbolinks:load', function(){
         $('#searchLimit').val(10);
         $('#searchOffset').val(0);
         filterGuidedJourney(false);
+        $('.find-opportunity').removeClass('find-opportunity-inactive');
       }
       else if(currentIndex === 0) {
 
@@ -65,7 +66,8 @@ $(document).on('turbolinks:load', function(){
   var contentStep = $('.sidebar-steps-result__content'),
       contentInterest = contentStep.find('.sidebar-steps-result__content-interest'),
       contentRegion = contentStep.find('.sidebar-steps-result__content-region'),
-      contentEducation = contentStep.find('.sidebar-steps-result__content-education');
+      contentEducation = contentStep.find('.sidebar-steps-result__content-education'),
+      text = 'currently in high school';
 
   /**
    * This function handle the action when user click on region map
@@ -144,8 +146,7 @@ $(document).on('turbolinks:load', function(){
 
   $('.education-item').on('click', function(event) {
     var value = $(this).find('p').attr('title'),
-        educationContent = $('.sidebar-steps-result__content-education'),
-        text = 'current in high school';
+        educationContent = $('.sidebar-steps-result__content-education');
 
     /*Check item in step education when selected and unselected*/
     if($(this).hasClass('education')) {
@@ -160,10 +161,7 @@ $(document).on('turbolinks:load', function(){
 
     /*Check content education in side bar left have value or not*/
     checkResultStep(contentEducation);
-
-    if (value.toLowerCase() === text) {
-      $('.jump-start-guide').toggleClass("jump-start-inactive");
-    }
+    displayJumpStart(value, text);
 
   });
 
@@ -282,5 +280,13 @@ $(document).on('turbolinks:load', function(){
     $('.sidebar-steps-result__content-details p[title]').remove();
     $('.guided-journey-map path.active, .guided-journey-map text.active').removeClass('active');
     $('.guided-form__interest .education-item.education-active').removeClass('education-active').addClass('education');
+    $('.find-opportunity').addClass('find-opportunity-inactive');
+    $('.jump-start-guide').addClass("jump-start-inactive");
+  }
+
+  function displayJumpStart(val, txt) {
+    if (val.toLowerCase() === txt) {
+      $('.jump-start-guide').toggleClass("jump-start-inactive");
+    }
   }
 });
