@@ -46,12 +46,13 @@
   color: $white;
   font-size: rem(20.83);
   padding-top: rem(165);
+  bottom: rem(-60);
   @extend %text-center;
   @extend %absolute;
-  @extend %left-bottom-0;
+  @extend %left-0;
   @extend %background-cover;
   @extend %background-position-center;
-  @include boxSize(100%, rem(450));
+  @include boxSize(100%, rem(460));
   @include background-image('find-opportunity-banner.jpg');
 
   h3 {

@@ -162,7 +162,7 @@ $(document).on('turbolinks:load', function(){
     checkResultStep(contentEducation);
  
     if (value.toLowerCase() === text) {
-      $('.guided-journey-results').toggleClass("jump-start-inactive");
+      $('.jump-start-guide').toggleClass("jump-start-inactive");
     }
 
   });
