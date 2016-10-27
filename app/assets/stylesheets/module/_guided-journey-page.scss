@@ -11,8 +11,9 @@
   @include e('steps') {
     color: $default;
     min-height: rem(735);
-    margin-bottom: rem(-30);
+    margin-bottom: rem(30);
     @include background-image('map-bg.png');
+    @extend %background-repeat-x;
 
     li {
       @extend %float-left;
@@ -78,7 +79,7 @@
     }
 
     @include e('container') {
-      margin-top: rem(38);
+      margin: rem(38) 0 rem(30) 0;
     }
   }
 
@@ -145,7 +146,7 @@
 
   @include e('content') {
     color: $profile-header;
-    padding: rem(41) 0 0 rem(27);
+    padding: rem(41) rem(22) 0 rem(27);
 
     h4 {
       @extend %acumin-pro-cond-regular;

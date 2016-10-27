@@ -145,6 +145,9 @@ $(document).on('turbolinks:load', function(){
       $('.sidebar-steps-result__content-education p[title="' + value + '"]').remove();
     }
 
+    $('.sidebar-steps-result__content-education').show();
+    checkResultStep(contentEducation);
+
     if (value.toLowerCase() === text) {
       $('.guided-journey-results').toggleClass("jump-start-inactive");
     }
@@ -205,9 +208,8 @@ $(document).on('turbolinks:load', function(){
   // Click see more button in result step
   $('#see-more-result-step').click(function() {
     $(this).hide();
-
     $('.indicator-loading-see-more').show();
-    filterGuidedJourney();
+    filterGuidedJourney(true);
     $('.indicator-loading-step').hide();
   });
 
