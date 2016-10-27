@@ -23,7 +23,9 @@ class AboutController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      flash[:notice] = 'Your message has successfully sent out.'
+      flash[:notice] = 'Your message has been sent successfully.'
+      # reset Contact Us Form
+      @contact = Contact.new
     else
       # Handling error messages
       errors = @contact.errors.messages

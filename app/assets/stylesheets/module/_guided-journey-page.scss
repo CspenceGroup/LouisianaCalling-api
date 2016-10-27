@@ -11,8 +11,9 @@
   @include e('steps') {
     color: $default;
     min-height: rem(735);
-    margin-bottom: rem(-30);
+    margin-bottom: rem(30);
     @include background-image('map-bg.png');
+    @extend %background-repeat-x;
 
     li {
       @extend %float-left;
@@ -78,7 +79,7 @@
     }
 
     @include e('container') {
-      margin-top: rem(38);
+      margin: rem(38) 0 rem(30) 0;
     }
   }
 
@@ -112,19 +113,23 @@
 }
 
 
-.guided-form__steps > .steps a {
+.steps a {
   @extend %no-border-radius;
   color: $white;
   @extend %relative;
   padding-left: rem(20);
+
+  @include linkState() {
+    color: $white;
+  }
 }
 
-.guided-form__steps > .steps .current-info {
+.steps .current-info {
   @extend %absolute;
   left: rem(-999);
 }
 
-.guided-form__steps > .actions {
+.actions {
   display: none;
 }
 
@@ -136,12 +141,12 @@
 
   @include e('btn') {
     @extend %overflow-hidden;
-    padding: rem(33) 0 rem(40) 0;
+    padding: 0 rem(13) rem(40) rem(13);
   }
 
   @include e('content') {
     color: $profile-header;
-    padding: rem(41) 0 0 rem(27);
+    padding: rem(41) rem(22) 0 rem(27);
 
     h4 {
       @extend %acumin-pro-cond-regular;
@@ -231,5 +236,35 @@
   &:after {
     right: rem(-10);
     z-index: -22;
+  }
+}
+
+span.current-info.audible {
+  display: none;
+}
+
+.indicator-loading-step {
+  margin: rem(40) auto 0 auto;
+}
+
+.sidebar-steps-result__btn.sidebar-steps-result__btn-next {
+  padding-right: rem(60);
+  .btn-step-back {
+    display: none;
+  }
+
+  .btn-step-next {
+    display: block;
+  }
+}
+
+.sidebar-steps-result__btn.sidebar-steps-result__btn-back {
+  padding-left: rem(60);
+  .btn-step-back {
+    display: block;
+  }
+
+  .btn-step-next {
+    display: none;
   }
 }

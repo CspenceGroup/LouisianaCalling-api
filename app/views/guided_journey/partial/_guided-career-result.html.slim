@@ -1,7 +1,7 @@
 - careers.each do |career|
-  .guided-result-item
+  .guided-result-item id=career.id
     .guided-result-item__photo
-      = image_tag career.photo_medium
+      = image_tag career.photo_medium, lazy: true, class: 'lazy-load'
     .guided-result-item__info
       .guided-result-item__flames
         - career.demand.to_i.times do

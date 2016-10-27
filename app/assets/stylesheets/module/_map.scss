@@ -118,13 +118,13 @@
 text {
   fill: $map-active;
   text-transform: uppercase;
-  // font-family: 'BrandonGrotesque';
-  font-size: 12.5px;
+  font-family: 'BrandonGrotesque-Bold';
+  font-size: rem(9);
+  @extend %cursor-default;
 }
 
 text.active {
   fill: $white;
-  // font-family: 'BrandonGrotesque-Bold';
 }
 
 .data-map-hidden {
