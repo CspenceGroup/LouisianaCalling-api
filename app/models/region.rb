@@ -17,8 +17,8 @@ class Region < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
-  scope :filter_by_name, lambda { |name|
-    where('name like ?', name)
+  scope :filter_by_names, lambda { |names|
+    where('LOWER(name) IN (?)', names)
   }
 
   def self.find_region(region_name)
