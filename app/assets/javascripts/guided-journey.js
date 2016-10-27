@@ -145,7 +145,7 @@ $(document).on('turbolinks:load', function(){
   $('.education-item').on('click', function(event) {
     var value = $(this).find('p').attr('title'),
         educationContent = $('.sidebar-steps-result__content-education'),
-        text = 'currently in high school';
+        text = 'current in high school';
 
     /*Check item in step education when selected and unselected*/
     if($(this).hasClass('education')) {
@@ -160,7 +160,7 @@ $(document).on('turbolinks:load', function(){
 
     /*Check content education in side bar left have value or not*/
     checkResultStep(contentEducation);
- 
+
     if (value.toLowerCase() === text) {
       $('.jump-start-guide').toggleClass("jump-start-inactive");
     }

@@ -10,21 +10,21 @@ $(document).on('turbolinks:load', function(){
   /**
    * Related Careers sorting tabs
    */
-  $('#sortInterests').on('click', function() {
-    $(this)
-      .closest('.related-careers-container')
-      .removeClass('career-skill-active')
-      .addClass('career-interest-active');
-    $(".related-item__name").dotdotdot({});
-  });
+  // $('#sortInterests').on('click', function() {
+  //   $(this)
+  //     .closest('.related-careers-container')
+  //     .removeClass('career-skill-active')
+  //     .addClass('career-interest-active');
+  //   $(".related-item__name").dotdotdot({});
+  // });
 
-  $('#sortSkills').on('click', function() {
-    $(this)
-      .closest('.related-careers-container')
-      .removeClass('career-interest-active')
-      .addClass('career-skill-active');
-    $(".related-item__name").dotdotdot({});
-  });
+  // $('#sortSkills').on('click', function() {
+  //   $(this)
+  //     .closest('.related-careers-container')
+  //     .removeClass('career-interest-active')
+  //     .addClass('career-skill-active');
+  //   $(".related-item__name").dotdotdot({});
+  // });
 
   /**
    * Search nearby programs from career details page
@@ -84,6 +84,8 @@ $(document).on('turbolinks:load', function(){
       .closest('.careers-result__container')
       .removeClass('career-list-view-active')
       .addClass('career-grid-view-active');
+
+    $(".related-item__name").dotdotdot({});
   });
 
   $("#slider-range").slider({
@@ -236,7 +238,9 @@ $(document).on('turbolinks:load', function(){
 
           lazyloadImages();
 
-          $(".related-item__name").dotdotdot({});
+          if ($('#careersGrid').is(":visible")) {
+            $(".related-item__name").dotdotdot({});
+          }
 
           if (response.is_see_more) {
             $('#careers-see-more,#careers-see-more-list').show();
