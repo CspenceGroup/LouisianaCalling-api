@@ -67,9 +67,6 @@ $(document).on('turbolinks:load', function(){
           return false;
         }
       }
-      else if((currentIndex === 1 && currentIndex > newIndex) || currentIndex === 2 && currentIndex > newIndex) {
-        return true;
-      }
       else if(currentIndex === 1 && currentIndex < newIndex) {
         var checkedRegion = $('.guided-journey-map path').hasClass('active');
         if(!checkedRegion) {
