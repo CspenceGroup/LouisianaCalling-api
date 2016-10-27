@@ -11,7 +11,7 @@
   @include e('steps') {
     color: $default;
     min-height: rem(735);
-    margin-bottom: rem(30);
+    padding-bottom: rem(30);
     @include background-image('map-bg.png');
 
     li {
@@ -238,6 +238,40 @@
   }
 }
 
+.btn-step-start {
+  background-color: $red-bg;
+  @extend %float-right;
+  margin-right: rem(20);
+  padding-left: rem(23);
+  @extend %text-capitalize;
+  width: rem(110);
+  display: none;
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(45deg);
+    @include boxSize(rem(20), rem(20));
+  }
+
+  &:before {
+    left: rem(-10);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(-10);
+    z-index: -22;
+  }
+}
+
 span.current-info.audible {
   display: none;
 }
@@ -261,6 +295,17 @@ span.current-info.audible {
   padding-left: rem(60);
   .btn-step-back {
     display: block;
+  }
+
+  .btn-step-next {
+    display: none;
+  }
+}
+
+.sidebar-steps-result__btn-next.sidebar-steps-result__btn-back {
+  padding-right: rem(37);
+  .btn-step-back {
+    display: none;
   }
 
   .btn-step-next {
