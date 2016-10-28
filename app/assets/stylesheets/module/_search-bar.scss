@@ -21,7 +21,7 @@ form {
 
   .search-input {
     font-size: rem(14.7);
-    text-indent: rem(5);
+    text-indent: rem(2);
     border: solid rem(1) $search-border;
     @extend %no-border-radius;
     @extend %acumin-pro-cond-regular;

@@ -10,13 +10,13 @@
 
   h2 {
     font-size: rem(29);
-    line-height: rem(40);
+    line-height: rem(35);
     @extend %i-owan-old-style;
   }
 }
 
 .find-your-path {
-  padding-top: rem(120);
+  padding-top: rem(112);
   @include background-image('photo-to-do.jpg');
 
   @include e('title') {
@@ -26,18 +26,19 @@
   }
 
   @include e('link') {
-    margin-left: rem(25);
+    margin: rem(2) 0 0 rem(36);
     @include background-image('find-your-path.png');
     @include boxSize(rem(225), rem(110));
   }
 }
 
 .want-to-talk {
-  padding-top: rem(155);
+  padding-top: rem(148);
   @include background-image('photo-talk.jpg');
 
   @include e('link') {
-    margin-top: rem(-10);
+    top: rem(-14);
+    right: rem(13);
     @extend %relative;
     @include background-image('tel-arrow.png');
     @include boxSize(rem(220), rem(90));
