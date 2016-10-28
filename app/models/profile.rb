@@ -125,7 +125,7 @@ class Profile < ActiveRecord::Base
 
   def self.create_profile_educations(educations, profile)
     educations.each do |education_name|
-      education = Education.find_or_create(education_name)
+      education = Education.find_education(education_name)
 
       ProfileEducation.create(
         profile_id: profile.id,
