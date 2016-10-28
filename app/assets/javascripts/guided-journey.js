@@ -13,6 +13,9 @@ $(document).on('turbolinks:load', function(){
     bodyTag: "fieldset",
     autoFocus: false,
     onStepChanged: function(event, currentIndex, priorIndex) {
+      $('.btn-step-start').hide();
+      $('.btn-step-back, .btn-step-next').show();
+      
       if (currentIndex < priorIndex) {
         for (var idx = priorIndex; idx > currentIndex ; idx--) {
           $(event.target).find("li:eq(" + idx + ")").addClass('disabled').removeClass('done');

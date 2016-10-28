@@ -25,7 +25,7 @@
 
   @include e('main-container') {
     width: rem(1045);
-    padding-top: rem(30);
+    padding: rem(30) 0;
     @extend %margin-auto;
     @extend %overflow-hidden;
   }
@@ -160,6 +160,7 @@
       @extend %text-uppercase;
       font-size: rem(12);
       padding-top: rem(7);
+      line-height: rem(13);
     }
   }
 
