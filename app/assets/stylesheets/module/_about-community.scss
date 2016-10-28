@@ -7,7 +7,7 @@
     @extend %text-center;
     color: $default;
     width: rem(650);
-    margin: 0 auto rem(69) auto;
+    @extend %margin-auto;
 
     h2 {
       font-size: rem(33.3);
@@ -24,7 +24,7 @@
 }
 
 .about-community {
-  margin-top: rem(80);
+  margin-top: rem(66);
 
   &:first-child {
     @extend %no-margin-top;
@@ -39,7 +39,7 @@
   }
 
   @include e('content') {
-    margin-top: rem(40);
+    margin-top: rem(14);
     @extend %overflow-hidden;
   }
 
@@ -95,7 +95,7 @@
   }
 
   @include e('item-donors') {
-    @include boxSize(rem(257), rem(192));
+    @include boxSize(rem(258), rem(187));
     @extend %float-left;
     border: rem(1) solid $default;
     border-right: 0;
@@ -140,46 +140,25 @@
 }
 
 .about-community-partner {
+  margin-top: rem(31);
+
   p {
     font-size: rem(29);
     @extend %acumin-pro-cond-regular;
     color:$filter-careers-details;
     padding-left: rem(8);
+    margin-bottom: rem(5);
   }
 }
 
+.community-dornors {
+  margin-top: rem(77);
 
-  // &:hover {
-  //   .about-community__overlay {
-  //     display: block;
-  //   }
-  // }
+  h3 {
+    margin-bottom: rem(30); 
+  }
+}
 
-  // @include e('overlay') {
-  //   @extend %absolute;
-  //   @extend %top-0;
-  //   height: 100%;
-  //   display: none;
-  //   color: $white;
-  //   padding: rem(45) rem(28) 0 rem(32);
-  //   line-height: rem(20);
-  //   background-color: $modal-video-bg;
-
-  //   h4 {
-  //     font-size: rem(20.83);
-  //     @extend %text-uppercase;
-  //     @extend %brandon-grotesque;
-  //   }
-
-  //   p {
-  //     font-size: rem(16.67);
-  //     @extend %acumin-pro-cond;
-  //     padding-top: rem(32);
-  //   }
-  // }
-// }
-
-
-
-
-
+.community-partners {
+  margin-top: rem(71);
+}

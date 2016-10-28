@@ -82,6 +82,10 @@
     font-size: rem(16.7);
     line-height: rem(20);
     @extend %acumin-pro-cond-bi;
+
+    &:first-child {
+      margin-top: rem(4);
+    }
   }
 }
 
@@ -95,7 +99,7 @@
 }
 
 .btn-full-story {
-  margin-top: rem(15);
+  margin-top: rem(30);
   @include boxSize(rem(140), rem(56));
 
   @include e('link') {

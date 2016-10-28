@@ -26,13 +26,13 @@
 
   @include e('item-title') {
     font-size: rem(16.67);
-    margin-bottom: rem(25);
+    margin-bottom: rem(21);
     @extend %brandon-grotesque;
     @extend %text-uppercase;
   }
 
   p {
-    margin-bottom: rem(20);
+    margin-bottom: rem(25);
     line-height: rem(20);
   }
 

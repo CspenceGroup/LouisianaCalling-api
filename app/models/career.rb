@@ -219,7 +219,7 @@ class Career < ActiveRecord::Base
 
   def self.create_career_educations(educations, career)
     educations.each do |education_name|
-      education = Education.find_or_create(education_name)
+      education = Education.find_education(education_name)
 
       CareerEducation.create(
         career_id: career.id,
