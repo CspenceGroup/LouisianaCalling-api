@@ -52,7 +52,7 @@
     @extend %float-left;
     margin-bottom: 0;
     margin-left: rem(20);
-    width: rem(260);
+    width: auto;
 
     &:first-child {
       margin-left: 0;
