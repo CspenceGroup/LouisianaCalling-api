@@ -2,7 +2,7 @@
   color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
-  min-height: rem(580);
+  height: rem(516);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
   @extend %background-repeat;
@@ -10,7 +10,7 @@
   @include background-image('careers/great-job-bg.jpg');
 
   @include e('details') {
-    @include boxSize(rem(326), rem(332));
+    @include boxSize(rem(302), rem(307));
     @include background-image('top-jobs-border.png');
   }
 
@@ -20,10 +20,14 @@
   }
 
   @include e('map') {
-    top: rem(-250);
+    top: rem(-252);
     right: rem(510);
     @include boxSize(rem(585), rem(615));
     @extend %absolute;
+  }
+
+  @include e('map-details') {
+    top: rem(-243);
   }
 
   .job-heading {
@@ -33,7 +37,7 @@
 }
 
 .map-details {
-  margin-right: rem(163);
+  margin-right: rem(186);
   @extend %background-no-repeat;
   @extend %relative;
   @extend %float-right;
@@ -48,17 +52,18 @@
 .job-heading {
 
   @include m('pull-left') {
-    margin-right: rem(321);
+    margin-right: rem(327);
   }
 
   @include m('pull-right') {
-    margin: 0 rem(302) rem(12) 0;
+    margin: 0 rem(307) rem(12) 0;
+    padding-top: rem(7);
   }
 }
 
 .job-desc {
   font-size: rem(18.8);
-  margin-right: rem(225);
+  margin-right: rem(289);
   color: $profile-name-shadow;
   @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
@@ -68,8 +73,7 @@
 .region-name {
   font-size: rem(33.3);
   line-height: 1.875;
-  top: rem(1);
-  right: rem(16);
+  right: rem(14);
   color: $profile-name-shadow;
   @extend %top-0;
   @extend %text-uppercase;
@@ -83,11 +87,12 @@
 
 .job-list {
   top: rem(62);
-  left: rem(20);
+  left: rem(23);
+  padding-right: rem(16);
   @extend %absolute;
   @extend %overflow-y-scroll;
   @extend %acumin-pro-cond-regular;
-  @include boxSize(rem(270), rem(230));
+  @include boxSize(rem(265), rem(230));
 
   a {
     color: $profile-name-shadow;
@@ -100,7 +105,7 @@
 }
 
 .map-title {
-  margin: rem(57) 0 rem(20) rem(178);
+  margin: rem(37) 0 rem(26) rem(178);
   @extend %overflow-hidden;
 }
 
@@ -132,7 +137,7 @@ text.active {
 }
 
 .asterisk-copy-home {
-  margin-top: rem(365);
+  margin-top: rem(346);
   font-size: rem(15);
   @extend %acumin-pro-cond-regular;
   @extend %text-center;

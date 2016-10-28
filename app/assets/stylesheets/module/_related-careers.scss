@@ -16,11 +16,11 @@
   }
 
   @include e('header') {
-    padding: rem(53) 0 rem(33) rem(5);
+    padding: rem(53) 0 rem(27) rem(5);
   }
 
   @include e('title') {
-    margin-bottom: rem(30);
+    margin-bottom: rem(36);
     @extend %text-capitalize;
     padding-left: rem(7);
   }

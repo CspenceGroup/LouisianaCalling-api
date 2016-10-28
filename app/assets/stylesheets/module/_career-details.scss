@@ -37,7 +37,7 @@
 
   @include e('news-container') {
     width: 35.25%;
-    padding: rem(58) rem(98) 0 rem(60);
+    padding: rem(55) rem(98) 0 rem(60);
     background: $feature-news-bg;
   }
 
@@ -47,7 +47,7 @@
   }
 
   @include e('what-to-do') {
-    padding: rem(32) rem(67) 0 0;
+    padding: rem(26) rem(67) 0 0;
 
     p {
       font-size: rem(16.7);
@@ -73,7 +73,7 @@
     h2 {
       font-size: rem(20.8);
       line-height: 1.8;
-      margin-bottom: rem(25);
+      margin-bottom: rem(21);
       @extend %brandon-grotesque;
       @extend %text-uppercase;
     }

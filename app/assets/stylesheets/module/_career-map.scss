@@ -1,15 +1,15 @@
 .career-map {
-  padding-bottom: rem(30);
+  height: rem(610);
 
   @include e('details') {
-    margin-top: rem(2);
+    margin: rem(24) rem(146) 0 0;
     @extend %relative;
     @include boxSize(rem(346), rem(350));
     @include background-image('career-options-border.png');
   }
 
   @include e('title') {
-    margin-top: rem(52);
+    margin: rem(31) 0 0 rem(182);
     @extend %text-left;
   }
 }

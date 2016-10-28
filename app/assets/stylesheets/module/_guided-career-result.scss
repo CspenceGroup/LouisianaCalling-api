@@ -16,7 +16,7 @@
   }
 
   @include e('info') {
-    padding: rem(15) 0 0 rem(10);
+    padding: rem(11) 0 0 rem(10);
     @extend %float-right;
     @include boxSize(rem(190), 100%);
   }
@@ -30,7 +30,7 @@
 
   @include e('career-name') {
     width: rem(160);
-    margin-top: rem(14);
+    margin-top: rem(7);
     line-height: 1;
 
     a {

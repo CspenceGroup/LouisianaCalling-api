@@ -1,5 +1,5 @@
 .find-programs {
-  padding-top: rem(50);
+  padding-top: rem(55);
   height: rem(225);
   @extend %background-repeat;
   @include background-image('career-search-bg.jpg');
@@ -10,8 +10,10 @@
 
   @include e('title') {
     color: $profile-header;
-    margin-bottom: rem(28);
     @extend %text-center;
+    width: rem(824);
+    @extend %text-left;
+    margin: 0 auto rem(31) auto;
   }
 
   .search-input {

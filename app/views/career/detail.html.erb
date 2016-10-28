@@ -59,7 +59,7 @@
           <h2 class="main-title career-title career-title--pull-left" id="career-name" title="<%= career.title%>"><%= career.title %></h2>
           <h2 class="main-title career-title career-title--pull-right">Statistics By Region</h2>
         </div>
-        <div class="top-jobs__map" id="career-map">
+        <div class="top-jobs__map top-jobs__map-details" id="career-map">
           <%= render "career/partial/map" %>
         </div>
         <div class="career-map__details map-details">
@@ -149,10 +149,12 @@
         </section>
       <% end %>
       <section class="want-to-talk guided-journey__box career-guided-journey">
-        <h2 class="main-title want-to-talk__title">Want to talk?</h2>
-        <p class="journey-link want-to-talk__link">
-          <span>1-844-LA-CALLS</span>
-        </p>
+        <div class="career-guided-journey__content">
+          <h2 class="main-title want-to-talk__title">Want to talk?</h2>
+          <p class="journey-link want-to-talk__link">
+            <span>1-844-LA-CALLS</span>
+          </p>
+        </div>
       </section>
     </section>
   </div>
