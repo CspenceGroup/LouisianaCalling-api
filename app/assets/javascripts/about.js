@@ -24,7 +24,8 @@ $(document).on('turbolinks:load', function(){
     // Hidden alert info
     $('.about-contact-container').find('.alert').hide();
     $('#about-tabs a[href="#contact-us"]').tab('show');
-    changeURL('About us', 'abouts?tab=contact-us')
+    changeURL('About us', 'abouts?tab=contact-us');
+    $('body').scrollTop(0);
   });
 
   $('#faq-footer').on('click', function(e) {
@@ -55,10 +56,6 @@ $(document).on('turbolinks:load', function(){
       window.location.href = '/abouts?tab=contact-us'
       $('body').scrollTop(0);
     }
-  });
-
-  $('.faq-contact-btn').on('click', function() {
-    $('body').scrollTop(0);
   });
 
   /*
@@ -118,41 +115,28 @@ $(document).on('turbolinks:load', function(){
       .addClass('category-active');
   });
 
-  // $('.faq-input').on('blur', function() {
-  //   var value = $(this).val();
-  //   if(!value) {
-  //     $('#faq-category-list').removeClass('category-inactive').addClass('category-active');
-  //     $('#faq-search-results').hide();
-  //     $('.faq-see-more').hide();
-  //   }
-  // });
-
-
-  /*Show question result when click search question*/
-  var size = $("#faq-search-results").find('.faq-result-item').size(),
-      countItem = $("#faq-search-results").find('.faq-result-item').length,
-      item = 5;
-  $("#faq-search-results").find('.faq-result-item:lt('+item+')').show();
-
   $('#faqSeeMore').on('click', function() {
-    item = (item+5 <= size) ? item+5 : size;
-    $("#faq-search-results").find('.faq-result-item:lt('+item+')').show();
-    var sizeShow = $("#faq-search-results").find('.faq-result-item:lt('+item+')').show().size();
+    var limit = $(this).data('limit'),
+      size = $("#faq-search-results").find('.faq-result-item.active').size(),
+      count = $(this).data('count');
 
-    if(sizeShow === countItem) {
+    limit = limit + size;
+
+    $("#faq-search-results").find('.faq-result-item:lt(' + limit + ')').addClass('active');
+
+    if(limit >= count) {
       $('.faq-see-more').hide();
     }
   });
-
 
   /*Show validation messages contact us form*/
   $('#aboutHelpForm').submit(function(event) {
     event.preventDefault();
 
     var target = event.target,
-        email = target[0].value,
-        subject = target[1].value,
-        message = target[2].value;
+        email = $.trim(target[0].value),
+        subject = $.trim(target[1].value),
+        message = $.trim(target[2].value);
 
     if (!email) {
       $('.alert-danger-email').show();
@@ -182,7 +166,7 @@ $(document).on('turbolinks:load', function(){
     event.preventDefault();
 
     var target = event.target,
-        keyWord = target[0].value;
+        keyWord = $.trim(target[0].value);
 
     if(!keyWord) {
       $('.about-faq__search').addClass('about-faq-error');

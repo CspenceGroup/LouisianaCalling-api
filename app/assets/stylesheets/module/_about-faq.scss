@@ -1,6 +1,6 @@
 .about-faq-container {
   width: rem(1060);
-  padding-top: rem(41);
+  padding: rem(41) 0 rem(23);
   @extend %margin-auto;
 }
 
@@ -97,7 +97,7 @@
   @include e('contact') {
     color: $default;
     margin: rem(35) 0 rem(60) 0;
-    @extend %text-center; 
+    @extend %text-center;
   }
 }
 
@@ -269,6 +269,9 @@
 
   p {
     margin-top: rem(5);
+  }
+  &.active {
+    display: block !important;
   }
 }
 

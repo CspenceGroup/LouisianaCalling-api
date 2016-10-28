@@ -1,5 +1,4 @@
 .edu-jumpstart {
-  margin-bottom: rem(-30);
   @include boxSize(auto, rem(530));
   
   @include e('tabs') {
