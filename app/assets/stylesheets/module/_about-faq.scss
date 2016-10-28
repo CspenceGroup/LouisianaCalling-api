@@ -45,8 +45,8 @@
   }
 
   @include e('topics') {
-    padding: rem(32) rem(5);
-    margin-top: rem(25);
+    padding: rem(32) rem(5) rem(20) 0;
+    margin-top: rem(15);
     color: $profile-header;
     background-color: $profile-name-shadow;
   }
@@ -71,7 +71,7 @@
   }
 
   @include e('items') {
-    margin-top: rem(55);
+    margin-top: rem(40);
 
     a {
       color: $default;
@@ -90,26 +90,26 @@
 
   @include e('item') {
     border-bottom: solid rem(1) $default;
-    padding-bottom: rem(17);
-    margin-top: rem(20);
+    padding-bottom: rem(23);
+    margin-top: rem(27);
   }
 
   @include e('contact') {
     color: $default;
-    margin: rem(35) 0 rem(60) 0;
+    margin: rem(70) 0 rem(60) 0;
     @extend %text-center;
   }
 }
 
 .faq-search {
   width: rem(823);
-  margin-top: rem(25);
+  margin-top: rem(28);
   @extend %margin-auto;
 
   .faq-input {
     width: rem(610);
     font-size: rem(18.86);
-    text-indent: rem(11);
+    text-indent: rem(-1);
   }
 
   .btn-search {
@@ -183,7 +183,7 @@
   }
 
   @include e('items') {
-    padding-top: rem(18);
+    padding-top: rem(13);
     li {
       padding: rem(13) 0 0 rem(22);
       @include boxSize(rem(330), rem(55));
@@ -227,6 +227,7 @@
 .faq-search-term {
   color: $profile-header;
   width: rem(825);
+  padding-top: rem(4);
   @extend %margin-auto;
 
   .search-result-title {
@@ -252,7 +253,7 @@
 }
 
 .faq-result-item {
-  margin-top: rem(38);
+  margin-top: rem(41);
   display: none;
 
   h4 {
@@ -268,8 +269,10 @@
   }
 
   p {
-    margin-top: rem(5);
+    margin-top: rem(3);
+    line-height: rem(22);
   }
+
   &.active {
     display: block !important;
   }

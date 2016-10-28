@@ -65,19 +65,20 @@
   @include e('container-who') {
     width: rem(667);
     @extend %margin-auto;
-    padding: rem(60) 0 rem(85);
+    padding: rem(57) 0 rem(85);
     color: $default;
 
     h2 {
       font-size: rem(29);
       @extend %i-owan-old-style;
       padding-bottom: rem(20);
+      line-height: rem(37);
     }
 
     p {
       font-size: rem(16.7);
       @extend %acumin-pro-cond-regular;
-      padding-top: rem(18);
+      padding-top: rem(15);
     }
   }
 }
