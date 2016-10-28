@@ -16,7 +16,7 @@
         </li>
         <!-- <li><a href="javascript:void(0)">Blog</a></li> -->
         <li>
-          = link_to "About us", abouts_path, :class => (params[:controller] == "about" ? "nav-active" : "")
+          = link_to "About us", abouts_path(tab: 'our-community'), :class => (params[:controller] == "about" ? "nav-active" : "")
         </li>
         / <li>
         /   <ul class="nav-bar__list-icon">
