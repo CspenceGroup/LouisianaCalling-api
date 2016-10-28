@@ -17,13 +17,13 @@
 
    p {
     font-size: rem(18.75);
+    padding-top: rem(6);
     @extend %acumin-pro-cond-bi;
-    padding-top: rem(8);
    }
 }
 
 .carousel-text {
-  padding-top: rem(20);
+  padding-top: rem(13);
 }
 
 .carousel-dots-list {
@@ -74,7 +74,7 @@
 }
 
 .btn-play {
-  margin-top: rem(160);
+  margin-top: rem(150);
   @extend %background-transparent;
   background-size: rem(56), rem(56);
   @extend %no-border;
@@ -163,7 +163,6 @@
   @extend %right-0;
   @extend %top-0;
   margin: auto;
-  transform: translate(-50%, -50%);
 }
 
 .button-pause {
@@ -178,7 +177,7 @@
 
 .hero-banner-home {
   width: 100%;
-  top: rem(65);
+  top: rem(67);
   @extend %left-0;
   @extend %absolute;
   @extend %text-center;

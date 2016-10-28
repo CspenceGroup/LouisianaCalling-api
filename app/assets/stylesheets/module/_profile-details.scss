@@ -45,6 +45,7 @@
     }
 
     a {
+      margin-top: rem(86);
       @extend %relative;
       @include boxSize(rem(243), rem(164));
       @include background-image('profile-details/find-programs-btn.png');
@@ -73,7 +74,8 @@
       @extend %margin-auto;
 
       @include e('link') {
-        margin-left: rem(-15);
+        right: rem(18);
+        top: rem(-11);
       }
 
       span {
@@ -84,8 +86,8 @@
 }
 
 .profile-guided-journey {
-  padding-top: rem(58);
-  @include boxSize(100%, rem(290));
+  padding-top: rem(47);
+  @include boxSize(100%, rem(280));
   @include background-image('filter-bg.png');
 
   @include e('title') {
@@ -95,7 +97,7 @@
   }
 
   a {
-    margin-top: rem(20);
+    margin-top: rem(22);
     @extend %block;
     @extend %margin-auto;
     @include boxSize(rem(162), rem(45));
@@ -212,7 +214,7 @@
 }
 
 .personal-profile-career {
-  padding: rem(8) 0 rem(35);
+  padding: rem(8) 0 rem(33);
   @extend %overflow-hidden; 
   @extend %clear-both;
 }
@@ -222,7 +224,7 @@
 }
 
 .btn-profile-video {
-  top: 40%;
+  top: rem(170);
   left: 48.5%;
   margin-top: 0;
   @extend %absolute;
@@ -233,19 +235,20 @@
   padding-left: rem(10);
   font-size: rem(18.75);
   text-shadow: 0 0 0 rem(50) $black;
-  top: rem(253);
+  top: rem(238);
   @extend %absolute;
   @extend %text-capitalize;
   @extend %acumin-pro-cond-bi;
 }
 
 .i-profile-info {
-  margin-right: rem(15);
+  margin-right: rem(12);
   @extend %float-left;
 }
 
 .profile-info-txt {
   line-height: rem(17);
+  font-style: normal;
   @include flex();
 }
 
