@@ -3,6 +3,7 @@
   min-width: rem(1200);
   padding-top: rem(69);
   z-index: 1000;
+  margin-top: rem(-30);
   @include background-image('bg-footer.png');
   @extend %background-repeat-x;
   @extend %acumin-pro-cond-regular;
