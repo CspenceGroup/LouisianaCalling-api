@@ -2,7 +2,7 @@
   color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
-  height: rem(580);
+  min-height: rem(580);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
   @extend %background-repeat;

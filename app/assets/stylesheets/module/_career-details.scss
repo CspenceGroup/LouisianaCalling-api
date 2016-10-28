@@ -102,12 +102,11 @@
 
   @include e('interest') {
     margin-bottom: rem(63);
-    width: rem(265);
+    width: 100%;
   }
 
   @include e('interest-item') {
     @extend %overflow-hidden;
-    @extend %display-flex;
     margin-bottom: rem(30);
 
     &:last-child {
@@ -116,15 +115,16 @@
   }
 
   @include e('interest-icon') {
-    max-width: rem(58);
-    height: auto;
     @extend %float-left;
+    @include boxSize(rem(58), auto);
   }
 
   @include e('interest-text') {
     min-height: rem(45);
     margin-left: rem(12);
+    width: rem(205);
     @extend %flex-col-center;
+    @extend %float-left;
     @extend %relative;
 
     p {

@@ -116,17 +116,17 @@
 
 .career-interests {
   padding-left: rem(23);
+  height: rem(50);
   @extend %overflow-hidden;
   @extend %float-left;
 
   li {
-    width: rem(170);
-    height: rem(46);
     margin-left: rem(37);
     @extend %float-left;
     @extend %display-flex;
     @extend %align-items-center;
     @extend %justify-content-end;
+    @include boxSize(rem(170), 100%);
 
     p {
       font-size: rem(12.6);
