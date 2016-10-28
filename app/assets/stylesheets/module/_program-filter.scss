@@ -3,8 +3,8 @@
   @extend %overflow-hidden;
 
   @include e('head') {
-    padding-top: rem(55);
-    @include boxSize(rem(815), rem(108));
+    padding-top: rem(33);
+    @include boxSize(rem(815), rem(86));
     @extend %margin-auto;
     @extend %overflow-hidden;
   }
@@ -25,24 +25,15 @@
 
   @include e('list') {
     @extend %overflow-hidden;
-    @include boxSize(rem(30), rem(30));
+    @include boxSize(rem(24), rem(24));
     @extend %float-left;
   }
 
-  @include e('list-icon') {
-    @include boxSize(rem(24), rem(24));
-    margin: rem(3) auto 0 auto;
-  }
-
   @include e('map') {
-    @include boxSize(rem(23), rem(30));
+    @include boxSize(rem(17), rem(26));
     @extend %float-right;
   }
 
-  @include e('list-icon-map') {
-    @include boxSize(rem(17), rem(24));
-    margin: rem(2) auto 0 auto;
-  }
 }
 
 .action-filter {
@@ -52,8 +43,8 @@
   color: $default;
   @extend %text-uppercase;
   @extend %brandon-grotesque-bold;
-  margin-left: rem(30);
-  padding-top: rem(16);
+  margin-left: rem(22);
+  line-height: rem(53);
   cursor: pointer;
 
   @include e('hide') {
@@ -70,7 +61,7 @@
   @include e('container') {
     width: rem(1050);
     @extend %margin-auto;
-    padding: rem(45) 0;
+    padding: rem(41) 0;
     @extend %relative;
 
     &:before {

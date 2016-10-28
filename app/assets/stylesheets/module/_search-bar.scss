@@ -31,6 +31,7 @@ form {
 
   .search-careers-landing {
     @include boxSize(rem(370), rem(46));
+    text-indent: 0;
   }
 
   .btn-submit {
@@ -109,7 +110,7 @@ form {
 .sort-by-salary {
   @include boxSize(rem(195), rem(46));
   margin-left: rem(14);
-  padding-right: rem(5);
+  padding: rem(8) rem(5) rem(8) rem(8);
   @extend %relative;
 }
 

@@ -8,7 +8,7 @@
   background-color: $filter-careers-bg;
   width: rem(325);
   color: $profile-header;
-  padding: rem(56) 0 0 rem(26);
+  padding: rem(60) 0 0 rem(26);
   @extend %float-left;
 
   @include e('heading') {
@@ -21,17 +21,17 @@
   @include e('details') {
     color: $filter-careers-details;
     @extend %acumin-pro-cond;
-    margin-top: rem(45);
+    margin-top: rem(35);
   }
 
   @include e('title') {
     font-size: rem(16.7);
     @extend %text-uppercase;
-    padding-bottom: rem(17);
+    padding-bottom: rem(23);
   }
 
   @include e('desc') {
-    margin-bottom: rem(30);
+    margin-bottom: rem(39);
     padding-right: rem(15);
   }
 
@@ -158,7 +158,7 @@
 .careers-icon-collapse {
   @include boxSize(rem(17), rem(17));
   @extend %float-right;
-  margin-right: rem(26);
+  margin-right: rem(23);
   border-right: rem(1) solid $filter-careers-bg;
   border-bottom: rem(1) solid $filter-careers-bg;
 }

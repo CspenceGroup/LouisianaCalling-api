@@ -1,16 +1,17 @@
 .policy-main-title {
-  padding-top: rem(45);
+  line-height: rem(157);
   @extend %text-capitalize;
 }
 
 .policy-heading {
   @extend .profile-heading;
+  padding-top: 0;
 }
 
 .policy {
   color: $default;
   font-size: rem(16.67);
-  padding: rem(53) 0 rem(55);
+  padding: rem(50) 0 rem(55);
   @extend %acumin-pro-cond-regular;
   @include background-image('program-landing/bg-program.png');
 

@@ -64,20 +64,32 @@
 }
 
 .career-guided-journey {
-  padding-top: rem(221);
   z-index: 100;
   @extend %float-right;
   @include boxSize(26%, 100%);
   @extend %absolute;
   @extend %right-top-0;
   @include background-image('careers/career-call-center.jpg');
+  @extend %display-flex;
+  @extend %align-items-center;
+  @extend %justify-content-center;
+  padding-top: 0;
 
   .main-title {
     font-size: rem(29);
+    padding-left: rem(21);
   }
 
   .journey-link {
     margin-right: rem(32);
+  }
+
+  @include e('content') {
+    width: rem(232);
+  }
+
+  .want-to-talk {
+    padding-top: 0;
   }
 }
 
