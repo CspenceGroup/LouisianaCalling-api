@@ -21,18 +21,18 @@
             fieldset
               = render partial: "guided_journey/partial/results"
           .sidebar-steps-result
-            .sidebar-steps-result__content
+            .sidebar-steps-result__content.content-interest
               .sidebar-steps-result__content-interest.sidebar-steps-result__content-details
                 h4 Interests
               .sidebar-steps-result__content-region.sidebar-steps-result__content-details
                 h4 Region
               .sidebar-steps-result__content-education.sidebar-steps-result__content-details
                 h4 Education
-            .sidebar-steps-result__btn.sidebar-steps-result__btn-next
+            .sidebar-steps-result__btn
               input.form-control id="searchLimit" name="limit" hidden=true type="text" value=10 /
               input.form-control id="searchOffset" name="offset" hidden=true type="text" value=0 /
-              button.btn-step.btn-step-back value="previous" type="button" Back
-              button.btn-step.btn-step-next value="next" type="button" Next
+              button.btn-step.btn-step-back.btn-step-back-step value="previous" type="button" disabled="disabled" Back
+              button.btn-step.btn-step-next.btn-step-next-step value="next" type="button" disabled="disabled" Next
               button.btn-step.btn-step-start value="reset" type="button" Start over
   .find-opportunity.find-opportunity-inactive
     h3.main-title Want to See More Options?
