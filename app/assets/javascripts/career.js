@@ -433,7 +433,7 @@ $(document).on('turbolinks:load', function(){
       }
 
       $.ajax({
-        url : '/educations/filter',
+        url : '/education/filter',
         type : "get",
         dateType:"text",
         traditional: true,
