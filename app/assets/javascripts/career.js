@@ -55,7 +55,7 @@ $(document).on('turbolinks:load', function(){
       searchGroup
         .addClass('error-search')
         .removeClass('error-search-group error-search-career error-search-region');
-      url = '/educations?title=' + careerName + '&region=' + region;
+      url = '/education?title=' + careerName + '&region=' + region;
       window.location = url;
     }
 
