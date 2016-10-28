@@ -180,6 +180,8 @@ $(document).on('turbolinks:load', function(){
    */
   function getCareerResults(data, isSeeMore) {
     $('.indicator-loading-step').show();
+    $('p.no-result-found').hide();
+    $('.see-more-result-step').hide();
 
     $.ajax({
       url : '/guided_journey/search',
@@ -225,7 +227,6 @@ $(document).on('turbolinks:load', function(){
         }, 200);
       },
       error: function() {
-
       }
     });
   }
@@ -281,6 +282,7 @@ $(document).on('turbolinks:load', function(){
 
     $('.btn-step-back, .btn-step-next').show();
 
+    $('#guided-search-results').empty();
     $('.btn-step-next').addClass('btn-step-next-step').attr('disabled', 'disabled');
     $('.sidebar-steps-result__content-details p[title]').remove();
     $('.guided-journey-map path.active, .guided-journey-map text.active').removeClass('active');
