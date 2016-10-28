@@ -227,8 +227,6 @@ $(document).on('turbolinks:load', function(){
         }, 200);
       },
       error: function() {
-        $('.indicator-loading-see-more').hide();
-        $('.indicator-loading-step').hide();
       }
     });
   }
