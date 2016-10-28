@@ -119,6 +119,11 @@ class EducationController < ApplicationController
     @list_of_regions = Region.all
     @list_of_industries = Cluster.all
     @list_of_educations = Education.all
-    @list_of_programs = Program.select(:title).map(&:title).uniq
+
+    @list_of_programs = Program.all.select(:title).map(&:title).uniq
+    @list_of_programs.push(Program.all.select(:institution_name).map(&:institution_name).uniq)
+    @list_of_programs.push(Career.all.select(:title).map(&:title).uniq)
+
+    @list_of_programs = @list_of_programs.flatten
   end
 end

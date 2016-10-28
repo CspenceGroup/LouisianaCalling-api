@@ -1,6 +1,6 @@
 h3.search-result-title.faq-txt here's what we found matching [#{params[:key]}]
--  @results[:objects].each do |item|
-  section.faq-result-item
+-  @results[:objects].each_with_index do |item, idx|
+  section.faq-result-item class="#{idx < @results[:limit] ? 'active' : ''}"
     h4.faq-txt = item[:category]
     p = item[:content].html_safe
     p = item[:answer].html_safe

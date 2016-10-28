@@ -153,7 +153,7 @@ class Career < ActiveRecord::Base
         career[:demand] = row[14].strip
         career[:photo_large] = row[15].strip if row[15].present?
         career[:photo_medium] = row[16].strip if row[16].present?
-        career[:projected_growth] = row[19].strip if row[19].present?
+        career[:projected_growth] = row[18].strip if row[18].present?
 
         career.save!
 

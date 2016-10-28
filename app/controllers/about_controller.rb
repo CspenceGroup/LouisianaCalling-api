@@ -54,9 +54,11 @@ class AboutController < ApplicationController
       questions = category['questions'].to_a
 
       questions.each do |question|
-        unless question['content'].downcase.include?(key) || question['answer'].downcase.include?(key)
-          next
-        end
+        include_question = question['content'].downcase.include?(key)
+        include_answer = question['answer'].downcase.include?(key)
+
+        next unless include_question || include_answer
+
         question = {
           category: category['name'],
           content: question['content'],
@@ -65,10 +67,11 @@ class AboutController < ApplicationController
         results.push(question)
       end
     end
-    puts 'count', results.count
+
     {
       count: results.count,
-      objects: results
+      objects: results,
+      limit: 10
     }
   end
 
