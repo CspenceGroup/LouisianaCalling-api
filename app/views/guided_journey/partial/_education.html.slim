@@ -1,8 +1,6 @@
 .guided-form__container
   h3.main-title.shadow-main-title What type of education do you have right now?
   p What have you learned so far? Let us know and we'll find options that match your education.
-  .alert.alert-danger.alert-danger-guided-form
-    .errors Please choose education
   .guided-form__interest
     - educations.each do |education|
       .guided-form__interest-item.education-item.education data-education="#{education.to_json}"
