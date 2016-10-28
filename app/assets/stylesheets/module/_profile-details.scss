@@ -221,18 +221,6 @@
   @extend %margin-auto;
 }
 
-.i-profile-training {
-  @include boxSize(rem(24), rem(31));
-}
-
-.i-profile-map {
-  @include boxSize(rem(33), rem(33));
-}
-
-.i-profile-career {
-  @include boxSize(rem(23), rem(29));
-}
-
 .btn-profile-video {
   top: 40%;
   left: 48.5%;

@@ -51,10 +51,6 @@
   }
 }
 
-.i-career {
-  @include boxSize(rem(22), rem(27));
-}
-
 .career-industry {
   @extend %overflow-hidden;
   @extend %relative;

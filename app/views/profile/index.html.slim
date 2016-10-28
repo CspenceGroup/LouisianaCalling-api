@@ -33,9 +33,7 @@
                       <h3>#{@profiles[0].sub_head}</h3>
                       <p>#{@profiles[0].description}</p>
                       <div class="btn-full-story">
-                        <a href="#{profile_detail_path(@profiles[0])}" class="btn-full-story--link">
-                          = image_tag asset_path("profile/btn-full-story.png")
-                        </a>
+                        <a href="#{profile_detail_path(@profiles[0])}" class="btn-full-story__link"></a>
                       </div>
                     </div>
                   </div>
@@ -51,9 +49,7 @@
                         <h3>#{@profiles[1].sub_head}</h3>
                         <p>#{@profiles[1].description}</p>
                         <div class="btn-full-story">
-                          <a href="#{profile_detail_path(@profiles[1])}">
-                            = image_tag asset_path("profile/btn-full-story.png")
-                          </a>
+                          <a href="#{profile_detail_path(@profiles[1])}" class="btn-full-story__link"></a>
                         </div>
                       </div>
                     </div>

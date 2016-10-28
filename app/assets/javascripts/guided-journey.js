@@ -37,6 +37,7 @@ $(document).on('turbolinks:load', function(){
         /*Show button next and hide button back when step is interest*/
         $('.btn-step-back').addClass('btn-step-back-step').attr("disabled","disabled");
         $('.btn-step-start').hide();
+        checkedInterest(); 
       }
       else if(currentIndex === 1) {
 

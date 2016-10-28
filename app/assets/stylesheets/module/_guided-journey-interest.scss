@@ -27,10 +27,12 @@
   }
 
   @include e('interest-icon') {
-    height: rem(75);
+    max-width: rem(76);
+    height: rem(60);
 
     img {
-      @include boxSize(auto, 100%);
+      object-fit: contain;
+      @include boxSize(100%, 100%);
     }
 
     @include m('active') {
@@ -55,10 +57,12 @@
 
   .interest-icon--active {
     display: block;
-    height: rem(75);
+    max-width: rem(76);
+    height: rem(60);
 
       img {
-        @include boxSize(auto, 100%);
+        object-fit: contain;
+        @include boxSize(100%, 100%);
       }
   }
 }

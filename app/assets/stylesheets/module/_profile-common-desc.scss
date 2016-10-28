@@ -97,14 +97,16 @@
 .btn-full-story {
   margin-top: rem(15);
   @include boxSize(rem(140), rem(56));
+
+  @include e('link') {
+    @extend %block;
+    @extend %background-no-repeat;
+    @include boxSize(100%, 100%);
+    @include background-image('profile/btn-full-story.png');
+  }
 }
 
 .profile-content {
   @extend %margin-auto;
   width: rem(480);
-
-  @include m('pull-left') {
-    // @extend %float-right;
-    // margin: 0 rem(60) 0 0;
-  }
 }

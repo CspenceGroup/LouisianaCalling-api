@@ -9,7 +9,7 @@
         .careers-list-view__head-salary
           .jobs-head__icon
             - career.demand.to_i.times do
-              = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
+              i.icon.i-red-flame
           p.careers-list-view__salary
             = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
 - else
