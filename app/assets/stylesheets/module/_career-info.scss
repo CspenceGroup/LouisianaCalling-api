@@ -87,12 +87,6 @@
 .career-flames {
   margin-bottom: rem(10);
   @extend %overflow-hidden;
-
-  @include e('item') {
-    margin-right: rem(5);
-    @extend %float-left;
-    @include boxSize(rem(16), rem(22));
-  }
 }
 
 .career-info-title {
@@ -142,9 +136,15 @@
 }
 
 .career-interest-icon {
-  max-width: rem(57);
-  height: auto;
+  max-width: rem(58);
+  height: rem(50);
   @extend %float-left;
+  @extend %overflow-hidden;
+
+  img {
+    object-fit: contain;
+    @include boxSize(100%, 100%);
+  }
 }
 
 .profile-story-career {

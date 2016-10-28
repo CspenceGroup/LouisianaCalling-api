@@ -8,9 +8,7 @@
             <div class="career-head-left">
               <div class="career-flames">
                 <% career.demand.to_i.times do |time| %>
-                  <div class="career-flames__item">
-                    <%= image_tag asset_path("careers/fire-icon.png"), alt: "fire icon" %>
-                  </div>
+                  <i class="icon i-red-flame"></i>
                 <% end %>
               </div>
               <a href="<%=career_detail_path(career.slug)%>" class="career-info-title" title="<%=career.title%>">

@@ -151,13 +151,13 @@ $(document).on('turbolinks:load', function(){
 
     if (activeRegionData) {
       var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
-      $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
-      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
+      $('#career-salary').html('<i class="icon edu-icon i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
+      $('#career-certificate').html('<i class="icon edu-icon i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
 
       var flame_icons = [];
 
       for (var i = activeRegionData.demand; i > 0; i--) {
-        flame_icons.push('<i class="icon i-flame"></i>')
+        flame_icons.push('<i class="icon i-white-flame"></i>')
       }
       $('#career-flames').html(flame_icons.join(''));
     }

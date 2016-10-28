@@ -16,7 +16,8 @@
 
   @include e('link') {
     @extend %block;
-    height: 100%;
+    @include boxSize(rem(242), rem(29));
+    @include background-image('logo.png');
   }
 
   @include e('container') {

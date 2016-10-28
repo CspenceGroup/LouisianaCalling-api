@@ -14,42 +14,35 @@
                 //-   p
                 //-     = program.financial_help
                 .edu-region
-                  .icon.i-edu-region
-                    = image_tag asset_path("region.png"), :alt => 'icon region'
+                  i.icon.edu-icon.i-map-blue
                   p
                     = program.region
                 .edu-salary
-                  .icon.i-edu-salary
-                    = image_tag asset_path("program-landing/dollar-sign.png"), :alt => 'icon dollar'
+                  i.icon.edu-icon.i-edu-salary.i-salary-blue
                   .edu-salary-range
                     = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
             .great-jobs__list-icon.program-list__item-footer
               ul.row.edu-detail-row.program-list__item-row
                 li.col-xs-7.col-md-7.program-item-map__footer-item
-                  .icon.i-career
-                    = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
+                  i.icon.edu-icon.i-career-blue
                   .career-industry title="#{program.careers if program.careers.present?}"
                     - program.careers.each do |career|
                         p
                           = career
                 li.col-xs-5.col-md-5.program-item-map__footer-item
-                  .icon.i-calendar
-                    = image_tag asset_path("program-landing/calendar.png"), :alt => 'icon calendar'
+                  i.icon.edu-icon.i-calendar.i-calendar-blue
                   p
                     = program.duration
                 li.col-xs-7.col-md-7.program-item-map__footer-item
-                  .icon.i-education
-                    = image_tag asset_path("icon-education.png"), :alt => "icon education"
+                  i.icon.edu-icon.i-education.i-education-blue
                   p title=program.education
                     = program.education
                 li.col-xs-5.col-md-5.program-item-map__footer-item
-                  .icon.i-clock
-                    = image_tag asset_path("program-landing/clock.png"), :alt => 'icon clock'
+                  i.icon.edu-icon.i-clock.i-clock-blue
                   p
                     = program.hours_per_weeks
                 li.col-xs-5.col-xs-offset-5.col-md-5.col-md-offset-5.program-item-map__footer-item
-                  .icon.i-day
-                    = image_tag asset_path("program-landing/day_night.png"), :alt => 'icon day night'
+                  i.icon.edu-icon.i-day.i-day-blue
                   p
                     = program.time_of_day
 - else

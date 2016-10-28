@@ -115,8 +115,15 @@
   }
 
   @include e('interest-icon') {
+    max-width: rem(58);
+    height: rem(50);
     @extend %float-left;
-    @include boxSize(rem(58), auto);
+    @extend %overflow-hidden;
+
+    img {
+      object-fit: contain;
+      @include boxSize(100%, 100%);
+    }
   }
 
   @include e('interest-text') {
@@ -185,4 +192,8 @@
   margin: rem(383) 0 0 rem(590);
   font-size: rem(15);
   @extend %acumin-pro-cond-regular;
+}
+
+.related-career-interest {
+  width: auto;
 }

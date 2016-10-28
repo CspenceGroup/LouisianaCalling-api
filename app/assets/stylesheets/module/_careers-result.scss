@@ -37,14 +37,6 @@
     padding-top: rem(20);
   }
 
-  @include e('icon-salary') {
-    @extend %float-left;
-    @include background-image('career-options.png');
-    @extend %background-no-repeat;
-    background-position: 0 rem(1);
-    @include boxSize(rem(39), rem(28));
-  }
-
   @include e('salary') {
     margin-left: rem(35);
     font-size: rem(14.58);
@@ -63,6 +55,10 @@
 
   .jobs-head__title {
     font-size: rem(16.67);
+  }
+
+  i {
+    margin-right: rem(5);
   }
 }
 
