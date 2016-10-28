@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   get 'guided_journey/search' => 'guided_journey#search', :as => :guided_journey_search
 
   # education page
-  get 'educations' => 'education#index', :as => :education
-  get 'educations/filter' => 'education#filter', :as => :education_filter
-  get 'educations/:slug' => 'education#detail', :as => :education_detail
+  get 'education' => 'education#index', :as => :education
+  get 'education/filter' => 'education#filter', :as => :education_filter
+  get 'education/:slug' => 'education#detail', :as => :education_detail
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Private policy page

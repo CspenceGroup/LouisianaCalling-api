@@ -317,7 +317,7 @@ $(document).on('turbolinks:load', function(){
         window.location = toUrl;
       } else if (type && type === 'programs') {
 
-        toUrl = '/educations' + url;
+        toUrl = '/education' + url;
         window.location = toUrl;
       }
     }
