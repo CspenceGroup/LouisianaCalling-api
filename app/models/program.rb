@@ -70,7 +70,7 @@ class Program < ActiveRecord::Base
         program[:tuition_min] = row[7].strip
         program[:tuition_max] = row[8].strip
 
-        education = Education.find_or_create(row[9].strip)
+        education = Education.find_education(row[9].strip)
         program[:education_id] = education.id if education.present?
 
         program[:institution_name] = row[10].strip

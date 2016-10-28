@@ -49,7 +49,7 @@ class CareerRegion < ActiveRecord::Base
 
   def self.create_career_region_educations(educations, career_region)
     educations.each do |education_name|
-      education = Education.find_or_create(education_name)
+      education = Education.find_education(education_name)
 
       CareerRegionEducation.create(
         career_region_id: career_region.id,

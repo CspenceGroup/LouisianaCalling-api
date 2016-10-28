@@ -19,11 +19,13 @@ class Education < ActiveRecord::Base
   validates :url_selected, presence: true
   validates_uniqueness_of :name
 
-  def self.find_or_create(education_name)
+  def self.find_education(education_name)
     education = Education.find_by_name(education_name)
 
-    # Adding new education
-    education = Education.create(name: education_name) unless education.present?
+    unless education.present?
+      raise "Do not found with education: '#{education_name}'.
+        Please make sure import Education before."
+    end
 
     education
   end
