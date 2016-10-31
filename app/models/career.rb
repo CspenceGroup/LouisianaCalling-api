@@ -63,6 +63,8 @@ class Career < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
+  scope :recent, -> { order(created_at: :desc) }
+
   scope :filter_by_title, lambda { |title|
     where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
   }

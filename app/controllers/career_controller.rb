@@ -1,7 +1,7 @@
 class CareerController < ApplicationController
   include CareerHelper
-  before_filter :data_for_filter_details, only: [:index]
-  before_filter :career_titles, only: [:index, :detail]
+  before_action :data_for_filter_details, only: [:index]
+  before_action :career_titles, only: [:index, :detail]
 
   def index
     @jobs = {}
@@ -42,7 +42,7 @@ class CareerController < ApplicationController
     next_offset = @offset + @limit
     @is_see_more = careers.count > next_offset ? true : false
 
-    @careers = careers.offset(@offset).limit(@limit)
+    @careers = careers.recent.offset(@offset).limit(@limit)
     @title = params[:title]
     @region = params[:region]
     @offset = next_offset
@@ -51,7 +51,7 @@ class CareerController < ApplicationController
   def detail
     @career = Career.friendly.find(params[:slug])
     @list_of_careers = Career.select(:title).map(&:title).uniq
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
 
     return unless @career.present?
 
@@ -87,7 +87,7 @@ class CareerController < ApplicationController
 
     next_offset = @limit + @offset
     is_see_more = careers.count > next_offset ? true : false
-    careers = careers.offset(@offset).limit(@limit)
+    careers = careers.recent.offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -138,7 +138,7 @@ class CareerController < ApplicationController
   end
 
   def data_for_filter_details
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
     @list_of_industries = Cluster.all
     @list_of_educations = Education.all
     @skills = Skill.all

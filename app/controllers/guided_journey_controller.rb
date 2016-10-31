@@ -19,27 +19,27 @@ class GuidedJourneyController < ApplicationController
       region_name = params[:regions].split(',').map(&:downcase)
 
       region_ids = Region.filter_by_names(region_name).distinct.map(&:id)
-      careers = careers.filter_by_region(region_ids)
+      careers = careers.filter_by_region(region_ids).distinct
     end
 
     # ## filter by skill
     if params[:skills].present?
-      careers = careers.filter_by_skill(params[:skills].split(','))
+      careers = careers.filter_by_skill(params[:skills].split(',')).distinct
     end
 
     ## filter by education
     if params[:educations].present?
-      careers = careers.filter_by_education(params[:educations].split(','))
+      careers = careers.filter_by_education(params[:educations].split(',')).distinct
     end
 
     ## filter by interests
     if params[:interests].present?
-      careers = careers.filter_by_interest(params[:interests].split(','))
+      careers = careers.filter_by_interest(params[:interests].split(',')).distinct
     end
 
     next_offset = @limit + @offset
     is_see_more = careers.count > next_offset ? true : false
-    careers = careers.offset(@offset).limit(@limit)
+    careers = careers.recent.offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -54,7 +54,7 @@ class GuidedJourneyController < ApplicationController
   private
 
   def datas_for_binding
-    @regions = Region.all
+    @regions = Region.all.alphabetical
     @educations = Education.all
     @skills = Skill.all
     @interests = Interest.all
