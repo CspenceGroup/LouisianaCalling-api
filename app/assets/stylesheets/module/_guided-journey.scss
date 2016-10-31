@@ -38,7 +38,7 @@
 
   @include e('link') {
     top: rem(-14);
-    right: rem(13);
+    right: rem(15);
     @extend %relative;
     @include background-image('tel-arrow.png');
     @include boxSize(rem(220), rem(90));
@@ -81,12 +81,12 @@
     padding-left: rem(21);
   }
 
-  .journey-link {
-    margin-right: rem(32);
-  }
-
   @include e('content') {
     width: rem(232);
+
+    .journey-link {
+      right: rem(5);
+    }
   }
 
   .want-to-talk {
@@ -103,7 +103,7 @@
   @include background-image('photo-talk.jpg');
 }
 
-.edu-guided-link {
-  margin-right: rem(60);
-}
+// .edu-guided-link {
+//   right: rem(15);
+// }
 
