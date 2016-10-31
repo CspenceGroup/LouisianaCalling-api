@@ -231,3 +231,24 @@
 .home-carousel-item {
   padding-left: 0;
 }
+
+.no-interest-container {
+  @extend %display-flex;
+  flex-direction: row;
+}
+
+.no-interest-head {
+  border-bottom: none;
+  align-self: center;
+  @extend %no-padding-bottom;
+}
+
+.no-interest-pull-right {
+  margin-left: rem(117);
+}
+
+@-moz-document url-prefix() {
+  .no-interest-pull-right {
+    margin-left: rem(100);
+  }
+}
