@@ -73,6 +73,11 @@
   @include boxSize(rem(23), rem(23));
 }
 
+.i-salary {
+  @include boxSize(rem(22), rem(23));
+  margin-top: 0;
+}
+
 .i-clock-blue {
   @include background-image('program-landing/clock.png');
 }

@@ -7,41 +7,29 @@
             .program-list__item-header.program-item-map__header.jobs-head
               a href="/education/#{program.slug}"
                 .jobs-head__name
-                  p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
+                  p title="#{program.title}"
                     = "#{offset + idx + 1}. #{program.title}"
-              .jobs-head__content
-                //- .edu-scholarship.edu-scholarship--view-map
-                //-   p
-                //-     = program.financial_help
-                .edu-region
-                  i.icon.edu-icon.i-map-blue
-                  p
-                    = program.region
-                .edu-salary
-                  i.icon.edu-icon.i-edu-salary.i-salary-blue
-                  .edu-salary-range
-                    = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
             .great-jobs__list-icon.program-list__item-footer
               ul.row.edu-detail-row.program-list__item-row
-                li.col-xs-7.col-md-7.program-item-map__footer-item
+                li.col-xs-12.col-md-12.program-item-map__footer-item
                   i.icon.edu-icon.i-career-blue
-                  .career-industry title="#{program.careers if program.careers.present?}"
+                  .career-industry-map title="#{program.careers if program.careers.present?}"
                     - program.careers.each do |career|
                         p
                           = career
-                li.col-xs-5.col-md-5.program-item-map__footer-item
-                  i.icon.edu-icon.i-calendar.i-calendar-blue
+                li.col-xs-8.col-md-8.program-item-map__footer-item
+                  i.icon.edu-icon.i-salary.i-salary-blue
                   p
-                    = program.duration
-                li.col-xs-7.col-md-7.program-item-map__footer-item
-                  i.icon.edu-icon.i-education.i-education-blue
-                  p title=program.education
-                    = program.education
-                li.col-xs-5.col-md-5.program-item-map__footer-item
+                    = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
+                li.col-xs-4.col-md-4.program-item-map__footer-item
                   i.icon.edu-icon.i-clock.i-clock-blue
                   p
                     = program.hours_per_weeks
-                li.col-xs-5.col-xs-offset-5.col-md-5.col-md-offset-5.program-item-map__footer-item
+                li.col-xs-8.col-md-8.program-item-map__footer-item
+                  i.icon.edu-icon.i-calendar.i-calendar-blue
+                  p
+                    = program.duration
+                li.col-xs-4.col-md-4.col-md-offset-5.program-item-map__footer-item
                   i.icon.edu-icon.i-day.i-day-blue
                   p
                     = program.time_of_day
