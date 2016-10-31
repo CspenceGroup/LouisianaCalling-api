@@ -116,7 +116,7 @@ class EducationController < ApplicationController
   private
 
   def data_for_filter_details
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
     @list_of_industries = Cluster.all
     @list_of_educations = Education.all
 

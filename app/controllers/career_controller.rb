@@ -51,7 +51,7 @@ class CareerController < ApplicationController
   def detail
     @career = Career.friendly.find(params[:slug])
     @list_of_careers = Career.select(:title).map(&:title).uniq
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
 
     return unless @career.present?
 
@@ -138,7 +138,7 @@ class CareerController < ApplicationController
   end
 
   def data_for_filter_details
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
     @list_of_industries = Cluster.all
     @list_of_educations = Education.all
     @skills = Skill.all
