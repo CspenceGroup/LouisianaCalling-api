@@ -1,6 +1,4 @@
 .profile-common {
-  padding-bottom: rem(30); // remove it if more than 2 stories
-
   @include e('info') {
     @extend %display-flex;
 
