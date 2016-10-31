@@ -38,7 +38,7 @@ class Region < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Region.transaction do
-      Region.delete_all
+      # Region.delete_all
 
       csv.each do |row|
         name_str = row[0].strip
