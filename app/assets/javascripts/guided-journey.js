@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
     onStepChanged: function(event, currentIndex, priorIndex) {
       $('.btn-step-start').hide();
       $('.btn-step-back, .btn-step-next').show();
-      
+
       if (currentIndex < priorIndex) {
         for (var idx = priorIndex; idx > currentIndex ; idx--) {
           $(event.target).find("li:eq(" + idx + ")").addClass('disabled').removeClass('done');
@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function(){
         /*Show button next and hide button back when step is interest*/
         $('.btn-step-back').addClass('btn-step-back-step').attr("disabled","disabled");
         $('.btn-step-start').hide();
-        checkedInterest(); 
+        checkedInterest();
       }
       else if(currentIndex === 1) {
 
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function(){
           .removeClass('content-interest');
         $('.btn-step-back').removeClass('btn-step-back-step').removeAttr("disabled");
 
-        checkedRegion(); 
+        checkedRegion();
       }
       else {
 
@@ -265,7 +265,7 @@ $(document).on('turbolinks:load', function(){
     var params = {
       interests: interests.length > 0 ? interests.join(', ') : null,
       educations: educations.length > 0 ? educations.join(', ') : null,
-      regions: regions.length > 0 ? regions.join(', ') : null,
+      // regions: regions.length > 0 ? regions.join(', ') : null,
       limit: $('#searchLimit').val(),
       offset: $('#searchOffset').val()
     };
