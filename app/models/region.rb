@@ -17,6 +17,11 @@ class Region < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order(:name)
+  }
+
   scope :filter_by_names, lambda { |names|
     where('LOWER(name) IN (?)', names)
   }
