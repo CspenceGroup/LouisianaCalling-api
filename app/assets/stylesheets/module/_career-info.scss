@@ -1,5 +1,5 @@
 .career-shortcut {
-  padding: rem(33) 0 0 rem(77);
+  padding: rem(33) 0 rem(33) rem(77);
   min-width: rem(1200);
   color: $profile-name-shadow;
   @extend %relative;
@@ -13,10 +13,11 @@
   }
 
   @include e('container') {
-    padding: rem(20) rem(26) 0;
+    padding: rem(20) rem(26);
     border: solid rem(2) $white;
+    width: rem(806);
+    min-height: rem(235);
     @extend %margin-auto;
-    @include boxSize(rem(806), rem(235));
   }
 
   @include e('label') {
@@ -38,16 +39,17 @@
     padding-bottom: rem(18);
     border-bottom: solid rem(2) $white;
     @extend %overflow-hidden;
+    @extend %display-flex;
 
     @include m('pull-left') {
-      @extend %float-left;
-      @extend %relative;
-      @include boxSize(rem(455), rem(93));
+      width: rem(455);
+      min-height: rem(93);
+      @extend %display-flex;
     }
 
     @include m('pull-right') {
-      @extend %float-right;
-      @extend %overflow-hidden;
+      margin-left: auto;
+      align-self: flex-end;
     }
   }
 
@@ -70,12 +72,13 @@
   }
 
   @include e('body') {
-    padding-top: rem(27);
+    padding-top: rem(22);
+    @extend %display-flex;
+    @extend %align-items-center;
     @extend %overflow-hidden;
 
     > p {
       width: rem(95);
-      margin-top: rem(5);
       font-size: rem(18.75);
       @extend %float-left;
       @extend %font-style-italic;
@@ -104,31 +107,28 @@
 }
 
 .career-head-left {
-  @extend %absolute;
-  @extend %left-bottom-0;
+  align-self: flex-end;
 }
 
 .career-interests {
   padding-left: rem(23);
-  height: rem(50);
-  @extend %overflow-hidden;
-  @extend %float-left;
+  height: auto;
+  width: rem(655);
+  @extend %display-flex;
+  @extend %align-items-center;
 
   li {
     margin-left: rem(37);
-    @extend %float-left;
     @extend %display-flex;
     @extend %align-items-center;
     @extend %justify-content-end;
-    @include boxSize(rem(170), 100%);
+    @include boxSize(100%, 100%);
 
     p {
       font-size: rem(12.6);
-      max-width: rem(110);
+      max-width: rem(150);
       margin-left: rem(15);
       line-height: rem(16);
-      @extend %vertical-middle;
-      @extend %float-left;
       @extend %text-uppercase;
       @extend %brandon-grotesque-bold;
     }
@@ -136,19 +136,18 @@
 }
 
 .career-interest-icon {
-  max-width: rem(58);
   height: rem(50);
   @extend %float-left;
   @extend %overflow-hidden;
 
   img {
-    object-fit: contain;
-    @include boxSize(100%, 100%);
+    @include boxSize(auto, 100%);
   }
 }
 
 .profile-story-career {
-  @include boxSize(100%, rem(302));
+  width: 100%;
+  min-height: rem(302);
   @include background-image('careers/great-job-bg.jpg');
 }
 
@@ -157,7 +156,7 @@
 }
 
 .career-carousels {
-  height: rem(390);
+  min-height: rem(390);
   padding-top: rem(72);
   margin-bottom: rem(30);
   @extend %relative;
@@ -187,13 +186,13 @@
 }
 
 .career-carousel-content {
-  height: rem(282);
+  min-height: rem(282);
+  padding-bottom: rem(35);
   @extend %relative;
 }
 
 .career-carousel-dots {
-  padding-left: rem(77);
-  @extend %absolute;
+  @extend %relative;
   @extend %bottom-0;
   @extend %text-center;
 
@@ -229,7 +228,6 @@
   }
 }
 
-.home-carousel-item,
-.home-carousel-dots {
+.home-carousel-item {
   padding-left: 0;
 }

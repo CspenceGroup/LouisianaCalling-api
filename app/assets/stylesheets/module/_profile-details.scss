@@ -153,11 +153,11 @@
   }
 
   .profile-career-details {
-    @extend %block;
+    width: rem(660);
+    min-height: rem(55);
     @extend %no-list-style;
     @extend %no-margin-left;
     @extend %display-flex;
-    @include boxSize(rem(660), rem(55));
 
     .profile-info-wrapper {
       @extend %display-flex;
@@ -166,15 +166,14 @@
     }
 
     li {
+      width: 100%;
       border: solid rem(1) $default;
       padding: 0 rem(25);
       @extend %float-left;
       @extend %text-center;
-      @extend %relative;
       @extend %display-flex;
       @extend %align-items-center;
       @extend %justify-content-center;
-      @include boxSize(100%, 100%);
       text-align: initial;
 
       &:nth-child(2),
@@ -186,9 +185,11 @@
     span {
       font-size: rem(14.7);
       margin-bottom: 0;
+      padding: rem(10) 0;
       @extend %text-uppercase;
       @extend %brandon-grotesque-bold;
       @extend %text-left;
+      @extend %block;
     }
   }
 
