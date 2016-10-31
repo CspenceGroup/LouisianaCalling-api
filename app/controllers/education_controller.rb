@@ -28,7 +28,7 @@ class EducationController < ApplicationController
     next_offset = @offset + @limit
     @is_see_more = programs.count > next_offset ? true : false
 
-    @programs = programs.offset(@offset).limit(@limit)
+    @programs = programs.recent.offset(@offset).limit(@limit)
     @ids = programs.map(&:id)
 
     @offset = next_offset
@@ -93,7 +93,7 @@ class EducationController < ApplicationController
     next_offset = @limit + @offset
     is_see_more = programs.count > next_offset ? true : false
 
-    programs = programs.offset(@offset).limit(@limit)
+    programs = programs.recent.offset(@offset).limit(@limit)
 
     render json: {
       list: render_to_string(

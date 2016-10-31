@@ -15,6 +15,8 @@ class Program < ActiveRecord::Base
   validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
   validates_inclusion_of :hours_per_weeks, in: Constants::HOURS_PER_WEEK
 
+  scope :recent, -> { order(created_at: :desc) }
+
   scope :with_careers, lambda {
     joins(:careers)
   }
