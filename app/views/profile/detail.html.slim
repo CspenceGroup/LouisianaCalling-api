@@ -37,13 +37,13 @@
                     .profile-info-wrapper
                       i.i-profile-info.i-profile-career
                       .profile-info-txt
-                        span(title=@profile.careers.first) = truncate(@profile.careers.first.to_s, length: 27)
+                        span(title=@profile.careers.first) = @profile.careers.first
                 - if @profile.educational_institution.present?
                   li
                     .profile-info-wrapper
                       i.i-profile-info.i-profile-training
                       .profile-info-txt
-                        span(title=@profile.educational_institution) = truncate(@profile.educational_institution, length: 24)
+                        span(title=@profile.educational_institution) = @profile.educational_institution
                 - if @profile.region.present?
                   li
                     i.profile-info-wrapper
@@ -77,7 +77,7 @@
                   .career-flames
                     - career.demand.to_i.times
                       i.icon.i-white-flame
-                  a.career-info-title(href=career_detail_path(career) title=career) = truncate(career.to_s, length: 41)
+                  a.career-info-title(href=career_detail_path(career) title=career) = career
               .career-shortcut__head--pull-right
                 a.career-shortcut__btn-more(href=career_detail_path(career))
                   = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
@@ -92,7 +92,7 @@
                   li
                     .career-interest-icon
                       = image_tag("#{interest.url}", :alt => "#{interest}")
-                    p.career-interest-text(title=interest) = truncate(interest.to_s, length: 25)
+                    p.career-interest-text(title=interest) = interest
     section.guideline
       .row.guideline-row
         .col-xs-4.col-md-4.guideline-col.guideline__more-stories

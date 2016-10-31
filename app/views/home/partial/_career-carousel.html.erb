@@ -12,7 +12,7 @@
                 <% end %>
               </div>
               <a href="<%=career_detail_path(career.slug)%>" class="career-info-title" title="<%=career.title%>">
-                <%= truncate(career.title, length: 41) %>
+                <%= career.title %>
               </a>
             </div>
           </div>
@@ -35,7 +35,7 @@
                   <%= image_tag "#{interest.url}", :alt => "#{interest}" %>
                 </div>
                 <p class="career-interest-text" title="<%= interest %>">
-                  <%= truncate(interest.to_s, length: 25) %>
+                  <%= interest %>
                 </p>
               </li>
             <% end %>
