@@ -65,7 +65,7 @@
 }
 
 .i-calendar-white {
-  @include boxSize(rem(22), rem(22));
+  @include boxSize(rem(37), rem(22));
   @include background-image('education-details/icon-calendar.png');
 }
 
@@ -84,6 +84,8 @@
 
 .i-clock-white {
   @include background-image('education-details/icon-clock.png');
+  @include boxSize(rem(35), rem(23));
+
 }
 
 .i-map-blue {

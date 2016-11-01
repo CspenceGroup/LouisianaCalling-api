@@ -48,7 +48,6 @@
   @include e('item-footer') {
     font-size: rem(14.5);
     @extend %acumin-pro-cond-regular;
-    padding: rem(20) 0 rem(15) 0;
     margin-bottom: 0;
   }
 }

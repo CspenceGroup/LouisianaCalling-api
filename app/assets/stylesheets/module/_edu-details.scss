@@ -1,6 +1,15 @@
 .edu-detail-banner {
   height: rem(427);
   @extend %overflow-hidden;
+  @extend %relative;
+
+  @include e('content') {
+    @extend %absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+  }
 }
 
 .edu-detail-desc {
@@ -59,20 +68,41 @@
 }
 
 .edu-program-info {
+  height: auto;
+
+
   .great-jobs__container {
-    padding: 0 rem(20);
-    @include boxSize(rem(800), rem(155));
+    width: rem(800);
+    min-height: rem(155);
+    height: auto;
+    margin: rem(38) auto;
+    align-self: center;
+  }
+
+  .great-jobs__list-icon {
+    margin-bottom: 0;
+  }
+
+  .jobs-head {
+    height: auto;
+    @extend %display-flex;
   }
 
   .jobs-head__content {
     margin-top: 0;
     @extend %display-flex;
-    width: 100%;
+    width: 21%;
     @extend %justify-content-end;
   }
 
-  .jobs-head__title {
-    max-width: rem(370);
+  @include e('title') {
+    font-size: rem(20.83);
+    @extend %brandon-grotesque;
+    @extend %text-uppercase;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
+    padding: rem(4) 0;
   }
 
   @include m('item') {
@@ -88,32 +118,44 @@
       max-width: rem(330);
     }
   }
+
+  .edu-industry {
+    width: 100%;
+  }
 }
 
 .edu-great-jobs {
-  padding-top: rem(35);
+  @extend %display-flex;
 }
 
 .edu-detail-content {
-  width: 100%;
+  width: rem(756);
+
+  .jobs-head__name {
+    padding-top: 0;
+    min-height: rem(75);
+    line-height: 75px;
+    width: rem(601);
+  }
 }
 
 .edu-detail-row {
   @extend %overflow-hidden;
+  padding: rem(20) 0 rem(15) 0;
 }
 
 .edu-detail-item {
-  margin-left: rem(30);
+  margin-left: rem(23);
   @extend %overflow-hidden; 
   @extend %no-padding-right;
   @extend %float-left;
   @extend %display-flex;
 
   p {
-    margin-top: rem(3);
     width: 100%;
-    @extend %truncate;
     @extend %float-left;
+    line-height: rem(17);
+    padding-top: rem(5);
   }
 
   &:first-child {
@@ -121,7 +163,7 @@
     @extend %no-margin-left;
     @extend %no-padding;
     @extend %overflow-hidden;
-    @include boxSize(rem(190), rem(25));
+    width: rem(328);
 
     &:before {
       @extend %no-content;
@@ -133,16 +175,11 @@
   }
 
   &:nth-child(2) {
-    width: rem(155);
+    width: rem(176);
   }
 
   &:nth-child(3) {
-    width: rem(100);
-    
-    p {
-      width: rem(65);
-      @extend %truncate;
-    }
+    width: rem(110);
   }
 
   &:nth-child(4) {
@@ -200,6 +237,7 @@
 
 .edu-head-info {
   @extend %float-left;
+  align-self: center;
 }
 
 .edu-cost {
