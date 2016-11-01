@@ -21,6 +21,10 @@ class Skill < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  scope :filter_names_not_exist, lambda { |names|
+    where('name NOT IN (?)', names)
+  }
+
   def self.update_skill(params)
     skill = Skill.find_by_name(params[:name])
 
@@ -39,6 +43,13 @@ class Skill < ActiveRecord::Base
     skill
   end
 
+  # Remove all skills do not exists in TSV file import
+  def self.remove(names)
+    skills = Skill.filter_names_not_exist(names)
+
+    skills.delete_all if skills.present?
+  end
+
   def self.import_from_csv(csv)
     Skill.transaction do
       # Skill.delete_all
@@ -55,6 +66,10 @@ class Skill < ActiveRecord::Base
           Skill.create(params)
         end
       end
+
+      # Remove all Skill do not exists in tsv file
+      names = csv.map { |row| row[0].strip }.uniq
+      Skill.remove(names)
     end
   end
 

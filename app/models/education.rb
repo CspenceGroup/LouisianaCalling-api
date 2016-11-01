@@ -19,6 +19,17 @@ class Education < ActiveRecord::Base
   validates :url_selected, presence: true
   validates_uniqueness_of :name
 
+  scope :filter_names_not_exist, lambda { |names|
+    where('name NOT IN (?)', names)
+  }
+
+  # Remove all educations do not exists in TSV file import
+  def self.remove(names)
+    educations = Education.filter_names_not_exist(names)
+
+    educations.delete_all if educations.present?
+  end
+
   def self.find_education(education_name)
     education = Education.find_by_name(education_name)
 
@@ -55,6 +66,10 @@ class Education < ActiveRecord::Base
           Education.create(params)
         end
       end
+
+      # Remove all Education do not exists in tsv file
+      names = csv.map { |row| row[0].strip }.uniq
+      Education.remove(names)
     end
   end
 
