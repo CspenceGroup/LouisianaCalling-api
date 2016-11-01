@@ -6,7 +6,7 @@
   @include e('details') {
     margin: rem(24) rem(146) 0 0;
     @extend %relative;
-    @include boxSize(rem(310), rem(330));
+    @include boxSize(rem(310), rem(340));
     @include background-image('top-jobs-border.png');
   }
 

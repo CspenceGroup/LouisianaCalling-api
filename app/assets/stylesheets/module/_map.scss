@@ -2,7 +2,7 @@
   color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
-  height: rem(560);
+  height: rem(570);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
   @extend %background-repeat;
@@ -10,7 +10,7 @@
   @include background-image('careers/great-job-bg.jpg');
 
   @include e('details') {
-    @include boxSize(rem(310), rem(330));
+    @include boxSize(rem(310), rem(340));
     @include background-image('top-jobs-border.png');
   }
 
@@ -84,7 +84,7 @@
   @extend %absolute;
   @extend %overflow-y-scroll;
   @extend %acumin-pro-cond-regular;
-  @include boxSize(rem(272), rem(255));
+  @include boxSize(rem(272), rem(260));
   padding-right: rem(10);
   margin-bottom: 0;
 
@@ -131,7 +131,7 @@ text.active {
 }
 
 .asterisk-copy-home {
-  margin-top: rem(364);
+  margin-top: rem(372);
   font-size: rem(15);
   @extend %acumin-pro-cond-regular;
   @extend %text-center;
