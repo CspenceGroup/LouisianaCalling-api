@@ -7,7 +7,7 @@ class CareerController < ApplicationController
     @jobs = {}
 
     TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
-      @jobs[region.name] = top_jobs.map do |top_job|
+      @jobs[region] = top_jobs.map do |top_job|
         {
           job: top_job.career.title,
           link: career_detail_path(top_job.career)

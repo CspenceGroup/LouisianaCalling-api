@@ -39,7 +39,9 @@ $(document).on('turbolinks:load', function(){
         searchGroup = $('.find-programs');
 
     if(!careerName && !region) {
-      searchGroup.addClass('error-search-group');
+      searchGroup
+        .addClass('error-search-group')
+        .removeClass('error-search-region');
     }
     else if(!careerName) {
       searchGroup
@@ -70,9 +72,6 @@ $(document).on('turbolinks:load', function(){
   $("#programAutocompleteCareers").autocomplete({
     source: availableProgramCareer
   });
-
-  // Truncate name careers for map in career landing
-  $(".career-title--pull-left").dotdotdot({});
 
   /****************************************
    *            CAREER LANDING            *
