@@ -71,9 +71,6 @@ $(document).on('turbolinks:load', function(){
     source: availableProgramCareer
   });
 
-  // Truncate name careers for map in career landing
-  $(".career-title--pull-left").dotdotdot({});
-
   /****************************************
    *            CAREER LANDING            *
    ****************************************/

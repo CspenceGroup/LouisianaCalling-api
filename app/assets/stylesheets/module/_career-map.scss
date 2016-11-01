@@ -1,34 +1,38 @@
 .career-map {
-  height: rem(610);
+  min-height: rem(560);
+  height: auto;
+  padding: rem(30) 0 rem(35) 0;
 
   @include e('details') {
     margin: rem(24) rem(146) 0 0;
     @extend %relative;
-    @include boxSize(rem(346), rem(350));
-    @include background-image('career-options-border.png');
+    @include boxSize(rem(310), rem(330));
+    @include background-image('top-jobs-border.png');
   }
 
   @include e('title') {
-    margin: rem(31) 0 0 rem(182);
+    margin-left: rem(182);
+    margin-top: 0;
     @extend %text-left;
   }
 }
 
 .career-options {
   top: rem(85);
-  left: rem(58);
+  left: rem(42);
   font-size: rem(20.8);
   overflow: visible;
 
   li {
     margin-bottom: rem(20);
     @extend %relative;
+    @extend %overflow-hidden;
   }
 
   @include e('text') {
-    margin-left: rem(60);
     @extend %block;
-    max-height: rem(189);
+    @extend %float-left;
+    width: rem(185);
   }
 }
 
@@ -41,7 +45,6 @@
   @include m('pull-left') {
     margin-left: rem(273);
     max-width: rem(590);
-    max-height: rem(126);
   }
 
   @include m('pull-right') {
