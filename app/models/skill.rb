@@ -21,19 +21,39 @@ class Skill < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  def self.update_skill(params)
+    skill = Skill.find_by_name(params[:name])
+
+    raise "Do not found with skill: '#{params[:name]}'." unless skill.present?
+
+    skill.update_attributes(params)
+  end
+
+  def self.find_skill(skill_name)
+    skill = Skill.find_by_name(skill_name)
+    unless skill.present?
+      raise "Do not found with skill: '#{skill_name}'.
+        Please make sure import Skill before."
+    end
+
+    skill
+  end
+
   def self.import_from_csv(csv)
     Skill.transaction do
-      Skill.delete_all
+      # Skill.delete_all
 
       csv.each do |row|
-        name_str = row[0].strip
-        next if Skill.exists?(name: name_str)
+        params = {
+          name: row[0].strip,
+          url: row[1].strip
+        }
 
-        skill = Skill.new
-        skill[:name] = name_str
-        skill[:url] = row[1].strip
-
-        skill.save!
+        if Skill.exists?(name: params[:name])
+          Skill.update_skill(params)
+        else
+          Skill.create(params)
+        end
       end
     end
   end

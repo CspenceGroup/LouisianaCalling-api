@@ -30,20 +30,30 @@ class Education < ActiveRecord::Base
     education
   end
 
+  def self.update_education(params)
+    education = Education.find_by_name(params[:name])
+
+    raise "Do not found with education: '#{params[:name]}'." unless education.present?
+
+    education.update_attributes(params)
+  end
+
   def self.import_from_csv(csv)
     Education.transaction do
-      Education.delete_all
+      # Education.delete_all
 
       csv.each do |row|
-        name_str = row[0].strip
-        next if Education.exists?(name: name_str)
+        params = {
+          name: row[0].strip,
+          url: row[1].strip,
+          url_selected: row[2].strip
+        }
 
-        education = Education.new
-        education[:name] = name_str
-        education[:url] = row[1].strip
-        education[:url_selected] = row[2].strip
-
-        education.save!
+        if Education.exists?(name: params[:name])
+          Education.update_education(params)
+        else
+          Education.create(params)
+        end
       end
     end
   end
