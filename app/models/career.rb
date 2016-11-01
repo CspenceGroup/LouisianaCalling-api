@@ -89,6 +89,10 @@ class Career < ActiveRecord::Base
     joins(:career_skills).distinct
   }
 
+  scope :filter_with_region, lambda { |regions|
+    joins(:career_regions).where('career_regions.region_id IN (?)', regions)
+  }
+
   scope :filter_by_region, lambda { |region|
     with_regions_high_demand.where('career_region_high_demands.region_id IN (?)', region)
   }
