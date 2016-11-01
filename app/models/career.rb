@@ -136,35 +136,30 @@ class Career < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Career.transaction do
-      Career.delete_all
-      CareerInterestship.delete_all
-      CareerSkillship.delete_all
-      CareerInterest.delete_all
-      CareerSkill.delete_all
-      CareerEducation.delete_all
-      CareerRegionHighDemand.delete_all
-      CareerCluster.delete_all
-
       csv.each do |row|
-        title_str = row[0].strip
-        next if Career.exists?(title: title_str)
+        params = {
+          title: row[0].strip
+        }
 
-        career = Career.new
-        career[:title] = title_str
+        params[:salary_min] = row[7].strip
+        params[:salary_max] = row[8].strip
+        params[:about_job] = row[10].strip
+        params[:what_will_do] = row[11].strip
+        params[:demand] = row[14].strip
+        params[:photo_large] = row[15].strip if row[15].present?
+        params[:photo_medium] = row[16].strip if row[16].present?
+        params[:projected_growth] = row[18].strip if row[18].present?
 
-        career[:salary_min] = row[7].strip
-        career[:salary_max] = row[8].strip
-        career[:about_job] = row[10].strip
-        career[:what_will_do] = row[11].strip
-        career[:demand] = row[14].strip
-        career[:photo_large] = row[15].strip if row[15].present?
-        career[:photo_medium] = row[16].strip if row[16].present?
-        career[:projected_growth] = row[18].strip if row[18].present?
+        if Career.exists?(title: params[:title])
+          career = Career.find_by_title(params[:title])
 
-        career.save!
+          career.update_attributes(params) if career.present?
+        else
+          career = Career.create(params)
+        end
 
         # Adding interests
-        create_career_interests(row[6].split(',').map(&:strip), career) if row[6].present?
+        create_career_interests(row[6].split(';').map(&:strip), career) if row[6].present?
 
         # Adding skills
         create_career_skills(row[5].split(',').map(&:strip), career) if row[5].present?
@@ -203,22 +198,26 @@ class Career < ActiveRecord::Base
 
   def self.create_career_interests(interests, career)
     interests.each do |interest_name|
-      interest = Interest.find_by_name(interest_name)
+      interest = Interest.find_interest(interest_name)
+
+      next if CareerInterest.exists?(career_id: career.id, interest_id: interest.id)
 
       CareerInterest.create(
         career_id: career.id,
-        interest_id: interest.present? ? interest.id : nil
+        interest_id: interest.id
       )
     end
   end
 
   def self.create_career_skills(skills, career)
     skills.each do |skill_name|
-      skill = Skill.find_by_name(skill_name)
+      skill = Skill.find_skill(skill_name)
+
+      next if CareerSkill.exists?(career_id: career.id, skill_id: skill.id)
 
       CareerSkill.create(
         career_id: career.id,
-        skill_id: skill.present? ? skill.id : nil
+        skill_id: skill.id
       )
     end
   end
@@ -226,6 +225,8 @@ class Career < ActiveRecord::Base
   def self.create_career_educations(educations, career)
     educations.each do |education_name|
       education = Education.find_education(education_name)
+
+      next if CareerEducation.exists?(career_id: career.id, education_id: education.id)
 
       CareerEducation.create(
         career_id: career.id,
@@ -238,9 +239,11 @@ class Career < ActiveRecord::Base
     regions.each do |region_name|
       region = Region.find_region(region_name)
 
+      next if CareerRegionHighDemand.exists?(career_id: career.id, region_id: region.id)
+
       CareerRegionHighDemand.create(
         career_id: career.id,
-        region_id: region.present? ? region.id : nil
+        region_id: region.id
       )
     end
   end
@@ -249,9 +252,16 @@ class Career < ActiveRecord::Base
     careers.each do |career_name|
       career_related = Career.find_career(career_name)
 
+      career_interestship = CareerInterestship.where(
+        career_id: career.id,
+        career_related_id: career_related.id
+      )
+
+      next if career_interestship.present?
+
       CareerInterestship.create(
         career_id: career.id,
-        career_related_id: career_related.present? ? career_related.id : nil
+        career_related_id: career_related.id
       )
     end
   end
@@ -260,15 +270,24 @@ class Career < ActiveRecord::Base
     careers.each do |career_name|
       career_related = Career.find_career(career_name)
 
+      career_skillship = CareerSkillship.where(
+        career_id: career.id,
+        career_related_id: career_related.id
+      )
+
+      next if career_skillship.present?
+
       CareerSkillship.create(
         career_id: career.id,
-        career_related_id: career_related.present? ? career_related.id : nil
+        career_related_id: career_related.id
       )
     end
   end
 
   def self.create_career_cluster(cluster_name, career)
     cluster = Cluster.find_or_create(cluster_name)
+
+    return if CareerCluster.exists?(career_id: career.id, cluster_id: cluster.id)
 
     CareerCluster.create(
       career_id: career.id,

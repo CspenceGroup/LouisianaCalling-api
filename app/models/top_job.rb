@@ -21,18 +21,24 @@ class TopJob < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     TopJob.transaction do
-      TopJob.delete_all
+      # TopJob.delete_all
 
       csv.each do |row|
-        top_jobs = TopJob.new
-
         region = Region.find_region(row[0].strip)
-        top_jobs[:region_id] = region.id if region.present?
-
         career = Career.find_career(row[1].strip)
-        top_jobs[:career_id] = career.id if career.present?
 
-        top_jobs.save!
+        params = {}
+        params[:region_id] = region.id if region.present?
+        params[:career_id] = career.id if career.present?
+
+        top_job = TopJob.where(
+          career_id: career.id,
+          region_id: region.id
+        ).first
+
+        next if top_job.present?
+
+        TopJob.create(params)
       end
     end
   end
