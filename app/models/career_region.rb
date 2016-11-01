@@ -23,23 +23,33 @@ class CareerRegion < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     CareerRegion.transaction do
-      CareerRegion.delete_all
-      CareerRegionEducation.delete_all
+      # CareerRegion.delete_all
+      # CareerRegionEducation.delete_all
 
       csv.each do |row|
-        career_region = CareerRegion.new
-
         career = Career.find_career(row[0].strip)
-        career_region[:career_id] = career.id if career.present?
-
         region = Region.find_region(row[1].strip)
-        career_region[:region_id] = region.id if region.present?
 
-        career_region[:salary_min] = row[2].strip
-        career_region[:salary_max] = row[3].strip
-        career_region[:demand] = row[5].strip
+        params = {
+          salary_min: row[2].strip,
+          salary_max: row[3].strip,
+          demand: row[5].strip
+        }
 
-        career_region.save!
+        params[:career_id] = career.id if career.present?
+        params[:region_id] = region.id if region.present?
+
+        career_region = CareerRegion.where(
+          career_id: career.id,
+          region_id: region.id
+        ).first
+
+        if career_region.present?
+          career_region.update_attributes(params)
+        else
+          career_region = CareerRegion.create(params)
+        end
+
         if row[4].present?
           create_career_region_educations(row[4].split(',').map(&:strip), career_region)
         end
@@ -50,6 +60,11 @@ class CareerRegion < ActiveRecord::Base
   def self.create_career_region_educations(educations, career_region)
     educations.each do |education_name|
       education = Education.find_education(education_name)
+
+      next if CareerRegionEducation.exists?(
+        career_region_id: career_region.id,
+        education_id: education.id
+      )
 
       CareerRegionEducation.create(
         career_region_id: career_region.id,

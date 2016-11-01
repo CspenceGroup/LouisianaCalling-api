@@ -34,7 +34,7 @@
             <div class="career-desc__interest-item">
               <div class="career-desc__interest-icon">
                 <% if interest.url.present? %>
-                  <%= image_tag(interest.url, :alt => "interest icon") %>
+                  <%= image_tag(interest.home_url, :alt => "interest icon") %>
                 <% else %>
                   <%= image_tag("", :alt => "interest icon") %>
                 <% end %>
