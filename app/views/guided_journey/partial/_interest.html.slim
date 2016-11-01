@@ -10,5 +10,5 @@
           .interest-icon--active
             = image_tag interest.url_selected || '', alt: "#{interest}"
         p.item-step-title title="#{interest}"
-          = truncate(interest.to_s, length: 30)
+          = interest
 

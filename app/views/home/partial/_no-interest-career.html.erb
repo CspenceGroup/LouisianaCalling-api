@@ -17,8 +17,8 @@
         <%= image_tag asset_path("tell-me-more.png"), alt: "tell me more" %>
       </a>
       <div class="career-shortcut__salary">
-        <div class="icon i-career-salary i-career-salary-carousel"></div>
         <p>$<%= number_with_delimiter(career.salary_min, :delimiter => ',') %> - $<%= number_with_delimiter(career.salary_max, :delimiter => ',') %></p>
+        <div class="icon i-career-salary i-career-salary-carousel"></div>
       </div>
     </div>
   </div>

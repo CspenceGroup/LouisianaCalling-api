@@ -8,7 +8,7 @@
   @include e('interest-item') {
     @include boxSize(rem(135), rem(135));
     @extend %float-left;
-    padding-top: rem(12);
+    padding-top: rem(9);
 
     & + & {
       @extend %no-border-left;

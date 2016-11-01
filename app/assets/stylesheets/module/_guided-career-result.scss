@@ -1,6 +1,7 @@
 .guided-result-item {
   border: solid rem(1) $default;
   margin-top: rem(18);
+  background-color: $white;
   @extend %float-left;
   @extend %relative;
   @include boxSize(rem(385), rem(195));

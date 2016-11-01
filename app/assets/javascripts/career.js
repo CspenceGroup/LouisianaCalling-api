@@ -96,7 +96,7 @@ $(document).on('turbolinks:load', function(){
       .removeClass('career-list-view-active')
       .addClass('career-grid-view-active');
 
-    $(".related-item__name").dotdotdot({});
+    // $(".related-item__name").dotdotdot({});
   });
 
   $("#slider-range").slider({
@@ -249,9 +249,9 @@ $(document).on('turbolinks:load', function(){
 
           lazyloadImages();
 
-          if ($('#careersGrid').is(":visible")) {
-            $(".related-item__name").dotdotdot({});
-          }
+          // if ($('#careersGrid').is(":visible")) {
+          //   $(".related-item__name").dotdotdot({});
+          // }
 
           if (response.is_see_more) {
             $('#careers-see-more,#careers-see-more-list').show();
@@ -600,7 +600,7 @@ $(document).on('turbolinks:load', function(){
 
   lazyloadImages();
 
-  $(".related-item__name").dotdotdot({});
+  // $(".related-item__name").dotdotdot({});
 
   /*Collapse filter careers. Show hide icon minimize and expend*/
   $('.careers-icon-collapse').on('click', function(event) {
