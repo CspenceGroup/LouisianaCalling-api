@@ -3,22 +3,19 @@
   = render "navigation/index"
   .main-content
     section.career-banner.edu-detail-banner
-      h2.career-banner__title.hero-banner__title
-        = program
+      .edu-detail-banner__content
+        h2.hero-banner__title
+          = program
       .career-banner__bg
         = image_tag program.cover_photo || ""
-    section.great-jobs.great-jobs-careers-details.edu-program-info.edu-great-jobs
+    section.great-jobs.edu-program-info.edu-great-jobs
       .great-jobs__container
         .great-jobs__content.edu-detail-content
           .jobs-head
             .jobs-head__name
-              p.jobs-head__title.jobs-head__title-great-jobs(title="#{program}")
+              p.edu-program-info__title(title="#{program}")
                 = program
             .jobs-head__content
-              .edu-head-info.edu-details-region
-                i.icon.edu-icon.i-map-white
-                span
-                  = program.region
               .edu-head-info
                 i.icon.edu-icon.i-edu-salary.i-salary-white
                 span.edu-salary-range
@@ -32,16 +29,11 @@
                     p
                       = career
               li.edu-detail-item
-                i.icon.edu-icon.i-education.i-education-white
-                .edu-certificate(title="#{program.education}")
-                  p
-                    = program.education
-              li.edu-detail-item
                 i.icon.edu-icon.i-calendar.i-calendar-white
                 p(title="#{program.duration}")
                   = program.duration
               li.edu-detail-item
-                i.icon.edu-icon.i-clock
+                i.icon.edu-icon.i-clock-white
                 p(title="#{program.hours_per_weeks}")
                   = program.hours_per_weeks
               li.edu-detail-item
