@@ -27,6 +27,10 @@ class Interest < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  scope :filter_names_not_exist, lambda { |names|
+    where('name NOT IN (?)', names)
+  }
+
   def self.update_interest(params)
     interest = Interest.find_by_name(params[:name])
 
@@ -45,6 +49,13 @@ class Interest < ActiveRecord::Base
     interest
   end
 
+  # Remove all interests do not exists in TSV file import
+  def self.remove(names)
+    interests = Interest.filter_names_not_exist(names)
+
+    interests.delete_all if interests.present?
+  end
+
   def self.import_from_csv(csv)
     Interest.transaction do
       # Interest.delete_all
@@ -53,9 +64,9 @@ class Interest < ActiveRecord::Base
         params = {
           name: row[0].strip,
           url: row[1].strip,
-          home_url: row[1].strip,
-          gj_url: row[1].strip,
-          gj_url_selected: row[2].strip
+          home_url: row[2].strip,
+          gj_url: row[3].strip,
+          gj_url_selected: row[4].strip
         }
 
         if Interest.exists?(name: params[:name])
@@ -66,6 +77,10 @@ class Interest < ActiveRecord::Base
           Interest.create(params)
         end
       end
+
+      # Remove all Interest do not exists in tsv file
+      names = csv.map { |row| row[0].strip }.uniq
+      Interest.remove(names)
     end
   end
 

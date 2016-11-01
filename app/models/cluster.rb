@@ -17,6 +17,17 @@ class Cluster < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
+  scope :filter_names_not_exist, lambda { |names|
+    where('name NOT IN (?)', names)
+  }
+
+  # Remove all clusters do not exists in TSV file import
+  def self.remove(names)
+    clusters = Cluster.filter_names_not_exist(names)
+
+    clusters.delete_all if clusters.present?
+  end
+
   def self.find_or_create(cluster_name)
     cluster = Cluster.find_by_name(cluster_name)
 
@@ -39,6 +50,10 @@ class Cluster < ActiveRecord::Base
 
         cluster.save!
       end
+
+      # Remove all Cluster do not exists in tsv file
+      names = csv.map { |row| row[0].strip }.uniq
+      Cluster.remove(names)
     end
   end
 
