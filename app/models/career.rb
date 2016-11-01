@@ -255,7 +255,7 @@ class Career < ActiveRecord::Base
       career_interestship = CareerInterestship.where(
         career_id: career.id,
         career_related_id: career_related.id
-      )
+      ).first
 
       next if career_interestship.present?
 
@@ -273,7 +273,7 @@ class Career < ActiveRecord::Base
       career_skillship = CareerSkillship.where(
         career_id: career.id,
         career_related_id: career_related.id
-      )
+      ).first
 
       next if career_skillship.present?
 

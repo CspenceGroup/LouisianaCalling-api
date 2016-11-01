@@ -51,43 +51,49 @@ class Program < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Program.transaction do
-      Program.delete_all
-      ProgramCareer.delete_all
-      ProgramCluster.delete_all
+      # Program.delete_all
+      # ProgramCareer.delete_all
+      # ProgramCluster.delete_all
+
 
       csv.each_with_index do |row|
-        raise 'Wrong file' if row[20].present?
-
-        program = Program.new
-        program[:title] = row[0].strip
-
         region = Region.find_region(row[1].strip)
-        program[:region_id] = region.id if region.present?
-
-        program[:traning_detail] = row[2].strip
-        program[:description] = row[3].strip
-        program[:duration] = row[4].strip
-        program[:time_of_day] = row[5].strip
-        program[:hours_per_weeks] = row[6].strip
-        program[:tuition_min] = row[7].strip
-        program[:tuition_max] = row[8].strip
-
         education = Education.find_education(row[9].strip)
-        program[:education_id] = education.id if education.present?
 
-        program[:institution_name] = row[10].strip
-        program[:phone] = row[11].strip
-        program[:address] = row[12].strip
+        params = {
+          title: row[0].strip
+        }
+
+        params[:region_id] = region.id if region.present?
+        params[:traning_detail] = row[2].strip
+        params[:description] = row[3].strip
+        params[:duration] = row[4].strip
+        params[:time_of_day] = row[5].strip
+        params[:hours_per_weeks] = row[6].strip
+        params[:tuition_min] = row[7].strip
+        params[:tuition_max] = row[8].strip
+        params[:education_id] = education.id if education.present?
+        params[:institution_name] = row[10].strip
+        params[:phone] = row[11].strip
+        params[:address] = row[12].strip
 
         if row[13].present?
           location = row[13].split(',').map(&:strip)
-          program[:lat] = location[0]
-          program[:lng] = location[1]
+          params[:lat] = location[0]
+          params[:lng] = location[1]
         end
 
-        program[:cover_photo] = row[18].strip
+        params[:cover_photo] = row[18].strip
 
-        program.save!
+        program =
+          if Program.exists?(title: params[:title])
+            program = Program.find_by_title(params[:title])
+            program.update_attributes(params)
+
+            program
+          else
+            Program.create(params)
+          end
 
         (14..17).each do |i|
           create_program_cluster(row[i].strip, program) if row[i].present?
@@ -104,15 +110,19 @@ class Program < ActiveRecord::Base
     careers.each do |career_name|
       career = Career.find_career(career_name)
 
+      next if ProgramCareer.exists?(program_id: program.id, career_id: career.id)
+
       ProgramCareer.create(
         program_id: program.id,
-        career_id: career.present? ? career.id : nil
+        career_id: career.id
       )
     end
   end
 
   def self.create_program_cluster(cluster_name, program)
     cluster = Cluster.find_or_create(cluster_name)
+
+    return if ProgramCluster.exists?(program_id: program.id, cluster_id: cluster.id)
 
     ProgramCluster.create(
       program_id: program.id,
