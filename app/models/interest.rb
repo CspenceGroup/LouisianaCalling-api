@@ -2,10 +2,12 @@
 #
 # Table name: educations
 #
-#  id             :integer          not null, primary key
-#  name           :string
-#  url            :string
-#  url_selected   :string
+#  id                 :integer          not null, primary key
+#  name               :string
+#  url                :string
+#  home_url           :string
+#  gj_url             :string
+#  gj_url_selected    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -19,7 +21,9 @@ class Interest < ActiveRecord::Base
 
   validates :name, presence: true
   validates :url, presence: true
-  validates :url_selected, presence: true
+  validates :home_url, presence: true
+  validates :gj_url, presence: true
+  validates :gj_url_selected, presence: true
 
   validates_uniqueness_of :name
 
@@ -49,7 +53,9 @@ class Interest < ActiveRecord::Base
         params = {
           name: row[0].strip,
           url: row[1].strip,
-          url_selected: row[2].strip
+          home_url: row[1].strip,
+          gj_url: row[1].strip,
+          gj_url_selected: row[2].strip
         }
 
         if Interest.exists?(name: params[:name])
