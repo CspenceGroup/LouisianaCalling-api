@@ -233,8 +233,9 @@
 }
 
 .no-interest-container {
-  @extend %display-flex;
   flex-direction: row;
+  @extend %display-flex;
+  @extend %no-padding-right;
 }
 
 .no-interest-head {
@@ -244,11 +245,10 @@
 }
 
 .no-interest-pull-right {
-  margin-left: rem(117);
-}
+  width: rem(292);
 
-@-moz-document url-prefix() {
-  .no-interest-pull-right {
-    margin-left: rem(100);
+  .i-career-salary,
+  p {
+    @extend %float-right;
   }
 }

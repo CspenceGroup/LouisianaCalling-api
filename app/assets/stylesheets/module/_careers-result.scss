@@ -25,40 +25,52 @@
   display: none;
 
   @include e('item') {
-    border: rem(1) solid $filter-careers-heading;
-    background-color: $white;
-    @include boxSize(rem(802), rem(70));
-    color: $filter-careers-heading;
-    padding: 0 rem(23) 0 rem(13);
+    width: rem(802);
+    min-height: rem(70);
     margin-bottom: rem(16);
+    background-color: $white;
+    padding: 0 rem(23) 0 rem(13);
+    color: $filter-careers-heading;
+    border: rem(1) solid $filter-careers-heading;
+    @extend %display-flex;
   }
 
   @include e('heading') {
-    line-height: rem(70);
+    min-height: rem(49);
+    padding: rem(10) 0;
+    flex-direction: row;
+    @extend %display-flex;
+    @include boxSize(100%, auto);
   }
 
   @include e('salary') {
-    margin-left: rem(25);
+    margin: rem(5) 0 0 rem(25);
     font-size: rem(14.58);
-    line-height: rem(71);
     @extend %acumin-pro-cond ;
     @extend %float-right;
   }
 
   @include e('head-salary') {
+    align-self: center;
+    margin-left: rem(60);
+    width: rem(304);
     @extend %float-right;
   }
 
   .jobs-head__name {
     padding-top: 0;
+    align-self: center;
+    width: rem(460);
   }
 
   .jobs-head__icon {
     margin-top: 0;
+    @extend %float-right;
   }
 
   .jobs-head__title {
     font-size: rem(16.67);
+    white-space: normal;
   }
 
   i {
@@ -120,14 +132,13 @@
   @extend %no-margin-right;
   width: rem(835);
   @extend %overflow-hidden;
-  // margin-bottom: rem(20);
   color: $default;
 
   @include e('item') {
     @extend %no-padding;
     @extend %float-left;
     @extend %relative;
-    @include boxSize(rem(254), rem(305)); // height: 254px
+    @include boxSize(rem(254), rem(320));
     border: rem(1) solid $default;
     margin: rem(20) rem(20) 0 0;
     background-color: $white;

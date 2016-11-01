@@ -37,7 +37,7 @@
 
   @include e('news-container') {
     width: 35.25%;
-    padding: rem(55) rem(98) 0 rem(60);
+    padding: rem(55) 0 0 rem(60);
     background: $feature-news-bg;
   }
 
