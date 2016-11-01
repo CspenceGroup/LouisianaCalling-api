@@ -264,8 +264,8 @@ $(document).on('turbolinks:load', function(){
 
     var params = {
       interests: interests.length > 0 ? interests.join(', ') : null,
-      educations: educations.length > 0 ? educations.join(', ') : null,
-      // regions: regions.length > 0 ? regions.join(', ') : null,
+      // educations: educations.length > 0 ? educations.join(', ') : null,
+      regions: regions.length > 0 ? regions.join(', ') : null,
       limit: $('#searchLimit').val(),
       offset: $('#searchOffset').val()
     };
