@@ -19,7 +19,7 @@ class GuidedJourneyController < ApplicationController
       region_name = params[:regions].split(',').map(&:downcase)
 
       region_ids = Region.filter_by_names(region_name).distinct.map(&:id)
-      careers = careers.filter_by_region(region_ids).distinct
+      careers = careers.filter_with_region(region_ids).distinct
     end
 
     # ## filter by skill
