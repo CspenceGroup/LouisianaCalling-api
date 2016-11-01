@@ -65,7 +65,10 @@
   }
 
   .jobs-head__content {
-    margin-top: rem(20);
+    margin-top: 0;
+    @extend %display-flex;
+    width: 100%;
+    @extend %justify-content-end;
   }
 
   .jobs-head__title {
@@ -201,6 +204,12 @@
 
 .edu-cost {
   @extend %float-right;
+  align-self: center;
+
+  .edu-icon,
+  .edu-salary-range {
+    margin-top: 0;
+  }
 }
 
 .edu-region {

@@ -8,10 +8,12 @@
 
   @include e('item-header') {
     border-bottom: rem(1) solid $default;
-    height: rem(80);
+    height: auto;
+    @extend %display-flex;
 
     .jobs-head__name {
-      width: rem(650);
+      width: rem(601);
+      min-height: rem(80);
       line-height: rem(80);
       padding-top: 0;
 
@@ -106,7 +108,7 @@
   }
 
   @include e('header') {
-    height: rem(105);
+    height: auto;
 
     .jobs-head__content {
       @extend %float-left;
@@ -116,6 +118,7 @@
 
     .jobs-head__name {
       width: rem(353);
+      min-height: rem(105);
       line-height: rem(105);
     }
 
