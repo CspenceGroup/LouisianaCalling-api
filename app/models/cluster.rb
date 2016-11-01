@@ -28,7 +28,7 @@ class Cluster < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Cluster.transaction do
-      Cluster.delete_all
+      # Cluster.delete_all
 
       csv.each do |row|
         name_str = row[0].strip
