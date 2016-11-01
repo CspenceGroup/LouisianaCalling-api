@@ -63,8 +63,8 @@ class Interest < ActiveRecord::Base
       csv.each do |row|
         params = {
           name: row[0].strip,
-          home_url: row[1].strip,
-          url: row[2].strip,
+          home_url: row[2].strip,
+          url: row[1].strip,
           gj_url: row[3].strip,
           gj_url_selected: row[4].strip
         }
