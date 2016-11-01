@@ -126,7 +126,7 @@
 
     p {
       font-size: rem(12.6);
-      max-width: rem(150);
+      max-width: rem(102); // 150px
       margin-left: rem(15);
       line-height: rem(16);
       @extend %text-uppercase;
@@ -136,13 +136,9 @@
 }
 
 .career-interest-icon {
-  height: rem(50);
   @extend %float-left;
   @extend %overflow-hidden;
-
-  img {
-    @include boxSize(auto, 100%);
-  }
+  @include boxSize(rem(50), auto);
 }
 
 .profile-story-career {

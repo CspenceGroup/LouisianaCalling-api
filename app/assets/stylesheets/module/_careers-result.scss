@@ -37,7 +37,6 @@
 
   @include e('heading') {
     min-height: rem(49);
-    padding: rem(10) 0;
     flex-direction: row;
     @extend %display-flex;
     @include boxSize(100%, auto);

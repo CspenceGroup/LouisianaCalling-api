@@ -119,11 +119,6 @@
     height: rem(50);
     @extend %float-left;
     @extend %overflow-hidden;
-
-    img {
-      object-fit: contain;
-      @include boxSize(100%, 100%);
-    }
   }
 
   @include e('interest-text') {
