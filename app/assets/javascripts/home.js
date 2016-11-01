@@ -151,7 +151,7 @@ $(document).on('turbolinks:load', function(){
 
     if (activeRegionData) {
       var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
-      $('#career-salary').html('<i class="icon edu-icon i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
+      $('#career-salary').html('<i class="icon edu-icon i-salary-career"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
       $('#career-certificate').html('<i class="icon edu-icon i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
 
       var flame_icons = [];
@@ -177,7 +177,6 @@ $(document).on('turbolinks:load', function(){
 
     addRegionName(regionId);
     showCareerRequired(regionId);
-    $('.career-options__text').dotdotdot({});
   }
 
   //Show video banner homepage

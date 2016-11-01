@@ -2,7 +2,7 @@
   color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
-  height: rem(516);
+  height: rem(560);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
   @extend %background-repeat;
@@ -10,7 +10,7 @@
   @include background-image('careers/great-job-bg.jpg');
 
   @include e('details') {
-    @include boxSize(rem(302), rem(307));
+    @include boxSize(rem(310), rem(330));
     @include background-image('top-jobs-border.png');
   }
 
@@ -24,10 +24,6 @@
     right: rem(510);
     @include boxSize(rem(585), rem(615));
     @extend %absolute;
-  }
-
-  @include e('map-details') {
-    top: rem(-243);
   }
 
   .job-heading {
@@ -80,19 +76,17 @@
   @extend %brandon-grotesque;
   @extend %absolute;
 
-  @include m('careers') {
-    top: rem(2);
-  }
 }
 
 .job-list {
   top: rem(62);
-  left: rem(23);
-  padding-right: rem(16);
+  left: rem(25);
   @extend %absolute;
   @extend %overflow-y-scroll;
   @extend %acumin-pro-cond-regular;
-  @include boxSize(rem(265), rem(230));
+  @include boxSize(rem(272), rem(250));
+  padding-right: rem(10);
+  margin-bottom: 0;
 
   a {
     color: $profile-name-shadow;
@@ -137,7 +131,7 @@ text.active {
 }
 
 .asterisk-copy-home {
-  margin-top: rem(346);
+  margin-top: rem(364);
   font-size: rem(15);
   @extend %acumin-pro-cond-regular;
   @extend %text-center;

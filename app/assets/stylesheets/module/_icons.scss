@@ -24,16 +24,14 @@
   @include backgroundSprite(24, 20, -37, -1);
 }
 
-.i-salary {
-  @include boxSize(rem(38), rem(27));
+.i-salary-career {
+  @include boxSize(rem(39), rem(26));
   @include background-image('career-info/career-salary.png');
 }
 
 .i-certificate {
   margin-left: rem(7);
-  @extend %absolute;
-  @extend %left-top-0;
-  @include boxSize(rem(23), rem(28));
+  @include boxSize(rem(32), rem(28));
   @include background-image('career-info/icon-edu-white.png');
 }
 
