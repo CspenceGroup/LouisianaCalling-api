@@ -6,16 +6,9 @@
           .jobs-head.program-list__item-header
             a href="/education/#{program.slug}"
               .jobs-head__name
-                .jobs-head__title.jobs-head__title-great-jobs title="#{program}"
+                p title="#{program}"
                   = program
             .jobs-head__content
-              //- .edu-scholarship
-              //-   p
-              //-     = program.financial_help
-              .edu-region
-                i.icon.edu-icon.i-map-blue
-                p
-                  = program.region
               .edu-cost
                 i.icon.edu-icon.i-edu-salary.i-salary-blue
                 .edu-salary-range
@@ -28,10 +21,6 @@
                   - program.careers.each do |career|
                     p
                       = career
-              li.edu-detail-item--landing
-                i.icon.edu-icon.i-education.i-education-blue
-                p title=program.education
-                  = program.education
               li.edu-detail-item--landing
                 i.icon.edu-icon.i-calendar.i-calendar-blue
                 p
