@@ -42,7 +42,7 @@ class Region < ActiveRecord::Base
   end
 
   # Remove all regions do not exists in TSV file import
-  def self.remove_regions(names)
+  def self.remove(names)
     regions = Region.filter_names_not_exist(names)
 
     regions.delete_all if regions.present?
@@ -64,7 +64,7 @@ class Region < ActiveRecord::Base
 
       # Remove all region do not exists in tsv file
       names = csv.map { |column| column[0].strip }.uniq
-      Region.remove_regions(names)
+      Region.remove(names)
     end
   end
 
