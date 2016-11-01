@@ -84,7 +84,7 @@
   @extend %absolute;
   @extend %overflow-y-scroll;
   @extend %acumin-pro-cond-regular;
-  @include boxSize(rem(272), rem(250));
+  @include boxSize(rem(272), rem(255));
   padding-right: rem(10);
   margin-bottom: 0;
 
