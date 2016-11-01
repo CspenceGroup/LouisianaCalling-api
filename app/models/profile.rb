@@ -38,43 +38,49 @@ class Profile < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Profile.transaction do
-      Profile.delete_all
-      ProfileCareer.delete_all
-      ProfileInterest.delete_all
-      ProfileSkill.delete_all
-      ProfileEducation.delete_all
+      # Profile.delete_all
+      # ProfileCareer.delete_all
+      # ProfileInterest.delete_all
+      # ProfileSkill.delete_all
+      # ProfileEducation.delete_all
 
       csv.each do |row|
-        profile = Profile.new
-        profile[:first_name] = row[0].strip
-        profile[:last_name] = row[1].strip
-        profile[:sub_head] = row[2].strip
-
         region = Region.find_region(row[4].strip)
-        profile[:region_id] = region.id if region.present?
-
-        profile[:educational_institution] = row[3].strip
-        profile[:description] = row[5].strip
-        profile[:demand] = row[8].strip
-
         cluster = Cluster.find_or_create(row[9].strip)
-        profile[:cluster_id] = cluster.id if cluster.present?
 
-        profile[:salary] = row[10].strip
+        params = {
+          first_name: row[0].strip,
+          last_name: row[1].strip,
+          sub_head: row[2].strip,
+          educational_institution: row[3].strip,
+          description: row[5].strip,
+          demand: row[8].strip,
+          salary: row[10].strip,
+          video: row[12].strip,
+          image_medium: row[13].strip,
+          image_small: row[14].strip,
+          image_large: row[15].strip
+        }
 
-        profile[:video] = row[12].strip
-        profile[:image_medium] = row[13].strip
-        profile[:image_small] = row[14].strip
-        profile[:image_large] = row[15].strip
+        params[:region_id] = region.id if region.present?
+        params[:cluster_id] = cluster.id if cluster.present?
 
-        profile.save!
+        profile = Profile.find_by_full_name("#{params[:first_name]} params[:last_name]").first
+
+        if profile.present?
+          profile.update_attributes(params)
+        else
+          profile = Profile.create(params)
+        end
 
         # Adding careers
-        create_profile_careers(row[16].split(',').map(&:strip), profile) if row[16].present?
+        if row[16].present?
+          create_profile_careers(row[16].split(',').map(&:strip), profile)
+        end
 
         # Adding interest
         if row[6].present?
-          create_profile_interests(row[6].split(',').map(&:strip), profile)
+          create_profile_interests(row[6].split(';').map(&:strip), profile)
         end
 
         # Adding skills
@@ -94,31 +100,37 @@ class Profile < ActiveRecord::Base
     careers.each do |career_name|
       career = Career.find_career(career_name)
 
+      next if ProfileCareer.exists?(profile_id: profile.id, career_id: career.id)
+
       ProfileCareer.create(
         profile_id: profile.id,
-        career_id: career.present? ? career.id : nil
+        career_id: career.id
       )
     end
   end
 
   def self.create_profile_interests(interests, profile)
     interests.each do |interest_name|
-      interest = Interest.find_by_name(interest_name)
+      interest = Interest.find_interest(interest_name)
+
+      next if ProfileInterest.exists?(profile_id: profile.id, interest_id: interest.id)
 
       ProfileInterest.create(
         profile_id: profile.id,
-        interest_id: interest.present? ? interest.id : nil
+        interest_id: interest.id
       )
     end
   end
 
   def self.create_profile_skills(skills, profile)
     skills.each do |skill_name|
-      skill = Skill.find_by_name(skill_name)
+      skill = Skill.find_skill(skill_name)
+
+      next if ProfileSkill.exists?(profile_id: profile.id, skill_id: skill.id)
 
       ProfileSkill.create(
         profile_id: profile.id,
-        skill_id: skill.present? ? skill.id : nil
+        skill_id: skill.id
       )
     end
   end
@@ -126,6 +138,8 @@ class Profile < ActiveRecord::Base
   def self.create_profile_educations(educations, profile)
     educations.each do |education_name|
       education = Education.find_education(education_name)
+
+      next if ProfileEducation.exists?(profile_id: profile.id, education_id: education.id)
 
       ProfileEducation.create(
         profile_id: profile.id,

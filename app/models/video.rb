@@ -20,22 +20,26 @@ class Video < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Video.transaction do
-      Video.delete_all
+      # Video.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[4].present?
-
-        video = Video.new
-        video[:title] = row[0].strip
-        video[:url] = row[1].strip
+        params = {
+          title: row[0].strip,
+          url: row[1].strip,
+          description: row[3].strip
+        }
 
         if row[2].strip.present?
           profile = Profile.find_by_full_name(row[2].strip).first
-          video[:profile_id] = profile.id if profile.present?
+          params[:profile_id] = profile.id if profile.present?
         end
-        video[:description] = row[3].strip
 
-        video.save!
+        if Video.exists?(title: params[:title])
+          video = Video.find_by_title(params[:title])
+          video.update_attributes(params)
+        else
+          Video.create(params)
+        end
       end
     end
   end
