@@ -64,6 +64,7 @@
   }
 
   @include e('icon-interest') {
+    margin-left: rem(10);
     @extend %overflow-hidden;
   }
 }

@@ -153,7 +153,7 @@
   }
 
   .profile-career-details {
-    width: rem(660);
+    width: rem(659);
     min-height: rem(55);
     @extend %no-list-style;
     @extend %no-margin-left;
@@ -235,11 +235,11 @@
   width: 100%;
   padding-left: rem(10);
   font-size: rem(18.75);
-  text-shadow: 0 0 0 rem(50) $black;
   top: rem(238);
   @extend %absolute;
   @extend %text-capitalize;
   @extend %acumin-pro-cond-bi;
+  @include shadow(0, 0, rem(50), $black);
 }
 
 .i-profile-info {

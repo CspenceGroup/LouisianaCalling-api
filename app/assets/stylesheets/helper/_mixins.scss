@@ -91,6 +91,8 @@ $image-path: '';
 @mixin shadow ($x, $y, $z, $color) {
   -webkit-text-shadow: $x $y $z $color;
      -moz-text-shadow: $x $y $z $color;
+      -ms-text-shadow: $x $y $z $color;
+       -o-text-shadow: $x $y $z $color;
           text-shadow: $x $y $z $color;
 }
 

@@ -126,7 +126,7 @@
 
     p {
       font-size: rem(12.6);
-      max-width: rem(150);
+      max-width: rem(102); // 150px
       margin-left: rem(15);
       line-height: rem(16);
       @extend %text-uppercase;
