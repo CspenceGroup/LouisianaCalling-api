@@ -33,7 +33,7 @@
             <h2>Interests</h2>
             <% career.interests.each do |interest| %>
               <div class="career-desc__interest-item">
-                <div class="career-desc__interest-icon">
+                <div class="career-desc__interest-icon career-interest-icon">
                   <% if interest.home_url.present? %>
                     <%= image_tag(interest.home_url, :alt => "interest icon") %>
                   <% else %>
@@ -127,7 +127,7 @@
                 <div class="career-desc__feature-news related-careers__icon-interest">
                   <% interests.each do |interest| %>
                     <div class="career-desc__interest-item related-careers__interest">
-                      <div class="career-desc__interest-icon">
+                      <div class="career-desc__interest-icon career-interest-icon">
                       <% if interest.home_url.present? %>
                         <%= image_tag(interest.home_url, :alt => "interest icon") %>
                       <% else %>

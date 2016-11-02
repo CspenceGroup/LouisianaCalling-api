@@ -121,8 +121,6 @@
   }
 
   @include e('interest-icon') {
-    max-width: rem(50);
-    height: auto;
     @extend %float-left;
     @extend %overflow-hidden;
   }
