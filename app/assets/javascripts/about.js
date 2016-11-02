@@ -136,9 +136,10 @@ $(document).on('turbolinks:load', function(){
     var target = event.target,
         email = $.trim(target[0].value),
         subject = $.trim(target[1].value),
-        message = $.trim(target[2].value);
+        message = $.trim(target[2].value),
+        formatEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-    if (!email) {
+    if (!email || !formatEmail.test(email)) {
       $('.alert-danger-email').show();
     } else {
       $('.alert-danger-email').hide();
