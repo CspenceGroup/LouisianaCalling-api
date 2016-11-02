@@ -71,4 +71,10 @@ class Region < ActiveRecord::Base
   def to_s
     name
   end
+
+  private
+
+  def delete_top_job
+    TopJob.where(region_id: id).delete_all
+  end
 end
