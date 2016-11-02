@@ -21,7 +21,6 @@
 
   @include e('title') {
     margin-bottom: rem(36);
-    @extend %text-capitalize;
     padding-left: rem(7);
 
     span {

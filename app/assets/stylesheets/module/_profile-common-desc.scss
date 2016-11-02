@@ -75,6 +75,7 @@
 
 .profile-title {
   padding-bottom: rem(17);
+  @extend %text-capitalize;
 }
 
 .btn-full-story {
