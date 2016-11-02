@@ -9,10 +9,10 @@
           = image_tag url, lazy: true, class: "lazy-load"
         - else
           video.video-playing.video-player(muted='' loop="loop")
-            source(src=url type='video/mp4') 
+            source(src=url type='video/mp4')
           button.btn-play.btn-profile-video#btn-video-profile(type='button' data-source=url data-toggle='modal' data-target='#videoProfileModal')
-          p.profile-video-desc 
-            | Watch 
+          p.profile-video-desc
+            | Watch
             = @profile.first_name
             | 's story
           .modal.fade.modal-video(id="videoProfileModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true")
@@ -27,8 +27,8 @@
         .career-desc__main-content.personal-profile__main-content
           section.career-desc__about.personal-profile__about
           .personal-profile-about
-            h2.main-title.personal-profile-title 
-              | Meet  
+            h2.main-title.personal-profile-title
+              | Meet
               = @profile
             section.personal-profile-career
               ul.profile-career-details
@@ -70,9 +70,9 @@
       section.profile-story-career
         .career-shortcut
           - if career.interests.present?
-            = render partial: 'profile/partial/interest-career', locals: { career: career } 
+            = render partial: 'profile/partial/interest-career', locals: { career: career }
           - else
-            = render partial: 'profile/partial/no-interest-career', locals: { career: career } 
+            = render partial: 'profile/partial/no-interest-career', locals: { career: career }
     section.guideline
       .row.guideline-row
         .col-xs-4.col-md-4.guideline-col.guideline__more-stories
@@ -80,7 +80,7 @@
             a(href="/stories")
         .col-xs-4.col-md-4.guideline-col.guideline__find-program
           h2
-            a(href="#{career.present? && career.programs.present? ? education_detail_path(career.programs.first) : education_path}")
+            a(href="#{education_path}")
               span near you
         .col-xs-4.col-md-4.guideline-col.guideline__call-center
           .want-to-talk
