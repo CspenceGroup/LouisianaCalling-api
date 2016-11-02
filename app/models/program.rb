@@ -33,6 +33,10 @@ class Program < ActiveRecord::Base
     with_careers.where(query.join(' OR '), title, title, title)
   }
 
+  scope :filter_titles_not_exist, lambda { |titles|
+    where('title NOT IN (?)', titles)
+  }
+
   scope :filter_by_regions, lambda { |regions|
     where('region_id IN (?)', regions)
   }
@@ -49,12 +53,19 @@ class Program < ActiveRecord::Base
     with_clusters.where('program_clusters.cluster_id IN (?)', industries)
   }
 
+  # Remove all programs do not exists in TSV file import
+  def self.remove_programs(csv_file)
+    titles = csv_file.map { |row| row[0].strip }.uniq
+    programs = Program.filter_titles_not_exist(titles)
+
+    programs.delete_all if programs.present?
+  end
+
   def self.import_from_csv(csv)
     Program.transaction do
       # Program.delete_all
       # ProgramCareer.delete_all
       # ProgramCluster.delete_all
-
 
       csv.each_with_index do |row|
         region = Region.find_region(row[1].strip)
@@ -103,6 +114,9 @@ class Program < ActiveRecord::Base
           create_program_careers(row[19].split(';').map(&:strip), program)
         end
       end
+
+      # Remove all programs do not exists in TSV file import
+      Program.remove_programs(csv)
     end
   end
 
