@@ -17,8 +17,6 @@ class Region < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
 
-  before_destroy :delete_top_job
-
   # Sorting by alphabetical
   scope :alphabetical, lambda {
     order(:name)
@@ -72,11 +70,5 @@ class Region < ActiveRecord::Base
 
   def to_s
     name
-  end
-
-  private
-
-  def delete_top_job
-    TopJob.where(region_id: id).delete_all
   end
 end

@@ -21,7 +21,7 @@ class TopJob < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     TopJob.transaction do
-      # TopJob.delete_all
+      TopJob.delete_all
 
       csv.each do |row|
         region = Region.find_region(row[0].strip)
