@@ -55,6 +55,11 @@
       line-height: rem(22);
       @extend %acumin-pro-cond;
     }
+
+    ul {
+      list-style: disc;
+      margin-left: rem(15);
+    }
   }
 
   @include e('about') {
