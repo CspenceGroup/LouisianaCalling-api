@@ -142,7 +142,11 @@
 .career-interest-icon {
   @extend %float-left;
   @extend %overflow-hidden;
-  @include boxSize(rem(50), auto);
+  @include boxSize(auto, rem(50));
+
+  img {
+    @include boxSize(auto, 100%);
+  }
 }
 
 .profile-story-career {
