@@ -39,7 +39,7 @@
 .career-title {
   line-height: rem(42);
   color: $profile-name-shadow;
-  @include shadow(rem(3), rem(3), rem(3), $profile-header); 
+  @include shadow(rem(4), rem(6), 0, $profile-header);
 
 
   @include m('pull-left') {

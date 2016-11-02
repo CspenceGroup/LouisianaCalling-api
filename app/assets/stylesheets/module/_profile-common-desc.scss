@@ -70,7 +70,7 @@
 
 .profile-name {
   color: $default;
-  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
+  @include shadow(rem(4), rem(6), 0, $profile-name-shadow);
 }
 
 .profile-title {

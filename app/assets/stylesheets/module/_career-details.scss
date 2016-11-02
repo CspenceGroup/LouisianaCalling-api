@@ -26,7 +26,7 @@
   .main-title {
     margin-bottom: rem(30);
     @extend %text-capitalize;
-    @include shadow(rem(5), rem(5), rem(5), $profile-name-shadow);
+    @include shadow(rem(4), rem(6), 0, $profile-name-shadow);
   }
 
   @include e('main-container') {
