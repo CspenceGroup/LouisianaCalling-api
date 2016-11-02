@@ -51,8 +51,6 @@ class Career < ActiveRecord::Base
   has_many :program_careers, dependent: :destroy
   has_many :programs, through: :program_careers, source: :program
 
-  before_destroy :delete_top_job
-
   validates :title, presence: true
   validates :about_job, presence: true
   validates :what_will_do, presence: true
@@ -325,9 +323,5 @@ class Career < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def delete_top_job
-    TopJob.where(career_id: id).delete_all
   end
 end
