@@ -1,5 +1,7 @@
 .program-list {
   @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   @extend %overflow-hidden;
 
   @include e('head') {

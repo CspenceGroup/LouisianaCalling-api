@@ -2,7 +2,9 @@
   @extend %overflow-hidden;
   color: $default;
   @extend %relative;
-  @include background-image('map-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   min-height: rem(511);
 
   .col-md-6,
