@@ -88,7 +88,7 @@
 .profile-guided-journey {
   padding-top: rem(47);
   @include boxSize(100%, rem(280));
-  @include background-image('filter-bg.png');
+  @include background-image('map-bg.png');
 
   @include e('title') {
     font-size: rem(33.16);
