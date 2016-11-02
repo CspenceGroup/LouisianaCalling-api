@@ -29,7 +29,6 @@ class EducationController < ApplicationController
     @is_see_more = programs.count > next_offset ? true : false
 
     @programs = programs.recent.offset(@offset).limit(@limit)
-    @ids = programs.map(&:id)
 
     @offset = next_offset
   end
@@ -85,7 +84,6 @@ class EducationController < ApplicationController
     query.push(times_query_str(params[:times])) if params[:times].present?
 
     programs = programs.where(query.join(' AND '))
-    ids = programs.map(&:id)
 
     @limit = @limit.to_i
     @offset = @offset.to_i
@@ -107,7 +105,6 @@ class EducationController < ApplicationController
       ),
       is_see_more: is_see_more,
       programs: programs,
-      ids: ids,
       limit: @limit,
       offset: next_offset
     }
