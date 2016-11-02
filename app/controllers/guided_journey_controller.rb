@@ -57,6 +57,6 @@ class GuidedJourneyController < ApplicationController
     @regions = Region.all.alphabetical
     @educations = Education.all
     @skills = Skill.all
-    @interests = Interest.all
+    @interests = Interest.all.alphabetical
   end
 end

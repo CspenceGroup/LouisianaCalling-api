@@ -24,7 +24,8 @@ class Education < ActiveRecord::Base
   }
 
   # Remove all educations do not exists in TSV file import
-  def self.remove(names)
+  def self.remove(csv_file)
+    names = csv_file.map { |row| row[0].strip }.uniq
     educations = Education.filter_names_not_exist(names)
 
     educations.delete_all if educations.present?
@@ -68,8 +69,7 @@ class Education < ActiveRecord::Base
       end
 
       # Remove all Education do not exists in tsv file
-      names = csv.map { |row| row[0].strip }.uniq
-      Education.remove(names)
+      Education.remove(csv)
     end
   end
 

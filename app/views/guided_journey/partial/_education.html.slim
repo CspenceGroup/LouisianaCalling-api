@@ -2,13 +2,43 @@
   h3.main-title.shadow-main-title What type of education do you have right now?
   p What have you learned so far? Let us know and we'll find options that match your education.
   .guided-form__interest
-    - educations.each do |education|
-      .guided-form__interest-item.education-item.education data-education="#{education.to_json}"
-        .guided-form__interest-details
-          .guided-form__interest-icon
-            = image_tag education.url || '', alt: "#{education}"
-          .education-icon--active
-            = image_tag education.url_selected || '', alt: "#{education}"
-        p.item-step-title title="#{education}"
-          = education
+    .guided-form__interest-item.education-item.education data-education="Currently in high school"
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          img alt=("Currently in high school") src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-Blue/Education-60x60-Blue-CurrentlyInHighSchool.png" /
+        .education-icon--active
+          img alt=("Currently in high school") src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-White/Education-60x60-White-CurrentlyInHighSchool.png" /
+      p.item-step-title title=("Currently in high school") Currently in high school
+    .guided-form__interest-item.education-item.education data-education="High School Diploma/Hi-SET"
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          img alt=("High School Diploma/Hi-SET") src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-Blue/Education-60x60-Blue-HighSchoolDiplomaHiSet.png" /
+        .education-icon--active
+          img alt=("High School Diploma/Hi-SET") src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-White/Education-60x60-White-HighSchoolDiplomaHiSet.png" /
+      p.item-step-title title=("High School Diploma/Hi-SET") High School Diploma/Hi-SET
+    .guided-form__interest-item.education-item.education data-education="Training"
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          img alt="Training" src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-Blue/Education-60x60-Blue-Training.png" /
+        .education-icon--active
+          img alt="Training" src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-White/Education-60x60-White-Training.png" /
+      p.item-step-title title="Training" Training
+    .guided-form__interest-item.education-item.education data-education="College"
+      .guided-form__interest-details
+        .guided-form__interest-icon
+          img alt="College" src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-Blue/Education-60x60-Blue-College.png" /
+        .education-icon--active
+          img alt="College" src="https://s3.amazonaws.com/louisiana-calling/Test+1/Interests+and+Education+60x60/Education-60x60-White/Education-60x60-White-College.png" /
+      p.item-step-title title="College" College
+
+
+    / - educations.each do |education|
+    /   .guided-form__interest-item.education-item.education data-education="#{education.to_json}"
+    /     .guided-form__interest-details
+    /       .guided-form__interest-icon
+    /         = image_tag education.url || '', alt: "#{education}"
+    /       .education-icon--active
+    /         = image_tag education.url_selected || '', alt: "#{education}"
+    /     p.item-step-title title="#{education}"
+    /       = education
 

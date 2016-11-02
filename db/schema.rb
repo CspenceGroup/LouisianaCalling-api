@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101022900) do
+ActiveRecord::Schema.define(version: 20161102052255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,13 +151,6 @@ ActiveRecord::Schema.define(version: 20161101022900) do
     t.index ["profile_id"], name: "index_profile_careers_on_profile_id", using: :btree
   end
 
-  create_table "profile_educations", force: :cascade do |t|
-    t.integer "profile_id"
-    t.integer "education_id"
-    t.index ["education_id"], name: "index_profile_educations_on_education_id", using: :btree
-    t.index ["profile_id"], name: "index_profile_educations_on_profile_id", using: :btree
-  end
-
   create_table "profile_interests", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "interest_id"
@@ -192,6 +185,7 @@ ActiveRecord::Schema.define(version: 20161101022900) do
     t.integer  "cluster_id"
     t.string   "educational_institution"
     t.string   "sub_head"
+    t.string   "qualification"
     t.index ["cluster_id"], name: "index_profiles_on_cluster_id", using: :btree
     t.index ["region_id"], name: "index_profiles_on_region_id", using: :btree
   end
