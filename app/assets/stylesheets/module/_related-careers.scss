@@ -23,6 +23,10 @@
     margin-bottom: rem(36);
     @extend %text-capitalize;
     padding-left: rem(7);
+
+    span {
+      text-shadow: none;
+    }
   }
 
   @include e('items') {
