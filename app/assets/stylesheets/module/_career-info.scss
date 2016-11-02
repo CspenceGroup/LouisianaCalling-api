@@ -111,7 +111,6 @@
 }
 
 .career-interests {
-  // padding-left: rem(23);
   height: auto;
   width: rem(655);
   @extend %display-flex;
@@ -164,7 +163,9 @@
   padding-top: rem(72);
   margin-bottom: rem(30);
   @extend %relative;
-  @include background-image('career-carousel-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
 
   @include e('item') {
     color: $default;

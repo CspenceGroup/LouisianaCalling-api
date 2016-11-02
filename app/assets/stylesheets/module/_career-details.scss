@@ -18,7 +18,9 @@
 
 .career-desc {
   color: $default;
-  @include background-image('map-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   @extend %overflow-hidden;
   @extend %relative;
   @extend %display-flex;

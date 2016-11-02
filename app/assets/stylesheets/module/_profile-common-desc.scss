@@ -15,7 +15,7 @@
 
   @include e('desc') {
     @include background-image('profile/profile-decs-bg.png');
-    background-repeat: repeat;
+    @extend %background-repeat-x;
     color: $profile-header;
     @extend %acumin-pro-cond;
     @extend %display-flex;

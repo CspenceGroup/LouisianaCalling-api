@@ -12,7 +12,9 @@
     color: $default;
     min-height: rem(735);
     padding-bottom: rem(30);
-    @include background-image('map-bg.png');
+    @include background-image('filter-bg.png');
+    background-position: bottom;
+    @extend %background-repeat-x;
 
     li {
       @extend %float-left;
