@@ -1,5 +1,5 @@
 .about-contact {
-  @include background-image('career-carousel-bg.png');
+  @include background-image('profile/profile-decs-bg.png');
   @extend %background-repeat-x;
 
   @include e('help-number') {

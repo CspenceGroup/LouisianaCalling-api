@@ -111,7 +111,6 @@
 }
 
 .career-interests {
-  // padding-left: rem(23);
   height: auto;
   width: rem(655);
   @extend %display-flex;
@@ -142,7 +141,11 @@
 .career-interest-icon {
   @extend %float-left;
   @extend %overflow-hidden;
-  @include boxSize(rem(50), auto);
+  @include boxSize(auto, rem(50));
+
+  img {
+    @include boxSize(auto, 100%);
+  }
 }
 
 .profile-story-career {
@@ -160,7 +163,9 @@
   padding-top: rem(72);
   margin-bottom: rem(30);
   @extend %relative;
-  @include background-image('career-carousel-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
 
   @include e('item') {
     color: $default;
