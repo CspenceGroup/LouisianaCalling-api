@@ -22,6 +22,10 @@
   @include e('title') {
     margin-bottom: rem(36);
     padding-left: rem(7);
+
+    span {
+      text-shadow: none;
+    }
   }
 
   @include e('items') {
@@ -50,8 +54,8 @@
   @include e('interest') {
     @extend %float-left;
     margin-bottom: 0;
-    margin-left: rem(20);
-    width: auto;
+    margin-left: rem(15);
+    width: rem(257);
 
     &:first-child {
       margin-left: 0;

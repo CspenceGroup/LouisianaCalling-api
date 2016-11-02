@@ -26,7 +26,7 @@
   .main-title {
     margin-bottom: rem(30);
     @extend %text-capitalize;
-    @include shadow(rem(5), rem(5), rem(5), $profile-name-shadow);
+    @include shadow(rem(4), rem(6), 0, $profile-name-shadow);
   }
 
   @include e('main-container') {
@@ -54,6 +54,11 @@
       margin-bottom: rem(20);
       line-height: rem(22);
       @extend %acumin-pro-cond;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: rem(15);
     }
   }
 
@@ -106,8 +111,9 @@
   }
 
   @include e('interest-item') {
-    @extend %overflow-hidden;
     margin-bottom: rem(30);
+    @extend %overflow-hidden;
+    @extend %display-flex;
 
     &:last-child {
       @extend %no-margin-bottom;
@@ -115,8 +121,8 @@
   }
 
   @include e('interest-icon') {
-    max-width: rem(58);
-    height: rem(50);
+    max-width: rem(50);
+    height: auto;
     @extend %float-left;
     @extend %overflow-hidden;
   }

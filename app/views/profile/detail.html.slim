@@ -69,30 +69,10 @@
     - if career.present?
       section.profile-story-career
         .career-shortcut
-          .career-shortcut__container
-            span.career-shortcut__label Career info
-            .career-shortcut__head
-              .career-shortcut__head--pull-left
-                .career-head-left
-                  .career-flames
-                    - career.demand.to_i.times
-                      i.icon.i-white-flame
-                  a.career-info-title(href=career_detail_path(career) title=career) = career
-              .career-shortcut__head--pull-right
-                a.career-shortcut__btn-more(href=career_detail_path(career))
-                  = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
-                .career-shortcut__salary
-                  .icon.i-career-salary
-                  p 
-                    | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
-            .career-shortcut__body
-              p Interests
-              ul.career-interests
-                - career.interests.first(3).each do |interest|
-                  li
-                    .career-interest-icon
-                      = image_tag("#{interest.url}", :alt => "#{interest}")
-                    p.career-interest-text(title=interest) = interest
+          - if career.interests.present?
+            = render partial: 'profile/partial/interest-career', locals: { career: career } 
+          - else
+            = render partial: 'profile/partial/no-interest-career', locals: { career: career } 
     section.guideline
       .row.guideline-row
         .col-xs-4.col-md-4.guideline-col.guideline__more-stories
