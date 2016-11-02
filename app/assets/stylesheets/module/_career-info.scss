@@ -78,7 +78,7 @@
     @extend %overflow-hidden;
 
     > p {
-      width: rem(95);
+      margin-right: rem(30);
       font-size: rem(18.75);
       @extend %float-left;
       @extend %font-style-italic;
@@ -111,22 +111,26 @@
 }
 
 .career-interests {
-  padding-left: rem(23);
+  // padding-left: rem(23);
   height: auto;
   width: rem(655);
   @extend %display-flex;
   @extend %align-items-center;
 
   li {
-    margin-left: rem(37);
+    margin-left: rem(8);
     @extend %display-flex;
     @extend %align-items-center;
-    @extend %justify-content-end;
+    @extend %justify-content-start;
     @include boxSize(100%, 100%);
+
+    &:first-child {
+      @extend %no-margin-left;
+    }
 
     p {
       font-size: rem(12.6);
-      max-width: rem(102); // 150px
+      max-width: 66%;
       margin-left: rem(15);
       line-height: rem(16);
       @extend %text-uppercase;
@@ -237,7 +241,7 @@
 .no-interest-head {
   border-bottom: none;
   align-self: center;
-  @extend %no-padding-bottom;
+  padding-bottom: 0;
 }
 
 .no-interest-pull-right {
