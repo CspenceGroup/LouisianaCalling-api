@@ -27,6 +27,11 @@ class Interest < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order(:name)
+  }
+
   scope :filter_names_not_exist, lambda { |names|
     where('name NOT IN (?)', names)
   }
