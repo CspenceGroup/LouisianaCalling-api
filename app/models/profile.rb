@@ -32,9 +32,20 @@ class Profile < ActiveRecord::Base
   validates :image_small, presence: true
 
   scope :find_by_full_name, lambda { |full_name|
-    full_name = full_name.split(' ')
-    where('first_name = ? AND last_name = ?', full_name.first, full_name.last)
+    where('concat_ws(\' \', first_name, last_name) = ?', full_name)
   }
+
+  scope :filter_profiles_not_exist, lambda { |names|
+    where('concat_ws(\' \', first_name, last_name) NOT IN (?)', names)
+  }
+
+  # Remove all profiles do not exists in TSV file import
+  def self.remove_profiles(csv_file)
+    names = csv_file.map { |row| "#{row[0].strip} #{row[1].strip}" }.uniq
+    profiles = Profile.filter_profiles_not_exist(names)
+
+    profiles.delete_all if profiles.present?
+  end
 
   def self.import_from_csv(csv)
     Profile.transaction do
@@ -93,6 +104,8 @@ class Profile < ActiveRecord::Base
           create_profile_educations(row[11].split(',').map(&:strip), profile)
         end
       end
+      # Remove all profile do not exists in TSV file
+      Profile.remove_profiles(csv)
     end
   end
 
