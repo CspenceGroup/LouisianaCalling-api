@@ -14,8 +14,8 @@ class Profile < ActiveRecord::Base
   has_many :profile_skills, dependent: :destroy
   has_many :skills, through: :profile_skills, source: :skill
 
-  has_many :profile_educations, dependent: :destroy
-  has_many :educations, through: :profile_educations, source: :education
+  # has_many :profile_educations, dependent: :destroy
+  # has_many :educations, through: :profile_educations, source: :education
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -32,9 +32,20 @@ class Profile < ActiveRecord::Base
   validates :image_small, presence: true
 
   scope :find_by_full_name, lambda { |full_name|
-    full_name = full_name.split(' ')
-    where('first_name = ? AND last_name = ?', full_name.first, full_name.last)
+    where('concat_ws(\' \', first_name, last_name) = ?', full_name)
   }
+
+  scope :filter_profiles_not_exist, lambda { |names|
+    where('concat_ws(\' \', first_name, last_name) NOT IN (?)', names)
+  }
+
+  # Remove all profiles do not exists in TSV file import
+  def self.remove_profiles(csv_file)
+    names = csv_file.map { |row| "#{row[0].strip} #{row[1].strip}" }.uniq
+    profiles = Profile.filter_profiles_not_exist(names)
+
+    profiles.delete_all if profiles.present?
+  end
 
   def self.import_from_csv(csv)
     Profile.transaction do
@@ -56,6 +67,7 @@ class Profile < ActiveRecord::Base
           description: row[5].strip,
           demand: row[8].strip,
           salary: row[10].strip,
+          qualification: row[11].strip,
           video: row[12].strip,
           image_medium: row[13].strip,
           image_small: row[14].strip,
@@ -65,7 +77,8 @@ class Profile < ActiveRecord::Base
         params[:region_id] = region.id if region.present?
         params[:cluster_id] = cluster.id if cluster.present?
 
-        profile = Profile.find_by_full_name("#{params[:first_name]} params[:last_name]").first
+        profile = Profile.find_by_full_name("#{params[:first_name]} params[:last_name]")
+                         .first
 
         if profile.present?
           profile.update_attributes(params)
@@ -89,10 +102,12 @@ class Profile < ActiveRecord::Base
         end
 
         # Adding Education need
-        if row[11].present?
-          create_profile_educations(row[11].split(',').map(&:strip), profile)
-        end
+        # if row[11].present?
+        #   create_profile_educations(row[11].split(',').map(&:strip), profile)
+        # end
       end
+      # Remove all profile do not exists in TSV file
+      Profile.remove_profiles(csv)
     end
   end
 
