@@ -29,20 +29,22 @@
       </div>
       <div class="career-desc__news-container" id="feature-news">
         <section class="career-desc__feature-news career-desc__interest">
-          <h2>Interests</h2>
-          <% career.interests.each do |interest| %>
-            <div class="career-desc__interest-item">
-              <div class="career-desc__interest-icon career-interest-icon">
-                <% if interest.url.present? %>
-                  <%= image_tag(interest.home_url, :alt => "interest icon") %>
-                <% else %>
-                  <%= image_tag("", :alt => "interest icon") %>
-                <% end %>
+          <% if career.interests.present? %>
+            <h2>Interests</h2>
+            <% career.interests.each do |interest| %>
+              <div class="career-desc__interest-item">
+                <div class="career-desc__interest-icon career-interest-icon">
+                  <% if interest.home_url.present? %>
+                    <%= image_tag(interest.home_url, :alt => "interest icon") %>
+                  <% else %>
+                    <%= image_tag("", :alt => "interest icon") %>
+                  <% end %>
+                </div>
+                <div class="career-desc__interest-text">
+                  <p title="<%= interest %>"><%= interest %></p>
+                </div>
               </div>
-              <div class="career-desc__interest-text">
-                <p title="<%= interest %>"><%= interest %></p>
-              </div>
-            </div>
+            <%end%>
           <%end%>
         </section>
         <!-- <section class="career-desc__feature-news">
@@ -126,8 +128,8 @@
                   <% interests.each do |interest| %>
                     <div class="career-desc__interest-item related-careers__interest">
                       <div class="career-desc__interest-icon career-interest-icon">
-                      <% if interest.url.present? %>
-                        <%= image_tag(interest.url, :alt => "interest icon") %>
+                      <% if interest.home_url.present? %>
+                        <%= image_tag(interest.home_url, :alt => "interest icon") %>
                       <% else %>
                         <%= image_tag("", :alt => "interest icon") %>
                       <% end %>

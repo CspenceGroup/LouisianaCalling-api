@@ -69,6 +69,10 @@ class Career < ActiveRecord::Base
     where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
   }
 
+  scope :filter_titles_not_exist, lambda { |titles|
+    where('title NOT IN (?)', titles)
+  }
+
   scope :with_regions_high_demand, lambda {
     joins(:career_region_high_demands).distinct
   }
@@ -134,6 +138,14 @@ class Career < ActiveRecord::Base
     career
   end
 
+  # Remove all careers do not exists in TSV file import
+  def self.remove_careers(csv_file)
+    titles = csv_file.map { |row| row[0].strip }.uniq
+    careers = Career.filter_titles_not_exist(titles)
+
+    careers.delete_all if careers.present?
+  end
+
   def self.import_from_csv(csv)
     Career.transaction do
       csv.each do |row|
@@ -146,9 +158,9 @@ class Career < ActiveRecord::Base
         params[:about_job] = row[10].strip
         params[:what_will_do] = row[11].strip
         params[:demand] = row[14].strip
-        params[:photo_large] = row[15].strip if row[15].present?
-        params[:photo_medium] = row[16].strip if row[16].present?
-        params[:projected_growth] = row[18].strip if row[18].present?
+        params[:photo_large] = row[15].strip
+        params[:photo_medium] = row[16].strip
+        params[:projected_growth] = row[18].strip
 
         if Career.exists?(title: params[:title])
           career = Career.find_by_title(params[:title])
@@ -193,6 +205,9 @@ class Career < ActiveRecord::Base
           create_career_interestships(row[13].split(';').map(&:strip), career)
         end
       end
+
+      # Remove all Career do not exits in tsv file
+      Career.remove_careers(csv)
     end
   end
 
