@@ -9,7 +9,7 @@
   left: rem(70);
   @extend %left-0;
   @extend %absolute;
-  @include boxSize(rem(540), auto);
+  @include boxSize(rem(540), rem(700));
 
   .st1 {
     fill: $white;

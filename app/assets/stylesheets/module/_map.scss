@@ -22,7 +22,7 @@
   @include e('map') {
     top: rem(-252);
     right: rem(510);
-    @include boxSize(rem(585), rem(615));
+    @include boxSize(rem(585), rem(700));
     @extend %absolute;
   }
 
