@@ -1,7 +1,7 @@
 require 'csv'
 
 class AdminController < ApplicationController
-  http_basic_authenticate_with :name => 'admin', :password => 'hz4q9WETPC3Gyr9g'
+  # http_basic_authenticate_with :name => 'admin', :password => 'hz4q9WETPC3Gyr9g'
 
   def index
   end

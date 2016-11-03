@@ -39,6 +39,8 @@ VOLUME ["$INSTALL_PATH/public"]
 RUN apt-get install -y nginx
 RUN rm -rf /etc/nginx/sites-available/default
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
+ADD nginx/.htpasswd.staging /etc/nginx/.htpasswd
+ADD nginx/.admin.htpasswd /etc/nginx/.admin.htpasswd
 
 # The default command that gets ran will be to start the Unicorn server.
 # CMD bundle exec unicorn -c config/unicorn.rb
