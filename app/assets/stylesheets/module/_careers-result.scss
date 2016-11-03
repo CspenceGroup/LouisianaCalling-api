@@ -26,7 +26,7 @@
 
   @include e('item') {
     width: rem(802);
-    min-height: rem(70);
+    height: rem(70);
     margin-bottom: rem(16);
     background-color: $white;
     padding: 0 rem(23) 0 rem(13);
@@ -69,7 +69,6 @@
 
   .jobs-head__title {
     font-size: rem(16.67);
-    white-space: normal;
   }
 
   i {
