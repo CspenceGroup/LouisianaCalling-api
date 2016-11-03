@@ -45,17 +45,15 @@
 
   @include e('main-content') {
     width: rem(700);
+    font-size: rem(16.7);
+    line-height: rem(22);
+    padding-right: rem(67);
     @extend %float-right;
-  }
-
-  @include e('what-to-do') {
-    padding: rem(26) rem(67) 0 0;
+    @extend %acumin-pro-cond;
 
     p {
       font-size: rem(16.7);
       margin-bottom: rem(20);
-      line-height: rem(22);
-      @extend %acumin-pro-cond;
     }
 
     ul {
@@ -64,15 +62,8 @@
     }
   }
 
-  @include e('about') {
-    padding-right: rem(67);
-
-    p {
-      font-size: rem(16.7);
-      margin-bottom: rem(20);
-      line-height: rem(22);
-      @extend %acumin-pro-cond;
-    }
+  @include e('what-to-do') {
+    padding-top: rem(26);
   }
 
   @include e('feature-news') {
@@ -131,7 +122,9 @@
     min-height: rem(45);
     margin-left: rem(12);
     width: rem(205);
-    @extend %flex-col-center;
+    @extend %display-flex;
+    @extend %flex-direction-column;
+    @extend %justify-content-center;
     @extend %float-left;
     @extend %relative;
 

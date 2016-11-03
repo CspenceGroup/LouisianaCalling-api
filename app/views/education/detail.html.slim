@@ -42,11 +42,12 @@
                   = program.time_of_day
     section.career-desc
       .career-desc__main-container.edu-detail-desc
-        section.career-desc__about
-          h2.main-title Training details
-          p
-            = program.traning_detail.html_safe
-        section.career-desc__what-to-do
+        .career-desc__main-content
+          section.career-desc__about
+            h2.main-title Training details
+            p
+              = program.traning_detail.html_safe
+          section.career-desc__what-to-do
           h2.main-title Lorem Ipsum
           p
             = program.description.html_safe
