@@ -47,6 +47,7 @@
     width: rem(700);
     font-size: rem(16.7);
     line-height: rem(22);
+    padding-right: rem(67);
     @extend %float-right;
     @extend %acumin-pro-cond;
 
@@ -62,11 +63,7 @@
   }
 
   @include e('what-to-do') {
-    padding: rem(26) rem(67) 0 0;
-  }
-
-  @include e('about') {
-    padding-right: rem(67);
+    padding-top: rem(26);
   }
 
   @include e('feature-news') {

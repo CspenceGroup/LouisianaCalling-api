@@ -197,6 +197,7 @@
 
   @include e('main-content') {
     width: rem(660);
+    padding-right: 0;
     @extend %float-right;
   }
 }
