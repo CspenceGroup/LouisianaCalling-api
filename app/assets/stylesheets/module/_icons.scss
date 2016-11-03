@@ -102,6 +102,12 @@
   @include background-image('career-info/career-fire-icon.png');
 }
 
+.i-blue-flame {
+  margin-right: rem(5);
+  @include boxSize(rem(16), rem(19));
+  @include background-image('career-info/blue-fire.png');
+}
+
 .i-career-blue {
   @include boxSize(rem(22), rem(27));
   @include background-image('program-landing/icon-career.png');
@@ -154,4 +160,31 @@
 .i-profile-career {
   @include boxSize(rem(23), rem(30));
   @include background-image('career-info/career-industry.png');
+}
+
+.i-view-list {
+  @include background-image('list-view.png');
+}
+
+.i-view-grid {
+  @include background-image('grid-view.png');
+}
+
+.i-guided-salary {
+  background-size: rem(27) rem(19);
+  @extend %float-left;
+  @include boxSize(rem(27), rem(19));
+  @include background-image('career-info/blue-career-salary.png');
+}
+
+.icon-address {
+  margin: 0 rem(14) 0 rem(2);
+  @include boxSize(rem(14), rem(20));
+  @include background-image('about-address.png');
+}
+
+.icon-email {
+  margin-right: rem(11);
+  @include boxSize(rem(20), rem(13));
+  @include background-image('icon-about-email.png');
 }

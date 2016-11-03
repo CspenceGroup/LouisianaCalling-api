@@ -5,11 +5,10 @@
     .guided-result-item__info
       .guided-result-item__flames
         - career.demand.to_i.times do
-          = image_tag('career-info/blue-fire.png')
+          i.icon.i-blue-flame
       .guided-result-item__career-name
         a(href="/careers/#{career.slug}" title=career) = career
       .guided-result-item__salary
-        .i-guided-salary
-          = image_tag('career-info/blue-career-salary.png')
+        i.i-guided-salary
         p
           = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"

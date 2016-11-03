@@ -24,13 +24,9 @@
           p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
         .program-view-by
           .program-view-by__list.list-active-tab#programListView
-            .program-view-by__list-icon
-              a href="javascript:void(0)"
-                = image_tag asset_path('list-view.png')
+            i.icon.i-view-list.program-view-by__list-icon
           .program-view-by__map.map-active-tab#programMapView
-            .program-view-by__list-icon-map
-              a href="javascript:void(0)"
-                = image_tag asset_path('map-view.png')
+            i.icon.program-view-by__list-icon-map
       #action-filter.collapse.program-filter
         .program-filter__container.row
           .program-filter__details.col-xs-3.col-md-3
@@ -125,11 +121,9 @@
           - if @is_see_more
             #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program
               .icon-see-more
-                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           - else
             #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
               .icon-see-more
-                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
           .indicator-loading
             = image_tag asset_path("loading.gif")
           .indicator-loading-see-more
@@ -141,11 +135,9 @@
             - if @is_see_more
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program
                 .icon-see-more
-                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             - else
               #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
                 .icon-see-more
-                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
             .indicator-loading
               = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
@@ -171,22 +163,19 @@
               .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text Jump Start helps our public high school students get nationally recognized training certifications that can be used to pursue great careers right here in Louisiana.
                 h3.hero-banner__text.program-banner__text To Learn More Text jumpstart to 99008
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
         #eduTraining.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title Training
               .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text Professional training facilities across the state can give you the skills you need to become certified, properly preparing you for your new career.
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
         #eduCollege.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title College
               .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text There are plenty of colleges in Louisiana. Each of them offers degrees and training programs that can help you gain skills and knowledge needed to take the next step in your career.
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
   = render 'footer/index'

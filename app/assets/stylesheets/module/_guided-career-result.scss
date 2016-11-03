@@ -61,11 +61,6 @@
   }
 }
 
-.i-guided-salary {
-  @extend %float-left;
-  @include boxSize(rem(27), rem(19));
-}
-
 .see-more-result-step {
   margin-top: 0;
   display: none;
