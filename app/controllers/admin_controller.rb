@@ -75,7 +75,7 @@ class AdminController < ApplicationController
       flash[:notice] = ex
     end
     @name = name
-    redirect_to action: "index"
+    redirect_to action: "index", name: @name
   end
 
   private
