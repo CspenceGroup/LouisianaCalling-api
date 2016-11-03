@@ -4,8 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  name           :string
-#  url_selected   :string
-#  url            :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,8 +13,6 @@ class Education < ActiveRecord::Base
   has_many :profiles
 
   validates :name, presence: true
-  validates :url, presence: true
-  validates :url_selected, presence: true
   validates_uniqueness_of :name
 
   scope :filter_names_not_exist, lambda { |names|
@@ -55,17 +51,12 @@ class Education < ActiveRecord::Base
       # Education.delete_all
 
       csv.each do |row|
-        params = {
-          name: row[0].strip,
-          url: row[1].strip,
-          url_selected: row[2].strip
-        }
+        name_str = row[0].strip
+        next if Education.exists?(name: name_str)
 
-        if Education.exists?(name: params[:name])
-          Education.update_education(params)
-        else
-          Education.create(params)
-        end
+        education = Education.new
+        education[:name] = name_str
+        education.save!
       end
 
       # Remove all Education do not exists in tsv file
