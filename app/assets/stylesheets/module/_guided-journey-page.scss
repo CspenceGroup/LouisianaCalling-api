@@ -155,6 +155,7 @@
     h4 {
       @extend %acumin-pro-cond-regular;
       font-size: rem(16.67);
+      @extend %text-capitalize;
     }
 
     p {
