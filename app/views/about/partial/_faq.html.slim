@@ -5,8 +5,8 @@ section.about-tabs__desc.about-faq
     section.about-faq__search
       h2.main-title.shadow-main-title Got a Question? Or perhaps many? Start here.
       form#searchFaq.faq-search(name='search-faq' action="#{abouts_path}" method="get")
-        .input-group.search-group
-          input.form-control.search-input.faq-input(type='text' name='key' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"' value="#{params[:key]}")
+        .input-group.search-group.search-group-faq
+          input.form-control.search-input.faq-input(type='text' name='key' placeholder='What can we help you with? Try keywords like "Careers" or "Programs"' value="#{params[:key]}" autocomplete="off")
           input type='text' name='tab' value="faq" hidden=true
           button.btn.btn-search.btn-submit(type='submit') Search
         .alert.alert-danger.alert-danger-search.alert-danger-faq

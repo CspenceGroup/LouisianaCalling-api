@@ -199,13 +199,13 @@ class Career < ActiveRecord::Base
         career = Career.find_career(row[0].strip)
 
         # Adding related_career_by_skill
-        if row[12].present?
-          create_career_skillships(row[12].split(';').map(&:strip), career)
+        if row[13].present?
+          create_career_skillships(row[13].split(';').map(&:strip), career)
         end
 
         # Adding related_career_by_interest
-        if row[13].present?
-          create_career_interestships(row[13].split(';').map(&:strip), career)
+        if row[12].present?
+          create_career_interestships(row[12].split(';').map(&:strip), career)
         end
       end
 

@@ -11,8 +11,8 @@ class EducationController < ApplicationController
     @region = params[:region]
 
     programs = Program.all.filter_by_tuition(
-                 Constants::TUITION_MIN, Constants::TUITION_MAX
-               )
+      Constants::TUITION_MIN, Constants::TUITION_MAX
+    )
 
     if params[:title].present?
       programs = programs.filter_by_title(params[:title])
