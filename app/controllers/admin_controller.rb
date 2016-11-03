@@ -17,7 +17,6 @@ class AdminController < ApplicationController
   end
 
   def upload
-
     begin
       name = params[:name]
       attachment = params[:attachment]
@@ -29,11 +28,9 @@ class AdminController < ApplicationController
         logger.error "Bad file_data: #{attachment.class.name}: #{attachment.inspect}"
       end
 
-      csv = CSV.parse(csv_text, :headers => true, :col_sep => "\t")
+      csv = CSV.parse(csv_text, headers: true, col_sep: "\t")
 
-      if csv.length == 0
-        raise "error"
-      end
+      raise 'error' if csv.empty?
 
       case name
       when 'regions'
@@ -75,10 +72,11 @@ class AdminController < ApplicationController
       flash[:notice] = ex
     end
     @name = name
-    redirect_to action: "index", name: @name
+    redirect_to action: 'index', name: @name
   end
 
   private
+
   def csv_params
     params.permit(:name, :attachment)
   end
