@@ -18,9 +18,7 @@
     @extend %background-repeat-x;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    @extend %display-flex;
-    @extend %align-items-center;
-    @include flex-justify-content(center);
+    @extend %relative;
 
     h3 {
       font-size: rem(21);
@@ -91,6 +89,9 @@
 }
 
 .profile-content {
-  @extend %margin-auto;
+  @extend %absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   width: rem(480);
 }

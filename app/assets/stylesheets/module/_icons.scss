@@ -58,7 +58,7 @@
 }
 
 .i-calendar-blue {
-  @include boxSize(rem(22), rem(22));
+  @include boxSize(rem(23), rem(23));
   @include background-image('program-landing/calendar.png');
 }
 
@@ -68,7 +68,7 @@
 }
 
 .i-clock {
-  @include boxSize(rem(23), rem(23));
+  @include boxSize(rem(24), rem(23));
 }
 
 .i-salary {
@@ -82,7 +82,7 @@
 
 .i-clock-white {
   @include background-image('education-details/icon-clock.png');
-  @include boxSize(rem(35), rem(23));
+  @include boxSize(rem(39), rem(24));
 
 }
 
@@ -98,7 +98,7 @@
 
 .i-white-flame {
   margin-right: rem(5);
-  @include boxSize(rem(16), rem(19));
+  @include boxSize(rem(16), rem(21));
   @include background-image('career-info/career-fire-icon.png');
 }
 
@@ -108,7 +108,7 @@
 }
 
 .i-career-white {
-  @include boxSize(rem(21), rem(26));
+  @include boxSize(rem(25), rem(26));
   @include background-image('program-landing/icon-career.png');
 }
 

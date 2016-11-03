@@ -182,10 +182,15 @@
 }
 
 
-.asterisk-copy--map {
-  margin: rem(397) 0 0 rem(590);
-  font-size: rem(15);
-  @extend %acumin-pro-cond-regular;
+.asterisk-copy-map {
+  margin: rem(397) 0 0 rem(644);
+
+  p {
+    font-size: rem(15);
+    @extend %acumin-pro-cond-regular;
+    line-height: rem(17);
+    padding-top: rem(3);
+  }
 }
 
 .related-career-interest {

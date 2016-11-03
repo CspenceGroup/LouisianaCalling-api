@@ -167,7 +167,7 @@
     @extend %no-margin-left;
     @extend %no-padding;
     @extend %overflow-hidden;
-    width: rem(328);
+    width: rem(325);
 
     &:before {
       @extend %no-content;
@@ -183,7 +183,7 @@
   }
 
   &:nth-child(3) {
-    width: rem(111);
+    width: rem(113);
   }
 
   &:nth-child(4) {
