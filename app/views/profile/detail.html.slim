@@ -12,7 +12,7 @@
             source(src=url type='video/mp4')
           button.btn-play.btn-profile-video#btn-video-profile(type='button' data-source=url data-toggle='modal' data-target='#videoProfileModal')
           p.profile-video-desc
-            | Watch
+            | Watch 
             = @profile.first_name
             | 's story
           .modal.fade.modal-video(id="videoProfileModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true")
