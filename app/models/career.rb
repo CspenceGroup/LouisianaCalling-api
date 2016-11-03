@@ -63,6 +63,8 @@ class Career < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
+  before_destroy :remove_relationships
+
   scope :recent, -> { order(created_at: :desc) }
 
   scope :filter_by_title, lambda { |title|
@@ -166,6 +168,7 @@ class Career < ActiveRecord::Base
           career = Career.find_by_title(params[:title])
 
           career.update_attributes(params) if career.present?
+          career.remove_relationships
         else
           career = Career.create(params)
         end
@@ -308,6 +311,19 @@ class Career < ActiveRecord::Base
       career_id: career.id,
       cluster_id: cluster.id
     )
+  end
+
+  def remove_relationships
+    CareerInterest.where(career_id: id).delete_all
+    CareerSkill.where(career_id: id).delete_all
+    CareerRegionHighDemand.where(career_id: id).delete_all
+    CareerEducation.where(career_id: id).delete_all
+    CareerSkillship.where(career_id: id).delete_all
+    CareerCluster.where(career_id: id).delete_all
+    CareerInterestship.where(career_id: id).delete_all
+    CareerRegion.where(career_id: id).delete_all
+    ProfileCareer.where(career_id: id).delete_all
+    ProgramCareer.where(career_id: id).delete_all
   end
 
   def to_s

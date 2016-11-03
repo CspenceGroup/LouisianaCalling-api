@@ -31,6 +31,8 @@ class Profile < ActiveRecord::Base
   validates :image_medium, presence: true
   validates :image_small, presence: true
 
+  before_destroy :delete_relationships
+
   scope :find_by_full_name, lambda { |full_name|
     where('concat_ws(\' \', first_name, last_name) = ?', full_name)
   }
@@ -49,12 +51,6 @@ class Profile < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Profile.transaction do
-      # Profile.delete_all
-      # ProfileCareer.delete_all
-      # ProfileInterest.delete_all
-      # ProfileSkill.delete_all
-      # ProfileEducation.delete_all
-
       csv.each do |row|
         region = Region.find_region(row[4].strip)
         cluster = Cluster.find_or_create(row[9].strip)
@@ -77,11 +73,14 @@ class Profile < ActiveRecord::Base
         params[:region_id] = region.id if region.present?
         params[:cluster_id] = cluster.id if cluster.present?
 
-        profile = Profile.find_by_full_name("#{params[:first_name]} #{params[:last_name]}")
+        full_name = "#{params[:first_name]} #{params[:last_name]}"
+
+        profile = Profile.find_by_full_name(full_name)
                          .first
 
         if profile.present?
           profile.update_attributes(params)
+          profile.delete_relationships
         else
           profile = Profile.create(params)
         end
@@ -100,11 +99,6 @@ class Profile < ActiveRecord::Base
         if row[7].present?
           create_profile_skills(row[7].split(',').map(&:strip), profile)
         end
-
-        # Adding Education need
-        # if row[11].present?
-        #   create_profile_educations(row[11].split(',').map(&:strip), profile)
-        # end
       end
       # Remove all profile do not exists in TSV file
       Profile.remove_profiles(csv)
@@ -115,7 +109,10 @@ class Profile < ActiveRecord::Base
     careers.each do |career_name|
       career = Career.find_career(career_name)
 
-      next if ProfileCareer.exists?(profile_id: profile.id, career_id: career.id)
+      next if ProfileCareer.exists?(
+        profile_id: profile.id,
+        career_id: career.id
+      )
 
       ProfileCareer.create(
         profile_id: profile.id,
@@ -128,7 +125,10 @@ class Profile < ActiveRecord::Base
     interests.each do |interest_name|
       interest = Interest.find_interest(interest_name)
 
-      next if ProfileInterest.exists?(profile_id: profile.id, interest_id: interest.id)
+      next if ProfileInterest.exists?(
+        profile_id: profile.id,
+        interest_id: interest.id
+      )
 
       ProfileInterest.create(
         profile_id: profile.id,
@@ -150,17 +150,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def self.create_profile_educations(educations, profile)
-    educations.each do |education_name|
-      education = Education.find_education(education_name)
-
-      next if ProfileEducation.exists?(profile_id: profile.id, education_id: education.id)
-
-      ProfileEducation.create(
-        profile_id: profile.id,
-        education_id: education.id
-      )
-    end
+  def delete_relationships
+    ProfileCareer.where(profile_id: id).delete_all
+    ProfileInterest.where(profile_id: id).delete_all
+    ProfileSkill.where(profile_id: id).delete_all
   end
 
   def to_s
