@@ -77,7 +77,7 @@ class Profile < ActiveRecord::Base
         params[:region_id] = region.id if region.present?
         params[:cluster_id] = cluster.id if cluster.present?
 
-        profile = Profile.find_by_full_name("#{params[:first_name]} params[:last_name]")
+        profile = Profile.find_by_full_name("#{params[:first_name]} #{params[:last_name]}")
                          .first
 
         if profile.present?
