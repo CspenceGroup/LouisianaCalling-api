@@ -20,7 +20,7 @@ class Video < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Video.transaction do
-      # Video.delete_all
+      Video.delete_all
 
       csv.each do |row|
         params = {

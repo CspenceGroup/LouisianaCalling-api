@@ -15,6 +15,8 @@ class Program < ActiveRecord::Base
   validates_inclusion_of :time_of_day, in: Constants::TIME_OF_DAY
   validates_inclusion_of :hours_per_weeks, in: Constants::HOURS_PER_WEEK
 
+  before_destroy :delete_relationships
+
   scope :recent, -> { order(created_at: :desc) }
 
   scope :with_careers, lambda {
@@ -63,10 +65,6 @@ class Program < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Program.transaction do
-      # Program.delete_all
-      # ProgramCareer.delete_all
-      # ProgramCluster.delete_all
-
       csv.each_with_index do |row|
         region = Region.find_region(row[1].strip)
         education = Education.find_education(row[9].strip)
@@ -100,7 +98,7 @@ class Program < ActiveRecord::Base
           if Program.exists?(title: params[:title])
             program = Program.find_by_title(params[:title])
             program.update_attributes(params)
-
+            program.delete_relationships
             program
           else
             Program.create(params)
@@ -124,7 +122,10 @@ class Program < ActiveRecord::Base
     careers.each do |career_name|
       career = Career.find_career(career_name)
 
-      next if ProgramCareer.exists?(program_id: program.id, career_id: career.id)
+      next if ProgramCareer.exists?(
+        program_id: program.id,
+        career_id: career.id
+      )
 
       ProgramCareer.create(
         program_id: program.id,
@@ -136,12 +137,20 @@ class Program < ActiveRecord::Base
   def self.create_program_cluster(cluster_name, program)
     cluster = Cluster.find_or_create(cluster_name)
 
-    return if ProgramCluster.exists?(program_id: program.id, cluster_id: cluster.id)
+    return if ProgramCluster.exists?(
+      program_id: program.id,
+      cluster_id: cluster.id
+    )
 
     ProgramCluster.create(
       program_id: program.id,
       cluster_id: cluster.id
     )
+  end
+
+  def delete_relationships
+    ProgramCareer.where(program_id: id).delete_all
+    ProgramCluster.where(program_id: id).delete_all
   end
 
   def to_s
