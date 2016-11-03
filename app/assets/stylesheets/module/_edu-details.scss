@@ -96,7 +96,7 @@
     margin-top: 0;
     @extend %display-flex;
     width: 21%;
-    @extend %justify-content-end;
+    @include flex-justify-content(flex-end);
   }
 
   @include e('title') {

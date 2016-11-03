@@ -152,6 +152,6 @@
 }
 
 .i-profile-career {
-  @include boxSize(rem(23), rem(29));
+  @include boxSize(rem(23), rem(30));
   @include background-image('career-info/career-industry.png');
 }

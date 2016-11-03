@@ -61,7 +61,7 @@
 
   li {
     @extend %relative;
-    margin-bottom: rem(2);
+    margin: 0 0 rem(2) rem(2);
   }
 
   @include m('hottest-jobs') {
@@ -69,14 +69,13 @@
       margin-bottom: rem(5);
       @extend %overflow-hidden;
     }
-    
   }
 }
 
 .square-checkbox {
   -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
+     -moz-appearance: none;
+          appearance: none;
   @include boxSize(rem(18), rem(18));
   border: rem(1) solid $filter-careers-details;
   @extend %no-border-radius;

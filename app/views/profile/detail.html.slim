@@ -35,19 +35,19 @@
                 - if @profile.careers.present?
                   li
                     .profile-info-wrapper
-                      i.i-profile-info.i-profile-career
+                      i.icon.i-profile-info.i-profile-career
                       .profile-info-txt
                         span(title=@profile.careers.first) = @profile.careers.first
                 - if @profile.educational_institution.present?
                   li
                     .profile-info-wrapper
-                      i.i-profile-info.i-profile-training
+                      i.icon.i-profile-info.i-profile-training
                       .profile-info-txt
                         span(title=@profile.educational_institution) = @profile.educational_institution
                 - if @profile.region.present?
                   li
-                    i.profile-info-wrapper
-                      .i-profile-info.i-profile-map
+                    .profile-info-wrapper
+                      i.icon.i-profile-info.i-profile-map
                       .profile-info-txt
                         span = @profile.region
             .profile-details-info

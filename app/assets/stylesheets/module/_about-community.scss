@@ -78,7 +78,6 @@
   }
 
   @include e('desc') {
-    // @extend %relative;
     padding: rem(40) 0 0 rem(30);
 
     p {
@@ -102,7 +101,7 @@
     border-bottom: 0;
     @extend %display-flex;
     @extend %align-items-center;
-    @extend %justify-content-center;
+    @include flex-justify-content(center);
 
 
     &:nth-child(4),

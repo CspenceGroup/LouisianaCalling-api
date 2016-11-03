@@ -73,7 +73,7 @@
   @include background-image('careers/career-call-center.jpg');
   @extend %display-flex;
   @extend %align-items-center;
-  @extend %justify-content-center;
+  @include flex-justify-content(center);
   padding-top: 0;
 
   .main-title {

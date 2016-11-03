@@ -123,10 +123,10 @@
     margin-left: rem(12);
     width: rem(205);
     @extend %display-flex;
-    @extend %flex-direction-column;
-    @extend %justify-content-center;
     @extend %float-left;
     @extend %relative;
+    @include flex-justify-content(center);
+    @include flex-direction(column);
 
     p {
       @extend %float-left;
