@@ -21,10 +21,10 @@ class CareerRegion < ActiveRecord::Base
 
   validates_presence_of :region, :career
 
+  before_destroy :delete_educations
+
   def self.import_from_csv(csv)
     CareerRegion.transaction do
-      # CareerRegion.delete_all
-      # CareerRegionEducation.delete_all
 
       csv.each do |row|
         career = Career.find_career(row[0].strip)
@@ -71,5 +71,11 @@ class CareerRegion < ActiveRecord::Base
         education_id: education.id
       )
     end
+  end
+
+  private
+
+  def delete_educations
+    CareerRegionEducation.where(career_region_id: id).delete_all
   end
 end
