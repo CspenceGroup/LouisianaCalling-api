@@ -37,19 +37,19 @@
                     .profile-info-wrapper
                       i.icon.i-profile-info.i-profile-career
                       .profile-info-txt
-                        span(title=@profile.careers.first) = @profile.careers.first
+                        p(title=@profile.careers.first) = @profile.careers.first
                 - if @profile.educational_institution.present?
                   li
                     .profile-info-wrapper
                       i.icon.i-profile-info.i-profile-training
                       .profile-info-txt
-                        span(title=@profile.educational_institution) = @profile.educational_institution
+                        p(title=@profile.educational_institution) = @profile.educational_institution
                 - if @profile.region.present?
                   li
                     .profile-info-wrapper
                       i.icon.i-profile-info.i-profile-map
                       .profile-info-txt
-                        span = @profile.region
+                        p = @profile.region
             .profile-details-info
               p = @profile.description
             / section.career-desc__social-networks
