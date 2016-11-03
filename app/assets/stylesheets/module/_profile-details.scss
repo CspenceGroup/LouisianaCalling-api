@@ -145,10 +145,6 @@
     width: rem(255);
   }
 
-  @include e('about') {
-    padding-right: 0;
-  }
-
   ul {
     list-style: disc;
     margin-left: rem(15);
@@ -164,19 +160,15 @@
     .profile-info-wrapper {
       @extend %display-flex;
       @extend %align-items-center;
-      @extend %justify-content-center;
     }
 
     li {
       width: 100%;
       border: solid rem(1) $default;
       padding: 0 rem(25);
-      @extend %float-left;
-      @extend %text-center;
+      text-align: initial;
       @extend %display-flex;
       @extend %align-items-center;
-      @extend %justify-content-center;
-      text-align: initial;
 
       &:nth-child(2),
       &:nth-child(3) {

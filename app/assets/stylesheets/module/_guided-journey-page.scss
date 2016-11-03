@@ -51,7 +51,7 @@
       @extend %relative;
       @extend %display-flex;
       @extend %align-items-center;
-      @extend %justify-content-center;
+      @include flex-justify-content(center);
 
       &:before,
       &:after {

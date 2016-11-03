@@ -133,9 +133,23 @@ $image-path: '';
   }
 
   -webkit-box-flex: $fg-boxflex;
-  -webkit-flex: $fg $fs $fb;
-  -moz-box-flex: $fg-boxflex;
-  -moz-flex: $fg $fs $fb;
-  -ms-flex: $fg $fs $fb;
-  flex: $fg $fs $fb;
+     -moz-box-flex: $fg-boxflex;
+      -webkit-flex: $fg $fs $fb;
+         -moz-flex: $fg $fs $fb;
+          -ms-flex: $fg $fs $fb;
+              flex: $fg $fs $fb;
+}
+
+@mixin flex-justify-content($val) {
+  -webkit-justify-content: $val;
+     -moz-justify-content: $val;
+      -ms-justify-content: $val;
+          justify-content: $val;
+}
+
+@mixin flex-direction($val) {
+  -webkit-flex-direction: $val;
+     -moz-flex-direction: $val;
+      -ms-flex-direction: $val;
+          flex-direction: $val;
 }

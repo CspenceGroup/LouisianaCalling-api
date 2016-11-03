@@ -37,9 +37,9 @@
 
   @include e('heading') {
     min-height: rem(49);
-    flex-direction: row;
     @extend %display-flex;
     @include boxSize(100%, auto);
+    @include flex-direction(row);
   }
 
   @include e('salary') {

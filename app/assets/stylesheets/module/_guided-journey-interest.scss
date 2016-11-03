@@ -41,7 +41,7 @@
   @include e('interest-details') {
     @extend %display-flex;
     @extend %align-items-center;
-    @extend %justify-content-center;
+    @include flex-justify-content(center);
   }
 }
 

@@ -20,7 +20,7 @@
     @extend %acumin-pro-cond;
     @extend %display-flex;
     @extend %align-items-center;
-    @extend %justify-content-center;
+    @include flex-justify-content(center);
 
     h3 {
       font-size: rem(21);

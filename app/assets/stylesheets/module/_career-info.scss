@@ -15,9 +15,8 @@
   @include e('container') {
     padding: rem(20) rem(26);
     border: solid rem(2) $white;
-    width: rem(806);
-    min-height: rem(235);
     @extend %margin-auto;
+    @include boxSize(rem(806), rem(235));
   }
 
   @include e('label') {
@@ -120,8 +119,8 @@
     margin-left: rem(8);
     @extend %display-flex;
     @extend %align-items-center;
-    @extend %justify-content-start;
     @include boxSize(100%, 100%);
+    @include flex-justify-content(flex-start);
 
     &:first-child {
       @extend %no-margin-left;
@@ -238,14 +237,14 @@
 }
 
 .no-interest-container {
-  flex-direction: row;
   @extend %display-flex;
   @extend %no-padding-right;
+  @extend %align-items-center;
+  @include flex-direction(row);
 }
 
 .no-interest-head {
   border-bottom: none;
-  align-self: center;
   padding-bottom: 0;
 }
 
