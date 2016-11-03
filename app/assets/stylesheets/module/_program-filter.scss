@@ -23,19 +23,32 @@
 .program-view-by {
   @extend %float-right;
   width: rem(56);
-  padding-top: rem(10);
+  padding-top: rem(15);
 
   @include e('list') {
     @extend %overflow-hidden;
-    @include boxSize(rem(24), rem(24));
+    @include boxSize(rem(23), rem(23));
     @extend %float-left;
   }
 
   @include e('map') {
-    @include boxSize(rem(17), rem(26));
+    @include boxSize(rem(15), rem(23));
     @extend %float-right;
   }
+  
+  @include e('list-icon') {
+    background-size: rem(22) rem(22);
+  }
 
+  @include e('list-icon-map') {
+    background-size: rem(15) rem(23);
+    @include background-image('map-view.png');
+  }
+
+  .icon {
+    @extend %cursor-pointer;
+    @include boxSize(100%, 100%);
+  }
 }
 
 .action-filter {

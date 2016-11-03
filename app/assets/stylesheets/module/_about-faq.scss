@@ -280,7 +280,7 @@
 
 
 .faq-see-more {
-  @include boxSize(rem(110), rem(32));
+  @include boxSize(rem(108), rem(32));
   @extend %cursor-pointer;
   margin: rem(20) auto 0 auto;
 }

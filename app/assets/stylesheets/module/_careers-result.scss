@@ -112,13 +112,21 @@
   @include e('list') {
     @extend %float-left;
     margin-right: rem(15.5);
-    @include boxSize(rem(23), rem(23));
   }
 
   @include e('grid') {
     @extend %float-right;
-    @include boxSize(rem(23), rem(23));
   }
+
+  @include e('icon') {
+    @extend %block;
+    @include boxSize(100%, 100%);
+  }
+}
+
+.careers-view-icon {
+  @extend %cursor-pointer;
+  @include boxSize(rem(21), rem(21));
 }
 
 .grid-view-container {

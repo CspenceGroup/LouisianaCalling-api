@@ -103,25 +103,19 @@
                 option value="4" Projected Growth low to high
               span.fa.fa-caret-down.fa-sort-by
             .careers-view-by
-              #list-view-icon.careers-view-by__list
-                .careers-view-by__icon
-                  a href="javascript:void(0)"
-                    = image_tag asset_path('list-view.png')
-              #grid-view-icon.careers-view-by__grid
-                .careers-view-by__icon
-                  a href="javascript:void(0)"
-                    = image_tag asset_path('grid-view.png')
+              #list-view-icon.careers-view-icon.careers-view-by__list
+                i.icon.careers-view-by__icon.i-view-list
+              #grid-view-icon.careers-view-icon.careers-view-by__grid
+                i.icon.careers-view-by__icon.i-view-grid
           .grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             - else
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view style="display:none;"
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             .indicator-loading
               = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
@@ -132,12 +126,10 @@
               = render partial: "career/partial/list", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more-list.more-stories__btn.see-more-careers
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             - else
                 #careers-see-more-list.more-stories__btn.see-more-careers style="display:none;"
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             .indicator-loading
               = image_tag asset_path("loading.gif")
             .indicator-loading-see-more

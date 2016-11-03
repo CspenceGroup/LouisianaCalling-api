@@ -17,3 +17,13 @@
     @extend %no-outline;
   }
 }
+
+.icon-see-more {
+  @include boxSize(100%, 100%);
+  @include background-image('profile/btn-see-more.png');
+}
+
+.btn-tell-me-more {
+  background-size: rem(122) rem(26);
+  @include boxSize(rem(122), rem(26));
+}
