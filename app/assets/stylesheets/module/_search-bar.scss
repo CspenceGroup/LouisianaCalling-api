@@ -16,7 +16,7 @@ form {
 }
 
 .search-group {
-  width: rem(1034);
+  width: rem(803);
   @extend %margin-auto;
 
   .search-input {
@@ -37,7 +37,6 @@ form {
   .btn-submit {
     width: rem(212);
     font-size: rem(14.7);
-    // margin-right: rem(7);
     background-color: $default;
     @extend %i-owan-old-style-bi;
     @extend %cl-white;
@@ -139,7 +138,7 @@ form {
 }
 
 .alert-danger-search {
-  @include boxSize(rem(1034), rem(35));
+  @include boxSize(rem(803), rem(35));
   @extend %margin-auto;
   padding-top: rem(6);
   @extend %text-center;
@@ -203,6 +202,18 @@ form {
 .search-bar-group.error-search {
   .alert-danger-search {
     display: none;
+  }
+}
+
+.search-bar-group {
+  .alert-danger-search-text {
+    display: none;
+  }
+}
+
+.search-bar-group.error-search {
+  .alert-danger-search-text {
+    display: block;
   }
 }
 

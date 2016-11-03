@@ -288,14 +288,11 @@ $(document).on('turbolinks:load', function(){
         searchGroup = $('.search-bar-group');
 
     if(!careerName) {
-      searchGroup
-        .addClass('error-search-career');
+      searchGroup.addClass('error-search');
       return false;
     }
 
-    searchGroup
-      .addClass('error-search')
-      .removeClass('error-search-career');
+    searchGroup.removeClass('error-search');
 
     url.push('?title=' + careerName);
 
