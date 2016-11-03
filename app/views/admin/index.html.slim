@@ -9,37 +9,37 @@
     section
       .container style=("color: #000;")
         .row
-          input checked="checked" name="name" type="radio" value="regions" /
+          = radio_button_tag("name", 'regions', @name == 'regions' ? true : false)
           |  Regions
         .row
-          input name="name" type="radio" value="interests" /
+          = radio_button_tag("name", 'interests', @name == 'interests' ? true : false)
           |  List of Interests
         .row
-          input name="name" type="radio" value="skills" /
+          = radio_button_tag("name", 'skills', @name == 'skills' ? true : false)
           |  List of Skills
         .row
-          input name="name" type="radio" value="clusters" /
+          = radio_button_tag("name", 'clusters', @name == 'clusters' ? true : false)
           |  List of Clusters
         .row
-          input name="name" type="radio" value="educations" /
+          = radio_button_tag("name", 'educations', @name == 'educations' ? true : false)
           |  List of Education
         .row
-          input name="name" type="radio" value="careers" /
+          = radio_button_tag("name", 'careers', @name == 'careers' ? true : false)
           |  Careers by State
         .row
-          input name="name" type="radio" value="careers_region" /
+          = radio_button_tag("name", 'careers_region', @name == 'careers_region' ? true : false)
           |  Careers by Regions
         .row
-          input name="name" type="radio" value="homePageTopJobs" /
-          |  Home Page - Top Jobs
+          = radio_button_tag("name", 'top_jobs', @name == 'top_jobs' ? true : false)
+          |  Career Page - Top Jobs
         .row
-          input name="name" type="radio" value="profiles" /
+          = radio_button_tag("name", 'profiles', @name == 'profiles' ? true : false)
           |  Profile Stories
         .row
-          input name="name" type="radio" value="homePageVideo" /
+          = radio_button_tag("name", 'videos', @name == 'videos' ? true : false)
           |  Home Page - Video
         .row
-          input name="name" type="radio" value="programs" /
+          = radio_button_tag("name", 'programs', @name == 'programs' ? true : false)
           |  Programs
     section
       .container
