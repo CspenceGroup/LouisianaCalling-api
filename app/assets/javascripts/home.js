@@ -281,47 +281,25 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
 
     var target = e.target,
-        careerName = convertToUrl(target[0].value),
-        region = convertToUrl(target[1].value),
-        type = target[2].value,
-        url = "",
+        careerName = $.trim(target[0].value),
+        type = target[1].value,
+        url = [type === 'careers' ? '/careers' : '/education'],
         toUrl,
         searchGroup = $('.search-bar-group');
 
-    if(!careerName && !region) {
-      searchGroup.addClass('error-search-group');
-    }
-    else if(!careerName) {
+    if(!careerName) {
       searchGroup
-        .addClass('error-search-career')
-        .removeClass('error-search-group error-search-region');
-    }
-    else if(!region) {
-      searchGroup
-        .addClass('error-search-region')
-        .removeClass('error-search-group error-search-career');
-    }
-    else {
-      searchGroup
-        .addClass('error-search')
-        .removeClass('error-search-group error-search-career error-search-region');
-      url = url + '?title=' + careerName + '&region=' + region;
+        .addClass('error-search-career');
+      return false;
     }
 
-    if (url != "") {
-      if (type && type === 'careers') {
+    searchGroup
+      .addClass('error-search')
+      .removeClass('error-search-career');
 
-        // Redirect to careers landing page
-        toUrl = '/careers' + url;
-        window.location = toUrl;
-      } else if (type && type === 'programs') {
+    url.push('?title=' + careerName);
 
-        toUrl = '/education' + url;
-        window.location = toUrl;
-      }
-    }
-
-    return false;
+    window.location = url.join('')
   });
 
   /**

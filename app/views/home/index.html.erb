@@ -72,7 +72,7 @@
       <form name="search-homepage" id="searchHomepage">
         <div class="input-group search-group">
           <input class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welders'."/>
-          <div class="form-group btn btn-search btn-region">
+          <!-- <div class="form-group btn btn-search btn-region">
             <select class="form-control">
               <option value="" disabled selected>Region</option>
               <% @regions.each do |region|%>
@@ -80,7 +80,7 @@
               <% end %>
             </select>
             <span class="fa fa-caret-down"></span>
-          </div>
+          </div> -->
           <div class="form-group btn btn-search btn-career">
             <select class="form-control">
               <option value="careers" selected>Find Careers</option>
@@ -90,15 +90,15 @@
           </div>
           <button type="submit" class="btn btn-search btn-submit">Search</button>
         </div>
-        <div class="alert alert-danger alert-danger-search alert-danger-search-group">
+        <!-- <div class="alert alert-danger alert-danger-search alert-danger-search-group">
           <p class="errors">Careers name and region are required</p>
-        </div>
+        </div> -->
         <div class="alert alert-danger alert-danger-search alert-danger-search--career">
           <p class="errors">Careers name is required</p>
         </div>
-        <div class="alert alert-danger alert-danger-search alert-danger-search--region">
+        <!-- <div class="alert alert-danger alert-danger-search alert-danger-search--region">
           <p class="errors">Region is required</p>
-        </div>
+        </div> -->
       </form>
       <div class="search-bg">
         <%= image_tag(asset_path("bg-search-careers.jpg"), alt: "Search background") %>
