@@ -71,7 +71,7 @@
     <section class="search-bar row search-bar-group">
       <form name="search-homepage" id="searchHomepage">
         <div class="input-group search-group">
-          <input class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welders'."/>
+          <input class="form-control search-input" type="text" name="search-input" placeholder="Search for careers, like 'welders'." id="autocompleteCareers"/>
           <!-- <div class="form-group btn btn-search btn-region">
             <select class="form-control">
               <option value="" disabled selected>Region</option>
@@ -103,6 +103,7 @@
       <div class="search-bg">
         <%= image_tag(asset_path("bg-search-careers.jpg"), alt: "Search background") %>
       </div>
+      <div class="auto-fill-data" id="availableProgramCareer"><%= @careers_and_programs.to_json %></div>
     </section>
     <section class="guided-journey row">
       <section class="col-xs-6 col-md-6 guided-journey__box find-your-path">

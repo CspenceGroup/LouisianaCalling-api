@@ -43,6 +43,17 @@ $(document).on('turbolinks:load', function(){
       videos[0].play();
     }
   }
+
+  // autocomplete for program in careers details page
+  var programsAndCareers = {};
+  if ($('#availableProgramCareer').html()) {
+    programsAndCareers = JSON.parse($('#availableProgramCareer').html());
+  }
+
+  $("#autocompleteCareers").autocomplete({
+    source: programsAndCareers
+  });
+
   /**
    * This function handle the action when user click on region map
    * @return void
