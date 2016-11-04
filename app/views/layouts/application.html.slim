@@ -1,9 +1,10 @@
 doctype html
 html
   head
-    meta name="turbolinks-cache-control" content="no-cache"
-    title
-      | Louisiana Calling
+    / meta name="turbolinks-cache-control" content="no-cache"
+    = display_meta_tags(default_meta_tags(params[:controller]))
+    meta http-equiv="content-type" content="text/html;charset=UTF-8"
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyB37PvABXHFveMjk-4AzolBlsuUqVC-if8", 'data-turbolinks-eval': false
     = javascript_include_tag 'application', 'data-turbolinks-eval': 'true'

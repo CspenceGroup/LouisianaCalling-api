@@ -53,7 +53,7 @@ class Profile < ActiveRecord::Base
     Profile.transaction do
       csv.each do |row|
         region = Region.find_region(row[4].strip)
-        cluster = Cluster.find_or_create(row[9].strip)
+        cluster = Cluster.find_cluster(row[9].strip)
 
         params = {
           first_name: row[0].strip,
