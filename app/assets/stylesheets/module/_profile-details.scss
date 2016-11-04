@@ -157,11 +157,11 @@
     @extend %no-list-style;
     @extend %no-margin-left;
     @extend %display-flex;
-    @extend %flex-align-items-stretch;
+    @include align-items(stretch);
 
     .profile-info-wrapper {
       @extend %display-flex;
-      @extend %align-items-center;
+      @include align-items(center);
     }
 
     li {
@@ -181,6 +181,7 @@
       font-size: rem(14.7);
       margin-bottom: 0;
       padding: rem(10) 0;
+      @include flex();
       @extend %text-uppercase;
       @extend %brandon-grotesque-bold;
       @extend %text-left;
@@ -192,11 +193,6 @@
     padding-right: 0;
     @extend %float-right;
   }
-}
-
-.personal-profile-title,
-.profile-social-sharings {
-  @extend %float-left;
 }
 
 .personal-profile-title {
@@ -245,7 +241,7 @@
 .profile-info-txt {
   line-height: rem(17);
   font-style: normal;
-  @include flex();
+  
 }
 
 .i-profile-pause {
@@ -255,4 +251,13 @@
 .profile-item-container {
   @extend %inline-block;
   @extend %margin-auto;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .profile-career-details {
+    p {
+      width: rem(123);
+      flex-basis: auto !important;
+    }
+  }
 }
