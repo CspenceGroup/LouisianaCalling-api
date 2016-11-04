@@ -20,7 +20,7 @@
           ol#top-region-jobs.job-list
         #mapData.data-map-hidden data-map="#{@jobs.to_json}"
         p.asterisk-copy.asterisk-copy-home &ast; This data is based on the Louisiana Workforce Commission’s wage and employment projections through 2024.
-    section.careers-lists
+    section.careers-lists#searchCareerResults
       .careers-filter
         h2.careers-filter__heading Filter
         ul.careers-filter__details
@@ -84,7 +84,7 @@
           //-       input.square-checkbox name="demands" type="checkbox" value="1" /
           //-       span.filter-checkbox
           //-       p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
-      .careers-result#searchCareerResults
+      .careers-result
         .careers-result__container.career-grid-view-active
           .careers-result__head-search
             .careers-filter-search name="search"
