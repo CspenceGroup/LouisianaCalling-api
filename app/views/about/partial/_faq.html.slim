@@ -22,7 +22,7 @@ section.about-tabs__desc.about-faq
             = render partial: "about/partial/search-results"
           - if @results[:count] > @results[:limit]
             div.faq-see-more#faqSeeMore data-limit="#{@results[:limit]}" data-count="#{@results[:count]}"
-              = image_tag asset_path("profile/btn-see-more.png")
+              .icon-see-more
         - else
           .search-not-found.faq-search-term.category-active#search-not-found
             = render partial: "about/partial/search-no-results"

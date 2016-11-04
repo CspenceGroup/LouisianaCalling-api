@@ -9,9 +9,9 @@
         a.career-info-title(href=career_detail_path(career) title=career) = career
     .career-shortcut__head--pull-right
       a.career-shortcut__btn-more(href=career_detail_path(career))
-        = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
+        .btn-edu-more.btn-tell-me-more
       .career-shortcut__salary
-        .icon.i-career-salary
+        i.icon.i-career-salary
         p 
           | $#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}
   .career-shortcut__body

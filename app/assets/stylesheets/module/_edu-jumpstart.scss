@@ -53,13 +53,18 @@
       line-height: rem(20.68);
     }
   }
+
+  .btn-edu-more {
+    margin-top: rem(26);
+    background-size: rem(141) rem(30);
+    @extend %inline-block;
+    @include boxSize(rem(141), rem(30));
+  }
 }
 
 .btn-edu-more {
-  margin-top: rem(26);
   @extend %no-float;
-  @extend %inline-block;
-  @include boxSize(rem(141), rem(30));
+  @include background-image('tell-me-more.png');
 }
 
 .tab-pane__edu-content {

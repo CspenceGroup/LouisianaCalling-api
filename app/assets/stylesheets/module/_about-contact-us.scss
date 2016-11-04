@@ -94,18 +94,6 @@
   @include boxSize(rem(211), rem(52));
 }
 
-.icon-address {
-  margin: 0 rem(14) 0 rem(2);
-  @include boxSize(rem(14), rem(20));
-  @include background-image('about-address.png');
-}
-
-.icon-email {
-  margin-right: rem(11);
-  @include boxSize(rem(19), rem(13));
-  @include background-image('icon-about-email.png');
-}
-
 .alert-danger-contact-us {
   height: rem(53);
   margin-top: rem(10);

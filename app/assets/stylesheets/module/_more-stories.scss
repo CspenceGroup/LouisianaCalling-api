@@ -23,7 +23,8 @@
   }
 
   @include e('btn') {
-    @include boxSize(rem(110), rem(32));
+    @extend %background-no-repeat;
+    @include boxSize(rem(108), rem(32));
     margin: rem(48) auto 0 auto;
     cursor: pointer;
   }
