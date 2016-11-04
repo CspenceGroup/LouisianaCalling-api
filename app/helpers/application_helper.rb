@@ -1,4 +1,20 @@
 module ApplicationHelper
+  def default_meta_tags(page = 'home')
+    if page == 'profile'
+        page = "#{page}_#{params[:slug]}" if params[:slug].present?
+      end
+    end
+    result = APP_CONFIG[page]
+    description =
+      result.present? ? result['description'] : APP_CONFIG['home']['description']
+    title = result.present? ? result['title'] : APP_CONFIG['home']['title']
+
+    {
+      title: title,
+      description: description
+    }
+  end
+
   # Convert list interests to hash
   def convert_interests_to_hash
     interests = Interest.all.map do |interest|
