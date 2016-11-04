@@ -157,11 +157,11 @@
     @extend %no-list-style;
     @extend %no-margin-left;
     @extend %display-flex;
-    @extend %flex-align-items-stretch;
+    @include align-items(stretch);
 
     .profile-info-wrapper {
       @extend %display-flex;
-      @extend %align-items-center;
+      @include align-items(center);
     }
 
     li {
@@ -192,11 +192,6 @@
     padding-right: 0;
     @extend %float-right;
   }
-}
-
-.personal-profile-title,
-.profile-social-sharings {
-  @extend %float-left;
 }
 
 .personal-profile-title {

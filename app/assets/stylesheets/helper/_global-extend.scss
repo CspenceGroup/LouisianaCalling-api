@@ -375,20 +375,6 @@
   display: flex;
 }
 
-%align-items-center {
-  -webkit-align-items: center;
-     -moz-align-items: center;
-      -ms-align-items: center;
-          align-items: center;
-}
-
-%flex-align-items-stretch {
-  -webkit-align-items: stretch;
-     -moz-align-items: stretch;
-      -ms-align-items: stretch;
-          align-items: stretch;
-}
-
 /*Opacity*/
 %no-opacity {
   opacity: 0;
