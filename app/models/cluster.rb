@@ -28,11 +28,13 @@ class Cluster < ActiveRecord::Base
     clusters.delete_all if clusters.present?
   end
 
-  def self.find_or_create(cluster_name)
+  def self.find_cluster(cluster_name)
     cluster = Cluster.find_by_name(cluster_name)
 
-    # Adding new cluster
-    cluster = Cluster.create(name: cluster_name) unless cluster.present?
+    unless cluster.present?
+      raise "Do not found with industry: '#{cluster_name}'.
+        Please make sure import Industry (Cluster) before."
+    end
 
     cluster
   end

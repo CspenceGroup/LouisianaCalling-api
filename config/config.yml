@@ -1,0 +1,21 @@
+home:
+  title: 'Louisiana Calling is Here to Help'
+  description: 'Find great career opportunities in cities near you in no time. We’ve got the resources to help you do it. Get started today!'
+profile:
+  title: 'Real People, Real Stories '
+  description: 'You’re not alone. We interviewed people just like you to prove it. Hear their stories and see how they found their career path.'
+profile_clifton-smith:
+  title: 'Louisiana Calling – Clifton Smith'
+  description: 'Welding helped Clifton turn his life around. Now he’s able to work how he wants and live a life that he could only dream of before'
+profile_allen-nguyen:
+  title: 'Louisiana Calling – Allen Nguyen'
+  description: 'Cooking chose Allen and he never looked back. 13 years later and he’s now the proud owner of a restaurant in New Orleans'
+career:
+  title: 'Careers - Louisiana Calling'
+  description: 'Find your calling today and see all the job opportunities our state has to offer. Just use our job search today!'
+education:
+  title: 'Education - Louisiana Calling'
+  description: 'Getting the education you need to thrive in a new career is easy with Louisiana Calling. Find career courses and certification programs near you today.'
+guided_journey:
+  title: 'Guided Journey - Louisiana Calling '
+  description: 'Take this short career quiz and find jobs and opportunities near you. It’s as simple as answering a few questions about yourself.'

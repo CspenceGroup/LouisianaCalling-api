@@ -3,7 +3,7 @@ require 'open-uri'
 
 class AboutController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
-  before_filter :categories_list, only: [:index, :create]
+  before_action :categories_list, only: [:index, :create]
 
   def index
     @contact = Contact.new

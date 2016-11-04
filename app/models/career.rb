@@ -303,7 +303,7 @@ class Career < ActiveRecord::Base
   end
 
   def self.create_career_cluster(cluster_name, career)
-    cluster = Cluster.find_or_create(cluster_name)
+    cluster = Cluster.find_cluster(cluster_name)
 
     return if CareerCluster.exists?(career_id: career.id, cluster_id: cluster.id)
 

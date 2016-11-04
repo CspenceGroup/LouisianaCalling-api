@@ -28,11 +28,12 @@ class Program < ActiveRecord::Base
   }
 
   scope :filter_by_title, lambda { |title|
-    query = ['LOWER(programs.title) like ? ']
-    query.push('LOWER(careers.title) like ? ')
-    query.push('LOWER(programs.institution_name) like ? ')
+    query = ['LOWER(title) like ? ']
+    # query.push('LOWER(careers.title) like ? ')
+    query.push('LOWER(institution_name) like ? ')
     title = "%#{title.downcase}%"
-    with_careers.where(query.join(' OR '), title, title, title)
+    # with_careers.where(query.join(' OR '), title, title, title)
+    where(query.join(' OR '), title, title)
   }
 
   scope :filter_titles_not_exist, lambda { |titles|
@@ -135,7 +136,7 @@ class Program < ActiveRecord::Base
   end
 
   def self.create_program_cluster(cluster_name, program)
-    cluster = Cluster.find_or_create(cluster_name)
+    cluster = Cluster.find_cluster(cluster_name)
 
     return if ProgramCluster.exists?(
       program_id: program.id,
