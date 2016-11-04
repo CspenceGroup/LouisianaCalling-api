@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103014831) do
+ActiveRecord::Schema.define(version: 20161104091736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161103014831) do
     t.float    "demand"
     t.integer  "top_job_id"
     t.integer  "projected_growth"
+    t.integer  "numerical_order"
     t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 
