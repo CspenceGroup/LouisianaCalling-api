@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function(){
   //   $(".related-item__name").dotdotdot({});
   // });
 
+  // setSalaryRange();
   /**
    * Search nearby programs from career details page
    */
@@ -98,17 +99,60 @@ $(document).on('turbolinks:load', function(){
     // $(".related-item__name").dotdotdot({});
   });
 
-  $("#slider-range").slider({
-    range: true,
-    min: 15000,
-    max: 187000,
-    values: [15000, 80000],
-    slide: function( event, ui ) {
-      $("#salary").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-    }
-  });
+  var store_salary = $("#store-salary").val(),
+    salary_values;
 
-  $("#salary").val( "$" + $("#slider-range").slider("values", 0).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + $("#slider-range").slider("values", 1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+  if (store_salary) {
+    store_salary = store_salary.split('-');
+
+    salary_values = store_salary.map(function(item) {
+      return parseInt(item, 10);
+    });
+  } else {
+    salary_values = [15000, 80000];
+  }
+
+  // New a slider
+  if ($(".careers-filter__title").is(':visible')) {
+    console.log(salary_values);
+    $("#slider-range").slider({
+      range: true,
+      min: 15000,
+      max: 187000,
+      values: salary_values,
+      slide: function( event, ui ) {
+        var salary_min = ui.values[0].toString(),
+          salary_max = ui.values[1].toString(),
+          array = [];
+
+        $("#store-salary").val([salary_min, salary_max].join('-'));
+
+        salary_min = salary_min.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        salary_max = salary_max.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
+        array = ["$", salary_min, " - $", salary_max];
+
+        $("#salary").val(array.join(''));
+      },
+      create: function(event, ui) {
+        // $("#slider-range").slider( "option", "values", salary_values);
+      }
+    });
+  }
+
+
+  function setSalaryRange() {
+    var salary_min = $("#slider-range").slider("values", 0).toString(),
+      salary_max = $("#slider-range").slider("values", 1).toString(),
+      array = [];
+
+    salary_min = salary_min.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    salary_max = salary_max.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
+    array = ["$", salary_min, " - $", salary_max];
+
+    $("#salary").val(array.join(''));
+  };
 
   /*
     Get value checkbox when checked
@@ -655,7 +699,7 @@ $(document).on('turbolinks:load', function(){
    */
   function goToByScroll(id, query) {
     if (window.location.href.indexOf(query) > -1) {
-      
+
       $('html,body').animate({scrollTop: $("#" + id).offset().top}, 50);
 
       return false;
@@ -666,4 +710,5 @@ $(document).on('turbolinks:load', function(){
   goToByScroll('searchCareerResults', 'careers?title=');
   goToByScroll('searchProgramResults', 'education?title=');
 
+  // setSalaryRange();
 });
