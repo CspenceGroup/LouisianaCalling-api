@@ -153,9 +153,11 @@
   .profile-career-details {
     width: rem(659);
     min-height: rem(55);
+    border: solid rem(1) $default;
     @extend %no-list-style;
     @extend %no-margin-left;
     @extend %display-flex;
+    @extend %flex-align-items-stretch;
 
     .profile-info-wrapper {
       @extend %display-flex;
@@ -164,26 +166,24 @@
 
     li {
       width: 100%;
-      border: solid rem(1) $default;
       padding: 0 rem(25);
       text-align: initial;
+      border-right: solid rem(1) $default;
       @extend %display-flex;
-      @extend %align-items-center;
+      @include flex-justify-content(center);
 
-      &:nth-child(2),
-      &:nth-child(3) {
-        @extend %no-border-left;
+      &:last-child {
+        border-right: none;
       }
     }
 
-    span {
+    p {
       font-size: rem(14.7);
       margin-bottom: 0;
       padding: rem(10) 0;
       @extend %text-uppercase;
       @extend %brandon-grotesque-bold;
       @extend %text-left;
-      @extend %block;
     }
   }
 

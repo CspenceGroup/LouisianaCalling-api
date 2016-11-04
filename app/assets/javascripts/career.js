@@ -647,4 +647,23 @@ $(document).on('turbolinks:load', function(){
   //   $('#career_sort_by').trigger('click');
   // });
 
+  /**
+   * Check URL and scroll page to special section without changing URL
+   * @param  {string} id    ID of the section which scroll to]
+   * @param  {string} query URL string
+   * @return {void}
+   */
+  function goToByScroll(id, query) {
+    if (window.location.href.indexOf(query) > -1) {
+      
+      $('html,body').animate({scrollTop: $("#" + id).offset().top}, 50);
+
+      return false;
+    }
+  }
+
+  // Scroll page to results section.
+  goToByScroll('searchCareerResults', 'careers?title=');
+  goToByScroll('searchProgramResults', 'education?title=');
+
 });

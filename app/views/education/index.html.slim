@@ -5,8 +5,8 @@
       .banner-heading__content
         h2.main-title.profile-title.education-title Sky's the limit. Time to build your rocket.
         p From private training programs to college classes, you'll find everything you need here to give you the life you've almost dared not dream about.
-    section.program-list.program-list-active
-       .edu-landing-message.profile-heading
+    section.program-list.program-list-active#searchProgramResults
+      .edu-landing-message.profile-heading
         h2.main-title.profile-title We’re working on the details.
         p The latest education data for programs across the state is still coming in. Check back soon!
     //-   .program-list__head
@@ -110,7 +110,6 @@
     //-               span.careers-filter-details__name Both
     //-         .program-filter__details-desc.program-filter__details-item
     //-           = render partial: "education/partial/education", locals: { list_of_educations: @list_of_educations }
-
     //-   .program-list__result
     //-     p.program-list__call-us Need financial aid? Call us to learn about your options: 1-844-LA-CALLS.
     //-     #program-list-view.program-list-view.program-list-view-active
