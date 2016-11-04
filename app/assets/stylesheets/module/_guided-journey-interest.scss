@@ -40,7 +40,7 @@
 
   @include e('interest-details') {
     @extend %display-flex;
-    @extend %align-items-center;
+    @include align-items(center);
     @include flex-justify-content(center);
   }
 }
