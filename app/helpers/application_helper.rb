@@ -1,8 +1,7 @@
 module ApplicationHelper
   def default_meta_tags(page = 'home')
     if page == 'profile'
-        page = "#{page}_#{params[:slug]}" if params[:slug].present?
-      end
+      page = "#{page}_#{params[:slug]}" if params[:slug].present?
     end
     result = APP_CONFIG[page]
     description =
