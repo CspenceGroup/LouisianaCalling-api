@@ -50,7 +50,7 @@
       margin-left: rem(2);
       @extend %relative;
       @extend %display-flex;
-      @extend %align-items-center;
+      @include align-items(center);
       @include flex-justify-content(center);
 
       &:before,

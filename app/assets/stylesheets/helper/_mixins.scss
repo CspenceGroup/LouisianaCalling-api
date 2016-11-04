@@ -153,3 +153,10 @@ $image-path: '';
       -ms-flex-direction: $val;
           flex-direction: $val;
 }
+
+@mixin align-items($val) {
+  -webkit-align-items: $val;
+     -moz-align-items: $val;
+      -ms-align-items: $val;
+          align-items: $val;
+}

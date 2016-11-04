@@ -73,8 +73,8 @@
   @include e('body') {
     padding-top: rem(22);
     @extend %display-flex;
-    @extend %align-items-center;
     @extend %overflow-hidden;
+    @include align-items(center);
 
     > p {
       margin-right: rem(30);
@@ -113,13 +113,13 @@
   height: auto;
   width: rem(655);
   @extend %display-flex;
-  @extend %align-items-center;
+  @include align-items(center);
 
   li {
     margin-left: rem(8);
     @extend %display-flex;
-    @extend %align-items-center;
     @include boxSize(100%, 100%);
+    @include align-items(center);
     @include flex-justify-content(flex-start);
 
     &:first-child {
@@ -239,8 +239,8 @@
 .no-interest-container {
   @extend %display-flex;
   @extend %no-padding-right;
-  @extend %align-items-center;
   @include flex-direction(row);
+  @include align-items(center);
 }
 
 .no-interest-head {
