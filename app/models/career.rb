@@ -2,14 +2,14 @@
 #
 # Table name: careers
 #
-#  id             :integer          not null, primary key
-#  profile_id     :integer
-#  title          :string
-#  url            :string
-#  description    :string
+#  id                 :integer          not null, primary key
+#  profile_id         :integer
+#  title              :string
+#  url                :string
+#  description        :string
+#  numerical_order    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
 #
 
 class Career < ActiveRecord::Base
@@ -150,9 +150,10 @@ class Career < ActiveRecord::Base
 
   def self.import_from_csv(csv)
     Career.transaction do
-      csv.each do |row|
+      csv.each_with_index do |row, idx|
         params = {
-          title: row[0].strip
+          title: row[0].strip,
+          numerical_order: idx + 1
         }
 
         params[:salary_min] = row[7].strip
