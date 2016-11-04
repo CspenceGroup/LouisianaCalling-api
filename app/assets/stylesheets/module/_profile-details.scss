@@ -175,11 +175,6 @@
       &:last-child {
         border-right: none;
       }
-
-      &:nth-child(2),
-      &:nth-child(3) {
-        @extend %no-border-left;
-      }
     }
 
     p {
