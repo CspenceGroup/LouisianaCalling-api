@@ -114,7 +114,7 @@ $(document).on('turbolinks:load', function(){
 
   // New a slider
   if ($(".careers-filter__title").is(':visible')) {
-    console.log(salary_values);
+    $("#slider-range").html('');
     $("#slider-range").slider({
       range: true,
       min: 15000,
@@ -708,7 +708,7 @@ $(document).on('turbolinks:load', function(){
 
   // Scroll page to results section.
   goToByScroll('searchCareerResults', 'careers?title=');
-  goToByScroll('searchProgramResults', 'education?title=');
+  // goToByScroll('searchProgramResults', 'education?title=');
 
   // setSalaryRange();
 });
