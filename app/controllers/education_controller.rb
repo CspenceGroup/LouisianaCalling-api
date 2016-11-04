@@ -1,7 +1,7 @@
 class EducationController < ApplicationController
   include ProgramHelper
 
-  before_filter :data_for_filter_details, only: [:index]
+  before_action :data_for_filter_details, only: [:index]
 
   def index
     @limit = params[:limit] || 3

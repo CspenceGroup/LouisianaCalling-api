@@ -1,6 +1,6 @@
 class GuidedJourneyController < ApplicationController
   include CareerHelper
-  before_filter :datas_for_binding, only: [:index]
+  before_action :datas_for_binding, only: [:index]
 
   def index
   end
