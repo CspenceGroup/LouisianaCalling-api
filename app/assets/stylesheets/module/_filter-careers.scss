@@ -50,8 +50,13 @@
   }
 }
 
+.checkbox {
+  float: left;
+}
+
 .careers-filter-details {
   @extend %overflow-hidden;
+
   @include e('name') {
     font-size: rem(14.5);
     @extend %vertical-top;
@@ -62,34 +67,87 @@
   li {
     @extend %relative;
     margin: 0 0 rem(2) rem(2);
-  }
+    @extend %overflow-hidden;
+    input[type="checkbox"] {
+      z-index: 0;
+      -moz-appearance: none;
+      position: relative;
+      left: -18px;
+      @include boxSize(rem(18), rem(18));
+    }
 
-  @include m('hottest-jobs') {
-    li {
-      margin-bottom: rem(5);
-      @extend %overflow-hidden;
+    .filter-checkbox {
+      // left: rem(-15);
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+      border: rem(1) solid $black;
+      background: $profile-name-shadow;
+      display: block;
+      float: left;
+      position: relative;
+      @include boxSize(rem(19), rem(19));
+    }
+
+    input[type="checkbox"]:checked + .filter-checkbox:before {
+      content: asset-url("checkbox.png");
+      top: rem(-1);
+      left: rem(-1);
+      z-index: 10;
+      font-size: rem(12.5);
+      text-indent: rem(3);
+      position: absolute;
+      pointer-events: none;
+      border: rem(1) solid $black;
+      background: $profile-name-shadow;
+      @include boxSize(rem(19), rem(19));
     }
   }
 }
 
-.square-checkbox {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  @include boxSize(rem(18), rem(18));
-  border: rem(1) solid $filter-careers-details;
-  @extend %no-border-radius;
-  @extend %no-outline;
-  @extend %float-left;
-
-  &:checked:before {
-    content: url(checkbox.png);
-    @extend %absolute;
-    top: rem(-1);
-    left: rem(2);
-    @include boxSize(rem(18), rem(18));
-  }
+.careers-filter-details--hottest-jobs li {
+  padding-left: rem(2);
 }
+// .careers-filter-details {
+//   @extend %overflow-hidden;
+//   @include e('name') {
+//     font-size: rem(14.5);
+//     @extend %vertical-top;
+//     margin-left: rem(32);
+//     @extend %block;
+//   }
+
+//   li {
+//     @extend %relative;
+//     margin: 0 0 rem(2) rem(2);
+//   }
+
+//   @include m('hottest-jobs') {
+//     li {
+//       margin-bottom: rem(5);
+//       @extend %overflow-hidden;
+//     }
+//   }
+// }
+
+// .square-checkbox {
+//   -webkit-appearance: none;
+//      -moz-appearance: none;
+//           appearance: none;
+//   @include boxSize(rem(18), rem(18));
+//   border: rem(1) solid $filter-careers-details;
+//   @extend %no-border-radius;
+//   @extend %no-outline;
+//   @extend %float-left;
+
+//   &:checked:before {
+//     content: url(checkbox.png);
+//     @extend %absolute;
+//     top: rem(-1);
+//     left: rem(2);
+//     @include boxSize(rem(18), rem(18));
+//   }
+// }
 
 .icon-hottest-jobs {
   @include background-image('careers/hottest-jobs.png');
