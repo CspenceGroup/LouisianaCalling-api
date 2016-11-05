@@ -700,7 +700,7 @@ $(document).on('turbolinks:load', function(){
   function goToByScroll(id, query) {
     if (window.location.href.indexOf(query) > -1) {
 
-      $('html,body').animate({scrollTop: $("#" + id).offset().top}, 50);
+      $('html, body').animate({scrollTop: $("#" + id).offset().top - 75}, 50);
 
       return false;
     }
