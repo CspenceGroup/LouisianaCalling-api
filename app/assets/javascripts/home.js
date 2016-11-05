@@ -120,6 +120,7 @@ $(document).on('turbolinks:load', function(){
       var activeRegionData = regions[regionId];
     }
 
+    $('#top-region-jobs').empty();
     if (activeRegionData && activeRegionData.length) {
       for (var i = 0, length = activeRegionData.length; i < length; i++) {
         var tpl = '<li><a href="'
