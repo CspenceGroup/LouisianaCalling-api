@@ -5,6 +5,7 @@
   @extend %float-left;
   @extend %relative;
   @include boxSize(rem(385), rem(195));
+  padding-left: 0.02px;
 
   &:nth-child(even) {
     margin-left: rem(20);
@@ -19,7 +20,7 @@
   @include e('info') {
     padding: rem(11) 0 0 rem(10);
     @extend %float-right;
-    @include boxSize(rem(190), 100%);
+    @include boxSize(rem(189), 100%);
   }
 
   @include e('flames') {
