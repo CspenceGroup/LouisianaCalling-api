@@ -39,7 +39,11 @@ class GuidedJourneyController < ApplicationController
 
     next_offset = @limit + @offset
     is_see_more = careers.count > next_offset ? true : false
-    careers = careers.recent.offset(@offset).limit(@limit)
+
+    # Sorting by high demand
+    careers = careers.high_demand
+
+    careers = Kaminari.paginate_array(careers).offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -55,8 +59,8 @@ class GuidedJourneyController < ApplicationController
 
   def datas_for_binding
     @regions = Region.all.alphabetical
-    @educations = Education.all
-    @skills = Skill.all
+    @educations = Education.all.alphabetical
+    @skills = Skill.all.alphabetical
     @interests = Interest.all.alphabetical
   end
 end

@@ -25,6 +25,11 @@ class Skill < ActiveRecord::Base
     where('name NOT IN (?)', names)
   }
 
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order('LOWER(name) ASC')
+  }
+
   def self.update_skill(params)
     skill = Skill.find_by_name(params[:name])
 

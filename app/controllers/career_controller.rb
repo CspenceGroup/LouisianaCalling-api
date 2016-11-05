@@ -7,6 +7,9 @@ class CareerController < ApplicationController
     @jobs = {}
 
     TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
+      # Sorting by title
+      top_jobs = top_jobs.sort_by { |top_job| top_job.career.title.downcase }
+
       @jobs[region] = top_jobs.map do |top_job|
         {
           job: top_job.career.title,
@@ -42,7 +45,10 @@ class CareerController < ApplicationController
     next_offset = @offset + @limit
     @is_see_more = careers.count > next_offset ? true : false
 
-    @careers = careers.recent.offset(@offset).limit(@limit)
+    careers = careers.high_demand
+
+    @careers = Kaminari.paginate_array(careers).offset(@offset).limit(@limit)
+
     @title = params[:title]
     @region = params[:region]
     @offset = next_offset
@@ -80,14 +86,17 @@ class CareerController < ApplicationController
           careers.salary_asc
         when 3 # Projected Growth high to low
           careers.projected_growth_desc
-        else # Projected Growth low to high
+        when 4 # Projected Growth low to high
           careers.projected_growth_asc
+        else
+          Kaminari.paginate_array(careers.high_demand)
         end
     end
 
     next_offset = @limit + @offset
     is_see_more = careers.count > next_offset ? true : false
-    careers = careers.recent.offset(@offset).limit(@limit)
+
+    careers = careers.offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -139,10 +148,10 @@ class CareerController < ApplicationController
 
   def data_for_filter_details
     @list_of_regions = Region.all.alphabetical
-    @list_of_industries = Cluster.all
-    @list_of_educations = Education.all
-    @skills = Skill.all
-    @interests = Interest.all
+    @list_of_industries = Cluster.all.alphabetical
+    @list_of_educations = Education.all.alphabetical
+    @skills = Skill.all.alphabetical
+    @interests = Interest.all.alphabetical
   end
 
   def career_titles

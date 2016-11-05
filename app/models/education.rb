@@ -19,6 +19,11 @@ class Education < ActiveRecord::Base
     where('name NOT IN (?)', names)
   }
 
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order('LOWER(name) ASC')
+  }
+
   # Remove all educations do not exists in TSV file import
   def self.remove(csv_file)
     names = csv_file.map { |row| row[0].strip }.uniq

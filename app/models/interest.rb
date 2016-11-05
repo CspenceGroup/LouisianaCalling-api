@@ -29,7 +29,7 @@ class Interest < ActiveRecord::Base
 
   # Sorting by alphabetical
   scope :alphabetical, lambda {
-    order(:name)
+    order('LOWER(name) ASC')
   }
 
   scope :filter_names_not_exist, lambda { |names|

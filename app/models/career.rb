@@ -67,6 +67,10 @@ class Career < ActiveRecord::Base
 
   scope :recent, -> { order(created_at: :desc) }
 
+  scope :high_demand, lambda {
+    all.sort_by { |career| [-career.demand, career.title.downcase] }
+  }
+
   scope :filter_by_title, lambda { |title|
     where("(LOWER(title) like '%#{title.gsub(/'/, "''").downcase}%')")
   }
