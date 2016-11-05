@@ -27,7 +27,7 @@ class Skill < ActiveRecord::Base
 
   # Sorting by alphabetical
   scope :alphabetical, lambda {
-    order(:name)
+    order('LOWER(name) ASC')
   }
 
   def self.update_skill(params)

@@ -19,7 +19,7 @@ class Region < ActiveRecord::Base
 
   # Sorting by alphabetical
   scope :alphabetical, lambda {
-    order(:name)
+    order('LOWER(name) ASC')
   }
 
   scope :filter_by_names, lambda { |names|
