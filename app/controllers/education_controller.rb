@@ -114,8 +114,8 @@ class EducationController < ApplicationController
 
   def data_for_filter_details
     @list_of_regions = Region.all.alphabetical
-    @list_of_industries = Cluster.all
-    @list_of_educations = Education.all
+    @list_of_industries = Cluster.all.alphabetical
+    @list_of_educations = Education.all.alphabetical
 
     @list_of_programs = Program.all.select(:title).map(&:title).uniq
     @list_of_programs.push(Program.all.select(:institution_name).map(&:institution_name).uniq)

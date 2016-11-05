@@ -21,6 +21,11 @@ class Cluster < ActiveRecord::Base
     where('name NOT IN (?)', names)
   }
 
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order(:name)
+  }
+
   # Remove all clusters do not exists in TSV file import
   def self.remove(names)
     clusters = Cluster.filter_names_not_exist(names)
