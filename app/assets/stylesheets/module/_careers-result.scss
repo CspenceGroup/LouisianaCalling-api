@@ -148,6 +148,7 @@
     border: rem(1) solid $default;
     margin: rem(20) rem(20) 0 0;
     background-color: $white;
+    padding-left: 0.05px;
 
     &:last-child {
       @extend %no-margin-right;
