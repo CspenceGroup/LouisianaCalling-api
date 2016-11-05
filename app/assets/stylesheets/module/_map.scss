@@ -26,6 +26,10 @@
     @extend %absolute;
   }
 
+  @include e('map-details') {
+    top: rem(-245);
+  }
+
   .job-heading {
     color: $profile-name-shadow;
     @include shadow(rem(4), rem(6), 0, $profile-header);
@@ -120,6 +124,7 @@ text {
   font-family: 'BrandonGrotesque-Bold';
   font-size: rem(9);
   @extend %cursor-default;
+  font-weight: normal;
 }
 
 text.active {
