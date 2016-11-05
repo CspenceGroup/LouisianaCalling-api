@@ -83,7 +83,7 @@
   @extend %float-left;
 
   &:checked:before {
-    content:"✔";
+    content: url(checkbox.png);
     @extend %absolute;
     top: rem(-1);
     left: rem(2);
