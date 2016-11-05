@@ -21,7 +21,93 @@
       }
 
       input[type="checkbox"]:checked + .filter-checkbox:before {
-        content: '\2714';
+        content: url(checkbox.png);
+        top: rem(-1);
+        left: rem(-1);
+        z-index: 10;
+        font-size: rem(12.5);
+        text-indent: rem(3);
+        position: absolute;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $profile-name-shadow;
+        @include boxSize(rem(19), rem(19));
+      }
+    }
+  }
+
+  .careers-filter-details--hottest-jobs li {
+    padding-left: rem(2);
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .careers-filter-details {
+    li {
+      input[type="checkbox"] {
+        z-index: 0;
+        -moz-appearance: none;
+        position: relative;
+        @include boxSize(rem(13.4), rem(18));
+      }
+
+      .filter-checkbox {
+        left: rem(-15);
+        z-index: 10;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $profile-name-shadow;
+        display: block;
+        float: left;
+        position: relative;
+        @include boxSize(rem(19), rem(19));
+      }
+
+      input[type="checkbox"]:checked + .filter-checkbox:before {
+        content: url(checkbox.png);
+        top: rem(-1);
+        left: rem(-1);
+        z-index: 10;
+        font-size: rem(12.5);
+        text-indent: rem(3);
+        position: absolute;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $profile-name-shadow;
+        @include boxSize(rem(19), rem(19));
+      }
+    }
+  }
+
+  .careers-filter-details--hottest-jobs li {
+    padding-left: rem(2);
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .careers-filter-details {
+    li {
+      input[type="checkbox"] {
+        z-index: 0;
+        -moz-appearance: none;
+        position: relative;
+        @include boxSize(rem(13.4), rem(18));
+      }
+
+      .filter-checkbox {
+        left: rem(-15);
+        z-index: 10;
+        pointer-events: none;
+        border: rem(1) solid $black;
+        background: $profile-name-shadow;
+        display: block;
+        float: left;
+        position: relative;
+        @include boxSize(rem(19), rem(19));
+      }
+
+      input[type="checkbox"]:checked + .filter-checkbox:before {
+        content: url(checkbox.png);
         top: rem(-1);
         left: rem(-1);
         z-index: 10;
