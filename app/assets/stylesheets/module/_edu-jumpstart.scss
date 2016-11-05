@@ -62,11 +62,6 @@
   }
 }
 
-.btn-edu-more {
-  @extend %no-float;
-  @include background-image('tell-me-more.png');
-}
-
 .tab-pane__edu-content {
   @extend %background-cover;
   @extend %background-position-center;
