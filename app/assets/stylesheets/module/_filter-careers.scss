@@ -162,6 +162,7 @@
   margin-right: rem(23);
   border-right: rem(1) solid $filter-careers-bg;
   border-bottom: rem(1) solid $filter-careers-bg;
+  @extend %cursor-pointer;
 }
 
 .careers-icon-collapse-expend {
