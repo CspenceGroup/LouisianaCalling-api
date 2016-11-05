@@ -139,10 +139,10 @@ class CareerController < ApplicationController
 
   def data_for_filter_details
     @list_of_regions = Region.all.alphabetical
-    @list_of_industries = Cluster.all
-    @list_of_educations = Education.all
-    @skills = Skill.all
-    @interests = Interest.all
+    @list_of_industries = Cluster.all.alphabetical
+    @list_of_educations = Education.all.alphabetical
+    @skills = Skill.all.alphabetical
+    @interests = Interest.all.alphabetical
   end
 
   def career_titles

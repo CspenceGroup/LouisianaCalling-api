@@ -55,8 +55,8 @@ class GuidedJourneyController < ApplicationController
 
   def datas_for_binding
     @regions = Region.all.alphabetical
-    @educations = Education.all
-    @skills = Skill.all
+    @educations = Education.all.alphabetical
+    @skills = Skill.all.alphabetical
     @interests = Interest.all.alphabetical
   end
 end
