@@ -47,3 +47,9 @@ a {
 video {
   @extend %no-outline;
 }
+
+path,
+select,
+text {
+  @extend %cursor-pointer;
+}
