@@ -21,7 +21,7 @@ class Education < ActiveRecord::Base
 
   # Sorting by alphabetical
   scope :alphabetical, lambda {
-    order(:name)
+    order('LOWER(name) ASC')
   }
 
   # Remove all educations do not exists in TSV file import
