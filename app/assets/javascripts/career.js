@@ -628,14 +628,10 @@ $(document).on('turbolinks:load', function(){
   // Apply lazyload
   function lazyloadImages() {
     $("img.lazy-load").lazyload({
-      effect : "fadeIn",
-      event : "timeout"
+      load : function() {
+        $(this).removeClass('lazy-load-careers');
+      }
     });
-
-    // Trigger timeout event for lazyload
-    var timeout = setTimeout(function() {
-      $("img.lazy-load").trigger("timeout");
-    }, 200);
   }
 
   lazyloadImages();
