@@ -79,6 +79,12 @@
       }
     }
 
+    .disabled {
+      a {
+        @extend %cursor-default;
+      }
+    }
+
     @include e('container') {
       margin: rem(38) 0 rem(30) 0;
     }
