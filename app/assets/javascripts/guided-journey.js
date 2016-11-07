@@ -234,6 +234,18 @@ $(document).on('turbolinks:load', function(){
     });
   }
 
+  //Apply lazy load for icon guided journey
+  $("img.lazy-load-icon").lazyload({
+    effect : "fadeIn",
+    event : "timeout"
+  });
+
+  // Trigger timeout event for lazyload
+  var timeout = setTimeout(function() {
+    $("img.lazy-load-icon").trigger("timeout");
+  }, 200);
+
+
   /* Click see more button when view more result */
   $('#see-more-result-step').click(function() {
     $(this).hide();
