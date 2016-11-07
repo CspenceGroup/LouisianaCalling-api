@@ -1,6 +1,8 @@
 - industries.each do |industry|
   li
-    input.square-checkbox name="industries" type="checkbox" value=industry.id /
-    span.filter-checkbox
-    p.careers-filter-details__name
-      = industry.name
+    label
+      .checkbox
+        input.square-checkbox name="industries" type="checkbox" value=industry.id /
+        span.filter-checkbox
+      p.careers-filter-details__name
+        = industry.name
