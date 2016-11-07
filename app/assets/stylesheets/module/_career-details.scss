@@ -13,6 +13,10 @@
     @extend %absolute;
     @extend %left-top-0;
     @include boxSize(100%, 100%);
+
+    .lazy-load-careers {
+      height: 100%;
+    }
   }
 }
 
