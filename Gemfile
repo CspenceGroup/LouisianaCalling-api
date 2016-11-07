@@ -54,9 +54,6 @@ gem 'dotenv-rails'
 # Send email
 gem 'mandrill-api'
 
-# Send email
-gem 'mandrill-api'
-
 # Search Engine Optimization (SEO)
 gem 'meta-tags'
 
@@ -78,6 +75,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Help to kill N+1 queries and unused eager loading
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
