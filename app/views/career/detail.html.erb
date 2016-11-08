@@ -4,7 +4,7 @@
   <div class="main-content">
     <section class="career-banner">
       <div class="career-banner__bg">
-        <%= image_tag career.photo_large, alt: 'career banner', lazy: true, class: "lazy-load"%>
+        <%= image_tag career.photo_large, alt: 'career banner', lazy: true, class: "lazy-load lazy-load-careers"%>
       </div>
     </section>
     <section class="career-desc" id="career-desc">
@@ -35,7 +35,7 @@
               <div class="career-desc__interest-item">
                 <div class="career-desc__interest-icon career-interest-icon">
                   <% if interest.home_url.present? %>
-                    <%= image_tag(interest.home_url, :alt => "interest icon") %>
+                    <%= image_tag(interest.home_url, :alt => "interest icon", :lazy => true, :class => 'lazy-load-icon') %>
                   <% else %>
                     <%= image_tag("", :alt => "interest icon") %>
                   <% end %>
@@ -132,7 +132,7 @@
                     <div class="career-desc__interest-item related-careers__interest">
                       <div class="career-desc__interest-icon career-interest-icon">
                       <% if interest.home_url.present? %>
-                        <%= image_tag(interest.home_url, :alt => "interest icon") %>
+                        <%= image_tag(interest.home_url, :alt => "interest icon", :lazy => true, :class => 'lazy-load-icon') %>
                       <% else %>
                         <%= image_tag("", :alt => "interest icon") %>
                       <% end %>

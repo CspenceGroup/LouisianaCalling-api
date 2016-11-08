@@ -6,17 +6,20 @@ class CareerController < ApplicationController
   def index
     @jobs = {}
 
-    TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
-      # Sorting by title
-      top_jobs = top_jobs.sort_by { |top_job| top_job.career.title.downcase }
+    TopJob.all
+          .valid
+          .includes(:region, :career)
+          .group_by(&:region).each do |region, top_jobs|
+            # Sorting by title
+            top_jobs = top_jobs.sort_by { |top_job| top_job.career.title.downcase }
 
-      @jobs[region] = top_jobs.map do |top_job|
-        {
-          job: top_job.career.title,
-          link: career_detail_path(top_job.career)
-        }
-      end
-    end
+            @jobs[region] = top_jobs.map do |top_job|
+              {
+                job: top_job.career.title,
+                link: career_detail_path(top_job.career)
+              }
+            end
+          end
 
     @limit = params[:limit] || 9
     @offset = params[:offset] || 0

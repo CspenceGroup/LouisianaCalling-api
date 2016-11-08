@@ -28,7 +28,7 @@
       <% career.interests.first(3).each do |interest| %>
         <li>
           <div class="career-interest-icon">
-            <%= image_tag "#{interest.home_url}", :alt => "#{interest}" %>
+            <%= image_tag "#{interest.home_url}", :alt => "#{interest}", :lazy => true, :class => 'lazy-load-icon' %>
           </div>
           <p title="<%= interest %>">
             <%= interest %>

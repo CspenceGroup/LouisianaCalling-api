@@ -1,14 +1,16 @@
 - careers.each do |career|
   .guided-result-item id=career.id
-    .guided-result-item__photo
-      = image_tag career.photo_medium, lazy: true, class: 'lazy-load'
-    .guided-result-item__info
-      .guided-result-item__flames
-        - career.demand.to_i.times do
-          i.icon.i-blue-flame
-      .guided-result-item__career-name
-        a(href="/careers/#{career.slug}" title=career) = career
-      .guided-result-item__salary
-        i.i-guided-salary
-        p
-          = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+    a(href="/careers/#{career.slug}")
+      .guided-result-item__photo
+        = image_tag career.photo_medium, lazy: true, class: 'lazy-load'
+      .guided-result-item__info
+        .guided-result-item__flames
+          - career.demand.to_i.times do
+            i.icon.i-blue-flame
+        .guided-result-item__career-name
+          span(title=career)
+            = career
+        .guided-result-item__salary
+          i.i-guided-salary
+          p
+            = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"

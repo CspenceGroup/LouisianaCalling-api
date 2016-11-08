@@ -20,5 +20,5 @@
       - career.interests.first(3).each do |interest|
         li
           .career-interest-icon
-            = image_tag("#{interest.url}", :alt => "#{interest}")
+            = image_tag("#{interest.url}", :alt => "#{interest}", :lazy => true, :class => 'lazy-load-icon')
           p(title=interest) = interest
