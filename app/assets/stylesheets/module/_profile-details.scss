@@ -27,7 +27,7 @@
     @extend %margin-auto;
   }
   @include e('more-stories') {
-    @include background-image('profile-details/more-stories.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-SeeMoreStories.jpg');
 
     a {
       @include boxSize(rem(182), rem(185));
@@ -36,7 +36,7 @@
   }
 
   @include e('find-program') {
-    @include background-image('profile-details/find-program.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-FindPrograms.jpg');
 
     h2 {
       font-size: rem(29);
@@ -65,7 +65,7 @@
   }
 
   @include e('call-center') {
-    @include background-image('profile-details/call-center.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-CallCenter.jpg');
 
     .want-to-talk {
       background-image: none; 
