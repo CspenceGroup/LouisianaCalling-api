@@ -11,5 +11,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-eval': 'true'
     = csrf_meta_tags
     = favicon_link_tag 'https://s3.amazonaws.com/louisiana-calling/LC-favicon.png'
+    = render 'layouts/google_analytics'
   body
+    = render 'layouts/ga_tracking'
     = yield
