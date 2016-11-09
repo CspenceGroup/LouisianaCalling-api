@@ -32,12 +32,13 @@
     }
 
     .active {
-      height: rem(144);
+      height: rem(143);
       z-index: 1000;
       @extend %cl-white;
       @extend %relative;
       @extend %background-position-center;
       @include background-image('tab-active.png');
+      background-repeat-y: no-repeat;
     }
   }
 
