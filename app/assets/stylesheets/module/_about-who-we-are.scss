@@ -40,6 +40,7 @@
       @extend %relative;
       @extend %background-position-center;
       @include background-image('tab-active.png');
+      background-repeat-y: no-repeat;
 
       span {
         color: $white;

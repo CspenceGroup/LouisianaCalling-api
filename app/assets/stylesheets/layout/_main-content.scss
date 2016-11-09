@@ -20,4 +20,5 @@
   padding-top: rem(75);
   @extend %relative;
   @include background-image('filter-bg.png');
+  background-position: bottom;
 }
