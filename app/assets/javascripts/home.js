@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function(){
   */
 
   var regions = {};
-  if ($('#mapData').html()) {
-    regions = JSON.parse($('#mapData').html());
+  if ($('#mapData').data('map')) {
+    regions = $('#mapData').data('map');
   }
 
   /**
@@ -43,16 +43,27 @@ $(document).on('turbolinks:load', function(){
       videos[0].play();
     }
   }
+
+  // autocomplete for program in careers details page
+  var programsAndCareers = {};
+  if ($('#availableProgramCareer').html()) {
+    programsAndCareers = JSON.parse($('#availableProgramCareer').html());
+  }
+
+  $("#autocompleteCareers").autocomplete({
+    source: programsAndCareers
+  });
+
   /**
    * This function handle the action when user click on region map
    * @return void
    */
-  $('path').hover(function (e) {
-
+  $('.top-jobs__map path').hover(function (e) {
     // Reset top job list
     $('#top-region-jobs').empty();
     $('#career-salary').empty();
     $('#career-certificate').empty();
+    $('.top-jobs__map text').removeClass('active');
 
     /**
      * Active clicked region & show top jobs in view
@@ -76,18 +87,6 @@ $(document).on('turbolinks:load', function(){
   /**
    * COMMON FUNCTIONS
    */
-
-  /**
-   * Convert ID get from map path into Region Name
-   * @param  {string} name ID of map's path
-   * @return {string} Region Name after convert
-   */
-  function convertToRegionName (name) {
-    if (name) {
-      return name.split('-').join(' ');
-    }
-
-  }
 
   /**
    * Get Region Name from Element
@@ -117,9 +116,11 @@ $(document).on('turbolinks:load', function(){
    */
   function showTopJobs (regionId) {
     if (regions) {
+      regionId = convertToRegionName(regionId);
       var activeRegionData = regions[regionId];
     }
 
+    $('#top-region-jobs').empty();
     if (activeRegionData && activeRegionData.length) {
       for (var i = 0, length = activeRegionData.length; i < length; i++) {
         var tpl = '<li><a href="'
@@ -137,10 +138,14 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showRegionJobs () {
-    var regionId = getRegionId($('#top-jobs__map path.active'));
+    var regionId = getRegionId($('.top-jobs__map path.active'));
 
     addRegionName(regionId);
     showTopJobs(regionId);
+
+    var $selector = 'text[name=' + regionId +']';
+
+    $($selector).addClass('active');
   }
 
   /**
@@ -149,6 +154,8 @@ $(document).on('turbolinks:load', function(){
    * @return {void}
    */
   function showCareerRequired (id) {
+    id = convertToRegionName(id);
+
     if (careers && id) {
 
       var activeRegionData = careers[id];
@@ -156,8 +163,15 @@ $(document).on('turbolinks:load', function(){
 
     if (activeRegionData) {
       var educations = activeRegionData.educations.map(function(edu) { return edu.name; })
-      $('#career-salary').html('<i class="icon i-options i-salary"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
-      $('#career-certificate').html('<i class="icon i-options i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
+      $('#career-salary').html('<i class="icon edu-icon i-salary-career"></i><span class="career-options__text">$' + numberWithCommas(activeRegionData.salary_min) + ' - $' + numberWithCommas(activeRegionData.salary_max) +'</span>');
+      $('#career-certificate').html('<i class="icon edu-icon i-certificate"></i><span class="career-options__text" title="'+ educations.join(', ') + '">' + educations.join(', ') +'</span>');
+
+      var flame_icons = [];
+
+      for (var i = activeRegionData.demand; i > 0; i--) {
+        flame_icons.push('<i class="icon i-white-flame"></i>')
+      }
+      $('#career-flames').html(flame_icons.join(''));
     }
   }
 
@@ -175,7 +189,6 @@ $(document).on('turbolinks:load', function(){
 
     addRegionName(regionId);
     showCareerRequired(regionId);
-    $('.career-options__text').dotdotdot({});
   }
 
   //Show video banner homepage
@@ -223,9 +236,15 @@ $(document).on('turbolinks:load', function(){
 
   //close pop up when they click anywhere that have no text or video
   $('.modal-video__details').on('click', function(event) {
-    if(event.target === this) {
+    if(event.target === this || event.target.className === 'modal-video__close') {
       $('#videoModal').modal('hide');
       $(this).find('video')[0].pause();
+    }
+  });
+
+  $('.modal-video__desc').on('click', function(event) {
+    if(event.target === this) {
+      $('#videoModal').modal('hide');
     }
   })
 
@@ -273,31 +292,22 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
 
     var target = e.target,
-        careerName = convertToUrl(target[0].value),
-        region = convertToUrl(target[1].value),
-        type = target[2].value,
-        url = "",
-        toUrl;
+        careerName = $.trim(target[0].value),
+        type = target[1].value,
+        url = [type === 'careers' ? '/careers' : '/education'],
+        toUrl,
+        searchGroup = $('.search-bar-group');
 
-    if (careerName && region) {
-
-      url = url + '?title=' + careerName + '&region=' + region;
+    if(!careerName) {
+      searchGroup.addClass('error-search');
+      return false;
     }
 
-    if (url != "") {
-      if (type && type === 'careers') {
+    searchGroup.removeClass('error-search');
 
-        // Redirect to careers landing page
-        toUrl = '/careers' + url;
-        window.location = toUrl;
-      } else if (type && type === 'programs') {
+    url.push('?title=' + careerName);
 
-        toUrl = '/programs' + url;
-        window.location = toUrl;
-      }
-    }
-
-    return false;
+    window.location = url.join('')
   });
 
   /**

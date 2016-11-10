@@ -1,0 +1,28 @@
+.guided-form__container
+  h3.main-title.shadow-main-title See your calling?
+  p Congrats! Here are some career options that match your criteria.
+  .guided-journey-results
+    .jump-start-guide.jump-start-inactive
+      p Jump Start provides professional training programs for high schoolers like you.
+      p Text VIDEOS to 99008 to learn more.
+      p
+        | Or you can read up on all things Jump Start&nbsp;
+        a(href="http://www.louisianabelieves.com/docs/default-source/jump-start-automated-text-system/learn-more-about-jump-start.pdf?sfvrsn=2" target="_blank") right now
+        |.
+    #guided-search-results.guided-results
+      /= render 'guided_journey/partial/guided-career-result'
+    p.no-result-found.no-result-step style="display: none;" No results found.
+    / .guided-sharings
+    /   i.icon.i-social.i-facebook(aria-hidden='true')
+    /   i.icon.i-social.i-twitter(aria-hidden='true')
+    /   a(href='mailto:')
+    /     i.icon.i-social.i-envelope
+    /   a(href='javascript:void(0);')
+    /     i.icon.i-social.i-print
+    .indicator-loading.indicator-loading-step
+      = image_tag asset_path("loading.gif")
+    #see-more-result-step.more-stories__btn.see-more-result-step
+      .icon-see-more
+    .indicator-loading-see-more
+      = image_tag asset_path("loading.gif")
+    

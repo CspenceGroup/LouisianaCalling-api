@@ -1,0 +1,12 @@
+<% @careers_slider.each_with_index do |career, index| %>
+  <%- class_name = index == 0 ? 'carousel-item active' : 'carousel-item' %>
+  <div class='<%= class_name %>' >
+    <section class="career-shortcut home-carousel-item career-carousels__item">
+      <% if career.interests.present? %>
+        <%= render 'home/partial/interest-career', career: career %>
+      <% else %>
+        <%= render 'home/partial/no-interest-career', career: career %>
+      <% end %>
+    </section>
+  </div>
+<% end %>

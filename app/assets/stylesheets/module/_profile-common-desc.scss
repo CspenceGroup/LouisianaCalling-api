@@ -15,13 +15,13 @@
 
   @include e('desc') {
     @include background-image('profile/profile-decs-bg.png');
-    background-repeat: repeat;
+    @extend %background-repeat-x;
     color: $profile-header;
     @extend %acumin-pro-cond;
-    // padding: rem(73) 0 0 0;
     @extend %display-flex;
-    @extend %align-items-center;
-    @extend %justify-content-center;
+    @include align-items(center);
+    @include flex-justify-content(center);
+    padding: rem(50) 0;
 
     h3 {
       font-size: rem(21);
@@ -32,27 +32,9 @@
     p {
       font-size: rem(16.7);
       line-height: rem(20);
-      max-height: rem(100); 
       margin-right: rem(-16);
       padding-right: rem(16);
       @extend %acumin-pro-cond;
-      @extend %overflow-hidden;
-      @extend %relative;
-
-      &:before {
-        content: '...';
-        margin-right: rem(14);
-        @extend %absolute;
-        @extend %right-bottom-0;
-      }
-      &:after {
-        content: '';
-        background: $white;
-        margin: rem(0.2) rem(14) 0 0;
-        @extend %right-0;
-        @extend %absolute;
-        @include boxSize(rem(12), rem(110));
-      }
     }
   }
 
@@ -80,29 +62,35 @@
     font-size: rem(16.7);
     line-height: rem(20);
     @extend %acumin-pro-cond-bi;
+
+    &:first-child {
+      margin-top: rem(4);
+    }
   }
 }
 
 .profile-name {
   color: $default;
-  @include shadow(rem(3), rem(3), rem(3), $profile-name-shadow);
+  @include shadow(rem(4), rem(6), 0, $profile-name-shadow);
 }
 
 .profile-title {
   padding-bottom: rem(17);
+  @extend %text-capitalize;
 }
 
 .btn-full-story {
-  margin-top: rem(15);
+  margin-top: rem(30);
   @include boxSize(rem(140), rem(56));
+
+  @include e('link') {
+    @extend %block;
+    @extend %background-no-repeat;
+    @include boxSize(100%, 100%);
+    @include background-image('profile/btn-full-story.png');
+  }
 }
 
 .profile-content {
-  @extend %margin-auto;
   width: rem(480);
-
-  @include m('pull-left') {
-    // @extend %float-right;
-    // margin: 0 rem(60) 0 0;
-  }
 }

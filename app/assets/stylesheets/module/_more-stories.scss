@@ -1,5 +1,7 @@
 .more-stories {
-  @include background-image('profile/more-stories-bg.png');
+  @include background-image('profile/filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
 
   @include e('title') {
     padding-top: rem(29);
@@ -16,12 +18,13 @@
 
   @include e('content') {
     @extend %display-flex;
-    @extend %align-items-center;
-    @extend %justify-content-center;
+    @include align-items(center);
+    @include flex-justify-content(center);
   }
 
   @include e('btn') {
-    @include boxSize(rem(110), rem(32));
+    @extend %background-no-repeat;
+    @include boxSize(rem(108), rem(32));
     margin: rem(48) auto 0 auto;
     cursor: pointer;
   }

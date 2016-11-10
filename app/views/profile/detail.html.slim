@@ -1,102 +1,75 @@
-- url = 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
-/ - url = 'https://s3.amazonaws.com/louisiana-calling/Test+1/Photos+for+Profile+Story+/clifton.jpg'
+- url = @profile.video if @profile.video.present?
 .container-fluid
   = render 'navigation/index'
   .main-content
     section.hero-banner.profile-owner
-      .hero-banner__container.profile-owner__container
-        h1.hero-banner__title.profile-owner__name Clifton smith
-      .profile-owner__photo#profile-video
-        - if url.include? ".mp4"
-          video.video-playing.video-player#profile-video(muted='' loop="loop")
-            source(src=url type='video/mp4')
-        - else
+      .profile-owner__photo
+        - images_type = ['.png', '.jpg', '.tif', '.bmp', '.jpeg']
+        - if images_type.any? { |type| url.include?(type) }
           = image_tag url, lazy: true, class: "lazy-load"
+        - else
+          video.video-playing.video-player(muted='' loop="loop")
+            source(src=url type='video/mp4')
+          button.btn-play.btn-profile-video#btn-video-profile(type='button' data-source=url data-toggle='modal' data-target='#videoProfileModal')
+          p.profile-video-desc
+            | Watch 
+            = @profile.first_name
+            | 's story
+          .modal.fade.modal-video(id="videoProfileModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true")
+            .modal-dialog.modal-video__content#profile-video-content(role="document")
+              .video-container#video-profile-container
+                video.video-playing.video-player#video-profile
+                  source(src=url type="video/mp4")
+                .button-pause#btn-profile-pause(style="display: none;")
+                  i.icon-pause.i-profile-pause
     section.career-desc.personal-profile
-      section.personal-profile-career
-        ul.profile-career-details
-          li
-            .profile-career-content
-              = image_tag(asset_path("program-landing/icon-career.png"), alt: "icon training", class:"icon-training i-profile-career")
-              p Welder
-          li
-            .profile-career-content
-              = image_tag(asset_path("icon-education.png"), alt: "icon training", class:"icon-training i-profile-training")
-              p Delgado community college
-          li
-            .profile-career-content
-              = image_tag(asset_path("region.png"), alt: "icon map", class:"icon-map i-profile-map")
-              p New orleans
       .career-desc__main-container.personal-profile__main-container
-        section.career-desc__about
-          h2.main-title.personal-profile-title Meet Clifton
-          section.career-desc__social-networks.profile-social-sharings
-            i.icon.i-social.i-fb(aria-hidden='true')
-            i.icon.i-social.i-tweet(aria-hidden='true')
-            a(href='javascript:void(0);')
-              i.icon.i-social.i-email
-          .profile-details-info
-            p What program the person took, how long they've been in the career, how did they pay for school, similar programs that exist, about the job, salary, similar programs, etc. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate delectus, laborum, beatae cumque, eligendi maiores harum voluptatibus officia adipisci, velit natus quasi assumenda? Rerum dolores eaque culpa placeat quae adipisci!
-            ul
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur adipisicing
-              li Lorem ipsum dolor sit amet, consectetur
-      .career-desc__news-container
-        section.career-desc__feature-news
-          h2 Feature news
-          p
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.
-          a.btn-feature-more(href='javascript:void(0);')
-    section.career-info.great-jobs
-      .great-jobs__lable.career-info-label
-        p Career info
-      .great-jobs__container.career-info-container
-        .great-jobs__content
-          .great-jobs__content-head
-            .jobs-head
-              .jobs-head__name
-                p.jobs-head__title.jobs-head__title-great-jobs.careers-job-title welder
-                .jobs-head__icon
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-                  = image_tag(asset_path("careers/fire-icon.png"), alt: "fire icon")
-              .jobs-head__content
-                ul.jobs-head__desc
+        .career-desc__main-content.personal-profile__main-content
+          section.career-desc__about.personal-profile__about
+          .personal-profile-about
+            h2.main-title.personal-profile-title
+              | Meet 
+              = @profile
+            section.personal-profile-career
+              ul.profile-career-details
+                - if @profile.careers.present?
                   li
-                    p.jobs-head__desc-text Interests
-                    .jobs-head__desc-icon
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
+                    .profile-info-wrapper
+                      i.icon.i-profile-info.i-profile-career
+                      p(title=@profile.careers.first) = @profile.careers.first
+                - if @profile.educational_institution.present?
                   li
-                    p.jobs-head__desc-text Skills
-                    .jobs-head__desc-icon
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-                      = image_tag("", :alt => "fire icon")
-          .great-jobs__list-icon
-            ul.row.great-jobs__row
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-industry.png"), alt: "icon industry", class:"icon-industry")
-                p Fuel & Energy
-                p Building & Construction
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-salary.png"), alt: "icon salary", class:"icon-salary")
-                p $42,000 - $55,000
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-training.png"), alt: "icon training", class:"icon-training")
-                p High school diploma 2-year training
-              li.col-xs-3.col-md-3.list-icon__details
-                = image_tag(asset_path("careers/icon-map.png"), alt: "icon map", class:"icon-map")
-                p Lafayette
-                p Alexandra
-                p New Orleans
-      .btn-tell-me-jobs
-        a.btn-tell-me-jobs__link
-          = image_tag(asset_path("tell-me-more.png"), alt: "tell me more")
+                    .profile-info-wrapper
+                      i.icon.i-profile-info.i-profile-training
+                      p(title=@profile.educational_institution) = @profile.educational_institution
+                - if @profile.region.present?
+                  li
+                    .profile-info-wrapper
+                      i.icon.i-profile-info.i-profile-map
+                      p = @profile.region
+            .profile-details-info
+              = raw @profile.description
+            / section.career-desc__social-networks
+            /   i.icon.i-social.i-facebook(aria-hidden='true')
+            /   i.icon.i-social.i-twitter(aria-hidden='true')
+            /   a(href='mailto:')
+            /     i.icon.i-social.i-envelope
+            /   a(href='javascript:void(0);')
+            /     i.icon.i-social.i-print
+      / .career-desc__news-container.personal-profile__news-container
+      /   section.career-desc__feature-news.personal-profile__feature-news
+      /     h2 Feature news
+      /     p
+      /       | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos tenetur est quo cum a, esse iusto nemo commodi eius deleniti totam, error nam! Nemo aliquid impedit obcaecati mollitia perspiciatis.
+      /     a.btn-feature-more(href='javascript:void(0);')
+    - career = @profile.careers.first
+    - if career.present?
+      section.profile-story-career
+        .career-shortcut
+          - if career.interests.present?
+            = render partial: 'profile/partial/interest-career', locals: { career: career }
+          - else
+            = render partial: 'profile/partial/no-interest-career', locals: { career: career }
     section.guideline
       .row.guideline-row
         .col-xs-4.col-md-4.guideline-col.guideline__more-stories
@@ -104,7 +77,7 @@
             a(href="/stories")
         .col-xs-4.col-md-4.guideline-col.guideline__find-program
           h2
-            a(href="/programs")
+            a(href="#{education_path}")
               span near you
         .col-xs-4.col-md-4.guideline-col.guideline__call-center
           .want-to-talk
@@ -112,8 +85,8 @@
             p.journey-link.want-to-talk__link
               span 1-844-LA-CALLS
     section.profile-guided-journey
-      h2.main-title.shadow-main-title.profile-guided-journey__title Still not convinced?  
+      h2.main-title.shadow-main-title.profile-guided-journey__title Still not convinced?
       h2.main-title.shadow-main-title.profile-guided-journey__title Try this.
-      a(href="javascript:void(0);")
+      a(href="/guided-journey")
 
   = render 'footer/index'

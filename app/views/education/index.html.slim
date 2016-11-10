@@ -1,159 +1,148 @@
 .container-fluid
   = render 'navigation/index'
   .main-content
-    section.hero-banner
-      .hero-banner__container.program-banner__container
-        h1.hero-banner__title Sky's the limit.
-        h1.hero-banner__title Time to build your rocket.
-        .hero-banner__introduce.program-banner__introduce
-          h2.hero-banner__text.program-banner__text From private training programs to college classes, you'll find everything you need here to give you the life you've almost dared not dream about.
-    section.program-list.program-list-active
-      / .edu-landing-message.profile-heading
-      /   h2.main-title.profile-title We’re working on the details.
-      /   p We’re still compiling all the best data needed for this program. Check back soon!
-      .program-list__head
-        .row.program-list__search
-          form name="search-homepage"
-            .input-group.search-group.search-group--program
-              input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Find the program that’s right for you" value=@title /
-              button.btn.btn-search.btn-submit#programSearch type="submit" Search
-          #availableProgram.auto-fill-data
-            = @list_of_programs.to_json
-        .action-filter
-          p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
-          p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
-        .program-view-by
-          .program-view-by__list.list-active-tab#programListView
-            .program-view-by__list-icon
-              a href="javascript:void(0)"
-                = image_tag asset_path('list-view.png')
-          .program-view-by__map.map-active-tab#programMapView
-            .program-view-by__list-icon-map
-              a href="javascript:void(0)"
-                = image_tag asset_path('map-view.png')
-      #action-filter.collapse.program-filter
-        .program-filter__container.row
-          .program-filter__details.col-xs-3.col-md-3
-            .program-filter__details-desc
-              h3.careers-filter__title Industry
-              ul.careers-filter-details
-                = render partial: "education/partial/industry", locals: { list_of_industries: @list_of_industries }
-          .col-xs-3.col-md-3.program-filter__details
-            .program-filter__details-desc
-              h3.careers-filter__title Tuition cost
-              .careers-salary
-                input#tuition.range-salary-text readonly="readonly" type="text" /
-                .sliders_filter-salary
-                  #tuition-cost
-            .program-filter__details-desc.program-filter__details-item
-              h3.careers-filter__title Region
-              ul.careers-filter-details
-                = render partial: "education/partial/region", locals: { list_of_regions: @list_of_regions }
-          .col-xs-3.col-md-3.program-filter__details
-            .program-filter__details-desc
-              h3.careers-filter__title Program duration
-              ul.careers-filter-details
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="0"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 8 Weeks
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="1"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 3 Months
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="2"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 6 Months
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="3"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 1 Year or 2 Semesters
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="4"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 2 Years or 4 Semesters
-                li
-                  input.square-checkbox name="programs" type="checkbox" value="5"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 2 Years+
-            .program-filter__details-desc.program-filter__details-item
-              h3.careers-filter__title Hours per week
-              ul.careers-filter-details
-                li
-                  input.square-checkbox name="hours" type="checkbox" value="0"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 3 - 10 Hours
-                li
-                  input.square-checkbox name="hours" type="checkbox" value="1"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 11 - 20 Hours
-                li
-                  input.square-checkbox name="hours" type="checkbox" value="2"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 21 - 30 Hours
-                li
-                  input.square-checkbox name="hours" type="checkbox" value="3"
-                  span.filter-checkbox
-                  span.careers-filter-details__name 31 - 40 Hours
-          .col-xs-3.col-md-3.program-filter__details
-            .program-filter__details-desc
-              h3.careers-filter__title Day/night Offering
-              ul.careers-filter-details
-                li
-                  input.square-checkbox name="times" type="checkbox" value="0"
-                  span.filter-checkbox
-                  span.careers-filter-details__name Day
-                li
-                  input.square-checkbox name="times" type="checkbox" value="1"
-                  span.filter-checkbox
-                  span.careers-filter-details__name Night
-                li
-                  input.square-checkbox name="times" type="checkbox" value="2"
-                  span.filter-checkbox
-                  span.careers-filter-details__name Both
-            .program-filter__details-desc.program-filter__details-item
-              = render partial: "education/partial/education", locals: { list_of_educations: @list_of_educations }
-
-      .program-list__result
-        p.program-list__call-us Need financial aid? Call us to learn about your options: 1-844-LA-CALLS.
-        #program-list-view.program-list-view.program-list-view-active
-          #program-map-data style="display: none;"
-            = @programs.to_json
-          #program-map-ids-data style="display: none;"
-            = @ids.to_json
-          #program-container-list.program-list-view__container
-            = render partial: "education/partial/list", locals: { programs: @programs }
-          - if @is_see_more
-            #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program
-              .icon-see-more
-                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
-          - else
-            #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
-              .icon-see-more
-                = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
-          .indicator-loading
-            = image_tag asset_path("loading.gif")
-          .indicator-loading-see-more
-            = image_tag asset_path("loading.gif")
-        #program-map-view.program-map-view.program-map-view-active
-          .program-map-view__list
-            #program-container-map
-              = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }
-            - if @is_see_more
-              #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program
-                .icon-see-more
-                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
-            - else
-              #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
-                .icon-see-more
-                  = image_tag(asset_path("profile/btn-see-more.png"), :alt => "Btn see more")
-            .indicator-loading
-              = image_tag asset_path("loading.gif")
-            .indicator-loading-see-more
-              = image_tag asset_path("loading.gif")
-          .program-map-view__address#program-map
-    section.edu-jumpstart
+    section.banner-heading
+      .banner-heading__content
+        h2.main-title.profile-title.education-title Sky's the limit. Time to build your rocket.
+        p From private training programs to college classes, you'll find everything you need here to give you the life you've almost dared not dream about.
+    section.program-list.program-list-active#searchProgramResults
+      .edu-landing-message.profile-heading
+        h2.main-title.profile-title We’re working on the details.
+        p The latest education data for programs across the state is still coming in. Check back soon!
+    //-   .program-list__head
+    //-     .row.program-list__search
+    //-       form name="search-homepage"
+    //-         .input-group.search-group.search-group--program
+    //-           input.form-control.search-input.program-search-input#programAutocomplete required="required" type="text" name="search-input" placeholder="Find the program that’s right for you" value=@title /
+    //-           input.form-control id="educationLimit" name="limit" hidden=true type="text" value=@limit /
+    //-           input.form-control id="educationOffset" name="offset" hidden=true type="text" value=@offset /
+    //-           button.btn.btn-search.btn-submit#programSearch type="submit" Search
+    //-       #availableProgram.auto-fill-data
+    //-         = @list_of_programs.to_json
+    //-     .action-filter
+    //-       p.program-filter-show data-toggle="collapse" data-target="#action-filter" Show filter
+    //-       p.action-filter__hide.program-filter-hide data-toggle="collapse" data-target="#action-filter" Hide filter
+    //-     .program-view-by
+    //-       .program-view-by__list.list-active-tab#programListView
+    //-         i.icon.i-view-list.program-view-by__list-icon
+    //-       .program-view-by__map.map-active-tab#programMapView
+    //-         i.icon.program-view-by__list-icon-map
+    //-   #action-filter.collapse.program-filter
+    //-     .program-filter__container.row
+    //-       .program-filter__details.col-xs-3.col-md-3
+    //-         .program-filter__details-desc
+    //-           h3.careers-filter__title Industry
+    //-           ul.careers-filter-details
+    //-             = render partial: "education/partial/industry", locals: { list_of_industries: @list_of_industries }
+    //-       .col-xs-3.col-md-3.program-filter__details
+    //-         .program-filter__details-desc
+    //-           h3.careers-filter__title Tuition cost
+    //-           .careers-salary
+    //-             input#tuition.range-salary-text readonly="readonly" type="text" /
+    //-             .sliders_filter-salary
+    //-               #tuition-cost
+    //-         .program-filter__details-desc.program-filter__details-item
+    //-           h3.careers-filter__title Region
+    //-           ul.careers-filter-details
+    //-             = render partial: "education/partial/region", locals: { list_of_regions: @list_of_regions }
+    //-       .col-xs-3.col-md-3.program-filter__details
+    //-         .program-filter__details-desc
+    //-           h3.careers-filter__title Program duration
+    //-           ul.careers-filter-details
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="0"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 8 Weeks
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="1"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 3 Months
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="2"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 6 Months
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="3"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 1 Year or 2 Semesters
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="4"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 2 Years or 4 Semesters
+    //-             li
+    //-               input.square-checkbox name="programs" type="checkbox" value="5"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 2 Years+
+    //-         .program-filter__details-desc.program-filter__details-item
+    //-           h3.careers-filter__title Hours per week
+    //-           ul.careers-filter-details
+    //-             li
+    //-               input.square-checkbox name="hours" type="checkbox" value="0"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 3 - 10 Hours
+    //-             li
+    //-               input.square-checkbox name="hours" type="checkbox" value="1"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 11 - 20 Hours
+    //-             li
+    //-               input.square-checkbox name="hours" type="checkbox" value="2"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 21 - 30 Hours
+    //-             li
+    //-               input.square-checkbox name="hours" type="checkbox" value="3"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name 31 - 40 Hours
+    //-       .col-xs-3.col-md-3.program-filter__details
+    //-         .program-filter__details-desc
+    //-           h3.careers-filter__title Day/night Offering
+    //-           ul.careers-filter-details
+    //-             li
+    //-               input.square-checkbox name="times" type="checkbox" value="0"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name Day
+    //-             li
+    //-               input.square-checkbox name="times" type="checkbox" value="1"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name Night
+    //-             li
+    //-               input.square-checkbox name="times" type="checkbox" value="2"
+    //-               span.filter-checkbox
+    //-               span.careers-filter-details__name Both
+    //-         .program-filter__details-desc.program-filter__details-item
+    //-           = render partial: "education/partial/education", locals: { list_of_educations: @list_of_educations }
+    //-   .program-list__result
+    //-     p.program-list__call-us Need financial aid? Call us to learn about your options: 1-844-LA-CALLS.
+    //-     #program-list-view.program-list-view.program-list-view-active
+    //-       #program-map-data style="display: none;"
+    //-         = @programs.to_json
+    //-       #program-container-list.program-list-view__container
+    //-         = render partial: "education/partial/list", locals: { programs: @programs }
+    //-       - if @is_see_more
+    //-         #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program
+    //-           .icon-see-more
+    //-       - else
+    //-         #education-see-more.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
+    //-           .icon-see-more
+    //-       .indicator-loading
+    //-         = image_tag asset_path("loading.gif")
+    //-       .indicator-loading-see-more
+    //-         = image_tag asset_path("loading.gif")
+    //-     #program-map-view.program-map-view.program-map-view-active
+    //-       .program-map-view__list
+    //-         #program-container-map
+    //-           = render partial: "education/partial/map", locals: { programs: @programs, ids: @ids }
+    //-         - if @is_see_more
+    //-           #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program
+    //-             .icon-see-more
+    //-         - else
+    //-           #education-see-more-map.more-stories__btn.see-more-careers-grid-view.see-more-program style="display:none;"
+    //-             .icon-see-more
+    //-         .indicator-loading
+    //-           = image_tag asset_path("loading.gif")
+    //-         .indicator-loading-see-more
+    //-           = image_tag asset_path("loading.gif")
+    //-       .program-map-view__address#program-map
+    section.edu-jumpstart#edu-jump-start
       ul.nav.nav-tabs.edu-jumpstart__tabs.row(role='tablist')
         li.nav-item.col-xs-4.col-md-4
           a.active(href='#eduJumpstart' role='tab' data-toggle='tab')
@@ -170,25 +159,22 @@
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title Jump Start
-              .hero-banner__introduce.program-banner__introduce
+              .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text Jump Start helps our public high school students get nationally recognized training certifications that can be used to pursue great careers right here in Louisiana.
                 h3.hero-banner__text.program-banner__text To Learn More Text jumpstart to 99008
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
         #eduTraining.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title Training
-              .hero-banner__introduce.program-banner__introduce
+              .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text Professional training facilities across the state can give you the skills you need to become certified, properly preparing you for your new career.
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
         #eduCollege.tab-pane.tab-pane__edu-content(role='tabpanel')
           section.hero-banner
             .hero-banner__container
               h2.hero-banner__title College
-              .hero-banner__introduce.program-banner__introduce
+              .hero-banner__introduce.edu-jumpstart__introduce
                 h3.hero-banner__text.program-banner__text There are plenty of colleges in Louisiana. Each of them offers degrees and training programs that can help you gain skills and knowledge needed to take the next step in your career.
-                / a.btn-tell-more.btn-edu-more(href="javascript:void(0);")
-                /   = image_tag asset_path("tell-me-more.png")
+                / a.btn-edu-more(href="javascript:void(0);")
   = render 'footer/index'

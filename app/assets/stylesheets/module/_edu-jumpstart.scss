@@ -1,5 +1,4 @@
 .edu-jumpstart {
-  margin-bottom: rem(-30);
   @include boxSize(auto, rem(530));
   
   @include e('tabs') {
@@ -25,7 +24,7 @@
 
       span {
         font-size: rem(20.8);
-        padding-top: rem(55);
+        line-height: rem(135);
         @extend %block;
         @extend %text-uppercase;
         @extend %brandon-grotesque;
@@ -45,13 +44,22 @@
   @include e('tab-content') {
     @include boxSize(100%, rem(395));
   }
-}
 
-.btn-edu-more {
-  margin-top: rem(26);
-  @extend %no-float;
-  @extend %inline-block;
-  @include boxSize(rem(141), rem(30));
+  @include e('introduce') {
+    width: rem(610);
+    @extend %margin-auto;
+
+    .hero-banner__text {
+      line-height: rem(20.68);
+    }
+  }
+
+  .btn-edu-more {
+    margin-top: rem(26);
+    background-size: rem(141) rem(30);
+    @extend %inline-block;
+    @include boxSize(rem(141), rem(30));
+  }
 }
 
 .tab-pane__edu-content {

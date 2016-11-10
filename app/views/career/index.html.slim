@@ -3,110 +3,120 @@
 .container-fluid
   = render 'navigation/index'
   .main-content
-    section.hero-banner
-      .hero-banner__container.careers-banner__container
-        h1.hero-banner__title Find Your Calling.
-        h1.hero-banner__title Create Your Legacy.
-        .hero-banner__introduce
-          h2.hero-banner__text Good news: There are tons of careers to choose from.
-          h2.hero-banner__text Bad news: There are tons of careers to choose from. Let's find the right one for you.
-    section.great-jobs
-      .great-jobs__lable
-        p Great Jobs. Right Now.
-      #carousel-great-jobs.carousel.slide data-ride="carousel"
-        ol.carousel-indicators.carousel-dots-list.carousel-dots-great-jobs
-          = render partial: "career/partial/slider-dot", locals: { careers_slider: careers_slider }
-        .carousel-inner role="listbox"
-          = render partial: "career/partial/career-slider", locals: { careers_slider: careers_slider }
-        a.left.carousel-control.carousel-control--beside data-slide="prev" href="#carousel-great-jobs" role="button"
-          span.icon-prev.i-career-prev aria-hidden="true"
-          span.sr-only Previous
-        a.right.carousel-control.carousel-control--beside data-slide="next" href="#carousel-great-jobs" role="button"
-          span.icon-next.i-career-next aria-hidden="true"
-          span.sr-only Next
-    section.careers-lists
+    section.profile-heading
+      h2.main-title.profile-title Find your calling. Create your legacy.
+      p Good news: There are tons of careers to choose from.
+      p Bad news: There are tons of careers to choose from. Let's find the right one for you.
+    section.top-jobs.row
+      .jobs-container
+        .top-jobs__title.map-title.shadow-main-title
+          h2.main-title.job-heading.job-heading--pull-left Careers with Your
+          h2.main-title.job-heading.job-heading--pull-right Name on Them
+          p.job-desc Find the career you want, where you want.
+        #top-jobs__map.top-jobs__map
+          = render partial: "career/partial/map"
+        .top-jobs__details.map-details
+          h3#region-name.region-name
+          ol#top-region-jobs.job-list
+        #mapData.data-map-hidden data-map="#{@jobs.to_json}"
+        p.asterisk-copy.asterisk-copy-home &ast; This data is based on the Louisiana Workforce Commission’s wage and employment projections through 2024.
+    section.careers-lists#searchCareerResults
       .careers-filter
         h2.careers-filter__heading Filter
         ul.careers-filter__details
           li.careers-filter__desc
-            h3.careers-filter__title Region
-            ul.careers-filter-details
-              = render partial: "career/partial/region", locals: { regions: @list_of_regions }
-          li.careers-filter__desc
-            h3.careers-filter__title Industry
-            ul.careers-filter-details
-              = render partial: "career/partial/industry", locals: { industries: @list_of_industries }
-          li.careers-filter__desc
-            h3.careers-filter__title Skills
-            ul.careers-filter-details
-              = render partial: "career/partial/skill", locals: { skills: @skills }
-          li.careers-filter__desc
-            h3.careers-filter__title Interests
-            ul.careers-filter-details
+            .careers-filter__head
+              h3.careers-filter__title Interests
+              .careers-icon-collapse.careers-icon-collapse-mini data-toggle="collapse" data-target="#collapseInterest"
+              .careers-icon-collapse.careers-icon-collapse-expend data-toggle="collapse" data-target="#collapseInterest"
+            ul.careers-filter-details.collapse#collapseInterest
               = render partial: "career/partial/interest", locals: { interests: @interests }
           li.careers-filter__desc
-            h3.careers-filter__title Average salary
-            #salary-range.careers-salary
-              input#salary.range-salary-text readonly="readonly" type="text" /
+            .careers-filter__head
+              h3.careers-filter__title Industry
+              .careers-icon-collapse.careers-icon-collapse-mini data-toggle="collapse" data-target="#collapseIndustry"
+              .careers-icon-collapse.careers-icon-collapse-expend data-toggle="collapse" data-target="#collapseIndustry"
+            ul.careers-filter-details.collapse#collapseIndustry
+              = render partial: "career/partial/industry", locals: { industries: @list_of_industries }
+          li.careers-filter__desc
+            .careers-filter__head
+              h3.careers-filter__title Average salary
+              .careers-icon-collapse.careers-icon-collapse-mini data-toggle="collapse" data-target="#salary-range"
+              .careers-icon-collapse.careers-icon-collapse-expend data-toggle="collapse" data-target="#salary-range"
+            #salary-range.careers-salary.collapse
+              input#salary.range-salary-text readonly="readonly" type="text" value="$15,000 - $80,000"
+              input#store-salary hidden=true value="15000-80000"
               .sliders_filter-salary
                 #slider-range
-          li.careers-filter__desc
-            h3.careers-filter__title.careers-filter__title-edu &ast; Education requirement
-            p.asterisk-careers-filter &ast; To qualify for some careers, it’s recommended that you have a certain type of education.
-            ul.careers-filter-details
-              = render partial: "career/partial/education", locals: { educations: @list_of_educations }
-          li.careers-filter__desc
-            h3.careers-filter__title Hottest jobs
-            ul.careers-filter-details.careers-filter-details--hottest-jobs
-              li
-                input.square-checkbox name="demands" type="checkbox" value="5" /
-                span.filter-checkbox
-                p.careers-filter-details__name.icon-hottest-jobs
-              li
-                input.square-checkbox name="demands" type="checkbox" value="4" /
-                span.filter-checkbox
-                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--four
-              li
-                input.square-checkbox name="demands" type="checkbox" value="3" /
-                span.filter-checkbox
-                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--three
-              li
-                input.square-checkbox name="demands" type="checkbox" value="2" /
-                span.filter-checkbox
-                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--two
-              li
-                input.square-checkbox name="demands" type="checkbox" value="1" /
-                span.filter-checkbox
-                p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
+          //- li.careers-filter__desc
+          //-   h3.careers-filter__title Region
+          //-   ul.careers-filter-details
+          //-     = render partial: "career/partial/region", locals: { regions: @list_of_regions }
+          //- li.careers-filter__desc
+          //-   h3.careers-filter__title Skills
+          //-   ul.careers-filter-details
+          //-     = render partial: "career/partial/skill", locals: { skills: @skills }
+          //- li.careers-filter__desc
+          //-   h3.careers-filter__title.careers-filter__title-edu &ast; Education requirement
+          //-   p.asterisk-careers-filter &ast; To qualify for some careers, it’s recommended that you have a certain type of education.
+          //-   ul.careers-filter-details
+          //-     = render partial: "career/partial/education", locals: { educations: @list_of_educations }
+          //- li.careers-filter__desc
+          //-   h3.careers-filter__title Hottest jobs
+          //-   ul.careers-filter-details.careers-filter-details--hottest-jobs
+          //-     li
+          //-       input.square-checkbox name="demands" type="checkbox" value="5" /
+          //-       span.filter-checkbox
+          //-       p.careers-filter-details__name.icon-hottest-jobs
+          //-     li
+          //-       input.square-checkbox name="demands" type="checkbox" value="4" /
+          //-       span.filter-checkbox
+          //-       p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--four
+          //-     li
+          //-       input.square-checkbox name="demands" type="checkbox" value="3" /
+          //-       span.filter-checkbox
+          //-       p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--three
+          //-     li
+          //-       input.square-checkbox name="demands" type="checkbox" value="2" /
+          //-       span.filter-checkbox
+          //-       p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--two
+          //-     li
+          //-       input.square-checkbox name="demands" type="checkbox" value="1" /
+          //-       span.filter-checkbox
+          //-       p.careers-filter-details__name.icon-hottest-jobs.icon-hottest-jobs--one
       .careers-result
         .careers-result__container.career-grid-view-active
           .careers-result__head-search
             .careers-filter-search name="search"
               .input-group.search-group.careers-filter-search-group
-                input.form-control.search-input id="careerAutocomplete" name="search-input" placeholder="Search for careers, like 'welders'." type="text" value=@title /
-                button#careerSearch.btn.btn-search.btn-submit Search
+                input.form-control.search-input.search-careers-landing id="careerAutocomplete" name="search-input" placeholder="Search for careers, like 'welders'." type="text" value=@title /
+                input.form-control id="careerLimit" name="limit" hidden=true type="text" value=@limit /
+                input.form-control id="careerOffset" name="offset" hidden=true type="text" value=@offset /
+                button#careerSearch.btn.btn-search.btn-submit.btn-search-career Search
               #availableCareers.auto-fill-data
                 = @list_of_careers.to_json
+            .form-group.btn.btn-search.btn-career.sort-by-salary
+              select#career_sort_by.form-control.form-sort-by
+                option value="0" selected="selected" Sort by
+                option value="1" Salary high to low
+                option value="2" Salary low to high
+                option value="3" Projected Growth high to low
+                option value="4" Projected Growth low to high
+              span.fa.fa-caret-down.fa-sort-by
             .careers-view-by
-              #list-view-icon.careers-view-by__list
-                .careers-view-by__icon
-                  a href="javascript:void(0)"
-                    = image_tag asset_path('list-view.png')
-              #grid-view-icon.careers-view-by__grid
-                .careers-view-by__icon
-                  a href="javascript:void(0)"
-                    = image_tag asset_path('grid-view.png')
+              #list-view-icon.careers-view-icon.careers-view-by__list
+                i.icon.careers-view-by__icon.i-view-list
+              #grid-view-icon.careers-view-icon.careers-view-by__grid
+                i.icon.careers-view-by__icon.i-view-grid
           .grid-view-container
             #careersGrid.careers-grid-details
               = render partial: "career/partial/career", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             - else
                 #careers-see-more.more-stories__btn.see-more-careers.see-more-careers-grid-view style="display:none;"
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             .indicator-loading
               = image_tag asset_path("loading.gif")
             .indicator-loading-see-more
@@ -117,12 +127,10 @@
               = render partial: "career/partial/list", locals: { careers: careers }
             - if @is_see_more
                 #careers-see-more-list.more-stories__btn.see-more-careers
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             - else
                 #careers-see-more-list.more-stories__btn.see-more-careers style="display:none;"
-                  div
-                    = image_tag asset_path("profile/btn-see-more.png")
+                  .icon-see-more
             .indicator-loading
               = image_tag asset_path("loading.gif")
             .indicator-loading-see-more

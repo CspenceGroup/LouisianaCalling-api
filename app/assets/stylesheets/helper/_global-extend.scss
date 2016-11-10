@@ -121,6 +121,11 @@
   bottom: 0;
 }
 
+%left-bottom-0 {
+  left: 0;
+  bottom: 0;
+}
+
 /* Class extend for display */
 %inline-block {
   display: inline-block;
@@ -364,27 +369,10 @@
 
 /*Display flex*/
 %display-flex {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox; // IE10 uses -ms-flexbox
+  display: -ms-flex; // IE11
   display: flex;
-}
-
-%align-items-center {
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items : center;
-  align-items : center;
-}
-
-%justify-content-center {
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content : center;
-  justify-content : center;
 }
 
 /*Opacity*/

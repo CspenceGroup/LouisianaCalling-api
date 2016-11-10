@@ -1,21 +1,30 @@
-.program-banner {
-  @include e('container') {
-    @include background-image('program-landing/program-landing-banner.jpg');
-    padding-top: rem(98);
-    height: rem(450);
-  }
+.banner-heading {
+  @include background-image('bg-banner.jpg');
+  height: rem(160);
+  color: $profile-header;
+  @extend %text-center;
+  @extend %relative;
+  @extend %background-no-repeat;
+  @extend %background-cover;
+  @extend %background-position-center;
 
-  @include e('introduce') {
-    width: rem(627);
-    @extend %margin-auto;
-    padding-top: rem(6);
-  }
+  @include e('content') {
+    @extend %absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: rem(657);
 
-  @include e('text') {
-    line-height: rem(23);
-
-    &:nth-child(2){
-      margin-top: 0;
+    p {
+      font-size: rem(18.75);
+      @extend %acumin-pro-cond-bi;
+      letter-spacing: rem(0.5);
+      line-height: rem(21);
     }
   }
 }
+
+.education-title {
+  text-transform: none;
+}
+

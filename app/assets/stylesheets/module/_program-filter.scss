@@ -1,10 +1,12 @@
 .program-list {
   @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   @extend %overflow-hidden;
 
   @include e('head') {
-    padding-top: rem(55);
-    @include boxSize(rem(815), rem(108));
+    padding-top: rem(33);
+    @include boxSize(rem(815), rem(86));
     @extend %margin-auto;
     @extend %overflow-hidden;
   }
@@ -21,27 +23,31 @@
 .program-view-by {
   @extend %float-right;
   width: rem(56);
-  padding-top: rem(10);
+  padding-top: rem(15);
 
   @include e('list') {
     @extend %overflow-hidden;
-    @include boxSize(rem(30), rem(30));
+    @include boxSize(rem(23), rem(23));
     @extend %float-left;
   }
 
-  @include e('list-icon') {
-    @include boxSize(rem(24), rem(24));
-    margin: rem(3) auto 0 auto;
-  }
-
   @include e('map') {
-    @include boxSize(rem(23), rem(30));
+    @include boxSize(rem(15), rem(23));
     @extend %float-right;
+  }
+  
+  @include e('list-icon') {
+    background-size: rem(22) rem(22);
   }
 
   @include e('list-icon-map') {
-    @include boxSize(rem(17), rem(24));
-    margin: rem(2) auto 0 auto;
+    background-size: rem(15) rem(23);
+    @include background-image('map-view.png');
+  }
+
+  .icon {
+    @extend %cursor-pointer;
+    @include boxSize(100%, 100%);
   }
 }
 
@@ -52,8 +58,8 @@
   color: $default;
   @extend %text-uppercase;
   @extend %brandon-grotesque-bold;
-  margin-left: rem(30);
-  padding-top: rem(16);
+  margin-left: rem(22);
+  line-height: rem(53);
   cursor: pointer;
 
   @include e('hide') {
@@ -70,7 +76,7 @@
   @include e('container') {
     width: rem(1050);
     @extend %margin-auto;
-    padding: rem(45) 0;
+    padding: rem(41) 0;
     @extend %relative;
 
     &:before {

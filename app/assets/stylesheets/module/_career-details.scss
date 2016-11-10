@@ -13,43 +13,61 @@
     @extend %absolute;
     @extend %left-top-0;
     @include boxSize(100%, 100%);
+
+    .lazy-load-careers {
+      height: 100%;
+    }
   }
 }
 
 .career-desc {
   color: $default;
-  @include background-image('map-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   @extend %overflow-hidden;
   @extend %relative;
   @extend %display-flex;
 
-  p {
-    font-size: rem(16.7);
-    margin-bottom: rem(20);
-    line-height: rem(22);
-    @extend %acumin-pro-cond;
-  }
-
   .main-title {
     margin-bottom: rem(30);
     @extend %text-capitalize;
-    @include shadow(rem(5), rem(5), rem(5), $profile-name-shadow);
+    @include shadow(rem(4), rem(6), 0, $profile-name-shadow);
   }
 
   @include e('main-container') {
     width: 64.75%;
-    padding: rem(75) rem(67) rem(57) rem(84);
+    padding: rem(63) 0 rem(57) rem(84);
     @extend %float-left;
   }
 
   @include e('news-container') {
     width: 35.25%;
-    padding: rem(130) rem(98) 0 rem(60);
+    padding: rem(55) 0 0 rem(60);
     background: $feature-news-bg;
   }
 
+  @include e('main-content') {
+    width: rem(700);
+    font-size: rem(16.7);
+    line-height: rem(22);
+    padding-right: rem(67);
+    @extend %float-right;
+    @extend %acumin-pro-cond;
+
+    p {
+      font-size: rem(16.7);
+      margin-bottom: rem(20);
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: rem(15);
+    }
+  }
+
   @include e('what-to-do') {
-    padding-top: rem(32);
+    padding-top: rem(26);
   }
 
   @include e('feature-news') {
@@ -57,7 +75,7 @@
     h2 {
       font-size: rem(20.8);
       line-height: 1.8;
-      margin-bottom: rem(25);
+      margin-bottom: rem(21);
       @extend %brandon-grotesque;
       @extend %text-uppercase;
     }
@@ -75,10 +93,58 @@
       color: $default;
     }
   }
+
+  @include e('title') {
+    font-size: rem(37.5);
+    @extend %text-uppercase;
+    @extend %brandon-grotesque;
+    color: $red-bg;
+    padding-bottom: rem(40);
+  }
+
+  @include e('interest') {
+    margin-bottom: rem(63);
+    width: 100%;
+  }
+
+  @include e('interest-item') {
+    margin-bottom: rem(30);
+    @extend %overflow-hidden;
+    @extend %display-flex;
+
+    &:last-child {
+      @extend %no-margin-bottom;
+    }
+  }
+
+  @include e('interest-icon') {
+    @extend %float-left;
+    @extend %overflow-hidden;
+  }
+
+  @include e('interest-text') {
+    min-height: rem(45);
+    margin-left: rem(12);
+    width: rem(205);
+    @extend %display-flex;
+    @extend %float-left;
+    @extend %relative;
+    @include flex-justify-content(center);
+    @include flex-direction(column);
+
+    p {
+      @extend %float-left;
+      @extend %text-uppercase;
+      font-size: rem(16.67);
+      @extend %brandon-grotesque-bold;
+      color: $filter-careers-heading;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .btn-feature-more {
-  margin-top: rem(6);
+  margin-top: rem(18);
   @extend %inline-block;
   @include boxSize(rem(113), rem(26));
   @include background-image('btn-read-more.png');
@@ -120,8 +186,17 @@
 }
 
 
-.asterisk-copy--map {
-  margin: rem(383) 0 0 rem(590);
-  font-size: rem(15);
-  @extend %acumin-pro-cond-regular;
+.asterisk-copy-map {
+  margin: rem(397) 0 0 rem(644);
+
+  p {
+    font-size: rem(15);
+    @extend %acumin-pro-cond-regular;
+    line-height: rem(17);
+    padding-top: rem(3);
+  }
+}
+
+.related-career-interest {
+  width: auto;
 }

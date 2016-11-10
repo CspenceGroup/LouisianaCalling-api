@@ -1,13 +1,16 @@
 <div class="container-fluid">
     = render 'navigation/index'
     <div class="main-content">
-      <section class="hero-banner">
+      <section class="hero-banner profile-banner">
         <div class="hero-banner__container profile-banner__container">
-          <h1 class="hero-banner__title">Real People. Real Stories.</h1>
-          <h1 class="hero-banner__title">Really Unscripted.</h1>
-          <div class="hero-banner__introduce">
-            <h2 class="hero-banner__text">These folks found their calling. And you can too.</h2>
-            <h2 class="hero-banner__text">See for yourself.</h2>
+          <div class="profile-banner--gradient"></div>
+          <div class="profile-banner__content">
+            <h1 class="hero-banner__title">Real People. Real Stories.</h1>
+            <h1 class="hero-banner__title">Really Unscripted.</h1>
+            <div class="hero-banner__introduce">
+              <h2 class="hero-banner__text">These folks found their calling. And you can too.</h2>
+              <h2 class="hero-banner__text">See for yourself.</h2>
+            </div>
           </div>
         </div>
       </section>
@@ -27,12 +30,10 @@
                   <div class="col-xs-6 col-md-6 profile-common__desc">
                     <div class="profile-content">
                       <h2 class="main-title profile-title profile-name">#{@profiles[0]}</h2>
-                      <h3>#{@profiles[0].careers.first}</h3>
-                      <p>#{@profiles[0].description}</p>
+                      <h3>#{@profiles[0].sub_head}</h3>
+                      = raw @profiles[0].description.split('</p>').first.truncate(400)
                       <div class="btn-full-story">
-                        <a href="#{profile_detail_path(@profiles[0])}" class="btn-full-story--link">
-                          = image_tag asset_path("profile/btn-full-story.png")
-                        </a>
+                        <a href="#{profile_detail_path(@profiles[0])}" class="btn-full-story__link"></a>
                       </div>
                     </div>
                   </div>
@@ -45,37 +46,35 @@
                     <div class="col-xs-6 col-md-6 profile-common__desc">
                       <div class="profile-content profile-content--pull-left">
                         <h2 class="main-title profile-title profile-name">#{@profiles[1]}</h2>
-                        <h3>#{@profiles[1].careers.first}</h3>
-                        <p>#{@profiles[1].description}</p>
+                        <h3>#{@profiles[1].sub_head}</h3>
+                        = raw @profiles[1].description.split('</p>').first.truncate(400)
                         <div class="btn-full-story">
-                          <a href="#{profile_detail_path(@profiles[1])}">
-                            = image_tag asset_path("profile/btn-full-story.png")
-                          </a>
+                          <a href="#{profile_detail_path(@profiles[1])}" class="btn-full-story__link"></a>
                         </div>
                       </div>
                     </div>
                   </article>
         </div>
       </section>
-      - if @count > 2
-        <section class="more-stories">
-          <div class="profile-heading">
-            <h2 class="main-title profile-title more-stories__title">More Stories</h2>
-          </div>
-          <div class="row more-stories__list">
-            <div id="moreStories">
-              = render partial: "profile/partial/profile", locals: { profiles: @profiles.drop(2)}
-            </div>
-            - if @count > 5
-              <div class="more-stories__btn">
-                <div id="profileSeeMore">
-                  = image_tag asset_path("btn-see-more.png")
-                </div>
-              </div>
-              <div id="loading-gif" class="indicator-loading indicator-loading--stories">
-                = image_tag asset_path("loading.gif")
-          </div>
-        </section>
+      / - if @count > 2
+      /   <section class="more-stories">
+      /     <div class="profile-heading">
+      /       <h2 class="main-title profile-title more-stories__title">More Stories</h2>
+      /     </div>
+      /     <div class="row more-stories__list">
+      /       <div id="moreStories">
+      /         = render partial: "profile/partial/profile", locals: { profiles: @profiles.drop(2)}
+      /       </div>
+      /       - if @count > 5
+      /         <div class="more-stories__btn">
+      /           <div id="profileSeeMore">
+      /             <div class="icon-see-more"></div>
+      /           </div>
+      /         </div>
+      /         <div id="loading-gif" class="indicator-loading indicator-loading--stories">
+      /           = image_tag asset_path("loading.gif")
+      /     </div>
+      /   </section>
     </div>
 
     = render 'footer/index'

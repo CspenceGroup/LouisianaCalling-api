@@ -1,9 +1,7 @@
 <header class="site-header">
   <div class="site-header__container">
     <h1 class="site-header__logo">
-      <a href="/" class="site-header__link">
-        = image_tag asset_path("logo.png")
-      </a>
+      <a href="/" class="site-header__link"></a>
     </h1>
     <nav class="nav-bar">
       <ul class="nav-bar__list">
@@ -17,19 +15,19 @@
           = link_to "Real stories", stories_path, :class => (params[:controller] == "profile" ? "nav-active" : "")
         </li>
         <!-- <li><a href="javascript:void(0)">Blog</a></li> -->
-        <li><a href="/abouts">About us</a></li>
+        <li>
+          = link_to "About us", abouts_path(tab: 'our-community'), :class => (params[:controller] == "about" ? "nav-active" : "")
+        </li>
         / <li>
         /   <ul class="nav-bar__list-icon">
         /     <li><a href="javascript:void(0)"><i class="fa fa-facebook nav-bar__icon" aria-hidden="true"></i></a></li>
         /     <li><a href="javascript:void(0)"><i class="fa fa-twitter nav-bar__icon" aria-hidden="true"></i></a></li>
         /   </ul>
         / </li>
-      </ul> 
+      </ul>
       <div class="nav-bar__contact">
         <p><i class="fa fa-phone nav-bar__icon" aria-hidden="true"></i><a>&nbsp; 1-844-LA-CALLS</a></p>
-        / <a href="javascript:void(0)">
-        /   = image_tag "path-button.png"
-        / </a>
+        <a href="/guided-journey" class="nav-bar__journey"></a>
       </div>
     </nav>
   </div>

@@ -6,12 +6,11 @@
           a href="/careers/#{career.slug}"
             p.jobs-head__title title=career.title
               = career.title
-          .jobs-head__icon
-            - career.demand.to_i.times do
-              = image_tag(asset_path("careers/icon-vote-careers.png"), alt: "fire icon")
         .careers-list-view__head-salary
-          .careers-list-view__icon-salary
           p.careers-list-view__salary
             = "$#{number_with_delimiter(career.salary_min, :delimiter => ',')} - $#{number_with_delimiter(career.salary_max, :delimiter => ',')}"
+          .jobs-head__icon
+            - career.demand.to_i.times do
+              i.icon.i-red-flame
 - else
   p.no-result-found.no-result-list No results found.

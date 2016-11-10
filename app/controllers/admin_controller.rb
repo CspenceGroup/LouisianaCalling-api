@@ -1,9 +1,10 @@
 require 'csv'
 
 class AdminController < ApplicationController
-  http_basic_authenticate_with :name => 'admin', :password => 'hz4q9WETPC3Gyr9g'
+  # http_basic_authenticate_with :name => 'admin', :password => 'hz4q9WETPC3Gyr9g'
 
   def index
+    @name = params[:name] || 'regions'
   end
 
   def new
@@ -16,7 +17,6 @@ class AdminController < ApplicationController
   end
 
   def upload
-
     begin
       name = params[:name]
       attachment = params[:attachment]
@@ -28,55 +28,55 @@ class AdminController < ApplicationController
         logger.error "Bad file_data: #{attachment.class.name}: #{attachment.inspect}"
       end
 
-      csv = CSV.parse(csv_text, :headers => true, :col_sep => "\t")
+      csv = CSV.parse(csv_text, headers: true, col_sep: "\t")
 
-      if csv.length == 0
-        raise "error"
-      end
+      raise 'error' if csv.empty?
 
       case name
-        when 'regions'
-          Region.import_from_csv(csv)
-        when name="homePageTopJobs"
-          TopJob.import_from_csv(csv)
+      when 'regions'
+        Region.import_from_csv(csv)
+      when 'top_jobs'
+        TopJob.import_from_csv(csv)
 
-        when name="homePageVideo"
-          Video.import_from_csv(csv)
+      when 'videos'
+        Video.import_from_csv(csv)
 
-        when name="interests"
-          Interest.import_from_csv(csv)
+      when 'interests'
+        Interest.import_from_csv(csv)
 
-        when name="skills"
-          Skill.import_from_csv(csv)
+      when 'skills'
+        Skill.import_from_csv(csv)
 
-        when name="clusters"
-          Cluster.import_from_csv(csv)
+      when 'clusters'
+        Cluster.import_from_csv(csv)
 
-        when name="profiles"
-          Profile.import_from_csv(csv)
+      when 'profiles'
+        Profile.import_from_csv(csv)
 
-        when name="careers"
-          Career.import_from_csv(csv)
+      when 'careers'
+        Career.import_from_csv(csv)
 
-        when name="careers_region"
-          CareerRegion.import_from_csv(csv)
+      when 'careers_region'
+        CareerRegion.import_from_csv(csv)
 
-        when name="educations"
-          Education.import_from_csv(csv)
+      when 'educations'
+        Education.import_from_csv(csv)
 
-        when name="programs"
-          Program.import_from_csv(csv)
+      when 'programs'
+        Program.import_from_csv(csv)
       end
 
-      flash[:notice] = "Document was successfully uploaded."
+      flash[:notice] = "#{attachment.original_filename} was successfully uploaded."
 
     rescue => ex
       flash[:notice] = ex
     end
-    redirect_to action: "index"
+    @name = name
+    redirect_to action: 'index', name: @name
   end
 
   private
+
   def csv_params
     params.permit(:name, :attachment)
   end

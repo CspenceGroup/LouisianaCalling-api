@@ -24,18 +24,21 @@ class TopJob < ActiveRecord::Base
       TopJob.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[2].present?
+        region = Region.find_region(row[0].strip)
+        career = Career.find_career(row[1].strip)
 
-        top_jobs = TopJob.new
+        params = {}
+        params[:region_id] = region.id if region.present?
+        params[:career_id] = career.id if career.present?
 
-        region = Region.find_by_name(row[0].strip)
-        top_jobs[:region_id] = region.id if region.present?
+        top_job = TopJob.where(
+          career_id: career.id,
+          region_id: region.id
+        ).first
 
-        career = Career.find_by_title(row[1].strip)
+        next if top_job.present?
 
-        top_jobs[:career_id] = career.id if career.present?
-
-        top_jobs.save!
+        TopJob.create(params)
       end
     end
   end

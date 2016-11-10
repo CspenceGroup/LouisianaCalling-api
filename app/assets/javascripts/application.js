@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery_ui
+//= require jquery_steps
 //= require markerlabel
 //= require lazyload
 //= require turbolinks

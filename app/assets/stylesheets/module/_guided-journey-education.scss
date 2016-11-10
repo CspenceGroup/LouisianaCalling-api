@@ -1,0 +1,48 @@
+.education-item.education {
+  .guided-form__interest-icon {
+    display: block;
+  }
+
+  .education-icon--active {
+    display: none;
+  }
+}
+
+.education-item.education-active {
+  background-color: $default;
+  color: $white;
+
+  .guided-form__interest-icon {
+    display: none;
+  }
+
+  .education-icon--active {
+    display: block;
+    @include boxSize(auto, rem(65));
+
+    img {
+      @include boxSize(auto, 100%);
+    }
+  }
+}
+
+.education-item {
+  border: rem(1) solid $default;
+  color: $default;
+
+  &:nth-child(6n + 1) {
+    border-left: rem(1) solid $default;
+  }
+
+  &:nth-child(n + 7) {
+   border-top: rem(0) solid $default; 
+  }
+}
+
+.guided-form-edu-icon {
+  @include boxSize(auto, rem(65));
+
+  img {
+    @include boxSize(auto, 100%);
+  }
+}

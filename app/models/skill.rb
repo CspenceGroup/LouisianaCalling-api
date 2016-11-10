@@ -21,21 +21,60 @@ class Skill < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  scope :filter_names_not_exist, lambda { |names|
+    where('name NOT IN (?)', names)
+  }
+
+  # Sorting by alphabetical
+  scope :alphabetical, lambda {
+    order('LOWER(name) ASC')
+  }
+
+  def self.update_skill(params)
+    skill = Skill.find_by_name(params[:name])
+
+    raise "Do not found with skill: '#{params[:name]}'." unless skill.present?
+
+    skill.update_attributes(params)
+  end
+
+  def self.find_skill(skill_name)
+    skill = Skill.find_by_name(skill_name)
+    unless skill.present?
+      raise "Do not found with skill: '#{skill_name}'.
+        Please make sure import Skill before."
+    end
+
+    skill
+  end
+
+  # Remove all skills do not exists in TSV file import
+  def self.remove(names)
+    skills = Skill.filter_names_not_exist(names)
+
+    skills.delete_all if skills.present?
+  end
+
   def self.import_from_csv(csv)
     Skill.transaction do
-      Skill.delete_all
+      # Skill.delete_all
 
       csv.each do |row|
-        next if Skill.exists?(name: row[0].strip)
+        params = {
+          name: row[0].strip,
+          url: row[1].strip
+        }
 
-        skill = Skill.new
-        skill[:name] = row[0].strip
-        skill[:url] = row[1].strip
-
-        raise 'Wrong file' if row[2].present?
-
-        skill.save!
+        if Skill.exists?(name: params[:name])
+          Skill.update_skill(params)
+        else
+          Skill.create(params)
+        end
       end
+
+      # Remove all Skill do not exists in tsv file
+      names = csv.map { |row| row[0].strip }.uniq
+      Skill.remove(names)
     end
   end
 

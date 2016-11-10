@@ -1,9 +1,10 @@
 .related-careers {
   @extend %overflow-hidden;
   color: $default;
-  margin-bottom: rem(-29);
   @extend %relative;
-  @include background-image('map-bg.png');
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
   min-height: rem(511);
 
   .col-md-6,
@@ -17,16 +18,20 @@
   }
 
   @include e('header') {
-    padding: rem(53) 0 rem(33) rem(5);
+    padding: rem(53) 0 rem(27) rem(5);
   }
 
   @include e('title') {
-    margin-bottom: rem(30);
-    @extend %text-capitalize;
+    margin-bottom: rem(36);
+    padding-left: rem(7);
+
+    span {
+      text-shadow: none;
+    }
   }
 
   @include e('items') {
-    margin-right: rem(10);
+    margin-left: rem(7);
     color: $default;
   }
 
@@ -47,10 +52,30 @@
   @include e('sort-by') {
     margin-top: rem(7);
   }
+
+  @include e('interest') {
+    @extend %float-left;
+    margin-bottom: 0;
+    margin-left: rem(15);
+    width: rem(257);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    p {
+      max-width: rem(183);
+    }
+  }
+
+  @include e('icon-interest') {
+    margin-left: rem(10);
+    @extend %overflow-hidden;
+  }
 }
 
 .related-careers-container {
-  width: rem(810);
+  width: rem(825);
   @extend %margin-auto;
 }
 
@@ -90,7 +115,7 @@
   background-color: $white;
   @extend %margin-auto;
   @extend %relative;
-  @include boxSize(rem(234), rem(270));
+  @include boxSize(rem(255), rem(320));
 
   @include e('photo') {
     @extend %overflow-hidden;
@@ -98,49 +123,28 @@
   }
 
   @include e('info') {
-    padding: rem(8) rem(10) 0;
+    padding: rem(4) rem(10) 0;
   }
 
   @include e('name') {
-    font-size: rem(17);
-    width: rem(225);
+    font-size: rem(16.67);
+    width: rem(240);
     line-height: rem(20);
-    max-height: rem(40);
-    // @extend %overflow-hidden;
+    // max-height: rem(45);
+    padding-top: rem(5);
     @extend %brandon-grotesque;
     @extend %text-uppercase;
     @extend %block;
     @extend %relative;
-    // word-break: break-all;
-    // &:before {
-    //   content: '...';
-    //   // margin-right: rem(14);
-    //   @extend %absolute;
-    //   @extend %right-bottom-0;
-    // }
-    // &:after {
-    //   content: '';
-    //   background: $white;
-    //   margin-top: rem(1);
-    //   @extend %right-0;
-    //   @extend %absolute;
-    //   @include boxSize(rem(12), rem(30));
-    // }
   }
 
   @include e('salary') {
-    font-size: rem(14.8);
+    font-size: rem(14.58);
     @extend %truncate;
     @extend %acumin-pro-cond;
     @extend %block;
+    padding-top: rem(5);
   }
-}
-
-.interest-votes {
-  right: rem(15);
-  top: rem(7);
-  @extend %float-right;
-  @extend %absolute;
 }
 
 .btn-sort-active {

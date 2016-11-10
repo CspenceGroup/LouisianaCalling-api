@@ -1,16 +1,15 @@
 class HomeController < ApplicationController
   def index
-    @jobs = {}
-    @videos = Video.all
-    @regions = Region.all
+    @videos = Video.all.includes(:profile)
+    @regions = Region.all.alphabetical
+    @careers_slider = Career.order(:numerical_order)
+                            .offset(0)
+                            .limit(5)
+                            .includes(:career_interests, :interests)
 
-    TopJob.all.valid.group_by(&:region).each do |region, top_jobs|
-      @jobs[region.name] = top_jobs.map do |top_job|
-        {
-          job: top_job.career.title,
-          link: career_detail_path(top_job.career)
-        }
-      end
-    end
+    @careers_and_programs = Program.all.select(:title).map(&:title).uniq
+    @careers_and_programs.push(Career.all.select(:title).map(&:title).uniq)
+
+    @careers_and_programs = @careers_and_programs.flatten
   end
 end

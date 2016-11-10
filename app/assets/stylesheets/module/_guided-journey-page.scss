@@ -1,0 +1,357 @@
+.main-guided-journey {
+  @include e('heading') {
+    padding-top: rem(32);
+    @include boxSize(100%, rem(137));
+
+    p {
+      margin-top: rem(22);
+    }
+  }
+
+  @include e('steps') {
+    color: $default;
+    min-height: rem(735);
+    padding-bottom: rem(30);
+    @include background-image('filter-bg.png');
+    background-position: bottom;
+    @extend %background-repeat-x;
+
+    li {
+      @extend %float-left;
+    }
+  }
+}
+
+.guided-form {
+  @extend %relative;
+
+  @include e('main-container') {
+    width: rem(1045);
+    padding: rem(30) 0;
+    @extend %margin-auto;
+    @extend %overflow-hidden;
+  }
+
+  @include e('title') {
+    @extend %absolute;
+    left: rem(-999);
+  }
+
+  @include e('steps') {
+    margin: 0 auto rem(38) auto;
+    width: rem(810);
+    @extend %text-left;
+    @extend %overflow-hidden;
+    @extend %float-left;
+
+    li {
+      @include boxSize(rem(153), rem(50));
+      background-color: $default;
+      margin-left: rem(2);
+      @extend %relative;
+      @extend %display-flex;
+      @include align-items(center);
+      @include flex-justify-content(center);
+
+      &:before,
+      &:after {
+        content: "";
+        top: rem(7);
+        left: rem(135);
+        @extend %absolute;
+        background: inherit;
+        border: inherit;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        @extend %no-border-radius;
+        @include transform(45deg);
+        @include boxSize(rem(36), rem(36));
+      }
+
+      &:before {
+        left: rem(-18);
+        background-color: $white;
+      }
+
+      &:after {
+        right: rem(-11);
+        z-index: 1;
+      }
+    }
+
+    .disabled {
+      a {
+        @extend %cursor-default;
+      }
+    }
+
+    @include e('container') {
+      margin: rem(38) 0 rem(30) 0;
+    }
+  }
+
+  fieldset {
+    @extend %no-border;
+    box-sizing: border-box;
+
+    &:not(:first-of-type) {
+      display: none;
+    }
+
+    > p {
+      margin-top: rem(23);
+    }
+  }
+
+  @include e('container') {
+    margin-top: rem(38);
+    @extend %overflow-hidden;
+
+    > p {
+      font-size: rem(16.67);
+      padding-top: rem(25);
+    }
+  }
+}
+
+.guided-form__steps .steps li.done,
+.guided-form__steps .steps li.current {
+  background-color: $red-bg;
+}
+
+
+.steps a {
+  @extend %no-border-radius;
+  color: $white;
+  @extend %relative;
+  padding: rem(15) 0 0 rem(28);
+  @include boxSize(rem(300), rem(50));
+  z-index: 1000;
+  @extend %text-center;
+
+  @include linkState() {
+    color: $white;
+  }
+}
+
+.steps .current-info {
+  @extend %absolute;
+  left: rem(-999);
+}
+
+.actions {
+  display: none;
+}
+
+//Style side bar step result when click item
+.sidebar-steps-result {
+  width: rem(210);
+  background-color: $step-bg;
+  @extend %float-right;
+
+  @include e('btn') {
+    @extend %overflow-hidden;
+    padding: 0 rem(13) rem(40) rem(13);
+  }
+
+  @include e('content') {
+    color: $profile-header;
+    padding: rem(41) rem(22) 0 rem(27);
+
+    h4 {
+      @extend %acumin-pro-cond-regular;
+      font-size: rem(16.67);
+      @extend %text-capitalize;
+    }
+
+    p {
+      @extend %brandon-grotesque;
+      @extend %text-uppercase;
+      font-size: rem(12);
+      padding-top: rem(7);
+      line-height: rem(13);
+    }
+  }
+
+  @include e('content-details') {
+    padding-bottom: rem(35);
+  }
+}
+
+.btn-step {
+  @include boxSize(rem(65), rem(28));
+  color: $white;
+  font-size: rem(16.7);
+  @extend %i-owan-old-style-bi;
+  @extend %no-border;
+  @extend %no-outline;
+  @extend %relative;
+  z-index: 200;
+}
+
+.btn-step-back {
+  background-color: $profile-header;
+  @extend %float-left;
+  margin-left: rem(20);
+  padding-right: rem(23);
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(225deg);
+    @include boxSize(rem(20), rem(20));
+  }
+
+  &:before {
+    left: rem(55);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(55);
+    z-index: -2;
+  }
+}
+
+.btn-step-next {
+  background-color: $red-bg;
+  @extend %float-right;
+  margin-right: rem(20);
+  padding-left: rem(23);
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(45deg);
+    @include boxSize(rem(20), rem(20));
+  }
+
+  &:before {
+    left: rem(-10);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(-10);
+    z-index: -22;
+  }
+}
+
+.btn-step-start {
+  background-color: $red-bg;
+  @extend %float-right;
+  margin-right: rem(45);
+  padding-left: rem(23);
+  @extend %text-capitalize;
+  width: rem(110);
+  display: none;
+
+  &:before,
+  &:after {
+    content: "";
+    top: rem(4);
+    @extend %absolute;
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    @extend %no-border-radius;
+    @include transform(45deg);
+    @include boxSize(rem(20), rem(20));
+  }
+
+  &:before {
+    left: rem(-10);
+    background-color: $step-bg;
+  }
+
+  &:after {
+    right: rem(-10);
+    z-index: -22;
+  }
+}
+
+span.current-info.audible {
+  display: none;
+}
+
+.indicator-loading-step {
+  margin: rem(40) auto 0 auto;
+}
+
+.sidebar-steps-result__btn.btn-start-over {
+  .btn-step-start {
+    display: block;
+  }
+
+  .btn-step-back,
+  .btn-step-next {
+    display: none;
+  }
+}
+
+.sidebar-steps-result__btn.btn-back-next {
+  .btn-step-start {
+    display: none;
+  }
+
+  .btn-step-back,
+  .btn-step-next {
+    display: block;
+  }
+}
+
+.sidebar-steps-result__content.content-interest {
+  .sidebar-steps-result__content-interest {
+    display: block;
+  }
+
+  .sidebar-steps-result__content-region,
+  .sidebar-steps-result__content-education {
+    display: none;
+  }
+}
+
+.sidebar-steps-result__content.content-interest-region {
+  .sidebar-steps-result__content-interest,
+  .sidebar-steps-result__content-region {
+    display: block;
+  }
+
+  .sidebar-steps-result__content-education {
+    display: none;
+  }
+}
+
+.sidebar-steps-result__content.content-result {
+  .sidebar-steps-result__content-interest,
+  .sidebar-steps-result__content-region,
+  .sidebar-steps-result__content-education {
+    display: block;
+  }
+}
+
+.btn-step-back-step,
+.btn-step-next-step {
+  opacity: 0.5;
+}
+
+.alert-danger-guided-form {
+  display: none;
+  padding: rem(8);
+  margin-top: rem(9);
+}

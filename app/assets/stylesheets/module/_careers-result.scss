@@ -21,42 +21,62 @@
 }
 
 .careers-list-view {
-  margin: rem(86) 0 rem(170) 0;
+  margin: rem(24) 0 rem(170) 0;
   display: none;
 
   @include e('item') {
-    border: rem(2) solid $filter-careers-heading;
+    width: rem(802);
+    height: rem(72);
+    margin-bottom: rem(16);
     background-color: $white;
-    @include boxSize(rem(802), rem(68));
+    padding: 0 rem(23) 0 rem(13);
     color: $filter-careers-heading;
-    padding: 0 rem(13);
-    margin-bottom: rem(21);
+    border: rem(1) solid $filter-careers-heading;
+    @extend %display-flex;
   }
 
   @include e('heading') {
-    padding-top: rem(20);
-  }
-
-  @include e('icon-salary') {
-    @extend %float-left;
-    @include background-image('career-options.png');
-    @extend %background-no-repeat;
-    background-position: 0 rem(1);
-    @include boxSize(rem(39), rem(28));
+    min-height: rem(49);
+    @extend %display-flex;
+    @include boxSize(100%, auto);
+    @include flex-direction(row);
   }
 
   @include e('salary') {
-    margin-left: rem(59);
-    font-size: rem(21);
+    margin: rem(5) 0 0 rem(25);
+    font-size: rem(14.58);
     @extend %acumin-pro-cond ;
+    @extend %float-right;
   }
 
   @include e('head-salary') {
+    align-self: center;
+    margin-left: rem(60);
+    width: rem(304);
     @extend %float-right;
   }
 
   .jobs-head__name {
-    @extend %no-padding-top;
+    padding-top: 0;
+    align-self: center;
+    width: rem(460);
+  }
+
+  .jobs-head__icon {
+    margin-top: 0;
+    @extend %float-right;
+  }
+
+  .jobs-head__title {
+    font-size: rem(16.67);
+  }
+
+  i {
+    margin-right: rem(5);
+  }
+
+  .see-more-careers {
+    margin-top: rem(16);
   }
 }
 
@@ -69,45 +89,48 @@
 }
 
 .see-more-careers {
-  margin: rem(27) 0 rem(100) rem(363);
+  margin: rem(45) 0 rem(100) rem(363);
   @extend %float-left;
 }
 
 // Style careers view by
 .careers-filter-search {
   @extend %float-left;
-  width: rem(598);
+  width: rem(517);
 }
 
 .careers-filter-search-group {
-  width: rem(598);
+  width: rem(518);
   @extend %block;
   @extend %overflow-hidden;
 }
 
 .careers-view-by {
   @extend %float-right;
-  padding-top: rem(13);
+  padding-top: rem(12);
 
   @include e('list') {
-    @include boxSize(rem(30), rem(30));
     @extend %float-left;
-    margin-right: rem(13);
+    margin-right: rem(15.5);
   }
 
   @include e('grid') {
-    @include boxSize(rem(30), rem(30));
     @extend %float-right;
   }
 
   @include e('icon') {
-    @include boxSize(rem(24), rem(24));
-    margin: rem(3) auto 0 auto;
+    @extend %block;
+    @include boxSize(100%, 100%);
   }
 }
 
+.careers-view-icon {
+  @extend %cursor-pointer;
+  @include boxSize(rem(21), rem(21));
+}
+
 .grid-view-container {
-  margin: rem(8) 0 rem(170) 0;
+  margin-bottom: rem(170);
   @extend %overflow-hidden;
 }
 
@@ -115,17 +138,17 @@
   @extend %no-margin-right;
   width: rem(835);
   @extend %overflow-hidden;
-  // margin-bottom: rem(20);
   color: $default;
 
   @include e('item') {
     @extend %no-padding;
     @extend %float-left;
     @extend %relative;
-    @include boxSize(rem(254), rem(270)); // height: 254px
+    @include boxSize(rem(254), rem(320));
     border: rem(1) solid $default;
     margin: rem(20) rem(20) 0 0;
     background-color: $white;
+    padding-left: 0.05px;
 
     &:last-child {
       @extend %no-margin-right;
@@ -139,6 +162,10 @@
 
     i {
       margin-left: rem(5);
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017050155) do
+ActiveRecord::Schema.define(version: 20161104091736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20161017050155) do
     t.datetime "updated_at", null: false
     t.integer  "career_id"
     t.integer  "region_id"
+    t.integer  "demand"
     t.index ["career_id"], name: "index_career_regions_on_career_id", using: :btree
     t.index ["region_id"], name: "index_career_regions_on_region_id", using: :btree
   end
@@ -87,14 +88,16 @@ ActiveRecord::Schema.define(version: 20161017050155) do
     t.string   "title"
     t.text     "about_job"
     t.text     "what_will_do"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "photo_large"
     t.string   "photo_medium"
     t.integer  "salary_min"
     t.integer  "salary_max"
     t.float    "demand"
     t.integer  "top_job_id"
+    t.integer  "projected_growth"
+    t.integer  "numerical_order"
     t.index ["top_job_id"], name: "index_careers_on_top_job_id", using: :btree
   end
 
@@ -133,8 +136,11 @@ ActiveRecord::Schema.define(version: 20161017050155) do
   create_table "interests", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "home_url"
+    t.string   "gj_url"
+    t.string   "gj_url_selected"
   end
 
   create_table "profile_careers", force: :cascade do |t|
@@ -142,13 +148,6 @@ ActiveRecord::Schema.define(version: 20161017050155) do
     t.integer "career_id"
     t.index ["career_id"], name: "index_profile_careers_on_career_id", using: :btree
     t.index ["profile_id"], name: "index_profile_careers_on_profile_id", using: :btree
-  end
-
-  create_table "profile_educations", force: :cascade do |t|
-    t.integer "profile_id"
-    t.integer "education_id"
-    t.index ["education_id"], name: "index_profile_educations_on_education_id", using: :btree
-    t.index ["profile_id"], name: "index_profile_educations_on_profile_id", using: :btree
   end
 
   create_table "profile_interests", force: :cascade do |t|
@@ -181,13 +180,13 @@ ActiveRecord::Schema.define(version: 20161017050155) do
     t.string   "image_medium"
     t.string   "image_small"
     t.string   "slug"
-    t.integer  "video_id"
     t.integer  "region_id"
     t.integer  "cluster_id"
     t.string   "educational_institution"
+    t.string   "sub_head"
+    t.string   "qualification"
     t.index ["cluster_id"], name: "index_profiles_on_cluster_id", using: :btree
     t.index ["region_id"], name: "index_profiles_on_region_id", using: :btree
-    t.index ["video_id"], name: "index_profiles_on_video_id", using: :btree
   end
 
   create_table "program_careers", force: :cascade do |t|

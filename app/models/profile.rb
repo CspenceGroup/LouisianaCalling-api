@@ -8,16 +8,14 @@ class Profile < ActiveRecord::Base
   has_many :profile_careers, dependent: :destroy
   has_many :careers, through: :profile_careers, source: :career
 
-  has_one :video
-
   has_many :profile_interests, dependent: :destroy
   has_many :interests, through: :profile_interests, source: :interest
 
   has_many :profile_skills, dependent: :destroy
   has_many :skills, through: :profile_skills, source: :skill
 
-  has_many :profile_educations, dependent: :destroy
-  has_many :educations, through: :profile_educations, source: :education
+  # has_many :profile_educations, dependent: :destroy
+  # has_many :educations, through: :profile_educations, source: :education
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -33,104 +31,129 @@ class Profile < ActiveRecord::Base
   validates :image_medium, presence: true
   validates :image_small, presence: true
 
+  before_destroy :delete_relationships
+
   scope :find_by_full_name, lambda { |full_name|
-    full_name = full_name.split(' ')
-    where('first_name = ? AND last_name = ?', full_name.first, full_name.last)
+    where('concat_ws(\' \', first_name, last_name) = ?', full_name)
   }
+
+  scope :filter_profiles_not_exist, lambda { |names|
+    where('concat_ws(\' \', first_name, last_name) NOT IN (?)', names)
+  }
+
+  # Remove all profiles do not exists in TSV file import
+  def self.remove_profiles(csv_file)
+    names = csv_file.map { |row| "#{row[0].strip} #{row[1].strip}" }.uniq
+    profiles = Profile.filter_profiles_not_exist(names)
+
+    profiles.delete_all if profiles.present?
+  end
 
   def self.import_from_csv(csv)
     Profile.transaction do
-      Profile.delete_all
-
       csv.each do |row|
-        raise 'Wrong file' if row[16].present?
+        region = Region.find_region(row[4].strip)
+        cluster = Cluster.find_cluster(row[9].strip)
 
-        profile = Profile.new
-        profile[:first_name] = row[0].strip
-        profile[:last_name] = row[1].strip
+        params = {
+          first_name: row[0].strip,
+          last_name: row[1].strip,
+          sub_head: row[2].strip,
+          educational_institution: row[3].strip,
+          description: row[5].strip,
+          demand: row[8].strip,
+          salary: row[10].strip,
+          qualification: row[11].strip,
+          video: row[12].strip,
+          image_medium: row[13].strip,
+          image_small: row[14].strip,
+          image_large: row[15].strip
+        }
 
-        region = Region.find_by_name(row[4].strip)
-        profile[:region_id] = region.id if region.present?
+        params[:region_id] = region.id if region.present?
+        params[:cluster_id] = cluster.id if cluster.present?
 
-        profile[:educational_institution] = row[3].strip
-        profile[:description] = row[5].strip
-        profile[:demand] = row[8].strip
+        full_name = "#{params[:first_name]} #{params[:last_name]}"
 
-        cluster = Cluster.find_by_name(row[9].strip)
-        profile[:cluster_id] = cluster.id if cluster.present?
+        profile = Profile.find_by_full_name(full_name)
+                         .first
 
-        profile[:salary] = row[10].strip
-
-        profile[:video] = row[12].strip
-        profile[:image_medium] = row[13].strip
-        profile[:image_small] = row[14].strip
-        profile[:image_large] = row[15].strip
-
-        profile.save!
+        if profile.present?
+          profile.update_attributes(params)
+          profile.delete_relationships
+        else
+          profile = Profile.create(params)
+        end
 
         # Adding careers
-        create_profile_careers(row[2].split(',').map(&:strip), profile) if row[2].present?
+        if row[16].present?
+          create_profile_careers(row[16].split(',').map(&:strip), profile)
+        end
 
         # Adding interest
         if row[6].present?
-          create_profile_interests(row[6].split(',').map(&:strip), profile)
+          create_profile_interests(row[6].split(';').map(&:strip), profile)
         end
 
         # Adding skills
         if row[7].present?
           create_profile_skills(row[7].split(',').map(&:strip), profile)
         end
-
-        # Adding Education need
-        if row[11].present?
-          create_profile_educations(row[11].split(',').map(&:strip), profile)
-        end
       end
+      # Remove all profile do not exists in TSV file
+      Profile.remove_profiles(csv)
     end
   end
 
   def self.create_profile_careers(careers, profile)
     careers.each do |career_name|
-      career = Career.find_by_title(career_name)
+      career = Career.find_career(career_name)
+
+      next if ProfileCareer.exists?(
+        profile_id: profile.id,
+        career_id: career.id
+      )
 
       ProfileCareer.create(
         profile_id: profile.id,
-        career_id: career.present? ? career.id : nil
+        career_id: career.id
       )
     end
   end
 
   def self.create_profile_interests(interests, profile)
     interests.each do |interest_name|
-      interest = Interest.find_by_name(interest_name)
+      interest = Interest.find_interest(interest_name)
+
+      next if ProfileInterest.exists?(
+        profile_id: profile.id,
+        interest_id: interest.id
+      )
 
       ProfileInterest.create(
         profile_id: profile.id,
-        interest_id: interest.present? ? interest.id : nil
+        interest_id: interest.id
       )
     end
   end
 
   def self.create_profile_skills(skills, profile)
     skills.each do |skill_name|
-      skill = Skill.find_by_name(skill_name)
+      skill = Skill.find_skill(skill_name)
+
+      next if ProfileSkill.exists?(profile_id: profile.id, skill_id: skill.id)
 
       ProfileSkill.create(
         profile_id: profile.id,
-        skill_id: skill.present? ? skill.id : nil
+        skill_id: skill.id
       )
     end
   end
 
-  def self.create_profile_educations(educations, profile)
-    educations.each do |education_name|
-      education = Education.find_by_name(education_name)
-
-      ProfileEducation.create(
-        profile_id: profile.id,
-        education_id: education.present? ? education.id : nil
-      )
-    end
+  def delete_relationships
+    ProfileCareer.where(profile_id: id).delete_all
+    ProfileInterest.where(profile_id: id).delete_all
+    ProfileSkill.where(profile_id: id).delete_all
   end
 
   def to_s

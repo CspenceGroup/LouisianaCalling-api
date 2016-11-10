@@ -12,17 +12,20 @@ $(document).on('turbolinks:load', function(){
     }
   };
 
-  $( document ).ready(function() {
-    if (window.location.pathname.indexOf('abouts') != -1) {
-      changeURL('About us', 'abouts')
-    }
-  });
+  $('#about-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href"); // activated tab
+
+    target = target.slice(1);
+    changeURL('About us', 'abouts?tab=' + target);
+  })
 
   $('.faq-contact-btn').on('click', function(e) {
     e.preventDefault();
     // Hidden alert info
     $('.about-contact-container').find('.alert').hide();
-    $('#about-tabs a[href="#contactUs"]').tab('show');
+    $('#about-tabs a[href="#contact-us"]').tab('show');
+    changeURL('About us', 'abouts?tab=contact-us');
+    $('body').scrollTop(0);
   });
 
   $('#faq-footer').on('click', function(e) {
@@ -31,9 +34,12 @@ $(document).on('turbolinks:load', function(){
     // Currently, About us page
     if (window.location.pathname.indexOf('abouts') != -1) {
       $('#about-tabs a[href="#faq"]').tab('show');
+      changeURL('About us', 'abouts?tab=faq')
+      $('body').scrollTop(0);
     } else {
       // Goto About us page with FAQ tab
       window.location.href = '/abouts?tab=faq'
+      $('body').scrollTop(0);
     }
   });
 
@@ -42,17 +48,20 @@ $(document).on('turbolinks:load', function(){
 
     // Currently, About us page
     if (window.location.pathname.indexOf('abouts') != -1) {
-      $('#about-tabs a[href="#contactUs"]').tab('show');
+      $('#about-tabs a[href="#contact-us"]').tab('show');
+      changeURL('About us', 'abouts?tab=contact-us')
+      $('body').scrollTop(0);
     } else {
       // Goto About us page with contact-us tab
       window.location.href = '/abouts?tab=contact-us'
+      $('body').scrollTop(0);
     }
   });
 
   /*
    * Transfering to category or question which use want to move to.
    */
-  $('.about-faq__main-content a').click(function(e) {
+  $('#category-list-items a, .about-faq__topic-list a').click(function(e) {
     e.preventDefault();
 
     var hash = $(this)[0].hash;
@@ -64,7 +73,7 @@ $(document).on('turbolinks:load', function(){
       var id = hash.split('-').slice(0, -1).join('-');
       var ele = $(id);
       var page = $('html, body');
-      
+
       ele
         .closest('.about-faq__main-content')
         .find('.categories')
@@ -77,11 +86,9 @@ $(document).on('turbolinks:load', function(){
 
       page.animate({
         scrollTop: $(hash).offset().top-95
-      }, 1000);
+      }, 10);
 
     } else {
-      console.log(hash);
-      debugger;
       // Move to Catogory
       parent.find('.categories')
         .removeClass('category-active')
@@ -106,6 +113,68 @@ $(document).on('turbolinks:load', function(){
     parent.find('.categories')
       .removeClass('category-inactive')
       .addClass('category-active');
+  });
+
+  $('#faqSeeMore').on('click', function() {
+    var limit = $(this).data('limit'),
+      size = $("#faq-search-results").find('.faq-result-item.active').size(),
+      count = $(this).data('count');
+
+    limit = limit + size;
+
+    $("#faq-search-results").find('.faq-result-item:lt(' + limit + ')').addClass('active');
+
+    if(limit >= count) {
+      $('.faq-see-more').hide();
+    }
+  });
+
+  /*Show validation messages contact us form*/
+  $('#aboutHelpForm').submit(function(event) {
+    event.preventDefault();
+
+    var target = event.target,
+        email = $.trim(target[0].value),
+        subject = $.trim(target[1].value),
+        message = $.trim(target[2].value),
+        formatEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!email || !formatEmail.test(email)) {
+      $('.alert-danger-email').show();
+    } else {
+      $('.alert-danger-email').hide();
+    }
+
+    if (!subject) {
+      $('.alert-danger-subject').show();
+    } else {
+      $('.alert-danger-subject').hide();
+    }
+
+    if (!message) {
+      $('.alert-danger-message').show();
+    } else {
+      $('.alert-danger-message').hide();
+    }
+
+    if (email && subject && message) {
+      target.submit();
+    }
+  });
+
+  /*Check validation require keyworks faq*/
+  $('#searchFaq').submit(function(event) {
+    event.preventDefault();
+
+    var target = event.target,
+        keyWord = $.trim(target[0].value);
+
+    if(!keyWord) {
+      $('.about-faq__search').addClass('about-faq-error');
+    } else {
+      $('.about-faq__search').removeClass('about-faq-error');
+      target.submit();
+    }
   });
 
 });

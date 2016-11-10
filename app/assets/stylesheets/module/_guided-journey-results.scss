@@ -1,0 +1,102 @@
+.guided-journey-results {
+  width: rem(790);
+  margin-top: rem(36);
+}
+
+.jump-start-guide {
+  color: $white;
+  font-size: rem(21 );
+  padding-top: rem(68);
+  @extend %i-owan-old-style;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include boxSize(100%, rem(295));
+  @include background-image('jumpstart-guided.jpg');
+
+  a {
+    @extend %text-underline;
+
+    @include linkState() {
+      color: $white;
+    }
+  }
+
+  p {
+    width: rem(490);
+    line-height: rem(25);
+    @extend %margin-auto;
+
+    &:last-child {
+      margin-top: rem(33);
+      padding-right: rem(110);
+    }
+  }
+}
+
+.guided-results {
+  padding-bottom: rem(42);
+  @extend %overflow-hidden;
+}
+
+.find-opportunity {
+  color: $white;
+  font-size: rem(20.83);
+  padding-top: rem(165);
+  min-width: rem(1200);
+  @extend %text-center;
+  @extend %relative;
+  @extend %left-bottom-0;
+  @extend %background-cover;
+  @extend %background-position-center;
+  @include boxSize(100%, rem(460));
+  @include background-image('find-opportunity-banner.jpg');
+
+  h3 {
+    padding-left: rem(155);
+  }
+
+  > span {
+    top: rem(-25);
+    padding-right: rem(90);
+    @extend %text-uppercase;
+    @extend %block;
+    @extend %relative;
+  }
+
+  a {
+    top: rem(-10);
+    left: rem(-45);
+    @extend %i-owan-old-style-italic;
+    @extend %inline-block;
+    @extend %relative;
+    @include boxSize(rem(252), rem(101));
+    @include background-image('find-opportunity-bg.png');
+
+    @include linkState() {
+      color: $white;
+    }
+
+    span {
+      top: rem(34);
+      left: rem(35);
+      width: rem(140);
+      line-height: rem(25);
+      @extend %absolute;
+      @extend %text-left;
+    }
+  }
+}
+
+.guided-sharings {
+  margin-bottom: rem(12);
+  @extend %text-center;
+
+  .icon {
+    margin-right: rem(20);
+  }
+}
+
+.jump-start-inactive,
+.find-opportunity-inactive {
+  display: none;
+}

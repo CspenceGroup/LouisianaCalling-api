@@ -1,16 +1,16 @@
 .top-jobs {
-  color: $default;
+  color: $profile-name-shadow;
   font-size: rem(16.6);
   line-height: 1.375;
-  height: rem(580);
+  height: rem(570);
   @extend %acumin-pro-cond;
   @extend %font-weight-bold;
   @extend %background-repeat;
   @extend %overflow-hidden;
-  @include background-image('map-bg.png');
+  @include background-image('careers/great-job-bg.jpg');
 
   @include e('details') {
-    @include boxSize(rem(326), rem(332));
+    @include boxSize(rem(310), rem(340));
     @include background-image('top-jobs-border.png');
   }
 
@@ -20,15 +20,24 @@
   }
 
   @include e('map') {
-    top: rem(-250);
+    top: rem(-252);
     right: rem(510);
-    @include boxSize(rem(585), rem(615));
+    @include boxSize(rem(585), rem(700));
     @extend %absolute;
+  }
+
+  @include e('map-details') {
+    top: rem(-245);
+  }
+
+  .job-heading {
+    color: $profile-name-shadow;
+    @include shadow(rem(4), rem(6), 0, $profile-header);
   }
 }
 
 .map-details {
-  margin-right: rem(163);
+  margin-right: rem(186);
   @extend %background-no-repeat;
   @extend %relative;
   @extend %float-right;
@@ -43,17 +52,19 @@
 .job-heading {
 
   @include m('pull-left') {
-    margin-right: rem(321);
+    margin-right: rem(327);
   }
 
   @include m('pull-right') {
-    margin: 0 rem(302) rem(12) 0;
+    margin: 0 rem(307) rem(12) 0;
+    padding-top: rem(7);
   }
 }
 
 .job-desc {
   font-size: rem(18.8);
-  margin-right: rem(225);
+  margin-right: rem(289);
+  color: $profile-name-shadow;
   @extend %no-text-shadow;
   @extend %acumin-pro-cond-bi;
   @extend %font-weight-normal;
@@ -62,39 +73,37 @@
 .region-name {
   font-size: rem(33.3);
   line-height: 1.875;
-  color: $region-name;
-  right: rem(16);
+  right: rem(14);
+  color: $profile-name-shadow;
   @extend %top-0;
   @extend %text-uppercase;
   @extend %brandon-grotesque;
   @extend %absolute;
 
-  @include m('careers') {
-    padding-top: rem(9);
-  }
 }
 
 .job-list {
   top: rem(62);
-  left: rem(20);
+  left: rem(25);
   @extend %absolute;
   @extend %overflow-y-scroll;
   @extend %acumin-pro-cond-regular;
-  @include boxSize(rem(270), rem(230));
+  @include boxSize(rem(272), rem(260));
+  padding-right: rem(10);
+  margin-bottom: 0;
 
   a {
-    color: $default;
-    cursor: default;
-    
+    color: $profile-name-shadow;
+
     @include linkState () {
-      color: $default;
+      color: $profile-name-shadow;
     }
     @extend %text-capitalize;
   }
 }
 
 .map-title {
-  margin: rem(57) 0 rem(20) rem(178);
+  margin: rem(37) 0 rem(26) rem(178);
   @extend %overflow-hidden;
 }
 
@@ -109,12 +118,24 @@
   fill: $map-active;
 }
 
+text {
+  fill: $map-active;
+  text-transform: uppercase;
+  font-family: 'BrandonGrotesque-Bold';
+  font-size: rem(9);
+  font-weight: normal;
+}
+
+text.active {
+  fill: $white;
+}
+
 .data-map-hidden {
   display: none;
 }
 
 .asterisk-copy-home {
-  margin-top: rem(365);
+  margin-top: rem(372);
   font-size: rem(15);
   @extend %acumin-pro-cond-regular;
   @extend %text-center;

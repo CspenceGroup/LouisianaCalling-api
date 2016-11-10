@@ -10,22 +10,23 @@ $(document).on('turbolinks:load', function(){
   /**
    * Related Careers sorting tabs
    */
-  $('#sortInterests').on('click', function() {
-    $(this)
-      .closest('.related-careers-container')
-      .removeClass('career-skill-active')
-      .addClass('career-interest-active');
-    $(".related-item__name").dotdotdot({});
-  });
+  // $('#sortInterests').on('click', function() {
+  //   $(this)
+  //     .closest('.related-careers-container')
+  //     .removeClass('career-skill-active')
+  //     .addClass('career-interest-active');
+  //   $(".related-item__name").dotdotdot({});
+  // });
 
-  $('#sortSkills').on('click', function() {
-    $(this)
-      .closest('.related-careers-container')
-      .removeClass('career-interest-active')
-      .addClass('career-skill-active');
-    $(".related-item__name").dotdotdot({});
-  });
+  // $('#sortSkills').on('click', function() {
+  //   $(this)
+  //     .closest('.related-careers-container')
+  //     .removeClass('career-interest-active')
+  //     .addClass('career-skill-active');
+  //   $(".related-item__name").dotdotdot({});
+  // });
 
+  // setSalaryRange();
   /**
    * Search nearby programs from career details page
    */
@@ -35,17 +36,30 @@ $(document).on('turbolinks:load', function(){
     var target = e.target,
         careerName = convertToUrl(target[0].value),
         region = convertToUrl(target[1].value),
-        url;
+        url,
+        searchGroup = $('.find-programs');
 
-    if (careerName != '' || !careerName) {
-      if (careerName && region) {
-
-        url = '/programs?title=' + careerName + '&region=' + region;
-        window.location = url;
-      } else {
-
-        return false;
-      }
+    if(!careerName && !region) {
+      searchGroup
+        .addClass('error-search-group')
+        .removeClass('error-search-region');
+    }
+    else if(!careerName) {
+      searchGroup
+        .addClass('error-search-career')
+        .removeClass('error-search-group error-search-region');
+    }
+    else if(!region) {
+      searchGroup
+        .addClass('error-search-region')
+        .removeClass('error-search-group error-search-career');
+    }
+    else {
+      searchGroup
+        .addClass('error-search')
+        .removeClass('error-search-group error-search-career error-search-region');
+      url = '/education?title=' + careerName + '&region=' + region;
+      window.location = url;
     }
 
   });
@@ -59,9 +73,6 @@ $(document).on('turbolinks:load', function(){
   $("#programAutocompleteCareers").autocomplete({
     source: availableProgramCareer
   });
-
-  // Truncate name careers for map in career landing
-  $(".career-title--pull-left").dotdotdot({});
 
   /****************************************
    *            CAREER LANDING            *
@@ -84,19 +95,64 @@ $(document).on('turbolinks:load', function(){
       .closest('.careers-result__container')
       .removeClass('career-list-view-active')
       .addClass('career-grid-view-active');
+
+    // $(".related-item__name").dotdotdot({});
   });
 
-  $("#slider-range").slider({
-    range: true,
-    min: 15000,
-    max: 187000,
-    values: [15000, 80000],
-    slide: function( event, ui ) {
-      $("#salary").val("$" + ui.values[0].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + ui.values[1].toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-    }
-  });
+  var store_salary = $("#store-salary").val(),
+    salary_values;
 
-  $("#salary").val( "$" + $("#slider-range").slider("values", 0).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + " - $" + $("#slider-range").slider("values", 1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+  if (store_salary) {
+    store_salary = store_salary.split('-');
+
+    salary_values = store_salary.map(function(item) {
+      return parseInt(item, 10);
+    });
+  } else {
+    salary_values = [15000, 80000];
+  }
+
+  // New a slider
+  if ($(".careers-filter__title").is(':visible')) {
+    $("#slider-range").html('');
+    $("#slider-range").slider({
+      range: true,
+      min: 15000,
+      max: 187000,
+      values: salary_values,
+      slide: function( event, ui ) {
+        var salary_min = ui.values[0].toString(),
+          salary_max = ui.values[1].toString(),
+          array = [];
+
+        $("#store-salary").val([salary_min, salary_max].join('-'));
+
+        salary_min = salary_min.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        salary_max = salary_max.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
+        array = ["$", salary_min, " - $", salary_max];
+
+        $("#salary").val(array.join(''));
+      },
+      create: function(event, ui) {
+        // $("#slider-range").slider( "option", "values", salary_values);
+      }
+    });
+  }
+
+
+  function setSalaryRange() {
+    var salary_min = $("#slider-range").slider("values", 0).toString(),
+      salary_max = $("#slider-range").slider("values", 1).toString(),
+      array = [];
+
+    salary_min = salary_min.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    salary_max = salary_max.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
+    array = ["$", salary_min, " - $", salary_max];
+
+    $("#salary").val(array.join(''));
+  };
 
   /*
     Get value checkbox when checked
@@ -139,6 +195,10 @@ $(document).on('turbolinks:load', function(){
       $('.indicator-loading-see-more').show();
       $('.see-more-careers').hide();
     } else {
+      // Update limit/offset default
+      $('#careerLimit').val(9);
+      $('#careerOffset').val(0);
+
       $('.indicator-loading').show();
     }
     clearTimeout(timeout);
@@ -154,9 +214,11 @@ $(document).on('turbolinks:load', function(){
           demands: [],
           salary_max: [],
           salary_min: [],
-          last_id: [],
-          title: ""
-        }
+          title: "",
+          limit: $('#careerLimit').val(),
+          offset: $('#careerOffset').val(),
+          sort: $("#career_sort_by").val()
+        };
 
       $('.square-checkbox:checked').each(function() {
         data[$(this).attr('name')].push($(this).val());
@@ -164,7 +226,6 @@ $(document).on('turbolinks:load', function(){
 
       data.salary_max.push(salary_max);
       data.salary_min.push(salary_min);
-      data.last_id.push(id);
       data.title = $('#careerAutocomplete').val();
 
       if(!data.regions.length) {
@@ -225,9 +286,15 @@ $(document).on('turbolinks:load', function(){
             $('#careersList').html(response.list);
           }
 
+          // Update limit/offset
+          $('#careerLimit').val(response.limit);
+          $('#careerOffset').val(response.offset);
+
           lazyloadImages();
 
-          $(".related-item__name").dotdotdot({});
+          // if ($('#careersGrid').is(":visible")) {
+          //   $(".related-item__name").dotdotdot({});
+          // }
 
           if (response.is_see_more) {
             $('#careers-see-more,#careers-see-more-list').show();
@@ -328,6 +395,10 @@ $(document).on('turbolinks:load', function(){
       $('.indicator-loading-see-more').show();
       $('#education-see-more-map, #education-see-more').hide();
     } else {
+      // Update limit/offset default
+      $('#educationLimit').val(3);
+      $('#educationOffset').val(0);
+
       $('.indicator-loading').show();
     }
     clearTimeout(timeout);
@@ -343,9 +414,10 @@ $(document).on('turbolinks:load', function(){
             hours: [],
             times: [],
             educations: [],
-            last_id: [],
             title: "",
-            regions: []
+            regions: [],
+            limit: $('#educationLimit').val(),
+            offset: $('#educationOffset').val()
           };
 
       $('.square-checkbox:checked').each(function() {
@@ -354,7 +426,6 @@ $(document).on('turbolinks:load', function(){
 
       data.cost_max.push(cost_max);
       data.cost_min.push(cost_min);
-      data.last_id.push(id);
       data.title = $('.program-search-input').val();
       // data.regions.push($("#programRegion").val())
 
@@ -415,13 +486,12 @@ $(document).on('turbolinks:load', function(){
             $('.indicator-loading-see-more').hide();
             $('#program-container-map').append(response.map);
             $('#program-container-list').append(response.list);
-            updateProgramsMapData(response.programs, response.ids);
+            updateProgramsMapData(response.programs);
           } else {
             // remove all of map markers
             programMapMarkers = [];
             // set map data
             programsMapData = response.programs;
-            programsMapIds = response.ids;
             // reinit map
             initMap();
             $('.indicator-loading').hide();
@@ -430,6 +500,10 @@ $(document).on('turbolinks:load', function(){
           }
 
           lazyloadImages();
+
+          // Update limit/offset
+          $('#educationLimit').val(response.limit);
+          $('#educationOffset').val(response.offset);
 
           if (response.is_see_more) {
             $('#education-see-more-map, #education-see-more').show();
@@ -473,12 +547,10 @@ $(document).on('turbolinks:load', function(){
   // Create map in program landing
   var programsMap = null;
   var programMapMarkers = [];
-  var programsMapIds = [];
 
   var programsMapData = {};
   if ($('#program-map-data').html()) {
     programsMapData = JSON.parse($('#program-map-data').html());
-    programsMapIds = JSON.parse($('#program-map-ids-data').html());
   }
 
   // refresh google map when trigger
@@ -512,24 +584,24 @@ $(document).on('turbolinks:load', function(){
       zoom: 7
     });
 
-    addMarkerToMap(programsMapData, programsMapIds);
+    addMarkerToMap(programsMapData);
   }
 
-  var updateProgramsMapData = function(programs, ids) {
+  var updateProgramsMapData = function(programs) {
     programsMapData = programsMapData.concat(programs);
-    programsMapIds = programsMapIds.concat(programs, ids);
-    addMarkerToMap(programsMapData, programsMapIds);
+    addMarkerToMap(programsMapData);
   }
 
-  var addMarkerToMap = function(programs, ids) {
+  var addMarkerToMap = function(programs) {
     if(programsMap) {
       for (var i = 0; i < programs.length; i++) {
+
         var marker = new MarkerWithLabel({
           position: new google.maps.LatLng(programs[i].lat, programs[i].lng),
           icon: 'http://louisiana-calling.s3.amazonaws.com/icons/map-icon.png',
           map: programsMap,
           title: programs[i].title,
-          labelContent: String(ids.indexOf(programs[i].id) + 1),
+          labelContent: String(i + 1),
           labelAnchor: new google.maps.Point(20, 36),
           labelClass: "labels-marker"
         });
@@ -556,17 +628,83 @@ $(document).on('turbolinks:load', function(){
   // Apply lazyload
   function lazyloadImages() {
     $("img.lazy-load").lazyload({
-      effect : "fadeIn",
-      event : "timeout"
+      load : function() {
+        $(this).removeClass('lazy-load-careers');
+      }
     });
-
-    // Trigger timeout event for lazyload
-    var timeout = setTimeout(function() {
-      $("img.lazy-load").trigger("timeout");
-    }, 200);
   }
 
   lazyloadImages();
 
-  $(".related-item__name").dotdotdot({});
+  // $(".related-item__name").dotdotdot({});
+
+  /*Collapse filter careers. Show hide icon minimize and expend*/
+  $('.careers-icon-collapse').on('click', function(event) {
+    // var expended = $(event.target).attr('aria-expanded');
+    // console.log(expended);
+    // if(!expended) {
+    //   $(event.target)
+    //     .closest('.careers-filter__head')
+    //     .removeClass('careers-icon-collapse-expend')
+    //     .addClass('careers-icon-collapse-mini');
+    // } else {
+    //   $(event.target)
+    //     .closest('.careers-filter__head')
+    //     .removeClass('careers-icon-collapse-mini')
+    //     .addClass('careers-icon-collapse-expend');
+    // }
+
+
+
+
+
+  });
+
+  /*Collapse filter careers. Show hide icon minimize and expend*/
+  $('.careers-icon-collapse-mini').on('click', function(event) {
+    var target = event.target,
+        nextElement = $(target).next();
+
+    $(target).hide();
+    $(nextElement).show();
+  });
+
+  $('.careers-icon-collapse-expend').on('click', function(event) {
+    var target = event.target,
+        prevElement = $(target).prev();
+
+    $(target).hide();
+    $(prevElement).show();
+  });
+
+  $('#career_sort_by').on('change', function(event) {
+    $('.careers-grid-details').hide();
+    $('.see-more-careers').hide();
+    getValueCheck(0);
+  });
+
+  // $('#career_sort_by').siblings('.fa-sort-by').on('click', function(event) {
+  //   $('#career_sort_by').trigger('click');
+  // });
+
+  /**
+   * Check URL and scroll page to special section without changing URL
+   * @param  {string} id    ID of the section which scroll to]
+   * @param  {string} query URL string
+   * @return {void}
+   */
+  function goToByScroll(id, query) {
+    if (window.location.href.indexOf(query) > -1) {
+
+      $('html, body').animate({scrollTop: $("#" + id).offset().top - 75}, 50);
+
+      return false;
+    }
+  }
+
+  // Scroll page to results section.
+  goToByScroll('searchCareerResults', 'careers?title=');
+  // goToByScroll('searchProgramResults', 'education?title=');
+
+  // setSalaryRange();
 });

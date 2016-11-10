@@ -49,9 +49,7 @@
     @extend %text-uppercase;
     @extend %float-left;
     padding-right: rem(16);
-
     max-width: rem(440);
-    @extend %truncate;
   }
   @include e('title-great-jobs') {
     max-width: rem(320);
@@ -61,8 +59,9 @@
   }
 
   @include e('icon') {
-    @extend %float-right;
     margin-top: rem(4);
+    @extend %overflow-hidden;
+    @extend %float-left;
 
     img {
       @extend %float-left;
@@ -214,14 +213,11 @@
   width: 49%;
 }
 
-.carousel-control--beside {
-  .i-career-next,
-  .i-career-prev {
-    top: rem(100);
-  }
-}
-
 // Override Job title in Career Landing
 .careers-job-title {
   max-width: rem(510);
+
+  a {
+    color: $white;
+  }
 }

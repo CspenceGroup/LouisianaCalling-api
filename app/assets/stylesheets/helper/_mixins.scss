@@ -91,5 +91,72 @@ $image-path: '';
 @mixin shadow ($x, $y, $z, $color) {
   -webkit-text-shadow: $x $y $z $color;
      -moz-text-shadow: $x $y $z $color;
+      -ms-text-shadow: $x $y $z $color;
+       -o-text-shadow: $x $y $z $color;
           text-shadow: $x $y $z $color;
+}
+
+/* Transform */
+@mixin transform($val) {
+  -webkit-transform: rotate($val);
+     -moz-transform: rotate($val);
+      -ms-transform: rotate($val);
+       -o-transform: rotate($val);
+          transform: rotate($val);
+}
+
+@mixin radial-gradient($color1, $color2) {
+  background: $color2; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-radial-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-radial-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+  background: radial-gradient($color1, $color2);
+}
+/* Transform */
+@mixin transform($val) {
+  -webkit-transform: rotate($val);
+     -moz-transform: rotate($val);
+      -ms-transform: rotate($val);
+       -o-transform: rotate($val);
+          transform: rotate($val);
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+     -moz-box-flex: $fg-boxflex;
+      -webkit-flex: $fg $fs $fb;
+         -moz-flex: $fg $fs $fb;
+          -ms-flex: $fg $fs $fb;
+              flex: $fg $fs $fb;
+}
+
+@mixin flex-justify-content($val) {
+  -webkit-justify-content: $val;
+     -moz-justify-content: $val;
+      -ms-justify-content: $val;
+          justify-content: $val;
+}
+
+@mixin flex-direction($val) {
+  -webkit-flex-direction: $val;
+     -moz-flex-direction: $val;
+      -ms-flex-direction: $val;
+          flex-direction: $val;
+}
+
+@mixin align-items($val) {
+  -webkit-align-items: $val;
+     -moz-align-items: $val;
+      -ms-align-items: $val;
+          align-items: $val;
 }

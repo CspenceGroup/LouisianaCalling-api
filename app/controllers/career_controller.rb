@@ -1,18 +1,29 @@
 class CareerController < ApplicationController
   include CareerHelper
-  before_filter :data_for_filter_details, only: [:index]
-  before_filter :career_titles, only: [:index, :detail]
+  before_action :data_for_filter_details, only: [:index]
+  before_action :career_titles, only: [:index, :detail]
 
   def index
-    @careers_slider = Career.first(5)
+    @jobs = {}
 
-    # Career.first(5).each do |career|
-    #   # get_image_for_career_interest is invoked from CareerHelper
-    #   # career.interests = get_image_for_career_interest(career.interests)
-    #   # get_image_for_career_skill is invoked from CareerHelper
-    #   # career.skills = get_image_for_career_skill(career.skills)
-    #   @careers_slider << career
-    # end
+    TopJob.all
+          .valid
+          .includes(:region, :career)
+          .group_by(&:region).each do |region, top_jobs|
+            # Sorting by title
+            top_jobs = top_jobs.sort_by { |top_job| top_job.career.title.downcase }
+
+            @jobs[region] = top_jobs.map do |top_job|
+              {
+                job: top_job.career.title,
+                link: career_detail_path(top_job.career)
+              }
+            end
+          end
+
+    @limit = params[:limit] || 9
+    @offset = params[:offset] || 0
+
     careers =
       if !params[:title].present? && !params[:region].present?
         Career.all.filter_by_salary(
@@ -31,17 +42,25 @@ class CareerController < ApplicationController
                          )
         careers
       end
+    @limit = @limit.to_i
+    @offset = @offset.to_i
 
-    @careers = careers.offset(0).limit(9)
+    next_offset = @offset + @limit
+    @is_see_more = careers.count > next_offset ? true : false
+
+    careers = careers.high_demand
+
+    @careers = Kaminari.paginate_array(careers).offset(@offset).limit(@limit)
+
     @title = params[:title]
     @region = params[:region]
-    @is_see_more = careers.count > 9 ? true : false
+    @offset = next_offset
   end
 
   def detail
     @career = Career.friendly.find(params[:slug])
     @list_of_careers = Career.select(:title).map(&:title).uniq
-    @list_of_regions = Region.all
+    @list_of_regions = Region.all.alphabetical
 
     return unless @career.present?
 
@@ -50,16 +69,37 @@ class CareerController < ApplicationController
 
   def filter
     careers = list_careers_by_query(params)
+    @limit = params[:limit] || 9
+    @offset = params[:offset] || 0
 
+    @limit = @limit.to_i
+    @offset = @offset.to_i
     ## seach by career title
     careers = careers.filter_by_title(params[:title]) if params[:title].present?
 
-    ## Sort by, defaut sort by ID
-    sort_by = params[:sort].present? ? params[:sort] : 'id'
-    careers = careers.order(sort_by)
+    ## Sort by
+    if params[:sort].present?
+      sort_by = params[:sort].to_i
 
-    is_see_more = careers.count > 9 ? true : false
-    careers = careers.offset(0).limit(9)
+      careers =
+        case sort_by
+        when 1 # Salary high to low
+          careers.salary_desc
+        when 2 # Salary low to high
+          careers.salary_asc
+        when 3 # Projected Growth high to low
+          careers.projected_growth_desc
+        when 4 # Projected Growth low to high
+          careers.projected_growth_asc
+        else
+          Kaminari.paginate_array(careers.high_demand)
+        end
+    end
+
+    next_offset = @limit + @offset
+    is_see_more = careers.count > next_offset ? true : false
+
+    careers = careers.offset(@offset).limit(@limit)
 
     render json: {
       careers: render_to_string(
@@ -68,7 +108,9 @@ class CareerController < ApplicationController
       list: render_to_string(
         'career/partial/_list', layout: false, locals: { careers: careers }
       ),
-      is_see_more: is_see_more
+      is_see_more: is_see_more,
+      offset: next_offset,
+      limit: @limit
     }
   end
 
@@ -108,11 +150,11 @@ class CareerController < ApplicationController
   end
 
   def data_for_filter_details
-    @list_of_regions = Region.all
-    @list_of_industries = Cluster.all
-    @list_of_educations = Education.all
-    @skills = Skill.all
-    @interests = Interest.all
+    @list_of_regions = Region.all.alphabetical
+    @list_of_industries = Cluster.all.alphabetical
+    @list_of_educations = Education.all.alphabetical
+    @skills = Skill.all.alphabetical
+    @interests = Interest.all.alphabetical
   end
 
   def career_titles

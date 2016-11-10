@@ -1,18 +1,8 @@
 .profile-owner {
   @extend %relative;
-
-  @include e('container') {
-    padding-top: rem(160);
-  }
-
-  @include e('name') {
-
-  }
+  @include boxSize(auto, rem(450));
 
   @include e('photo') {
-    z-index: -1;
-    @extend %absolute;
-    @extend %left-top-0;
     @extend %overflow-hidden;
     @include boxSize(100%, 100%);
   }
@@ -37,7 +27,7 @@
     @extend %margin-auto;
   }
   @include e('more-stories') {
-    @include background-image('profile-details/more-stories.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-SeeMoreStories.jpg');
 
     a {
       @include boxSize(rem(182), rem(185));
@@ -46,7 +36,7 @@
   }
 
   @include e('find-program') {
-    @include background-image('profile-details/find-program.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-FindPrograms.jpg');
 
     h2 {
       font-size: rem(29);
@@ -55,6 +45,7 @@
     }
 
     a {
+      margin-top: rem(86);
       @extend %relative;
       @include boxSize(rem(243), rem(164));
       @include background-image('profile-details/find-programs-btn.png');
@@ -74,7 +65,7 @@
   }
 
   @include e('call-center') {
-    @include background-image('profile-details/call-center.jpg');
+    background-image: url('https://s3.amazonaws.com/louisiana-calling/Test+1/Profile+Details/ProfileDetails-400x350-CallCenter.jpg');
 
     .want-to-talk {
       background-image: none; 
@@ -83,7 +74,8 @@
       @extend %margin-auto;
 
       @include e('link') {
-        margin-left: rem(-15);
+        right: rem(18);
+        top: rem(-11);
       }
 
       span {
@@ -94,10 +86,11 @@
 }
 
 .profile-guided-journey {
-  margin-bottom: rem(-30);
-  padding-top: rem(58);
-  @include boxSize(100%, rem(290));
+  padding-top: rem(47);
+  @include boxSize(100%, rem(280));
   @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
 
   @include e('title') {
     font-size: rem(33.16);
@@ -106,7 +99,7 @@
   }
 
   a {
-    margin-top: rem(20);
+    margin-top: rem(22);
     @extend %block;
     @extend %margin-auto;
     @include boxSize(rem(162), rem(45));
@@ -138,7 +131,18 @@
   @extend %relative;
 
   @include e('main-container') {
-    padding-top: rem(155);
+    padding-top: rem(51);
+    padding-left: 0;
+    padding-right: rem(55);
+  }
+
+  @include e('news-container') {
+    min-height: rem(517);
+    padding-top: rem(45);
+  }
+
+  @include e('feature-news') {
+    width: rem(255);
   }
 
   ul {
@@ -146,101 +150,110 @@
     margin-left: rem(15);
   }
 
-  .profile-social-sharings {
-    margin-left: rem(30);
-    @extend %no-padding-top;
-
-    .i-social {
-      margin-right: rem(25);
-    }
-  }
-
   .profile-career-details {
-    @extend %block;
-    @extend %margin-auto;
+    width: rem(659);
+    min-height: rem(55);
+    border: solid rem(1) $default;
     @extend %no-list-style;
-    @include boxSize(rem(625), rem(55));
+    @extend %no-margin-left;
+    @extend %display-flex;
+    @include align-items(stretch);
+
+    .profile-info-wrapper {
+      @extend %display-flex;
+      @include align-items(center);
+    }
 
     li {
-      border: solid rem(1) $default;
-      @extend %float-left;
-      @extend %text-center;
-      @include boxSize(rem(208), 100%);
+      width: 100%;
+      padding: 0 rem(25);
+      text-align: initial;
+      border-right: solid rem(1) $default;
+      @extend %display-flex;
+      @include flex-justify-content(center);
 
-      &:nth-child(2),
-      &:nth-child(3) {
-        @extend %no-border-left;
-      }
-
-      p {
-        padding-top: rem(17);
-        margin-left: rem(9);
-        max-width: rem(160);
-        @extend %truncate;
-        @extend %float-left;
-        @extend %text-capitalize;
-        @extend %acumin-pro-cond-regular;
-      }
-
-      img {
-        @extend %float-left;
+      &:last-child {
+        border-right: none;
       }
     }
-  }
-}
 
-.personal-profile-title,
-.profile-social-sharings {
-  @extend %float-left;
+    p {
+      font-size: rem(14.7);
+      margin-bottom: 0;
+      padding: rem(10) 0;
+      line-height: rem(17);
+      font-style: normal;
+      @include flex();
+      @extend %text-uppercase;
+      @extend %brandon-grotesque-bold;
+      @extend %text-left;
+    }
+  }
+
+  @include e('main-content') {
+    width: rem(660);
+    padding-right: 0;
+    @extend %float-right;
+  }
 }
 
 .personal-profile-title {
+  font-size: rem(33.6);
   width: auto;
 }
 
 .profile-details-info {
+  font-size: rem(16.67);
   @extend %clear-both;
 }
 
 .personal-profile-career {
-  width: 64.75%;
-  padding-top: rem(52);
-  @extend %absolute;
-  @extend %left-top-0;
+  padding: rem(8) 0 rem(33);
+  @extend %overflow-hidden; 
+  @extend %clear-both;
 }
 
 .profile-career-content {
   @extend %margin-auto;
+}
+
+.btn-profile-video {
+  top: rem(180);
+  left: 48.5%;
+  margin-top: 0;
+  @extend %absolute;
+}
+
+.profile-video-desc {
+  width: 100%;
+  padding-left: rem(10);
+  font-size: rem(18.75);
+  top: rem(248);
+  @extend %absolute;
+  @extend %text-capitalize;
+  @extend %acumin-pro-cond-bi;
+  @include shadow(0, 0, rem(50), $black);
+}
+
+.i-profile-info {
+  margin-right: rem(12);
+  @extend %float-left;
+}
+
+.i-profile-pause {
+  transform: initial;
+}
+
+.profile-item-container {
   @extend %inline-block;
-  @extend %overflow-hidden;
+  @extend %margin-auto;
 }
 
-.i-profile-training {
-  margin-top: rem(14);
-  @include boxSize(rem(21), rem(25));
-}
-
-.i-profile-map {
-  margin-top: rem(17);
-  @include boxSize(rem(21), rem(20));
-}
-
-.i-profile-career {
-  margin-top: rem(13);
-  @include boxSize(rem(21), rem(26));
-}
-
-.i-fb {
-  @include boxSize(rem(8), rem(19));
-  @include background-image('profile-details/i-fb.png');
-}
-
-.i-tweet {
-  @include boxSize(rem(22), rem(17));
-  @include background-image('profile-details/i-twitter.png');
-}
-
-.i-email {
-  @include boxSize(rem(24), rem(16));
-  @include background-image('profile-details/i-email.png');
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .profile-career-details {
+    p {
+      width: rem(123);
+      flex-basis: auto !important;
+    }
+  }
 }

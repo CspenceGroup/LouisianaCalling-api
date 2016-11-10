@@ -14,10 +14,16 @@
 .carousel-title {
   @extend %absolute;
   top: rem(58);
+
+   p {
+    font-size: rem(18.75);
+    padding-top: rem(6);
+    @extend %acumin-pro-cond-bi;
+   }
 }
 
 .carousel-text {
-  padding-top: rem(20);
+  padding-top: rem(13);
 }
 
 .carousel-dots-list {
@@ -35,7 +41,7 @@
   border-color: $red-bg;
 }
 
-.btn-play-video:focus {
+.btn-play:focus {
   outline: none;
 }
 
@@ -67,8 +73,8 @@
   }
 }
 
-.btn-play-video {
-  margin-top: rem(160);
+.btn-play {
+  margin-top: rem(182);
   @extend %background-transparent;
   background-size: rem(56), rem(56);
   @extend %no-border;
@@ -98,30 +104,40 @@
   }
 
   @include e('desc') {
-    width: rem(895);
+    max-width: rem(895);
     margin: rem(60) auto 0 auto;
     @extend %overflow-hidden;
+    @extend %relative;
   }
 
   @include e('text') {
     @extend %float-left;
     h2 {
       @extend %i-owan-old-style;
-      font-size: rem(33);
+      font-size: rem(29.4);
     }
 
     p {
-      font-size: rem(18);
+      font-size: rem(16.67);
       @extend %acumin-pro-cond;
       padding-top: rem(27);
     }
+  }
+
+  @include e('close') {
+    font-size: rem(16.67);
+    @extend %acumin-pro-cond;
+    padding-bottom: rem(31);
+    @extend %float-right;
+    @extend %cursor-pointer;
   }
 }
 
 .btn-tell-more {
   @include boxSize(rem(158), rem(37));
-  margin-top: rem(75);
   @extend %float-right;
+  @extend %absolute;
+  @extend %right-top-0;
 }
 
 // Style button play/pause video
@@ -132,6 +148,8 @@
 
 .video-container {
   @extend %relative;
+  max-width: rem(1200);
+  @extend %margin-auto;
 }
 
 .icon-pause {
@@ -145,7 +163,6 @@
   @extend %right-0;
   @extend %top-0;
   margin: auto;
-  transform: translate(-50%, -50%);
 }
 
 .button-pause {
@@ -159,9 +176,9 @@
 }
 
 .hero-banner-home {
-  width: 100%;
-  top: rem(65);
-  @extend %left-0;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(7%);
   @extend %absolute;
   @extend %text-center;
 
@@ -178,5 +195,13 @@
     line-height: rem(22);
     @extend %acumin-pro-cond;
     @extend %font-style-italic;
+  }
+}
+
+
+@media screen and (max-width: 980px){
+  .modal-video__desc {
+    margin: rem(60) rem(30) 0 rem(30);
+    min-width: rem(400);
   }
 }

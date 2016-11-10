@@ -48,7 +48,9 @@ module CareerHelper
 
   # Get regions info by career
   def get_regions_by_career(career_id)
-    career_regions = CareerRegion.where(career_id: career_id)
+    career_regions =
+      CareerRegion.includes(:region, :career_region_educations, :educations)
+                  .where(career_id: career_id)
     regions = []
 
     if career_regions.present?
@@ -56,7 +58,8 @@ module CareerHelper
         [career_region.region, {
           salary_min: career_region.salary_min,
           salary_max: career_region.salary_max,
-          educations: career_region.educations
+          educations: career_region.educations,
+          demand: career_region.demand || 0
         }]
       end
     end

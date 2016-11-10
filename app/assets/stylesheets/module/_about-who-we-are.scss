@@ -40,11 +40,17 @@
       @extend %relative;
       @extend %background-position-center;
       @include background-image('tab-active.png');
+
+      span {
+        color: $white;
+      }
     }
   }
 
   @include e('desc') {
+    padding-top: rem(135);
     @include background-image('profile/profile-decs-bg.png');
+    @extend %background-repeat-x;
   }
 
   @include e('content') {
@@ -56,26 +62,23 @@
     }
   }
 
-  @include e('desc') {
-    padding-top: rem(135);
-  }
-
   @include e('container-who') {
     width: rem(667);
     @extend %margin-auto;
-    padding: rem(60) 0 rem(62) 0;
+    padding: rem(57) 0 rem(85);
     color: $default;
 
     h2 {
       font-size: rem(29);
       @extend %i-owan-old-style;
       padding-bottom: rem(20);
+      line-height: rem(37);
     }
 
     p {
       font-size: rem(16.7);
       @extend %acumin-pro-cond-regular;
-      padding-top: rem(18);
+      padding-top: rem(15);
     }
   }
 }
@@ -90,7 +93,7 @@
   padding-top: 0;
 }
 
-.banner-our-comminity {
+.banner-our-community {
   @include background-image('about/about-community.jpg');
 }
 

@@ -7,8 +7,9 @@
 #  career_id     :integer
 #  salary_min    :integer
 #  salary_max    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  demand        :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 #
 class CareerRegion < ActiveRecord::Base
@@ -20,28 +21,35 @@ class CareerRegion < ActiveRecord::Base
 
   validates_presence_of :region, :career
 
+  before_destroy :delete_educations
+
   def self.import_from_csv(csv)
     CareerRegion.transaction do
-      CareerRegion.delete_all
 
       csv.each do |row|
-        raise 'Wrong file' if row[5].present?
+        career = Career.find_career(row[0].strip)
+        region = Region.find_region(row[1].strip)
 
-        career_region = CareerRegion.new
+        params = {
+          salary_min: row[2].strip,
+          salary_max: row[3].strip,
+          demand: row[5].strip
+        }
 
-        career = Career.find_by_title(row[0].strip)
-        next unless career.present?
-        career_region[:career_id] = career.id
+        params[:career_id] = career.id if career.present?
+        params[:region_id] = region.id if region.present?
 
-        region = Region.find_by_name(row[1].strip)
-        next unless region.present?
-        career_region[:region_id] = region.id
+        career_region = CareerRegion.where(
+          career_id: career.id,
+          region_id: region.id
+        ).first
 
-        career_region[:salary_min] = row[2].strip
-        career_region[:salary_max] = row[3].strip
+        if career_region.present?
+          career_region.update_attributes(params)
+        else
+          career_region = CareerRegion.create(params)
+        end
 
-        career_region.save!
-        puts 'education', row[4]
         if row[4].present?
           create_career_region_educations(row[4].split(',').map(&:strip), career_region)
         end
@@ -51,17 +59,23 @@ class CareerRegion < ActiveRecord::Base
 
   def self.create_career_region_educations(educations, career_region)
     educations.each do |education_name|
-      education = Education.find_by_name(education_name)
+      education = Education.find_education(education_name)
 
-      # Adding new education
-      unless education.present?
-        education = Education.create(name: education_name)
-      end
+      next if CareerRegionEducation.exists?(
+        career_region_id: career_region.id,
+        education_id: education.id
+      )
 
       CareerRegionEducation.create(
         career_region_id: career_region.id,
         education_id: education.id
       )
     end
+  end
+
+  private
+
+  def delete_educations
+    CareerRegionEducation.where(career_region_id: id).delete_all
   end
 end

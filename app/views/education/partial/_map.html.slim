@@ -1,54 +1,36 @@
 - if programs.length > 0
-  - programs.each do |program|
+  - offset = offset || 0
+  - programs.each_with_index do |program, idx|
       .edu-program-info.edu-program-info__map-item id=program.id
         .program-list__item.program-item-map
           .program-item-map__container
             .program-list__item-header.program-item-map__header.jobs-head
-              a href="/programs/#{program.slug}"
+              a href="/education/#{program.slug}"
                 .jobs-head__name
-                  p.jobs-head__title.jobs-head__title-great-jobs.job-title-aside title="#{program.title}"
-                    / = "#{ids.index(program.id) + 1}. #{program.title}"
-              .jobs-head__content
-                //- .edu-scholarship.edu-scholarship--view-map
-                //-   p
-                //-     = program.financial_help
-                .edu-region
-                  .icon.i-edu-region
-                    = image_tag asset_path("region.png"), :alt => 'icon region'
-                  p
-                    = program.region
-                .edu-salary
-                  .icon.i-edu-salary
-                    = image_tag asset_path("program-landing/dollar-sign.png"), :alt => 'icon dollar'
-                  .edu-salary-range
-                    = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
+                  p title="#{program.title}"
+                    = "#{offset + idx + 1}. #{program.title}"
             .great-jobs__list-icon.program-list__item-footer
               ul.row.edu-detail-row.program-list__item-row
-                li.col-xs-7.col-md-7.program-item-map__footer-item
-                  .icon.i-career
-                    = image_tag asset_path("program-landing/icon-career.png"), :alt => 'icon industry'
-                  .career-industry title="#{program.careers if program.careers.present?}"
+                li.col-xs-12.col-md-12.program-item-map__footer-item
+                  i.icon.edu-icon.i-career-blue
+                  .career-industry-map title="#{program.careers if program.careers.present?}"
                     - program.careers.each do |career|
                         p
                           = career
-                li.col-xs-5.col-md-5.program-item-map__footer-item
-                  .icon.i-calendar
-                    = image_tag asset_path("program-landing/calendar.png"), :alt => 'icon calendar'
+                li.col-xs-8.col-md-8.program-item-map__footer-item
+                  i.icon.edu-icon.i-salary.i-salary-blue
                   p
-                    = program.duration
-                li.col-xs-7.col-md-7.program-item-map__footer-item
-                  .icon.i-education
-                    = image_tag asset_path("icon-education.png"), :alt => "icon education"
-                  p title=program.education
-                    = program.education
-                li.col-xs-5.col-md-5.program-item-map__footer-item
-                  .icon.i-clock
-                    = image_tag asset_path("program-landing/clock.png"), :alt => 'icon clock'
+                    = "$#{number_with_delimiter(program.tuition_min, :delimiter => ',')} - $#{number_with_delimiter(program.tuition_max, :delimiter => ',')}"
+                li.col-xs-4.col-md-4.program-item-map__footer-item
+                  i.icon.edu-icon.i-clock.i-clock-blue
                   p
                     = program.hours_per_weeks
-                li.col-xs-5.col-xs-offset-5.col-md-5.col-md-offset-5.program-item-map__footer-item
-                  .icon.i-day
-                    = image_tag asset_path("program-landing/day_night.png"), :alt => 'icon day night'
+                li.col-xs-8.col-md-8.program-item-map__footer-item
+                  i.icon.edu-icon.i-calendar.i-calendar-blue
+                  p
+                    = program.duration
+                li.col-xs-4.col-md-4.col-md-offset-5.program-item-map__footer-item
+                  i.icon.edu-icon.i-day.i-day-blue
                   p
                     = program.time_of_day
 - else

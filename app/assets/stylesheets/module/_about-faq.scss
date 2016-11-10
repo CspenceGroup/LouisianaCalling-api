@@ -1,6 +1,6 @@
 .about-faq-container {
   width: rem(1060);
-  padding-top: rem(41);
+  padding: rem(41) 0 rem(23);
   @extend %margin-auto;
 }
 
@@ -45,10 +45,10 @@
   }
 
   @include e('topics') {
-    padding: rem(32) rem(5);
-    margin-top: rem(25);
-    color: $faq-topic;
-    background-color: $faq-topic-bg;
+    padding: rem(32) rem(5) rem(20) 0;
+    margin-top: rem(15);
+    color: $profile-header;
+    background-color: $profile-name-shadow;
   }
 
   @include e('topics-title') {
@@ -66,40 +66,50 @@
     }
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
   @include e('items') {
-    margin-top: rem(55);
+    margin-top: rem(40);
+
+    a {
+      color: $default;
+      @extend %text-underline;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+
+    p {
+      line-height: rem(20);
+      margin-top: rem(20);
+    }
   }
 
   @include e('item') {
     border-bottom: solid rem(1) $default;
-    padding-bottom: rem(17);
-    margin-top: rem(20);
-
-    h3 {
-      margin-bottom: rem(17);
-    }
+    padding-bottom: rem(23);
+    margin-top: rem(27);
   }
 
   @include e('contact') {
     color: $default;
-    margin: rem(35) 0 rem(60) 0;
-    @extend %text-center; 
+    margin: rem(70) 0 rem(60) 0;
+    @extend %text-center;
   }
 }
 
 .faq-search {
-  width: rem(825);
-  margin-top: rem(25);
+  width: rem(823);
+  margin-top: rem(28);
   @extend %margin-auto;
 
   .faq-input {
     width: rem(610);
     font-size: rem(18.86);
-    text-indent: rem(-3);
+    padding-left: rem(6);
   }
 
   .btn-search {
@@ -135,7 +145,7 @@
     @include boxSize(rem(330), rem(32));
 
     a {
-      color: $faq-topic;
+      color: $profile-header;
     }
   }
 
@@ -169,11 +179,11 @@
   @include e('title') {
     font-size: rem(20.83);
     margin-left: rem(22);
-    color: $btn-see-more-bg;
+    color: $map-active;
   }
 
   @include e('items') {
-    padding-top: rem(18);
+    padding-top: rem(13);
     li {
       padding: rem(13) 0 0 rem(22);
       @include boxSize(rem(330), rem(55));
@@ -195,29 +205,30 @@
   h2 {
     @extend %float-left;
   }
+
+  .faq-back {
+    color: $map-active;
+    @extend %float-right;
+    @extend %brandon-grotesque-bold;
+
+    @include linkState () {
+      color: $map-active;
+    }
+  }
 }
 
 .faq-txt {
-  color: $faq-topic;
+  color: $profile-header;
   font-size: rem(20.83);
   @extend %text-uppercase;
   @extend %brandon-grotesque;
 }
 
-.faq-back {
-  color: $btn-see-more-bg;
-  @extend %float-right;
-  @extend %font-weight-bold;
-
-  @include linkState () {
-    color: $btn-see-more-bg;
-  }
-}
-
 .faq-search-term {
-  color: $faq-topic;
-  padding-left: rem(117);
-  @include boxSize(rem(1200), rem(955));
+  color: $profile-header;
+  width: rem(825);
+  padding-top: rem(4);
+  @extend %margin-auto;
 
   .search-result-title {
     font-size: rem(20.83);
@@ -242,10 +253,49 @@
 }
 
 .faq-result-item {
-  margin-top: rem(38);
+  margin-top: rem(41);
+  display: none;
 
   h4 {
     font-size: rem(16.67);
   }
+
+  a {
+    color: $profile-header;
+
+    @include linkState() {
+      color: $profile-header;
+    }
+  }
+
+  p {
+    margin-top: rem(3);
+    line-height: rem(22);
+  }
+
+  &.active {
+    display: block !important;
+  }
 }
 
+
+.faq-see-more {
+  @include boxSize(rem(108), rem(32));
+  @extend %cursor-pointer;
+  margin: rem(20) auto 0 auto;
+}
+
+.alert-danger-faq {
+  width: rem(823);
+  display: none;
+}
+
+.about-faq__search.about-faq-error {
+  .alert-danger-faq {
+    display: block;
+  }
+}
+
+.search-group-faq {
+  width: rem(825);
+}

@@ -24,25 +24,19 @@
   @include backgroundSprite(24, 20, -37, -1);
 }
 
-.i-options { 
-  @extend %vertical-top;
-  @extend %absolute;
-  @extend %left-top-0;
-  @include background-image('career-options.png');
-}
-
-.i-salary {
-  @include backgroundSprite(38, 27, 0, 0);
+.i-salary-career {
+  @include boxSize(rem(39), rem(26));
+  @include background-image('career-info/career-salary.png');
 }
 
 .i-certificate {
   margin-left: rem(7);
-  @include backgroundSprite(23, 28, -8, -48);
+  @include boxSize(rem(32), rem(28));
+  @include background-image('career-info/icon-edu-white.png');
 }
 
-.i-vote {
-  // @extend %absolute;
-  @include boxSize(rem(16), rem(19));
+.i-red-flame {
+  @include boxSize(rem(16), rem(20));
   @include background-image('careers/fire-icon.png');
 }
 
@@ -51,22 +45,146 @@
   @include boxSize(rem(22), rem(23));
 }
 
-.i-industry {
-  @include boxSize(rem(21), rem(26));
+.i-salary-blue {
+  @include background-image('program-landing/dollar-sign.png');
+}
+
+.i-salary-white {
+  @include background-image('education-details/dollar-sign.png');
 }
 
 .i-calendar {
   @include boxSize(rem(22), rem(22));
 }
 
-.i-clock {
+.i-calendar-blue {
   @include boxSize(rem(23), rem(23));
+  @include background-image('program-landing/calendar.png');
 }
 
-.i-edu-map {
+.i-calendar-white {
+  @include boxSize(rem(37), rem(22));
+  @include background-image('education-details/icon-calendar.png');
+}
+
+.i-clock {
+  @include boxSize(rem(24), rem(23));
+}
+
+.i-salary {
+  @include boxSize(rem(22), rem(23));
+  margin-top: 0;
+}
+
+.i-clock-blue {
+  @include background-image('program-landing/clock.png');
+}
+
+.i-clock-white {
+  @include background-image('education-details/icon-clock.png');
+  @include boxSize(rem(39), rem(24));
+
+}
+
+.i-map-blue {
   @include boxSize(rem(21), rem(20));
+  @include background-image('region.png');
 }
 
-.i-edu-certificate {
-  @include boxSize(rem(21), rem(26));
+.i-map-white {
+  @include boxSize(rem(25), rem(22));
+  @include background-image('careers/icon-map.png');
+}
+
+.i-white-flame {
+  margin-right: rem(5);
+  @include boxSize(rem(16), rem(21));
+  @include background-image('career-info/career-fire-icon.png');
+}
+
+.i-blue-flame {
+  margin-right: rem(5);
+  @include boxSize(rem(16), rem(20));
+  @include background-image('career-info/blue-fire.png');
+}
+
+.i-career-blue {
+  @include boxSize(rem(22), rem(27));
+  @include background-image('program-landing/icon-career.png');
+}
+
+.i-career-white {
+  @include boxSize(rem(25), rem(26));
+  @include background-image('program-landing/icon-career.png');
+}
+
+.i-education {
+  @include boxSize(rem(21), rem(25));
+}
+
+.i-education-blue {
+  @include background-image('icon-education.png');
+}
+
+.i-education-white {
+  @include background-image('careers/icon-training.png');
+}
+
+.i-day {
+  @include boxSize(rem(26), rem(25));
+}
+
+.i-day-blue {
+  @include background-image('program-landing/day_night.png');
+}
+
+.i-day-white {
+  @include background-image('education-details/icon-day-night.png');
+}
+
+.edu-icon {
+  margin-right: rem(13);
+  @extend %float-left;
+}
+
+.i-profile-training {
+  @include boxSize(rem(24), rem(31));
+  @include background-image('career-info/career-edu.png');
+}
+
+.i-profile-map {
+  @include boxSize(rem(33), rem(33));
+  @include background-image('career-info/career-map.png');
+}
+
+.i-profile-career {
+  @include boxSize(rem(23), rem(30));
+  @include background-image('career-info/career-industry.png');
+}
+
+.i-view-list {
+  @include background-image('list-view.png');
+}
+
+.i-view-grid {
+  @include background-image('grid-view.png');
+}
+
+.i-guided-salary {
+  background-size: rem(27) rem(19);
+  @extend %float-left;
+  @include boxSize(rem(27), rem(19));
+  @include background-image('career-info/blue-career-salary.png');
+}
+
+.icon-address {
+  margin: 0 rem(14) 0 rem(2);
+  @include boxSize(rem(14), rem(20));
+  @include background-image('about-address.png');
+}
+
+.icon-email {
+  margin-right: rem(11);
+  @include boxSize(rem(20), rem(13));
+  @include background-image('icon-about-email.png');
 }

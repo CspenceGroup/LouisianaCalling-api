@@ -1,0 +1,258 @@
+.career-shortcut {
+  padding: rem(33) 0 rem(33) rem(77);
+  min-width: rem(1200);
+  color: $profile-name-shadow;
+  @extend %relative;
+
+  a {
+    color: $profile-name-shadow;
+
+    @include linkState() {
+      color: $profile-name-shadow;
+    }
+  }
+
+  @include e('container') {
+    padding: rem(20) rem(26);
+    border: solid rem(2) $white;
+    @extend %margin-auto;
+    @include boxSize(rem(806), rem(235));
+  }
+
+  @include e('label') {
+    color: $white;
+    font-size: rem(16.67);
+    background-color: $red-bg;
+    padding: rem(10) rem(25) 0 0;
+    @extend %text-right;
+    @extend %inline-block;
+    @extend %absolute;
+    @extend %left-top-0;
+    @extend %i-owan-old-style;
+    @extend %font-style-italic;
+    @extend %text-capitalize;
+    @include boxSize(rem(200), rem(45));
+  }
+
+  @include e('head') {
+    padding-bottom: rem(18);
+    border-bottom: solid rem(2) $white;
+    @extend %overflow-hidden;
+    @extend %display-flex;
+
+    @include m('pull-left') {
+      width: rem(455);
+      min-height: rem(93);
+      @extend %display-flex;
+    }
+
+    @include m('pull-right') {
+      margin-left: auto;
+      align-self: center;
+    }
+  }
+
+  @include e('btn-more') {
+    @extend %block;
+    @extend %float-right;
+    @include boxSize(rem(122), rem(26));
+  }
+
+  @include e('salary') {
+    margin-top: rem(62);
+
+    p {
+      font-size: rem(20.83);
+      margin-left: rem(6);
+      @extend %float-left;
+      @extend %font-weight-bold;
+      @extend %acumin-pro-cond;
+    }
+  }
+
+  @include e('body') {
+    padding-top: rem(22);
+    @extend %display-flex;
+    @extend %overflow-hidden;
+    @include align-items(center);
+
+    > p {
+      margin-right: rem(30);
+      font-size: rem(18.75);
+      @extend %float-left;
+      @extend %font-style-italic;
+      @extend %i-owan-old-style;
+    }
+  }
+}
+
+.career-flames {
+  margin-bottom: rem(10);
+  @extend %overflow-hidden;
+}
+
+.career-info-title {
+  color: $profile-name-shadow;
+  font-size: rem(22.92);
+  line-height: rem(28);
+  @extend %text-uppercase;
+  @extend %brandon-grotesque;
+}
+
+.i-career-salary {
+  @extend %float-left;
+  @include boxSize(rem(39), rem(26));
+  @include background-image('career-info/career-salary.png');
+}
+
+.career-head-left {
+  align-self: flex-end;
+}
+
+.career-interests {
+  height: auto;
+  width: rem(655);
+  @extend %display-flex;
+  @include align-items(center);
+
+  li {
+    margin-left: rem(8);
+    @extend %display-flex;
+    @include boxSize(100%, 100%);
+    @include align-items(center);
+    @include flex-justify-content(flex-start);
+
+    &:first-child {
+      @extend %no-margin-left;
+    }
+
+    p {
+      font-size: rem(12.6);
+      max-width: 68%;
+      margin-left: rem(15);
+      line-height: rem(16);
+      @extend %text-uppercase;
+      @extend %brandon-grotesque-bold;
+    }
+  }
+}
+
+.career-interest-icon {
+  @extend %float-left;
+  @extend %overflow-hidden;
+  @include boxSize(auto, rem(50));
+
+  img {
+    @include boxSize(auto, 100%);
+  }
+}
+
+.profile-story-career {
+  width: 100%;
+  min-height: rem(302);
+  @include background-image('careers/great-job-bg.jpg');
+}
+
+.career-slide-label {
+  width: rem(300);
+}
+
+.career-carousels {
+  min-height: rem(390);
+  padding-top: rem(72);
+  margin-bottom: rem(30);
+  @extend %relative;
+  @include background-image('filter-bg.png');
+  background-position: bottom;
+  @extend %background-repeat-x;
+
+  @include e('item') {
+    color: $default;
+    padding-top: 0;
+
+    a {
+      color: $default;
+
+      @include linkState() {
+        color: $default;
+      }
+    }
+  }
+}
+
+.career-carousel-container,
+.career-carousel-head {
+  border-color: $default;
+}
+
+.i-career-salary-carousel {
+  @include background-image('career-info/blue-career-salary.png');
+}
+
+.career-carousel-content {
+  min-height: rem(282);
+  padding-bottom: rem(35);
+  @extend %relative;
+}
+
+.career-carousel-dots {
+  @extend %relative;
+  @extend %bottom-0;
+  @extend %text-center;
+
+  .carousel-dots {
+    background: $default;
+    border-color: $default;
+    @extend %inline-block;
+  }
+
+  .carousel-dots.active {
+    background: $red-bg;
+    border-color: $red-bg;
+  }
+}
+
+.career-carousel-control {
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .career-arrow {
+    top: rem(110);
+  }
+
+  .i-career-prev {
+    @include background-image('career-info/btn-arrow-left.png');
+  }
+
+  .i-career-next {
+    @include background-image('career-info/btn-arrow-right.png');
+  }
+}
+
+.home-carousel-item {
+  padding-left: 0;
+}
+
+.no-interest-container {
+  @extend %display-flex;
+  @extend %no-padding-right;
+  @include flex-direction(row);
+  @include align-items(center);
+}
+
+.no-interest-head {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.no-interest-pull-right {
+  width: rem(292);
+
+  .i-career-salary,
+  p {
+    @extend %float-right;
+  }
+}

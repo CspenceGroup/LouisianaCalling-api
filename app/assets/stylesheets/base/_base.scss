@@ -47,3 +47,14 @@ a {
 video {
   @extend %no-outline;
 }
+
+label {
+  margin-bottom: 0;
+  @extend %cursor-pointer;
+}
+
+path,
+select,
+text {
+  @extend %cursor-pointer;
+}

@@ -33,7 +33,27 @@
   @include background-image('careers/banner-careers-landing.jpg');
 }
 
-.profile-banner__container {
-  padding-top: rem(92);
-  @include background-image('profile/banner-profile.jpg');
+.profile-banner {
+  @include e('container') {
+    padding-top: rem(92);
+    @extend %relative;
+    @include background-image('profile/banner-profile.jpg');
+    @extend %relative;
+  }
+
+  @include e('content') {
+    width: rem(725);
+    z-index: 10;
+    top: rem(51);
+    @extend %relative;
+    @extend %margin-auto;
+  }
+
+  @include m('gradient') {
+    z-index: 2;
+    @extend %absolute;
+    @extend %left-top-0;
+    @include boxSize(100%, 100%);
+    @include radial-gradient(rgba(0, 0, 0, 0.55), transparent);
+  }
 }

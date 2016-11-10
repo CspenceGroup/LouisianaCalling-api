@@ -1,46 +1,62 @@
 .career-map {
-  height: rem(645);
+  min-height: rem(560);
+  height: auto;
+  padding: rem(30) 0 rem(35) 0;
 
   @include e('details') {
+    margin: rem(24) rem(146) 0 0;
     @extend %relative;
-    @include boxSize(rem(346), rem(350));
-    @include background-image('career-options-border.png');
+    @include boxSize(rem(310), rem(340));
+    @include background-image('top-jobs-border.png');
   }
 
   @include e('title') {
-    margin-top: rem(52);
+    margin-left: rem(182);
+    margin-top: 0;
     @extend %text-left;
   }
 }
 
 .career-options {
   top: rem(85);
-  left: rem(58);
+  left: rem(42);
   font-size: rem(20.8);
   overflow: visible;
 
   li {
     margin-bottom: rem(20);
     @extend %relative;
+    @extend %overflow-hidden;
   }
 
   @include e('text') {
-    margin-left: rem(60);
     @extend %block;
-    max-height: rem(189);
+    @extend %float-left;
+    width: rem(185);
   }
 }
 
 .career-title {
   line-height: rem(42);
+  color: $profile-name-shadow;
+  @include shadow(rem(4), rem(6), 0, $profile-header);
+
 
   @include m('pull-left') {
     margin-left: rem(273);
     max-width: rem(590);
-    max-height: rem(126);
   }
 
   @include m('pull-right') {
     margin-left: rem(342);
   }
+}
+
+.career-certificate {
+  min-height: rem(50);
+}
+
+.career-map-flames {
+  margin-top: rem(20);
+  padding-left: rem(10);
 }

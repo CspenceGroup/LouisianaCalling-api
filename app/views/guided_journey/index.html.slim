@@ -1,0 +1,42 @@
+.container-fluid
+  = render 'navigation/index'
+  .main-content.main-guided-journey
+    .main-guided-journey__heading.policy-heading
+      h2.main-title Let's Take a Look At Your Options.
+      p Welcome to our Guided Journey. Here you'll find jobs and training for you.
+    .main-guided-journey__steps
+      form.guided-form
+        .guided-form__main-container
+          ul.guided-form__steps#form-progressbar
+            h2.guided-form__title Interests
+            fieldset
+              = render partial: "guided_journey/partial/interest", locals: { interests: @interests }
+            h2.guided-form__title Region
+            fieldset
+              = render partial: "guided_journey/partial/region"
+            h2.guided-form__title Education
+            fieldset
+              = render partial: "guided_journey/partial/education", locals: { educations: @educations }
+            h2.guided-form__title Results
+            fieldset
+              = render partial: "guided_journey/partial/results"
+          .sidebar-steps-result
+            .sidebar-steps-result__content.content-interest
+              .sidebar-steps-result__content-interest.sidebar-steps-result__content-details
+                h4 Interests
+              .sidebar-steps-result__content-region.sidebar-steps-result__content-details
+                h4 Regions
+              .sidebar-steps-result__content-education.sidebar-steps-result__content-details
+                h4 Education level
+            .sidebar-steps-result__btn
+              input.form-control id="searchLimit" name="limit" hidden=true type="text" value=10 /
+              input.form-control id="searchOffset" name="offset" hidden=true type="text" value=0 /
+              button.btn-step.btn-step-back.btn-step-back-step value="previous" type="button" disabled="disabled" Back
+              button.btn-step.btn-step-next.btn-step-next-step value="next" type="button" disabled="disabled" Next
+              button.btn-step.btn-step-start value="reset" type="button" Start over
+  .find-opportunity.find-opportunity-inactive
+    h3.main-title Want to See More Options?
+    a(href="/careers")
+      span Find more opportunities
+    span on our career pages.
+  = render 'footer/index'

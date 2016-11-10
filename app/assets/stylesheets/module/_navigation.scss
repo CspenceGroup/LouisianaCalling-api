@@ -41,6 +41,10 @@
       font-size: rem(18.9);
       line-height: rem(18.9);
       padding-top: rem(2);
+
+      // img {
+      //   padding-top: rem(5);
+      // }
     }
 
   }
@@ -60,5 +64,11 @@
         @extend %no-padding-right;
       }
     }
+  }
+
+  @include e('journey') {
+    margin-top: rem(6);
+    @include boxSize(rem(162), rem(45));
+    @include background-image('path-button.png');
   }
 }

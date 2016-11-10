@@ -1,19 +1,21 @@
 .about-contact {
-  @include background-image('filter-bg.png');
+  @include background-image('profile/profile-decs-bg.png');
+  @extend %background-repeat-x;
 
   @include e('help-number') {
     color: $default;
     @extend %text-center;
 
     p {
-      width: rem(375);
+      width: rem(370);
       line-height: rem(20);
+      font-size: rem(16.67);
       @extend %margin-auto;
     }
   }
 
   @include e('donate') {
-    color: $faq-topic;
+    color: $profile-header;
     padding: rem(9) 0 rem(50);
     margin-bottom: rem(-25);
     background-color: $filter-careers-bg;
@@ -21,35 +23,35 @@
   }
 
   @include e('address') {
-    padding: rem(25) 0 rem(6);
+    padding: rem(23) 0 rem(2);
 
     p {
-      margin-bottom: rem(12);
+      margin-bottom: rem(15);
     }
   }
 }
 
 .about-help-container {
   width: rem(670);
-  padding: rem(40) 0 rem(45);
+  padding: rem(45) 0 rem(23);
   @extend %margin-auto;
 
   .help-form-title {
     font-size: rem(25);
-    margin-bottom: rem(15);
+    margin-bottom: rem(14);
     @extend %text-uppercase;
     @extend %brandon-grotesque;
   }
 }
 
 .need-help-title {
-  margin-bottom: rem(25);
+  margin-bottom: rem(24);
   @extend %text-capitalize;
 }
 
 .about-call-number {
   color: $white;
-  margin-top: rem(5);
+  margin-top: rem(22);
   @extend %block;
   @extend %margin-auto;
   @extend %background-no-repeat;
@@ -64,6 +66,7 @@
 
   .form-control {
     margin-top: rem(20);
+    text-indent: rem(4);
     @extend %no-border;
     @extend %no-border-radius;
   }
@@ -73,6 +76,7 @@
   }
 
   textarea {
+    overflow-x: hidden;
     @include boxSize(100%, rem(237));
   }
 }
@@ -90,14 +94,9 @@
   @include boxSize(rem(211), rem(52));
 }
 
-.icon-address {
-  margin: 0 rem(15) 0 rem(2);
-  @include boxSize(rem(14), rem(20));
-  @include background-image('about-address.png');
-}
-
-.icon-email {
-  margin-right: rem(12);
-  @include boxSize(rem(19), rem(13));
-  @include background-image('icon-about-email.png');
+.alert-danger-contact-us {
+  height: rem(53);
+  margin-top: rem(10);
+  display: none;
+  padding: rem(14);
 }
