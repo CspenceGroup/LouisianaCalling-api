@@ -14,6 +14,5 @@ $(document).on('turbolinks:load', function() {
 
   if (window.ga) {
     ga('send', 'pageview', page);
-    console.log(title, pageview);
   }
 });
