@@ -1,0 +1,52 @@
+.a-banner-wrapper {
+  height: rem(127);
+  @include background-image("filter-bg.png");
+  background-position: bottom;
+  @extend %background-repeat-x;
+
+  .a-text {
+    font-size: rem(19);
+    color: $default;
+    font-family: "IowanOldStyle";
+    text-align: center;
+    margin-top: rem(30);
+    -webkit-text-shadow: 1px 1px 0 #e3e0d7;
+    -moz-text-shadow: 1px 1px 0 #e3e0d7;
+    -ms-text-shadow: 1px 1px 0 #e3e0d7;
+    -o-text-shadow: 1px 1px 0 #e3e0d7;
+    text-shadow: 1px 1px 0 #e3e0d7;
+  }
+  .a-images-wrapper {
+    margin: 0 auto;
+    display: table;
+    .a-images-container {
+      margin-top: rem(12);
+      .a-empoweringLogo {
+        @include background-image("empoweringLogo.png");
+        background-size: cover;
+        float: left;
+        margin-left: rem(280);
+        margin-top: rem(6);
+        width: rem(105);
+        height: rem(26);
+      }
+      .a-louisianaLogo {
+        @include background-image("logo.png");
+        background-size: cover;
+        float: left;
+        width: rem(133);
+        height: rem(16);
+        margin-top: rem(10);
+        margin-left: rem(55);
+      }
+      .a-lctcLogo {
+        @include background-image("lctcLogo.png");
+        background-size: cover;
+        float: left;
+        width: rem(130);
+        height: rem(35);
+        margin-left: rem(55);
+      }
+    }
+  }
+}
