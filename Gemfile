@@ -46,7 +46,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'unicorn'
 gem 'foreman'
 gem 'sidekiq'
-gem 'redis-rails'
+gem 'redis-rails', '5.0.2'
 
 # Loads environment variables from `.env`.
 gem 'dotenv-rails'
