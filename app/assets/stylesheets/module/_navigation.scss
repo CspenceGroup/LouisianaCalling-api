@@ -4,7 +4,7 @@
   @extend %float-right;
   @extend %brandon-grotesque;
 
-  @include e('list') {
+  @include e("list") {
     @extend %overflow-hidden;
     @extend %float-left;
     padding: rem(27) 0;
@@ -30,7 +30,7 @@
     }
   }
 
-  @include e('contact') {
+  @include e("contact") {
     @extend %float-right;
     padding: rem(22) 0 0 rem(24);
 
@@ -46,14 +46,13 @@
       //   padding-top: rem(5);
       // }
     }
-
   }
 
-  @include e('icon') {
+  @include e("icon") {
     font-size: rem(18.9);
   }
 
-  @include e('list-icon') {
+  @include e("list-icon") {
     @extend %overflow-hidden;
 
     > li {
@@ -66,9 +65,40 @@
     }
   }
 
-  @include e('journey') {
+  @include e("journey") {
     margin-top: rem(6);
     @include boxSize(rem(162), rem(45));
-    @include background-image('path-button.png');
+    @include background-image("path-button.png");
+  }
+
+  @include e("social-networks") {
+    font-size: rem(23);
+    padding-top: rem(20);
+    float: left;
+
+    a {
+      color: $default;
+      margin-right: rem(25);
+    }
+
+    .social-facebook {
+      width: rem(9);
+      height: rem(18);
+      @include background-image("facebookLogo.svg");
+      background-size: contain;
+      margin-left: rem(10);
+    }
+    .social-twitter {
+      width: rem(21);
+      height: rem(17);
+      @include background-image("twitterLogo.svg");
+      background-size: contain;
+    }
+    .social-instagram {
+      width: rem(18);
+      height: rem(18);
+      @include background-image("instagramLogo.svg");
+      background-size: contain;
+    }
   }
 }
